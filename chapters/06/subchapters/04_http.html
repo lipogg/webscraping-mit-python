@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>HTTP: Hypertext Transfer Protocol &#8212; Webscraping für Geisteswissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/06/subchapters/04_http';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Webscraping mit Python für Geisteswissenschaften
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/03_semesterplan.html">1.3. Semesterplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/04_lernziele.html">1.4. Lernziele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/05_organisation.html">1.5. Organisatorisches</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/02_intro.html">2. Python I</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_jupyterlite.html">2.1. JupyterLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_style.html">2.2. Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_hilfe.html">2.3. Hilfe!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/02_grundbegriffe.html">2.4. Grundbegriffe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/03_datentypen.html">2.5. Einfache Datentypen, Strings und Operatoren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/04_variablen.html">2.6. Variablen</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/lipogg/webscraping-mit-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/06/subchapters/04_http.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>HTTP: Hypertext Transfer Protocol</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#host-client-server">Host, Client, Server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#http">HTTP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="http-hypertext-transfer-protocol">
+<h1>HTTP: Hypertext Transfer Protocol<a class="headerlink" href="#http-hypertext-transfer-protocol" title="Permalink to this heading">#</a></h1>
+</br>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/get_request.png"><img alt="Client sendet GET-Request an Webserver" class="bg-transparent" src="../../../_images/get_request.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-text">Client sendet GET-Request an Webserver. Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=E5bSumTAHZE">Practical Networking (2022)</a></span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="host-client-server">
+<h2>Host, Client, Server<a class="headerlink" href="#host-client-server" title="Permalink to this heading">#</a></h2>
+<p>Im Rahmen der Übungsaufgabe 4 habt ihr zwei Videos aus der Reihe “Networking Fundamentals” geschaut. Hier noch einmal eine Zusammenfassung einiger Grundbegriffe aus den Videos:</p>
+<ul class="simple">
+<li><p><strong>Host</strong>: Jedes Gerät, das Datenpakete über ein Netzwerk sendet oder empfängt (Bsp. Laptop, Desktop-Computer, Handy, Drucker, Server,…)</p></li>
+<li><p><strong>Client</strong>: Hosts, die Anfragen stellen</p></li>
+<li><p><strong>Server</strong>: Hosts, die Anfragen beantworten</p></li>
+<li><p><strong>Webserver</strong>: Server sind im Grunde einfach Computer, auf denen eine spezielle Software installiert ist, die Anfragen von Clients entgegennimmt und bearbeitet. Ein Webserver ist also ein Computer, auf dem Webserver-Software installiert ist. Mit dieser Software werden Webseiten bereitgestellt.</p></li>
+</ul>
+<p>Beachtet jedoch die Anmerkung aus dem Video “Network Devices”: Die Begriffe Client und Server sind relativ: Wenn der Webserver eine Anfrage an einen Datenbankserver stellt, um Daten auf dem Server zu aktualisieren, ist in dieser Kommunikation der Webserver der Client und der Datenbankserver der Server.</p>
+<ul class="simple">
+<li><p><strong>IP-Adresse</strong>: Identität eines Hosts, also eine einzigartige numerische Kennung, die einem Gerät in einem Netzwerk zugewiesen ist. Eine IP-Adresse ist Voraussetzung für die Kommunikation über das Netzwerk.</p></li>
+<li><p><strong>Netzwerk</strong>: Eine Verbindung von Hosts, die miteinander kommunizieren und Datenpakete austauschen können. Ein Netzwerk ist also das, was die Datenpakete transportiert. Formell gesprochen eine logische Gruppierung von Hosts, die ähnliche Anforderungen und Eigenschaften in Bezug auf ihre Netzwerkverbindungen haben, also zum Beispiel an die Netzwerkprotokolle, die sie verwenden. Netzwerke können andere Netzwerke enthalten, die dann Teilnetze oder Unternetze heißen.</p></li>
+<li><p><strong>Internet</strong>: Vielzahl miteinander verbundener (Computer)netzwerke.</p></li>
+<li><p><strong>Protokoll</strong>: Sammlung von Regeln und Verfahren, die festlegen, wie die Kommunikation zwischen verschiedenen Geräten in einem Netzwerk abläuft, und die einen Internetstandard bilden.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Obwohl <strong>Internet</strong> und <strong>World Wide Web</strong> oft als Synonyme verwendet werden, handelt es sich eigentlich um verschiedene Dinge: Das World Wide Web ist nämlich nur ein Dienst des Internets, also eine Nutzungsmöglichkeit des Internets. Neben dem WWW gibt es auch andere Internetdienste, zum Beispiel E-Mail.</p>
+</div>
+</section>
+<section id="http">
+<h2>HTTP<a class="headerlink" href="#http" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>“Das Hypertext Transfer Protocol ist ein Protokoll auf Anwendungsebene zur Übertragung von Daten über ein Netzwerk. Es wird hauptsächlich eingesetzt, um Webseiten aus dem World Wide Web in einen Webbrowser zu laden.”</p>
+</div></blockquote>
+<p>Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=fkbwGJT5iH0">Frank Dopatka (2021)</a></p>
+<p>Das Hyptertext Transfer Protocol wird also immer dann verwendet, wenn ein Client mit einem Webserver kommuniziert.</p>
+<ul class="simple">
+<li><p><strong>HTTP-Request</strong>: Anfrage eines Clients an einen Server über das Protokoll HTTP</p></li>
+</ul>
+<p>Es wird unterschieden zwischen verschiedenen <strong>Anfrage-Methoden (request methods)</strong>. Eine Methode beschreibt in diesem Kontext eine Aktion, die mit der angefragten Ressource durchgeführt werden soll (also z.B. darstellen, ändern, löschen, …). HTTP-Methoden sind immer Verben also zum Beispiel GET, POST, DELETE.</p>
+<p>Die <strong>GET-Methode</strong> wird verwendet, um eine bestimmte Ressource (wie eine Webseite, ein Bild oder ein CSS-Stylesheet) von einem Webserver anzufordern. Da die GET-Methode ausschließlich zum Abrufen von Daten verwendet wird, handelt es sich also um eine “lesende” Methode, die Daten vom Server abruft, um sie dem Client (in dem Fall dem Webbrowser) zur Anzeige oder Verarbeitung zur Verfügung zu stellen. Eine GET-Methode besteht nur aus einem <strong>Header</strong>, in dem Parameter spezifiziert werden. Zum einen wird dort festgelegt unter welcher URL welche Ressource angefragt wird. Über die URL kann der Host, von dem die Ressource angefragt wird, identifiziert werden. Und es wird auch angegeben, von welchem User-Agent (in dem Fall ist ein User Agent ein Browser) die Anfrage ausgeht.</p>
+<p>Bei einer HTTP-Anfrage können optional noch weitere Parameter übergeben werden, zum Beispiel, welche Sprache angezeigt werden soll oder welcher Datentyp als Antwort akzeptiert wird.</p>
+<ul class="simple">
+<li><p><strong>HTTP-Response</strong>: Antwort eines Servers auf eine Anfrage über HTTP</p></li>
+</ul>
+<p>Eine HTTP-Antwort besteht aus einem Header und einem Body. Im <strong>Header</strong> übermittelt der Server Metadaten wie zum Beispiel den Datentyp der Ressource und einen <strong>Statuscode</strong>, der mitteilt, ob die Anfrage erfolgreich war. Es gibt fünf verschiedene Arten von Statuscodes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Informational responses (100 – 199)</p></li>
+<li><p>Successful responses (200 – 299) - z.B. 200 OK</p></li>
+<li><p>Redirection messages (300 – 399)</p></li>
+<li><p>Client error responses (400 – 499) - z.B. 404 Not Found</p></li>
+<li><p>Server error responses (500 – 599)</p></li>
+</ul>
+</div></blockquote>
+<p>Quelle: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">MDN Contributors 2023</a></p>
+<p>Die beiden Statuscodes 200 und 404 sind allgemein bekannt. In diesen Fällen muss nichts unternommen werden: Die Ressource wurde erfolgreich übermittelt (Statuscode 200) oder aber sie wurde nicht gefunden, weil z.B. die URL gar nicht existiert (Statuscode 404). Manche Statuscodes informieren jedoch darüber, dass eine Handlung erforderlich ist: Der Statuscode 402 Unauthorized deutet beispielsweise darauf hin, dass der Client sich gegenüber dem Server authentifizieren muss, bevor er auf die Ressource zugreifen darf. In diesem Fall könnte die Anfrage erneut gestellt werden, aber diesmal gibt man bei der Anfrage zusätzlich einen Authentication-Parameter mit an, welcher den Client authentifiziert. Im Request-Header können zum Beispiel aber auch Cookies mit übermittelt werden, welche den Client einer Sitzung zuordnen. Cookies werden zum Beispiel verwendet, um Waren im Warenkorb zu speichern.</p>
+<p>Im Körper (<strong>Body</strong>) der Anwort wird die angefragte Ressource geliefert. Wenn bei der Anfrage eine HTML-Datei angefragt wurde, dann wird im Body der Antwort das HTML-Dokument als Textdatei übermittelt.</p>
+<p>Beispiel:</p>
+<figure class="align-default" id="id1">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/get_bsp.png"><img alt="Client sendet GET-Request an Webserver" class="bg-transparent" src="../../../_images/get_bsp.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-text">GET-Anfrage (oben) und HTTP Response (unten). Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=ZJxIolyt36k">Frank Dopatka (2021)</a></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Welche Anfragen der Browser beim Aufrufen einer Website an den Server stellt, könnt ihr ebenfalls in den Browser-Entwicklertools sehen, und zwar unter dem Tab “Netzwerk”.</p>
+<p>Welche HTTP-Anfragen werden beim Aufrufen der Webseite <a class="reference external" href="https://quotes.toscrape.com">https://quotes.toscrape.com</a> gestellt?</p>
+<section id="quellen">
+<h3>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h3>
+<div class="docutils container" id="id2">
+<ol class="arabic simple" start="1">
+<li id="id68"><p>Frank Dopatka. Vorlesung &quot;Webbasierte Systeme&quot;. Grundlagen der Web-Kommunikation: HTTP-Kommunikation zwischen Client &amp; Server. 2021. URL: <a class="reference external" href="https://www.youtube.com/watch?v=ZJxIolyt36k">https://www.youtube.com/watch?v=ZJxIolyt36k</a>.</p></li>
+<li id="id67"><p>Frank Dopatka. Vorlesung &quot;Webbasierte Systeme&quot;. Grundlagen der Web-Kommunikation. 2021. URL: <a class="reference external" href="https://www.youtube.com/watch?v=SQpYAK_IKIo">https://www.youtube.com/watch?v=SQpYAK_IKIo</a>.</p></li>
+<li id="id89"><p>MDN Contributors. Authorization. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization</a>.</p></li>
+<li id="id87"><p>MDN Contributors. HTTP Headers. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers</a>.</p></li>
+<li id="id85"><p>MDN Contributors. HTTP Request Methods. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods">https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods</a>.</p></li>
+<li id="id86"><p>MDN Contributors. HTTP Response Status Codes. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">https://developer.mozilla.org/en-US/docs/Web/HTTP/Status</a>.</p></li>
+<li id="id82"><p>MDN Contributors. HTTP. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP">https://developer.mozilla.org/en-US/docs/Web/HTTP</a>.</p></li>
+<li id="id88"><p>MDN Contributors. Using HTTP Cookies. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies</a>.</p></li>
+<li id="id83"><p>Practical Networking. Networking Fundamentals Lesson 1a: Network Devices - Hosts, IP Addresses, Networks. 2021. URL: <a class="reference external" href="https://www.youtube.com/watch?v=bj-Yfakjllc">https://www.youtube.com/watch?v=bj-Yfakjllc</a>.</p></li>
+<li id="id84"><p>Practical Networking. Networking Fundamentals Lesson 6: Network Protocols - ARP, FTP, SMTP, HTTP, SSL, TLS, HTTPS, DNS, DHCP. 2021. URL: <a class="reference external" href="https://www.youtube.com/watch?v=E5bSumTAHZE">https://www.youtube.com/watch?v=E5bSumTAHZE</a>.</p></li>
+</ol>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/06/subchapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#host-client-server">Host, Client, Server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#http">HTTP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lisa Poggel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

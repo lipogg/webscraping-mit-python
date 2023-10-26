@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Pakete &#8212; Webscraping für Geisteswissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/04/subchapters/02_pakete';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Webscraping mit Python für Geisteswissenschaften
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/03_semesterplan.html">1.3. Semesterplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/04_lernziele.html">1.4. Lernziele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/05_organisation.html">1.5. Organisatorisches</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/02_intro.html">2. Python I</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_jupyterlite.html">2.1. JupyterLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_style.html">2.2. Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_hilfe.html">2.3. Hilfe!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/02_grundbegriffe.html">2.4. Grundbegriffe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/03_datentypen.html">2.5. Einfache Datentypen, Strings und Operatoren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/04_variablen.html">2.6. Variablen</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/lipogg/webscraping-mit-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/04/subchapters/02_pakete.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pakete</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-pakete">Was sind Pakete?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pakete-installieren">Pakete installieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pakete-importieren">Pakete importieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welche-pakete-gibt-es-denn-alles">Welche Pakete gibt es denn alles?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pakete-mehr-als-nur-funktionen">Pakete: Mehr als nur Funktionen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pakete">
+<h1>Pakete<a class="headerlink" href="#pakete" title="Permalink to this heading">#</a></h1>
+<section id="was-sind-pakete">
+<h2>Was sind Pakete?<a class="headerlink" href="#was-sind-pakete" title="Permalink to this heading">#</a></h2>
+<p>Die Python-Dokumentation werden <strong>Pakete (engl. packages)</strong> einfach als “a collection of modules” definiert. Um zu verstehen, was Pakete sind, müssen wir also zunächst verstehen, was <strong>Module</strong> sind. In der Python-Dokumentation sind Module wie folgt definiert:</p>
+<blockquote>
+<div><p>“A module is a file containing Python definitions and statements.”</p>
+</div></blockquote>
+<p>Quelle: Python 3.11.3 <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">Documentation</a>.</p>
+<p>Mit Datei (file) ist einfach ein Python-Skript gemeint, das verschiedene Anweisungen (statements) und Definitionen, zum Beispiel Funktionsdefinitionen, enthält. Module können Python-Nutzer:innen also selbst erstellen. Wenn man viele Funktionen zu einem bestimmten Anwendungszweck selbst definiert hat, möchte man diese nicht im Skript stehen haben, sondern speichert sie in einem separaten Skript, das dann “importiert” werden kann. Diese Skripte können auch online gestellt werden, damit andere Nutzer:innen die Funktionen auch importieren und nutzen können. Dieses Prinzip, den eigenen Quelltext in Module aufzuteilen, die je einen unterschiedlichen Zweck haben, nennt man auch <strong>Modularisierung</strong>.</p>
+<p>Module und Pakete werden also dazu verwendet, um seinen eigenen Code zu organisieren, oder um auf bestimmte Funktionalitäten zuzugreifen, die in Python nicht vordefiniert sind und die andere Python-Nutzer:innen definiert und veröffentlicht haben. Pakete enthalten vor allem Funktionen, aber auch zusätzliche Datentypen oder ganze Datensätze. Um darauf zuzugreifen, müssen Python-Pakete zuerst <strong>installiert</strong> und danach <strong>importiert</strong> werden.</p>
+<p>Besonders komplexe Pakete, die verschiedene Unterpakete enthalten, werden auch <strong>Bibliothek (engl. library)</strong> genannt. BeautifulSoup zum Beispiel ist eigentlich eine Bibliothek. Manchmal wird der Begriff “Bibliothek” aber auch einfach als Oberbegriff für verschiedene Arten von wiederverwendbarem Code verwendet.</p>
+<p>Der Einfachheit halber sprechen wir aber im Folgenden einfach von Paketen, auch dann, wenn eigentlich Bibliotheken gemeint sind.</p>
+<p>Die Funktionen, die wir bisher kennengelernt haben, waren alle in Python vordefiniert. Wir mussten deswegen kein Paket installieren und laden, um sie zu nutzen.</p>
+</section>
+<section id="pakete-installieren">
+<h2>Pakete installieren<a class="headerlink" href="#pakete-installieren" title="Permalink to this heading">#</a></h2>
+<p>Es gibt verschiedene Wege, Python-Pakete zu installieren. Da wir unser JupyterLab in einer virtuellen Umgebung ausführen und hierzu unseren eigenen Kernel erstellt haben, verwenden wir den folgenden Code, um Pakete zu installieren:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install a conda package in the current Jupyter kernel</span>
+<span class="c1"># import sys</span>
+<span class="c1"># !conda install --yes --prefix {sys.prefix} pandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wenn ihr den Code in euer Jupyter Notebook kopiert, müsst ihr natürlich die Kommentarzeichen entfernen.</p>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">!conda</span> <span class="pre">list</span></code> kann anschließend eine Liste aller in der aktuellen Umgebung installierten Pakete ausgegeben werden.</p>
+</section>
+<section id="pakete-importieren">
+<h2>Pakete importieren<a class="headerlink" href="#pakete-importieren" title="Permalink to this heading">#</a></h2>
+<p>Installierte Pakete müssen immer am Anfang eines Jupyter Notebooks immer importiert werden, bevor sie verwendet werden können:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import sys</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es ist auch möglich, nur einzelne Funktionen oder einen kleine Menge der Funktionen aus einem Paket zu importieren. Das erfordert weniger Ladezeit und ist somit effizienter. Um das zu tun, werden die Schlüsselworte <strong><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">...</span> <span class="pre">import...</span></code></strong> verwendet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from bs4 import BeautifulSoup</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Für manche Pakete wird beim Importieren der Konvention nach ein Alias verwendet, also eine Kurzform des Paketnamens:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import pandas as pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Durch die import-Anweisung wird ein <strong>Namensraum (engl. namespace)</strong> mit dem Namen des Pakets erstellt. In der Anweisung <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sys</span></code> hat der Namenraum des importierten Pakets den Namen <code class="docutils literal notranslate"><span class="pre">sys</span></code>. In der Anweisung <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code> wird dagegen der Name des Namensraums manuell festgelegt, nämlich als <code class="docutils literal notranslate"><span class="pre">pd</span></code>.</p>
+<p>Funktionen aus dem importierten Paket oder Modul können aufgerufen werden, indem zuerst der Name des Namensraums adressiert wird, gefolgt von einem Punkt und dem Funktionsnamen, also zum Beispiel könnten wir die Funktion <code class="docutils literal notranslate"><span class="pre">getsizeof()</span></code> aus dem Modul <code class="docutils literal notranslate"><span class="pre">sys</span></code> verwenden, um uns die Größe eines Objekts im Speicher in Bytes ausgeben zu lassen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># wort = &quot;Hallo&quot;</span>
+<span class="c1"># sys.getsizeof(wort)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="welche-pakete-gibt-es-denn-alles">
+<h2>Welche Pakete gibt es denn alles?<a class="headerlink" href="#welche-pakete-gibt-es-denn-alles" title="Permalink to this heading">#</a></h2>
+<p>Wenn ihr nach einer bestimmten Funktionalität sucht, dann empfiehlt es sich, zunächst auf der Seite <a class="reference external" href="https://pypi.org/">https://pypi.org/</a> nach einem Stichwort zu suchen. Diese Seite durchsucht verschiedene Online-Plattformen, auf denen Python Nutzer:innen ihre Pakete veröffentlicht haben.</p>
+<p>Zu den meisten Paketen gibt es eigene Dokumentationsseiten, die von den Python Nutzer:innen gepflegt werden, die die Pakete entwickelt haben. Um zu verstehen, welche Funktionalitäten ein bestimmtes Paket zur Verfügung stellt, solltet ihr euch die Dokumentationsseiten zu dem Paket durchlesen.</p>
+<ul class="simple">
+<li><p>Dokumentationsseiten zum Paket pandas: <a class="reference external" href="https://pandas.pydata.org/docs/index.html">https://pandas.pydata.org/docs/index.html</a></p></li>
+</ul>
+</section>
+<section id="pakete-mehr-als-nur-funktionen">
+<h2>Pakete: Mehr als nur Funktionen<a class="headerlink" href="#pakete-mehr-als-nur-funktionen" title="Permalink to this heading">#</a></h2>
+<p>Eingangs habe ich erwähnt, dass Pakete neben Funktionen auch nutzerdefinierte Datentypen enthalten können.</p>
+<p>Zum Beispiel hat Wes McKinney, ein US-amerikanischer Data Scientist, bei seiner Arbeit mit ökonometrischen Daten bemerkt, dass er immer wieder bestimmte Abläufe benötigte, um seine Daten zu analysieren. Er hat auch bemerkt, dass die existierenden Python-Datentypen nicht besonders effizient waren, um seine Daten zu verarbeiten und zu speichern. Da McKinney vor allem mit Daten gearbeitet hat, die in Tabellenform vorlagen, wollte er auch in Python mit Objekten arbeiten, auf die dieselben Operationen angewendet werden können wie auf Exceltabellen. Er hat deswegen einen neuen Datentyp definiert: einen DataFrame. Das Python-Skript, in dem er seinen DataFrame-Datentyp definiert hat, hat er zusammen mit den Skripten, in denen er die Funktionen zur Datenanalyse definiert hat, als neues Paket mit dem Namen pandas veröffentlicht. Damit andere Nutzer:innen auch verstehen, was die Funktionen machen und wie sein neuer Datentyp zu verwenden ist, hat er sein Paket online dokumentiert. Hier ist z.B. die Dokumentationsseite zum pandas-DataFrame: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html</a></p>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/pandas_dataframe.png"><img alt="pandas Dataframe Dokumentation" class="bg-transparent" src="../../../_images/pandas_dataframe.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-text">Auszug aus der Dokumentationsseite zum pandas-DataFrame</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Auf der Dokumentationsseite stoßt ihr auf drei Begriffe, die wir bisher nicht erwähnt haben: Datenstruktur (data structure), Klasse (class) und Attribute (attributes).</p>
+<p><strong>Datenstruktur</strong> ist ein Begriff, der oft nicht ganz klar definiert verwendet wird. Auf den Pandas-Dokumentationsseiten können wir nachlesen, wie McKinney diesen Begriff definiert:</p>
+<blockquote>
+<div><p>“The best way to think about the pandas data structures is as flexible containers for lower dimensional data. For example, DataFrame is a container for Series, and Series is a container for scalars. We would like to be able to insert and remove objects from these containers in a dictionary-like fashion.”</p>
+</div></blockquote>
+<p>Quelle: pandas 2.0.1 <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/overview.html#data-structures">Documentation</a></p>
+<p>Eine pandas-Datenstruktur ist also eigentlich einfach ein zusammengesetzter Datentyp.</p>
+<p>Jetzt zum zweiten Begriff. Wenn Nutzer:innen eigene Datentypen definieren wollen, dann verwenden sie dazu <strong>Klassen</strong>.
+In der Python-Dokumentation werden Klassen wie folgt definiert:</p>
+<blockquote>
+<div><p>“Classes provide a means of bundling data and functionality together. Creating a new class creates a new type of object, allowing new instances of that type to be made. Each class instance can have attributes attached to it for maintaining its state. Class instances can also have methods (defined by its class) for modifying its state.”</p>
+</div></blockquote>
+<p>Quelle: Python 3.11.3 <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html">Documentation</a></p>
+<p>Zur Definition von Klassen wird das Signalwort <code class="docutils literal notranslate"><span class="pre">class</span></code> verwendet statt das Signalwort <code class="docutils literal notranslate"><span class="pre">def</span></code>, das wir von der Definition von Funktionen kennen. Bei der Klassendefinition wird wie bei Funktionsdefinitionen auch ein Name der Klasse festgelegt. Diesen Namen verwenden wir, um den Typ eines Objekts zu benennen: Also im Beispiel unten ist df ein Objekt vom Typ DataFrame. Wir haben ja zu Anfang erwähnt, dass alles in Python ein Objekt ist, und dass jedes Objekt einen Typ hat, der bestimmt, welche Eigenschaften das Objekt hat und welche Operationen darauf angewendet werden können. In der Klassendefinition werden genau diese Eigenschaften und Operationen festgelegt. Wir haben schon mehrmals besprochen, dass die Operationen, die für Objekte eines Datentyps definiert sind, Methoden genannt werden. Die Eigenschaften, die für Objekte eines Datentyps definiert sind, heißen dagegen <strong>Attribute</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In der Python-Dokumentation heißen diese Eigenschaften genau genommen “Data Attributes”, um sie von Methoden zu unterscheiden, die nämlich auch eine Art von Attributen sind, und zwar eigentlich “Prozedurale Attribute”. In der Alltagssprache wird aber oft einfach nur von Attributen und Methoden gesprochen.</p>
+</div>
+<p>Mithilfe des Klassennamens können dann neue Instanzen (Exemplare) der Klasse erstellt werden, also eben Objekte vom Typ X.</p>
+<p>Beispiel: Erstellt ein Objekt vom Typ Dictionary, das irgendwelche Strings als Schlüssel und Listen als Werte enthält. Nennt das Dictionary daten.
+Erstellt dann ein Objekt vom Typ DataFrame, indem ihr den folgenden Code ausführt (ohne die Kommentarzeichen):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df = pd.DataFrame(daten)</span>
+<span class="c1"># print(df)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jetzt können wir Methoden auf dieses Objekt anwenden, welche für pandas-DataFrames definiert sind. Zum Beispiel die Methode head, welche per Default die ersten fünf Zeilen des Dataframes ausgibt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Die ersten 5 Zeilen des DataFrames ausgeben lassen</span>
+<span class="c1"># df.head()</span>
+
+<span class="c1"># Erste 2 Zeilen ausgeben lassen</span>
+<span class="c1"># df.head(2)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es ist auch möglich, Attribute (Eigenschaften) des Objekts abzufragen. Dazu wird genau wie beim Zugriff auf Methoden der Punkt-Operator verwendet. <strong>Aber anders als beim Aufruf von Methoden werden aber beim Zugriff auf Attribute keine runden Klammern verwendet!</strong> Für Objekte vom Typ DataFrame ist zum Beispiel das Attribut <code class="docutils literal notranslate"><span class="pre">columns</span></code> definiert, welches die Spaltennamen des DataFrames beschreibt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf Attribut columns des DataFrames df zugreifen</span>
+<span class="c1"># df.columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="quellen">
+<h2>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
+<div class="docutils container" id="id1">
+<ol class="arabic simple" start="1">
+<li id="id46"><p>Python Package Index (PyPI). URL: <a class="reference external" href="https://pypi.org/">https://pypi.org/</a>.</p></li>
+<li id="id14"><p>Ana Bell. Object Oriented Programming. 2016. URL: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-8-object-oriented-programming/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-8-object-oriented-programming/</a>.</p></li>
+<li id="id53"><p>Johannes Ernesti and Peter Kaiser. Modularisierung. 2023. URL: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/20_001.html">https://openbook.rheinwerk-verlag.de/python/20_001.html</a>.</p></li>
+<li id="id50"><p>Wes McKinney. pandas 2.0.1 Documentation: Data Structures. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/overview.html#data-structures">https://pandas.pydata.org/docs/getting_started/overview.html#data-structures</a>.</p></li>
+<li id="id48"><p>Wes McKinney. pandas 2.0.1 Documentation: Intro to Data Structures. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/dsintro.html">https://pandas.pydata.org/docs/user_guide/dsintro.html</a>.</p></li>
+<li id="id49"><p>Wes McKinney. pandas 2.0.1 Documentation: pandas.DataFrame. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html</a>.</p></li>
+<li id="id47"><p>Wes McKinney. pandas 2.0.1 Documentation. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/index.html">https://pandas.pydata.org/docs/index.html</a>.</p></li>
+<li id="id51"><p>Python 3.11.3 Documentation. Classes. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html">https://docs.python.org/3/tutorial/classes.html</a>.</p></li>
+<li id="id45"><p>Python 3.11.3 Documentation. Modules: Packages. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html#packages">https://docs.python.org/3/tutorial/modules.html#packages</a>.</p></li>
+<li id="id52"><p>Python 3.11.3 Documentation. sys – System-Specific Parameters and Functions. URL: <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.getsizeof">https://docs.python.org/3/library/sys.html#sys.getsizeof</a>.</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/04/subchapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-pakete">Was sind Pakete?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pakete-installieren">Pakete installieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pakete-importieren">Pakete importieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welche-pakete-gibt-es-denn-alles">Welche Pakete gibt es denn alles?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pakete-mehr-als-nur-funktionen">Pakete: Mehr als nur Funktionen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lisa Poggel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

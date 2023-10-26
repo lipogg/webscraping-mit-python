@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>2.4. Grundbegriffe &#8212; Webscraping für Geisteswissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/02/subchapters/02_grundbegriffe';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2.5. Einfache Datentypen, Strings und Operatoren" href="03_datentypen.html" />
+    <link rel="prev" title="2.3. Hilfe!!" href="01_hilfe.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Webscraping mit Python für Geisteswissenschaften
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/03_semesterplan.html">1.3. Semesterplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/04_lernziele.html">1.4. Lernziele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/05_organisation.html">1.5. Organisatorisches</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../02_intro.html">2. Python I</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_jupyterlite.html">2.1. JupyterLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_style.html">2.2. Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_hilfe.html">2.3. Hilfe!!</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.4. Grundbegriffe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_datentypen.html">2.5. Einfache Datentypen, Strings und Operatoren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_variablen.html">2.6. Variablen</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/lipogg/webscraping-mit-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/02/subchapters/02_grundbegriffe.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Grundbegriffe</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="grundbegriffe">
+<h1><span class="section-number">2.4. </span>Grundbegriffe<a class="headerlink" href="#grundbegriffe" title="Permalink to this heading">#</a></h1>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Begriff</p></th>
+<th class="head"><p>Englische Entsprechung</p></th>
+<th class="head"><p>Definition (im Python-Kontext)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Objekt</p></td>
+<td><p>Object</p></td>
+<td><p>Grundsätzlich alles: Listen, Vektoren, Funktionen,… Alle Objekte haben einen Datentyp (kurz “Typ”), der bestimmt, welche Eigenschaften das Objekt hat und was man damit machen kann.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Anweisung</p></td>
+<td><p>Statement</p></td>
+<td><p>Syntaktische Einheit, die Aktionen beschreibt, die von einem Computer ausgeführt werden können. Wenn die Anweisung ausgeführt wird, wird die Aktion veranlasst und der Zustand des Speichers wird geändert.</p></td>
+</tr>
+<tr class="row-even"><td><p>Zuweisung</p></td>
+<td><p>Assignment</p></td>
+<td><p>Besondere Art von Anweisung, bei der ein Wert einer Variable zugewiesen wird: Das heißt, dass ein Name festgelegt wird, der für diesen Wert und für einen Speicherplatz steht. Ganz korrekt ausgedrückt würde man sagen, dass ein Objekt oder Wert an einen Namen “gebunden” wird; dieser Name ist sowas wie eine Referenz zu diesem Wert.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ausdruck</p></td>
+<td><p>Expression</p></td>
+<td><p>Syntaktische Einheit, die zu einem Wert evaluiert (ausgewertet) werden kann. Ein Ausdruck ist immer Teil einer Anweisung. Ausdrücke stehen auf der rechten Seite von Zuweisungen: x = Ausdruck. Ausdrücke haben immer einen Typ, der dem Datentyp des Werts entspricht, zu dem sie evaluiert werden, z.B. 3 == 4 ist ein Ausdruck vom Typ boolean. Solche Ausdrücke nennt man auch Bedingungen (-&gt; nächste Stunde!).</p></td>
+</tr>
+<tr class="row-even"><td><p>Aussage</p></td>
+<td><p>Proposition</p></td>
+<td><p>In der Aussagenlogik ein sprachliches Gebilde, von dem es sinnvoll ist zu sagen, dass es entweder wahr oder falsch ist (Aristoteles). Im Python-Kontext ein Ausdruck, der entweder zu True oder zu False evaluiert werden kann.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Auswerten</p></td>
+<td><p>Evaluate</p></td>
+<td><p>Der Computer liest einen Ausdruck und wertet diesen aus: Er berechnet etwas und liefert einen Wert.</p></td>
+</tr>
+<tr class="row-even"><td><p>Ausführen</p></td>
+<td><p>Execute</p></td>
+<td><p>Der Computer liest eine Anweisung und führt diese aus: Er macht etwas und ändert den Zustand des Speichers.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ausgeben</p></td>
+<td><p>Output/Print</p></td>
+<td><p>Das Ergebnis einer Berechnung oder die Ausgabe einer Funktion wird auf dem Bildschirm angezeigt.</p></td>
+</tr>
+<tr class="row-even"><td><p>Programm</p></td>
+<td><p>Program</p></td>
+<td><p>Abfolge von Anweisungen</p></td>
+</tr>
+</tbody>
+</table>
+<p>In der letzten Woche haben wir besprochen, worum es beim Web Scraping eigentlich geht: Darum, Strategien zu entwickeln, wie wir an bestimmte Daten (Metadaten, Volltexte, …) in einer bestimmten Form (Plain Text, PDF, …) kommen, und diese in die Logik der Programmiersprache Python zu übertragen.  Wenn wir manuell Daten aus dem Internet herunterladen, würden wir wahrscheinlich in etwa so vorgehen:</p>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/flussdiagramm.jpg"><img alt="Flussdiagramm" class="bg-transparent" src="../../../_images/flussdiagramm.jpg" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Flussdiagramm</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Bei diesen Schritten handelt es sich im Grunde um ein Rezept mit dem Ziel “Textdateien zu Franz Kafkas Werken von 1919 herunterladen”, das aus verschiedenen Schritten besteht. Zwischen den einzelnen Schritten treffen wir Entscheidungen, zum Beispiel, dass wir eine Unterseite öffnen, wenn wir in der Publikationsliste ein Werk mit dem Publikationsjahr 1919 finden. Andere Entscheidungen treffen wir dagegen schon, bevor wir überhaupt die Website öffnen, zum Beispiel, dass wir nur Texte aus dem Jahr 1919 suchen.</p>
+<p>Das Beispiel lässt sich auf das Programmieren übertragen: Programme können in Python “<strong>imperativ</strong>” geschrieben werden, also als genau so eine Abfolge von Schritten, die wir dann <strong>Anweisungen</strong> nennen. Die Entscheidungen und Wiederholungen von bestimmten Schritten nennen wir <strong>Verzweigungen</strong> und <strong>Schleifen</strong>, und wir verwenden den Begriff <strong>Kontrollstrukturen</strong> als Überbegriff für solche Konstrukte, weil sie den Programmablauf “kontrollieren”.</p>
+<p>In den einzelnen Schritten unseres Rezepts haben wir mit verschiedenen <strong>Objekten</strong> zu tun: Zum Beispiel mit dem Wort “Kafka”, das wir in das Suchfeld eingeben, und mit der Zahl 1919, nach der wir die Publikationsliste durchsuchen. Für uns macht es dabei keinen Unterschied, ob wir nach einer Zahl oder einem Wort suchen. Wenn wir aber wollen, dass der Computer für uns die Werke von Kafka herunterlädt, dann macht es einen großen Unterschied, was für ein Objekt durch eine Anweisung bearbeitet werden soll. Objekte unterscheiden sich in Python durch ihre <strong>Eigenschaften</strong> und durch die <strong>Operationen</strong>, die auf sie angewendet werden können - also dadurch, was mit ihnen gemacht werden kann. Im realen Leben könnte man zum Beispiel Lampen dadurch definieren, dass sie eine Eigenschaft “watt” haben, und dass man ein Objekt vom Typ “Lampe” ausschalten und einschalten kann. Eine ganz bestimmte Lampe hat dann zum Beispiel den Wert 20 für die Eigenschaft “watt”:</p>
+<div class="full-width docutils">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/lampe_klasse.png"><img alt="Klasse Lampe" class="bg-transparent" src="../../../_images/lampe_klasse.png" style="width: 35%;" /></a>
+<a class="bg-transparent reference internal image-reference" href="../../../_images/lampe.png"><img alt="Objekt vom Typ Lampe" class="bg-transparent" src="../../../_images/lampe.png" style="width: 35%;" /></a>
+</div>
+<p><br></br>
+Beim Programmieren haben wir es natürlich nicht mit realen Gegenständen, sondern eigentlich mit Datenobjekten zu tun. In Python sind die ganz grundlegenden Typen von Datenobjekten, und die Operationen, die darauf angewendet werden können, vordefiniert, so zum Beispiel Zeichenketten (Text, Wörter) und Zahlen, oder auch Listen. Es gibt daneben aber auch Objekte, für die Nutzer:innen selbst Eigenschaften und definiert und anderen Nutzer:innen bereitgestellt haben. Dazu kommen wir in der Sitzung zu Paketen und Bibliotheken. Alle Objekte in Python haben also einen bestimmten <strong>Datentyp</strong>, oder kurz “Typ”, der vorgibt, welche Eigenschaften diese Objekte haben und welche Operationen darauf angewendet werden können.</p>
+<p>Quellen:</p>
+<div class="docutils container" id="id1">
+<ol class="arabic simple" start="1">
+<li id="id8"><p>Ana Bell. What is Computation? 2016. URL: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-1-what-is-computation/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-1-what-is-computation/</a>.</p></li>
+<li id="id9"><p>Ana Bell. Control Flow: Branching and Iteration. 2016. URL: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-2-branching-and-iteration/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-2-branching-and-iteration/</a>.</p></li>
+<li id="id16"><p>Peter J. Denning. Opening Statement: What is Computation? <em>The Computer Journal</em>, 55(7):805–810, 2012.</p></li>
+<li id="id19"><p>Alan Gauld. Learning to Program: What is Programming? URL: <a class="reference external" href="http://www.alan-g.me.uk/l2p2/">http://www.alan-g.me.uk/l2p2/</a>.</p></li>
+<li id="id15"><p>Ian Horswill. What is Computation? <em>XRDS: Crossroads, The ACM Magazine for Students</em>, 18:8–14, 2012. URL: <a class="reference external" href="https://doi.org/10.1145">https://doi.org/10.1145</a>.</p></li>
+<li id="id17"><p>Kent D. Lee. <em>Foundations of Programming Languages</em>. Springer International Publishing, Cham, 2017. URL: <a class="reference external" href="http://link.springer.com/10.1007/978-3-319-70790-7">http://link.springer.com/10.1007/978-3-319-70790-7</a>.</p></li>
+<li id="id21"><p>Ralf H. Reussner. Mitschnitt zur Vorlesung &quot;Programmieren&quot; im WiSe 2015/2016. 02: Typen und Variablen. 2016. URL: <a class="reference external" href="https://www.youtube.com/watch?v=POe41EL2EgU">https://www.youtube.com/watch?v=POe41EL2EgU</a>.</p></li>
+<li id="id20"><p>Ralf H. Reussner. Mitschnitt zur Vorlesung &quot;Programmieren&quot; im WiSe 2015/2016. 03: Kontrollstrukturen. 2016. URL: <a class="reference external" href="https://www.youtube.com/watch?v=-ZvrABPvUdA">https://www.youtube.com/watch?v=-ZvrABPvUdA</a>.</p></li>
+<li id="id18"><p>Python 3.11.3 Documentation. Glossary: Object. URL: <a class="reference external" href="https://docs.python.org/3/glossary.html#term-object">https://docs.python.org/3/glossary.html#term-object</a>.</p></li>
+</ol>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/02/subchapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_hilfe.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>Hilfe!!</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_datentypen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.5. </span>Einfache Datentypen, Strings und Operatoren</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lisa Poggel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

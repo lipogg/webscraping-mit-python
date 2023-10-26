@@ -1,0 +1,738 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Fortsetzung Selenium &#8212; Webscraping für Geisteswissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/09/subchapters/03_fortsetzung_selenium';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Webscraping mit Python für Geisteswissenschaften
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/03_semesterplan.html">1.3. Semesterplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/04_lernziele.html">1.4. Lernziele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/05_organisation.html">1.5. Organisatorisches</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/02_intro.html">2. Python I</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_jupyterlite.html">2.1. JupyterLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_style.html">2.2. Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_hilfe.html">2.3. Hilfe!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/02_grundbegriffe.html">2.4. Grundbegriffe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/03_datentypen.html">2.5. Einfache Datentypen, Strings und Operatoren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/04_variablen.html">2.6. Variablen</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/lipogg/webscraping-mit-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/09/subchapters/03_fortsetzung_selenium.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fortsetzung Selenium</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upgrade-von-selenium-3-auf-4">Upgrade von Selenium 3 auf 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ortsangaben-zu-unterkunften-von-airbnb-com-scrapen">Ortsangaben zu Unterkünften von airbnb.com scrapen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-scrolling-simulieren">Infinite Scrolling simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-benutzen-mausklick-und-tastatureingabe-simulieren">Suche benutzen, Mausklick und Tastatureingabe simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fortsetzung-selenium">
+<h1>Fortsetzung Selenium<a class="headerlink" href="#fortsetzung-selenium" title="Permalink to this heading">#</a></h1>
+<p>In der letzten Woche haben wir uns angesehen, wie wir Zitate von der Seite <a class="reference external" href="https://quotes.toscrape.com/js/">https://quotes.toscrape.com/js/</a> mithilfe von Selenium scrapen können. Dabei haben wir Selenium in der Version 3 und den Python webdriver-manager verwendet. Wir haben uns dazu ein Beispielskript von Lewis Kori angesehen, das ebenfalls Selenium 3-Funktionen verwendet. Im Internet findet man zudem viele Tutorials und Beispielskripte, die Selenium 3 verwenden. In dieser Stunde werden wir aber nun doch auf Selenium 4 umsteigen. Denn in Selenium ab der Version 4.6 gibt es einige Verbesserungen: Es gibt zum Beispiel einen eigenen Selenium Manager, der den Python webdriver-manager ersetzt. Daneben gibt es Möglichkeiten, vor dem Aufruf der Seite einen geografischen Standort anzugeben. So kann eine Webseite in verschiedenen Versionen aufgerufen werden.  Leider haben sich auch einige Funktions- bzw. Methodennamen in Selenium 4 gegenüber Selenium 3 geändert, zum Beispiel die Methode find_element_by_class_name(), die wir bereits verwendet haben.</p>
+<section id="upgrade-von-selenium-3-auf-4">
+<h2>Upgrade von Selenium 3 auf 4<a class="headerlink" href="#upgrade-von-selenium-3-auf-4" title="Permalink to this heading">#</a></h2>
+<p>Das Upgrade auf Selenium 4 birgt allerdings einige Fallstricke, weswegen ich mich zunächst dagegen entschieden hatte: Zum einen kann es sein, dass Selenium 4 bei euch langsamer ist als Selenium 3. Zum anderen kann der Selenium Manager aktuell noch nicht in der Anaconda-Distribution von Selenium 4 verwendet werden (siehe dazu <a class="reference external" href="https://github.com/SeleniumHQ/selenium/issues/11234">diese Diskussion</a>). Und zuletzt kann es sein, dass ihr zunächst Anaconda aktualisieren müsst, um Selenium 4 installieren zu können. Um Anaconda zu aktualisieren, müsst ihr über das Terminal / Command Prompt zunächst den Befehl <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">update</span> <span class="pre">conda</span></code> ausführen, danach könnt ihr die virtuelle Umgebung aktivieren und Jupyter Lab wieder wie gewohnt starten.</p>
+<p>Um von Selenium 3 auf Selenium 4 umzusteigen, muss leider zunächst den webdriver-manager wieder deinstalliert werden. Das geht mit dem folgenden Code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import sys</span>
+<span class="c1"># !conda remove --yes --prefix {sys.prefix} webdriver-manager</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jetzt könnt ihr versuchen, direkt Selenium 4 zu installieren. Da es wie bereits erwähnt ein Problem bei der Verwendung von Selenium Manager in der Anaconda-Distribution von Selenium 4 gibt, installieren wir Selenium 4 ausnahmsweise via pip, den Standard-Paketmanager für Python-Pakete. Das Ausrufezeichen vor pip braucht ihr, wenn ihr pip aus dem Jupyter Notebook heraus verwendet:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install selenium==4.6.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jetzt solltet ihr überprüfen, ob webdriver-manager erfolgreich deinstalliert und Selenium 4 installiert wurde:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !conda list # wurden die Pakete aktualisiert?</span>
+<span class="c1"># selenium.__version__ # Selenium-Version überprüfen</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wenn in der Liste immer noch Selenium 3 steht, müsst ihr zunächst Selenium 3 deinstallieren, und dann Selenium 4 via pip installieren:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !conda remove --yes --prefix {sys.prefix} selenium</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Manchmal gibt es ein Problem mit der Installation von Paketen via pip im Zusammenhang mit Anaconda. Falls das bei euch der Fall sein sollte, schaut euch diese Lösungsstrategien an: <a class="reference external" href="https://stackoverflow.com/questions/41060382/using-pip-to-install-packages-to-anaconda-environment">https://stackoverflow.com/questions/41060382/using-pip-to-install-packages-to-anaconda-environment</a>.</p>
+</section>
+<section id="ortsangaben-zu-unterkunften-von-airbnb-com-scrapen">
+<h2>Ortsangaben zu Unterkünften von <a class="reference external" href="http://airbnb.com">airbnb.com</a> scrapen<a class="headerlink" href="#ortsangaben-zu-unterkunften-von-airbnb-com-scrapen" title="Permalink to this heading">#</a></h2>
+<p>Bei der Bearbeitung des Übungsblatts zur heutigen Stunde habt ihr Ortstangaben zu Unterkünften auf der Startseite von <a class="reference external" href="https://www.airbnb.com/">https://www.airbnb.com/</a> extrahiert. Die Lösung mit Selenium 3 sah bei euch wahrscheinlich in etwa so aus:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium import webdriver</span>
+<span class="c1"># from webdriver_manager.chrome import ChromeDriverManager</span>
+<span class="c1"># import time</span>
+
+<span class="c1"># driver = webdriver.Chrome(ChromeDriverManager().install())</span>
+<span class="c1"># driver.get(&quot;https://www.airbnb.com/&quot;)</span>
+<span class="c1"># time.sleep(5)</span>
+<span class="c1"># unterkuenfte = driver.find_elements_by_class_name(&quot;t1jojoys.dir.dir-ltr&quot;) #t1jojoys dir dir-ltr</span>
+<span class="c1"># unterkuenfte_orte = [unterkunft.text for unterkunft in unterkuenfte]</span>
+<span class="c1"># unterkuenfte_orte</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jetzt reproduzieren wir die Aufgabe mit Selenium 4. Beachtet, dass die Methode find_element_by_class_name(“name_der_klasse”) in Selenium 4 ersetzt wurde durch find_elements(By.CLASS_NAME, “name_der_klasse”). Beachtet auch, dass anstelle des Python webdriver-managers jetzt der  Selenium Manager verwendet wird, sodass die Funktion webdriver.Chrome() ohne Argument aufgerufen wird. Alles andere ist genau so wie vorher.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium import webdriver</span>
+<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
+<span class="c1"># from selenium.webdriver.common.by import By</span>
+<span class="c1"># import time</span>
+
+<span class="c1"># driver = webdriver.Chrome()</span>
+<span class="c1"># driver.get(&quot;https://www.airbnb.com/&quot;)</span>
+<span class="c1"># time.sleep(5) # hier reichen 5 Sekunden eventuell nicht</span>
+<span class="c1"># unterkuenfte = driver.find_elements(By.CLASS_NAME, &quot;t1jojoys.dir.dir-ltr&quot;)</span>
+<span class="c1"># unterkuenfte_orte = [unterkunft.text for unterkunft in unterkuenfte]</span>
+<span class="c1"># unterkuenfte_orte</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unser Ortsnamen-Scraper hat aber nicht alle Ortsangaben extrahiert, sondern nur die ersten 20. Woran liegt das? Die Seite verwendet infinite scrolling; Seiteninhalte werden also erst geladen, wenn auf der Seite heruntergescrollt wird.</p>
+</section>
+<section id="infinite-scrolling-simulieren">
+<h2>Infinite Scrolling simulieren<a class="headerlink" href="#infinite-scrolling-simulieren" title="Permalink to this heading">#</a></h2>
+<p>Wir müssen also zunächst das Durchscrollen der Seite simulieren, damit alle Inhalte geladen werden. Dazu können wir wieder den Code von jemand anderem verwenden, denn das Scrolling funktioniert immer genau gleich. Wir richten uns nach dem Blogbeitrag von <a class="reference external" href="https://medium.com/analytics-vidhya/using-python-and-selenium-to-scrape-infinite-scroll-web-pages-825d12c24ec7">Kuan Wei</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scroll_pause_time = 1 # You can set your own pause time. My laptop is a bit slow so I use 1 sec</span>
+<span class="c1"># screen_height = driver.execute_script(&quot;return window.screen.height;&quot;)   # get the screen height of the web</span>
+<span class="c1"># i = 1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Im Code oben wird zunächst im Browser das JavaScript Code-Snippet return window.screen.height ausgeführt, um  die Höhe des Bildschirms, auf dem das aktuelle Browserfenster angezeigt wird, in Pixeln abzurufen. Bei window.screen handelt es sich um ein JavaScript-Objekt, bei .height um ein Attribut des Objekts window.screen, und return ist das JavaScript-Pendant zur return-Anweisung in Python, die in Funktionsaufrufen verwendet wird, um einen Wert zurückzugeben. Wie genau diese Werte extrahiert werden, müssen wir nicht unbedingt wissen, um den Code zu verwenden. Aber wenn sich jemand nähergehend damit beschäftigen möchte, empfehle ich diese Seite: <a class="reference external" href="https://www.webtechnologien.com/advanced-tutorials/javascript-bom/">https://www.webtechnologien.com/advanced-tutorials/javascript-bom/</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># screen_height</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># while True:</span>
+<span class="c1">#     # scroll one screen height each time</span>
+<span class="c1">#     driver.execute_script(&quot;window.scrollTo(0, {screen_height}*{i});&quot;.format(screen_height=screen_height, i=i))</span>
+<span class="c1">#     i += 1</span>
+<span class="c1">#     time.sleep(scroll_pause_time)</span>
+<span class="c1">#     # update scroll height each time after scrolled, as the scroll height can change after we scrolled the page</span>
+<span class="c1">#     scroll_height = driver.execute_script(&quot;return document.body.scrollHeight;&quot;)</span>
+<span class="c1">#     # Break the loop when the height we need to scroll to is larger than the total scroll height</span>
+<span class="c1">#     if (screen_height) * i &gt; scroll_height:</span>
+<span class="c1">#         break</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Was macht die while-Schleife? Es wird wieder auf die Methode execute_script() des Webdriver-Objekts driver zurückgegriffen, um ein JavaScript-Code-Snippet auszuführen. Danach wird die Zählvariable i erhöht und die mit der Variable scroll_pause_time festgelegte Wartezeit eingeleitet, und anschließend wird ein weiteres JavaScript-Code-Snippet ausgeführt. Das erste JavaScript Code Snippet führt das eigentliche Scrollen aus, wobei in jedem Schleifendurchlauf genau so weit gescrollt wird, wie der Bildschirm hoch ist (= screen_height): Im ersten Durchlauf bis screen_height, im zweiten Durchlauf bis 2*screen_height, usw. Das zweite Snippet ruft die Höhe des scrollbaren Seiteninhalts auf, also sowohl der sichtbare als auch der noch unsichtbare, durch Scrollen erreichbare Seiteninhalt.
+Zuletzt wird überprüft, ob im nachfolgenden Schleifendurchlauf (also mit i+=1) der geplante zu scrollende Bereich größer ist als der insgesamt scrollbare Seiteninhalt. Wenn dies der Fall ist, wird die Schleife terminiert.</p>
+<p>Wenn die while-Schleife terminiert, ist der gesamte Seiteninhalt durchscrollt und gerendert. Anschließend können wieder die Ortsangaben extrahiert werden: find_elements() findet jetzt nicht nur die ersten 20 Suchergebnisse, sondern alle Ergebnisse.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># unterkuenfte = driver.find_elements(By.CLASS_NAME, &quot;t1jojoys.dir.dir-ltr&quot;)</span>
+<span class="c1"># unterkuenfte_orte = [unterkunft.text for unterkunft in unterkuenfte]</span>
+<span class="c1"># unterkuenfte_orte</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zuletzt schließen wir das aktuelle Browserfenster und die Session, also die Sitzung, welche durch den Aufruf des Chrome Webdrivers gestartet wird. Dazu verwenden wir anders als im Beispiel von Lewis Kori nicht driver.close() sondern driver.quit(), da dies das in den <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/drivers/#quitting-sessions">Selenium-Dokumentationsseiten</a> für Selenium 4 empfohlene Vorgehen ist:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># driver.quit()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="suche-benutzen-mausklick-und-tastatureingabe-simulieren">
+<h2>Suche benutzen, Mausklick und Tastatureingabe simulieren<a class="headerlink" href="#suche-benutzen-mausklick-und-tastatureingabe-simulieren" title="Permalink to this heading">#</a></h2>
+<p>Als nächstes sehen wir uns an, wie mithilfe von Selenium 4 die Suchmaske auf <a class="reference external" href="http://airbnb.com">airbnb.com</a> verwendet werden kann und, wie Buttons via Mausklick betätigt und eine Tastatureingabe getätigt werden können.</p>
+<p>Zunächst starten wir wieder den Webdriver und senden eine Anfrage für die Seite <a class="reference external" href="https://www.airbnb.com/">https://www.airbnb.com/</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium import webdriver</span>
+<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
+<span class="c1"># from selenium.webdriver.common.by import By</span>
+<span class="c1"># import time</span>
+
+<span class="c1"># driver = webdriver.Chrome()</span>
+<span class="c1"># driver.get(&quot;https://www.airbnb.com/&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Als nächstes wollen wir nach Unterkünften in Berlin suchen. Dazu führen wir die Suche einmal in unserem regulären Chrome Browser aus, um herauszufinden, mit welchen Bestandteilen des User Interfaces bei der Suche interagiert werden muss. Als erstes muss auf den Suchbutton geklickt werden:</p>
+<figure class="align-default" id="id169">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_1.png"><img alt="Airbnb Beispiel" class="bg-transparent" src="../../../_images/beispiel_airbnb_1.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-text">Abb. 1: Beispiel Airbnb</span><a class="headerlink" href="#id169" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Um den Mausklick auf den Button zu simulieren, müssen wir erst das Element finden und anschließend mithilfe der Methode .click() den Mausklick simulieren. In diesem Fall suchen wir das Element mithilfe des class-Attributs, weil wir mithilfe einer Suche im Quelltext (Strg+F) leicht feststellen können, dass es kein weiteres Element mit dem Attribut class=”s19wqnbx dir dir-ltr” gibt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf den Suchbutton klicken: Sonst ist das Suchfeld nicht sichtbar</span>
+<span class="c1"># driver.find_element(By.CLASS_NAME, &quot;s19wqnbx.dir.dir-ltr&quot;).click()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nach dem Klick auf den Suchbutton öffnet sich ein Suchfeld, in dem wir unseren Suchbegriff eingeben können. Im regulären Chrome-Browser können wir, wieder mithilfe der Entwicklertools, feststellen, dass das Suchfeld über ein HTML-input-Element dargestellt wird:</p>
+<figure class="align-default" id="id170">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_2.png"><img alt="Airbnb Beispiel" class="bg-transparent" src="../../../_images/beispiel_airbnb_2.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-text">Abb. 2: Beispiel Airbnb</span><a class="headerlink" href="#id170" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Um einen Suchbegriff eingeben zu können, muss das input-Element zunächst gefunden werden. In diesem Fall hat das gesuchte HTML-Element nicht nur ein Attribut class, sondern auch ein Attribut id mit dem Wert, “bigsearch-query-location-input”, welches erlaubt, das Element eindeutig zu identifizieren. Zur Suche können wir nun entweder find_element(<a class="reference external" href="http://By.ID">By.ID</a>, “id_des_elements”) oder find_element(By.XPATH, “xpath_ausdruck”) verwenden. XPath ist eine sogenannte Pfadbeschreibungssprache, die zur Suche in XML- und HTML-Dokumenten verwendet wird. Um XPath-Ausdrücke zu verwenden, müssen wir uns aber nicht mit XPath auskennen, denn auch dabei helfen die Browser-Entwicklertools. Der XPath-Ausdruck, der den Pfad zu einem bestimmten Element beschreibt, kann ganz einfach mit Rechtsklick auf ein Element und die Option Copy -&gt; Copy XPath kopiert werden.</p>
+<figure class="align-default" id="id171">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_3.png"><img alt="Airbnb Beispiel" class="bg-transparent" src="../../../_images/beispiel_airbnb_3.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-text">Abb. 3: Beispiel Airbnb</span><a class="headerlink" href="#id171" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Der XPath zum gesuchten input-Element ist //*[&#64;id=”bigsearch-query-location-input”]. Das * steht für ein beliebiges HTML-Element, aber wir können auch den Namen des HTML-Elements einsetzen, um bei vielen XPath-Ausdrücken den Überblick zu behalten:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Input-Element finden, in das die Suchbgegriffe eingegeben werden können</span>
+<span class="c1"># suchfeld = driver.find_element(By.XPATH, &quot;//input[@id=&#39;bigsearch-query-location-input&#39;]&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Beachtet, dass im Code oben die inneren Anführungszeichen angepasst wurden, um sie von den doppelten äußeren Anführungszeichen zu unterscheiden. Das ist unbedingt notwendig, weil sonst der XPath-Ausdruck nicht richtig interpretiert werden kann.</p>
+<p>Wenn das Element gefunden ist, kann es mithilfe der Methode send_keys() zur Eingabe eines Suchbegriffs addressiert werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Suchbegriff eingeben</span>
+<span class="c1"># suchfeld.send_keys(&quot;Berlin&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Suche muss anschließend noch durch Betätigung der Enter-Taste bestätigt werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tasteneingabe ENTER</span>
+<span class="c1"># from selenium.webdriver.common.keys import Keys</span>
+<span class="c1"># suchfeld.send_keys(Keys.ENTER)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Durch Bestätigung der Suche mit Enter wird automatisch ein Fenster zur Auswahl eines Reisetermins geöffnet. Hier wollen wir die Option “flexible” auswählen. Dazu müssen wir zunächst wieder das gesuchte Element identifizieren:</p>
+<figure class="align-default" id="id172">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_4.png"><img alt="Airbnb Beispiel" class="bg-transparent" src="../../../_images/beispiel_airbnb_4.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-text">Abb. 4: Beispiel Airbnb</span><a class="headerlink" href="#id172" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Das gesuchte HTML-Element hat wieder eine ID, über die es eindeutig identifiziert werden kann. Diesmal verwenden wir find_element(<a class="reference external" href="http://By.ID">By.ID</a>, “id_des_elements”), damit ihr diese Verwendung der find_element-Methode auch einmal gesehen habt. Die Id könnt ihr einfach aus den Browser-Entwicklertools mit Doppelklick auf das Id-Attribut kopieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zeit aussuchen: Flexible</span>
+<span class="c1"># driver.find_element(By.ID, &quot;tab--tabs--2&quot;).click()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zuletzt müssen wir unsere Suche noch mit Klick auf den Suchbutton bestätigen. In diesem Fall wird über Rechtsklick auf den Suchbutton und Auswahl der Option “Inspect” allerdings nicht ganz das richtige Element gefunden: Gefunden wird das span-Element mit dem Attribut class=”t1dqvypu dir dir-ltr”; gesucht haben wir aber eigentlich den gesamten Suchbutton, also das button-Element mit dem Attribut class=”brqqy3t bd1b9vv dir dir-ltr”. Bei der Verwendung von “Inspect” ist also immer Mitdenken erforderlich, denn nicht immer wird ganz genau das Element getroffen, das gesucht wird.</p>
+<figure class="align-default" id="id173">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_5.png"><img alt="Airbnb Beispiel" class="bg-transparent" src="../../../_images/beispiel_airbnb_5.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-text">Abb. 5: Beispiel Airbnb</span><a class="headerlink" href="#id173" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Um den Suchbutton zu klicken, überprüfen wir erst, ob die Klasse “brqqy3t bd1b9vv dir dir-ltr” noch einmal verwendet wird. Dies ist nicht der Fall, sodass wir das class-Attribut auch in diesem Fall zur eindeutigen Suche nach dem button-Element verwenden können:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf den Suchbutton klicken: Suche bestätigen</span>
+<span class="c1"># driver.find_element(By.CLASS_NAME, &quot;brqqy3t.bd1b9vv.dir.dir-ltr&quot;).click() # Punkte statt Leerzeichen</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zuallerletzt führen wir wieder den Code aus der Übungsaufgabe aus, um alle Ortsangaben von den ersten 20 vorgeladenen Suchergebnissen zu extrahieren, und beenden die Session:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Orte extrahieren</span>
+<span class="c1"># unterkuenfte = driver.find_elements(By.CLASS_NAME, &quot;t1jojoys.dir.dir-ltr&quot;)</span>
+<span class="c1"># unterkuenfte_orte = [unterkunft.text for unterkunft in unterkuenfte]</span>
+<span class="c1"># unterkuenfte_orte</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># driver.quit()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="quellen">
+<h2>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
+<div class="docutils container" id="id1">
+<ol class="arabic simple" start="1">
+<li id="id143"><p>JavaScript-BOM-Tutorial. 2023. URL: <a class="reference external" href="https://www.webtechnologien.com/advanced-tutorials/javascript-bom/">https://www.webtechnologien.com/advanced-tutorials/javascript-bom/</a>.</p></li>
+<li id="id140"><p>Kuan Wei. Using Python and Selenium to Scrape Infinite Scroll Web Pages. 2020. URL: <a class="reference external" href="https://medium.com/analytics-vidhya/using-python-and-selenium-to-scrape-infinite-scroll-web-pages-825d12c24ec7">https://medium.com/analytics-vidhya/using-python-and-selenium-to-scrape-infinite-scroll-web-pages-825d12c24ec7</a>.</p></li>
+<li id="id142"><p>MDN Contributors. JavaScript: return. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return?retiredLocale=de">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return?retiredLocale=de</a>.</p></li>
+<li id="id134"><p>Selenium 4 Documentation. Driver Sessions: Quitting Sessions. 2022. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/drivers/#quitting-sessions">https://www.selenium.dev/documentation/webdriver/drivers/#quitting-sessions</a>.</p></li>
+<li id="id137"><p>Selenium 4 Documentation. Interacting with Web Elements. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/interactions/">https://www.selenium.dev/documentation/webdriver/elements/interactions/</a>.</p></li>
+<li id="id138"><p>Selenium 4 Documentation. Keyboard Actions. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/">https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/</a>.</p></li>
+<li id="id136"><p>Selenium 4 Documentation. Locator Strategies. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/locators/">https://www.selenium.dev/documentation/webdriver/elements/locators/</a>.</p></li>
+<li id="id135"><p>Selenium 4 Documentation. Selenium Manager (Beta). 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/selenium_manager/">https://www.selenium.dev/documentation/selenium_manager/</a>.</p></li>
+<li id="id141"><p>Selenium 4.10 Documentation. selenium.webdriver.chrome.webdriver: execute_script. 2023. URL: <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver_chrome/selenium.webdriver.chrome.webdriver.html?highlight=execute_script#selenium.webdriver.chrome.webdriver.WebDriver.execute_script">https://www.selenium.dev/selenium/docs/api/py/webdriver_chrome/selenium.webdriver.chrome.webdriver.html?highlight=execute_script#selenium.webdriver.chrome.webdriver.WebDriver.execute_script</a>.</p></li>
+<li id="id139"><p>Selenium 4.10 Documentation. selenium.webdriver.common.keys. 2023. URL: <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver/selenium.webdriver.common.keys.html">https://www.selenium.dev/selenium/docs/api/py/webdriver/selenium.webdriver.common.keys.html</a>.</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/09/subchapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upgrade-von-selenium-3-auf-4">Upgrade von Selenium 3 auf 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ortsangaben-zu-unterkunften-von-airbnb-com-scrapen">Ortsangaben zu Unterkünften von airbnb.com scrapen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-scrolling-simulieren">Infinite Scrolling simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-benutzen-mausklick-und-tastatureingabe-simulieren">Suche benutzen, Mausklick und Tastatureingabe simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lisa Poggel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

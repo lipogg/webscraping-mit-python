@@ -1,0 +1,803 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Beispiel 2: Library of Congress API &#8212; Webscraping für Geisteswissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/08/subchapters/03_loc_api';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Webscraping mit Python für Geisteswissenschaften
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/03_semesterplan.html">1.3. Semesterplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/04_lernziele.html">1.4. Lernziele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/05_organisation.html">1.5. Organisatorisches</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/02_intro.html">2. Python I</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_jupyterlite.html">2.1. JupyterLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_style.html">2.2. Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_hilfe.html">2.3. Hilfe!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/02_grundbegriffe.html">2.4. Grundbegriffe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/03_datentypen.html">2.5. Einfache Datentypen, Strings und Operatoren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/04_variablen.html">2.6. Variablen</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/lipogg/webscraping-mit-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/08/subchapters/03_loc_api.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Beispiel 2: Library of Congress API</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vorbereitung">Vorbereitung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-der-chronicling-america-api">Exploration der Chronicling America API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abfrage-aller-volltexte-mit-book-review">Abfrage aller Volltexte mit “book review”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="beispiel-2-library-of-congress-api">
+<h1>Beispiel 2: Library of Congress API<a class="headerlink" href="#beispiel-2-library-of-congress-api" title="Permalink to this heading">#</a></h1>
+<p>Die Library of Congress (LOC) bietet eine Reihe sehr gut dokumentierter APIs zur Abfrage von Metadaten, Dateien und Volltexten aus dem Bestand der Bibliothek. Eine davon ist die API der Sammlung US-amerikanischer historischer Zeitungen Chronicling America. Diese API werden wir in dieser Stunde kennenlernen.</p>
+<ul class="simple">
+<li><p>Übersicht über die LOC APIs: <a class="reference external" href="https://guides.loc.gov/digital-scholarship/accessing-digital-materials#s-lib-ctab-26648178-2">https://guides.loc.gov/digital-scholarship/accessing-digital-materials#s-lib-ctab-26648178-2</a></p></li>
+<li><p>Dokumentation zur Chronicling America API: <a class="reference external" href="https://chroniclingamerica.loc.gov/about/api/">https://chroniclingamerica.loc.gov/about/api/</a></p></li>
+</ul>
+<p>Zunächst machen wir uns mit der Chronicling America API vertraut. Welche Daten können darüber abgefragt werden?</p>
+<p>Für unser Beispiel werden wir die Volltexte zu allen Ergebnissen einer Suche nach Schlüsselwörtern in den Volltexten der Zeitungen abfragen und herunterladen (Abschnitt “Searching the directory and newspaper pages using OpenSearch”). Die Volltexte sind mithilfe von OCR-Verfahren erstellt, also mithilfe von automatischer Bilderkennung. Unsere Suchabfrage liefert also nur diejenigen Zeitungen, in denen die Suchwörter korrekt erkannt wurden.</p>
+<section id="vorbereitung">
+<h2>Vorbereitung<a class="headerlink" href="#vorbereitung" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># wir müssen zunächst die Anaconda Einstellungen ändern, damit wir das Paket ratelimit installieren könenn:</span>
+<span class="c1"># https://stackoverflow.com/questions/48493505/packagesnotfounderror-the-following-packages-are-not-available-from-current-cha</span>
+<span class="c1"># import sys</span>
+<span class="c1"># !conda config --append channels conda-forge</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Paket ratelimit installieren</span>
+<span class="c1"># import sys</span>
+<span class="c1"># !conda install --yes --prefix {sys.prefix} ratelimit</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pakete importieren</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="c1"># from ratelimit import limits, RateLimitException, sleep_and_retry</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exploration-der-chronicling-america-api">
+<h2>Exploration der Chronicling America API<a class="headerlink" href="#exploration-der-chronicling-america-api" title="Permalink to this heading">#</a></h2>
+<p>Wie in der letzten Stunde müssen wir zur Abfrage von Daten wieder eine URI nach den Vorgaben der API Dokumentation zusammensetzen.</p>
+<p>Suchabfragen können mit einem <code class="docutils literal notranslate"><span class="pre">?</span></code> an die URL <a class="reference external" href="https://chroniclingamerica.loc.gov/search/pages/results/">https://chroniclingamerica.loc.gov/search/pages/results/</a> angefügt werden.
+Es gibt laut <a class="reference external" href="https://chroniclingamerica.loc.gov/about/api/">Dokumentationsseite</a> drei verschiedene Abfrageparameter:</p>
+<ul class="simple">
+<li><p>andtext: the search query</p></li>
+<li><p>format: ‘html’ (default), or ‘json’, or ‘atom’ (optional)</p></li>
+<li><p>page: for paging results (optional)</p></li>
+</ul>
+<p>Diese Parameter werden wir uns der Reihe nach ansehen.</p>
+<p>Parameter andtext</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Der andtext Parameter: Volltexte nach Schlagwörtern oder Phrasen durchsuchen</span>
+<span class="c1"># Suche nach Schlagwörtern book AND review</span>
+<span class="n">url_1</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=book+review&quot;</span>
+<span class="n">url_2</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=book</span><span class="si">%20r</span><span class="s2">eview&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eine aufmerksame Betrachtung der Ergebnisse der Suche nach einem Suchbegriff über die Suchmaske der Website <a class="reference external" href="https://chroniclingamerica.loc.gov">https://chroniclingamerica.loc.gov</a> zeigt, dass die Suche über die Suchmaske genau dieselben Ergebnisse liefert wie die API-Abfrage. Das ist nicht erstaunlich, denn die URL, die beim Verwenden der Suchmaske generiert wird, ist ganz ähnlich aufgebaut wie die URL, die wir für die API-Abfrage erstellen, mit dem einzigen Unterschied, dass die Suchparameter etwas anders aussehen:</p>
+<figure class="align-default" id="id169">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/loc_ca_suche.png"><img alt="Suchmaske Chronicling America" class="bg-transparent" src="../../../_images/loc_ca_suche.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-text">Einfache Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id169" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Wir können diese URL nutzen, um den andtext-Parameter besser zu verstehen. Wenn wir in der einfachen Suche nach dem Suchbegriff “book review” suchen, dann steht in der URL “book+review”. Wenn wir stattdessen die Erweiterte Suche (Tab Advanced Search) verwenden und nach einer Phrase suchen, dann steht in der URL der Zusatz “&amp;phrasetext=book+review”:</p>
+<figure class="align-default" id="id170">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/loc_ca_erweiterte_suche.png"><img alt="Erweiterte Suche Chronicling America" class="bg-transparent" src="../../../_images/loc_ca_erweiterte_suche.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-text">Erweiterte Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id170" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Tatsächlich akzeptiert auch die Chronicling America API eine Abfrage-URI mit dem Zusatz &amp;phrasetext:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Suche nach Phrase &quot;book review&quot;</span>
+<span class="n">url_3</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&quot;</span>
+<span class="c1"># woher weiß ich das: manuelle Suche über &quot;advanced search&quot; und URL untersuchen</span>
+<span class="c1"># https://chroniclingamerica.loc.gov/search/pages/results/?dateFilterType=yearRange&amp;date1=1770&amp;date2=1963&amp;language=&amp;ortext=&amp;andtext=&amp;phrasetext=book+review&amp;proxtext=&amp;proxdistance=5&amp;rows=20&amp;searchType=advanced</span>
+<span class="n">search_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_3</span><span class="p">)</span>
+<span class="c1"># search_results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Parameter format</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Der format-Parameter: Ergebnisse im JSON-Format abfragen</span>
+<span class="c1"># https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json</span>
+<span class="c1"># erste Seite der Suchergebnisse: 20 Ergebnisse je Seite</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json&quot;</span>
+<span class="n">search_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="c1"># search_results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>JSON im Chrome Browser ansehen</p>
+<p>Zur Ansicht der JSON-Datei im Chrome Browser können wir wieder auf die Entwicklertools zurückgreifen. Die Standardansicht ist nämlich sehr schwer lesbar, weil der JSON-String nicht formatiert ist. Um eine formatierte Ansicht zu erhalten, befolgt die folgenden Schritte: Entwicklertools öffnen -&gt; “Sources”-Tab auswählen-&gt; Link anklicken</p>
+</div>
+<p>Parameter page</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Der page Parameter: Nur die ausgewählte Ergebnisseite abfragen</span>
+<span class="n">first_page</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json&amp;page=1&quot;</span>
+<span class="n">first_page_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">first_page</span><span class="p">)</span>
+<span class="c1"># first_page_results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Per Default werden immer die ersten 20 Suchergebnisse (also die erste Seite der Suchergebnisse) ausgegeben, wenn der page-Parameter weggelassen wird:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">default_page</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json&quot;</span>
+<span class="n">default_page_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">default_page</span><span class="p">)</span>
+<span class="n">first_page_results</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="n">default_page_results</span><span class="o">.</span><span class="n">content</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mit diesem Wissen könenn wir eine Testabfrage durchführen.</p>
+<p>Für unsere Abfragen wählen wir JSON als Rückgabeformat aus, weil wir den JSON-String bequem parsen können, indem wir den String in ein Python Dictionary umwandeln:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json&quot;</span>
+<span class="c1"># JSON-String in Python Dictionary umwandeln</span>
+<span class="n">search_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">search_results</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das Dictionary enthält einen Schlüssel “items” mit einer Liste der Suchergebnisse als Wert. Die Suchergebnisse sind selbst als Dictionaries organisiert. Jedes Suchergebnis-Dictionary enthält einen Schlüssel “ocr_eng” mit den Volltexten:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># erstes Suchergebnis auf der ersten Seite der Suchergebnisse</span>
+<span class="n">search_results</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;ocr_eng&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;i\ntii\nO &gt;\nI\ncI 1 t\ntf M\niIt ItN i J 1\nl N 4I i d iopI nU1Uf u f1tturnulr c\n1 nuCnnJ t un f if r\nP r I\nlt J =\nIII l I\nI\ni5r1 + ti f\ni iY1 t1 1\n8 6 i T n r wi i s i r r rn\nMr i t\nt Wlft l 1 pi CLUBBING OFFER\nx\n4f By arrangement with Magazine Publishers\njllg NEW YORK TIMES\nS presents the following combination prices as to THE NEW YORK TIMES SAT\nURDAY REVIEW weekly publication that is the best of its kind in the world in\nfact the only publication that treats books as news It is remarkable in many respects j\nA Iremarkable in price remarkable in size andremarkable inthe number of publishers\npublishersi\nQRM AMERICAN REVIEW and\nF &lt; i ffl YTimes Saturday Book Review\n1y f\nr SI ATLANTIC MONTHLY and\nj I N V Times Saturday Book Review\nJ\nCENTURY MAGAZINE andi\nv i N Y Times Saturday Book Review\nh I &lt;\ni\nPUCK and\nN Y Times Saturday Book Review\n0 u &lt; V\nJUDGE and 1\nN1Y Times Saturday BookReview\nLIFE and\nN Y Times Saturday Book Review\ni t HARPERS MAGAZINE and\n3 N Y Times Saturday Book Review\nrJARPERS BAZAR and\nN Y Times Saturday Book Review\ni &lt;\nHARPERS WEEKLY and\nN Y Times Saturday Book Review\nI CRIBNERS MAGAZINE and\nj N Y Times Saturday Book Review\n&gt; r i LIPPINCOTTS MAGAZINE and\nN Y Times Saturday Book Review\nREVIEW OF REVIEWS and\n&gt; N Y Times Saturday Book Review\nr FRANK LESLIES WEEKLY and\nt N Y Times Saturday Book Review\nlft\nOUTING and &gt;\nN Y Times Saturday ook Review\ni\nPUBLIC OPINION and\nN Y Times Saturday Book Review\nBubacrlp tlon\ntlonlrtce\n5001\nOOI\n400 Lo\n1ob4o0\n4o0\n900Soo\n100\n500\n100\nIioo\n100\n400\n100\ni 400\n100\nI\n400\n100\n100\n250\n100\n250\n100\n400\n100\n300\n100\n250\n100\nValuerGoo\nGoo\nGooS00\n500\nI\n600\n600\n600\n500\n500\n500\n1\n400\n50\n35o\n00\n400\n350\nDaTUFon\nFOItY\n500\n400\n400\n500\n500\n5005Oo\n5Oo\n400\n40Q\n400\n325\n250\n250\n400\n300\n2501\nYOUTHS COMPANION New Sub\nscription and\nN Y Times SaturdaBobk Review\nOUTLOOK and\nN Y Times Saturday Book Review\nST NICHOLAS and\nN Y Times Saturday Book Review\nWORLDS WORK and\nN Y Times Saturday Book Review\nCRITIC and\nN Y Times Saturday Book Review\nBOOKMAN and I\nN Y Times Saturday Book Review\nINDEPENDENT and\nN Y Times Saturday Book Review\nBOOKBUYER and\nN Y Times Saturday Book Review\nMCCLURES MAGAZINE and\nN Y Tim s Saturday Book Review\nMUNSEYS MAGAZINE and\nN Y Times Saturday Book Review\nFRANK LESLIES MAGAZINE and\nN Y Times Saturday Book Review\nDELINEATOR and\nN Y Times Saturday Book Review\nEVERYBODYS MAGAZINE and\nN Y Times Saturday Book Review\nPEARSONS MAGAZINE and\nN Y Times Saturday Book Review\nCOSMOPOLITAN and\nN Y Times Saturday Book Review\nSUCCESS and\nN Y Times Saturday Book Review\nscrip Bub\nI ton\nPrice\n175\n100\n300\n100\n300\n100\n300\n100\n200\n100\n200\n100\n200\n100\n150\n100\n100\n100\n100\n100\n100\n100\n100\n100\n100\n100\n100\n100\n100\n100\n100\n100\ni\nADDRESS ALL COMMUNICATIONS\nt 1 THE NEW YORK u TIMES New York City r\nn u n\n10\nNewest Styles\n&lt;\n&gt; 2 IL T\n1Y\n0\nSPRING\nI\nMILLINERY\nNow Ready for thq Trade in all the\n5 Handsomest Designs v\ni\nt\nr I G i iI t Igains I\nI\nJ\nr\nHST a\nDress hoods and Trimmings Ladies Jackets\ni\nand Gapes Skirts Corsets and Shoes\n1\nI1Do not fail to see our Bargains inai kinds of\nPry Goods and in Gents Slip ts\nv Collars Ties Etc &gt; i r\nIM 1\nr I J\n5\nS\n4 r\nf I\ni THE RICHARDS CO\n1\nA BOON TO WANKINBl\nIJWTiiJ I\nI DRT ABlER BUCKEYE\no\nCURE\nh New Discovery for the Certain Cure of INTERNAL and\nEXTERNAL PILES WTTHCOT PAIN\nCURES WHERE ALL OTHERS HAVE FAILED\nTUBES BY MAIL 75 CENTS BOTTLES 60 CENTS\nAMES F BALLARD Solo Proprietor 310 Horth Main Street ST LOUIS MO\nFor sale bv R G Hardwick druggist Hopkinsville Ky\nSPRING MILLINERY 1\nxThe Largest Stock\nI The Latest Styles\n1\nI I And the Lowest Prices\nr mmmm m a\nThe Palace\ni ew Ideas and UptoDate in everything that\nDel twins g our line VVe Solicit Your Patronage\nRespectfully t\nMrs Ada Layue\nI\ni WORMS\ni J\nvalue\n275\n400\ni\n400\n400\n300\n300\n300\n250\n200\n200\n200\n200\n200\n200\n200\n200\nDaTUFon\nnxoiiiovs\nmm\novsYEAIt\nt\n200 i\n325\n300I\n300\n20Q\n210\n235 c 1\ntkL70\n150\n150\n1\nI\nj i\nsct y\nt\n&lt;\n140 l\nI\nt25\nr\nJ25\nI\nt1O\nPILE\nWHITES CREAM\nVERMIFUGE\nEicStlncuutail neetidQuallt I\nI For 20 Years Has Led altWoRBRom9dUs 1 f &gt;\nfStoxp QT 47 J 1 TIDGGI II i\nPzwumrctl h\nMarriage By Phonograph\nA new use has been found for\nthe phonograph and one likely to\npopularize the instrument to a\nwonderful degree It was used in\nstead of a clergyman at a Wedding\nat Binghamton N Y and proved\nnot only a success but a delightful\ninnovation\ninnovationThe was that of a I\nyoung man to a young woman who\nhad been suffering with diptheria\nNo clergyman in the town was will\ning to brave infection and so the\nhappy idea was hit upon of having\none of them talk the marriage ser\nvice into the phonograph and with\nthe machine in his pocket the hap\npy bridegroom hastened to the\nhouse of his fiancee and there the\ntwo were joined in wedlock by the\nmetallic utterances of a swiftly re\nvolving cylinder\nIt can now be seen how useful the\nphonograph may become in this\nconnection No longer will it be\nnecessary for eloping couples ot\nthose who find it necessary to mar\nI\nry in a hurry to go chasing abour\nto pull a clergyman out of bed at\nunseemly hours of the night\nPhonograph cylinders charged\nwith the words necessary to the\nmarriage service can be placed on\nsale at the corner drug store and\nall that is needed is to purchase\none and set the instrument at work\nIf carried to a logical conclusion I\nthe marriage service by means of a\nphonograph can be sold with the\nmarriage license and matrimonial\nly inclined couples can have\ntheir weWdings as lavish or\nas private as their means or incli\nnations permit without having to\ntake a clergyman in to considera\ntion at all\nAs for the latter it opens up a\nnew Held of industry and one\nwhich should be profitable The\nminister can spend his leisure time\nin talking into phonographs and\nplace the cylinders on sale at the\nmost convenient points in the city\nHenderson Gleaner\nDR PINER I1V\nBad Boys Played a Mighty Good\nJoke On the Good flan\nRev VV K Finer pastor of the\nState Street Methodist Church was\nthis week the unconscious victim ol\ngod joke\nA number of youngsters had cap\ntured a pup The boys were about\nto fight over possession of the dog\nwhen one made the happy suggC\nbon that one who told the biggest\nlie should have the canine\nWhen things had reached such\namicable agreement Mr Piuur\ndrove up but the boys were still\nfussingHere\nHere here little onus ex\nclaimed the minister what is this\nall about\naboutWhy\nWhy said the youngster the\none who tells the biggest lie owns\nthis dog\nieIm ashamed to replies the good\nMethodist preacher When I was\na little boy I never told a lie\nOne boy in the crowd with wis\ndom far ahead of his years ap\nproached Mr Piner and holding\nout the dog said Here Mister\nHeres your pupBowling Green\nNews\nI Purchased 4250 For 7\nPeter Greenhalgh of Venango\nPa bought a small fortune for 7\nAfter the death of Joseph Blystone\na few weeks ago L S Sherred was\nappointed adminibtrator Green\nhalgh bicjjn the safe for 7 and had\nit carted home It had been drilled\nopen before the bale and nothing of\nvalue was discovered\nI think I made a bail bargain\nsaid Greenhalgli tb hhfwite This\nold safe aint Vorth 717\nHe examined it fuftherarid reach\ned his hand in between the parti\ntion He found gold and bank notes\namounting to 4250 Exchange\nHEADACHE =\nIloth mr wife and rarcelflmve been\npain OASOARJTS and tbey are the beet\nmedicine we have ever had in the bouae Last\nweek my wife was frantic with headache tor\ntwodayi aka tried some IrourCASOARETS\nand they relieved the pain In her bead almost\nImmediately We bosh neCaacarQta\nOKAS STXDIFOIID\nFHtsturir Site t DoposU Co PltUbur Pa\nCANDY\nCATHARTIC\nTRADt MAiM ftMWVMO\nPJoaeagt nolen\nQpoU tyTMBloktjn YOftkeq or GrlpolOo Mo lid\nv ti &lt; &lt;\ns A &gt; f v v vv X v v\nSCRUPULOUS EDITORS\nAllow Little in Their Publications Ifea\nWill 01 &lt; end Readers\nAn absurd story went the round\nof the press a couple of years ago\neaid a gentleman connected with the\nbusiness end of a prominent New\nYork publishing house U &gt; the effect\nthat Hudyard Kipling had bit n com\npalled to cut out the word wint from\none of hit short tales Of course so\nfar as Kipling was concerned KochF\nyarn answered itself but if the au\nthor referred to had been almost any\nbody else it wouldnt have done to\ndismiss it with a shrug and a smile\nUnless you have had an opportunity\nto see something of a modern publish\ning house from behind the scenesr\ncontinued the speaker you have no\nidea of the scrupulous care that is i\ntaken nowadays to avoid offending\nthe great middle classes I am refer\nring particularly to houses that pub\nlish magazines and weeklies of the\nkind that make a bid for what we call k\na fireside circulation All such con\ncerns have a set of castiron rules in\nregard to topics that mayor may not\nbe mentioned in the columns of their\npublications and flippant refercnc i\nto religion is the thing they hold 4t\npecially in dread rrhatreminds 1I1\nby the way of rather an amusing li\ntie incident which occurred last sun\nrncr and illustrates this very point\nhad occasion to spend a week or so r\nChicago in June and before I startt &lt; s\na friend who edits one of the popular\nmagazines which is making a date pr\nate struggle to get a foothold with tIt\npublic asked me to hunt up a well\nknown writer of that city and return\na manuscript for revision Idl him\nto eliminate all reference to rclipon\nin the dialogue said the editor and\nto substitute something anything\nhe pleases that couldnt hurt thet\nfeelings of some fanatic I delivered\nthe message and the Chicago genius\nwas highly indignant but before I\nleft ho concluded to sacrifice his art\nto considerations of filthy lucre and\nmnde the changes specified The\nstuff might not have offended any\nbody said my friend the editor when\nI made my report but it certainly\npoked fun at one of the greatest Prot\nestant denominations in the world\nand we make it a positive rule to print\nno refprrnopR to religion in fiction\nYou can never tell whore lH hart\ngetting on All the younger publica\ntions are equally timid in that respct\nIt is a curious fact in this same con\nnection that even the big general ad\nvertisers of the north always scru\ntinize their copy with the utmost\ncare to see that it contains nothing\nthat might possibly give offense to\neome devout and supersensitive read\ner For example a wellknown man\nufacturing concern which dots an im\nmense amount advertising got up a\nspecial design for a comic oaltrulariv &lt;\nccmtly and after the larger part uft lr\norder had been printed and deliver u\none of the partners happened to not it n\nthat the expression Holy srm &gt; la\nwas used in the text under out uf th\nhumorous picture He inimedinti us\ncountermanded the order taking the t m\nVWi\nposition that the phrase might possi\nbly give offense to some seriousmind\nedPQrson when something else would\ndo just as well mention this inci\ndent because it is a good illustration\nof the extraordinary pains that ate\ntaken in certain lines at present to\nkeep off of other folks cornHN 0\nTimesDemocrat\nLONG TIME UNDER WATER\nSailor Resuscitated After Being Twen\nty Minutes Without Air\nHow long can a human being exist\nwithout air Two or three minutes\nyou will say but then how can you ac\ncount for the resuBcrtation of persons\nwho have been much longer than that\nunder water A ailor on the Bel\ngenJund lying jn port at Philudel\nphia became ip anc anvil jumped over\nboard As he did not rise again it\nwas necessary to use grappling hook\nto recover his body and it was 20\nminutes before H &gt; vas brought to tin\nsurface Everybody ihqluding a doc\ntor who hnd licjji summoned\nthought the man wn8dcnd but as the\nharbor policemen have instructions to\ntry to revive all drowned persons\nthey set to work with the usual meth\nods and after an hours hard labor\nthe man breathed and opened his\neyes Then he wAs taken to a hos\npital and the m3xt day was not only\nrestored to health but had also re\ncovered his reason Golden Days\nInsurance for Bathers\nInsurance r lathers iff the new\nest enterprise in the insurance line\nIn England Pennyinthoslot ma\nchines will be erected in popular\nx1thin lanes Before\nI\nk&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um die Volltexte für alle Suchergebnisse auf der ersten Seite abzurufen und zu speichern, können wir eine for-Schleife entwerfen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Volltexte für die gesamte erste Seite der Suchergebnisse speichern</span>
+<span class="c1"># items = search_results[&quot;items&quot;]</span>
+
+<span class="c1"># for item in items:</span>
+<span class="c1">#     ocr_text = item[&quot;ocr_eng&quot;]</span>
+<span class="c1">#     title = item[&quot;title&quot;]</span>
+<span class="c1">#     date = item[&quot;date&quot;]</span>
+<span class="c1">#     with open(f&quot;{title}_{date}.txt&quot;, &quot;w&quot;) as file:</span>
+<span class="c1">#         file.write(ocr_text)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das wollen wir jetzt für alle Suchergebnisse auf allen Seiten reproduzieren.</p>
+</section>
+<section id="abfrage-aller-volltexte-mit-book-review">
+<h2>Abfrage aller Volltexte mit “book review”<a class="headerlink" href="#abfrage-aller-volltexte-mit-book-review" title="Permalink to this heading">#</a></h2>
+<p>Zunächst legen wir in unserem aktuellen Arbeitsverzeichnis (=Ordner, in dem die Jupyter Notebooks liegen) ein neues Verzeichnis an, in dem wir die Volltexte abspeichern werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># neues Verzeichnis anlegen: in diesem Ordner werden die Textdateien gespeichert</span>
+<span class="c1"># if not os.path.exists(&quot;loc_ocr&quot;):</span>
+<span class="c1">#     os.makedirs(&quot;loc_ocr&quot;)</span>
+<span class="c1"># Arbeitsverzeichnis wechseln: Die Texte sollen im Verzeichnis &quot;spokentext_corpus&quot; gespeichert werden</span>
+<span class="c1"># os.chdir(os.path.join(os.getcwd(), &quot;loc_ocr&quot;))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie gehen wir vor, um jetzt unsere for-Schleife oben nacheinander auf alle Ergebnisseiten anzuwenden?
+Eine Idee wäre die Verwendung einer while Schleife mit HTTP Antwort != 200 als break-Bedingung. Diese Strategie ist aber nur anwendbar, wenn beim Abruf einer ungültigen Seite eine HTTP-Antwort ungleich 200 zurückgegeben wird. Das müssen wir zunächst überprüfen: Was passiert, wenn eine nicht existierende Seite aufgerufen wird?
+Als Beispiel rufen wir die Seite <a class="reference external" href="https://chroniclingamerica.loc.gov/search/pages/results/?rows=20&amp;amp;format=json&amp;amp;sequence=0&amp;amp;phrasetext=book+review&amp;amp;andtext=&amp;amp;page=1640">https://chroniclingamerica.loc.gov/search/pages/results/?rows=20&amp;format=json&amp;sequence=0&amp;phrasetext=book+review&amp;andtext=&amp;page=1640</a> auf.</p>
+<p>Tatsächlich gibt es eine Umleitung auf Seite 1 mit einem gültigen HTTP-Statuscode. Wir können also in diesem Fall die Strategie mit der while-Schleife nicht verwenden.</p>
+<p>Eine andere Idee ist die Verwendung einer for-Schleife. Dazu müssen wir aber die Gesamtzahl der Ergebnisseiten kennen. Die Gesamtzahl der Ergebnisseiten können wir aber einfach ermitteln:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gesamtanzahl der Ergebnisseiten ermitteln: Anzahl der Ergebnisse durch Anzahl der Ergebnisse pro Seite teilen</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json&quot;</span>
+<span class="n">search_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">pages_float</span> <span class="o">=</span> <span class="n">search_results</span><span class="p">[</span><span class="s2">&quot;totalItems&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">search_results</span><span class="p">[</span><span class="s2">&quot;itemsPerPage&quot;</span><span class="p">]</span>
+<span class="n">pages</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">pages_float</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span> <span class="c1"># aufrunden und 1 addieren</span>
+<span class="n">pages</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1650
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zu der Gesamtzahl der Seiten addieren wir 1, da wir später die range(1, n)-Funktion verwenden wollen, welche eine Integersequenz von Zahl 1 bis Zahl n-1 generiert.</p>
+<p>Unsere for-Schleife sieht dann so aus:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Volltexte zu allen Ergebnissen von allen Ergebnisseiten speichern</span>
+<span class="c1"># url = &quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json&amp;page=&quot;</span>
+
+<span class="c1"># for page in range(1, pages):</span>
+<span class="c1">#     request_url = url + str(page)</span>
+<span class="c1">#     response = requests.get(request_url).json()</span>
+<span class="c1">#     # for-Schleife für eine einzelne Ergebnisseite einsetzen</span>
+<span class="c1">#     items = response[&quot;items&quot;]</span>
+<span class="c1">#     for item in items:</span>
+<span class="c1">#         ocr_text = item[&quot;ocr_eng&quot;]</span>
+<span class="c1">#         title = item[&quot;title&quot;]</span>
+<span class="c1">#         date = item[&quot;date&quot;]</span>
+<span class="c1">#         with open(f&quot;{title}_{date}.txt&quot;, &quot;w&quot;) as file:</span>
+<span class="c1">#             file.write(ocr_text)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aber Achtung! Beim Ausführen des Codes oben gibt es nach einigen Schleifendurchläufen eine Fehlermeldung: JSONDecodeError: Expecting value: line 1 column 1 (char 0). Die Fehlermeldung entsteht dann, wenn die HTTP-Anfrage keine erfolgreiche Antwort liefert. Das liegt mit großer Wahrscheinlichkeit daran, dass wir uns nicht an die Einschränkungen der LOC gehalten haben und die HTTP-Anfrage dadurch ab einem bestimmten Punkt abgelehnt wird. Wenn wir dann versuchen, den Antwortbody mithilfe der .json()-Methode in ein Python Dictionary umzuwandeln, teilt der Python interpreter uns mit, dass das nicht möglich ist, weil wir die Methode nicht auf einen gültigen JSON-String angewendet haben.</p>
+<p>Bei der Abfrage von sehr vielen Seiten müssen wir uns also nach den Einschränkungen der LOC richten. Die LOC hat Einschränkungen für die der Chronicling America API übergeordnete Seite <a class="reference external" href="http://loc.gov">loc.gov</a> festgelegt, und wir können vermuten, dass die Einschränkungen auch für die Chronicling America API gelten:  <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/working-within-limits">https://www.loc.gov/apis/json-and-yaml/working-within-limits</a></p>
+<p>Um auf der sicheren Seite zu sein, richten wir uns nach der restriktivsten Vorgabe, nach der nur 20 Abfragen alle 10 Sekunden erlaubt sind.</p>
+<p>Wie können wir also die HTTP-Abfragen auf 20 Abfragen je 10 Sekunden einschränken? Was wir brauchen nennt sich “rate limiting”, also eine Begrenzung der Abfragerate, die wir in unseren Code einbauen müssen.</p>
+<p>Um die Abfragerate einzuschränken, gibt es zwei etablierte Möglichkeiten:</p>
+<ol class="arabic simple">
+<li><p><strong>Funktion <code class="docutils literal notranslate"><span class="pre">time.sleep()</span></code> aus dem Paket time</strong>. Die Funktion time.sleep(x) kann in den Schleifenkörper einer for-Schleife eingefügt werden, um den nächsten Schleifendurchlauf um x Sekunden zu verzögern. Diese Methode ist einstiegsfreundlich, aber ungenau, weil die Laufzeit der Schleife selbst nicht in die Wartezeit mit einbezogen wird, sodass der nächste Schleifendurchlauf länger als notwendig verzögert wird.</p></li>
+<li><p><strong>Python Dekoratoren aus dem Paket ratelimit</strong>. Wesentlich effizienter und eleganter ist die Verwendung von sogenannten Python Dekoratoren bzw. Decorators. Das Paket ratelimit bietet zwei solche Dekoratoren, die dazu verwendet werden können, um zu registrieren, wie häufig eine Funktion nacheinander aufgerufen wird, und die ab einer bestimmten Anzahl wiederholter Aufrufe eine Wartepause erzwingen. Um Decorators verwenden zu können, müssen wir unsere Abfrage jedoch in eine Funktion verpacken.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Python Dekoratoren (Decorators)</p>
+<blockquote>
+<div><p>A decorator in Python is a function that accepts another function as an argument. The decorator will usually modify or enhance the function it accepted and return the modified function. This means that when you call a decorated function, you will get a function that may be a little different that may have additional features compared with the base definition.</p>
+</div></blockquote>
+<p>Quelle: <a class="reference external" href="https://python101.pythonlibrary.org/chapter25_decorators.html">Michael Droscill (2017).</a></p>
+<p>Dekoratoren beruhen auf einem komplexen Konzept und wir können hier nicht tiefer einsteigen, aber wenn die ein oder andere Person doch etwas tiefer einsteigen will, kann ich diese beiden Ressourcen empfehlen:</p>
+<ul class="simple">
+<li><p>Primer on Python Decorators, <a class="reference external" href="https://realpython.com/primer-on-python-decorators/">https://realpython.com/primer-on-python-decorators/</a></p></li>
+<li><p>Python Decorators in 15 Minutes, <a class="reference external" href="https://www.youtube.com/watch?v=r7Dtus7N4pI">https://www.youtube.com/watch?v=r7Dtus7N4pI</a></p></li>
+</ul>
+<p>Bei der Verwendung der Dekoratoren aus dem Paket ratelimit verwenden wir diese Anleitung von Akshay Ranganath:</p>
+<ul class="simple">
+<li><p>Rate Limiting with Python, <a class="reference external" href="https://akshayranganath.github.io/Rate-Limiting-With-Python/">https://akshayranganath.github.io/Rate-Limiting-With-Python/</a></p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) Rate limiting mit time.sleep()</span>
+
+<span class="c1"># url = &quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json&quot;</span>
+<span class="c1"># search_results = requests.get(url).json()</span>
+<span class="c1"># pages_float = search_results[&quot;totalItems&quot;] / search_results[&quot;itemsPerPage&quot;]</span>
+<span class="c1"># pages = math.ceil(pages_float) # aufrunden</span>
+
+<span class="c1"># url = &quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json&amp;page=&quot;</span>
+<span class="c1"># for page in range(1, pages):</span>
+<span class="c1">#     request_url = url + str(page)</span>
+<span class="c1">#     response = requests.get(request_url).json()</span>
+<span class="c1">#     # for-Schleife für eine einzelne Ergebnisseite einsetzen</span>
+<span class="c1">#     items = response[&quot;items&quot;]</span>
+<span class="c1">#     for item in items:</span>
+<span class="c1">#        ocr_text = item[&quot;ocr_eng&quot;]</span>
+<span class="c1">#         title = item[&quot;title&quot;]</span>
+<span class="c1">#         date = item[&quot;date&quot;]</span>
+<span class="c1">#         with open(f&quot;{title}_{date}.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:</span>
+<span class="c1">#             file.write(ocr_text)</span>
+<span class="c1">#     time.sleep(10)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2) Rate limiting mit Python decorators</span>
+
+<span class="c1"># url = &quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json&quot;</span>
+<span class="c1"># search_results = requests.get(url).json()</span>
+<span class="c1"># pages_float = search_results[&quot;totalItems&quot;] / search_results[&quot;itemsPerPage&quot;]</span>
+<span class="c1"># pages = math.ceil(pages_float) # aufrunden</span>
+<span class="c1"># url = url + &quot;&amp;page=&quot;</span>
+
+<span class="c1"># TEN_SECONDS = 10</span>
+<span class="c1"># CALLS_PER_TEN_SECONDS = 20 # 20 Abfragen in 10 Sekunden</span>
+
+<span class="c1"># @sleep_and_retry</span>
+<span class="c1"># @limits(calls=CALLS_PER_TEN_SECONDS, period=TEN_SECONDS)</span>
+<span class="c1"># def get_fulltext(url):</span>
+<span class="c1">#     response = requests.get(url).json()</span>
+<span class="c1">#     # for-Schleife für eine einzelne Ergebnisseite einsetzen</span>
+<span class="c1">#     items = response[&quot;items&quot;]</span>
+<span class="c1">#     for item in items:</span>
+<span class="c1">#         ocr_text = item[&quot;ocr_eng&quot;]</span>
+<span class="c1">#         title = item[&quot;title&quot;]</span>
+<span class="c1">#         date = item[&quot;date&quot;]</span>
+<span class="c1">#         with open(f&quot;{title}_{date}.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:</span>
+<span class="c1">#             file.write(ocr_text)</span>
+
+<span class="c1"># for page in range(1, pages):</span>
+<span class="c1">#     request_url = url + str(page)</span>
+<span class="c1">#     get_fulltext(request_url)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Konstanten (Constants)</p>
+<p>Im Code oben verwenden wir Großbuchstaben, um die beiden Variablen <code class="docutils literal notranslate"><span class="pre">CALLS_PER_TEN_SECONDS</span></code> und <code class="docutils literal notranslate"><span class="pre">TEN_SECONDS</span></code> zu benennen. Diese Schreibweise hat sich in Python für Konstanten etabliert, also für Variablen, deren Wert sich im Programmverlauf nicht ändert.</p>
+</div>
+</section>
+<section id="quellen">
+<h2>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
+<div class="docutils container" id="id1">
+<ol class="arabic simple" start="1">
+<li id="id109"><p>Michael Driscoll. Chapter 25 – Decorators. 2017. URL: <a class="reference external" href="https://python101.pythonlibrary.org/chapter25_decorators.html">https://python101.pythonlibrary.org/chapter25_decorators.html</a>.</p></li>
+<li id="id111"><p>Akshay Ranganath. Rate Limiting with Python. 2021. URL: <a class="reference external" href="https://akshayranganath.github.io/Rate-Limiting-With-Python/">https://akshayranganath.github.io/Rate-Limiting-With-Python/</a>.</p></li>
+<li id="id112"><p>Guido van Rossum, Barry Warsaw, and Nick Coghlan. PEP 8: Constants. 2013. URL: <a class="reference external" href="https://peps.python.org/pep-0008/#constants">https://peps.python.org/pep-0008/#constants</a>.</p></li>
+<li id="id108"><p>Geir Arne Hjelle. Primer on Python Decorators. 2023. URL: <a class="reference external" href="https://realpython.com/primer-on-python-decorators/">https://realpython.com/primer-on-python-decorators/</a>.</p></li>
+<li id="id110"><p>Kite. Python Decorators in 15 Minutes. 2020. URL: <a class="reference external" href="https://www.youtube.com/watch?v=r7Dtus7N4pI">https://www.youtube.com/watch?v=r7Dtus7N4pI</a>.</p></li>
+<li id="id113"><p>Leodanis Pozo Ramos. Python Constants: Improve Your Code's Maintainability. 2022. URL: <a class="reference external" href="https://realpython.com/python-constants/">https://realpython.com/python-constants/</a>.</p></li>
+<li id="id115"><p>Library of Congress. Chronicling America. About the Site and API. 2023. URL: <a class="reference external" href="https://chroniclingamerica.loc.gov/about/api/">https://chroniclingamerica.loc.gov/about/api/</a>.</p></li>
+<li id="id114"><p>Library of Congress. Working Within Limits. 2023. URL: <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/working-within-limits">https://www.loc.gov/apis/json-and-yaml/working-within-limits</a>.</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/08/subchapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vorbereitung">Vorbereitung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-der-chronicling-america-api">Exploration der Chronicling America API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abfrage-aller-volltexte-mit-book-review">Abfrage aller Volltexte mit “book review”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lisa Poggel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
