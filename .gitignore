@@ -1,0 +1,4 @@
+# Jupyter Notebooks
+.ipynb_checkpoints
+# Jupyter Book
+_build
