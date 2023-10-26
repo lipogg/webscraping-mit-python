@@ -506,10 +506,10 @@ Zuletzt wird überprüft, ob im nachfolgenden Schleifendurchlauf (also mit i+=1)
 </div>
 </div>
 <p>Als nächstes wollen wir nach Unterkünften in Berlin suchen. Dazu führen wir die Suche einmal in unserem regulären Chrome Browser aus, um herauszufinden, mit welchen Bestandteilen des User Interfaces bei der Suche interagiert werden muss. Als erstes muss auf den Suchbutton geklickt werden:</p>
-<figure class="align-default" id="id169">
+<figure class="align-default" id="id170">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_1.png"><img alt="Airbnb Beispiel" class="bg-transparent" src="../../../_images/beispiel_airbnb_1.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Abb. 1: Beispiel Airbnb</span><a class="headerlink" href="#id169" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Abb. 1: Beispiel Airbnb</span><a class="headerlink" href="#id170" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Um den Mausklick auf den Button zu simulieren, müssen wir erst das Element finden und anschließend mithilfe der Methode .click() den Mausklick simulieren. In diesem Fall suchen wir das Element mithilfe des class-Attributs, weil wir mithilfe einer Suche im Quelltext (Strg+F) leicht feststellen können, dass es kein weiteres Element mit dem Attribut class=”s19wqnbx dir dir-ltr” gibt.</p>
@@ -522,17 +522,17 @@ Zuletzt wird überprüft, ob im nachfolgenden Schleifendurchlauf (also mit i+=1)
 </div>
 </div>
 <p>Nach dem Klick auf den Suchbutton öffnet sich ein Suchfeld, in dem wir unseren Suchbegriff eingeben können. Im regulären Chrome-Browser können wir, wieder mithilfe der Entwicklertools, feststellen, dass das Suchfeld über ein HTML-input-Element dargestellt wird:</p>
-<figure class="align-default" id="id170">
+<figure class="align-default" id="id171">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_2.png"><img alt="Airbnb Beispiel" class="bg-transparent" src="../../../_images/beispiel_airbnb_2.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Abb. 2: Beispiel Airbnb</span><a class="headerlink" href="#id170" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Abb. 2: Beispiel Airbnb</span><a class="headerlink" href="#id171" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Um einen Suchbegriff eingeben zu können, muss das input-Element zunächst gefunden werden. In diesem Fall hat das gesuchte HTML-Element nicht nur ein Attribut class, sondern auch ein Attribut id mit dem Wert, “bigsearch-query-location-input”, welches erlaubt, das Element eindeutig zu identifizieren. Zur Suche können wir nun entweder find_element(<a class="reference external" href="http://By.ID">By.ID</a>, “id_des_elements”) oder find_element(By.XPATH, “xpath_ausdruck”) verwenden. XPath ist eine sogenannte Pfadbeschreibungssprache, die zur Suche in XML- und HTML-Dokumenten verwendet wird. Um XPath-Ausdrücke zu verwenden, müssen wir uns aber nicht mit XPath auskennen, denn auch dabei helfen die Browser-Entwicklertools. Der XPath-Ausdruck, der den Pfad zu einem bestimmten Element beschreibt, kann ganz einfach mit Rechtsklick auf ein Element und die Option Copy -&gt; Copy XPath kopiert werden.</p>
-<figure class="align-default" id="id171">
+<figure class="align-default" id="id172">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_3.png"><img alt="Airbnb Beispiel" class="bg-transparent" src="../../../_images/beispiel_airbnb_3.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Abb. 3: Beispiel Airbnb</span><a class="headerlink" href="#id171" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Abb. 3: Beispiel Airbnb</span><a class="headerlink" href="#id172" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Der XPath zum gesuchten input-Element ist //*[&#64;id=”bigsearch-query-location-input”]. Das * steht für ein beliebiges HTML-Element, aber wir können auch den Namen des HTML-Elements einsetzen, um bei vielen XPath-Ausdrücken den Überblick zu behalten:</p>
@@ -565,10 +565,10 @@ Zuletzt wird überprüft, ob im nachfolgenden Schleifendurchlauf (also mit i+=1)
 </div>
 </div>
 <p>Durch Bestätigung der Suche mit Enter wird automatisch ein Fenster zur Auswahl eines Reisetermins geöffnet. Hier wollen wir die Option “flexible” auswählen. Dazu müssen wir zunächst wieder das gesuchte Element identifizieren:</p>
-<figure class="align-default" id="id172">
+<figure class="align-default" id="id173">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_4.png"><img alt="Airbnb Beispiel" class="bg-transparent" src="../../../_images/beispiel_airbnb_4.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Abb. 4: Beispiel Airbnb</span><a class="headerlink" href="#id172" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Abb. 4: Beispiel Airbnb</span><a class="headerlink" href="#id173" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Das gesuchte HTML-Element hat wieder eine ID, über die es eindeutig identifiziert werden kann. Diesmal verwenden wir find_element(<a class="reference external" href="http://By.ID">By.ID</a>, “id_des_elements”), damit ihr diese Verwendung der find_element-Methode auch einmal gesehen habt. Die Id könnt ihr einfach aus den Browser-Entwicklertools mit Doppelklick auf das Id-Attribut kopieren.</p>
@@ -581,10 +581,10 @@ Zuletzt wird überprüft, ob im nachfolgenden Schleifendurchlauf (also mit i+=1)
 </div>
 </div>
 <p>Zuletzt müssen wir unsere Suche noch mit Klick auf den Suchbutton bestätigen. In diesem Fall wird über Rechtsklick auf den Suchbutton und Auswahl der Option “Inspect” allerdings nicht ganz das richtige Element gefunden: Gefunden wird das span-Element mit dem Attribut class=”t1dqvypu dir dir-ltr”; gesucht haben wir aber eigentlich den gesamten Suchbutton, also das button-Element mit dem Attribut class=”brqqy3t bd1b9vv dir dir-ltr”. Bei der Verwendung von “Inspect” ist also immer Mitdenken erforderlich, denn nicht immer wird ganz genau das Element getroffen, das gesucht wird.</p>
-<figure class="align-default" id="id173">
+<figure class="align-default" id="id174">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_5.png"><img alt="Airbnb Beispiel" class="bg-transparent" src="../../../_images/beispiel_airbnb_5.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Abb. 5: Beispiel Airbnb</span><a class="headerlink" href="#id173" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Abb. 5: Beispiel Airbnb</span><a class="headerlink" href="#id174" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Um den Suchbutton zu klicken, überprüfen wir erst, ob die Klasse “brqqy3t bd1b9vv dir dir-ltr” noch einmal verwendet wird. Dies ist nicht der Fall, sodass wir das class-Attribut auch in diesem Fall zur eindeutigen Suche nach dem button-Element verwenden können:</p>
@@ -619,16 +619,16 @@ Zuletzt wird überprüft, ob im nachfolgenden Schleifendurchlauf (also mit i+=1)
 <h2>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
-<li id="id143"><p>JavaScript-BOM-Tutorial. 2023. URL: <a class="reference external" href="https://www.webtechnologien.com/advanced-tutorials/javascript-bom/">https://www.webtechnologien.com/advanced-tutorials/javascript-bom/</a>.</p></li>
-<li id="id140"><p>Kuan Wei. Using Python and Selenium to Scrape Infinite Scroll Web Pages. 2020. URL: <a class="reference external" href="https://medium.com/analytics-vidhya/using-python-and-selenium-to-scrape-infinite-scroll-web-pages-825d12c24ec7">https://medium.com/analytics-vidhya/using-python-and-selenium-to-scrape-infinite-scroll-web-pages-825d12c24ec7</a>.</p></li>
-<li id="id142"><p>MDN Contributors. JavaScript: return. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return?retiredLocale=de">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return?retiredLocale=de</a>.</p></li>
-<li id="id134"><p>Selenium 4 Documentation. Driver Sessions: Quitting Sessions. 2022. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/drivers/#quitting-sessions">https://www.selenium.dev/documentation/webdriver/drivers/#quitting-sessions</a>.</p></li>
-<li id="id137"><p>Selenium 4 Documentation. Interacting with Web Elements. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/interactions/">https://www.selenium.dev/documentation/webdriver/elements/interactions/</a>.</p></li>
-<li id="id138"><p>Selenium 4 Documentation. Keyboard Actions. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/">https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/</a>.</p></li>
-<li id="id136"><p>Selenium 4 Documentation. Locator Strategies. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/locators/">https://www.selenium.dev/documentation/webdriver/elements/locators/</a>.</p></li>
-<li id="id135"><p>Selenium 4 Documentation. Selenium Manager (Beta). 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/selenium_manager/">https://www.selenium.dev/documentation/selenium_manager/</a>.</p></li>
-<li id="id141"><p>Selenium 4.10 Documentation. selenium.webdriver.chrome.webdriver: execute_script. 2023. URL: <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver_chrome/selenium.webdriver.chrome.webdriver.html?highlight=execute_script#selenium.webdriver.chrome.webdriver.WebDriver.execute_script">https://www.selenium.dev/selenium/docs/api/py/webdriver_chrome/selenium.webdriver.chrome.webdriver.html?highlight=execute_script#selenium.webdriver.chrome.webdriver.WebDriver.execute_script</a>.</p></li>
-<li id="id139"><p>Selenium 4.10 Documentation. selenium.webdriver.common.keys. 2023. URL: <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver/selenium.webdriver.common.keys.html">https://www.selenium.dev/selenium/docs/api/py/webdriver/selenium.webdriver.common.keys.html</a>.</p></li>
+<li id="id144"><p>JavaScript-BOM-Tutorial. 2023. URL: <a class="reference external" href="https://www.webtechnologien.com/advanced-tutorials/javascript-bom/">https://www.webtechnologien.com/advanced-tutorials/javascript-bom/</a>.</p></li>
+<li id="id141"><p>Kuan Wei. Using Python and Selenium to Scrape Infinite Scroll Web Pages. 2020. URL: <a class="reference external" href="https://medium.com/analytics-vidhya/using-python-and-selenium-to-scrape-infinite-scroll-web-pages-825d12c24ec7">https://medium.com/analytics-vidhya/using-python-and-selenium-to-scrape-infinite-scroll-web-pages-825d12c24ec7</a>.</p></li>
+<li id="id143"><p>MDN Contributors. JavaScript: return. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return?retiredLocale=de">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return?retiredLocale=de</a>.</p></li>
+<li id="id135"><p>Selenium 4 Documentation. Driver Sessions: Quitting Sessions. 2022. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/drivers/#quitting-sessions">https://www.selenium.dev/documentation/webdriver/drivers/#quitting-sessions</a>.</p></li>
+<li id="id138"><p>Selenium 4 Documentation. Interacting with Web Elements. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/interactions/">https://www.selenium.dev/documentation/webdriver/elements/interactions/</a>.</p></li>
+<li id="id139"><p>Selenium 4 Documentation. Keyboard Actions. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/">https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/</a>.</p></li>
+<li id="id137"><p>Selenium 4 Documentation. Locator Strategies. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/locators/">https://www.selenium.dev/documentation/webdriver/elements/locators/</a>.</p></li>
+<li id="id136"><p>Selenium 4 Documentation. Selenium Manager (Beta). 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/selenium_manager/">https://www.selenium.dev/documentation/selenium_manager/</a>.</p></li>
+<li id="id142"><p>Selenium 4.10 Documentation. selenium.webdriver.chrome.webdriver: execute_script. 2023. URL: <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver_chrome/selenium.webdriver.chrome.webdriver.html?highlight=execute_script#selenium.webdriver.chrome.webdriver.WebDriver.execute_script">https://www.selenium.dev/selenium/docs/api/py/webdriver_chrome/selenium.webdriver.chrome.webdriver.html?highlight=execute_script#selenium.webdriver.chrome.webdriver.WebDriver.execute_script</a>.</p></li>
+<li id="id140"><p>Selenium 4.10 Documentation. selenium.webdriver.common.keys. 2023. URL: <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver/selenium.webdriver.common.keys.html">https://www.selenium.dev/selenium/docs/api/py/webdriver/selenium.webdriver.common.keys.html</a>.</p></li>
 </ol>
 </div>
 </section>
