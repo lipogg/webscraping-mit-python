@@ -789,6 +789,9 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 6, 8]
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -988,7 +991,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;kiwi&#39;, &#39;banane&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;banane&#39;, &#39;kiwi&#39;}
 </pre></div>
 </div>
 </div>
@@ -1004,7 +1007,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;orange&#39;, &#39;kiwi&#39;, &#39;banane&#39;, &#39;apfel&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;banane&#39;, &#39;kiwi&#39;, &#39;apfel&#39;, &#39;orange&#39;}
 </pre></div>
 </div>
 </div>
@@ -1020,7 +1023,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Narzisse&#39;, &#39;Rose&#39;, &#39;Tulpe&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Tulpe&#39;, &#39;Narzisse&#39;, &#39;Rose&#39;}
 </pre></div>
 </div>
 </div>
@@ -1053,8 +1056,23 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf einen Wert zugreifen</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf einen Wert zugreifen mit Zugriffsoperator</span>
+<span class="c1"># Wenn der Schlüssel nicht vorhanden ist, wird eine Fehlermeldung ausgegeben</span>
 <span class="n">noten</span><span class="p">[</span><span class="s2">&quot;Emma&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf einen Wert zugreifen mit get()-Methode</span>
+<span class="c1"># Wenn der Schlüssel nicht vorhanden ist, wird die Nachricht &quot;Schlüssel nicht gefunden&quot; ausgegeben</span>
+<span class="n">noten</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="s2">&quot;Schlüssel nicht gefunden&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1074,8 +1092,40 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wert ändern</span>
+<span class="n">noten</span><span class="p">[</span><span class="s2">&quot;Emma&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eintrag entfernen mit Schlüsselwort del</span>
+<span class="c1"># Wenn der Schlüssel nicht vorhanden ist, wird eine Fehlermeldung ausgegeben</span>
+<span class="k">del</span> <span class="n">noten</span><span class="p">[</span><span class="s2">&quot;Emma&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eintrag entfernen und entfernten Wert ausgeben mit pop()-Methode</span>
+<span class="c1"># Wenn der Schlüssel nicht vorhanden ist, wird die Nachricht &quot;Schlüssel nicht gefunden&quot; ausgegeben</span>
+<span class="n">noten</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="s2">&quot;Schlüssel nicht gefunden&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Schlüssel nicht gefunden&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mitgliedschaftsoperatoren kann man auch auf Dictionaries anwenden:</span>
-<span class="c1"># Überprüfen, ob ein Schlüssel vorhanden ist</span>
+<span class="c1"># Der Operator wird automatisch auf die Schlüssel angewandt, nicht die Werte)</span>
+<span class="c1"># Überprüfen, ob ein Schlüssel vorhanden ist (geht natürlich auch mit not in)</span>
 <span class="s2">&quot;John&quot;</span> <span class="ow">in</span> <span class="n">noten</span>
 </pre></div>
 </div>
@@ -1094,7 +1144,33 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;Emma&#39;, &#39;Gero&#39;, &#39;Hanna&#39;, &#39;Lee&#39;])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;Gero&#39;, &#39;Hanna&#39;, &#39;Lee&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alle Werte ausgeben lassen</span>
+<span class="n">noten</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_values([2, 3, 2])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Überprüfen, ob ein Wert vorhanden ist</span>
+<span class="mi">2</span> <span class="ow">in</span> <span class="n">noten</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
