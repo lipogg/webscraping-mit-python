@@ -41,13 +41,13 @@ sections:
     title: Zusammengesetzte Datentypen
   - file: chapters/03/subchapters/02_kontrollstrukturen
     title: Kontrollstrukturen
-#- file: chapters/04/04_intro
-#  title: Python III
-#  sections:
-#  - file: chapters/04/subchapters/01_funktionen
-#    title: Funktionen
-#  - file: chapters/04/subchapters/02_pakete
-#    title: Pakete
+- file: chapters/04/04_intro
+  title: Python III
+  sections:
+  - file: chapters/04/subchapters/01_funktionen
+    title: Funktionen
+  - file: chapters/04/subchapters/02_pakete
+    title: Pakete
 #- file: chapters/05/05_intro
 #  title: Installation und Setup
 #  sections:
