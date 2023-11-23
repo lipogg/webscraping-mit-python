@@ -13,7 +13,7 @@ Python-Version und für das Setup von JupyterLab Anaconda verwenden.
 
 ### Was ist Anaconda? 
 
-Anaconda vereint verschiedene Komponeneten: Python selbst, sowie einen sogenannten Paketmanager, der die Verwaltung verschiedener so genannte "Pakete" ermöglicht (was das ist lernen wir nächste Woche), eine Entwicklungsumgebung und ein graphisches User-Interface. 
+Anaconda vereint verschiedene Komponeneten: Python selbst, sowie einen sogenannten Paketmanager, der die Verwaltung verschiedener Pakete ermöglicht, eine Entwicklungsumgebung und ein graphisches User-Interface. 
 Die verschiedenen Funktionalitäten, die Anaconda bereitstellt, können auch über das Terminal / die Kommandozeile verwendet werden.
 Wir werden Anaconda nur herunterladen und anschließend die Kommandozeile verwenden, um JupyterLab zu installieren. 
 
@@ -43,7 +43,7 @@ Falls die Meldung immer noch erscheint, kommt in meine Installationssprechstunde
 
 Mithilfe von Anaconda kann man über das Terminal / die Kommandozeile für jedes Coding-Projekt, für das man Python verwendet, eine spezielle "virtuelle Umgebung" erstellen. 
 Virtuelle Umgebungen sind reproduzierbare, übertragbare und isolierte Umgebungen für Python-Projekte. 
-In einer virtuellen Umgebung kann man die gewünschte Python-Version und alle zusätzlichen Python-Pakete (-> nächste Woche), die man für das Projekt braucht, installieren. 
+In einer virtuellen Umgebung kann man die gewünschte Python-Version und alle zusätzlichen Python-Pakete, die man für das Projekt braucht, installieren. 
 Mithilfe von virtuellen Umgebungen können so verschiedene Python-Versionen mit ganz verschiedenen Paketen nebeneinander auf demselben Rechner verwendet werden.
 JupyterLab können wir ebenfalls direkt in der virtuellen Umgebung installieren.
 
