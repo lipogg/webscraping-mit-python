@@ -185,6 +185,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../04/subchapters/02_pakete.html">4.2. Pakete</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../05/05_intro.html">5. Installation und Setup</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05/subchapters/01_vorbereitung.html">5.1. Vorbereitung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/subchapters/02_installation_setup.html">5.2. Installation und Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06/06_intro.html">6. Einstieg Webscraping</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/01_rechtliches.html">6.1. Der rechtliche Rahmen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/02_html.html">6.2. HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/03_css.html">6.3. CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/04_http.html">6.4. Client, Server, HTTP</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -828,13 +840,13 @@ die Sonne
 <span class="n">artikel</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;der&quot;</span><span class="p">,</span> <span class="s2">&quot;der&quot;</span><span class="p">,</span> <span class="s2">&quot;das&quot;</span><span class="p">,</span> <span class="s2">&quot;die&quot;</span><span class="p">]</span>
 <span class="n">substantive</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Baum&quot;</span><span class="p">,</span> <span class="s2">&quot;Wald&quot;</span><span class="p">,</span> <span class="s2">&quot;Meer&quot;</span><span class="p">,</span> <span class="s2">&quot;Sonne&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">artikel</span><span class="p">,</span> <span class="n">substantive</span><span class="p">)):</span>
-    <span class="n">substantive</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">w</span>
+    <span class="n">substantive</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">s</span>
 <span class="n">substantive</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;der Sonne&#39;, &#39;der Sonne&#39;, &#39;das Sonne&#39;, &#39;die Sonne&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;der Baum&#39;, &#39;der Wald&#39;, &#39;das Meer&#39;, &#39;die Sonne&#39;]
 </pre></div>
 </div>
 </div>
