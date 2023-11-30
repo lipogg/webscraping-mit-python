@@ -66,13 +66,13 @@ sections:
       title: CSS
     - file: chapters/06/subchapters/04_http.ipynb
       title: Client, Server, HTTP
-#- file: chapters/07/07_intro
-#  title: Statische Webseiten
-#  sections:
-#    - file: chapters/07/subchapters/01_einstieg_beautifulsoup.ipynb
-#      title: Einstieg BeautifulSoup
-#    - file: chapters/07/subchapters/02_fortsetzung_beautifulsoup.ipynb
-#      title: Fortsetzung BeautifulSoup
+- file: chapters/07/07_intro
+  title: Statische Webseiten
+  sections:
+    - file: chapters/07/subchapters/01_einstieg_beautifulsoup.ipynb
+      title: Einstieg BeautifulSoup
+    - file: chapters/07/subchapters/02_fortsetzung_beautifulsoup.ipynb
+      title: Fortsetzung BeautifulSoup
 #- file: chapters/08/08_intro
 #  title: APIs (Exkurs)
 #  sections:

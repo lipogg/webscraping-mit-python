@@ -101,7 +101,7 @@ Euer Terminal / Kommandozeile ist jetzt die ganze Zeit "aktiv", bis JupyterLab w
 
 10. Wechselt jetzt in das Browserfenster, in dem JupyterLab geöffnet wurde. Klickt auf unseren Kernel "Python 3.10 (Webscraping)". 
 Es öffnet sich ein neues Jupyter Notebook. In die erste Zelle schreibt ihr `import sys` und führt die Zelle aus.
-In die zweite Zelle schreibt ihr `sys.version` und führt sie aus. Jetzt sollte als Output '3.10.11' angezeigt werden. 
+In die zweite Zelle schreibt ihr `sys.version` und führt sie aus. Jetzt sollte als Output '3.10.xx' angezeigt werden. 
 Wenn das nicht der Fall ist, kommt in meine Installationssprechstunde.
 
 11. Schließt jetzt JupyterLab, indem ihr im Menü oben auf File -> Shut Down klickt. Bestätigt das Fenster "Shutdown Confirmation".
