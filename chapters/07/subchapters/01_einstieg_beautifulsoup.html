@@ -449,7 +449,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Date&#39;: &#39;Sun, 10 Dec 2023 14:24:07 GMT&#39;, &#39;Content-Type&#39;: &#39;text/html; charset=utf-8&#39;, &#39;Content-Length&#39;: &#39;11054&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;, &#39;Strict-Transport-Security&#39;: &#39;max-age=0; includeSubDomains; preload&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Date&#39;: &#39;Sun, 10 Dec 2023 14:34:20 GMT&#39;, &#39;Content-Type&#39;: &#39;text/html; charset=utf-8&#39;, &#39;Content-Length&#39;: &#39;11054&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;, &#39;Strict-Transport-Security&#39;: &#39;max-age=0; includeSubDomains; preload&#39;}
 </pre></div>
 </div>
 </div>
@@ -574,7 +574,7 @@ Genau dazu wurde das Paket BeautifulSoup entwickelt. Mit der folgenden Codezeile
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Erstes span-Element ausgeben lassen</span>
-<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;span&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -587,7 +587,7 @@ Genau dazu wurde das Paket BeautifulSoup entwickelt. Mit der folgenden Codezeile
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alle span-Elemente ausgeben lassen</span>
-<span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;span&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -673,7 +673,7 @@ Genau dazu wurde das Paket BeautifulSoup entwickelt. Mit der folgenden Codezeile
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alle span-Elemente mit einem Attribut class=&quot;text&quot;</span>
 <span class="c1"># Beachtet den Unterstrich im Parameter class_. Der Unterstrich ist notwendig, weil das Wort class in Python ein Signalwort ist, das eine Klassendefinition einleitet. Der unterstrich hat also keine Bedeutung, er ist nur eine Formalität, die verhindert, dass Python den Parameter class_ fälschlich als Beginn einer Klassendefinition interpretiert.</span>
-<span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;span&quot;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -695,7 +695,7 @@ Genau dazu wurde das Paket BeautifulSoup entwickelt. Mit der folgenden Codezeile
 <p>Jetzt findet <code class="docutils literal notranslate"><span class="pre">.find_all()</span></code> alle span-Elemente, die wir brauchen. Jetzt müssen wir nur noch den Text zwischen den Tags des span-Elements extrahieren. Dazu können wir laut den Dokumentationsseiten zum Paket BeautifulSoup die Methode <code class="docutils literal notranslate"><span class="pre">.get_text()</span></code> verwenden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zitate</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zitate</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;span&quot;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
 <span class="c1"># zitate.get_text()</span>
 </pre></div>
 </div>
