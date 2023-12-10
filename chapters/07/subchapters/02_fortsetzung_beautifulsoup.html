@@ -456,19 +456,19 @@ Heute werden wir den Code in zwei Aspekten ergänzen:</p>
 <p>In der letzten Stunde haben wir die BeautifulSoup-Methoden .find() und .find_all() verwendet, um HTML-Elemente in einem  BeautifulSoup-Objekt zu finden. Genauso könnten wir auch vorgehen, um neben den Zitaten auch einige Metadaten zu extrahieren, also zum Beispiel auch den Namen der Person, von der das Zitat stammt, und die Tags, mit denen das Zitat versehen wurde.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quotes_divs</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;quote&#39;</span><span class="p">)</span>
-<span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Zitat&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Quelle&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[],</span> <span class="s2">&quot;URL&quot;</span><span class="p">:[]}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quotes</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;quote&#39;</span><span class="p">)</span>
+<span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Text&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Author&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[]}</span>
 
-<span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">quotes_divs</span><span class="p">:</span>
-    <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Zitat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-    <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Quelle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span> <span class="c1"># oder Attribut .text abrufen</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">tags</span> <span class="o">=</span> <span class="n">div</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
-        <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-    <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
-    <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;URL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
-    <span class="n">quotes_dict</span>
+<span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">:</span>
+    <span class="n">quote_text</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+    <span class="n">quote_author</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+    <span class="n">quote_tags</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;tag&#39;</span><span class="p">)</span>
+    <span class="n">tags_text</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">quote_tags</span><span class="p">:</span>
+        <span class="n">tags_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+    <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote_text</span><span class="p">)</span>
+    <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Author&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote_author</span><span class="p">)</span>
+    <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -481,7 +481,7 @@ Heute werden wir den Code in zwei Aspekten ergänzen:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Zitat&#39;: [&#39;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Text&#39;: [&#39;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&#39;,
   &#39;“It is our choices, Harry, that show what we truly are, far more than our abilities.”&#39;,
   &#39;“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”&#39;,
   &#39;“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”&#39;,
@@ -491,7 +491,7 @@ Heute werden wir den Code in zwei Aspekten ergänzen:</p>
   &quot;“I have not failed. I&#39;ve just found 10,000 ways that won&#39;t work.”&quot;,
   &quot;“A woman is like a tea bag; you never know how strong it is until it&#39;s in hot water.”&quot;,
   &#39;“A day without sunshine is like, you know, night.”&#39;],
- &#39;Quelle&#39;: [&#39;Albert Einstein&#39;,
+ &#39;Author&#39;: [&#39;Albert Einstein&#39;,
   &#39;J.K. Rowling&#39;,
   &#39;Albert Einstein&#39;,
   &#39;Jane Austen&#39;,
@@ -510,17 +510,7 @@ Heute werden wir den Code in zwei Aspekten ergänzen:</p>
   [&#39;life&#39;, &#39;love&#39;],
   [&#39;edison&#39;, &#39;failure&#39;, &#39;inspirational&#39;, &#39;paraphrased&#39;],
   [&#39;misattributed-eleanor-roosevelt&#39;],
-  [&#39;humor&#39;, &#39;obvious&#39;, &#39;simile&#39;]],
- &#39;URL&#39;: [&#39;https://quotes.toscrape.com/&#39;,
-  &#39;https://quotes.toscrape.com/&#39;,
-  &#39;https://quotes.toscrape.com/&#39;,
-  &#39;https://quotes.toscrape.com/&#39;,
-  &#39;https://quotes.toscrape.com/&#39;,
-  &#39;https://quotes.toscrape.com/&#39;,
-  &#39;https://quotes.toscrape.com/&#39;,
-  &#39;https://quotes.toscrape.com/&#39;,
-  &#39;https://quotes.toscrape.com/&#39;,
-  &#39;https://quotes.toscrape.com/&#39;]}
+  [&#39;humor&#39;, &#39;obvious&#39;, &#39;simile&#39;]]}
 </pre></div>
 </div>
 </div>
@@ -552,10 +542,9 @@ Heute werden wir den Code in zwei Aspekten ergänzen:</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Zitat</th>
-      <th>Quelle</th>
+      <th>Text</th>
+      <th>Author</th>
       <th>Tags</th>
-      <th>URL</th>
     </tr>
   </thead>
   <tbody>
@@ -564,204 +553,157 @@ Heute werden wir den Code in zwei Aspekten ergänzen:</p>
       <td>“The world as we have created it is a process ...</td>
       <td>Albert Einstein</td>
       <td>[change, deep-thoughts, thinking, world]</td>
-      <td>https://quotes.toscrape.com/</td>
     </tr>
     <tr>
       <th>1</th>
       <td>“It is our choices, Harry, that show what we t...</td>
       <td>J.K. Rowling</td>
       <td>[abilities, choices]</td>
-      <td>https://quotes.toscrape.com/</td>
     </tr>
     <tr>
       <th>2</th>
       <td>“There are only two ways to live your life. On...</td>
       <td>Albert Einstein</td>
       <td>[inspirational, life, live, miracle, miracles]</td>
-      <td>https://quotes.toscrape.com/</td>
     </tr>
     <tr>
       <th>3</th>
       <td>“The person, be it gentleman or lady, who has ...</td>
       <td>Jane Austen</td>
       <td>[aliteracy, books, classic, humor]</td>
-      <td>https://quotes.toscrape.com/</td>
     </tr>
     <tr>
       <th>4</th>
       <td>“Imperfection is beauty, madness is genius and...</td>
       <td>Marilyn Monroe</td>
       <td>[be-yourself, inspirational]</td>
-      <td>https://quotes.toscrape.com/</td>
     </tr>
     <tr>
       <th>5</th>
       <td>“Try not to become a man of success. Rather be...</td>
       <td>Albert Einstein</td>
       <td>[adulthood, success, value]</td>
-      <td>https://quotes.toscrape.com/</td>
     </tr>
     <tr>
       <th>6</th>
       <td>“It is better to be hated for what you are tha...</td>
       <td>André Gide</td>
       <td>[life, love]</td>
-      <td>https://quotes.toscrape.com/</td>
     </tr>
     <tr>
       <th>7</th>
       <td>“I have not failed. I've just found 10,000 way...</td>
       <td>Thomas A. Edison</td>
       <td>[edison, failure, inspirational, paraphrased]</td>
-      <td>https://quotes.toscrape.com/</td>
     </tr>
     <tr>
       <th>8</th>
       <td>“A woman is like a tea bag; you never know how...</td>
       <td>Eleanor Roosevelt</td>
       <td>[misattributed-eleanor-roosevelt]</td>
-      <td>https://quotes.toscrape.com/</td>
     </tr>
     <tr>
       <th>9</th>
       <td>“A day without sunshine is like, you know, nig...</td>
       <td>Steve Martin</td>
       <td>[humor, obvious, simile]</td>
-      <td>https://quotes.toscrape.com/</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 <p>Anstelle der Methode .get_text() kann auch das Attribut .text abgerufen werden: Beide geben den Textinhalt des Elements zurück.</p>
-<p>Die Suche mit find() und find_all() produziert bei komplexeren Abfragen aber unübersichtlichen Code, weil wir als Argument zusätzlich die CSS-Klasse des gesuchten Elements angeben müssen. Eine einfachere Möglichkeit, direkt nach der CSS-Klasse selbst zu suchen. Das geht mithilfe der Methoden .select_one() und .select().</p>
-<p>Zum Nachlesen: <a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/index.html?highlight=select#css-selectors">https://beautiful-soup-4.readthedocs.io/en/latest/index.html?highlight=select#css-selectors</a></p>
+<p>Aber was passiert, wenn ein Element nicht gefunden werden kann, beispielsweise, weil für ein Zitat keine Tags angegeben wurden, oder wenn die Angabe der Autor:in fehlt? In diesem Fall würden die Methoden .find() bzw. .find_all() den Wert None zurückgeben. Die Methode .get_text() (oder das Attribut .text) würde dann auf ein Objekt vom Typ NoneType angewandt werden. Aber NoneType-Objekte haben keine Methode .get_text() und auch kein Attribut .text! Der Code würde also eine Fehlermeldung produzieren und die Ausführung abbrechen. Um das zu verhindern, könnten wir zunächst überprüfen, ob tatsächlich ein Element gefunden wurde. Nur, wenn ein Element gefunden wurde, wird der Text extrahiert, im folgenden Beispiel mithilfe des Attributs .text statt der Methode .get_text():</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quotes_divs</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.quote&#39;</span><span class="p">)</span>
-<span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Zitat&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Quelle&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[],</span> <span class="s2">&quot;URL&quot;</span><span class="p">:[]}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quotes</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;quote&#39;</span><span class="p">)</span>
+<span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Text&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Author&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[]}</span>
 
-<span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">quotes_divs</span><span class="p">:</span>
-    <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Zitat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;.text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-    <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Quelle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;.author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">tags</span> <span class="o">=</span> <span class="n">div</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.tags &gt; a&#39;</span><span class="p">)</span> <span class="c1"># findet Kind-Elemente von dem Element mit der Klasse tags:  tags aus der Top Ten Tags-Liste werden nicht gefunden, weil wir bereits in der quote div sind</span>
-    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
-        <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-    <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
-    <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;URL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
-    <span class="n">quotes_dict</span>
-
-<span class="n">quotes_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">quotes_dict</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">:</span>
+    <span class="n">quote_text</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">)</span>
+    <span class="n">quote_author</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;author&#39;</span><span class="p">)</span>
+    <span class="n">quote_tags</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;tag&#39;</span><span class="p">)</span>
+    <span class="n">tags_text</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">quote_tags</span><span class="p">:</span>
+        <span class="n">tags_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">quote_text</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote_text</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">quote_author</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Author&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote_author</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Die Suche mit find() und find_all() produziert bei komplexeren Abfragen aber unübersichtlichen Code, weil wir als Argument zusätzlich die CSS-Klasse des gesuchten Elements angeben müssen. Eine einfachere Möglichkeit, direkt nach der CSS-Klasse selbst zu suchen, sind die Methoden .select_one() und .select().</p>
+<p>Zum Nachlesen: <a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/index.html?highlight=select#css-selectors">https://beautiful-soup-4.readthedocs.io/en/latest/index.html?highlight=select#css-selectors</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quotes_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quotes</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;div.quote&#39;</span><span class="p">)</span>
+<span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Text&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Author&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[]}</span>
+
+<span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">:</span>
+    <span class="n">quote_text</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;span.text&#39;</span><span class="p">)</span> <span class="c1"># oder einfach &#39;.text&#39;</span>
+    <span class="n">quote_author</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;small.author&#39;</span><span class="p">)</span>
+    <span class="n">quote_tags</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;a.tag&#39;</span><span class="p">)</span>
+    <span class="n">tags_text</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">quote_tags</span><span class="p">:</span>
+        <span class="n">tags_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">quote_text</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote_text</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">quote_author</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Author&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote_author</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Suche nach CSS-Selektoren mithilfe der .select_one() und .select() Methoden hat außerdem einen weiteren Vorteil: Sie erlauben, direkt nach Kind- oder Geschwisterelementen eines Elements zu suchen. Bei der Verwendung von .find() und .find_all() hatten wir eine for-Schleife verwendet, um die Suche auf Kindelemente der div-Elemente mit der Klasse ‘quote’ einzuschränken. In manchen Fällen kann die Verwendung von .select() anstelle von .find_all() eine solche for-Schleife ersetzen. In unserem Beispiel würde zur Suche nach Zitattexten und Autor:innennamen beispielsweise keine for-Schleife erfordern:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zitattexte: &#39;div.quote &gt; span.text&#39; findet direkte Kindelemente des div-Elements mit der Klasse &#39;quote&#39;</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;div.quote &gt; span.text&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Zitat</th>
-      <th>Quelle</th>
-      <th>Tags</th>
-      <th>URL</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>“The world as we have created it is a process ...</td>
-      <td>Albert Einstein</td>
-      <td>[change, deep-thoughts, thinking, world]</td>
-      <td>https://quotes.toscrape.com/</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>“It is our choices, Harry, that show what we t...</td>
-      <td>J.K. Rowling</td>
-      <td>[abilities, choices]</td>
-      <td>https://quotes.toscrape.com/</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>“There are only two ways to live your life. On...</td>
-      <td>Albert Einstein</td>
-      <td>[inspirational, life, live, miracle, miracles]</td>
-      <td>https://quotes.toscrape.com/</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>“The person, be it gentleman or lady, who has ...</td>
-      <td>Jane Austen</td>
-      <td>[aliteracy, books, classic, humor]</td>
-      <td>https://quotes.toscrape.com/</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>“Imperfection is beauty, madness is genius and...</td>
-      <td>Marilyn Monroe</td>
-      <td>[be-yourself, inspirational]</td>
-      <td>https://quotes.toscrape.com/</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>“Try not to become a man of success. Rather be...</td>
-      <td>Albert Einstein</td>
-      <td>[adulthood, success, value]</td>
-      <td>https://quotes.toscrape.com/</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>“It is better to be hated for what you are tha...</td>
-      <td>André Gide</td>
-      <td>[life, love]</td>
-      <td>https://quotes.toscrape.com/</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>“I have not failed. I've just found 10,000 way...</td>
-      <td>Thomas A. Edison</td>
-      <td>[edison, failure, inspirational, paraphrased]</td>
-      <td>https://quotes.toscrape.com/</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>“A woman is like a tea bag; you never know how...</td>
-      <td>Eleanor Roosevelt</td>
-      <td>[misattributed-eleanor-roosevelt]</td>
-      <td>https://quotes.toscrape.com/</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>“A day without sunshine is like, you know, nig...</td>
-      <td>Steve Martin</td>
-      <td>[humor, obvious, simile]</td>
-      <td>https://quotes.toscrape.com/</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“It is our choices, Harry, that show what we truly are, far more than our abilities.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“Imperfection is beauty, madness is genius and it&#39;s better to be absolutely ridiculous than absolutely boring.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“Try not to become a man of success. Rather become a man of value.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“It is better to be hated for what you are than to be loved for what you are not.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“I have not failed. I&#39;ve just found 10,000 ways that won&#39;t work.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“A woman is like a tea bag; you never know how strong it is until it&#39;s in hot water.”&lt;/span&gt;,
+ &lt;span class=&quot;text&quot; itemprop=&quot;text&quot;&gt;“A day without sunshine is like, you know, night.”&lt;/span&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Autor:innen: &#39;div.quote small.author&#39; findet alle small-Elemente mit der Klasse &#39;author&#39; innerhalb de des div-Elements mit der Klasse &#39;quote&#39;, auch &quot;Enkelkinder&quot;</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;div.quote small.author&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Albert Einstein&lt;/small&gt;,
+ &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;J.K. Rowling&lt;/small&gt;,
+ &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Albert Einstein&lt;/small&gt;,
+ &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Jane Austen&lt;/small&gt;,
+ &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Marilyn Monroe&lt;/small&gt;,
+ &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Albert Einstein&lt;/small&gt;,
+ &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;André Gide&lt;/small&gt;,
+ &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Thomas A. Edison&lt;/small&gt;,
+ &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Eleanor Roosevelt&lt;/small&gt;,
+ &lt;small class=&quot;author&quot; itemprop=&quot;author&quot;&gt;Steve Martin&lt;/small&gt;]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten">
@@ -790,8 +732,8 @@ Heute werden wir den Code in zwei Aspekten ergänzen:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 201 ms, sys: 16.8 ms, total: 218 ms
-Wall time: 2.7 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 226 ms, sys: 22 ms, total: 248 ms
+Wall time: 2.84 s
 </pre></div>
 </div>
 </div>
@@ -941,8 +883,8 @@ Wall time: 2.7 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 208 ms, sys: 15.8 ms, total: 224 ms
-Wall time: 2.69 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 182 ms, sys: 22.5 ms, total: 205 ms
+Wall time: 2.78 s
 </pre></div>
 </div>
 </div>
@@ -1098,8 +1040,8 @@ Wall time: 2.69 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 283 ms, sys: 18.6 ms, total: 302 ms
-Wall time: 3.25 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 293 ms, sys: 30.1 ms, total: 323 ms
+Wall time: 3.38 s
 </pre></div>
 </div>
 </div>
@@ -1298,8 +1240,8 @@ Die Macher:innen der Seite quotes.toscrape haben sich überlegt, dass auch Seite
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 215 ms, sys: 16.7 ms, total: 232 ms
-Wall time: 3.25 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 213 ms, sys: 23.3 ms, total: 237 ms
+Wall time: 3.34 s
 </pre></div>
 </div>
 </div>
@@ -1451,8 +1393,8 @@ Wall time: 3.25 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 246 ms, sys: 19.2 ms, total: 265 ms
-Wall time: 2.86 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 181 ms, sys: 18.4 ms, total: 200 ms
+Wall time: 2.82 s
 </pre></div>
 </div>
 </div>
@@ -1615,8 +1557,8 @@ Wall time: 2.86 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 241 ms, sys: 17.5 ms, total: 259 ms
-Wall time: 3.29 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 237 ms, sys: 25.4 ms, total: 262 ms
+Wall time: 3.35 s
 </pre></div>
 </div>
 </div>
@@ -1823,8 +1765,8 @@ Wall time: 3.29 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 329 ms, sys: 18 ms, total: 347 ms
-Wall time: 3.45 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 393 ms, sys: 30.2 ms, total: 423 ms
+Wall time: 3.78 s
 </pre></div>
 </div>
 </div>
