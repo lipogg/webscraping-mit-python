@@ -391,7 +391,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="fortsetzung-beautifulsoup">
 <h1><span class="section-number">7.2. </span>Fortsetzung BeautifulSoup<a class="headerlink" href="#fortsetzung-beautifulsoup" title="Permalink to this heading">#</a></h1>
 <p>Letzte Woche haben wir alle Zitate von der ersten Seite der Website <a class="reference external" href="https://quotes.toscrape.com">https://quotes.toscrape.com</a> extrahiert.
-Heute werden wir den Code in zwei Aspekten ergänzen:</p>
+Heute werden wir den Code in drei Aspekten ergänzen:</p>
 <ol class="arabic simple">
 <li><p>Zitate von der ersten Seite mit Metadaten extrahieren</p></li>
 <li><p>Zitate von allen Seiten extrahieren, mit und ohne Metadaten</p></li>
@@ -402,7 +402,6 @@ Heute werden wir den Code in zwei Aspekten ergänzen:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import sys</span>
 <span class="c1">#!conda install --yes --prefix {sys.prefix} memory_profiler</span>
-<span class="c1">#!conda install --yes --prefix {sys.prefix} urllib3</span>
 <span class="c1">#!conda install --yes --prefix {sys.prefix} openpyxl</span>
 </pre></div>
 </div>
@@ -413,7 +412,6 @@ Heute werden wir den Code in zwei Aspekten ergänzen:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlsplit</span> <span class="c1"># brauchen wir nur für die Funktion scrape_all_urls()</span>
 <span class="c1"># %load_ext memory_profiler</span>
 </pre></div>
 </div>
@@ -732,8 +730,8 @@ Heute werden wir den Code in zwei Aspekten ergänzen:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 194 ms, sys: 19.2 ms, total: 213 ms
-Wall time: 1.73 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 190 ms, sys: 14.9 ms, total: 205 ms
+Wall time: 698 ms
 </pre></div>
 </div>
 </div>
@@ -883,8 +881,8 @@ Wall time: 1.73 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 170 ms, sys: 19.2 ms, total: 189 ms
-Wall time: 1.75 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 188 ms, sys: 13.2 ms, total: 201 ms
+Wall time: 648 ms
 </pre></div>
 </div>
 </div>
@@ -1040,8 +1038,8 @@ Wall time: 1.75 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 210 ms, sys: 21.2 ms, total: 231 ms
-Wall time: 2.09 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 248 ms, sys: 14.7 ms, total: 263 ms
+Wall time: 811 ms
 </pre></div>
 </div>
 </div>
@@ -1240,8 +1238,8 @@ Die Macher:innen der Seite quotes.toscrape haben sich überlegt, dass auch Seite
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 178 ms, sys: 17.6 ms, total: 196 ms
-Wall time: 1.99 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 198 ms, sys: 13.7 ms, total: 212 ms
+Wall time: 756 ms
 </pre></div>
 </div>
 </div>
@@ -1357,6 +1355,30 @@ Wall time: 1.99 s
 </div>
 </div>
 </div>
+<p>Anstatt die while-Schleife wie bisher abzubrechen, wenn “No quotes found!” auf der Seite steht, kann auch der Next-Button unten rechts auf der Seite zur Formulierung einer Abbruchbedingung genutzt werden. Den Next-Button gibt es nämlich nur auf Seiten, die auch Zitate enthalten. Wir können also eine while-Schleife konstruieren, die zunächst nur den Inhalt der ersten Seite extrahiert, und anschließend den Inhalt aller Unterseiten, die ein Element mit der Klasse “next” haben. Das Element mit der Klasse “next” hat ein a-Element als Kindelement, dessen Attribut “href” als Wert den relativen Pfad der nächsten Unterseite enthält, also zum Beispiel “/page/2”, “/page/3”, usw. In jedem Schleifendurchlauf wird überprüft, ob die aktuelle Seite ein a-Element enthält, das Kindelement von einem Element mit der Klasse “next” ist. Wenn kein solches Element gefunden wird, dann wird die Schleife mithilfe einer break-Anweisung abgrebrochen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;http://quotes.toscrape.com&quot;</span>
+<span class="n">current_url</span> <span class="o">=</span> <span class="n">base_url</span>
+<span class="n">quotes</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">current_url</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.quote &gt; .text&quot;</span><span class="p">):</span>
+        <span class="n">quotes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="n">next_elem</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.next &gt; a&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">next_elem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">current_url</span> <span class="o">=</span> <span class="n">next_elem</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> <span class="c1"># auf den Wert des Attributs &quot;href&quot; zugreifen</span>
+        <span class="n">current_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">current_url</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="zitate-von-allen-seiten-extrahieren-mit-metadaten">
@@ -1370,7 +1392,7 @@ Wall time: 1.99 s
 
 <span class="n">base_url</span> <span class="o">=</span> <span class="s1">&#39;http://quotes.toscrape.com/page/&#39;</span>
 
-<span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Zitat&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Quelle&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[],</span> <span class="s2">&quot;URL&quot;</span><span class="p">:[]}</span>
+<span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Text&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Author&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[]}</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
     <span class="n">scrape_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -1379,22 +1401,21 @@ Wall time: 1.99 s
 
     <span class="n">quotes_divs</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.quote&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">quotes_divs</span><span class="p">:</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Zitat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span> <span class="c1"># können hier nicht nach css-Klasse suchen, weil es mehrere Elemente mit dem Klassennamen text gibt</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Quelle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.author&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span> <span class="c1">#oder .text</span>
-        <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">tags</span> <span class="o">=</span> <span class="n">div</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.tags &gt; a&quot;</span><span class="p">)</span> <span class="c1"># findet Kind-Elemente von dem Element mit der Klasse tags:  tags aus der Top Ten Tags-Liste werden nicht gefunden, weil wir bereits in der quote div sind</span>
-        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
-            <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;URL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scrape_url</span><span class="p">)</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span> <span class="c1"># oder .text</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Author&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.author&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+        <span class="n">quote_tags</span> <span class="o">=</span> <span class="n">div</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.tags &gt; a&quot;</span><span class="p">)</span> <span class="c1"># findet Kind-Elemente von dem Element mit der Klasse tags:  tags aus der Top Ten Tags-Liste werden nicht gefunden, weil wir bereits in der quote div sind</span>
+        <span class="n">tags_text</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">quote_tags</span><span class="p">:</span>
+            <span class="n">tags_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span>
 
 <span class="n">quotes_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">quotes_dict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 188 ms, sys: 20 ms, total: 208 ms
-Wall time: 1.73 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 215 ms, sys: 12.1 ms, total: 227 ms
+Wall time: 683 ms
 </pre></div>
 </div>
 </div>
@@ -1424,10 +1445,9 @@ Wall time: 1.73 s
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Zitat</th>
-      <th>Quelle</th>
+      <th>Text</th>
+      <th>Author</th>
       <th>Tags</th>
-      <th>URL</th>
     </tr>
   </thead>
   <tbody>
@@ -1436,39 +1456,33 @@ Wall time: 1.73 s
       <td>“The world as we have created it is a process ...</td>
       <td>Albert Einstein</td>
       <td>[change, deep-thoughts, thinking, world]</td>
-      <td>http://quotes.toscrape.com/page/1</td>
     </tr>
     <tr>
       <th>1</th>
       <td>“It is our choices, Harry, that show what we t...</td>
       <td>J.K. Rowling</td>
       <td>[abilities, choices]</td>
-      <td>http://quotes.toscrape.com/page/1</td>
     </tr>
     <tr>
       <th>2</th>
       <td>“There are only two ways to live your life. On...</td>
       <td>Albert Einstein</td>
       <td>[inspirational, life, live, miracle, miracles]</td>
-      <td>http://quotes.toscrape.com/page/1</td>
     </tr>
     <tr>
       <th>3</th>
       <td>“The person, be it gentleman or lady, who has ...</td>
       <td>Jane Austen</td>
       <td>[aliteracy, books, classic, humor]</td>
-      <td>http://quotes.toscrape.com/page/1</td>
     </tr>
     <tr>
       <th>4</th>
       <td>“Imperfection is beauty, madness is genius and...</td>
       <td>Marilyn Monroe</td>
       <td>[be-yourself, inspirational]</td>
-      <td>http://quotes.toscrape.com/page/1</td>
     </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -1478,39 +1492,34 @@ Wall time: 1.73 s
       <td>“You never really understand a person until yo...</td>
       <td>Harper Lee</td>
       <td>[better-life-empathy]</td>
-      <td>http://quotes.toscrape.com/page/10</td>
     </tr>
     <tr>
       <th>96</th>
       <td>“You have to write the book that wants to be w...</td>
       <td>Madeleine L'Engle</td>
       <td>[books, children, difficult, grown-ups, write,...</td>
-      <td>http://quotes.toscrape.com/page/10</td>
     </tr>
     <tr>
       <th>97</th>
       <td>“Never tell the truth to people who are not wo...</td>
       <td>Mark Twain</td>
       <td>[truth]</td>
-      <td>http://quotes.toscrape.com/page/10</td>
     </tr>
     <tr>
       <th>98</th>
       <td>“A person's a person, no matter how small.”</td>
       <td>Dr. Seuss</td>
       <td>[inspirational]</td>
-      <td>http://quotes.toscrape.com/page/10</td>
     </tr>
     <tr>
       <th>99</th>
       <td>“... a mind needs books as a sword needs a whe...</td>
       <td>George R.R. Martin</td>
       <td>[books, mind]</td>
-      <td>http://quotes.toscrape.com/page/10</td>
     </tr>
   </tbody>
 </table>
-<p>100 rows × 4 columns</p>
+<p>100 rows × 3 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -1524,10 +1533,9 @@ Wall time: 1.73 s
 <span class="n">scrape_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">999999</span><span class="p">)</span>
 <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">scrape_url</span><span class="p">)</span>
 <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
-<span class="n">soup</span>
 
 <span class="n">page_no</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Zitat&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Quelle&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[],</span> <span class="s2">&quot;URL&quot;</span><span class="p">:[]}</span>
+<span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Text&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Author&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[]}</span>
 <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;http://quotes.toscrape.com/page/&quot;</span>
 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -1541,14 +1549,13 @@ Wall time: 1.73 s
 
     <span class="n">quote_divs</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.quote&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">quote_divs</span><span class="p">:</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Zitat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span> <span class="c1"># können hier nicht nach css-Klasse suchen, weil es mehrere Elemente mit dem Klassennamen text gibt</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Quelle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.author&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-        <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">tags</span> <span class="o">=</span> <span class="n">div</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.tags &gt; a&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
-            <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;URL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scrape_url</span><span class="p">)</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Author&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.author&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+        <span class="n">quote_tags</span> <span class="o">=</span> <span class="n">div</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.tags &gt; a&quot;</span><span class="p">)</span>
+        <span class="n">tags_text</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">quote_tags</span><span class="p">:</span>
+            <span class="n">tags_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span>
 
     <span class="n">page_no</span> <span class="o">+=</span><span class="mi">1</span>
 
@@ -1557,8 +1564,8 @@ Wall time: 1.73 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 200 ms, sys: 23.1 ms, total: 223 ms
-Wall time: 2.18 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 229 ms, sys: 14.9 ms, total: 244 ms
+Wall time: 795 ms
 </pre></div>
 </div>
 </div>
@@ -1588,10 +1595,9 @@ Wall time: 2.18 s
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Zitat</th>
-      <th>Quelle</th>
+      <th>Text</th>
+      <th>Author</th>
       <th>Tags</th>
-      <th>URL</th>
     </tr>
   </thead>
   <tbody>
@@ -1600,39 +1606,33 @@ Wall time: 2.18 s
       <td>“The world as we have created it is a process ...</td>
       <td>Albert Einstein</td>
       <td>[change, deep-thoughts, thinking, world]</td>
-      <td>http://quotes.toscrape.com/page/1</td>
     </tr>
     <tr>
       <th>1</th>
       <td>“It is our choices, Harry, that show what we t...</td>
       <td>J.K. Rowling</td>
       <td>[abilities, choices]</td>
-      <td>http://quotes.toscrape.com/page/1</td>
     </tr>
     <tr>
       <th>2</th>
       <td>“There are only two ways to live your life. On...</td>
       <td>Albert Einstein</td>
       <td>[inspirational, life, live, miracle, miracles]</td>
-      <td>http://quotes.toscrape.com/page/1</td>
     </tr>
     <tr>
       <th>3</th>
       <td>“The person, be it gentleman or lady, who has ...</td>
       <td>Jane Austen</td>
       <td>[aliteracy, books, classic, humor]</td>
-      <td>http://quotes.toscrape.com/page/1</td>
     </tr>
     <tr>
       <th>4</th>
       <td>“Imperfection is beauty, madness is genius and...</td>
       <td>Marilyn Monroe</td>
       <td>[be-yourself, inspirational]</td>
-      <td>http://quotes.toscrape.com/page/1</td>
     </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -1642,47 +1642,106 @@ Wall time: 2.18 s
       <td>“You never really understand a person until yo...</td>
       <td>Harper Lee</td>
       <td>[better-life-empathy]</td>
-      <td>http://quotes.toscrape.com/page/10</td>
     </tr>
     <tr>
       <th>96</th>
       <td>“You have to write the book that wants to be w...</td>
       <td>Madeleine L'Engle</td>
       <td>[books, children, difficult, grown-ups, write,...</td>
-      <td>http://quotes.toscrape.com/page/10</td>
     </tr>
     <tr>
       <th>97</th>
       <td>“Never tell the truth to people who are not wo...</td>
       <td>Mark Twain</td>
       <td>[truth]</td>
-      <td>http://quotes.toscrape.com/page/10</td>
     </tr>
     <tr>
       <th>98</th>
       <td>“A person's a person, no matter how small.”</td>
       <td>Dr. Seuss</td>
       <td>[inspirational]</td>
-      <td>http://quotes.toscrape.com/page/10</td>
     </tr>
     <tr>
       <th>99</th>
       <td>“... a mind needs books as a sword needs a whe...</td>
       <td>George R.R. Martin</td>
       <td>[books, mind]</td>
-      <td>http://quotes.toscrape.com/page/10</td>
     </tr>
   </tbody>
 </table>
-<p>100 rows × 4 columns</p>
+<p>100 rows × 3 columns</p>
 </div></div></div>
+</div>
+<p>Alternative Lösung, die wieder den Next-Button zur Formulierung der Abbruchbedingung nutzt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;http://quotes.toscrape.com&quot;</span>
+<span class="n">current_url</span> <span class="o">=</span> <span class="n">base_url</span>
+<span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Text&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Author&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[]}</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">current_url</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+
+    <span class="n">quote_divs</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.quote&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">quote_divs</span><span class="p">:</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Author&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.author&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+        <span class="n">quote_tags</span> <span class="o">=</span> <span class="n">div</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.tags &gt; a&quot;</span><span class="p">)</span>
+        <span class="n">tags_text</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">quote_tags</span><span class="p">:</span>
+            <span class="n">tags_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span>
+
+    <span class="n">next_elem</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.next &gt; a&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">next_elem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">next_path</span> <span class="o">=</span> <span class="n">next_elem</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> <span class="c1"># auf den Wert des Attributs &quot;href&quot; zugreifen</span>
+        <span class="n">current_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">next_path</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="n">quotes_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">quotes_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In allen Lösungen haben wir zwei for-Schleifen ineinander verschachtelt, um die Tags zu allen Zitaten als Liste zu extrahieren. Die Schleife <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">tag</span> <span class="pre">in</span> <span class="pre">tags</span> <span class="pre">...</span></code> kann aber auch durch ein etwas übersichtlicheres und effizienteres Konstrukt ersetzt werden, das sich “List Comprehension” nennt. Was das genau ist, lernen wir nächste Stunde. So sieht die while-Schleife mit list comprehension aus:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;http://quotes.toscrape.com&quot;</span>
+<span class="n">current_url</span> <span class="o">=</span> <span class="n">base_url</span>
+<span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Text&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Author&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[]}</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">current_url</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+
+    <span class="n">quote_divs</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.quote&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">quote_divs</span><span class="p">:</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Author&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.author&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+        <span class="n">quote_tags</span> <span class="o">=</span> <span class="n">div</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.tags &gt; a&quot;</span><span class="p">)</span>
+        <span class="n">tags_text</span> <span class="o">=</span> <span class="p">[</span><span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">div</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.tags &gt; a&quot;</span><span class="p">)]</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span>
+
+    <span class="n">next_elem</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.next &gt; a&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">next_elem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">next_path</span> <span class="o">=</span> <span class="n">next_elem</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> <span class="c1"># auf den Wert des Attributs &quot;href&quot; zugreifen</span>
+        <span class="n">current_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">next_path</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="n">quotes_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">quotes_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="losung-mit-funktionen">
 <h3><span class="section-number">7.2.4.3. </span>Lösung mit Funktionen<a class="headerlink" href="#losung-mit-funktionen" title="Permalink to this heading">#</a></h3>
-<p>Bei der Lösung mit der for-Schleife mussten wir die genaue Anzahl von Unterseiten kennen. Bei der Lösung mit while-Schleife mussten wir nicht die Anzahl der Unterseiten kennen, alle Unterseiten mussten allerdings eine ähnliche URL haben, sodass wir in jedem Schleifendurchlauf einfach die Seitenzahl erhöhen konnten, um die URL für die nächste Seite zu generieren.</p>
-<p>Aber was, wenn alle Unterseiten verschiedene URLs haben? Für diesen Fall können wir auf die Funktion <code class="docutils literal notranslate"><span class="pre">urlsplit()</span></code> aus dem Paket urllib3 zurückgreifen. Die Funktion teilt eine URL in ihre Bestandteile auf und gibt ein Tupel-Objekt zurück. Die Bestandteile der URL können als Attribute des Tupel-Objekts abgerufen werden. So können Bestandteile einer URL flexibel ausgetauscht werden.</p>
-<p>Diese Funktion kann auch in Zusammenhang mit einer while-Schleife zum Scrapen von Websites mit Unterseiten, deren Pfade variieren, verwendet werden. Die Lösung mit Funktionsdefinitionen ist nur eine mögliche Lösung:</p>
+<p>Zuletzt wäre auch eine Lösung mithilfe von Funktionsdefinitionen denkbar:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_soup</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
@@ -1701,27 +1760,22 @@ Wall time: 2.18 s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_quotes</span><span class="p">(</span><span class="n">soup</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">quotes_dict</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_quotes</span><span class="p">(</span><span class="n">soup</span><span class="p">,</span> <span class="n">quotes_dict</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Argumente:</span>
 <span class="sd">    `soup` (BeautifulSoup-Objekt): Das BeautifulSoup-Objekt, das den analysierten HTML-Inhalt einer Webseite repräsentiert.</span>
-<span class="sd">    `url` (String): Die URL der Webseite, aus der die Zitate extrahiert werden.</span>
 <span class="sd">    `quotes_dict` (Dictionary): Ein Wörterbuch, das die Zitate enthält.</span>
 <span class="sd">    Rückgabewert:</span>
 <span class="sd">    `quotes_dict` (Dictionary): Das aktualisierte Wörterbuch, das die extrahierten Zitate enthält.</span>
 
 <span class="sd">    Die Funktion extrahiert Zitate, Autor:innen, Tags und URLs aus einem BeautifulSoup-Objekt. Sie wählt dazu bestimmte HTML-Elemente mit den entsprechenden Klassen aus und fügt die extrahierten Informationen in das quotes_dict-Wörterbuch ein, das anschließend zurückgegeben wird.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">quotes_divs</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.quote&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">quotes_divs</span><span class="p">:</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Zitat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Quelle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.author&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-        <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">tags</span> <span class="o">=</span> <span class="n">div</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.tags &gt; a&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
-            <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;URL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">quote_divs</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.quote&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">quote_divs</span><span class="p">:</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Author&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.author&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+        <span class="n">tags_text</span> <span class="o">=</span> <span class="p">[</span><span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">div</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.tags &gt; a&quot;</span><span class="p">)]</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">quotes_dict</span>
 </pre></div>
 </div>
@@ -1740,18 +1794,18 @@ Wall time: 2.18 s
 <span class="sd">    Die Funktion sammelt Zitate von der angegebenen Webseite und allen Unterseiten. Wenn kein quotes_dict-Wörterbuch bereitgestellt wird, wird ein neues Wörterbuch mit leeren Listen erstellt. Das BeautifulSoup-Objekt wird über get_soup() abgerufen und die extract_quotes()-Funktion extrahiert die Zitate und aktualisiert das Wörterbuch. Wenn keine nächste Seite vorhanden ist (bestimmt durch das Fehlen des &quot;.next&quot;-Elements), wird ein Pandas DataFrame (quotes_df) aus dem quotes_dict erstellt und zurückgegeben. Andernfalls wird die URL der nächsten Seite abgerufen und scrape_all_quotes() rekursiv mit der nächsten Seiten-URL und dem aktuellen quotes_dict aufgerufen.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">quotes_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Zitat&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Quelle&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[],</span> <span class="s2">&quot;URL&quot;</span><span class="p">:[]}</span>
+        <span class="n">quotes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Text&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Author&quot;</span><span class="p">:[],</span> <span class="s2">&quot;Tags&quot;</span><span class="p">:[]}</span>
     <span class="n">soup</span> <span class="o">=</span> <span class="n">get_soup</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="n">quotes_dict</span> <span class="o">=</span> <span class="n">extract_quotes</span><span class="p">(</span><span class="n">soup</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">quotes_dict</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">soup</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.next&quot;</span><span class="p">):</span>
+    <span class="n">quotes_dict</span> <span class="o">=</span> <span class="n">extract_quotes</span><span class="p">(</span><span class="n">soup</span><span class="p">,</span> <span class="n">quotes_dict</span><span class="p">)</span>
+    <span class="n">next_elem</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.next &gt; a&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">next_elem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">next_path</span> <span class="o">=</span> <span class="n">next_elem</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> <span class="c1"># auf den Wert des Attributs &quot;href&quot; zugreifen</span>
+        <span class="n">current_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">next_path</span>
+        <span class="k">return</span> <span class="n">scrape_all_quotes</span><span class="p">(</span><span class="n">current_url</span><span class="p">,</span> <span class="n">quotes_dict</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
         <span class="n">quotes_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">quotes_dict</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">quotes_df</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">nextpage</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.next &gt; a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">)</span>
-        <span class="n">url_parts</span> <span class="o">=</span> <span class="n">urlsplit</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-        <span class="n">baseurl</span> <span class="o">=</span> <span class="n">url_parts</span><span class="o">.</span><span class="n">scheme</span> <span class="o">+</span> <span class="s2">&quot;://&quot;</span> <span class="o">+</span> <span class="n">url_parts</span><span class="o">.</span><span class="n">netloc</span>
-        <span class="n">nextpage_url</span> <span class="o">=</span> <span class="n">baseurl</span> <span class="o">+</span> <span class="n">nextpage</span>
-        <span class="k">return</span> <span class="n">scrape_all_quotes</span><span class="p">(</span><span class="n">nextpage_url</span><span class="p">,</span> <span class="n">quotes_dict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1760,20 +1814,22 @@ Wall time: 2.18 s
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># %%memit</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">scrape_all_quotes</span><span class="p">(</span><span class="s2">&quot;https://quotes.toscrape.com&quot;</span><span class="p">)</span>
+
+<span class="c1"># Funktion aufrufen</span>
+<span class="n">quotes_df</span> <span class="o">=</span> <span class="n">scrape_all_quotes</span><span class="p">(</span><span class="s2">&quot;https://quotes.toscrape.com&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 285 ms, sys: 18.9 ms, total: 304 ms
-Wall time: 2.23 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 206 ms, sys: 8.11 ms, total: 215 ms
+Wall time: 543 ms
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quotes_df</span>
 </pre></div>
 </div>
 </div>
@@ -1796,10 +1852,9 @@ Wall time: 2.23 s
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Zitat</th>
-      <th>Quelle</th>
+      <th>Text</th>
+      <th>Author</th>
       <th>Tags</th>
-      <th>URL</th>
     </tr>
   </thead>
   <tbody>
@@ -1808,39 +1863,33 @@ Wall time: 2.23 s
       <td>“The world as we have created it is a process ...</td>
       <td>Albert Einstein</td>
       <td>[change, deep-thoughts, thinking, world]</td>
-      <td>https://quotes.toscrape.com</td>
     </tr>
     <tr>
       <th>1</th>
       <td>“It is our choices, Harry, that show what we t...</td>
       <td>J.K. Rowling</td>
       <td>[abilities, choices]</td>
-      <td>https://quotes.toscrape.com</td>
     </tr>
     <tr>
       <th>2</th>
       <td>“There are only two ways to live your life. On...</td>
       <td>Albert Einstein</td>
       <td>[inspirational, life, live, miracle, miracles]</td>
-      <td>https://quotes.toscrape.com</td>
     </tr>
     <tr>
       <th>3</th>
       <td>“The person, be it gentleman or lady, who has ...</td>
       <td>Jane Austen</td>
       <td>[aliteracy, books, classic, humor]</td>
-      <td>https://quotes.toscrape.com</td>
     </tr>
     <tr>
       <th>4</th>
       <td>“Imperfection is beauty, madness is genius and...</td>
       <td>Marilyn Monroe</td>
       <td>[be-yourself, inspirational]</td>
-      <td>https://quotes.toscrape.com</td>
     </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -1850,68 +1899,46 @@ Wall time: 2.23 s
       <td>“You never really understand a person until yo...</td>
       <td>Harper Lee</td>
       <td>[better-life-empathy]</td>
-      <td>https://quotes.toscrape.com/page/10/</td>
     </tr>
     <tr>
       <th>96</th>
       <td>“You have to write the book that wants to be w...</td>
       <td>Madeleine L'Engle</td>
       <td>[books, children, difficult, grown-ups, write,...</td>
-      <td>https://quotes.toscrape.com/page/10/</td>
     </tr>
     <tr>
       <th>97</th>
       <td>“Never tell the truth to people who are not wo...</td>
       <td>Mark Twain</td>
       <td>[truth]</td>
-      <td>https://quotes.toscrape.com/page/10/</td>
     </tr>
     <tr>
       <th>98</th>
       <td>“A person's a person, no matter how small.”</td>
       <td>Dr. Seuss</td>
       <td>[inspirational]</td>
-      <td>https://quotes.toscrape.com/page/10/</td>
     </tr>
     <tr>
       <th>99</th>
       <td>“... a mind needs books as a sword needs a whe...</td>
       <td>George R.R. Martin</td>
       <td>[books, mind]</td>
-      <td>https://quotes.toscrape.com/page/10/</td>
     </tr>
   </tbody>
 </table>
-<p>100 rows × 4 columns</p>
+<p>100 rows × 3 columns</p>
 </div></div></div>
 </div>
-<p>Die Lösung mit Funktionsdefinitionen ist zwar flexibler, weil wir die Pfade der Unterseiten nicht kennen müssen. Diese Lösung erfodert aber auch etwas mehr Laufzeit als die Lösung mit Schleifen. Die Funktion extract_quotes() können wir aber zumindest noch etwas effizienter machen, indem wir die Schleife <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">tag</span> <span class="pre">in</span> <span class="pre">tags</span> <span class="pre">...</span></code> durch ein etwas effizienteres Konstrukt ersetzten, das sich “List Comprehension” nennt. Was das genau ist, lernen wir nächste Stunde. So sieht die Funktion extract_quotes() mit list comprehension aus:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Funktion extract_quotes() mit list comprehension</span>
-<span class="k">def</span> <span class="nf">extract_quotes</span><span class="p">(</span><span class="n">soup</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">quotes_dict</span><span class="p">):</span>
-    <span class="n">quotes_divs</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.quote&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">quotes_divs</span><span class="p">:</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Zitat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Quelle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">div</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.author&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-        <span class="p">[</span><span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">div</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.tags &gt; a&quot;</span><span class="p">)]</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span>
-        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;URL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">quotes_dict</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In einer vorigen Version dieser Seite wurde das leere <code class="docutils literal notranslate"><span class="pre">quotes_dict</span></code> direkt in der Definition der Funktion <code class="docutils literal notranslate"><span class="pre">scrape_all_quotes()</span></code> als Defaultargument definiert. Dabei hatte ich allerdings eine Verhaltensweise von Python-Funktionen vergessen: Wenn Defaultargumente einen veränderbaren Datentyp haben, werden sie in Python bei einem wiederholten Funktionsaufruf “mitgenommen” und nicht durch den Default-Wert ersetzt. Das heißt, dass bei jedem erneuten Funktionsaufruf der <code class="docutils literal notranslate"><span class="pre">quotes_df</span></code> DataFrame wächst, weil das <code class="docutils literal notranslate"><span class="pre">quotes_dict</span></code> nicht nur die Elemente des aktuellen Funktionsaufrufs, sondern auch die Elemente aller vorhergegangener Funktionsaufurfe enthält. Statt direkt das Dictionary als Defaultargument festzulegen, sollte deswegen lieber zunächst None als Defaultwert festgelegt werden. Das Dictionary kann dann mithilfe einer bedingten Anweisung im Funktionskörper erstellt werden, nämlich genau dann, wenn das <code class="docutils literal notranslate"><span class="pre">quotes_dict</span></code> beim Funktionsaufruf None ist. Das ist nur beim ersten Funktionsaufruf der Fall.</p>
-<p>Mehr zum Umgang mit Defaultargumenten: <a class="reference external" href="https://docs.python-guide.org/writing/gotchas/#mutable-default-arguments">https://docs.python-guide.org/writing/gotchas/#mutable-default-arguments</a></p>
-</div>
+<p>Bei der Definition von Funktionen beim Web Scraping sind einige Dinge zu beachten:</p>
+<p>Die Funktion <code class="docutils literal notranslate"><span class="pre">scrape_all_urls()</span></code> ist so definiert, dass sie die while-Schleife ersetzt. Um das zu erreichen, wurde ein Prinzip angewandt, das sich <strong>Rekursion</strong> nennt. Dabei ruft sich eine Funktion so lange selbst auf, wie eine bestimmte Bedingung erfüllt ist: Als Rückgabewert gibt die Funktion einen erneuten Funktionsaufruf zurück. Wenn die Bedingung nicht mehr erfüllt ist, wird stattdessen der Dataframe <code class="docutils literal notranslate"><span class="pre">quotes_df</span></code> zurückgegeben. Bei jedem erneuten Aufruf der Funktion wird deswegen das <code class="docutils literal notranslate"><span class="pre">quotes_dict</span></code> als zusätzliches Argument übergeben: So kann das Dictionary bei jedem Aufruf der Funktion weiter befüllt werden. Wichtig ist jedoch zu beachten, dass in Python festgelegt ist, wie oft eine Funktion sich selbst aufrufen darf (das heißt dann “maximale Rekursionstiefe”). Wenn die erlaubte Anzahl an Aufrufen überschritten wird, kommt es zu einem schwerwiegenden Fehler, der sich “Stack Overflow” nennt. Bei der Verwendung von Rekursion beim Web Scraping ist also Vorsicht geboten! Zwar sind wir beim Scrapen der Seite <a class="reference external" href="http://quotes.toscrape.com">quotes.toscrape.com</a> noch weit davon entfernt, diese Anzahl zu überschreiten, aber für größere Webscraping-Projekte ist das ein Problem, das berücksichtigt werden muss.</p>
+<p>Mehr Informationen zum Thema Rekursion in Python findet ihr <a class="reference external" href="https://realpython.com/python-recursion/">hier</a>.</p>
+<p>Ein weiterer Aspekt, der bei der Definition von Funktionen zu beachten ist, ist die Verwendung von Defaultargumenten. <strong>Defaultargumente</strong> sind Werte, die bereits in der Funktionsdefinition für einen Parameter angegeben werden. Diese Werte werden automatisch verwendet, wenn beim Funktionsaufruf kein expliziter Wert für das entsprechende Argument angegeben wird. Im ersten Moment würde es vielleicht intuitiv erscheinen, als Defaultargument für die Funktion <code class="docutils literal notranslate"><span class="pre">scrape_all_urls()</span></code> ein leeres Dictionary <code class="docutils literal notranslate"><span class="pre">quotes_dict</span></code> festzulegen, das bei den nachfolgenden Funktionsaufrufen befüllt wird. Allerdings ist das keine gute Idee: Wenn Defaultargumente einen veränderbaren Datentyp haben, werden sie in Python bei einem wiederholten Funktionsaufruf “mitgenommen” und nicht durch den Default-Wert ersetzt. Das heißt, dass bei jedem erneuten Funktionsaufruf der <code class="docutils literal notranslate"><span class="pre">quotes_df</span></code> DataFrame wächst, weil das <code class="docutils literal notranslate"><span class="pre">quotes_dict</span></code> nicht nur die Elemente des aktuellen Funktionsaufrufs, sondern auch die Elemente aller vorhergegangener Funktionsaufurfe enthält. Statt direkt das Dictionary als Defaultargument festzulegen, sollte deswegen lieber zunächst None als Defaultwert festgelegt werden. Das Dictionary kann dann mithilfe einer bedingten Anweisung im Funktionskörper erstellt werden, nämlich genau dann, wenn das <code class="docutils literal notranslate"><span class="pre">quotes_dict</span></code> beim Funktionsaufruf None ist. Das ist nur beim ersten Funktionsaufruf der Fall.</p>
+<p>Mehr Informationen zum Umgang mit Defaultargumenten findet ihr <a class="reference external" href="https://docs.python-guide.org/writing/gotchas/#mutable-default-arguments">hier</a>.</p>
 </section>
 </section>
 <section id="pandas-dataframe-in-exceldatei-schreiben">
 <h2><span class="section-number">7.2.5. </span>Pandas-DataFrame in Exceldatei schreiben<a class="headerlink" href="#pandas-dataframe-in-exceldatei-schreiben" title="Permalink to this heading">#</a></h2>
-<p>Um einen Pandas DataFrame zu speichern, gibt es verschiedene Methoden. Die Methode .to_excel() erlaubt zum Beispiel, einen DataFrame in einer Exceltabelle zu speichern, also in einer Datei mit der Dateiendung .xlsx. Für “speichern” sagt man in diesem Kontext auch “schreiben”: Daten werden in eine Datei geschrieben.</p>
+<p>Zuletzt wollen wir die extrahierten Daten auf unserem Computer abspeichern. Um einen Pandas DataFrame zu speichern, gibt es verschiedene Methoden. Die Methode .to_excel() erlaubt zum Beispiel, einen DataFrame in einer Exceltabelle zu speichern, also in einer Datei mit der Dateiendung .xlsx. Für “speichern” sagt man in diesem Kontext auch “schreiben”: Daten werden in eine Datei geschrieben.</p>
 <p>Die Methode .to_excel() greift unter der Motorhaube auf ein Paket mit dem Namen openpyxl zurück. Diese Paket mussten wir deswegen am Anfang installieren.</p>
 <p>Dokumentation: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html</a></p>
 <div class="cell docutils container">
