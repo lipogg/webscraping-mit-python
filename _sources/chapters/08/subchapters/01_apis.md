@@ -5,10 +5,10 @@
 
 Kurze Erklärung im Videoformat: [https://youtu.be/KLe2lCEy-Xw?t=76](https://youtu.be/KLe2lCEy-Xw?t=76)
 
-API steht für Application Programming Interface, auf Deutsch als "Programmierschnittstelle" übersetzt. 
+API steht für Application Programming Interface, auf Deutsch als "Anwendungsprogrammierschnittstelle" übersetzt. 
 APIs ermöglichen die Kommunikation zwischen Softwaresystemen bzw. Programmen, also die "Maschine-zu-Maschine"-Kommunikation. 
-Entwickler:innen können APIs nutzen, um Funktionen anderer Entwickler:innen in ihren eigenen Code einzubinden. 
-Auch beim Aufruf von Funktionen aus verschiedenen Paketen oder Modulen in Python haben wir bereits Schnittstellen verwendet, um auf vordefinierte Funktionen zuzugreifen, ohne die Implementierungsdetails zu kennen. 
+Entwickler:innen können APIs nutzen, um auf Daten oder Dienste anderer Softwaresysteme zuzugreifen und in ihren eigenen Code einzubinden. 
+Das Konzept kennen wir im Grunde bereits: Auch beim Aufruf von Funktionen aus verschiedenen Bibliotheken oder Modulen in Python haben wir bereits Schnittstellen verwendet, um auf vordefinierte Funktionen zuzugreifen, ohne die Implementierungsdetails zu kennen.
 
 Man kann sich eine API also vielleicht abstrakt wie eine Tür vorstellen, durch die Programme Informationen anfordern oder teilen können. 
 Sie definiert, welche Anfragen gestellt werden können, wie die Antworten aussehen und wie man auf die gewünschten Informationen zugreifen kann. 
