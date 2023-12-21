@@ -41,8 +41,7 @@ Schaubild RESTful API. Bild: https://www.youtube.com/watch?v=-mN3VyJuCjM
 ### Welche Daten können über APIs abgerufen werden? 
 
 Bei der Anfrage einer Website war der Body einer erfolgreichen HTTP-Antwort ein HTML-Dokument als String. 
-Standardmäßig ist der Body einer HTTP-Antwort auf eine Anfrage über eine REST API dagegen ein JSON-String.  
-JSON ist ein Datenformat in menschenlesbarer Textform zum Zweck des Datensaustauschs zwischen Anwendungen.
+Standardmäßig ist der Body einer HTTP-Antwort auf eine Anfrage über eine REST API dagegen ein JSON-String. JSON ist ein Datenformat in menschenlesbarer Textform zum Zweck des Datensaustauschs zwischen Anwendungen.
 Die Syntax einer JSON-Datei sieht in etwa so aus wie ein Python-Dictionary. 
 Während HTML-Strings zur Weiterverarbeitung in BeautifulSoup-Objekte umgewandelt werden können, können JSON-Strings deswegen zur Weiterverarbeitung einfach in Python Dictionaries umgewandelt werden. 
 

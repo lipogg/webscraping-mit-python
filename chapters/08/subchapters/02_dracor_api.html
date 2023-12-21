@@ -468,7 +468,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># api_data[&#39;dramas&#39;]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># api_data[&#39;plays&#39;]</span>
 </pre></div>
 </div>
 </div>
@@ -476,25 +476,24 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zugriff auf das Dictionary erfolgt wie gewohnt</span>
-<span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;dramas&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;author&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;plays&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;authors&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Zugriff auf das Dictionary erfolgt wie gewohnt</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;dramas&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;author&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-
-<span class="ne">KeyError</span>: &#39;dramas&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;(Anonym)&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;dramas&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;plays&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;anonym-das-ehrenmaal-des-patrioten&#39;
 </pre></div>
 </div>
 </div>
@@ -517,35 +516,35 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Entweder mithilfe des Zugriffsoperators $ sofort auf alle Stücke des gewählten Autors zugreifen, hier Goethe</span>
-<span class="n">plays_selected</span> <span class="o">=</span> <span class="p">[</span><span class="n">drama</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">drama</span> <span class="ow">in</span> <span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;dramas&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">drama</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">author</span><span class="p">]</span>
+<span class="n">plays_selected</span> <span class="o">=</span> <span class="p">[</span><span class="n">drama</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">drama</span> <span class="ow">in</span> <span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;plays&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">drama</span><span class="p">[</span><span class="s1">&#39;authors&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">author</span><span class="p">]</span>
 <span class="n">plays_selected</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;goethe-torquato-tasso&#39;,
- &#39;goethe-stella&#39;,
- &#39;goethe-satyros&#39;,
- &#39;goethe-proserpina&#39;,
- &#39;goethe-pandora&#39;,
- &#39;goethe-iphigenie-auf-tauris&#39;,
- &#39;goethe-goetz-von-berlichingen-mit-der-eisernen-hand&#39;,
- &#39;goethe-goetter-helden-und-wieland&#39;,
- &#39;goethe-faust-in-urspruenglicher-gestalt&#39;,
- &#39;goethe-faust-eine-tragoedie&#39;,
- &#39;goethe-faust-der-tragoedie-zweiter-teil&#39;,
- &#39;goethe-erwin-und-elmire&#39;,
- &#39;goethe-egmont&#39;,
- &#39;goethe-die-wette&#39;,
- &#39;goethe-die-natuerliche-tochter&#39;,
- &#39;goethe-die-mitschuldigen&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;goethe-clavigo&#39;,
  &#39;goethe-die-laune-des-verliebten&#39;,
- &#39;goethe-des-epimenides-erwachen&#39;,
- &#39;goethe-der-triumph-der-empfindsamkeit&#39;,
- &#39;goethe-der-grosskophta&#39;,
- &#39;goethe-der-buergergeneral&#39;,
+ &#39;goethe-die-mitschuldigen&#39;,
+ &#39;goethe-die-natuerliche-tochter&#39;,
+ &#39;goethe-die-wette&#39;,
+ &#39;goethe-egmont&#39;,
+ &#39;goethe-faust-der-tragoedie-zweiter-teil&#39;,
+ &#39;goethe-goetz-von-berlichingen-mit-der-eisernen-hand&#39;,
  &#39;goethe-das-jahrmarktsfest-zu-plundersweilern&#39;,
- &#39;goethe-clavigo&#39;]
+ &#39;goethe-der-buergergeneral&#39;,
+ &#39;goethe-der-grosskophta&#39;,
+ &#39;goethe-der-triumph-der-empfindsamkeit&#39;,
+ &#39;goethe-des-epimenides-erwachen&#39;,
+ &#39;goethe-erwin-und-elmire&#39;,
+ &#39;goethe-faust-eine-tragoedie&#39;,
+ &#39;goethe-faust-in-urspruenglicher-gestalt&#39;,
+ &#39;goethe-goetter-helden-und-wieland&#39;,
+ &#39;goethe-proserpina&#39;,
+ &#39;goethe-iphigenie-auf-tauris&#39;,
+ &#39;goethe-pandora&#39;,
+ &#39;goethe-satyros&#39;,
+ &#39;goethe-stella&#39;,
+ &#39;goethe-torquato-tasso&#39;]
 </pre></div>
 </div>
 </div>
@@ -553,7 +552,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... oder erst Namen aller Stücke aus ger-Dracor einer Variable zuweisen...</span>
-<span class="c1"># plays = [drama[&#39;name&#39;] for drama in api_data[&#39;dramas&#39;]]</span>
+<span class="c1"># plays = [drama[&#39;name&#39;] for drama in api_data[&#39;plays&#39;]]</span>
 <span class="c1"># plays  # überprüfen</span>
 </pre></div>
 </div>
@@ -561,36 +560,9 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... und dann nach Stücken des gewählten Autors filtern</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... und dann nach Stücken der gewählten Autor:in filtern</span>
 <span class="c1"># plays_selected = [play for play in plays if author in play]</span>
 <span class="c1"># plays_selected</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;goethe-torquato-tasso&#39;,
- &#39;goethe-stella&#39;,
- &#39;goethe-satyros&#39;,
- &#39;goethe-proserpina&#39;,
- &#39;goethe-pandora&#39;,
- &#39;goethe-iphigenie-auf-tauris&#39;,
- &#39;goethe-goetz-von-berlichingen-mit-der-eisernen-hand&#39;,
- &#39;goethe-goetter-helden-und-wieland&#39;,
- &#39;goethe-faust-in-urspruenglicher-gestalt&#39;,
- &#39;goethe-faust-eine-tragoedie&#39;,
- &#39;goethe-faust-der-tragoedie-zweiter-teil&#39;,
- &#39;goethe-erwin-und-elmire&#39;,
- &#39;goethe-egmont&#39;,
- &#39;goethe-die-wette&#39;,
- &#39;goethe-die-natuerliche-tochter&#39;,
- &#39;goethe-die-mitschuldigen&#39;,
- &#39;goethe-die-laune-des-verliebten&#39;,
- &#39;goethe-des-epimenides-erwachen&#39;,
- &#39;goethe-der-triumph-der-empfindsamkeit&#39;,
- &#39;goethe-der-grosskophta&#39;,
- &#39;goethe-der-buergergeneral&#39;,
- &#39;goethe-das-jahrmarktsfest-zu-plundersweilern&#39;,
- &#39;goethe-clavigo&#39;]
 </pre></div>
 </div>
 </div>
@@ -604,29 +576,29 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://dracor.org/api/corpora/ger/play/goethe-torquato-tasso/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-stella/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-satyros/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-proserpina/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-pandora/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-iphigenie-auf-tauris/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-goetz-von-berlichingen-mit-der-eisernen-hand/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-goetter-helden-und-wieland/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-faust-in-urspruenglicher-gestalt/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-faust-eine-tragoedie/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-faust-der-tragoedie-zweiter-teil/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-erwin-und-elmire/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-egmont/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-die-wette/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-die-natuerliche-tochter/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-die-mitschuldigen/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-die-laune-des-verliebten/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-des-epimenides-erwachen/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-der-triumph-der-empfindsamkeit/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-der-grosskophta/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-der-buergergeneral/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-das-jahrmarktsfest-zu-plundersweilern/spoken-text&#39;,
- &#39;https://dracor.org/api/corpora/ger/play/goethe-clavigo/spoken-text&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-clavigo/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-die-laune-des-verliebten/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-die-mitschuldigen/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-die-natuerliche-tochter/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-die-wette/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-egmont/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-faust-der-tragoedie-zweiter-teil/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-goetz-von-berlichingen-mit-der-eisernen-hand/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-das-jahrmarktsfest-zu-plundersweilern/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-der-buergergeneral/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-der-grosskophta/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-der-triumph-der-empfindsamkeit/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-des-epimenides-erwachen/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-erwin-und-elmire/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-faust-eine-tragoedie/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-faust-in-urspruenglicher-gestalt/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-goetter-helden-und-wieland/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-proserpina/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-iphigenie-auf-tauris/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-pandora/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-satyros/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-stella/spoken-text&#39;,
+ &#39;https://dracor.org/api/v1/corpora/ger/plays/goethe-torquato-tasso/spoken-text&#39;]
 </pre></div>
 </div>
 </div>
@@ -681,6 +653,16 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plays</span> <span class="o">=</span> <span class="p">[</span><span class="n">drama</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">drama</span> <span class="ow">in</span> <span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;dramas&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plays</span> <span class="o">=</span> <span class="p">[</span><span class="n">drama</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">drama</span> <span class="ow">in</span> <span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;dramas&#39;</span><span class="p">]]</span>
+
+<span class="ne">KeyError</span>: &#39;dramas&#39;
 </pre></div>
 </div>
 </div>
