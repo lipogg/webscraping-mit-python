@@ -40,9 +40,11 @@ Schaubild RESTful API. Bild: https://www.youtube.com/watch?v=-mN3VyJuCjM
 
 ### Welche Daten können über APIs abgerufen werden? 
 
-Standardmäßig ist der Body einer HTTP-Antwort auf eine Anfrage über eine REST API ein JSON-String.  
+Bei der Anfrage einer Website war der Body einer erfolgreichen HTTP-Antwort ein HTML-Dokument als String. 
+Standardmäßig ist der Body einer HTTP-Antwort auf eine Anfrage über eine REST API dagegen ein JSON-String.  
 JSON ist ein Datenformat in menschenlesbarer Textform zum Zweck des Datensaustauschs zwischen Anwendungen.
 Die Syntax einer JSON-Datei sieht in etwa so aus wie ein Python-Dictionary. 
+Während HTML-Strings zur Weiterverarbeitung in BeautifulSoup-Objekte umgewandelt werden können, können JSON-Strings deswegen zur Weiterverarbeitung einfach in Python Dictionaries umgewandelt werden. 
 
 RESTful APIs können aber auch so konfiguriert werden, dass sie Daten direkt in anderen Formaten zurückgeben, zum Beispiel als Plaintext oder Bilddateien. 
 Die genaue Konfiguration und das unterstützte Spektrum an Antwortformaten hängen von der konkreten Implementierung der API ab.
@@ -94,6 +96,11 @@ https://github.com/dracor-org/dracor-api
 https://exist-db.org/exist/apps/doc/devguide_rest
 https://stackoverflow.com/questions/48123867/open-api-vs-rest-api-difference
 
+Archive
+- Internet Archive: https://archive.org/developers/index-apis.html
+https://blog.archive.org/2013/07/04/metadata-api/
+- Archives Portal Europe: https://deprecated.archivesportaleurope.net/information-api
+
 Bibliotheken: 
 - Münchener DigitalisierungsZentrum: https://digitale-sammlungen.de/de/schnittstellen
 - Staatsbibliothek Berlin: https://lab.sbb.berlin/dc/ 
@@ -101,11 +108,6 @@ https://gist.github.com/cneud/ba595b0d70413c952d64154646f560cf
 - HathiTrust: https://www.hathitrust.org/data 
 https://www.hathitrust.org/data_api
 - Deutsche Digitale Bibliothek: https://pro.deutsche-digitale-bibliothek.de/daten-nutzen/schnittstellen
-
-Archive
-- Internet Archive: https://archive.org/developers/index-apis.html
-https://blog.archive.org/2013/07/04/metadata-api/
-- Archives Portal Europe: https://deprecated.archivesportaleurope.net/information-api
 - LOC (s.u.)
 
 LOC APIs
@@ -119,7 +121,7 @@ Und Streaming Services: https://www.loc.gov/apis/micro-services/streaming-servic
 
 
 LOC Collections
-- American Archive of Public Broadcasting APIhttps://github.com/WGBH-MLA/AAPB2#api
+- American Archive of Public Broadcasting API: https://github.com/WGBH-MLA/AAPB2#api
 - Digital Collections: Audio Recordings: https://www.loc.gov/collections/?fa=original-format:sound+recording
 - American English Dialect Recordings: https://www.loc.gov/collections/american-english-dialect-recordings-from-the-center-for-applied-linguistics/
 

@@ -413,28 +413,30 @@ Die meist verwendete Ansatz zum Entwerfen von dieser Art von Web-API nennt sich 
 APIs, die nach diesem Ansatz implementiert sind, nennt man auch RESTful APIs.
 RESTful APIs nutzen zur Kommunikation zwischen Client und Server das HTTP-Protokoll.
 Da REST APIs HTTP verwenden, können bei der Abfrage von Ressourcen über RESTful APIs ebenfalls die HTTP-Methode GET verwendet werden.</p>
-<figure class="align-default" id="id170">
+<figure class="align-default" id="id171">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/rest_api.png"><img alt="RESTful API Schaubild" class="bg-transparent" src="../../../_images/rest_api.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Schaubild RESTful API. Bild: <a class="reference external" href="https://www.youtube.com/watch?v=-mN3VyJuCjM">https://www.youtube.com/watch?v=-mN3VyJuCjM</a></span><a class="headerlink" href="#id170" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Schaubild RESTful API. Bild: <a class="reference external" href="https://www.youtube.com/watch?v=-mN3VyJuCjM">https://www.youtube.com/watch?v=-mN3VyJuCjM</a></span><a class="headerlink" href="#id171" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="welche-daten-konnen-uber-apis-abgerufen-werden">
 <h2><span class="section-number">8.1.3. </span>Welche Daten können über APIs abgerufen werden?<a class="headerlink" href="#welche-daten-konnen-uber-apis-abgerufen-werden" title="Permalink to this heading">#</a></h2>
-<p>Standardmäßig ist der Body einer HTTP-Antwort auf eine Anfrage über eine REST API ein JSON-String.<br />
+<p>Bei der Anfrage einer Website war der Body einer erfolgreichen HTTP-Antwort ein HTML-Dokument als String.
+Standardmäßig ist der Body einer HTTP-Antwort auf eine Anfrage über eine REST API dagegen ein JSON-String.<br />
 JSON ist ein Datenformat in menschenlesbarer Textform zum Zweck des Datensaustauschs zwischen Anwendungen.
-Die Syntax einer JSON-Datei sieht in etwa so aus wie ein Python-Dictionary.</p>
+Die Syntax einer JSON-Datei sieht in etwa so aus wie ein Python-Dictionary.
+Während HTML-Strings zur Weiterverarbeitung in BeautifulSoup-Objekte umgewandelt werden können, können JSON-Strings deswegen zur Weiterverarbeitung einfach in Python Dictionaries umgewandelt werden.</p>
 <p>RESTful APIs können aber auch so konfiguriert werden, dass sie Daten direkt in anderen Formaten zurückgeben, zum Beispiel als Plaintext oder Bilddateien.
 Die genaue Konfiguration und das unterstützte Spektrum an Antwortformaten hängen von der konkreten Implementierung der API ab.</p>
 <p>Zur Abfrage einer Ressource wird dabei in der HTTP-Anfrage eine URI (= Uniform Resource Identifier), also in dem Fall ein Pfad zu einer konkreten Ressource auf einem Server, angegeben.
 Diese URIs nennen sich dann auch Endpunkte oder “Endpoints”.</p>
 <p>Ein Unternehmen kann zum Beispiel über eine öffentliche API mithilfe verschiedener URIs verschiedene Arten von Daten bereitstellen.
 Im Beispiel unten wird eine Auflistung aller alle Nutzer:innen eines sozialen Netzwerks im JSON-Format als Antwort auf die HTTP-Anfrage zurückgegeben, aber es sind auch zwei weitere Endpunkte abgebildet: Eine Auflistung aller Posts der Nutzer:innen sowie Daten zu deren Follower:innen.</p>
-<figure class="align-default" id="id171">
+<figure class="align-default" id="id172">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/rest_api_3.png"><img alt="RESTful API Schaubild" class="bg-transparent" src="../../../_images/rest_api_3.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Schaubild Beispielabfrage über eine RESTful API. Bild: <a class="reference external" href="https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc">Alexander Barge</a></span><a class="headerlink" href="#id171" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Schaubild Beispielabfrage über eine RESTful API. Bild: <a class="reference external" href="https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc">Alexander Barge</a></span><a class="headerlink" href="#id172" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -478,6 +480,12 @@ Tutorial: How to Use the Guardian’s API: <a class="reference external" href="h
 <a class="reference external" href="https://exist-db.org/exist/apps/doc/devguide_rest">https://exist-db.org/exist/apps/doc/devguide_rest</a>
 <a class="reference external" href="https://stackoverflow.com/questions/48123867/open-api-vs-rest-api-difference">https://stackoverflow.com/questions/48123867/open-api-vs-rest-api-difference</a></p></li>
 </ul>
+<p>Archive</p>
+<ul class="simple">
+<li><p>Internet Archive: <a class="reference external" href="https://archive.org/developers/index-apis.html">https://archive.org/developers/index-apis.html</a>
+<a class="reference external" href="https://blog.archive.org/2013/07/04/metadata-api/">https://blog.archive.org/2013/07/04/metadata-api/</a></p></li>
+<li><p>Archives Portal Europe: <a class="reference external" href="https://deprecated.archivesportaleurope.net/information-api">https://deprecated.archivesportaleurope.net/information-api</a></p></li>
+</ul>
 <p>Bibliotheken:</p>
 <ul class="simple">
 <li><p>Münchener DigitalisierungsZentrum: <a class="reference external" href="https://digitale-sammlungen.de/de/schnittstellen">https://digitale-sammlungen.de/de/schnittstellen</a></p></li>
@@ -486,12 +494,6 @@ Tutorial: How to Use the Guardian’s API: <a class="reference external" href="h
 <li><p>HathiTrust: <a class="reference external" href="https://www.hathitrust.org/data">https://www.hathitrust.org/data</a>
 <a class="reference external" href="https://www.hathitrust.org/data_api">https://www.hathitrust.org/data_api</a></p></li>
 <li><p>Deutsche Digitale Bibliothek: <a class="reference external" href="https://pro.deutsche-digitale-bibliothek.de/daten-nutzen/schnittstellen">https://pro.deutsche-digitale-bibliothek.de/daten-nutzen/schnittstellen</a></p></li>
-</ul>
-<p>Archive</p>
-<ul class="simple">
-<li><p>Internet Archive: <a class="reference external" href="https://archive.org/developers/index-apis.html">https://archive.org/developers/index-apis.html</a>
-<a class="reference external" href="https://blog.archive.org/2013/07/04/metadata-api/">https://blog.archive.org/2013/07/04/metadata-api/</a></p></li>
-<li><p>Archives Portal Europe: <a class="reference external" href="https://deprecated.archivesportaleurope.net/information-api">https://deprecated.archivesportaleurope.net/information-api</a></p></li>
 <li><p>LOC (s.u.)</p></li>
 </ul>
 <p>LOC APIs</p>
@@ -506,7 +508,7 @@ Und Streaming Services: <a class="reference external" href="https://www.loc.gov/
 </ul>
 <p>LOC Collections</p>
 <ul class="simple">
-<li><p>American Archive of Public Broadcasting APIhttps://github.com/WGBH-MLA/AAPB2#api</p></li>
+<li><p>American Archive of Public Broadcasting API: <a class="github reference external" href="https://github.com/WGBH-MLA/AAPB2#api">WGBH-MLA/AAPB2</a></p></li>
 <li><p>Digital Collections: Audio Recordings: <a class="reference external" href="https://www.loc.gov/collections/?fa=original-format:sound+recording">https://www.loc.gov/collections/?fa=original-format:sound+recording</a></p></li>
 <li><p>American English Dialect Recordings: <a class="reference external" href="https://www.loc.gov/collections/american-english-dialect-recordings-from-the-center-for-applied-linguistics/">https://www.loc.gov/collections/american-english-dialect-recordings-from-the-center-for-applied-linguistics/</a></p></li>
 </ul>
