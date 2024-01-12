@@ -560,7 +560,7 @@ Es gibt laut <a class="reference external" href="https://chroniclingamerica.loc.
 <span class="c1">#     ocr_text = item[&quot;ocr_eng&quot;]</span>
 <span class="c1">#     title = item[&quot;title&quot;]</span>
 <span class="c1">#     date = item[&quot;date&quot;]</span>
-<span class="c1">#     with open(f&quot;{title}_{date}.txt&quot;, &quot;w&quot;) as file:</span>
+<span class="c1">#     with open(f&quot;{title}_{date}.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:</span>
 <span class="c1">#         file.write(ocr_text)</span>
 </pre></div>
 </div>
@@ -599,7 +599,7 @@ Als Beispiel rufen wir die Seite <a class="reference external" href="https://chr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1683
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1689
 </pre></div>
 </div>
 </div>
@@ -620,7 +620,7 @@ Als Beispiel rufen wir die Seite <a class="reference external" href="https://chr
 <span class="c1">#         ocr_text = item[&quot;ocr_eng&quot;]</span>
 <span class="c1">#         title = item[&quot;title&quot;]</span>
 <span class="c1">#         date = item[&quot;date&quot;]</span>
-<span class="c1">#         with open(f&quot;{title}_{date}.txt&quot;, &quot;w&quot;) as file:</span>
+<span class="c1">#         with open(f&quot;{title}_{date}.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:</span>
 <span class="c1">#             file.write(ocr_text)</span>
 </pre></div>
 </div>
