@@ -426,18 +426,18 @@ document.write(`
 <h3><span class="section-number">9.3.1.1. </span>Methode 1: Button klicken<a class="headerlink" href="#methode-1-button-klicken" title="Permalink to this heading">#</a></h3>
 <p>Zum Simulieren des Mausklicks auf einen Button gibt es wiederum zwei Möglichkeiten. In jedem Fall muss zunächst das HTML-Element, das zur Darstellung des Buttons verwendet wird, gesucht werden.</p>
 <p>Um das Element zu suchen, verwenden wir als erstes wieder die Browser-Entwicklertools: Mit Rechtsklick auf den Button und Auswahl von “Inspect” wird der Quelltext der Seite automatisch an der richtigen Stelle in den Entwicklertools geöffnet. Häufig wird nicht exakt das gesuchte Element markiert, sondern ein Kind- oder Elternelement. Das richtige Element heißt &lt;button&gt;:</p>
-<figure class="align-default" id="id144">
+<figure class="align-default" id="id180">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_1.png"><img alt="Airbnb Beispiel 1" class="bg-transparent" src="../../../_images/beispiel_airbnb_1.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.9 </span><span class="caption-text">Button-Element mithilfe der Entwicklertools suchen.</span><a class="headerlink" href="#id144" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.9 </span><span class="caption-text">Button-Element mithilfe der Entwicklertools suchen.</span><a class="headerlink" href="#id180" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Welches Attribut identifiziert das button-Element eindeutig? Das button-Element hat ein “class”-Attribut, das allerdings eine sehr lange Zeichenkette als Wert hat. Das kann vorkommen, wenn mehrere CSS-Klassen zur Identifizierung eines HTML-Elements verwendet werden. Verschiedene Klassen werden dabei durch ein Leerzeichen getrennt. Das Leerzeichen verursacht aber bei der Suche mit By.CLASS_NAME ein Problem und führt dazu, dass der Code eine Fehlermeldung produziert. Bei einer so langen Zeichenkette wäre das manuelle Ersetzen der Leerzeichen durch Punkte hier jedoch keine gute Lösung.
 Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die erste CSS-Klasse oder nur einige wenige Klassen eindeutig definiert wird. Das können wir überprüfen, in dem wir in den Entwicklertools mit der Tastenkombination <code class="docutils literal notranslate"><span class="pre">STRG</span> <span class="pre">+</span> <span class="pre">F</span></code> nach der ersten CSS-Klasse suchen. Es zeigt sich: Der Close-Button ist nicht der Einzige, der diese CSS-Klasse hat; sondern es gibt sehr viele Elemente mit dieser Klasse:</p>
-<figure class="align-default" id="id145">
+<figure class="align-default" id="id181">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_2.png"><img alt="Airbnb Beispiel 2" class="bg-transparent" src="../../../_images/beispiel_airbnb_2.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.10 </span><span class="caption-text">Suche nach CSS-Klasse mit STRG + F.</span><a class="headerlink" href="#id145" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.10 </span><span class="caption-text">Suche nach CSS-Klasse mit STRG + F.</span><a class="headerlink" href="#id181" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wir können also das Button-Element nicht eindeutig über die gewählte CSS-Klasse addressieren. Wir könnten jetzt natürlich verschiedene Kombinationen von CSS-Klassen ausprobieren, aber das Button-Element hat noch ein weiteres Attribut, über das das Button-Element etwas einfacher addressiert werden kann: Das Attribut  aria-label mit dem Wert “Close”. Wir verwenden stattdessen dieses Attribut für die Suche und definieren dazu einen sogenannten XPATH-Ausdruck. XPATH ist eine Pfadbeschreibungssprache, mit der HTML-Elemente anhand ihrer Hierarchie, Attributen, Textinhalten und weiteren Eigenschaften lokalisiert werden können. So können wir zum Beispiel den Button mit dem XPATH-Ausdruck <code class="docutils literal notranslate"><span class="pre">//button[&#64;aria-label='Close']</span></code> auswählen. Dieser Ausdruck sucht nach einem Element mit den Namen button (<code class="docutils literal notranslate"><span class="pre">button</span></code>), irgendwo im HTML-Baum (<code class="docutils literal notranslate"><span class="pre">//</span></code>), das ein Attribut  <code class="docutils literal notranslate"><span class="pre">aria-label</span></code> mit dem Wert <code class="docutils literal notranslate"><span class="pre">'Close'</span></code> hat (<code class="docutils literal notranslate"><span class="pre">[&#64;aria-label='Close']</span></code>). Einen Überblick über verschiedene Möglichkeiten, in Selenium nach Elementen zu suchen, findet ihr <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/locators/#traditional-locators">hier</a>.</p>
@@ -502,10 +502,10 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 <section id="scrollvorgang-simulieren-und-seiteninhalte-laden">
 <h2><span class="section-number">9.3.2. </span>Scrollvorgang simulieren und Seiteninhalte laden<a class="headerlink" href="#scrollvorgang-simulieren-und-seiteninhalte-laden" title="Permalink to this heading">#</a></h2>
 <p>Nachdem das Popup-Fenster geschlossen ist, muss zum Seitenende gescrollt werden, wo sich der “Show more” Button befindet. Wir sollten zunächst überprüfen, ob der Button bereits beim Aufruf der Seite geladen wird. Dazu können wir manuell zum Seitenende scrollen, mit Rechtsklick und Inspect den “Show more”-Button in den Entwicklertools anzeigen lassen, und die CSS-Klassen in die Zwischenablage kopieren, also den gesamten String “l1ovpqvx…dir-ltr”.</p>
-<figure class="align-default" id="id146">
+<figure class="align-default" id="id182">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_3.png"><img alt="Airbnb Beispiel 3" class="bg-transparent" src="../../../_images/beispiel_airbnb_3.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.11 </span><span class="caption-text">Button-Element in den Entwicklertools.</span><a class="headerlink" href="#id146" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.11 </span><span class="caption-text">Button-Element in den Entwicklertools.</span><a class="headerlink" href="#id182" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Anschließend laden wir die Seite neu, schließen das Popup-Fenster, und suchen in den Entwicklertools wird mit STRG-F nach dem String. Die Suche sollte keine Ergebnisse liefern. Wenn wir jedoch zum Seitenende scrollen und erneut nach dem String suchen, wird das Element nun gefunden und die Suche liefert ein Ergebnis. Das bedeutet: Die Seiteninhalte werden auf der airbnb.com-Startseite erst dann geladen, wenn sie sich im aktuellen Anzeigebereich befinden. Diesen Umstand können wir auch überprüfen, indem wir mit Selenium mit <code class="docutils literal notranslate"><span class="pre">.find_element()</span></code> nach dem Button mit suchen: Die Suche produziert die Fehlermeldung “NoSuchElementException”. Um die restlichen Unterkünfte auf der Startseite sowie den “Show more” Button zu laden, müssen wir also zunächt bis zum Seitenende scrollen.</p>
@@ -545,10 +545,10 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 <p>Aber Achtung: <code class="docutils literal notranslate"><span class="pre">.innerHeight</span></code> ist die Höhe inklusive der Scrollleiste, die Höhe ohne die Scrolleiste wird mit <code class="docutils literal notranslate"><span class="pre">.clientHeight</span></code> angegeben. Für unser Beispiel ist auch der Wert für <code class="docutils literal notranslate"><span class="pre">.innerHeight</span></code> geeignet, aber je nach Anwendungsfall kann es ratsam sein, beim Scrollen etwas präziser vorzugehen und die Eigenschaft <code class="docutils literal notranslate"><span class="pre">.clientHeight</span></code> zu verwenden. Mehr dazu <a class="reference external" href="https://javascript.info/size-and-scroll-window">hier</a>.</p>
 </div>
 <p>Den Zusammenhang zwischen den verschiedenen Objekteigenschaften und ihre Bedeutung für Abbruchbedingung der while-Schleife lässt sich vielleicht ungefähr so veranschaulichen:</p>
-<figure class="align-default" id="id147">
+<figure class="align-default" id="id183">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/javascript_attributes.png"><img alt="JavaScript Attribute" class="bg-transparent" src="../../../_images/javascript_attributes.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.12 </span><span class="caption-text">Veranschaulichung der JavaScript-Objekteigenschaften zur Formulierung der Abbruchbedingung.</span><a class="headerlink" href="#id147" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.12 </span><span class="caption-text">Veranschaulichung der JavaScript-Objekteigenschaften zur Formulierung der Abbruchbedingung.</span><a class="headerlink" href="#id183" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wenn das Seitenende erreicht ist und die while-Schleife terminiert, kann der Mausklick auf den “Show more”-Button simuliert werden. Anschließend sollte wieder ein paar Sekunden gewartet werden, damit die neuen Inhalte laden können.</p>
@@ -590,10 +590,10 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 </div>
 </div>
 <p>Wenn die Schleife terminiert, ist der gesamte Seiteninhalt durchscrollt und gerendert. Anschließend können wieder die Ortsangaben extrahiert werden: find_elements() findet jetzt nicht nur die ersten 20 Suchergebnisse, sondern alle Ergebnisse. Hierzu können wir wieder entweder das class-Attribut verwenden und die CSS-Klassen abkürzen, oder wir formulieren einen XPATH-Ausdruck zur Suche nach einem anderen Attribut, beispielsweise das Attribut <code class="docutils literal notranslate"><span class="pre">data-testid</span></code>:</p>
-<figure class="align-default" id="id148">
+<figure class="align-default" id="id184">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_4.png"><img alt="Airbnb Beispiel 4" class="bg-transparent" src="../../../_images/beispiel_airbnb_4.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.13 </span><span class="caption-text">Unterkunft in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id148" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.13 </span><span class="caption-text">Unterkunft in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id184" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -620,10 +620,21 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 <h2><span class="section-number">9.3.3. </span>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
+<li id="id154"><p>JavaScript-BOM-Tutorial. 2023. URL: <a class="reference external" href="https://www.webtechnologien.com/advanced-tutorials/javascript-bom/">https://www.webtechnologien.com/advanced-tutorials/javascript-bom/</a>.</p></li>
 <li id="id143"><p>David Shivaji. How to Scroll using Selenium in Python. 2021. URL: <a class="reference external" href="https://davidshivaji.medium.com/how-to-scroll-using-selenium-in-python-ad1eba1e9bca">https://davidshivaji.medium.com/how-to-scroll-using-selenium-in-python-ad1eba1e9bca</a>.</p></li>
 <li id="id142"><p>Kuan Wei. Using Python and Selenium to Scrape Infinite Scroll Web Pages. 2020. URL: <a class="reference external" href="https://medium.com/analytics-vidhya/using-python-and-selenium-to-scrape-infinite-scroll-web-pages-825d12c24ec7">https://medium.com/analytics-vidhya/using-python-and-selenium-to-scrape-infinite-scroll-web-pages-825d12c24ec7</a>.</p></li>
+<li id="id150"><p>MDN Contributors. Element: scrollHeight Property. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight">https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight</a>.</p></li>
+<li id="id153"><p>MDN Contributors. JavaScript: return. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return?retiredLocale=de">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return?retiredLocale=de</a>.</p></li>
+<li id="id151"><p>MDN Contributors. Window: innerHeight Property. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight">https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight</a>.</p></li>
+<li id="id148"><p>MDN Contributors. Window: scrollBy() Method. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy">https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy</a>.</p></li>
+<li id="id149"><p>MDN Contributors. Window: scrollY Property. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY">https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY</a>.</p></li>
+<li id="id146"><p>Pylenium. Driver Commands: execute_script. 2023. URL: <a class="reference external" href="https://docs.pylenium.io/driver-commands/browser/execute_script">https://docs.pylenium.io/driver-commands/browser/execute_script</a>.</p></li>
 <li id="id139"><p>Selenium 4 Documentation. Interacting with Web Elements. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/interactions/">https://www.selenium.dev/documentation/webdriver/elements/interactions/</a>.</p></li>
 <li id="id140"><p>Selenium 4 Documentation. Keyboard Actions. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/">https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/</a>.</p></li>
+<li id="id144"><p>Selenium 4 Documentation. Locator Strategies: Traditional Locators. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/locators/#traditional-locators">https://www.selenium.dev/documentation/webdriver/elements/locators/#traditional-locators</a>.</p></li>
+<li id="id147"><p>Selenium 4 Documentation. Mouse Actions: Offset from Element. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/actions_api/mouse/#offset-from-element">https://www.selenium.dev/documentation/webdriver/actions_api/mouse/#offset-from-element</a>.</p></li>
+<li id="id145"><p>Selenium 4 Documentation. Working with Windows and Tabs: Execute Script. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/interactions/windows/#execute-script">https://www.selenium.dev/documentation/webdriver/interactions/windows/#execute-script</a>.</p></li>
+<li id="id152"><p>The Modern JavaScript Tutorial. Window Sizes and Scrolling. 2024. URL: <a class="reference external" href="https://javascript.info/size-and-scroll-window">https://javascript.info/size-and-scroll-window</a>.</p></li>
 </ol>
 </div>
 </section>
