@@ -91,12 +91,12 @@ sections:
       title: Einstieg Selenium
     - file: chapters/09/subchapters/03_fortsetzung_selenium.ipynb
       title: Fortsetzung Selenium
-#- file: chapters/10/10_intro
-#  title: Tipps und Tricks
-#  sections:
-#    - file: chapters/10/subchapters/01_fetch_xhr.ipynb
-#      title: Selenium ist kein Hammer
-#    - file: chapters/10/subchapters/02_sessions_cookies.ipynb
-#      title: Sessions und Cookies
-#    - file: chapters/10/subchapters/03_tipps_tricks.ipynb
-#      title: Weitere Tipps und Tricks
+- file: chapters/10/10_intro
+  title: Tipps und Tricks
+  sections:
+    - file: chapters/10/subchapters/01_fetch_xhr.ipynb
+      title: Selenium ist kein Hammer
+    - file: chapters/10/subchapters/02_sessions_cookies.ipynb
+      title: Sessions und Cookies
+    - file: chapters/10/subchapters/03_tipps_tricks.ipynb
+      title: Weitere Tipps und Tricks
