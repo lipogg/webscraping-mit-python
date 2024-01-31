@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/09/subchapters/03_fortsetzung_selenium';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="10. Tipps und Tricks" href="../../10/10_intro.html" />
     <link rel="prev" title="9.2. Einstieg Selenium" href="02_einstieg_selenium.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -211,6 +212,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02_einstieg_selenium.html">9.2. Einstieg Selenium</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">9.3. Fortsetzung Selenium</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../10/10_intro.html">10. Tipps und Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/01_fetch_xhr.html">10.1. Selenium ist kein Hammer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/02_sessions_cookies.html">10.2. Sessions und Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/03_tipps_tricks.html">10.3. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
 </ul>
@@ -380,7 +387,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scrollvorgang-simulieren-und-seiteninhalte-laden">9.3.2. Scrollvorgang simulieren und Seiteninhalte laden</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.3.3. Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-benutzen-und-tastatureingabe-simulieren">9.3.3. Suche benutzen und Tastatureingabe simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.3.4. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -616,8 +624,121 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 </div>
 <p>Zum Abschluss möchte ich noch auf <a class="reference external" href="https://davidshivaji.medium.com/how-to-scroll-using-selenium-in-python-ad1eba1e9bca">diesen vierten Ansatz zum Scrollen mithilfe von Selenium von David Shivaji</a> verweisen. Überlegt selbst: Welche Vor-/Nachteile hat dieser Ansatz? Welche Parameter werden dabei verwendet?</p>
 </section>
+<section id="suche-benutzen-und-tastatureingabe-simulieren">
+<h2><span class="section-number">9.3.3. </span>Suche benutzen und Tastatureingabe simulieren<a class="headerlink" href="#suche-benutzen-und-tastatureingabe-simulieren" title="Permalink to this heading">#</a></h2>
+<p>Bisher haben wir die Ortsangaben zu Unterkünften extrahiert, die zufällig auf der Startseite angezeigt wurden. Meistens interessieren wir uns aber für ganz bestimmte Daten, zum Beispiel nur Unterkünfte in Berlin zu einem bestimmten Zeitpunkt. Als nächstes sehen wir uns also an, wie mithilfe von Selenium die Suchmaske auf <a class="reference external" href="http://airbnb.com">airbnb.com</a> verwendet werden kann und wie eine Tastatureingabe getätigt werden kann.</p>
+<p>Zunächst starten wir wieder den Webdriver und senden eine Anfrage für die Seite <a class="reference external" href="https://www.airbnb.com/">https://www.airbnb.com/</a> und schließen das Popup-Fenster. Beachtet allerdings, dass wir ein zusätzliches Modul importieren, das wir später zur Simulation der Tastatureingabe benötigen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium import webdriver</span>
+<span class="c1"># from selenium.webdriver.common.by import By</span>
+<span class="c1"># from selenium.webdriver.common.keys import Keys</span>
+<span class="c1"># import time</span>
+
+<span class="c1"># driver = webdriver.Chrome()</span>
+<span class="c1"># driver.get(&quot;https://www.airbnb.com/&quot;)</span>
+<span class="c1"># time.sleep(5)</span>
+
+<span class="c1"># # Popup-Fenster wegklicken</span>
+<span class="c1"># close_button = driver.find_element(By.XPATH, &quot;//button[@aria-label=&#39;Close&#39;]&quot;)</span>
+<span class="c1"># driver.execute_script(&quot;arguments[0].click();&quot;, close_button)</span>
+<span class="c1"># time.sleep(5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Als nächstes wollen wir nach Unterkünften in Berlin suchen. Dazu führen wir die Suche wieder zuerst in unserem regulären Chrome Browser aus, um herauszufinden, mit welchen Bestandteilen des User Interfaces bei der Suche interagiert werden muss. Als erstes geben wir “Berlin” in das Suchfeld ein. Im regulären Chrome-Browser können wir, wieder mithilfe der Entwicklertools, feststellen, dass das Suchfeld über ein HTML-input-Element dargestellt wird:</p>
+<figure class="align-default" id="id185">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_5.png"><img alt="Airbnb Beispiel 5" class="bg-transparent" src="../../../_images/beispiel_airbnb_5.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.14 </span><span class="caption-text">Suchfeld in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id185" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Um einen Suchbegriff eingeben zu können, muss das input-Element zunächst gefunden werden. In diesem Fall hat das gesuchte HTML-Element nicht nur ein Attribut class, sondern auch ein Attribut id mit dem Wert, “bigsearch-query-location-input”, welches erlaubt, das Element eindeutig zu identifizieren. Zur Suche können wir nun entweder <code class="docutils literal notranslate"><span class="pre">.find_element(By.ID,</span> <span class="pre">“id_des_elements”)</span></code> oder <code class="docutils literal notranslate"><span class="pre">.find_element(By.XPATH,</span> <span class="pre">“xpath_ausdruck”)</span></code> verwenden. XPath habt ihr bereits in der letzten Woche etwas kennengelernt. Wenn ihr euch unsicher seid, wie der XPath-Ausdruck formuliert sein muss, könnt ihr aber in diesem Fall die Entwicklertools zur Hilfe nehmen: Der XPath-Ausdruck, der den Pfad zu dem gesuchten Element beschreibt, kann ganz einfach mit Rechtsklick auf ein Element und die Option Copy -&gt; Copy XPath kopiert werden:</p>
+<figure class="align-default" id="id186">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_6.png"><img alt="Airbnb Beispiel 6" class="bg-transparent" src="../../../_images/beispiel_airbnb_6.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.15 </span><span class="caption-text">XPath zum gesuchten Element kopieren.</span><a class="headerlink" href="#id186" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Der XPath zum gesuchten input-Element ist <code class="docutils literal notranslate"><span class="pre">//*[&#64;id=”bigsearch-query-location-input”]</span></code>. Das * steht für ein beliebiges HTML-Element, aber wir können auch den Namen des HTML-Elements einsetzen, um bei vielen XPath-Ausdrücken den Überblick zu behalten:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Input-Element finden, in das die Suchbgegriffe eingegeben werden können</span>
+<span class="c1"># suchfeld = driver.find_element(By.XPATH, &quot;//input[@id=&#39;bigsearch-query-location-input&#39;]&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Beachtet, dass im Code oben die inneren Anführungszeichen angepasst wurden, um sie von den doppelten äußeren Anführungszeichen zu unterscheiden. Das ist unbedingt notwendig, weil sonst der XPath-Ausdruck nicht richtig interpretiert werden kann.</p>
+<p>Wenn das Element gefunden wurde, kann es mithilfe der Methode <code class="docutils literal notranslate"><span class="pre">.send_keys()</span></code> zur Eingabe eines Suchbegriffs addressiert werden. Die Suche muss anschließend noch durch Betätigung der Enter-Taste bestätigt werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Suchbegriff eingeben</span>
+<span class="c1"># suchfeld.send_keys(&quot;Berlin&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Suche muss anschließend noch durch Betätigung der Enter-Taste bestätigt werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Tasteneingabe ENTER</span>
+<span class="c1"># suchfeld.send_keys(Keys.ENTER)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Durch Bestätigung der Suche mit Enter wird automatisch ein Fenster zur Auswahl eines Reisetermins geöffnet. Hier wollen wir die Option “flexible” auswählen. Dazu müssen wir zunächst wieder das gesuchte Element identifizieren:</p>
+<figure class="align-default" id="id187">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_7.png"><img alt="Airbnb Beispiel 7" class="bg-transparent" src="../../../_images/beispiel_airbnb_7.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.16 </span><span class="caption-text">Button “flexible” untersuchen.</span><a class="headerlink" href="#id187" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Das gesuchte HTML-Element hat wieder eine ID, über die es eindeutig identifiziert werden kann. Diesmal verwenden wir <code class="docutils literal notranslate"><span class="pre">.find_element(By.ID,</span> <span class="pre">“id_des_elements”)</span></code>, damit ihr diese Verwendung der find_element-Methode auch einmal gesehen habt. Die Id könnt ihr einfach aus den Browser-Entwicklertools mit Doppelklick auf das Id-Attribut kopieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Zeit aussuchen: Flexible</span>
+<span class="c1"># driver.find_element(By.ID, &quot;tab--tabs--2&quot;).click()</span>
+<span class="c1"># time.sleep(1)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zuletzt müssen wir unsere Suche noch mit Klick auf den Suchbutton bestätigen. In diesem Fall wird über Rechtsklick auf den Suchbutton und Auswahl der Option “Inspect” allerdings wieder nicht ganz das richtige Element gefunden: Gefunden wird das span-Element mit dem Attribut class=”t1dqvypu atm_9s_1ulexfb …”; gesucht haben wir aber eigentlich den gesamten Suchbutton, also das button-Element mit dem Attribut data-testid=”structured-search-input-search-button”. Bei der Verwendung von “Inspect” ist also immer Mitdenken erforderlich, denn nicht immer wird ganz genau das Element getroffen, das gesucht wird.</p>
+<figure class="align-default" id="id188">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_8.png"><img alt="Airbnb Beispiel 8" class="bg-transparent" src="../../../_images/beispiel_airbnb_8.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.17 </span><span class="caption-text">Suchbutton untersuchen.</span><a class="headerlink" href="#id188" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Jetzt können wir den Mausklick auf den Suchbutton simulieren:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Auf den Suchbutton klicken: Suche bestätigen</span>
+<span class="c1"># driver.find_element(By.XPATH, &quot;//button[@data-testid=&#39;structured-search-input-search-button&#39;]&quot;).click()</span>
+<span class="c1"># time.sleep(10)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zuallerletzt führen wir wieder den Code aus der letzten Stunde aus, um alle Ortsangaben von den ersten 20 vorgeladenen Suchergebnissen zu extrahieren, und beenden die Session:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Orte extrahieren</span>
+<span class="c1"># unterkuenfte = driver.find_elements(By.XPATH, &quot;//div[@data-testid=&#39;listing-card-title&#39;]&quot;)</span>
+<span class="c1"># unterkuenfte_berlin = [unterkunft.text for unterkunft in unterkuenfte]</span>
+
+<span class="c1"># # Sitzung schließen</span>
+<span class="c1"># driver.quit()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="quellen">
-<h2><span class="section-number">9.3.3. </span>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.3.4. </span>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
 <li id="id154"><p>JavaScript-BOM-Tutorial. 2023. URL: <a class="reference external" href="https://www.webtechnologien.com/advanced-tutorials/javascript-bom/">https://www.webtechnologien.com/advanced-tutorials/javascript-bom/</a>.</p></li>
@@ -677,6 +798,15 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
         <p class="prev-next-title"><span class="section-number">9.2. </span>Einstieg Selenium</p>
       </div>
     </a>
+    <a class="right-next"
+       href="../../10/10_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Tipps und Tricks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -698,7 +828,8 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scrollvorgang-simulieren-und-seiteninhalte-laden">9.3.2. Scrollvorgang simulieren und Seiteninhalte laden</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.3.3. Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-benutzen-und-tastatureingabe-simulieren">9.3.3. Suche benutzen und Tastatureingabe simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.3.4. Quellen</a></li>
 </ul>
   </nav></div>
 

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Selenium ist kein Hammer &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>10.1. Selenium ist kein Hammer &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -65,6 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/10/subchapters/01_fetch_xhr';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="10.2. Sessions und Cookies" href="02_sessions_cookies.html" />
+    <link rel="prev" title="10. Tipps und Tricks" href="../10_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -155,7 +157,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -210,6 +212,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/02_einstieg_selenium.html">9.2. Einstieg Selenium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../10_intro.html">10. Tipps und Tricks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.1. Selenium ist kein Hammer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_sessions_cookies.html">10.2. Sessions und Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_tipps_tricks.html">10.3. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
 </ul>
@@ -373,7 +381,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">10.1.1. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -386,12 +394,12 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="selenium-ist-kein-hammer">
-<h1>Selenium ist kein Hammer<a class="headerlink" href="#selenium-ist-kein-hammer" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">10.1. </span>Selenium ist kein Hammer<a class="headerlink" href="#selenium-ist-kein-hammer" title="Permalink to this heading">#</a></h1>
 <p>Bei der Entscheidung für die richtige Webscraping-Strategie lohnt es sich, das folgende Zitat im Hinterkopf zu behalten:</p>
 <figure class="align-default" id="id180">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/maslows_hammer.jpeg"><img alt="Maslows Hammer" class="bg-transparent" src="../../../_images/maslows_hammer.jpeg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-text">Selenium ist kein Hammer. Quelle: <a class="reference external" href="https://alvistor.com/maslows-hammer-the-all-in-one-productivity-tool/">https://alvistor.com/maslows-hammer-the-all-in-one-productivity-tool/</a></span><a class="headerlink" href="#id180" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.1 </span><span class="caption-text">Selenium ist kein Hammer. Quelle: <a class="reference external" href="https://alvistor.com/maslows-hammer-the-all-in-one-productivity-tool/">https://alvistor.com/maslows-hammer-the-all-in-one-productivity-tool/</a></span><a class="headerlink" href="#id180" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Im Abschnitt “Statisch vs. Dynamisch?” habt ihr bereits gesehen, dass es viele verschiedene Rendering-Verfahren gibt. Ihr habt außerdem am Beispiel von <a class="reference external" href="http://readthedocs.org">readthedocs.org</a> und <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a> gesehen, dass serverseitig dynamisch generierte Inhalte manchmal direkt mithilfe einer API abgefragt werden können, ohne, dass überhaupt BeautifulSoup oder Selenium zum Einsatz kommen müssen: Im Fall von <a class="reference external" href="http://readthedocs.org">readthedocs.org</a> konnte die URL, die bei der manuellen Verwendung der Suchmaske im Browserfenster angezeigt wird, direkt für eine HTTP GET-Anfrage verwendet werden. Im Fall von <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a> musste die Abfrage dagegen über ein php-Formular mithilfe der HTTP POST-Methode gestellt werden.</p>
@@ -399,14 +407,14 @@ document.write(`
 <figure class="align-default" id="id181">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/tagesschau_network.png"><img alt="Tagesschau Beispiel" class="bg-transparent" src="../../../_images/tagesschau_network.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Ansicht der Fetch/XHR-Anfragen in den Browser-Entwicklertools.</span><a class="headerlink" href="#id181" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.2 </span><span class="caption-text">Ansicht der Fetch/XHR-Anfragen in den Browser-Entwicklertools.</span><a class="headerlink" href="#id181" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Die gesuchte Anfrage hat den Namen search?searchText=klimawandel. Durch Mausklick auf den Namen der Anfrage öffnen sich weitere Informationen zu der gestellten Anfrage. Unter “Initiator” können wir beispielsweise nachlesen, welche JavaScript-Datei die XHR-Anfrage veranlasst hat. Diese Information ist für uns allerdings nicht weiter wichtig. Um die XHR-Anfrage zu simulieren, müssen wir nur die Abfrage-URL ermitteln, und die Abfrage-URL findet sich unter “Headers”:</p>
 <figure class="align-default" id="id182">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/tagesschau_requesturl.png"><img alt="Tagesschau Beispiel" class="bg-transparent" src="../../../_images/tagesschau_requesturl.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Ermittlung des Abfrage-URL für die XHR-Anfrage</span><a class="headerlink" href="#id182" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.3 </span><span class="caption-text">Ermittlung des Abfrage-URL für die XHR-Anfrage</span><a class="headerlink" href="#id182" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Mit dieser URL können wir eine ganz simple HTTP GET-Anfrage stellen. Da die Ergebnisse im JSON-Format zurückgegeben werden, können wir die Suchergebnisse als Python Dictionary darstellen:</p>
@@ -424,11 +432,11 @@ document.write(`
 <figure class="align-default" id="id183">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/nabu_gartenvoegel.png"><img alt="Tagesschau Beispiel" class="bg-transparent" src="../../../_images/nabu_gartenvoegel.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">XHR-Anfragen zur Abfrage von Daten für die Gartenvogel-Karte.</span><a class="headerlink" href="#id183" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.4 </span><span class="caption-text">XHR-Anfragen zur Abfrage von Daten für die Gartenvogel-Karte.</span><a class="headerlink" href="#id183" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">10.1.1. </span>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
 <li id="id157"><p>Vrijraj Singh. Fetch API: A Modern Replacement for XMLHttpRequest. 2019. URL: <a class="reference external" href="https://medium.com/codingurukul/fetch-api-a-modern-replacement-for-xmlhttprequest-c24ced9ff8d3">https://medium.com/codingurukul/fetch-api-a-modern-replacement-for-xmlhttprequest-c24ced9ff8d3</a>.</p></li>
@@ -467,6 +475,24 @@ document.write(`
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../10_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Tipps und Tricks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_sessions_cookies.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10.2. </span>Sessions und Cookies</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -482,7 +508,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">10.1.1. Quellen</a></li>
 </ul>
   </nav></div>
 
