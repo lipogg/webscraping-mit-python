@@ -100,3 +100,8 @@ sections:
       title: Sessions und Cookies
     - file: chapters/10/subchapters/03_tipps_tricks.ipynb
       title: Weitere Tipps und Tricks
+- file: chapters/11/11_intro
+  title: Pandas (Exkurs)
+  sections:
+    - file: chapters/11/subchapters/01_pandas.ipynb
+      title: Daten bereinigen mit Pandas
