@@ -1,0 +1,736 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>11.1. Daten bereinigen mit Pandas &#8212; Webscraping für Geisteswissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/11/subchapters/01_pandas';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="11. Pandas (Exkurs)" href="../11_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Webscraping mit Python für Geisteswissenschaften
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/03_semesterplan.html">1.3. Semesterplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/04_lernziele.html">1.4. Lernziele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/05_organisation.html">1.5. Organisatorisches</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/02_intro.html">2. Python I</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_jupyterlite.html">2.1. JupyterLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_style.html">2.2. Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_hilfe.html">2.3. Hilfe!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/02_grundbegriffe.html">2.4. Grundbegriffe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/03_datentypen.html">2.5. Einfache Datentypen, Strings und Operatoren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/04_variablen.html">2.6. Variablen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03/03_intro.html">3. Python II</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03/subchapters/01_datentypen.html">3.1. Zusammengesetzte Datentypen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/subchapters/02_kontrollstrukturen.html">3.2. Kontrollstrukturen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04/04_intro.html">4. Python III</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04/subchapters/01_funktionen.html">4.1. Funktionen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04/subchapters/02_pakete.html">4.2. Pakete</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../05/05_intro.html">5. Installation und Setup</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05/subchapters/01_vorbereitung.html">5.1. Vorbereitung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/subchapters/02_installation_setup.html">5.2. Installation und Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06/06_intro.html">6. Einstieg Webscraping</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/01_rechtliches.html">6.1. Der rechtliche Rahmen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/02_html.html">6.2. HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/03_css.html">6.3. CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/04_http.html">6.4. Client, Server, HTTP</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07/07_intro.html">7. Statische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07/subchapters/01_einstieg_beautifulsoup.html">7.1. Einstieg BeautifulSoup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07/subchapters/02_fortsetzung_beautifulsoup.html">7.2. Fortsetzung BeautifulSoup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../08/08_intro.html">8. APIs (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/01_apis.html">8.1. APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/02_dracor_api.html">8.2. Beispiel DraCor-API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/03_loc_api.html">8.3. Beispiel LOC-API</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../09/09_intro.html">9. Dynamische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/02_einstieg_selenium.html">9.2. Einstieg Selenium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../10/10_intro.html">10. Tipps und Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/01_fetch_xhr.html">10.1. Selenium ist kein Hammer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/02_sessions_cookies.html">10.2. Sessions und Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/03_tipps_tricks.html">10.3. Weitere Tipps und Tricks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../11_intro.html">11. Pandas (Exkurs)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">11.1. Daten bereinigen mit Pandas</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/lipogg/webscraping-mit-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/11/subchapters/01_pandas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Daten bereinigen mit Pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einstieg-pandas">11.1.1. Einstieg Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-pinterest">11.1.2. Beispiel Pinterest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">11.1.3. Quellen</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="daten-bereinigen-mit-pandas">
+<h1><span class="section-number">11.1. </span>Daten bereinigen mit Pandas<a class="headerlink" href="#daten-bereinigen-mit-pandas" title="Permalink to this heading">#</a></h1>
+<p>Bisher haben wir uns nur der Beschaffung von Daten beschäftigt. Die extrahierten Daten haben wir meist als Pandas Dataframe dargestellt und gespeichert; oder wir haben extrahierte Texte direkt als Plaintextdateien gespeichert. In diesem Kapitel werden wir etwas tiefer in Pandas einsteigen und anhand eines Beispiels einige typische Datenbereinigungs- und -transformationsschritte kennenlernen.</p>
+<section id="einstieg-pandas">
+<h2><span class="section-number">11.1.1. </span>Einstieg Pandas<a class="headerlink" href="#einstieg-pandas" title="Permalink to this heading">#</a></h2>
+<p>Lest euch zunächst die beiden Anleitungen “What kind of data does pandas handle?” und “How do I select a subset of a DataFrame?” auf der Seite <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html">Getting Started Tutorials </a> durch.</p>
+<p>Ruft anschließend dieses <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">Pandas Cheatsheet</a> auf und beantwortet mithilfe der Tutorial-Seiten und des Cheat Sheets die folgenden Fragen:</p>
+<ul class="simple">
+<li><p>Wie hängen Pandas Dataframe- und Series-Objekte zusammen?</p></li>
+<li><p>Was ist der Unterschied zwischen den Methoden <code class="docutils literal notranslate"><span class="pre">.loc()</span></code>, <code class="docutils literal notranslate"><span class="pre">.iloc()</span></code>, <code class="docutils literal notranslate"><span class="pre">.at()</span></code> und <code class="docutils literal notranslate"><span class="pre">.iat()</span></code>?</p></li>
+</ul>
+</section>
+<section id="beispiel-pinterest">
+<h2><span class="section-number">11.1.2. </span>Beispiel Pinterest<a class="headerlink" href="#beispiel-pinterest" title="Permalink to this heading">#</a></h2>
+<p>In der Praxisaufgabe auf dem Übungsblatt 12 solltet ihr die Links zu Tierfotos von der Seite <a class="reference external" href="https://www.pinterest.com/ideas/animals/925056443165/">https://www.pinterest.com/ideas/animals/925056443165/</a> extrahieren. In diesem Beispiel scrapen wir nicht die Links zu den Fotos, sondern Kommentare zu den einzelnen Fotos zusammen mit den Usernamen von Kommentator:innen. Anschließend werden wir den Pandas Dataframe mit den extrahierten Daten bereinigen und bearbeiten. Zunächst passen wir den Code aus der Übungsaufgabe so an, dass anstelle der Links zu den Fotos selbst die URLs der Fotoseiten extrahiert und als Set gespeichert werden. Wir verwenden hier ein Set, damit die Duplikate, welche während des Scrollens aufgrund des Ladeverhaltens der Pinterestseite (s. Übungsblatt) entstehen, automatisch entfernt werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium import webdriver</span>
+<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
+<span class="c1"># from selenium.webdriver.common.by import By</span>
+<span class="c1"># import pandas as pd</span>
+<span class="c1"># import time</span>
+
+<span class="c1"># driver = webdriver.Chrome()</span>
+<span class="c1"># driver.get(&quot;https://www.pinterest.com/ideas/animals/925056443165/&quot;)</span>
+<span class="c1"># time.sleep(5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scroll_pause_time = 3 # Drei Sekunde pausieren</span>
+<span class="c1"># window_inner_height = driver.execute_script(&quot;return window.innerHeight;&quot;)</span>
+<span class="c1"># i = 1</span>
+<span class="c1"># tiere_links = set()</span>
+
+<span class="c1"># while True:</span>
+
+<span class="c1">#     # Um die Höhe eines Browserfensters scrollen</span>
+<span class="c1">#     driver.execute_script(f&quot;window.scrollTo(0, {window_inner_height}*{i});&quot;)</span>
+<span class="c1">#     i += 1</span>
+<span class="c1">#     # Kurze Zeit warten, damit die Seite nach jedem Scroll-Vorgang laden kann</span>
+<span class="c1">#     time.sleep(scroll_pause_time)</span>
+
+<span class="c1">#     # Daten extrahieren</span>
+<span class="c1">#     tiere = driver.find_elements(By.CLASS_NAME, &quot;Wk9.CCY.S9z.ho-.kVc.xQ4&quot;)</span>
+<span class="c1">#     for tier in tiere:</span>
+<span class="c1">#         pin_link = tier.get_attribute(&quot;href&quot;)</span>
+<span class="c1">#         tiere_links.add(pin_link)</span>
+
+<span class="c1">#     # Scroll-Höhe nach dem Scrollen aktualisieren, da sich die Scroll-Höhe nach dem Scrollen der Seite ändern kann</span>
+<span class="c1">#     scroll_height = driver.execute_script(&quot;return document.body.scrollHeight;&quot;)</span>
+
+<span class="c1">#     # Schleife beenden, wenn die Höhe, zu der wir scrollen müssen, größer ist als die gesamte Scroll-Höhe</span>
+<span class="c1">#     if (window_inner_height) * i &gt; scroll_height:</span>
+<span class="c1">#         break</span>
+
+<span class="c1"># time.sleep(5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tiere_links # Überprüfen</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Anschließend werden von allen Tierfotoseiten die Kommentare sowie die Usernamen der Kommentator:innen extrahiert. Diese Daten speichern wir zusammen mit der URL zur Tierfotoseite zunächst als Python Dictionary, das wir zuletzt in einen Pandas Dataframe umwandeln:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Leeres Dictionary für die Kommentare anlegen</span>
+<span class="c1"># comments_dict = {&quot;link&quot;:[], &quot;commentator&quot;:[], &quot;comment&quot;:[]}</span>
+
+<span class="c1"># for link in list(tiere_links)[1:4]: # erste drei Links</span>
+<span class="c1">#     driver.get(link)</span>
+<span class="c1">#     time.sleep(5)</span>
+
+<span class="c1">#     comment_elems = driver.find_elements(By.XPATH, &quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/span/div/span/span[3]&quot;)</span>
+<span class="c1">#     commentator_elems = driver.find_elements(By.XPATH, &quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/span/div/span/span[2]/a&quot;)</span>
+
+<span class="c1">#     if len(comment_elems) &gt; 0: # oder len(commentator_elems); das ist egal</span>
+<span class="c1">#         comments = [comment.text for comment in comment_elems]</span>
+<span class="c1">#         commentators = [commentator.get_attribute(&quot;href&quot;) for commentator in commentator_elems]</span>
+
+<span class="c1">#     comments_dict[&quot;link&quot;].extend([link]*len(comments)) # [link] erstellt eine Liste mit einem Element</span>
+<span class="c1">#     comments_dict[&quot;comment&quot;].extend(comments)</span>
+<span class="c1">#     comments_dict[&quot;commentator&quot;].extend(commentators)</span>
+
+<span class="c1"># driver.quit()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># comments_df = pd.DataFrame.from_dict(comments_dict)</span>
+<span class="c1"># comments_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eine kurze Durchsicht der extrahierten Daten zeigt, dass nicht alle Kommentare extrahiert wurden, sondern nur die Kommentare, die beim Aufruf einer Tierfotoseite sichtbar sind. Für unsere Zwecke reichen uns aber diese Kommentare. Wir haben bisher außerdem nur Kommentare von den ersten drei Tierfotoseiten extrahiert, sodass der Dataframe überschaubar ist. Bei sehr großen Dataframes kann es sinnvoll sein, sich nicht den gesamten Dataframe ausgeben zu lassen, sondern nur eine bestimmte Anzahl von Zeilen. Dazu können die Pandas Dataframe-Methoden <code class="docutils literal notranslate"><span class="pre">.tail()</span></code> und <code class="docutils literal notranslate"><span class="pre">.head()</span></code> verwendet werden, oder eine Slicing-Operation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># comments_df.head(10) # erste 10 Zeilen</span>
+<span class="c1"># comments_df.tail(5) # erste 10 Zeilen</span>
+<span class="c1"># comments_df.iloc[4:12] # Zeilen 4-11</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zeilen können auch mithilfe einer logischen Abfrage ausgewählt werden, zum Beispiel:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Die Spalte commentator benennen wir allerdings erst später in commentator_id um (s.u.)</span>
+<span class="c1"># comments_df.loc[comments_df[&quot;commentator_id&quot;] == 5] # Zeilen mit commentator_id == 5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es können auch einzelne Spalten oder nur bestimmte Spalten ausgewählt werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Spalten commentator bis comment</span>
+<span class="c1"># comments_df.loc[:, &quot;commentator&quot;:&quot;comment&quot;]</span>
+
+<span class="c1"># # Zugriff auf einzelne Spalte</span>
+<span class="c1"># comments_df[&quot;comment&quot;]</span>
+<span class="c1"># comments_df.comment</span>
+<span class="c1"># comments_df.loc[:, &quot;comment&quot;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Durchsicht des Dataframes zeigt, dass für einige Zellen in der Spalte comment leer zu sein scheinen. Die Kommentare sind immer dann leer, wenn ein:e User:in ein Bild als Kommentar geposted hat anstelle eines Textkommentars. Tatsächlich sind diese Zellen in unserem Dataframe aber nicht leer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type(comments_df.at[1, &quot;comment&quot;])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um das Fehlen der Werte in unserem Dataframe zu kennzeichnen, können wir den speziellen Wert <code class="docutils literal notranslate"><span class="pre">NA</span></code> einsetzen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Leere Zeichenketten durch NA Werte ersetzen</span>
+<span class="c1"># df = df.replace(&#39;&#39;, pd.NA, inplace=True)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der Wert NA markiert das <strong>Fehlen von Werten</strong>. In Pandas können Zellen, die fehlende Werte enthalten, mithilfe spezieller Methoden abgefragt und bearbeitet werden, so zum Beispiel <code class="docutils literal notranslate"><span class="pre">.isna()</span></code> oder <code class="docutils literal notranslate"><span class="pre">.fillna()</span></code>.  <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/missing_data.html">Hier</a> könnt ihr nachlesen, wie fehlende Werte in Pandas-Datenobjekten allgemein behandelt werden.</p>
+<p>Als nächstes überprüfen wir eine Zelle mit einem Kommentar und überprüfen, ob sich am Anfang oder Ende der Zeichenkette überflüssige Leerzeichen befinden. Das ist bei der Extraktion von Textinhalt häufig der Fall und diesem Problem sind wir im Laufe des Semesters schon einige Male begegnet (z.B. beim Scrapen der Tags auf der Quotes to Scrape-Seite).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># comments_df.at[2, &quot;comment&quot;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tatsächlich befindet sich am Anfang des ausgewählten Kommentars <strong>überflüssige Leerzeichen</strong>. Leerzeichen am Anfang und Ende einer einzelnen Zeichenkette können mithilfe der Methode <code class="docutils literal notranslate"><span class="pre">.strip()</span></code> entfernt werden; die Methode <code class="docutils literal notranslate"><span class="pre">.str.strip()</span></code> entfernt Leerzeichen für jedes Element in einer Spalte eines Pandas-Dataframes (bzw. in einem Pandas Series-Objekt, denn das ist ja dasselbe):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Leading und trailing Whitespace entfernen mit strip()</span>
+<span class="c1"># comments_df.at[2, &quot;comment&quot;].strip()</span>
+<span class="c1"># # Leading und trailing whitespace für eine gesamte Spalte entfernen mit .str.strip()</span>
+<span class="c1"># comments_df[&#39;comment&#39;] = comments_df[&#39;comment&#39;].str.strip()</span>
+<span class="c1"># comments_df.at[2, &quot;comment&quot;] # überprüfen: hat es geklappt?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ein weiterer Verarbeitungsschritt ist die <strong>Anonymisierung der Kommentator:innen</strong>. Je nach Forschungsfrage interessiert nicht unbedingt, welche:r Nutzer:in welchen Kommentar verfasst hat, sondern beispielsweise nur, ob dieselben Kommentator:innen ähnliche Bilder kommentieren oder wie viele Kommentare jede:r Nutzer:in hinterlassen hat. Dazu müssen wir die konkreten Nutzernamen nicht kennen; es reicht aus, wenn wir jeder Kommentator:in eine einzigartige ID zuteilen und in unserer Analyse nur die IDs betrachten. Durch das Anonymisieren der Nutzernamen gehen wir außerdem sicher, dass unser Datensatz nicht die Auflagen zur Speicherung und Nutzung personenbezogener Daten laut DSGVO verletzt (siehe Abschnitt 6.1).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Die factorize()-Methode ordnet jedem einzigartigen Wert eine eindeutige ID zu und gibt ein Tupel zurück, das aus einem Array von Labels und einem Index mit den einzigartigen Werten besteht.</span>
+<span class="c1"># labels, unique = pd.factorize(comments_df[&#39;commentator&#39;])</span>
+<span class="c1"># labels</span>
+<span class="c1"># unique</span>
+
+<span class="c1"># comments_df[&#39;commentator&#39;] = labels</span>
+<span class="c1"># comments_df # überprüfen</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nachdem wir die Nutzernamen durch IDs ersetzt haben, passt der Spaltenname commentator nicht mehr so ganz und wir werden die <strong>Spalte umbenennen</strong>. Das Argument inplace=True bewirkt dabei, dass die Änderung direkt im bestehenden Dataframe vorgenommen wird, ohne dass eine Kopie des Objekts erstellt wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Spalte commentator in commentator_id umbenennen</span>
+<span class="c1"># comments_df.rename(columns={&quot;commentator&quot;: &quot;commentator_id&quot;}, inplace=True)</span>
+<span class="c1"># comments_df</span>
+
+<span class="c1"># # Alternative</span>
+<span class="c1"># comments_df.columns = [&quot;link&quot;, &quot;commentator_id&quot;, &quot;comment&quot;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Den bereinigten und anonymisierten Dataframe speichern wir zuletzt auf dem Computer. Neben der bereits bekannten Pandas Dataframe-Methode <code class="docutils literal notranslate"><span class="pre">.to_csv()</span></code> gibt es eine Vielzahl anderer Methoden zum <strong>Schreiben von Pandas-Objekten</strong>. Einen Überblick über alle Datenformate und Methoden zum Schreiben von Daten findet ihr unter <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/io.html">https://pandas.pydata.org/docs/user_guide/io.html</a>.</p>
+<p>CSV-Dateien sind nicht immer die beste Wahl. Wenn Daten nur zwischengespeichert und später wieder eingelesen und weiterverarbeitet werden sollen, dann eignet sich zum Beispiel das Python-spezifische Datenformat pickle. Für größere Dataframes und wenn der Dataframe in einer anderen Programmiersprache wie R weiter bearbeitet werden soll, eignet sich dagegen das Datenformat feather. Um die Methode <code class="docutils literal notranslate"><span class="pre">.to_feather()</span></code> verwenden zu können, muss jedoch zuvor das Modul pyarrow installiert werden. Es muss ausnahmsweise nicht importiert werden, weil die Methode unter der Motorhaube automatisch auf das Modul zurückgreift. Zum Speichern besonders großer Datenobjekte wird häufig das Datenformat HDF5 empfohlen (zum Beispiel in <a class="reference external" href="https://waterprogramming.wordpress.com/2023/06/22/intro-to-hdf5-h5py-and-comparison-to-csv-for-speed-compression/">diesem Blogartikel</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # CSV</span>
+<span class="c1"># comments_df.to_csv(&quot;comments_df.csv&quot;, index=False)</span>
+
+<span class="c1"># # Pickle</span>
+<span class="c1"># comments_df.to_pickle(&quot;comments_df.pkl&quot;)</span>
+
+<span class="c1"># # Feather</span>
+<span class="c1"># import sys</span>
+<span class="c1"># !conda install --yes --prefix {sys.prefix} pyarrow</span>
+<span class="c1"># comments_df.to_feather(&quot;comments_df.feather&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bei der Arbeit mit sehr großen Datenmengen lohnt sich außerdem gegebenenfalls der Umstieg von Pandas auf <strong>Polars</strong>, eine neue und <a class="reference external" href="https://blog.jetbrains.com/dataspell/2023/08/polars-vs-pandas-what-s-the-difference/">deutlich effizientere</a> Bibliothek zur Arbeit mit Dataframes. Wer bereits Pandas und/oder R und insbesondere R dplyr kennt, sollte beim Umstieg jedoch keine Probleme haben, denn die Polars-Syntax ist sehr ähnlich. Einen Vergleich zwischen der Polars und Pandas Syntax findet ihr <a class="reference external" href="https://www.rhosignal.com/posts/polars-pandas-cheatsheet/">hier</a>. Für einen Vergleich zwischen Polars und R empfehle ich <a class="reference external" href="https://ddotta.github.io/cookbook-rpolars/">diese Seite</a>.</p>
+</section>
+<section id="quellen">
+<h2><span class="section-number">11.1.3. </span>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
+<span class="target" id="id1"></span></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/11/subchapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../11_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Pandas (Exkurs)</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einstieg-pandas">11.1.1. Einstieg Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-pinterest">11.1.2. Beispiel Pinterest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">11.1.3. Quellen</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lisa Poggel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

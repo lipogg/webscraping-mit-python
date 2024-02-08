@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>4. Python III: Funktionen und Pakete &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>11. Pandas (Exkurs) &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -62,11 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/04/04_intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/11/11_intro';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4.1. Funktionen" href="subchapters/01_funktionen.html" />
-    <link rel="prev" title="3.2. Kontrollstrukturen" href="../03/subchapters/02_kontrollstrukturen.html" />
+    <link rel="next" title="11.1. Daten bereinigen mit Pandas" href="subchapters/01_pandas.html" />
+    <link rel="prev" title="10.3. Weitere Tipps und Tricks" href="../10/subchapters/03_tipps_tricks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,9 +180,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../03/subchapters/02_kontrollstrukturen.html">3.2. Kontrollstrukturen</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">4. Python III</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="subchapters/01_funktionen.html">4.1. Funktionen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="subchapters/02_pakete.html">4.2. Pakete</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04/04_intro.html">4. Python III</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04/subchapters/01_funktionen.html">4.1. Funktionen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/subchapters/02_pakete.html">4.2. Pakete</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05/05_intro.html">5. Installation und Setup</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -220,8 +220,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../10/subchapters/03_tipps_tricks.html">10.3. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../11/11_intro.html">11. Pandas (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../11/subchapters/01_pandas.html">11.1. Daten bereinigen mit Pandas</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">11. Pandas (Exkurs)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="subchapters/01_pandas.html">11.1. Daten bereinigen mit Pandas</a></li>
 </ul>
 </li>
 </ul>
@@ -293,7 +293,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/chapters/04/04_intro.md" target="_blank"
+      <li><a href="../../_sources/chapters/11/11_intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -373,7 +373,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Python III: Funktionen und Pakete</h1>
+    <h1>Pandas (Exkurs)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -387,12 +387,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="python-iii-funktionen-und-pakete">
-<h1><span class="section-number">4. </span>Python III: Funktionen und Pakete<a class="headerlink" href="#python-iii-funktionen-und-pakete" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas-exkurs">
+<h1><span class="section-number">11. </span>Pandas (Exkurs)<a class="headerlink" href="#pandas-exkurs" title="Permalink to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="subchapters/01_funktionen.html">4.1. Funktionen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="subchapters/02_pakete.html">4.2. Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subchapters/01_pandas.html">11.1. Daten bereinigen mit Pandas</a></li>
 </ul>
 </div>
 </section>
@@ -410,7 +409,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters/04"
+            path: "./chapters/11"
         },
         predefinedOutput: true
     }
@@ -426,20 +425,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../03/subchapters/02_kontrollstrukturen.html"
+       href="../10/subchapters/03_tipps_tricks.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.2. </span>Kontrollstrukturen</p>
+        <p class="prev-next-title"><span class="section-number">10.3. </span>Weitere Tipps und Tricks</p>
       </div>
     </a>
     <a class="right-next"
-       href="subchapters/01_funktionen.html"
+       href="subchapters/01_pandas.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.1. </span>Funktionen</p>
+        <p class="prev-next-title"><span class="section-number">11.1. </span>Daten bereinigen mit Pandas</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
