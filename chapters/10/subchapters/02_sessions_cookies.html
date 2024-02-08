@@ -415,23 +415,23 @@ document.write(`
 <p>Quelle: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">MDN Contributors (2023)</a></p>
 <p>Beim Aufruf einer Webseite werden meist mehrere Cookies als Schlüssel-Wert-Paare übermittelt. Darunter befindet sich insbesondere bei Loginvorgängen häufig ein Cookie, der eine ID für die aktuelle Session, also für eine Benutzersitzung, enthält. Anhand des Session-ID Cookies erkennt der Webserver, dass derselbe Client bereits zuvor die Webseite aufgerufen hat, und die in anderen Cookies gespeicherten Informationen können so beim wiederholten Seitenaufruf wiederverwendet werden. Je nach der Art der Dienste, für die auf einer Webseite Cookies verwendet werden, haben Sessions eine unterschiedliche Gültigkeitsdauer: Beim Login in ein Onlinebanking-Account sind das oft nur wenige Minuten, während Sessions beim Login in ein soziales Netzwerk sogar wochenlang aufrechterhalten werden können. Wenn die Gültigkeit einer Session erlischt, dann wird die Session-ID gelöscht und ein:e Nutzer:in wird beim nächsten Seitenaufruf zum erneuten Login aufgefordert.</p>
 <p>Softwareentwickler Valentin Despa hat einen meiner Meinung nach ganz passenden Vergleich zum Verständnis von Cookies vorgeschlagen. Das Prinzip von Session-ID-Cookies ist laut Despa vergleichbar mit einer Garderobe: Bei der Abgabe eines Kleidungsstücks bekommt man einen Abholschein mit einer einzigartigen Nummer, anhand derer die Person an der Garderobe später das abgegebene Kleidungsstück wieder der richtigen Person zuordnen kann. Wenn die Person das Kleidungsstück erhalten hat, hat der Abholschein keine Bedeutung mehr und wird in den Müll geworfen.</p>
-<figure class="align-default" id="id189">
+<figure class="align-default" id="id202">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/cookies_sessionid.png"><img alt="Cookies Vergleich" class="bg-transparent" src="../../../_images/cookies_sessionid.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10.5 </span><span class="caption-text">Wie funktionieren Cookies? Das Garderoben-Prinzip. Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=V0pzXU6FbQA">Valentin Despa (2022)</a></span><a class="headerlink" href="#id189" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.5 </span><span class="caption-text">Wie funktionieren Cookies? Das Garderoben-Prinzip. Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=V0pzXU6FbQA">Valentin Despa (2022)</a></span><a class="headerlink" href="#id202" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id190">
+<figure class="align-default" id="id203">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/cookies_sessions.png"><img alt="Cookies Vergleich" class="bg-transparent" src="../../../_images/cookies_sessions.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10.6 </span><span class="caption-text">Wie funktionieren Cookies? Die Session-ID. Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=GhrvZ5nUWNg">Valentin Despa (2021)</a></span><a class="headerlink" href="#id190" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.6 </span><span class="caption-text">Wie funktionieren Cookies? Die Session-ID. Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=GhrvZ5nUWNg">Valentin Despa (2021)</a></span><a class="headerlink" href="#id203" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Cookies können ebenfalls über die Browser-Entwicklertools eingesehen werden. Nachdem beim Aufruf des Onlineshops <a class="reference external" href="http://conrad.com">conrad.com</a> die Option “Decline Cookies” im Pop-Up-Cookiebanner ausgewählt wurde, sind in den Entwicklertools nur noch die funktionalen Cookies sichtbar, darunter auch ein Cookie mit dem Namen “session-id-cookie” und einer Session-ID als Wert.</p>
-<figure class="align-default" id="id191">
+<figure class="align-default" id="id204">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/conrad_session_cookie.png"><img alt="Conrad Beispiel" class="bg-transparent" src="../../../_images/conrad_session_cookie.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10.7 </span><span class="caption-text">Session-ID-Cookie in den Entwicklertools beim Aufruf der Seite <a class="reference external" href="http://conrad.com">conrad.com</a></span><a class="headerlink" href="#id191" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.7 </span><span class="caption-text">Session-ID-Cookie in den Entwicklertools beim Aufruf der Seite <a class="reference external" href="http://conrad.com">conrad.com</a></span><a class="headerlink" href="#id204" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Das Beispiel zeigt auch noch einmal, dass Cookiebanner häufig missverständlich formuliert sind: Mit “Cookies ablehnen” sind meist nicht die funktionalen Cookies gemeint, also Cookies, welche für die Funktionalität der Webseite erforderlich sind, sondern nur solche, die zum Verfolgen des Nutzerverhaltens (Tracking) und zu Werbezwecken dienen.</p>
@@ -529,17 +529,17 @@ document.write(`
 <p>Der Login-Vorgang wird hier mithilfe einer HTTP-POST-Anfrage vorgenommen. Im Abschnitt “Statisch vs. Dynamisch?” haben wir diese Art der Anfrage bereits am Beispiel der Suche auf <a class="reference external" href="http://projekt-gutenberg.de">projekt-gutenberg.de</a> kennengelernt. Die Logindaten werden dabei als Argument params der post-Methode übergeben. Die post-Methode wird (und das ist wichtig!) aus der aktuellen Nutzersitzung, also der Session, heraus gestellt: Es heißt im Beispiel session.post() und nicht requests.post()!</p>
 <p>Zu beachten ist auch, dass in dem Beispiel oben neben den Logindaten noch ein CSRF-Token für den Loginvorgang benötigt wird. CSRF steht für Cross-Site Request Forgery und beschreibt eine bestimmte Art eines Angriffs, der verhindert werden soll, indem der Server bei jeder Anfrage überprüft, ob der Client einen CSRF-Token mitsendet, der dem Token entspricht, den der Server dem Client beim Login übermittelt hat. Es wird damit also einfach gesagt überprüft, ob ein Link, auf den ein:e angemeldete:r Nutzer:in zugreifen will, schädlich ist und dem Client womöglich durch einen Dritten (“Hacker”) untergejubelt wurde: In diesem Fall würde bei der Anfrage nämlich kein gültiges Token übermittelt werden. Eine ausführlichere Erläuterung findet ihr <a class="reference external" href="https://dr-dsgvo.de/csrf-cookies-zur-gefahrenabwehr-bedeutung-und-problem-mit-dem-datenschutz/">hier</a>.</p>
 <p>Wie genau das CSRF-Token und die Loginparameter bei der Anfrage heißen müssen, kann nach der manuellen Anmeldung auf der Seite wieder dem Network-Tab in den Browser-Entwicklertools entnommen werden. Dazu müssen einfach die Anfrageparameter zur Anfrage für die Seite <a class="reference external" href="https://realpython.com/account/login/">https://realpython.com/account/login/</a> unter “Payload” und “Cookies” betrachtet werden.</p>
-<figure class="align-default" id="id192">
+<figure class="align-default" id="id205">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/realpython_anfrage.png"><img alt="Realpython Beispiel" class="bg-transparent" src="../../../_images/realpython_anfrage.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10.8 </span><span class="caption-text">Ausschnitt aus dem Header der HTTP-POST-Anfrage beim Login auf <a class="reference external" href="http://realpython.com">realpython.com</a></span><a class="headerlink" href="#id192" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.8 </span><span class="caption-text">Ausschnitt aus dem Header der HTTP-POST-Anfrage beim Login auf <a class="reference external" href="http://realpython.com">realpython.com</a></span><a class="headerlink" href="#id205" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Nachdem der Login-Vorgang erfolgt ist, kann regulär eine HTTP-GET-Anfrage für die gesuchten Inhalte durchgeführt werden, in diesem Fall für eine Seite mit Notifications, die nur eingeloggte Nutzer:innen sehen können:</p>
-<figure class="align-default" id="id193">
+<figure class="align-default" id="id206">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/realpython_notifications.png"><img alt="Realpython Beispiel" class="bg-transparent" src="../../../_images/realpython_notifications.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10.9 </span><span class="caption-text">Ermitteln der gesuchten Elemente auf der Notifications-Seite</span><a class="headerlink" href="#id193" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.9 </span><span class="caption-text">Ermitteln der gesuchten Elemente auf der Notifications-Seite</span><a class="headerlink" href="#id206" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wichtig ist dabei allerdings, dass die Anfrage wieder aus der aktuellen Nutzersitzung heraus gestellt wird, also wieder mit session.get() anstelle von requests.get():</p>
@@ -559,17 +559,17 @@ document.write(`
 <section id="cookie-consent-selenium">
 <h2><span class="section-number">10.2.3. </span>Cookie Consent: Selenium<a class="headerlink" href="#cookie-consent-selenium" title="Permalink to this heading">#</a></h2>
 <p>Wenn die Seite <a class="reference external" href="http://google.com">google.com</a> mithilfe von Selenium und dem Chrome Webdriver aufgerufen wird, dann öffnet sich ein Cookiebanner, also ein Pop-Up-Fenster, das Nutzer:innen auffordert, der Verwendung von Cookies durch die Seite zuzustimmen:</p>
-<figure class="align-default" id="id194">
+<figure class="align-default" id="id207">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/google_cookiebanner.png"><img alt="Google Beispiel" class="bg-transparent" src="../../../_images/google_cookiebanner.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10.10 </span><span class="caption-text">Google Cookie-Consent-Seite beim Seitenaufruf mit Selenium und dem Chrome Webdriver</span><a class="headerlink" href="#id194" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.10 </span><span class="caption-text">Google Cookie-Consent-Seite beim Seitenaufruf mit Selenium und dem Chrome Webdriver</span><a class="headerlink" href="#id207" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Um mithilfe von Selenium die optionalen Cookies abzulehnen, muss einfach nur der “Reject All”-Button geklickt werden, und dazu suchen wir den Button und simulieren den Mausklick mit der bereits bekannten Methode click():</p>
-<figure class="align-default" id="id195">
+<figure class="align-default" id="id208">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/google_cookiebutton.png"><img alt="Google Beispiel" class="bg-transparent" src="../../../_images/google_cookiebutton.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10.11 </span><span class="caption-text">Id des “Reject All”-Buttons ermitteln</span><a class="headerlink" href="#id195" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.11 </span><span class="caption-text">Id des “Reject All”-Buttons ermitteln</span><a class="headerlink" href="#id208" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -591,10 +591,10 @@ document.write(`
 <section id="cookie-consent-requests">
 <h2><span class="section-number">10.2.4. </span>Cookie Consent: Requests<a class="headerlink" href="#cookie-consent-requests" title="Permalink to this heading">#</a></h2>
 <p>Zur Anzeigen von Cookiebannern wird JavaScript verwendet. Das heißt, dass bei einer Anfrage mit requests die Seite ohne den Cookiebanner angezeigt wird: das Pop-Up-Fenster öffnet sich gar nicht erst. Heißt das aber, dass beim Web Scrapen mit requests und BeautifulSoup Cookiebanner gar nicht relevant sind? Nicht ganz, denn es kommt auch vor, dass beim erstmaligen Aufruf einer Seite eine Weiterleitung auf eine Cookie-Consent-Seite erfolgt. Anders ausgedrückt: eine Anfrage mit requests, die keine Cookies im Anfrage-Header mit übergibt, wird auf eine Seite umgeleitet, welche die Einwilligung in die Verwendung von Cookies abfragt. Erst, wenn ein:e Nutzer:in der Verwendung von Cookies zugestimmt hat, wird beim erneuten Seitenaufruf die ursprünglich angefragte Seite angezeigt. Das ist beispielsweise der Fall beim Aufruf von <a class="reference external" href="http://google.com">google.com</a> mit deaktiviertem JavaScript. Mit deaktiviertem JavaScript wird anstatt der Anzeige des Cookiebanner-Pop-Up-Fensters die Anfrage auf eine separate Cookie-Consent-Seite weitergeleitet:</p>
-<figure class="align-default" id="id196">
+<figure class="align-default" id="id209">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/google_cookieconsent.png"><img alt="Google Beispiel" class="bg-transparent" src="../../../_images/google_cookieconsent.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10.12 </span><span class="caption-text">Google Cookie-Consent-Seite beim Seitenaufruf mit deaktiviertem JavaScript</span><a class="headerlink" href="#id196" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.12 </span><span class="caption-text">Google Cookie-Consent-Seite beim Seitenaufruf mit deaktiviertem JavaScript</span><a class="headerlink" href="#id209" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Entsprechend wird beim Versuch, Suchergebnisse mit requests und BeautifulSoup zu scrapen, die Cookie-Consent-Seite zurückgegeben und nicht die Seite mit den Suchergebnissen:</p>
@@ -612,10 +612,10 @@ document.write(`
 </div>
 </div>
 <p>In den Browser-Entwicklertools unter Network -&gt; Cookies können die Cookies, die beim Seitenaufruf im Header der HTTP-Anfrage an den Webserver geschickt werden, eingesehen werden:</p>
-<figure class="align-default" id="id197">
+<figure class="align-default" id="id210">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/google_cookieconsent.png"><img alt="Google Beispiel" class="bg-transparent" src="../../../_images/google_cookieconsent.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10.13 </span><span class="caption-text">Cookies beim Seitenaufruf mit deaktiviertem JavaScript</span><a class="headerlink" href="#id197" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.13 </span><span class="caption-text">Cookies beim Seitenaufruf mit deaktiviertem JavaScript</span><a class="headerlink" href="#id210" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Beim erstmaligen Aufruf der Seite wird ein Cookie mit dem Namen “CONSENT” und dem Wert “PENDING+612” (die Zahl kann jedoch variieren) mitgesandt. Diesen Cookie können wir bei der Anfrage mit Requests im Anfrage-Header mit angeben. Dabei müssen wir den Wert des CONSENT-Cookies allerdings auf “YES+” setzen. Die Anfrage gibt dann die angefragte Seite zurück und nicht die Cookie-Consent-Seite:</p>
