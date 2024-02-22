@@ -217,7 +217,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../10/10_intro.html">10. Tipps und Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/01_fetch_xhr.html">10.1. Selenium ist kein Hammer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/02_sessions_cookies.html">10.2. Sessions und Cookies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/03_tipps_tricks.html">10.3. Weitere Tipps und Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/03_apis_tokens.html">10.3. Authentifizierung, Autorisierung und APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/04_tipps_tricks.html">10.4. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../11/11_intro.html">11. Pandas (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -438,18 +439,18 @@ document.write(`
 <h3><span class="section-number">9.3.1.1. </span>Methode 1: Button klicken<a class="headerlink" href="#methode-1-button-klicken" title="Permalink to this heading">#</a></h3>
 <p>Zum Simulieren des Mausklicks auf einen Button gibt es wiederum zwei Möglichkeiten. In jedem Fall muss zunächst das HTML-Element, das zur Darstellung des Buttons verwendet wird, gesucht werden.</p>
 <p>Um das Element zu suchen, verwenden wir als erstes wieder die Browser-Entwicklertools: Mit Rechtsklick auf den Button und Auswahl von “Inspect” wird der Quelltext der Seite automatisch an der richtigen Stelle in den Entwicklertools geöffnet. Häufig wird nicht exakt das gesuchte Element markiert, sondern ein Kind- oder Elternelement. Das richtige Element heißt &lt;button&gt;:</p>
-<figure class="align-default" id="id202">
+<figure class="align-default" id="id212">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_1.png"><img alt="Airbnb Beispiel 1" class="bg-transparent" src="../../../_images/beispiel_airbnb_1.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.9 </span><span class="caption-text">Button-Element mithilfe der Entwicklertools suchen.</span><a class="headerlink" href="#id202" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.9 </span><span class="caption-text">Button-Element mithilfe der Entwicklertools suchen.</span><a class="headerlink" href="#id212" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Welches Attribut identifiziert das button-Element eindeutig? Das button-Element hat ein “class”-Attribut, das allerdings eine sehr lange Zeichenkette als Wert hat. Das kann vorkommen, wenn mehrere CSS-Klassen zur Identifizierung eines HTML-Elements verwendet werden. Verschiedene Klassen werden dabei durch ein Leerzeichen getrennt. Das Leerzeichen verursacht aber bei der Suche mit By.CLASS_NAME ein Problem und führt dazu, dass der Code eine Fehlermeldung produziert. Bei einer so langen Zeichenkette wäre das manuelle Ersetzen der Leerzeichen durch Punkte hier jedoch keine gute Lösung.
 Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die erste CSS-Klasse oder nur einige wenige Klassen eindeutig definiert wird. Das können wir überprüfen, in dem wir in den Entwicklertools mit der Tastenkombination <code class="docutils literal notranslate"><span class="pre">STRG</span> <span class="pre">+</span> <span class="pre">F</span></code> nach der ersten CSS-Klasse suchen. Es zeigt sich: Der Close-Button ist nicht der Einzige, der diese CSS-Klasse hat; sondern es gibt sehr viele Elemente mit dieser Klasse:</p>
-<figure class="align-default" id="id203">
+<figure class="align-default" id="id213">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_2.png"><img alt="Airbnb Beispiel 2" class="bg-transparent" src="../../../_images/beispiel_airbnb_2.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.10 </span><span class="caption-text">Suche nach CSS-Klasse mit STRG + F.</span><a class="headerlink" href="#id203" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.10 </span><span class="caption-text">Suche nach CSS-Klasse mit STRG + F.</span><a class="headerlink" href="#id213" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wir können also das Button-Element nicht eindeutig über die gewählte CSS-Klasse addressieren. Wir könnten jetzt natürlich verschiedene Kombinationen von CSS-Klassen ausprobieren, aber das Button-Element hat noch ein weiteres Attribut, über das das Button-Element etwas einfacher addressiert werden kann: Das Attribut  aria-label mit dem Wert “Close”. Wir verwenden stattdessen dieses Attribut für die Suche und definieren dazu einen sogenannten XPATH-Ausdruck. XPATH ist eine Pfadbeschreibungssprache, mit der HTML-Elemente anhand ihrer Hierarchie, Attributen, Textinhalten und weiteren Eigenschaften lokalisiert werden können. So können wir zum Beispiel den Button mit dem XPATH-Ausdruck <code class="docutils literal notranslate"><span class="pre">//button[&#64;aria-label='Close']</span></code> auswählen. Dieser Ausdruck sucht nach einem Element mit den Namen button (<code class="docutils literal notranslate"><span class="pre">button</span></code>), irgendwo im HTML-Baum (<code class="docutils literal notranslate"><span class="pre">//</span></code>), das ein Attribut  <code class="docutils literal notranslate"><span class="pre">aria-label</span></code> mit dem Wert <code class="docutils literal notranslate"><span class="pre">'Close'</span></code> hat (<code class="docutils literal notranslate"><span class="pre">[&#64;aria-label='Close']</span></code>). Einen Überblick über verschiedene Möglichkeiten, in Selenium nach Elementen zu suchen, findet ihr <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/locators/#traditional-locators">hier</a>.</p>
@@ -514,10 +515,10 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 <section id="scrollvorgang-simulieren-und-seiteninhalte-laden">
 <h2><span class="section-number">9.3.2. </span>Scrollvorgang simulieren und Seiteninhalte laden<a class="headerlink" href="#scrollvorgang-simulieren-und-seiteninhalte-laden" title="Permalink to this heading">#</a></h2>
 <p>Nachdem das Popup-Fenster geschlossen ist, muss zum Seitenende gescrollt werden, wo sich der “Show more” Button befindet. Wir sollten zunächst überprüfen, ob der Button bereits beim Aufruf der Seite geladen wird. Dazu können wir manuell zum Seitenende scrollen, mit Rechtsklick und Inspect den “Show more”-Button in den Entwicklertools anzeigen lassen, und die CSS-Klassen in die Zwischenablage kopieren, also den gesamten String “l1ovpqvx…dir-ltr”.</p>
-<figure class="align-default" id="id204">
+<figure class="align-default" id="id214">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_3.png"><img alt="Airbnb Beispiel 3" class="bg-transparent" src="../../../_images/beispiel_airbnb_3.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.11 </span><span class="caption-text">Button-Element in den Entwicklertools.</span><a class="headerlink" href="#id204" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.11 </span><span class="caption-text">Button-Element in den Entwicklertools.</span><a class="headerlink" href="#id214" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Anschließend laden wir die Seite neu, schließen das Popup-Fenster, und suchen in den Entwicklertools wird mit STRG-F nach dem String. Die Suche sollte keine Ergebnisse liefern. Wenn wir jedoch zum Seitenende scrollen und erneut nach dem String suchen, wird das Element nun gefunden und die Suche liefert ein Ergebnis. Das bedeutet: Die Seiteninhalte werden auf der airbnb.com-Startseite erst dann geladen, wenn sie sich im aktuellen Anzeigebereich befinden. Diesen Umstand können wir auch überprüfen, indem wir mit Selenium mit <code class="docutils literal notranslate"><span class="pre">.find_element()</span></code> nach dem Button mit suchen: Die Suche produziert die Fehlermeldung “NoSuchElementException”. Um die restlichen Unterkünfte auf der Startseite sowie den “Show more” Button zu laden, müssen wir also zunächt bis zum Seitenende scrollen.</p>
@@ -557,10 +558,10 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 <p>Aber Achtung: <code class="docutils literal notranslate"><span class="pre">.innerHeight</span></code> ist die Höhe inklusive der Scrollleiste, die Höhe ohne die Scrolleiste wird mit <code class="docutils literal notranslate"><span class="pre">.clientHeight</span></code> angegeben. Für unser Beispiel ist auch der Wert für <code class="docutils literal notranslate"><span class="pre">.innerHeight</span></code> geeignet, aber je nach Anwendungsfall kann es ratsam sein, beim Scrollen etwas präziser vorzugehen und die Eigenschaft <code class="docutils literal notranslate"><span class="pre">.clientHeight</span></code> zu verwenden. Mehr dazu <a class="reference external" href="https://javascript.info/size-and-scroll-window">hier</a>.</p>
 </div>
 <p>Den Zusammenhang zwischen den verschiedenen Objekteigenschaften und ihre Bedeutung für Abbruchbedingung der while-Schleife lässt sich vielleicht ungefähr so veranschaulichen:</p>
-<figure class="align-default" id="id205">
+<figure class="align-default" id="id215">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/javascript_attributes.png"><img alt="JavaScript Attribute" class="bg-transparent" src="../../../_images/javascript_attributes.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.12 </span><span class="caption-text">Veranschaulichung der JavaScript-Objekteigenschaften zur Formulierung der Abbruchbedingung.</span><a class="headerlink" href="#id205" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.12 </span><span class="caption-text">Veranschaulichung der JavaScript-Objekteigenschaften zur Formulierung der Abbruchbedingung.</span><a class="headerlink" href="#id215" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wenn das Seitenende erreicht ist und die while-Schleife terminiert, kann der Mausklick auf den “Show more”-Button simuliert werden. Anschließend sollte wieder ein paar Sekunden gewartet werden, damit die neuen Inhalte laden können.</p>
@@ -602,10 +603,10 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 </div>
 </div>
 <p>Wenn die Schleife terminiert, ist der gesamte Seiteninhalt durchscrollt und gerendert. Anschließend können wieder die Ortsangaben extrahiert werden: find_elements() findet jetzt nicht nur die ersten 20 Suchergebnisse, sondern alle Ergebnisse. Hierzu können wir wieder entweder das class-Attribut verwenden und die CSS-Klassen abkürzen, oder wir formulieren einen XPATH-Ausdruck zur Suche nach einem anderen Attribut, beispielsweise das Attribut <code class="docutils literal notranslate"><span class="pre">data-testid</span></code>:</p>
-<figure class="align-default" id="id206">
+<figure class="align-default" id="id216">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_4.png"><img alt="Airbnb Beispiel 4" class="bg-transparent" src="../../../_images/beispiel_airbnb_4.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.13 </span><span class="caption-text">Unterkunft in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id206" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.13 </span><span class="caption-text">Unterkunft in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id216" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -652,17 +653,17 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 </div>
 </div>
 <p>Als nächstes wollen wir nach Unterkünften in Berlin suchen. Dazu führen wir die Suche wieder zuerst in unserem regulären Chrome Browser aus, um herauszufinden, mit welchen Bestandteilen des User Interfaces bei der Suche interagiert werden muss. Als erstes geben wir “Berlin” in das Suchfeld ein. Im regulären Chrome-Browser können wir, wieder mithilfe der Entwicklertools, feststellen, dass das Suchfeld über ein HTML-input-Element dargestellt wird:</p>
-<figure class="align-default" id="id207">
+<figure class="align-default" id="id217">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_5.png"><img alt="Airbnb Beispiel 5" class="bg-transparent" src="../../../_images/beispiel_airbnb_5.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.14 </span><span class="caption-text">Suchfeld in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id207" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.14 </span><span class="caption-text">Suchfeld in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id217" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Um einen Suchbegriff eingeben zu können, muss das input-Element zunächst gefunden werden. In diesem Fall hat das gesuchte HTML-Element nicht nur ein Attribut class, sondern auch ein Attribut id mit dem Wert, “bigsearch-query-location-input”, welches erlaubt, das Element eindeutig zu identifizieren. Zur Suche können wir nun entweder <code class="docutils literal notranslate"><span class="pre">.find_element(By.ID,</span> <span class="pre">“id_des_elements”)</span></code> oder <code class="docutils literal notranslate"><span class="pre">.find_element(By.XPATH,</span> <span class="pre">“xpath_ausdruck”)</span></code> verwenden. XPath habt ihr bereits in der letzten Woche etwas kennengelernt. Wenn ihr euch unsicher seid, wie der XPath-Ausdruck formuliert sein muss, könnt ihr aber in diesem Fall die Entwicklertools zur Hilfe nehmen: Der XPath-Ausdruck, der den Pfad zu dem gesuchten Element beschreibt, kann ganz einfach mit Rechtsklick auf ein Element und die Option Copy -&gt; Copy XPath kopiert werden:</p>
-<figure class="align-default" id="id208">
+<figure class="align-default" id="id218">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_6.png"><img alt="Airbnb Beispiel 6" class="bg-transparent" src="../../../_images/beispiel_airbnb_6.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.15 </span><span class="caption-text">XPath zum gesuchten Element kopieren.</span><a class="headerlink" href="#id208" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.15 </span><span class="caption-text">XPath zum gesuchten Element kopieren.</span><a class="headerlink" href="#id218" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Der XPath zum gesuchten input-Element ist <code class="docutils literal notranslate"><span class="pre">//*[&#64;id=”bigsearch-query-location-input”]</span></code>. Das * steht für ein beliebiges HTML-Element, aber wir können auch den Namen des HTML-Elements einsetzen, um bei vielen XPath-Ausdrücken den Überblick zu behalten:</p>
@@ -694,10 +695,10 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 </div>
 </div>
 <p>Durch Bestätigung der Suche mit Enter wird automatisch ein Fenster zur Auswahl eines Reisetermins geöffnet. Hier wollen wir die Option “flexible” auswählen. Dazu müssen wir zunächst wieder das gesuchte Element identifizieren:</p>
-<figure class="align-default" id="id209">
+<figure class="align-default" id="id219">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_7.png"><img alt="Airbnb Beispiel 7" class="bg-transparent" src="../../../_images/beispiel_airbnb_7.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.16 </span><span class="caption-text">Button “flexible” untersuchen.</span><a class="headerlink" href="#id209" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.16 </span><span class="caption-text">Button “flexible” untersuchen.</span><a class="headerlink" href="#id219" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Das gesuchte HTML-Element hat wieder eine ID, über die es eindeutig identifiziert werden kann. Diesmal verwenden wir <code class="docutils literal notranslate"><span class="pre">.find_element(By.ID,</span> <span class="pre">“id_des_elements”)</span></code>, damit ihr diese Verwendung der find_element-Methode auch einmal gesehen habt. Die Id könnt ihr einfach aus den Browser-Entwicklertools mit Doppelklick auf das Id-Attribut kopieren.</p>
@@ -711,10 +712,10 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 </div>
 </div>
 <p>Zuletzt müssen wir unsere Suche noch mit Klick auf den Suchbutton bestätigen. In diesem Fall wird über Rechtsklick auf den Suchbutton und Auswahl der Option “Inspect” allerdings wieder nicht ganz das richtige Element gefunden: Gefunden wird das span-Element mit dem Attribut class=”t1dqvypu atm_9s_1ulexfb …”; gesucht haben wir aber eigentlich den gesamten Suchbutton, also das button-Element mit dem Attribut data-testid=”structured-search-input-search-button”. Bei der Verwendung von “Inspect” ist also immer Mitdenken erforderlich, denn nicht immer wird ganz genau das Element getroffen, das gesucht wird.</p>
-<figure class="align-default" id="id210">
+<figure class="align-default" id="id220">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_8.png"><img alt="Airbnb Beispiel 8" class="bg-transparent" src="../../../_images/beispiel_airbnb_8.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.17 </span><span class="caption-text">Suchbutton untersuchen.</span><a class="headerlink" href="#id210" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.17 </span><span class="caption-text">Suchbutton untersuchen.</span><a class="headerlink" href="#id220" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Jetzt können wir den Mausklick auf den Suchbutton simulieren:</p>

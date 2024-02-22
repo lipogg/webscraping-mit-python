@@ -217,7 +217,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../10/10_intro.html">10. Tipps und Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/01_fetch_xhr.html">10.1. Selenium ist kein Hammer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/02_sessions_cookies.html">10.2. Sessions und Cookies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/03_tipps_tricks.html">10.3. Weitere Tipps und Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/03_apis_tokens.html">10.3. Authentifizierung, Autorisierung und APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/04_tipps_tricks.html">10.4. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../11/11_intro.html">11. Pandas (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -419,18 +420,18 @@ Wie genau diese Verfahren für eine konkrete Webseite umgesetzt werden, hängt w
 <div><p>Einzelne Dokumente liegen im HTML-Format an zentraler Stelle bereit und werden vollständig an den Client übertragen, um dort angezeigt zu werden.</p>
 </div></blockquote>
 <p>Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=Pc35Ux0bF2U">Alexander Bazo 2020</a></p>
-<figure class="align-default" id="id202">
+<figure class="align-default" id="id212">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/anatomy_static_site.png"><img alt="Schaubild Statische Webseite" class="bg-transparent" src="../../../_images/anatomy_static_site.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Schaubild Statische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id202" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Schaubild Statische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id212" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Formell definiert ist eine statische Website also dadurch definiert, dass alle Unterseiten schon gerendert sind, bevor sie auf den Webserver hochgeladen und bereitgestellt werden. Diese Art von Webseiten kennen wir bereits: <a class="reference external" href="https://quotes.toscrape.com/">quotes.toscrape.com</a> und diese Kurswebsite sind Beispiele. Für die Unterseiten einer solchen statischen Website werden vorab, bevor die Website auf dem Server hochgeladen wird, einzelne HTML-Dokumente erstellt, eins für jede Unterseite, die dann auf den Server hochgeladen werden. Beim Seitenaufruf wird das HTML-Dokument für die jeweils aufgerufene Seite unverändert an den Client geschickt und, wenn der Client ein Browser ist, im Browser dargestellt. Solche Webseiten können wir ganz einfach mit requests und BeautifulSoup scrapen.</p>
 <p>Allerdings gibt es auch auf statischen Webseiten Inhalte, die wir nicht mithilfe von requests und BeautifulSoup scrapen können, zum Beispiel die Suchergebnisse, die euch bei der Verwendung der Suchmaske auf dieser Website angezeigt werden. Die Suche auf dieser Kurswebsite ist nämlich mithilfe von JavaScript implementiert. Wenn ihr euch die Seite <a class="reference external" href="https://lipogg.github.io/webscraping-fuer-geisteswissenschaften/search.html?q=selenium">https://lipogg.github.io/webscraping-fuer-geisteswissenschaften/search.html?q=selenium</a> in den Entwicklertools anseht, dann sieht die Seite zwar erst einmal nach einem ganz normalen HTML-Dokument aus: Die Suchergebnisse findet ihr als Liste im div-Element mit der id “search-results”.</p>
-<figure class="align-default" id="id203">
+<figure class="align-default" id="id213">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_kurswebsite_1.png"><img alt="Beispiel 1" class="bg-transparent" src="../../../_images/beispiel_kurswebsite_1.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.2 </span><span class="caption-text">Suche auf der Kurswebsite mit aktiviertem JavaScript</span><a class="headerlink" href="#id203" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.2 </span><span class="caption-text">Suche auf der Kurswebsite mit aktiviertem JavaScript</span><a class="headerlink" href="#id213" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Aber wenn ihr versucht, die Seite mit den Suchergebnissen mithilfe von requests und BeautifulSoup zu scrapen, dann bekommt ihr stattdessen ein HTML-Dokument zurück, das nicht die Suchergebnisse, sondern eine Meldung “Please activate JavaScript to enable the search functionality” enthält.</p>
@@ -472,10 +473,10 @@ Wie genau diese Verfahren für eine konkrete Webseite umgesetzt werden, hängt w
 <p>JavaScript im Browser deaktivieren</p>
 <p>Um JavaScript zu deaktivieren, geht ihr so vor: Öffnet die Seite -&gt; View -&gt; Developer Tools -&gt; Tastenkombination Ctrl + Shift + P bzw. auf dem Mac Cmd + Shift + P -&gt; Disable JavaScript eingeben und Enter drücken. Um JavaScript später wieder einzuschalten, befolgt ihr dieselben Schritte und sucht nach “Enable JavaScript”.</p>
 </div>
-<figure class="align-default" id="id204">
+<figure class="align-default" id="id214">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_kurswebsite_2.png"><img alt="Beispiel 1" class="bg-transparent" src="../../../_images/beispiel_kurswebsite_2.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.3 </span><span class="caption-text">Suche auf der Kurswebsite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id204" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.3 </span><span class="caption-text">Suche auf der Kurswebsite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id214" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Obwohl wir es bei der Kurswebsite mit einer statisch generierten Website zu tun haben, können wir diese spezielle Unterseite also nicht mithilfe von requests und BeautifulSoup scrapen, weil für die Darstellung der Inhalte JavaScript verwendet wird. Das Beispiel zeigt: <strong>Anders als man vielleicht alltagssprachlich vermuten würde, liegt der Unterschied zwischen “statischen” und “dynamischen” Webseiten also nicht darin, ob die Inhalte interaktiv sind, sondern darin, wie genau und wann sie erstellt und dargestellt werden.</strong></p>
@@ -491,19 +492,19 @@ Wie genau diese Verfahren für eine konkrete Webseite umgesetzt werden, hängt w
 <div><p>Der Inhalt dynamischer Websites wird durch Aktionen auf Client und Server beeinflusst. Das Dokument, das vom Client gerendert wird, liegt nicht zwangsläufig genauso auch als HTML-Dokument auf dem Server.</p>
 </div></blockquote>
 <p>Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=Pc35Ux0bF2U">Alexander Bazo 2020</a></p>
-<figure class="align-default" id="id205">
+<figure class="align-default" id="id215">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/anatomy_dynamic_request.png"><img alt="Schaubild Dynamische Webseite" class="bg-transparent" src="../../../_images/anatomy_dynamic_request.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.4 </span><span class="caption-text">Schaubild Dynamische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id205" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.4 </span><span class="caption-text">Schaubild Dynamische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id215" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Eine dynamische Website ist dagegen formell gesprochen eine Website, die erst dann erstellt und dargestellt wird, wenn sie aufgerufen wird. Wie bereits eingangs erwähnt gibt es verschiedene Verfahren, um Websites “dynamisch” zu erstellen und darzustellen: Eine Website kann im Gesamten auf dem Server oder auf dem Client gerendert werden, oder es wird ein Teil einer Webseite auf dem Server gerendert, und der Rest auf dem Client.</p>
 <p>Wird beim Aufruf der Webseite das komplette HTML-Dokument mit allen Inhalten auf dem Server generiert, heißt das: die HTML-Dokumente werden erst dann erstellt, wenn die Seite aufgerufen wird, und zwar auf dem Server.
 Erst, wenn die Webseite komplett fertig gerendert ist, wird sie an den Client, zum Beispiel einen Browser, geschickt. Dieses Rendering-Verfahren wird beispielsweise standardmäßig für WordPress-Seiten verwendet. Wenn das HTML-Dokument komplett gerendert mit allen Inhalten an den Client geschickt wird, können wir zum Scrapen solcher Seiten im Regelfall requests und BeautifulSoup verwenden, denn dann erhalten wir ein fertiges HTML-Dokument, genau wie beim Scrapen statischer Webseiten. Ein Beispiel ist diese Wordpress-Seite <a class="reference external" href="https://minimalistbaker.com">https://minimalistbaker.com</a>. Der Aufruf der Seite mit deaktiviertem JavaScript zeigt, dass für die Darstellung der Überblicksseite tatsächlich kein JavaScript benötigt wird, denn alle Inhalte werden komplett geladen:</p>
-<figure class="align-default" id="id206">
+<figure class="align-default" id="id216">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_wordpress.png"><img alt="Beispiel Wordpress" class="bg-transparent" src="../../../_images/beispiel_wordpress.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.5 </span><span class="caption-text">Beispiel-Wordpressseite mit deaktiviertem JavaScript.</span><a class="headerlink" href="#id206" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.5 </span><span class="caption-text">Beispiel-Wordpressseite mit deaktiviertem JavaScript.</span><a class="headerlink" href="#id216" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Die HTTP-GET-Anfrage liefert also ein komplett gerendertes HTML-Dokument, das wir mit BeautifulSoup durchsuchen können:</p>
@@ -517,7 +518,9 @@ Erst, wenn die Webseite komplett fertig gerendert ist, wird sie an den Client, z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/creamy-vegan-broccoli-cheddar-soup/&quot;&gt;Creamy Vegan Broccoli Cheddar Soup&lt;/a&gt;&lt;/h3&gt;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/crusty-gluten-free-artisan-bread/&quot;&gt;Crusty Gluten-Free Artisan Bread&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/1-bowl-pumpkin-coffee-cake-vegan-gf/&quot;&gt;1-Bowl Pumpkin Coffee Cake (Vegan + GF)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/creamy-vegan-broccoli-cheddar-soup/&quot;&gt;Creamy Vegan Broccoli Cheddar Soup&lt;/a&gt;&lt;/h3&gt;,
  &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/seedy-quinoa-breakfast-cookies/&quot;&gt;Seedy Quinoa Breakfast Cookies&lt;/a&gt;&lt;/h3&gt;,
  &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/the-best-gluten-free-chocolate-cake/&quot;&gt;The BEST Gluten-Free Chocolate Cake (Vegan, 1 Bowl!)&lt;/a&gt;&lt;/h3&gt;,
  &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/creamy-vegan-green-chile-casserole/&quot;&gt;Creamy Vegan Green Chile Casserole&lt;/a&gt;&lt;/h3&gt;,
@@ -534,19 +537,17 @@ Erst, wenn die Webseite komplett fertig gerendert ist, wird sie an den Client, z
  &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/sparkling-cherry-limeade-naturally-sweetened/&quot;&gt;Sparkling Cherry Limeade (Naturally Sweetened)&lt;/a&gt;&lt;/h3&gt;,
  &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/vegan-smores-cookies/&quot;&gt;1-Bowl Vegan S’mores Cookies&lt;/a&gt;&lt;/h3&gt;,
  &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/best-gluten-free-flour-blend/&quot;&gt;Best 1:1 Gluten-Free Flour Blend (Our Secret Recipe!)&lt;/a&gt;&lt;/h3&gt;,
- &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/spicy-watermelon-salad-true-food-inspired/&quot;&gt;Spicy Watermelon Salad (True Food-Inspired!)&lt;/a&gt;&lt;/h3&gt;,
- &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/creamy-turmeric-mango-vinaigrette/&quot;&gt;Creamy Turmeric Mango Vinaigrette&lt;/a&gt;&lt;/h3&gt;,
- &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/plum-upside-down-cake-vegan-gf/&quot;&gt;Plum Upside Down Cake (Vegan + GF)&lt;/a&gt;&lt;/h3&gt;]
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/spicy-watermelon-salad-true-food-inspired/&quot;&gt;Spicy Watermelon Salad (True Food-Inspired!)&lt;/a&gt;&lt;/h3&gt;]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Solche Webseiten sind formell gesprochen auch “dynamisch”, aber da sie bereits auf dem Server gerendert werden, und nicht erst im Client, können wir die bereits bekannte Webscraping-Strategie mit requests und BeautifulSoup darauf anwenden.</p>
 <p>Es kommt aber häufig vor, dass dynamisch erstellte Webseiten nicht nur auf dem Server, sondern auch auf dem Client, also im Browser, gerendert werden. Beim Aufruf solcher Webseiten wird zum Beispiel als erstes nur das HTML-Grundgerüst der Seite ohne Inhalte gerendert. Die HTTP-Anfrage beim Aufruf der Seite liefert also ein HTML-Dokument, das nur das Grundgerüst der Seite enthält. Alle weiteren Inhalte werden dann mithilfe von JavaScript über eine spezielle Schnittstelle, die DOM, in das HTML-Gerüst eingefügt. Der Seiteninhalt kann dann mit demselben und ähnlichen Verfahren fortlaufend dynamisch verändert werden, je nachdem, wie ein:e Nutzer:in die Webseite verwendet. So ungefähr wird die YouTube-Startseite geladen. Wenn wir JavaScript im Browser ausschalten, wird uns nur das HTML-Grundgerüst angezeigt. Die HTML-Elemente haben passenderweise die IDs “home-page-skeleton” oder “home-container-skeleton”:</p>
-<figure class="align-default" id="id207">
+<figure class="align-default" id="id217">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_youtube.png"><img alt="Beispiel YouTube" class="bg-transparent" src="../../../_images/beispiel_youtube.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.6 </span><span class="caption-text">YouTube-Startseite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id207" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.6 </span><span class="caption-text">YouTube-Startseite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id217" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In diesem Fall können requests und BeautifulSoup nicht verwendet werden, weil die Anfrage nur das “Skelett” der Webseite liefert:</p>
@@ -579,17 +580,17 @@ Um die Ergebnisse der Suche zu extrahieren, können wir in diesem Fall einfach m
 <p>Anders ist es bei <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a>. Auch hier ist die Suche ohne JavaScript serverseitig implementiert, aber wenn ein Suchbegriff über die Suchmaske eingegeben wird, dann ändert sich nicht bequem die URL im URL-Fenster, sondern die URL bleibt immer dieselbe, egal wonach wir suchen: <a class="reference external" href="https://www.projekt-gutenberg.org/info/search/search.php">https://www.projekt-gutenberg.org/info/search/search.php</a>. Wenn wir uns den Quellcode der Webseite in den Entwicklertools ansehen, finden wir die Ergebnisse unserer Suche in einem HTML-Tabellenelement.
 Wenn wir jetzt aber mit requests eine Anfrage für diese URL stellen, dann bekommen wir ein anderes HTML-Dokument geliefert, das die Tabelle mit den Ergebnissen nicht enthält. Das ist auch nicht erstaunlich: Wir haben dem Server ja gar nicht mitgeteilt, wonach wir suchen.
 Der Network-Tab in den Entwicklertools verrät uns, wie wir in diesem Fall vorgehen können: Wenn ein Suchbegriff in die Suchmaske einegegeben wird, dann wird eine HTTP POST (!) Anfrage gestellt, keine GET-Anfrage. Im Header steht als Anfrage-URL <a class="reference external" href="https://www.projekt-gutenberg.org/info/search/search.php">https://www.projekt-gutenberg.org/info/search/search.php</a>.</p>
-<figure class="align-default" id="id208">
+<figure class="align-default" id="id218">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_gutenberg_1.png"><img alt="Beispiel Projekt Gutenberg" class="bg-transparent" src="../../../_images/beispiel_gutenberg_1.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.7 </span><span class="caption-text">HTTP-Anfrage bei der Suche über <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a></span><a class="headerlink" href="#id208" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.7 </span><span class="caption-text">HTTP-Anfrage bei der Suche über <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a></span><a class="headerlink" href="#id218" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Aber es wird zusätzlich ein “Payload” bei der Anfrage übermittelt, nämlich im Beispiel unten “searchstring=franz+kafka&amp;search=suchen”.</p>
-<figure class="align-default" id="id209">
+<figure class="align-default" id="id219">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_gutenberg_3.png"><img alt="Beispiel Projekt Gutenberg" class="bg-transparent" src="../../../_images/beispiel_gutenberg_3.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.8 </span><span class="caption-text">“Payload” bei der HTTP-Anfrage</span><a class="headerlink" href="#id209" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.8 </span><span class="caption-text">“Payload” bei der HTTP-Anfrage</span><a class="headerlink" href="#id219" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Diese Parameter müssen wir der POST-Anfrage mit angeben. Der Python-Code sieht demnach als Beispiel für eine Suche nach Franz Kafka auf <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a> so aus:</p>

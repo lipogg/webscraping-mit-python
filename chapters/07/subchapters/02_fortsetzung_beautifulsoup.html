@@ -217,7 +217,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../10/10_intro.html">10. Tipps und Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/01_fetch_xhr.html">10.1. Selenium ist kein Hammer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/02_sessions_cookies.html">10.2. Sessions und Cookies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/03_tipps_tricks.html">10.3. Weitere Tipps und Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/03_apis_tokens.html">10.3. Authentifizierung, Autorisierung und APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/04_tipps_tricks.html">10.4. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../11/11_intro.html">11. Pandas (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -753,8 +754,8 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 166 ms, sys: 18.8 ms, total: 184 ms
-Wall time: 2.82 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 272 ms, sys: 23.2 ms, total: 295 ms
+Wall time: 2.94 s
 </pre></div>
 </div>
 </div>
@@ -904,8 +905,8 @@ Wall time: 2.82 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 190 ms, sys: 21.6 ms, total: 212 ms
-Wall time: 2.82 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 555 ms, sys: 64.7 ms, total: 620 ms
+Wall time: 3.48 s
 </pre></div>
 </div>
 </div>
@@ -1059,8 +1060,8 @@ Wall time: 2.82 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 208 ms, sys: 20.7 ms, total: 228 ms
-Wall time: 3.32 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 398 ms, sys: 28.5 ms, total: 427 ms
+Wall time: 3.6 s
 </pre></div>
 </div>
 </div>
@@ -1257,8 +1258,8 @@ Die Macher:innen der Seite quotes.toscrape haben sich überlegt, dass auch Seite
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 207 ms, sys: 24.2 ms, total: 231 ms
-Wall time: 3.33 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 217 ms, sys: 22.7 ms, total: 240 ms
+Wall time: 3.29 s
 </pre></div>
 </div>
 </div>
@@ -1401,8 +1402,8 @@ Wall time: 3.33 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 143 ms, sys: 13.1 ms, total: 156 ms
-Wall time: 1.89 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 183 ms, sys: 14 ms, total: 197 ms
+Wall time: 1.93 s
 </pre></div>
 </div>
 </div>
@@ -1442,8 +1443,8 @@ Wall time: 1.89 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 186 ms, sys: 18.2 ms, total: 205 ms
-Wall time: 2.79 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 212 ms, sys: 20.4 ms, total: 232 ms
+Wall time: 2.82 s
 </pre></div>
 </div>
 </div>
@@ -1591,8 +1592,8 @@ Wall time: 2.79 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 202 ms, sys: 24.2 ms, total: 227 ms
-Wall time: 3.29 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 262 ms, sys: 30.1 ms, total: 292 ms
+Wall time: 3.42 s
 </pre></div>
 </div>
 </div>
@@ -1736,8 +1737,8 @@ Wall time: 3.29 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 162 ms, sys: 10.7 ms, total: 172 ms
-Wall time: 1.92 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 171 ms, sys: 11.7 ms, total: 183 ms
+Wall time: 1.94 s
 </pre></div>
 </div>
 </div>
@@ -1777,8 +1778,8 @@ Wall time: 1.92 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 215 ms, sys: 10.7 ms, total: 225 ms
-Wall time: 1.95 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 222 ms, sys: 13.6 ms, total: 236 ms
+Wall time: 1.99 s
 </pre></div>
 </div>
 </div>
@@ -1866,8 +1867,8 @@ Wall time: 1.95 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 176 ms, sys: 10.8 ms, total: 187 ms
-Wall time: 2.11 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 316 ms, sys: 16.9 ms, total: 333 ms
+Wall time: 2.59 s
 </pre></div>
 </div>
 </div>

@@ -216,7 +216,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../10/10_intro.html">10. Tipps und Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/01_fetch_xhr.html">10.1. Selenium ist kein Hammer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/02_sessions_cookies.html">10.2. Sessions und Cookies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/03_tipps_tricks.html">10.3. Weitere Tipps und Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/03_apis_tokens.html">10.3. Authentifizierung, Autorisierung und APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/04_tipps_tricks.html">10.4. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../11_intro.html">11. Pandas (Exkurs)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -624,16 +625,16 @@ document.write(`
 <h2><span class="section-number">11.1.3. </span>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
-<li id="id200"><p>Liam Brannigan. Cheatsheet for Pandas to Polars. 2024. URL: <a class="reference external" href="https://www.rhosignal.com/posts/polars-pandas-cheatsheet/">https://www.rhosignal.com/posts/polars-pandas-cheatsheet/</a>.</p></li>
-<li id="id199"><p>Jodie Burchell. Polars vs. Pandas: What's the Difference? 2023. URL: <a class="reference external" href="https://blog.jetbrains.com/dataspell/2023/08/polars-vs-pandas-what-s-the-difference/">https://blog.jetbrains.com/dataspell/2023/08/polars-vs-pandas-what-s-the-difference/</a>.</p></li>
-<li id="id201"><p>Damien Dotta. Cookbook Polars for R. 2023. URL: <a class="reference external" href="https://ddotta.github.io/cookbook-rpolars/">https://ddotta.github.io/cookbook-rpolars/</a>.</p></li>
-<li id="id196"><p>Matplotlib. Matplotlib 3.8 Documentation: matplotlib.pyplot.yticks. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/reference/series.html">https://pandas.pydata.org/docs/reference/series.html</a>.</p></li>
-<li id="id192"><p>Wes McKinney. Data Wrangling with Pandas Cheat Sheet. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf</a>.</p></li>
-<li id="id194"><p>Wes McKinney. Pandas 2.2 Documentation: DataFrame. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/reference/frame.html">https://pandas.pydata.org/docs/reference/frame.html</a>.</p></li>
-<li id="id193"><p>Wes McKinney. Pandas 2.2 Documentation: Getting Started Tutorials. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html">https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html</a>.</p></li>
-<li id="id197"><p>Wes McKinney. Pandas 2.2 Documentation: IO Tools. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/io.html">https://pandas.pydata.org/docs/user_guide/io.html</a>.</p></li>
-<li id="id195"><p>Wes McKinney. Pandas 2.2 Documentation: Series. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/reference/series.html">https://pandas.pydata.org/docs/reference/series.html</a>.</p></li>
-<li id="id198"><p>Wes McKinney. Pandas 2.2 Documentation: Working with Missing Data. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/missing_data.html">https://pandas.pydata.org/docs/user_guide/missing_data.html</a>.</p></li>
+<li id="id210"><p>Liam Brannigan. Cheatsheet for Pandas to Polars. 2024. URL: <a class="reference external" href="https://www.rhosignal.com/posts/polars-pandas-cheatsheet/">https://www.rhosignal.com/posts/polars-pandas-cheatsheet/</a>.</p></li>
+<li id="id209"><p>Jodie Burchell. Polars vs. Pandas: What's the Difference? 2023. URL: <a class="reference external" href="https://blog.jetbrains.com/dataspell/2023/08/polars-vs-pandas-what-s-the-difference/">https://blog.jetbrains.com/dataspell/2023/08/polars-vs-pandas-what-s-the-difference/</a>.</p></li>
+<li id="id211"><p>Damien Dotta. Cookbook Polars for R. 2023. URL: <a class="reference external" href="https://ddotta.github.io/cookbook-rpolars/">https://ddotta.github.io/cookbook-rpolars/</a>.</p></li>
+<li id="id206"><p>Matplotlib. Matplotlib 3.8 Documentation: matplotlib.pyplot.yticks. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/reference/series.html">https://pandas.pydata.org/docs/reference/series.html</a>.</p></li>
+<li id="id202"><p>Wes McKinney. Data Wrangling with Pandas Cheat Sheet. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf</a>.</p></li>
+<li id="id204"><p>Wes McKinney. Pandas 2.2 Documentation: DataFrame. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/reference/frame.html">https://pandas.pydata.org/docs/reference/frame.html</a>.</p></li>
+<li id="id203"><p>Wes McKinney. Pandas 2.2 Documentation: Getting Started Tutorials. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html">https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html</a>.</p></li>
+<li id="id207"><p>Wes McKinney. Pandas 2.2 Documentation: IO Tools. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/io.html">https://pandas.pydata.org/docs/user_guide/io.html</a>.</p></li>
+<li id="id205"><p>Wes McKinney. Pandas 2.2 Documentation: Series. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/reference/series.html">https://pandas.pydata.org/docs/reference/series.html</a>.</p></li>
+<li id="id208"><p>Wes McKinney. Pandas 2.2 Documentation: Working with Missing Data. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/missing_data.html">https://pandas.pydata.org/docs/user_guide/missing_data.html</a>.</p></li>
 </ol>
 </div>
 </section>
