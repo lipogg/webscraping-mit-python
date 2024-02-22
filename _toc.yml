@@ -98,7 +98,9 @@ sections:
       title: Selenium ist kein Hammer
     - file: chapters/10/subchapters/02_sessions_cookies.ipynb
       title: Sessions und Cookies
-    - file: chapters/10/subchapters/03_tipps_tricks.ipynb
+    - file: chapters/10/subchapters/03_apis_tokens.ipynb
+      title: Authentifizierung, Autorisierung und APIs
+    - file: chapters/10/subchapters/04_tipps_tricks.ipynb
       title: Weitere Tipps und Tricks
 - file: chapters/11/11_intro
   title: Pandas (Exkurs)
