@@ -5,7 +5,7 @@ Hier findet ihr Informationen zu Teilnahmemodalitäten, Prüfungsleistungen und 
 Teilnahmeschein:
 
 * Aktive Teilnahme: n-2 Sitzungen 
-* Wöchentliche Übungsaufgaben: Lösungen Mittwochabend vor jeder Stunde an mich schicken (l.poggel@fu-berlin.de). Übungen schicke ich euch über den Blackboard-Verteiler jede Woche bis Donnerstagabend.
+* Wöchentliche Übungsaufgaben: Lösungen Samstagabend vor jeder Stunde an mich schicken (l.poggel@fu-berlin.de). Übungen schicke ich euch über den Blackboard-Verteiler jede Woche bis Dienstagabend.
 * Ein Kahoot-Quiz erstellen und moderieren. Login über [https://kahoot.com/](https://kahoot.com/)
 
 Leistungsschein:
@@ -19,7 +19,7 @@ Bei Fragen, Kritik oder falls ihr mal eine Sitzung nicht kommen könnt, schreibt
 
 Bewertungskriterien für das Abschlussprojekt:
 
-* Umfang: Jupyter Notebook, bestehend aus Codezellen und Text (Markdown-Zellen) zur Dokumentation. Der Umfang der Dokumentationstextes (exklusive Code) sollte 4-8 Seiten entsprechen. Im Dokumentationstext erläutert ihr die Auswahl der zu extrahierenden Daten in Bezug auf eine (fiktive) Fragestellung. Ihr diskutiert, in welchem Umfang und in welchem Format die Daten verfügbar sind, und von welchen Webseiten ihr die Daten extrahieren wollt. Ihr erläutert das gewählte Verfahren zur Datenextraktion (API-Abfrage, Web Scraping mit BeautifulSoup oder Selenium) und begründet eure Auswahl (Stichwort JavaScript, Verfügbarkeit von APIs, ...). Außerdem diskutiert ihr den rechtlichen Rahmen sowie für das Projekt relevante Beschränkungen in Bezug auf Web Scraping bzw. API-Abfragen. Der zeitliche Aufwand zur Bearbeitung des Projekts sollte den Vorgaben aus der entsprechenden Modulbeschreibung in eurer Studien- und Prüfungsordnung entsprechen. Bei der Diskussion des rechtlichen Rahmens und der Umsetzung von Verarbeitungsschritten, die wir nicht im Seminar besprochen haben, ist ggf. Eigenrecherche erforderlich. Die verwendete Literatur und ggf. Urheber:innen von Code, den ihr verwendet, gebt ihr in einem Literaturverzeichnis am Ende des Jupyter Notebooks an. 
+* Umfang: Jupyter Notebook, bestehend aus Codezellen und Text (Markdown-Zellen) zur Dokumentation. Der Umfang der Dokumentationstextes (exklusive Code) sollte 4-8 Seiten (ca. 1200-3000 Wörter) entsprechen. Im Dokumentationstext erläutert ihr die Auswahl der zu extrahierenden Daten in Bezug auf eine (fiktive) Fragestellung. Ihr diskutiert, in welchem Umfang und in welchem Format die Daten verfügbar sind, und von welchen Webseiten ihr die Daten extrahieren wollt. Ihr erläutert das gewählte Verfahren zur Datenextraktion (API-Abfrage, Web Scraping mit BeautifulSoup oder Selenium) und begründet eure Auswahl (Stichwort JavaScript, Verfügbarkeit von APIs, ...). Außerdem diskutiert ihr den rechtlichen Rahmen sowie für das Projekt relevante Beschränkungen in Bezug auf Web Scraping bzw. API-Abfragen. Der zeitliche Aufwand zur Bearbeitung des Projekts sollte den Vorgaben aus der entsprechenden Modulbeschreibung in eurer Studien- und Prüfungsordnung entsprechen. Bei der Diskussion des rechtlichen Rahmens und der Umsetzung von Verarbeitungsschritten, die wir nicht im Seminar besprochen haben, ist ggf. Eigenrecherche erforderlich. Die verwendete Literatur und ggf. Urheber:innen von Code, den ihr verwendet, gebt ihr in einem Literaturverzeichnis am Ende des Jupyter Notebooks an. 
 * Abgabefrist: 30.09.2024
 * Abgabeformat: Jupyter Notebook (.ipynb-Datei)
 
