@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Zusammengesetzte Datentypen &#8212; Webscraping für Geisteswissenschaften</title>
   
@@ -19,50 +18,47 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03/subchapters/01_datentypen';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -74,7 +70,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -109,11 +113,16 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -128,9 +137,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../../intro.html">
+  
   
   
   
@@ -140,12 +151,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Webscraping für Geisteswissenschaften - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Webscraping für Geisteswissenschaften - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -294,20 +316,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -349,19 +373,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="zusammengesetzte-datentypen">
-<h1>Zusammengesetzte Datentypen<a class="headerlink" href="#zusammengesetzte-datentypen" title="Permalink to this heading">#</a></h1>
+<h1>Zusammengesetzte Datentypen<a class="headerlink" href="#zusammengesetzte-datentypen" title="Link to this heading">#</a></h1>
 <p>Zusammengesetzte Datentypen sind strukturierte Sammlungen von Objekten. In Python sind vier solcher “zusammengesetzter Datentypen” vordefiniert: Tupel, Listen, Sets und Dictionaries. Tupel und Listen sind zugleich sequentielle Datentypen. Manche der Operationen und Operatoren, die wir schon im Zusammenhang mit Strings kennengelernt haben, können deswegen auch auf Tupel und Listen angewandt werden.</p>
 <section id="tupel">
-<h2>Tupel<a class="headerlink" href="#tupel" title="Permalink to this heading">#</a></h2>
+<h2>Tupel<a class="headerlink" href="#tupel" title="Link to this heading">#</a></h2>
 <p>Tupel sind eine geordnete Abfolge von Elementen verschiedenen Datentyps. Das heißt, sie sind genau wie Strings ein sequentieller Datentyp. Tupel sind außerdem <strong>unveränderbar</strong>, genau wie Strings.
 Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen zu tauschen (siehe Beispiel unten). Im Kapitel zu Funktionen werden wir Tupeln auch noch einmal begegnen.</p>
 <figure class="align-default" id="markdown-fig">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/tuple_object.png"><img alt="Beispiel" class="bg-transparent" src="../../../_images/tuple_object.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispielobjekt vom Typ Tupel</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Beispielobjekt vom Typ Tupel</span><a class="headerlink" href="#markdown-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -510,12 +534,12 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </section>
 <section id="listen">
-<h2>Listen<a class="headerlink" href="#listen" title="Permalink to this heading">#</a></h2>
+<h2>Listen<a class="headerlink" href="#listen" title="Link to this heading">#</a></h2>
 <p>Geordnete Abfolge von Elementen, die gewöhnlich denselben Datentyp haben, aber theoretisch verschiedene Datentypen haben könnten. Listen sind <strong>veränderbar</strong>, das heißt, dass Listenelemente ausgetauscht werden können.</p>
 <figure class="align-default" id="id1">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/list_object.png"><img alt="Beispiel" class="bg-transparent" src="../../../_images/list_object.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispielobjekt vom Typ Liste</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Beispielobjekt vom Typ Liste</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Liste aller Methoden, die für Objekte vom Typ Liste definiert sind: <a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">https://docs.python.org/3/tutorial/datastructures.html#more-on-lists</a>.</p>
@@ -833,7 +857,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <p>Beim Klonen wird ein neues Objekt erstellt; ein Alias ist dagegen nur ein weiterer Name, der auf dasselbe Objekt zeigt. Um den Unterschied zwischen den beiden Operationen besser nachzuvollziehen, könnt ihr den Code auf <a class="reference external" href="https://pythontutor.com/python-debugger.html#mode=edit">https://pythontutor.com/python-debugger.html#mode=edit</a> eingeben und ausführen. Die Seite visualisiert, was in jeder Codezeile passiert.</p>
 </section>
 <section id="zusammenfassung-operationen-auf-sequentiellen-datentypen">
-<h2>Zusammenfassung: Operationen auf sequentiellen Datentypen<a class="headerlink" href="#zusammenfassung-operationen-auf-sequentiellen-datentypen" title="Permalink to this heading">#</a></h2>
+<h2>Zusammenfassung: Operationen auf sequentiellen Datentypen<a class="headerlink" href="#zusammenfassung-operationen-auf-sequentiellen-datentypen" title="Link to this heading">#</a></h2>
 <p>Die folgende Tabelle ist der offiziellen Dokumentation zu Python 3.11.3 entnommen und gibt einen Überblick über die Operationen, die auf die drei sequentiellen Datentypen Strings, Tupel und Listen angewendet werden können. <code class="docutils literal notranslate"><span class="pre">s</span></code> steht für irgendein Objekt mit einem sequentiellen Datentyp.</p>
 <table class="table">
 <thead>
@@ -883,12 +907,12 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <p>Quelle: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#typesseq-common">Python 3.11.3 Documentation</a></p>
 </section>
 <section id="sets">
-<h2>Sets<a class="headerlink" href="#sets" title="Permalink to this heading">#</a></h2>
+<h2>Sets<a class="headerlink" href="#sets" title="Link to this heading">#</a></h2>
 <p>Sets sind ungeordnete Sammlungen von Objekten, die gewöhnlich denselben Datentyp haben, aber theoretisch verschiedene Datentypen haben können. Objekte in einem Set dürfen sich nicht wiederholen. In Python gibt es zum einen den Typ <code class="docutils literal notranslate"><span class="pre">set</span></code>, der <strong>veränderbar</strong> ist, und den Typ <code class="docutils literal notranslate"><span class="pre">frozenset</span></code>, der <strong>unveränderbar</strong> ist. Sets werden zum Beispiel dazu verwendet, um Duplikate aus einer Sequenz zu entfernen, oder Mengenoperationen durchzuführen: zum Beispiel kann man die Vereinigung, die Differenz oder die Schnittmenge zweier Mengen bilden. Sets sind kein sequentieller Datentyp, und die Operationen, die für sequentielle Datentypen definiert sind, können auf Sets nicht angewendet werden.</p>
 <figure class="align-default" id="id2">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/set_object.png"><img alt="Beispiel" class="bg-transparent" src="../../../_images/set_object.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispielobjekt vom Typ Set</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Beispielobjekt vom Typ Set</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -981,7 +1005,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;banane&#39;, &#39;kiwi&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;kiwi&#39;, &#39;banane&#39;}
 </pre></div>
 </div>
 </div>
@@ -997,7 +1021,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;orange&#39;, &#39;banane&#39;, &#39;kiwi&#39;, &#39;apfel&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apfel&#39;, &#39;orange&#39;, &#39;banane&#39;, &#39;kiwi&#39;}
 </pre></div>
 </div>
 </div>
@@ -1020,12 +1044,12 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </section>
 <section id="dictionaries">
-<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this heading">#</a></h2>
+<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h2>
 <p>Python Dictionaries werden dazu verwendet, um Daten als Schlüssel-Wert-Paar zu speichern. Dictionaries sind ähnlich wie Listen, aber die Einträge sind nicht geordnet und anstelle eines Zahlindexes ist jedem Wert ein Schlüssel zugeordnet, über den auf den Wert zugegriffen werden kann. Werte können alle bisher bekannten Datentypen haben und dürfen sich wiederholen, aber Schlüssel müssen unveränderbar und einzigartig sein. Das heißt: Schlüssel können zum Beispiel Strings sein, aber keine Listen. Dictionaries sind genauso wie Sets also kein sequentieller Datentyp, und die Operationen, die für sequentielle Datentypen definiert sind, können auf Dictionaries nicht angewendet werden. Dictionaries werden immer dann verwendet, wenn es sinnvoll ist, dass der Index sinntragend ist.</p>
 <figure class="align-default" id="id3">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/dict_object.png"><img alt="Beispiel" class="bg-transparent" src="../../../_images/dict_object.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispielobjekt vom Typ Dictionary</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Beispielobjekt vom Typ Dictionary</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1167,7 +1191,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
+<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id4">
 <ol class="arabic simple" start="1">
 <li id="id16"><p>Ana Bell. Tuples, Lists, Aliasing, Mutability, and Cloning. 2016. URL: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-5-tuples-lists-aliasing-mutability-and-cloning/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-5-tuples-lists-aliasing-mutability-and-cloning/</a>.</p></li>
@@ -1208,8 +1232,10 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -1219,6 +1245,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1240,7 +1267,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1253,9 +1280,10 @@ By Lisa Poggel
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1270,7 +1298,7 @@ By Lisa Poggel
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1279,8 +1307,8 @@ By Lisa Poggel
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

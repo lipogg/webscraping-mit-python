@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Beispiel 1: DraCor API &#8212; Webscraping für Geisteswissenschaften</title>
   
@@ -19,50 +18,47 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/08/subchapters/02_dracor_api';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -74,7 +70,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -109,11 +113,16 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -128,9 +137,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../../intro.html">
+  
   
   
   
@@ -140,12 +151,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Webscraping für Geisteswissenschaften - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Webscraping für Geisteswissenschaften - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -294,20 +316,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -352,10 +376,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="beispiel-1-dracor-api">
-<h1>Beispiel 1: DraCor API<a class="headerlink" href="#beispiel-1-dracor-api" title="Permalink to this heading">#</a></h1>
+<h1>Beispiel 1: DraCor API<a class="headerlink" href="#beispiel-1-dracor-api" title="Link to this heading">#</a></h1>
 <p>Zum Einstieg beschäftigen wir uns mit der API von DraCor: <a class="reference external" href="https://dracor.org/doc/api">https://dracor.org/doc/api</a></p>
 <p>DraCor umfasst mehrere <a class="reference external" href="https://fortext.net/ueber-fortext/glossar/korpus">Korpora</a> mit Dramen in verschiedenen Sprachen. Alle Dramen sind in <a class="reference external" href="https://fortext.net/ueber-fortext/glossar/tei">XML-TEI</a> codiert. Mithilfe der API können Metadaten zu den verschiedenen Korpora oder zu einzelnen Dramen abgefragt werden, und es können einzelne Bestandteile der Dramen direkt extrahiert werden: Zum Beispiel alle Abschnitte in den Texten, die in XML-TEI als “Sprechtexte” codiert sind. Ein Beispiel: <a class="reference external" href="https://dracor.org/ger/goethe-iphigenie-auf-tauris#downloads">https://dracor.org/ger/goethe-iphigenie-auf-tauris#downloads</a></p>
 <p>Im Folgenden werden wir die Sprechtexte aller Dramen von Johann Wolfgang Goethe im deutschsprachigen DraCor-Korpus über die API abfragen und als Plaintext-Dateien auf dem Computer speichern.</p>
@@ -378,7 +402,7 @@ document.write(`
 </div>
 </div>
 <section id="informationen-zu-allen-dramen-aus-dem-deutschsprachigen-dracor-korpus-abfragen">
-<h2>1. Informationen zu allen Dramen aus dem deutschsprachigen DraCor Korpus abfragen<a class="headerlink" href="#informationen-zu-allen-dramen-aus-dem-deutschsprachigen-dracor-korpus-abfragen" title="Permalink to this heading">#</a></h2>
+<h2>1. Informationen zu allen Dramen aus dem deutschsprachigen DraCor Korpus abfragen<a class="headerlink" href="#informationen-zu-allen-dramen-aus-dem-deutschsprachigen-dracor-korpus-abfragen" title="Link to this heading">#</a></h2>
 <p>Der Dokumentationsseite zur DraCor-API können wir entnehmen, dass der Inhalt eines bestimmten DraCor-Korpus nach dem Schema “<a class="reference external" href="https://dracor.org/api/v1/corpora/%7Bcorpusname%7D">https://dracor.org/api/v1/corpora/{corpusname}</a>” abgefragt werden kann. Hierbei ist {corpusname} durch das Kürzel des interessierenden Korpus zu ersetzen, in unserem Fall “ger” für das deutschsprachige DraCor-Korpus.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -494,7 +518,7 @@ Der Zugriff auf ein Dictionary erfolgt wie gewohnt mit eckigen Klammern über di
 </div>
 </section>
 <section id="sprechtexte-weiblich-und-mannlich-codierter-charaktere-aus-allen-dramen-bestimmter-autor-innen-abrufen">
-<h2>2. Sprechtexte weiblich und männlich codierter Charaktere aus allen Dramen bestimmter Autor:innen abrufen<a class="headerlink" href="#sprechtexte-weiblich-und-mannlich-codierter-charaktere-aus-allen-dramen-bestimmter-autor-innen-abrufen" title="Permalink to this heading">#</a></h2>
+<h2>2. Sprechtexte weiblich und männlich codierter Charaktere aus allen Dramen bestimmter Autor:innen abrufen<a class="headerlink" href="#sprechtexte-weiblich-und-mannlich-codierter-charaktere-aus-allen-dramen-bestimmter-autor-innen-abrufen" title="Link to this heading">#</a></h2>
 <p>Der Dokumentationsseite zur DraCor API können wir entnehmen, dass eine Abfrage von Sprechtexten über den entsprechenden API Endpunkt dem Schema “<a class="reference external" href="https://dracor.org/api/v1/corpora/%7Bcorpusname%7D/plays/%7Bplayname%7D/spoken-text">https://dracor.org/api/v1/corpora/{corpusname}/plays/{playname}/spoken-text</a> folgen soll. Hierbei ist {corpusname} durch das Kürzel des Korpus (in unserem Fall “ger”) zu ersetzen und {playname} durch den Namen des Stücks, und zwar so, wie der Name unter dem Schlüssel <code class="docutils literal notranslate"><span class="pre">name</span></code> in unserem Dictionary <code class="docutils literal notranslate"><span class="pre">api_data</span></code> angegeben wird.</p>
 <p>Wir müssen also zunächst eine Liste mit den Namen aller Dramen von Goethe erstellen und anschließend daraus unsere Abfrage-URLs zusammensetzen. Um eine Liste der Namn aller Goethe-Dramen zu erhalten, können wir entweder mithilfe des Zugriffsoperators sofort auf alle Dramen des gewählten Autors zugreifen:</p>
 <div class="cell docutils container">
@@ -654,10 +678,10 @@ Der Zugriff auf ein Dictionary erfolgt wie gewohnt mit eckigen Klammern über di
 </div>
 </section>
 <section id="list-comprehension-f-strings-und-daten-schreiben">
-<h2>List Comprehension, F-Strings und Daten schreiben<a class="headerlink" href="#list-comprehension-f-strings-und-daten-schreiben" title="Permalink to this heading">#</a></h2>
+<h2>List Comprehension, F-Strings und Daten schreiben<a class="headerlink" href="#list-comprehension-f-strings-und-daten-schreiben" title="Link to this heading">#</a></h2>
 <p>In dem Skript haben wir zwei neue Syntaxregeln angewendet, die wir bisher nicht besprochen haben. Außerdem haben wir den Code, den ihr bereits bei der Bearbeitung von Übungsblatt 6 kennengelernt habt, angewendet, um die extrahierten Sprechtexte der Goethe-Stücke in Textdateien zu schreiben. In diesem Abschnitt werden diese neuen Inhalte erläutert.</p>
 <section id="list-comprehension">
-<h3>List Comprehension<a class="headerlink" href="#list-comprehension" title="Permalink to this heading">#</a></h3>
+<h3>List Comprehension<a class="headerlink" href="#list-comprehension" title="Link to this heading">#</a></h3>
 <p>Für einfache for-Schleifen haben wir in diesem Abschnitt eine spezielle Syntax verwendet, die sich “List Comprehension” nennt. Was haben nämlich alle diese einfachen for-Schleifen gemeinsam? Sie dienen dazu, über eine Liste zu iterieren und dieselbe Operation auf jedes Listenelement anzuwenden, und anschließend eine neue Liste mit den veränderten Elementen zu erstellen. Formell gesprochen wird also aus den Elementen der bereits existierenden Liste nach einer bestimmten “Berechnungsvorschrift” eine neue Liste erstellt.</p>
 <p>Betrachten wir als Beispiel mal die folgende list comprehension:</p>
 <div class="cell docutils container">
@@ -754,7 +778,7 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
 <p>Überlegt selbst: Was macht dieser Code? Wie würde dieser Code als “normale” for-Schleife aussehen?</p>
 </section>
 <section id="f-strings">
-<h3>F-Strings<a class="headerlink" href="#f-strings" title="Permalink to this heading">#</a></h3>
+<h3>F-Strings<a class="headerlink" href="#f-strings" title="Link to this heading">#</a></h3>
 <p>Zur Verkettung von Strings haben wir in diesem Abschnitt außerdem nicht wie gewohnt den +-Operator verwendet, sondern eine spezielle Syntax:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -793,7 +817,7 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
 </div>
 </section>
 <section id="daten-schreiben">
-<h3>Daten schreiben<a class="headerlink" href="#daten-schreiben" title="Permalink to this heading">#</a></h3>
+<h3>Daten schreiben<a class="headerlink" href="#daten-schreiben" title="Link to this heading">#</a></h3>
 <p>Zuletzt schauen wir uns auch den Code zum schreiben von Daten in Dateien aus der for-Schleife oben noch einmal genauer an:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -836,7 +860,7 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
 </section>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Permalink to this heading">#</a></h2>
+<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
 <li id="id100"><p>Peter Ernesti, Johannes und Kaiser. Python 3: List Comprehensions. 2020. URL: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/23_001.html#u23.1.1">https://openbook.rheinwerk-verlag.de/python/23_001.html#u23.1.1</a>.</p></li>
@@ -874,8 +898,10 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -885,6 +911,7 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -909,7 +936,7 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -922,9 +949,10 @@ By Lisa Poggel
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -939,7 +967,7 @@ By Lisa Poggel
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -948,8 +976,8 @@ By Lisa Poggel
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Fortsetzung BeautifulSoup &#8212; Webscraping für Geisteswissenschaften</title>
   
@@ -19,50 +18,47 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/07/subchapters/02_fortsetzung_beautifulsoup';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -74,7 +70,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -109,11 +113,16 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -128,9 +137,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../../intro.html">
+  
   
   
   
@@ -140,12 +151,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Webscraping für Geisteswissenschaften - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Webscraping für Geisteswissenschaften - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -294,20 +316,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -358,10 +382,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="fortsetzung-beautifulsoup">
-<h1>Fortsetzung BeautifulSoup<a class="headerlink" href="#fortsetzung-beautifulsoup" title="Permalink to this heading">#</a></h1>
+<h1>Fortsetzung BeautifulSoup<a class="headerlink" href="#fortsetzung-beautifulsoup" title="Link to this heading">#</a></h1>
 <p>Letzte Woche haben wir alle Zitate von der ersten Seite der Website <a class="reference external" href="https://quotes.toscrape.com">https://quotes.toscrape.com</a> extrahiert.
 Heute werden wir den Code in drei Aspekten ergänzen:</p>
 <ol class="arabic simple">
@@ -390,7 +414,7 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </div>
 <section id="recap-zitate-von-der-ersten-seite-extrahieren-ohne-metadaten">
-<h2>Recap: Zitate von der ersten Seite extrahieren, ohne Metadaten<a class="headerlink" href="#recap-zitate-von-der-ersten-seite-extrahieren-ohne-metadaten" title="Permalink to this heading">#</a></h2>
+<h2>Recap: Zitate von der ersten Seite extrahieren, ohne Metadaten<a class="headerlink" href="#recap-zitate-von-der-ersten-seite-extrahieren-ohne-metadaten" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://quotes.toscrape.com/&quot;</span>
@@ -422,7 +446,7 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </section>
 <section id="zitate-von-der-ersten-seite-extrahieren-mit-metadaten">
-<h2>Zitate von der ersten Seite extrahieren, mit Metadaten<a class="headerlink" href="#zitate-von-der-ersten-seite-extrahieren-mit-metadaten" title="Permalink to this heading">#</a></h2>
+<h2>Zitate von der ersten Seite extrahieren, mit Metadaten<a class="headerlink" href="#zitate-von-der-ersten-seite-extrahieren-mit-metadaten" title="Link to this heading">#</a></h2>
 <p>In der letzten Stunde haben wir die BeautifulSoup-Methoden .find() und .find_all() verwendet, um HTML-Elemente in einem  BeautifulSoup-Objekt zu finden. Genauso könnten wir auch vorgehen, um neben den Zitaten auch einige Metadaten zu extrahieren, also zum Beispiel auch den Namen der Person, von der das Zitat stammt, und die Tags, mit denen das Zitat versehen wurde.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -677,9 +701,9 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </section>
 <section id="zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten">
-<h2>Zitate von allen Seiten der Website extrahieren, ohne Metadaten<a class="headerlink" href="#zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten" title="Permalink to this heading">#</a></h2>
+<h2>Zitate von allen Seiten der Website extrahieren, ohne Metadaten<a class="headerlink" href="#zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten" title="Link to this heading">#</a></h2>
 <section id="losung-mit-for-schleife-fur-exakt-10-unterseiten">
-<h3>Lösung mit for-Schleife: für exakt 10 Unterseiten<a class="headerlink" href="#losung-mit-for-schleife-fur-exakt-10-unterseiten" title="Permalink to this heading">#</a></h3>
+<h3>Lösung mit for-Schleife: für exakt 10 Unterseiten<a class="headerlink" href="#losung-mit-for-schleife-fur-exakt-10-unterseiten" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -702,8 +726,8 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 230 ms, sys: 17.6 ms, total: 248 ms
-Wall time: 716 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 287 ms, sys: 23.1 ms, total: 310 ms
+Wall time: 2.84 s
 </pre></div>
 </div>
 </div>
@@ -853,8 +877,8 @@ Wall time: 716 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 183 ms, sys: 12.2 ms, total: 195 ms
-Wall time: 663 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 269 ms, sys: 22.1 ms, total: 291 ms
+Wall time: 2.87 s
 </pre></div>
 </div>
 </div>
@@ -973,7 +997,7 @@ Wall time: 663 ms
 <p>Die Ausgabe von %%time und %%memit zeigen, dass die Nutzung des Sets keinen (Effizienz-) Vorteil gegenüber Listen hat: Wir können also genausogut eine Liste verwenden.</p>
 </section>
 <section id="losung-mit-while-schleife-unbekannte-anzahl-von-unterseiten">
-<h3>Lösung mit while-Schleife: unbekannte Anzahl von Unterseiten<a class="headerlink" href="#losung-mit-while-schleife-unbekannte-anzahl-von-unterseiten" title="Permalink to this heading">#</a></h3>
+<h3>Lösung mit while-Schleife: unbekannte Anzahl von Unterseiten<a class="headerlink" href="#losung-mit-while-schleife-unbekannte-anzahl-von-unterseiten" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -1008,8 +1032,8 @@ Wall time: 663 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 254 ms, sys: 16.2 ms, total: 271 ms
-Wall time: 829 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 387 ms, sys: 28 ms, total: 414 ms
+Wall time: 3.54 s
 </pre></div>
 </div>
 </div>
@@ -1206,8 +1230,8 @@ Die Macher:innen der Seite quotes.toscrape haben sich überlegt, dass auch Seite
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 177 ms, sys: 15.2 ms, total: 192 ms
-Wall time: 758 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 342 ms, sys: 26.1 ms, total: 368 ms
+Wall time: 3.37 s
 </pre></div>
 </div>
 </div>
@@ -1350,8 +1374,8 @@ Wall time: 758 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 153 ms, sys: 9.5 ms, total: 162 ms
-Wall time: 475 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 266 ms, sys: 11.3 ms, total: 277 ms
+Wall time: 1.98 s
 </pre></div>
 </div>
 </div>
@@ -1359,9 +1383,9 @@ Wall time: 475 ms
 </section>
 </section>
 <section id="zitate-von-allen-seiten-extrahieren-mit-metadaten">
-<h2>Zitate von allen Seiten extrahieren, mit Metadaten<a class="headerlink" href="#zitate-von-allen-seiten-extrahieren-mit-metadaten" title="Permalink to this heading">#</a></h2>
+<h2>Zitate von allen Seiten extrahieren, mit Metadaten<a class="headerlink" href="#zitate-von-allen-seiten-extrahieren-mit-metadaten" title="Link to this heading">#</a></h2>
 <section id="losung-mit-for-schleife">
-<h3>Lösung mit for-Schleife<a class="headerlink" href="#losung-mit-for-schleife" title="Permalink to this heading">#</a></h3>
+<h3>Lösung mit for-Schleife<a class="headerlink" href="#losung-mit-for-schleife" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -1391,8 +1415,8 @@ Wall time: 475 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 192 ms, sys: 12.4 ms, total: 204 ms
-Wall time: 672 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 332 ms, sys: 21 ms, total: 353 ms
+Wall time: 2.88 s
 </pre></div>
 </div>
 </div>
@@ -1501,7 +1525,7 @@ Wall time: 672 ms
 </div>
 </section>
 <section id="losung-mit-while-schleife">
-<h3>Lösung mit while-Schleife<a class="headerlink" href="#losung-mit-while-schleife" title="Permalink to this heading">#</a></h3>
+<h3>Lösung mit while-Schleife<a class="headerlink" href="#losung-mit-while-schleife" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -1540,8 +1564,8 @@ Wall time: 672 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 232 ms, sys: 13.9 ms, total: 246 ms
-Wall time: 797 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 375 ms, sys: 27.6 ms, total: 402 ms
+Wall time: 3.44 s
 </pre></div>
 </div>
 </div>
@@ -1685,8 +1709,8 @@ Wall time: 797 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 213 ms, sys: 11.2 ms, total: 224 ms
-Wall time: 553 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 274 ms, sys: 9.52 ms, total: 283 ms
+Wall time: 1.94 s
 </pre></div>
 </div>
 </div>
@@ -1726,15 +1750,15 @@ Wall time: 553 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 233 ms, sys: 11.4 ms, total: 244 ms
-Wall time: 607 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 319 ms, sys: 10.8 ms, total: 330 ms
+Wall time: 2 s
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="losung-mit-funktionen">
-<h3>Lösung mit Funktionen<a class="headerlink" href="#losung-mit-funktionen" title="Permalink to this heading">#</a></h3>
+<h3>Lösung mit Funktionen<a class="headerlink" href="#losung-mit-funktionen" title="Link to this heading">#</a></h3>
 <p>Zuletzt wäre auch eine Lösung mithilfe von Funktionsdefinitionen denkbar:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1815,8 +1839,8 @@ Wall time: 607 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 183 ms, sys: 12.7 ms, total: 196 ms
-Wall time: 552 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 361 ms, sys: 11.3 ms, total: 373 ms
+Wall time: 2.21 s
 </pre></div>
 </div>
 </div>
@@ -1931,7 +1955,7 @@ Wall time: 552 ms
 </section>
 </section>
 <section id="pandas-dataframe-in-exceldatei-schreiben">
-<h2>Pandas-DataFrame in Exceldatei schreiben<a class="headerlink" href="#pandas-dataframe-in-exceldatei-schreiben" title="Permalink to this heading">#</a></h2>
+<h2>Pandas-DataFrame in Exceldatei schreiben<a class="headerlink" href="#pandas-dataframe-in-exceldatei-schreiben" title="Link to this heading">#</a></h2>
 <p>Zuletzt wollen wir die extrahierten Daten auf unserem Computer abspeichern. Um einen Pandas DataFrame zu speichern, gibt es verschiedene Methoden. Die Methode .to_excel() erlaubt zum Beispiel, einen DataFrame in einer Exceltabelle zu speichern, also in einer Datei mit der Dateiendung .xlsx. Für “speichern” sagt man in diesem Kontext auch “schreiben”: Daten werden in eine Datei geschrieben.</p>
 <p>Die Methode .to_excel() greift unter der Motorhaube auf ein Paket mit dem Namen openpyxl zurück. Diese Paket mussten wir deswegen am Anfang installieren.</p>
 <p>Dokumentation: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html</a></p>
@@ -1944,7 +1968,7 @@ Wall time: 552 ms
 </div>
 </section>
 <section id="time-und-memit-was-ist-das">
-<h2>%%time und %%memit: Was ist das?<a class="headerlink" href="#time-und-memit-was-ist-das" title="Permalink to this heading">#</a></h2>
+<h2>%%time und %%memit: Was ist das?<a class="headerlink" href="#time-und-memit-was-ist-das" title="Link to this heading">#</a></h2>
 <p>Wir haben beim Ausführen der Codezellen in diesem Jupyter Notebook jeweils zwei Zeilen am Anfang hinzugefügt:</p>
 <ul class="simple">
 <li><p>%%time berechnet die Laufzeit einer Jupyter Notebook Codezelle.</p></li>
@@ -1983,8 +2007,10 @@ Wall time: 552 ms
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -1994,6 +2020,7 @@ Wall time: 552 ms
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2024,7 +2051,7 @@ Wall time: 552 ms
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -2037,9 +2064,10 @@ By Lisa Poggel
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2054,7 +2082,7 @@ By Lisa Poggel
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -2063,8 +2091,8 @@ By Lisa Poggel
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
