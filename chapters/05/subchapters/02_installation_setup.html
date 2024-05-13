@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Installation und Setup &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>5.2. Installation und Setup &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6. Einstieg Webscraping" href="../../06/06_intro.html" />
+    <link rel="prev" title="5.1. Vorbereitung" href="01_vorbereitung.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +177,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -202,6 +202,19 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../04/04_intro.html">4. Python III</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../04/subchapters/01_funktionen.html">4.1. Funktionen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04/subchapters/02_bibliotheken.html">4.2. Module, Pakete, Bibliotheken</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../05_intro.html">5. Installation und Setup</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_vorbereitung.html">5.1. Vorbereitung</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.2. Installation und Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06/06_intro.html">6. Einstieg Webscraping</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/01_rechtliches.html">6.1. Der rechtliche Rahmen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/02_html.html">6.2. HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/03_css.html">6.3. CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/04_http.html">6.4. Client, Server, HTTP</a></li>
 </ul>
 </li>
 </ul>
@@ -367,12 +380,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-richtige-python-version">Die richtige Python-Version</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-anaconda">Was ist Anaconda?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anaconda-installieren">Anaconda installieren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-virtuelle-umgebungen">Was sind virtuelle Umgebungen?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtuelle-umgebung-erstellen">Virtuelle Umgebung erstellen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-installieren">JupyterLab installieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-richtige-python-version">5.2.1. Die richtige Python-Version</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-anaconda">5.2.2. Was ist Anaconda?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anaconda-installieren">5.2.3. Anaconda installieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-virtuelle-umgebungen">5.2.4. Was sind virtuelle Umgebungen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtuelle-umgebung-erstellen">5.2.5. Virtuelle Umgebung erstellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-installieren">5.2.6. JupyterLab installieren</a></li>
 </ul>
             </nav>
         </div>
@@ -385,25 +398,25 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="installation-und-setup">
-<h1>Installation und Setup<a class="headerlink" href="#installation-und-setup" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">5.2. </span>Installation und Setup<a class="headerlink" href="#installation-und-setup" title="Link to this heading">#</a></h1>
 <section id="die-richtige-python-version">
-<h2>Die richtige Python-Version<a class="headerlink" href="#die-richtige-python-version" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.2.1. </span>Die richtige Python-Version<a class="headerlink" href="#die-richtige-python-version" title="Link to this heading">#</a></h2>
 <p>Generell wird empfohlen, nicht mit der allerneusten Python-Version zu arbeiten, sondern mit der vorletzten Python-Release.
-Die aktuelle Python-Release ist 3.11, in der Version 3, also 3.11.3.
-Das heißt die Release, mit der wir arbeiten sollten, ist idealerweise 3.10.</p>
+Die aktuelle Python-Release ist 3.12, in der Version 3, also 3.12.3.
+Das heißt die Release, mit der wir arbeiten sollten, ist idealerweise 3.11.</p>
 <p>Je nachdem, wie alt euer Computer ist und welche Version euer Betriebssystem hat, werden bei euch verschiedene Python-Versionen vorinstalliert sein.
 Wenn ihr Windows verwendet, ist Python generell nicht vorinstalliert.
 Da wir also in einer Gruppe arbeiten, in der die Startvoraussetzungen sehr verschieden sind, werden wir zur Installation der richtigen
 Python-Version und für das Setup von JupyterLab Anaconda verwenden.</p>
 </section>
 <section id="was-ist-anaconda">
-<h2>Was ist Anaconda?<a class="headerlink" href="#was-ist-anaconda" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.2.2. </span>Was ist Anaconda?<a class="headerlink" href="#was-ist-anaconda" title="Link to this heading">#</a></h2>
 <p>Anaconda vereint verschiedene Komponeneten: Python selbst, sowie einen sogenannten Paketmanager, der die Verwaltung verschiedener Pakete ermöglicht, eine Entwicklungsumgebung und ein graphisches User-Interface.
 Die verschiedenen Funktionalitäten, die Anaconda bereitstellt, können auch über das Terminal / die Kommandozeile verwendet werden.
 Wir werden Anaconda nur herunterladen und anschließend die Kommandozeile verwenden, um JupyterLab zu installieren.</p>
 </section>
 <section id="anaconda-installieren">
-<h2>Anaconda installieren<a class="headerlink" href="#anaconda-installieren" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.2.3. </span>Anaconda installieren<a class="headerlink" href="#anaconda-installieren" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Öffnet die Anaconda-Website: <a class="reference external" href="https://www.anaconda.com/download/">https://www.anaconda.com/download/</a> und ladet die Installationsdatei herunter.<br />
 <strong>Falls ihr einen Mac habt</strong>, müsst ihr neben dem Download-Button auf den Pfeil klicken und zwischen der Installationsdatei für Intel und M1/M2 Macs auswählen. Wenn ihr nicht wisst, welchen Prozessor euer Mac hat, schaut unter Apple-Menü -&gt; “Über diesen Mac” nach.</p></li>
@@ -425,24 +438,24 @@ Falls die Meldung immer noch erscheint, kommt in meine Installationssprechstunde
 </ol>
 </section>
 <section id="was-sind-virtuelle-umgebungen">
-<h2>Was sind virtuelle Umgebungen?<a class="headerlink" href="#was-sind-virtuelle-umgebungen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.2.4. </span>Was sind virtuelle Umgebungen?<a class="headerlink" href="#was-sind-virtuelle-umgebungen" title="Link to this heading">#</a></h2>
 <p>Mithilfe von Anaconda kann man über das Terminal / die Kommandozeile für jedes Coding-Projekt, für das man Python verwendet, eine spezielle “virtuelle Umgebung” erstellen.
 Virtuelle Umgebungen sind reproduzierbare, übertragbare und isolierte Umgebungen für Python-Projekte.
-In einer virtuellen Umgebung kann man die gewünschte Python-Version und alle zusätzlichen Python-Pakete, die man für das Projekt braucht, installieren.
-Mithilfe von virtuellen Umgebungen können so verschiedene Python-Versionen mit ganz verschiedenen Paketen nebeneinander auf demselben Rechner verwendet werden.
+In einer virtuellen Umgebung kann man die gewünschte Python-Version und alle zusätzlichen Python-Bibliotheken, die man für das Projekt braucht, installieren.
+Mithilfe von virtuellen Umgebungen können so verschiedene Python-Versionen mit ganz verschiedenen Bibliotheken nebeneinander auf demselben Rechner verwendet werden.
 JupyterLab können wir ebenfalls direkt in der virtuellen Umgebung installieren.</p>
-<p>Theoretisch kann man verschiedene Python-Versionen, JupyterLab und alle Python-Pakete, die man braucht, auch installieren, ohne dazu eine virtuelle Umgebung einzurichten.
+<p>Theoretisch kann man verschiedene Python-Versionen, JupyterLab und alle Python-Bibliotheken, die man braucht, auch installieren, ohne dazu eine virtuelle Umgebung einzurichten.
 Das erscheint im ersten Moment weniger kompliziert, allerdings entstehen so auf lange Sicht große Probleme,
-denn alle Pakete liegen dann am selben Ort. Es kann vorkommen, dass man für ein Coding-Projekt ein Python-Paket in einer bestimmten Version verwendet hat.
-Ein bisschen später will man dasselbe Paket für ein anderes Projekt verwendet. In der Zwischenzeit haben die Entwickler:innen des Pakets allerdings ein paar Änderungen vorgenommen und eine neue Version des Pakets veröffentlicht.
-Man updated deswegen das Paket und verwendet die neue Version für das neue Coding-Projekt.
+denn alle Bibliotheken liegen dann am selben Ort. Es kann vorkommen, dass man für ein Coding-Projekt eine Python-Bibliothek in einer bestimmten Version verwendet hat.
+Ein bisschen später will man dieselbe Bibliothek für ein anderes Projekt verwendet. In der Zwischenzeit haben die Entwickler:innen der Bibliothek allerdings ein paar Änderungen vorgenommen und eine neue Version der Bibliothek veröffentlicht.
+Man updated deswegen die Bibliothek und verwendet die neue Version für das neue Coding-Projekt.
 Die Änderungen haben aber dazu geführt, dass irgendwo im Code im alten Coding-Projekt eine Fehlermeldung entsteht.
-Ein anderes Problem entsteht zum Beispiel, wenn eine andere Person unseren Code nachnutzen will und diese Person auf ihrem Rechner bereits andere Pakete als wir vorinstalliert hat und es zu Konflikten zwischen den installierten Paketen kommt. Vielleicht verwendet die Person zudem noch ein anderes Betriebssystem.
+Ein anderes Problem entsteht zum Beispiel, wenn eine andere Person unseren Code nachnutzen will und diese Person auf ihrem Rechner bereits andere Bibliotheken und Module als wir vorinstalliert hat und es zu Konflikten zwischen den installierten Bibliotheken kommt. Vielleicht verwendet die Person zudem noch ein anderes Betriebssystem.
 Python ohne virtuelle Umgebungen zu verwenden, kann also die Reproduzierbarkeit unserer Daten einschränken und sogar zu Fehlermeldungen führen.</p>
 <p>Professionelle Programmierer:innen verwenden deswegen für Python-Projekte eigentlich immer virtuelle Umgebungen.</p>
 </section>
 <section id="virtuelle-umgebung-erstellen">
-<h2>Virtuelle Umgebung erstellen<a class="headerlink" href="#virtuelle-umgebung-erstellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.2.5. </span>Virtuelle Umgebung erstellen<a class="headerlink" href="#virtuelle-umgebung-erstellen" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Zunächst solltet ihr einen Ordner auf eurem Computer erstellen, in dem ihr die Jupyter Notebooks, die wir im Laufe der nächsten Stunden erstellen werden, ablegt.
 Das ist unser Projektordner. Auch, wenn ihr bereits einen Ordner für diesen Kurs angelegt habt, solltet ihr für die Notebooks einen extra Ordner erstellen.
@@ -456,10 +469,10 @@ Führt den Befehl anschließend mit Enter aus.
 Ihr seht jetzt, dass sich die Eingabeaufforderung in eurem Terminal / Kommandozeile geändert hat: Dort steht jetzt der Name des Ordners.
 Das bedeutet, dass ihr mithilfe des Terminals / der Kommandozeile in euren Ordner navigiert seid.
 Ordner nennt man auch Verzeichnis, oder auf Englisch Directory, und der Befehl cd steht einfach für “change directory”.</p></li>
-<li><p>Gebt jetzt in eurem Terminal / Kommandozeile ein <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">ws-env</span> <span class="pre">python=3.10</span></code> und drückt Enter.
+<li><p>Gebt jetzt in eurem Terminal / Kommandozeile ein <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">ws-env</span> <span class="pre">python=3.11</span></code> und drückt Enter.
 Durch diesen Befehl habt ihr eine virtuelle Umgebung mit dem Name ws-env erstellt.
 Diesen Namen habe ich mir überlegt, er steht für “Webscraping Environment”.
-Mit dem Zusatz “python=3.10” habt ihr dem Computer mitgeteilt, dass ihr in der Umgebung “ws-env” Python 3.10 verwenden wollt. <br />
+Mit dem Zusatz “python=3.11” habt ihr dem Computer mitgeteilt, dass ihr in der Umgebung “ws-env” Python 3.11 verwenden wollt. <br />
 <strong>Achtung</strong>: Falls eine Meldung erscheint “The following NEW packages will be INSTALLED. Proceed [y]/n?”, dann gebt ein y und drückt wieder auf Enter.</p></li>
 <li><p>Wenn die Einrichtung der virtuellen Umgebung abgeschlossen ist, seht ihr den Hinweis: “# To activate this environment, use $ conda activate ws-env To deactivate an active environment, use $ conda deactivate”</p></li>
 <li><p>Gebt ein <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">ws-env</span></code> und drückt Enter.
@@ -468,21 +481,21 @@ Lasst die Umgebung “ws-env” aktiviert und macht direkt weiter mit den Schrit
 </ol>
 </section>
 <section id="jupyterlab-installieren">
-<h2>JupyterLab installieren<a class="headerlink" href="#jupyterlab-installieren" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.2.6. </span>JupyterLab installieren<a class="headerlink" href="#jupyterlab-installieren" title="Link to this heading">#</a></h2>
 <ol class="arabic simple" start="7">
 <li><p>Gebt ein <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">jupyterlab</span></code> und drückt auf Enter.
 Mit diesem Befehl habt ihr JupyterLab installiert. <br />
 <strong>Achtung</strong>: Falls wieder eine Meldung der Art “The following packages will be UPDATED” kommt, bestätigt wieder, indem ihr y eingebt und Enter drückt.</p></li>
-<li><p>Gebt ein <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">ipykernel</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">--name</span> <span class="pre">ws-env</span> <span class="pre">--display-name=&quot;Python</span> <span class="pre">3.10</span> <span class="pre">(Webscraping)&quot;</span></code> und drückt Enter.
+<li><p>Gebt ein <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">ipykernel</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">--name</span> <span class="pre">ws-env</span> <span class="pre">--display-name=&quot;Python</span> <span class="pre">3.11</span> <span class="pre">(Webscraping)&quot;</span></code> und drückt Enter.
 Dieser Befehl erstellt einen neuen “Kernel”.
 Der Kernel ist das Herzstück von JuypterLab, er übernimmt die eigentliche Berechnung und Ausführung von Code und stellt die Verbindung zwischen dem JupyterLab-Benutzerinterface und Python her.
-Wir installieren mit diesem Befehl also einen neuen Kernel, der Python in der Version 3.10 verwendet, um die Berechnungen auszuführen.</p></li>
+Wir installieren mit diesem Befehl also einen neuen Kernel, der Python in der Version 3.11 verwendet, um die Berechnungen auszuführen.</p></li>
 <li><p>Jetzt könnt ihr Jupyter Lab starten, indem ihr <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code> eingebt und auf Enter drückt.<br />
 Jetzt sollte automatisch ein neuer Tab in eurem Browser geöffnet werden.
 Euer Terminal / Kommandozeile ist jetzt die ganze Zeit “aktiv”, bis JupyterLab wieder geschlossen wird. Das heißt, ihr müsst JupyterLab nach jeder Benutzung immer beenden.</p></li>
-<li><p>Wechselt jetzt in das Browserfenster, in dem JupyterLab geöffnet wurde. Klickt auf unseren Kernel “Python 3.10 (Webscraping)”.
+<li><p>Wechselt jetzt in das Browserfenster, in dem JupyterLab geöffnet wurde. Klickt auf unseren Kernel “Python 3.11 (Webscraping)”.
 Es öffnet sich ein neues Jupyter Notebook. In die erste Zelle schreibt ihr <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sys</span></code> und führt die Zelle aus.
-In die zweite Zelle schreibt ihr <code class="docutils literal notranslate"><span class="pre">sys.version</span></code> und führt sie aus. Jetzt sollte als Output ‘3.10.xx’ angezeigt werden.
+In die zweite Zelle schreibt ihr <code class="docutils literal notranslate"><span class="pre">sys.version</span></code> und führt sie aus. Jetzt sollte als Output ‘3.11.xx’ angezeigt werden.
 Wenn das nicht der Fall ist, kommt in meine Installationssprechstunde.</p></li>
 <li><p>Schließt jetzt JupyterLab, indem ihr im Menü oben auf File -&gt; Shut Down klickt. Bestätigt das Fenster “Shutdown Confirmation”.
 Das Browserfenster schließt sich jetzt automatisch.</p></li>
@@ -522,6 +535,24 @@ Das Browserfenster schließt sich jetzt automatisch.</p></li>
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="01_vorbereitung.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5.1. </span>Vorbereitung</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../06/06_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Einstieg Webscraping</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -538,12 +569,12 @@ Das Browserfenster schließt sich jetzt automatisch.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-richtige-python-version">Die richtige Python-Version</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-anaconda">Was ist Anaconda?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anaconda-installieren">Anaconda installieren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-virtuelle-umgebungen">Was sind virtuelle Umgebungen?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtuelle-umgebung-erstellen">Virtuelle Umgebung erstellen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-installieren">JupyterLab installieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-richtige-python-version">5.2.1. Die richtige Python-Version</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-anaconda">5.2.2. Was ist Anaconda?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anaconda-installieren">5.2.3. Anaconda installieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-virtuelle-umgebungen">5.2.4. Was sind virtuelle Umgebungen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtuelle-umgebung-erstellen">5.2.5. Virtuelle Umgebung erstellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-installieren">5.2.6. JupyterLab installieren</a></li>
 </ul>
   </nav></div>
 
