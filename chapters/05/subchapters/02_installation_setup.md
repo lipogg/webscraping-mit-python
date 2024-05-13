@@ -3,8 +3,8 @@
 ### Die richtige Python-Version
 
 Generell wird empfohlen, nicht mit der allerneusten Python-Version zu arbeiten, sondern mit der vorletzten Python-Release. 
-Die aktuelle Python-Release ist 3.11, in der Version 3, also 3.11.3. 
-Das heißt die Release, mit der wir arbeiten sollten, ist idealerweise 3.10. 
+Die aktuelle Python-Release ist 3.12, in der Version 3, also 3.12.3. 
+Das heißt die Release, mit der wir arbeiten sollten, ist idealerweise 3.11. 
 
 Je nachdem, wie alt euer Computer ist und welche Version euer Betriebssystem hat, werden bei euch verschiedene Python-Versionen vorinstalliert sein.
 Wenn ihr Windows verwendet, ist Python generell nicht vorinstalliert. 
@@ -43,17 +43,17 @@ Falls die Meldung immer noch erscheint, kommt in meine Installationssprechstunde
 
 Mithilfe von Anaconda kann man über das Terminal / die Kommandozeile für jedes Coding-Projekt, für das man Python verwendet, eine spezielle "virtuelle Umgebung" erstellen. 
 Virtuelle Umgebungen sind reproduzierbare, übertragbare und isolierte Umgebungen für Python-Projekte. 
-In einer virtuellen Umgebung kann man die gewünschte Python-Version und alle zusätzlichen Python-Pakete, die man für das Projekt braucht, installieren. 
-Mithilfe von virtuellen Umgebungen können so verschiedene Python-Versionen mit ganz verschiedenen Paketen nebeneinander auf demselben Rechner verwendet werden.
+In einer virtuellen Umgebung kann man die gewünschte Python-Version und alle zusätzlichen Python-Bibliotheken, die man für das Projekt braucht, installieren. 
+Mithilfe von virtuellen Umgebungen können so verschiedene Python-Versionen mit ganz verschiedenen Bibliotheken nebeneinander auf demselben Rechner verwendet werden.
 JupyterLab können wir ebenfalls direkt in der virtuellen Umgebung installieren.
 
-Theoretisch kann man verschiedene Python-Versionen, JupyterLab und alle Python-Pakete, die man braucht, auch installieren, ohne dazu eine virtuelle Umgebung einzurichten. 
+Theoretisch kann man verschiedene Python-Versionen, JupyterLab und alle Python-Bibliotheken, die man braucht, auch installieren, ohne dazu eine virtuelle Umgebung einzurichten. 
 Das erscheint im ersten Moment weniger kompliziert, allerdings entstehen so auf lange Sicht große Probleme, 
-denn alle Pakete liegen dann am selben Ort. Es kann vorkommen, dass man für ein Coding-Projekt ein Python-Paket in einer bestimmten Version verwendet hat. 
-Ein bisschen später will man dasselbe Paket für ein anderes Projekt verwendet. In der Zwischenzeit haben die Entwickler:innen des Pakets allerdings ein paar Änderungen vorgenommen und eine neue Version des Pakets veröffentlicht. 
-Man updated deswegen das Paket und verwendet die neue Version für das neue Coding-Projekt. 
+denn alle Bibliotheken liegen dann am selben Ort. Es kann vorkommen, dass man für ein Coding-Projekt eine Python-Bibliothek in einer bestimmten Version verwendet hat. 
+Ein bisschen später will man dieselbe Bibliothek für ein anderes Projekt verwendet. In der Zwischenzeit haben die Entwickler:innen der Bibliothek allerdings ein paar Änderungen vorgenommen und eine neue Version der Bibliothek veröffentlicht. 
+Man updated deswegen die Bibliothek und verwendet die neue Version für das neue Coding-Projekt. 
 Die Änderungen haben aber dazu geführt, dass irgendwo im Code im alten Coding-Projekt eine Fehlermeldung entsteht. 
-Ein anderes Problem entsteht zum Beispiel, wenn eine andere Person unseren Code nachnutzen will und diese Person auf ihrem Rechner bereits andere Pakete als wir vorinstalliert hat und es zu Konflikten zwischen den installierten Paketen kommt. Vielleicht verwendet die Person zudem noch ein anderes Betriebssystem.
+Ein anderes Problem entsteht zum Beispiel, wenn eine andere Person unseren Code nachnutzen will und diese Person auf ihrem Rechner bereits andere Bibliotheken und Module als wir vorinstalliert hat und es zu Konflikten zwischen den installierten Bibliotheken kommt. Vielleicht verwendet die Person zudem noch ein anderes Betriebssystem.
 Python ohne virtuelle Umgebungen zu verwenden, kann also die Reproduzierbarkeit unserer Daten einschränken und sogar zu Fehlermeldungen führen.
 
 Professionelle Programmierer:innen verwenden deswegen für Python-Projekte eigentlich immer virtuelle Umgebungen. 
@@ -74,10 +74,10 @@ Führt den Befehl anschließend mit Enter aus.
 Ihr seht jetzt, dass sich die Eingabeaufforderung in eurem Terminal / Kommandozeile geändert hat: Dort steht jetzt der Name des Ordners. 
 Das bedeutet, dass ihr mithilfe des Terminals / der Kommandozeile in euren Ordner navigiert seid. 
 Ordner nennt man auch Verzeichnis, oder auf Englisch Directory, und der Befehl cd steht einfach für "change directory".
-3. Gebt jetzt in eurem Terminal / Kommandozeile ein `conda create --name ws-env python=3.10` und drückt Enter.
+3. Gebt jetzt in eurem Terminal / Kommandozeile ein `conda create --name ws-env python=3.11` und drückt Enter.
 Durch diesen Befehl habt ihr eine virtuelle Umgebung mit dem Name ws-env erstellt. 
 Diesen Namen habe ich mir überlegt, er steht für "Webscraping Environment". 
-Mit dem Zusatz "python=3.10" habt ihr dem Computer mitgeteilt, dass ihr in der Umgebung "ws-env" Python 3.10 verwenden wollt. \
+Mit dem Zusatz "python=3.11" habt ihr dem Computer mitgeteilt, dass ihr in der Umgebung "ws-env" Python 3.11 verwenden wollt. \
 **Achtung**: Falls eine Meldung erscheint "The following NEW packages will be INSTALLED. Proceed \[y\]/n?", dann gebt ein y und drückt wieder auf Enter.
 5. Wenn die Einrichtung der virtuellen Umgebung abgeschlossen ist, seht ihr den Hinweis: "# To activate this environment, use \$ conda activate ws-env To deactivate an active environment, use \$ conda deactivate"
 6. Gebt ein `conda activate ws-env` und drückt Enter. 
@@ -90,18 +90,18 @@ Lasst die Umgebung "ws-env" aktiviert und macht direkt weiter mit den Schritten 
 Mit diesem Befehl habt ihr JupyterLab installiert. \
 **Achtung**: Falls wieder eine Meldung der Art "The following packages will be UPDATED" kommt, bestätigt wieder, indem ihr y eingebt und Enter drückt.
 
-8. Gebt ein `python -m ipykernel install --user --name ws-env --display-name="Python 3.10 (Webscraping)"` und drückt Enter. 
+8. Gebt ein `python -m ipykernel install --user --name ws-env --display-name="Python 3.11 (Webscraping)"` und drückt Enter. 
 Dieser Befehl erstellt einen neuen "Kernel". 
 Der Kernel ist das Herzstück von JuypterLab, er übernimmt die eigentliche Berechnung und Ausführung von Code und stellt die Verbindung zwischen dem JupyterLab-Benutzerinterface und Python her. 
-Wir installieren mit diesem Befehl also einen neuen Kernel, der Python in der Version 3.10 verwendet, um die Berechnungen auszuführen.
+Wir installieren mit diesem Befehl also einen neuen Kernel, der Python in der Version 3.11 verwendet, um die Berechnungen auszuführen.
 
 9. Jetzt könnt ihr Jupyter Lab starten, indem ihr `jupyter lab` eingebt und auf Enter drückt.\
 Jetzt sollte automatisch ein neuer Tab in eurem Browser geöffnet werden. 
 Euer Terminal / Kommandozeile ist jetzt die ganze Zeit "aktiv", bis JupyterLab wieder geschlossen wird. Das heißt, ihr müsst JupyterLab nach jeder Benutzung immer beenden.
 
-10. Wechselt jetzt in das Browserfenster, in dem JupyterLab geöffnet wurde. Klickt auf unseren Kernel "Python 3.10 (Webscraping)". 
+10. Wechselt jetzt in das Browserfenster, in dem JupyterLab geöffnet wurde. Klickt auf unseren Kernel "Python 3.11 (Webscraping)". 
 Es öffnet sich ein neues Jupyter Notebook. In die erste Zelle schreibt ihr `import sys` und führt die Zelle aus.
-In die zweite Zelle schreibt ihr `sys.version` und führt sie aus. Jetzt sollte als Output '3.10.xx' angezeigt werden. 
+In die zweite Zelle schreibt ihr `sys.version` und führt sie aus. Jetzt sollte als Output '3.11.xx' angezeigt werden. 
 Wenn das nicht der Fall ist, kommt in meine Installationssprechstunde.
 
 11. Schließt jetzt JupyterLab, indem ihr im Menü oben auf File -> Shut Down klickt. Bestätigt das Fenster "Shutdown Confirmation".

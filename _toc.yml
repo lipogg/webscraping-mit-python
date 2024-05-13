@@ -46,26 +46,26 @@ sections:
   sections:
   - file: chapters/04/subchapters/01_funktionen
     title: Funktionen
-#  - file: chapters/04/subchapters/02_pakete
-#    title: Module, Bibliotheken, Pakete
-#- file: chapters/05/05_intro
-#  title: Installation und Setup
-#  sections:
-#  - file: chapters/05/subchapters/01_vorbereitung
-#    title: Vorbereitung
-#  - file: chapters/05/subchapters/02_installation_setup
-#    title: Installation und Setup
-#- file: chapters/06/06_intro
-#  title: Einstieg Webscraping
-#  sections:
-#    - file: chapters/06/subchapters/01_rechtliches.md
-#      title: Der rechtliche Rahmen
-#    - file: chapters/06/subchapters/02_html.ipynb
-#      title: HTML
-#    - file: chapters/06/subchapters/03_css.ipynb
-#      title: CSS
-#    - file: chapters/06/subchapters/04_http.ipynb
-#      title: Client, Server, HTTP
+  - file: chapters/04/subchapters/02_bibliotheken
+    title: Module, Pakete, Bibliotheken
+- file: chapters/05/05_intro
+  title: Installation und Setup
+  sections:
+  - file: chapters/05/subchapters/01_vorbereitung
+    title: Vorbereitung
+  - file: chapters/05/subchapters/02_installation_setup
+    title: Installation und Setup
+- file: chapters/06/06_intro
+  title: Einstieg Webscraping
+  sections:
+  - file: chapters/06/subchapters/01_rechtliches.md
+    title: Der rechtliche Rahmen
+  - file: chapters/06/subchapters/02_html.ipynb
+    title: HTML
+  - file: chapters/06/subchapters/03_css.ipynb
+    title: CSS
+  - file: chapters/06/subchapters/04_http.ipynb
+    title: Client, Server, HTTP
 #- file: chapters/07/07_intro
 #  title: Statische Webseiten
 #  sections:
