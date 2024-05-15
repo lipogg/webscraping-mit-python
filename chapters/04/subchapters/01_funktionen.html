@@ -436,6 +436,7 @@ document.write(`
 <span class="sd">    Returns True if i is even, otherwise False</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span> == 0
+
 <span class="n">is_even</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -461,6 +462,13 @@ document.write(`
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="k">2</span> == 0)
     <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">is_even</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
@@ -471,6 +479,7 @@ document.write(`
 <div><p>“Be consistent in return statements. Either all return statements in a function should return an expression, or none of them should. If any return statement returns an expression, any return statements where no value is returned should explicitly state this as return None, and an explicit return statement should be present at the end of the function […]”</p>
 </div></blockquote>
 <p>Quelle: <a class="reference external" href="https://peps.python.org/pep-0008/">PEP8 Styleguide</a> 2016.</p>
+<p>Eine Bemerkung zum Schluss: Es wäre keine gute Idee, unsere <code class="docutils literal notranslate"><span class="pre">is_even()</span></code> Funktion so umzuschreiben, dass sie erst das Ergebnis der Operation <code class="docutils literal notranslate"><span class="pre">i%2</span> <span class="pre">==</span> <span class="pre">0</span></code> mit <code class="docutils literal notranslate"><span class="pre">print(i%2</span> <span class="pre">==</span> <span class="pre">0)</span></code> ausgibt und danach den Wert mit <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">i%2</span> <span class="pre">==</span> <span class="pre">0</span></code>zusätzlich zurückgibt: Funktionen sollten immer nur genau eine Aufgabe erfüllen!</p>
 </section>
 <section id="funktionen-aufrufen">
 <h2><span class="section-number">4.1.3. </span>Funktionen aufrufen<a class="headerlink" href="#funktionen-aufrufen" title="Link to this heading">#</a></h2>

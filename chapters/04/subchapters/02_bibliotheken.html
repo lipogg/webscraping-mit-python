@@ -399,7 +399,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="module-pakete-bibliotheken">
 <h1><span class="section-number">4.2. </span>Module, Pakete, Bibliotheken<a class="headerlink" href="#module-pakete-bibliotheken" title="Link to this heading">#</a></h1>
-<p>Bisher haben</p>
+<p>Bisher haben wir Funktionen aufgerufen, die wir entweder selbst definiert haben, oder die bereits vorinstalliert waren. Diese vorinstallierten Funktionen sind Teil der sogenannten <a class="reference external" href="https://docs.python.org/3/library/">Python Standard Library</a>, einer Sammlung von grundlegenden Funktionen und Datentypen. Darüber hinaus gibt es eine Vielzahl an Funktionen und sogar zusätzliche Datentypen, die andere Python-Nutzer:innen definiert und veröffentlicht haben. Diese  Sammlungen von Funktionen und Datentypen werden häufig “Bibliotheken” (libraries) genannt, manchmal werden in diesem Zusammenhang aber auch die Begriffe “Modul” und “Paket” verwendet. Zunächst klären wir deswegen, was damit gemeint ist.</p>
 <section id="id1">
 <h2><span class="section-number">4.2.1. </span>Module, Pakete, Bibliotheken<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Die Python-Dokumentation werden <strong>Pakete (engl. packages)</strong> einfach als “a collection of modules” definiert. Um zu verstehen, was Pakete sind, müssen wir also zunächst verstehen, was <strong>Module</strong> sind. In der Python-Dokumentation sind Module wie folgt definiert:</p>
@@ -407,15 +407,14 @@ document.write(`
 <div><p>“A module is a file containing Python definitions and statements.”</p>
 </div></blockquote>
 <p>Quelle: Python 3.11.3 <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">Documentation</a>.</p>
-<p>Mit Datei (file) ist einfach ein Python-Skript gemeint, das verschiedene Anweisungen (statements) und Definitionen, zum Beispiel Funktionsdefinitionen, enthält. Module können Python-Nutzer:innen also selbst erstellen. Wenn man viele Funktionen zu einem bestimmten Anwendungszweck selbst definiert hat, möchte man diese nicht im Skript stehen haben, sondern speichert sie in einem separaten Skript, das dann “importiert” werden kann. Diese Skripte können auch online gestellt werden, damit andere Nutzer:innen die Funktionen auch importieren und nutzen können. Dieses Prinzip, den eigenen Quelltext in Module aufzuteilen, die je einen unterschiedlichen Zweck haben, nennt man auch <strong>Modularisierung</strong>.</p>
-<p>Module und Pakete werden also dazu verwendet, um seinen eigenen Code zu organisieren, oder um auf bestimmte Funktionalitäten zuzugreifen, die in Python nicht vordefiniert sind und die andere Python-Nutzer:innen definiert und veröffentlicht haben. Pakete enthalten vor allem Funktionen, aber auch zusätzliche Datentypen oder ganze Datensätze. Um darauf zuzugreifen, müssen Python-Pakete zuerst <strong>installiert</strong> und danach <strong>importiert</strong> werden.</p>
-<p>Besonders komplexe Pakete, die verschiedene Unterpakete enthalten, werden auch <strong>Bibliothek (engl. library)</strong> genannt. BeautifulSoup zum Beispiel ist eigentlich eine Bibliothek. Manchmal wird der Begriff “Bibliothek” aber auch einfach als Oberbegriff für verschiedene Arten von wiederverwendbarem Code verwendet.</p>
-<p>Der Einfachheit halber sprechen wir deswegen im Folgenden häufig einfach von Bibliotheken, auch dann, wenn eigentlich Module gemeint sind.</p>
+<p>Mit Datei (file) ist einfach ein Python-Skript gemeint, das verschiedene Anweisungen (statements) und Definitionen, zum Beispiel Funktionsdefinitionen, enthält. Module können Python-Nutzer:innen also selbst erstellen. Wenn man viele Funktionen zu einem bestimmten Anwendungszweck selbst definiert hat, möchte man diese nicht im Skript stehen haben, sondern speichert sie in einem separaten Skript, das dann “importiert” werden kann. Diese Skripte können auch online gestellt werden, damit andere Nutzer:innen die Funktionen auch importieren und nutzen können. Dieses Prinzip, den eigenen Code in Module aufzuteilen, die je einen unterschiedlichen Zweck haben, nennt man auch <strong>Modularisierung</strong>.</p>
+<p>Module und Pakete werden also dazu verwendet, um seinen eigenen Code zu organisieren, oder um auf bestimmte Funktionalitäten zuzugreifen, die in Python nicht vordefiniert sind und die andere Python-Nutzer:innen definiert und veröffentlicht haben. Pakete enthalten vor allem Funktionen, aber auch zusätzliche Datentypen. Um darauf zuzugreifen, müssen Python-Pakete zuerst <strong>installiert</strong> und danach <strong>importiert</strong> werden.</p>
+<p>Besonders komplexe Pakete, die verschiedene Unterpakete enthalten, werden auch <strong>Bibliothek (engl. library)</strong> genannt. Oft wird der Begriff “Bibliothek” aber auch einfach als Oberbegriff für verschiedene Arten von wiederverwendbarem Code verwendet. <strong>Der Einfachheit halber sprechen wir deswegen im Folgenden meist einfach von Bibliotheken, auch dann, wenn eigentlich Module oder Pakete gemeint sind.</strong></p>
 <p>Die Funktionen, die wir bisher kennengelernt haben, waren alle in Python vordefiniert. Wir mussten deswegen keine Bibliothek installieren und laden, um sie zu nutzen.</p>
 </section>
 <section id="bibliotheken-installieren">
 <h2><span class="section-number">4.2.2. </span>Bibliotheken installieren<a class="headerlink" href="#bibliotheken-installieren" title="Link to this heading">#</a></h2>
-<p>Es gibt verschiedene Wege, Python-Bibliotheken und Module zu installieren. Da wir unser JupyterLab in einer virtuellen Umgebung ausführen werden und hierzu einen eigenen Kernel erstellen (-&gt; s. Installation und Setup), verwenden wir den folgenden Code, um Bibliotheken oder Module zu installieren:</p>
+<p>Es gibt verschiedene Wege, Python-Bibliotheken zu installieren. Da wir unser JupyterLab in einer virtuellen Umgebung ausführen werden und hierzu einen eigenen Kernel erstellen (-&gt; s. Installation und Setup), verwenden wir den folgenden Code, um Bibliotheken zu installieren:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install a conda package in the current Jupyter kernel</span>
@@ -426,22 +425,23 @@ document.write(`
 </div>
 </div>
 <p>Die Kommentare müsst ihr vor dem Ausführen natürlich entfernen.</p>
-<p>Mit <code class="docutils literal notranslate"><span class="pre">!conda</span> <span class="pre">list</span></code> kann anschließend eine Liste aller in der aktuellen Umgebung installierten Pakete ausgegeben werden.</p>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">!conda</span> <span class="pre">list</span></code> kann anschließend eine Liste aller in der aktuellen Umgebung installierten Bibliotheken ausgegeben werden.</p>
 </section>
 <section id="bibliotheken-importieren">
 <h2><span class="section-number">4.2.3. </span>Bibliotheken importieren<a class="headerlink" href="#bibliotheken-importieren" title="Link to this heading">#</a></h2>
-<p>Installierte Bibliotheken oder Module müssen immer am Anfang eines Jupyter Notebooks immer importiert werden, bevor sie verwendet werden können:</p>
+<p>Installierte Bibliotheken müssen immer am Anfang eines Jupyter Notebooks importiert werden, bevor sie verwendet werden können:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import sys</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Es ist auch möglich, nur einzelne Funktionen oder einen kleine Menge der Funktionen aus einer Bibliothek zu importieren. Das erfordert weniger Ladezeit und ist somit effizienter. Um das zu tun, werden die Schlüsselworte <strong><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">...</span> <span class="pre">import...</span></code></strong> verwendet.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sys</span></code> ist ein Modul aus der Python Standard Library, deswegen muss es nicht installiert werden und kann direkt importiert werden. Welche Module und Pakete bereits vorinstalliert sind, könnt ihr <a class="reference external" href="https://docs.python.org/3/library/">hier</a> nachlesen.</p>
+<p>Es ist auch möglich, nur einzelne Funktionen oder einen kleine Menge der Funktionen aus einer Bibliothek zu importieren. Das erfordert weniger Laufzeit und ist somit effizienter. Um das zu tun, werden die Schlüsselworte <strong><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">...</span> <span class="pre">import...</span></code></strong> verwendet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from bs4 import BeautifulSoup</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 </pre></div>
 </div>
 </div>
@@ -449,17 +449,22 @@ document.write(`
 <p>Für manche Bibliotheken wird beim Importieren der Konvention nach ein Alias verwendet, also eine Kurzform des Bibliotheknamens:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import pandas as pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>Durch die import-Anweisung wird ein <strong>Namensraum (engl. namespace)</strong> mit dem Namen der Bibliothek erstellt. In der Anweisung <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sys</span></code> hat der Namensraum des importierten Moduls den Namen <code class="docutils literal notranslate"><span class="pre">sys</span></code>. In der Anweisung <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code> wird dagegen der Name des Namensraums der Bibliothek <code class="docutils literal notranslate"><span class="pre">pandas</span></code> manuell festgelegt, nämlich als <code class="docutils literal notranslate"><span class="pre">pd</span></code>.</p>
-<p>Funktionen aus der importierten Bibliothek oder Modul können aufgerufen werden, indem zuerst der Name des Namensraums adressiert wird, gefolgt von einem Punkt und dem Funktionsnamen, also zum Beispiel könnten wir die Funktion <code class="docutils literal notranslate"><span class="pre">getsizeof()</span></code> aus dem Modul <code class="docutils literal notranslate"><span class="pre">sys</span></code> verwenden, um uns die Größe eines Objekts im Speicher in Bytes ausgeben zu lassen:</p>
+<p>Funktionen aus der importierten Bibliothek können aufgerufen werden, indem zuerst der Name des Namensraums adressiert wird, gefolgt von einem Punkt und dem Funktionsnamen, also zum Beispiel könnten wir die Funktion <code class="docutils literal notranslate"><span class="pre">getsizeof()</span></code> aus dem Modul <code class="docutils literal notranslate"><span class="pre">sys</span></code> verwenden, um uns die Größe eines Objekts im Speicher in Bytes ausgeben zu lassen:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># wort = &quot;Hallo&quot;</span>
-<span class="c1"># sys.getsizeof(wort)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wort</span> <span class="o">=</span> <span class="s2">&quot;Hallo&quot;</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">wort</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54
 </pre></div>
 </div>
 </div>
@@ -538,16 +543,18 @@ Erstellt dann ein Objekt vom Typ DataFrame, indem ihr den folgenden Code ausfüh
 <h2><span class="section-number">4.2.6. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id2">
 <ol class="arabic simple" start="1">
-<li id="id50"><p>Python Package Index (PyPI). URL: <a class="reference external" href="https://pypi.org/">https://pypi.org/</a>.</p></li>
+<li id="id52"><p>Python Package Index (PyPI). URL: <a class="reference external" href="https://pypi.org/">https://pypi.org/</a>.</p></li>
 <li id="id16"><p>Ana Bell. Object Oriented Programming. 2016. URL: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-8-object-oriented-programming/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-8-object-oriented-programming/</a>.</p></li>
-<li id="id57"><p>Johannes Ernesti and Peter Kaiser. Modularisierung. 2023. URL: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/20_001.html">https://openbook.rheinwerk-verlag.de/python/20_001.html</a>.</p></li>
-<li id="id54"><p>Wes McKinney. pandas 2.0.1 Documentation: Data Structures. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/overview.html#data-structures">https://pandas.pydata.org/docs/getting_started/overview.html#data-structures</a>.</p></li>
-<li id="id52"><p>Wes McKinney. pandas 2.0.1 Documentation: Intro to Data Structures. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/dsintro.html">https://pandas.pydata.org/docs/user_guide/dsintro.html</a>.</p></li>
-<li id="id53"><p>Wes McKinney. pandas 2.0.1 Documentation: pandas.DataFrame. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html</a>.</p></li>
-<li id="id51"><p>Wes McKinney. pandas 2.0.1 Documentation. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/index.html">https://pandas.pydata.org/docs/index.html</a>.</p></li>
-<li id="id55"><p>Python 3.11.3 Documentation. Classes. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html">https://docs.python.org/3/tutorial/classes.html</a>.</p></li>
+<li id="id51"><p>Austin Cepalia. Scripts, Modules, Packages, and Libraries. URL: <a class="reference external" href="https://realpython.com/lessons/scripts-modules-packages-and-libraries/">https://realpython.com/lessons/scripts-modules-packages-and-libraries/</a>.</p></li>
+<li id="id59"><p>Johannes Ernesti and Peter Kaiser. Modularisierung. 2023. URL: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/20_001.html">https://openbook.rheinwerk-verlag.de/python/20_001.html</a>.</p></li>
+<li id="id56"><p>Wes McKinney. pandas 2.0.1 Documentation: Data Structures. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/overview.html#data-structures">https://pandas.pydata.org/docs/getting_started/overview.html#data-structures</a>.</p></li>
+<li id="id54"><p>Wes McKinney. pandas 2.0.1 Documentation: Intro to Data Structures. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/dsintro.html">https://pandas.pydata.org/docs/user_guide/dsintro.html</a>.</p></li>
+<li id="id55"><p>Wes McKinney. pandas 2.0.1 Documentation: pandas.DataFrame. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html</a>.</p></li>
+<li id="id53"><p>Wes McKinney. pandas 2.0.1 Documentation. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/index.html">https://pandas.pydata.org/docs/index.html</a>.</p></li>
+<li id="id50"><p>Erik Westra. Modular Programming in Python. Ch. 1: Introducting Modular Programming. 2016. URL: <a class="reference external" href="https://www.packtpub.com/product/modular-programming-with-python/9781785884481">https://www.packtpub.com/product/modular-programming-with-python/9781785884481</a>.</p></li>
+<li id="id57"><p>Python 3.11.3 Documentation. Classes. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html">https://docs.python.org/3/tutorial/classes.html</a>.</p></li>
 <li id="id49"><p>Python 3.11.3 Documentation. Modules: Packages. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html#packages">https://docs.python.org/3/tutorial/modules.html#packages</a>.</p></li>
-<li id="id56"><p>Python 3.11.3 Documentation. sys – System-Specific Parameters and Functions. URL: <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.getsizeof">https://docs.python.org/3/library/sys.html#sys.getsizeof</a>.</p></li>
+<li id="id58"><p>Python 3.11.3 Documentation. sys – System-Specific Parameters and Functions. URL: <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.getsizeof">https://docs.python.org/3/library/sys.html#sys.getsizeof</a>.</p></li>
 </ol>
 </div>
 </section>
