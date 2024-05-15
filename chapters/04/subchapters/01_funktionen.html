@@ -426,7 +426,7 @@ document.write(`
 <li><p>Die Funktions<strong>parameter</strong> heißen parameter_1 und parameter_2. Dabei handelt es sich um Variablennamen, die nur innerhalb der Funktionsdefinition verwendet werden und als Platzhalter für die Argumente dienen, die der Funktion beim Funktionsaufruf übergeben werden. Die formalen Parameter sind also ein bisschen ähnlich wie die Laufvariablen in for-Schleifen, die auch nur Platzhalter für die Elemente aus einem iterierbaren Objekt waren.</p></li>
 <li><p>Genau wie bei Kontrollstrukturen ist auch bei Funktionen der Funktions<strong>körper</strong> alles, was in dem eingeschobenen Block nach dem Doppelpunkt steht, also ein Anweisungsblock und eine return-Anweisung. Im Anweisungsblock stehen irgendwelche Anweisungen, die irgendetwas mit den Parametern der Funktion machen, also im Grunde Verarbeitungsschritte für die Funktionsparameter. Im Laufe der Verarbeitung wird irgendeine Variable definiert, die das “Endergebnis” der Verarbeitung zwischenspeichert. Diese Variable wird dann mithilfe der return-Anweisung zurückgegeben, wenn die Funktion aufgerufen wird. Die return-Anweisung definiert also, welche Variable die Funktion als Rückgabewert beim Funktionsaufruf zurückgeben soll.</p></li>
 </ul>
-<p>Zusätzlich zu diesen unbedingt notwendigen Komponenten, kann eine Funktion eine <strong>Spezifikation</strong> enthalten. Spezifikationen nennt man <strong>docstrings</strong>, und sie werden durch drei Anführungszeichen eingegrenzt. Die Funktionsspezifikation erläutert den Nutzer:innen der Funktion, was die Funktion macht, welche Argumente der Funktion beim Funktionsaufruf übergeben werden können und welcher Wert zurückgegeben wird, nachdem die Anweisungen im Funktionskörper ausgeführt worden sind.</p>
+<p>Zusätzlich zu diesen unbedingt notwendigen Komponenten, kann eine Funktion eine <strong>Spezifikation</strong> enthalten. Die Funktionsspezifikation erläutert den Nutzer:innen der Funktion, was die Funktion macht, welche Argumente der Funktion beim Funktionsaufruf übergeben werden können und welcher Wert zurückgegeben wird, nachdem die Anweisungen im Funktionskörper ausgeführt worden sind. In Python können sogenannte <strong>Docstrings</strong> verwendet werden, um Spezifikationen zu formulieren. Docstrings werden durch drei Anführungszeichen eingegrenzt.</p>
 <p>Ein Beispiel:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -449,6 +449,28 @@ document.write(`
 <p>Quelle: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/mit6_0001f16_lec4/">Ana Bell</a> 2016.</p>
 <p>Für Funktionsnamen gelten laut <a class="reference external" href="https://peps.python.org/pep-0008/#function-and-variable-names">Style Guide</a> dieselbe Syntaxempfehlungen wie für Variablennamen: Funktionsnamen sollten in Kleinbuchstaben geschrieben werden und einen Unterstrich sollte verwendet werden, um mehrere Wörter voneinander abzutrennen. Allerdings sollten Funktionsnamen immer irgendeine Operation beschreiben, während Variablennamen in der Regel Substantive sind.</p>
 <p>Für Docstrings gibt es daneben einen eigenen Style Guide: <a class="reference external" href="https://peps.python.org/pep-0257/">https://peps.python.org/pep-0257/</a>.</p>
+<p>Bei der Definition der Funktion <code class="docutils literal notranslate"><span class="pre">is_even()</span></code> sind zwei Dinge hervorzuheben: Zum einen scheint der Funktionsname nicht so richtig eine Operation auszudrücken, obwohl wir gerade eben besprochen haben, dass Funktionsnamen immer irgendeine Operation beschreiben sollten. Der Name der Funktion <code class="docutils literal notranslate"><span class="pre">is_even()</span></code> stellt tatsächlich einen Sonderfall dar: Da diese Funktion einen Wahrheitswert zurückgibt (also entweder <code class="docutils literal notranslate"><span class="pre">True</span></code> oder <code class="docutils literal notranslate"><span class="pre">False</span></code>), dient die Funktion eigentlich dazu, eine Eigenschaft des Arguments zu überprüfen, das ihr beim Funktionsaufruf übergeben wird, sie liefert also im Grunde eine Antwort auf die Frage, ob das Argument eine gerade oder eine ungerade Zahl ist. Der Funktionsname beschreibt daher die Überprüfung, die vorgenommen wird.</p>
+<p>Zum anderen wird der gesamte Ausdruck <code class="docutils literal notranslate"><span class="pre">i%2</span> <span class="pre">==</span> <span class="pre">0</span></code> als Rückgabewert definiert. Das erscheint vielleicht im ersten Moment unübersichtlich und vielleicht fallen euch andere Möglichkeiten ein, diese Funktion zu definieren, zum Beispiel:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Input: i, a positive int</span>
+<span class="sd">    Prints True if i is even, otherwise False</span>
+<span class="sd">    Returns None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="k">2</span> == 0)
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Was ist der Unterschied zwischen den beiden <code class="docutils literal notranslate"><span class="pre">is_even()</span></code>-Funktionen? Mit der zweiten Funktion kann man nur genau eine Sache machen: Man kann sich das Ergebnis der Operation <code class="docutils literal notranslate"><span class="pre">i%2</span> <span class="pre">==</span> <span class="pre">0</span></code> auf dem Bildschirm anzeigen lassen. Der Wahrheitswert wird nur ausgegeben, nicht zurückgegeben. Um das deutlich zu machen, wird hier explizit <code class="docutils literal notranslate"><span class="pre">None</span></code> als Rückgabewert festgelegt. Der Rückgabewert könnte hier aber theoretisch auch weggelassen werden, denn wenn bei einer Funktionsdefinition kein Rückgabewert angegeben wird, ist der Rückgabewert automatisch <code class="docutils literal notranslate"><span class="pre">None</span></code>.  Mit der ersten Funktion kann man dagegen viel mehr machen, denn diese Funktion gibt den Wahrheitswert selbst zurück. Man kann sich den Wert also nicht nur ausgeben lassen, sondern man kann damit auch weiterarbeiten und den Wert zum Beispiel einer Variable zuweisen oder die Funktion zur Formulierung einer bedingten Anweisung verwenden. In den meisten Fällen würden wir deswegen die erste Funktionsdefinition bevorzugen. Aber für den seltenen Fall, dass ihr eine Funktion definiert, die nur etwas ausgeben und nichts zurückgeben soll, solltet ihr wissen, dass solche Funktionen immer None zurückgeben, und dass es besser ist, dies explizit mit <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">None</span></code> anzugeben.</p>
+<p>Der PEP8-Styleguide empfiehlt in Bezug auf die Wahl der Funktionsnamen:</p>
+<blockquote>
+<div><p>“Be consistent in return statements. Either all return statements in a function should return an expression, or none of them should. If any return statement returns an expression, any return statements where no value is returned should explicitly state this as return None, and an explicit return statement should be present at the end of the function […]”</p>
+</div></blockquote>
+<p>Quelle: <a class="reference external" href="https://peps.python.org/pep-0008/">PEP8 Styleguide</a> 2016.</p>
 </section>
 <section id="funktionen-aufrufen">
 <h2><span class="section-number">4.1.3. </span>Funktionen aufrufen<a class="headerlink" href="#funktionen-aufrufen" title="Link to this heading">#</a></h2>
@@ -492,7 +514,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
@@ -781,8 +803,10 @@ Wenn Schleifen ineinander verschachtelt sind, kann die äußere Schleife nicht u
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
 <li id="id12"><p>Ana Bell. Decomposition, Abstraction, and Functions. 2016. URL: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-4-decomposition-abstraction-and-functions/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-4-decomposition-abstraction-and-functions/</a>.</p></li>
-<li id="id45"><p>David Goodger and Guido van Rossum. PEP 257 - Docstring Conventions. 2022. URL: <a class="reference external" href="https://peps.python.org/pep-0257/">https://peps.python.org/pep-0257/</a>.</p></li>
+<li id="id47"><p>David Goodger and Guido van Rossum. PEP 257 - Docstring Conventions. 2022. URL: <a class="reference external" href="https://peps.python.org/pep-0257/">https://peps.python.org/pep-0257/</a>.</p></li>
 <li id="id14"><p>Eric Grimson. Recursion and Dictionaries. 2016. URL: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-6-recursion-and-dictionaries/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-6-recursion-and-dictionaries/</a>.</p></li>
+<li id="id46"><p>Stefan Hartinger. Programmieren in Python. Kapitel 6: Funktionen. 2021. URL: <a class="reference external" href="https://www.uni-regensburg.de/assets/physik/fakultaet/IT/Tutorials-Installation-Programming-Environment/Programmieren_in_Python.pdf">https://www.uni-regensburg.de/assets/physik/fakultaet/IT/Tutorials-Installation-Programming-Environment/Programmieren_in_Python.pdf</a>.</p></li>
+<li id="id45"><p>Leodanis Pozo Ramos. The Python return Statement. Usage and Best Practices. URL: <a class="reference external" href="https://realpython.com/python-return-statement/">https://realpython.com/python-return-statement/</a>.</p></li>
 <li id="id44"><p>Python 3.11.3 Documentation. Defining Functions. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/controlflow.html#defining-functions">https://docs.python.org/3/tutorial/controlflow.html#defining-functions</a>.</p></li>
 <li id="id43"><p>Python 3.11.3 Documentation. Glossary: Functions. URL: <a class="reference external" href="https://docs.python.org/3/glossary.html#term-function">https://docs.python.org/3/glossary.html#term-function</a>.</p></li>
 </ol>
