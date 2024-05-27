@@ -474,17 +474,17 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 <section id="suche-nach-verschiedenen-kindelementen-mit-derselben-klasse">
 <h2>Suche nach verschiedenen Kindelementen mit derselben Klasse<a class="headerlink" href="#suche-nach-verschiedenen-kindelementen-mit-derselben-klasse" title="Link to this heading">#</a></h2>
 <p>Manchmal ist es schwierig, ein Element eindeutig mithilfe von driver.find_elements(By.CLASS_NAME,…) zu finden. Ein Beispiel ist wieder die Airbnb-Seite: das Div-Element, das die Metadaten zu den gefunden Unterkünften enthält, hat zwei Kindelemente mit derselben Klasse: “fb4nyux s1cjsi4j dir dir-ltr”. Die Suche mithilfe der Funktion driver.find_elements(By.CLASS_NAME,”fb4nyux.s1cjsi4j.dir.dir-ltr”) würde beide Div-Elemente liefern. Aber was macht man, wenn nur eins der beiden Elemente gesucht ist, oder wenn die Elemente separat gefunden werden sollen, beispielsweise, weil sie in zwei verschiedenen Spalten eines Dataframes übertragen werden sollen?</p>
-<figure class="align-default" id="id216">
+<figure class="align-default" id="id217">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/airbnb_beispiel_div.png"><img alt="Beispiel Airbnb" class="bg-transparent" src="../../../_images/airbnb_beispiel_div.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispiel: Kindelemente mit derselben Klasse</span><a class="headerlink" href="#id216" title="Link to this image">#</a></p>
+<p><span class="caption-text">Beispiel: Kindelemente mit derselben Klasse</span><a class="headerlink" href="#id217" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In diesem Fall empfiehlt es sich, mithilfe von XPath nach CSS-Selektoren zu suchen. Wie das geht, ist hier beschrieben: <a class="reference external" href="https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html">https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html</a>. Der XPath-Ausdruck muss in diesem Fall selbst geschrieben werden: Der Ausdruck “//div[&#64;class=’g1qv1ctd c1v0rf5q dir dir-ltr’]/div[2]” beschreibt den Pfad zum zweiten div-Element, das ein Kindelement eines div-Elements mit dem Attribut class=’g1qv1ctd c1v0rf5q dir dir-ltr’. Ihr könnt überprüfen, ob ein XPath-Ausdruck das gesuchte Element findet, indem ihr in den Entwicklertools mit Ctrl bzw. Cmd + F die Suche öffnet und den Xpath-Ausdruck einfügt:</p>
-<figure class="align-default" id="id217">
+<figure class="align-default" id="id218">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/airbnb_xpath_suche.png"><img alt="Beispiel Airbnb" class="bg-transparent" src="../../../_images/airbnb_xpath_suche.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispiel: Suche nach XPath-Ausdruck in den Browser-Entwicklertools</span><a class="headerlink" href="#id217" title="Link to this image">#</a></p>
+<p><span class="caption-text">Beispiel: Suche nach XPath-Ausdruck in den Browser-Entwicklertools</span><a class="headerlink" href="#id218" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -540,17 +540,17 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 <p>In Python gibt es verschiedene Arten von Fehlern: zum einen Syntaxfehler (syntax errors), die verhindern, dass Code überhaupt erst ausgeführt werden kann, und zum anderen Ausnahmen (exceptions), also Fehler, die dazu führen, dass die Ausführung des Codes abgebrochen und eine Fehlermeldung angezeigt wird. Bisher haben wir immer umgangssprachlich gesagt, dass eine Fehlermeldung “angezeigt” wird. Ganz korrekt würde man aber eigentlich sagen, dass eine Ausnahme “geworfen” wird. Eine Liste aller Ausnahmen, die beim Ausfürhen von Python-Code geworfen werden können, findet sich hier: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">https://docs.python.org/3/library/exceptions.html#bltin-exceptions</a>.</p>
 <p>Grundsätzlich sollte euer Code vorbeugend mit möglichen Fehlerquellen umgehen: Wenn ihr zum Beispiel Dateien über eine API bezieht, solltet ihr bei der Wahl des Dateinamens bedenken, dass Dateinamen zum Beispiel nicht unendlich lang sein dürfen, oder dass Schrägstriche in den Dateinamen beim Schreiben der Dateien fälschlich als Dateipfade interpretiert werden können. In beiden Fällen würde jeweils eine Ausnahme geworfen werden und die Ausführung des Codes würde abbrechen. Ihr solltet euren Code also immer vorausschauend schreiben. Im Beispiel mit den Dateinamen könnten vorausschauend Metadaten für die Dateinamen ausgewählt werden, welche immer dieselbe Form haben und somit immer gültig sind, oder indem die Dateinamen vor dem Schreiben der Dateien vereinheitlicht werden. Aber nicht immer kann im Voraus abgeschätzt werden, welche Art von ungültigen Werten auftreten können. Für diesen Fall gibt es in Python spezielle Anweisungen, die erlauben, bestimmte Ausnahmen gezielt abzufangen und so ein vorzeitiges Beenden des Programms zu verhindern: sogenannte try/exept-Anweisungen.</p>
 <p>Try/except-Anweisungen haben die allgemeine Form:</p>
-<figure class="align-default" id="id218">
+<figure class="align-default" id="id219">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/try_except.png"><img alt="Try/Except-Anweisungen" class="bg-transparent" src="../../../_images/try_except.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Try/Except-Anweisungen in der allgemeinen Form</span><a class="headerlink" href="#id218" title="Link to this image">#</a></p>
+<p><span class="caption-text">Try/Except-Anweisungen in der allgemeinen Form</span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Der Code im except-Zweig wird dabei nur dann ausgeführt, wenn beim Ausführen des Codes im try-Zweig eine Ausnahme geworfen wird. Diese einfache try/except-Anweisung kann um weitere Zweige ergänzt werden. Das bereits zuvor in diesem Kurs zitierte Handbuch von Johannes Ernesti und Peter Kaiser enthält eine Überblicksdarstellung einer komplexen try/except-Anweisung mit mehreren Zweigen, inklusive Erläuterung:</p>
-<figure class="align-default" id="id219">
+<figure class="align-default" id="id220">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/try_except_explained.png"><img alt="Try/Except-Anweisungen" class="bg-transparent" src="../../../_images/try_except_explained.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Schaubild: try/except-Anweisung mit mehreren Zweigen. Quelle: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">Ernesti und Kaiser (2020)</a>.</span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
+<p><span class="caption-text">Schaubild: try/except-Anweisung mit mehreren Zweigen. Quelle: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">Ernesti und Kaiser (2020)</a>.</span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Beispiele und weitere Erläuterungen zum Thema Ausnahmebehandlung findet ihr im erwähnten <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">Handbuch von Ernesti und Kaiser</a>, in <a class="reference external" href="https://realpython.com/python-exceptions/">diesem Beitrag von Said van de Klundert</a>, und natürlich in den offiziellen <a class="reference external" href="https://docs.python.org/3/tutorial/errors.html">Python-Dokumentationsseiten</a>.</p>
@@ -562,10 +562,10 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 <section id="effizienter-scrapen-mit-sitemaps">
 <h2>Effizienter Scrapen mit Sitemaps<a class="headerlink" href="#effizienter-scrapen-mit-sitemaps" title="Link to this heading">#</a></h2>
 <p>Eine Sitemap ist eine strukturierte Übersicht über alle Unterseiten einer Website. Webseitenbetreiber:innen stellen Sitemaps zur Verfügung, damit beim Crawlen der Seite durch Web Crawler verschiedener Suchmaschinen alle Unterseiten einfach gefunden werden können. Je nach gesuchten Daten können Sitemaps auch beim Web Scraping eingesetzt werden, um effizienter eine Liste von zu scrapenden Unterseiten zusammenzustellen. Sitemaps werden meist im XML-Format bereitgestellt, das heißt, dass zur Suche in solchen Sitemaps ebenfalls XPath verwendet werden kann. Sitemaps sind oft unter der Adresse <a class="reference external" href="http://www.beispielwebseite.com/sitemap.xml">www.beispielwebseite.com/sitemap.xml</a> erreichbar, aber anders als bei der robots.txt gibt es noch einige andere typische Adressen. Eine Übersicht über solche typischen Sitemap-Adressen findet ihr <a class="reference external" href="https://seocrawl.com/en/how-to-find-a-sitemap/">hier</a>. Manche Webseitenbetreiber:innen verlinken die Sitemap zudem in der robots.txt. Dies ist zum Beispiel bei der Website <a class="reference external" href="http://realpython.com">realpython.com</a> der Fall. Die Sitemap ist hier unter <a class="reference external" href="https://realpython.com/robots.txt">https://realpython.com/robots.txt</a> verlinkt und hat die Adresse <a class="reference external" href="https://realpython.com/sitemap.xml">https://realpython.com/sitemap.xml</a>. Die Sitemap selbst sieht so aus:</p>
-<figure class="align-default" id="id220">
+<figure class="align-default" id="id221">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/realpython_sitemap.png"><img alt="Realpython Sitemap" class="bg-transparent" src="../../../_images/realpython_sitemap.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Sitemap der Website <a class="reference external" href="http://realpython.com">realpython.com</a></span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
+<p><span class="caption-text">Sitemap der Website <a class="reference external" href="http://realpython.com">realpython.com</a></span><a class="headerlink" href="#id221" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -576,10 +576,10 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 <section id="don-t-do-this">
 <h2>Don’t do this…<a class="headerlink" href="#don-t-do-this" title="Link to this heading">#</a></h2>
 <p>Zum Schluss möchte ich euch noch eine kleine Empfehlung mit auf den Weg geben: Nicht immer ist Web Scraping wirklich die schnellste und effizienteste Lösung für euer Problem. Es macht wahrscheinlich mehr Spaß, Code zu schreiben, als direkt die Aufgabe anzugehen, aber wenn ihr unbedingt eine Deadline einhalten müsst, dann ist es natürlich auch okay, ein Web Scraping Projekt abzubrechen und eure Aufgabe einfach manuell zu lösen. Also in diesem Sinne:</p>
-<figure class="align-default" id="id221">
+<figure class="align-default" id="id222">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/automation_xkcd.png"><img alt="Comic zur Warnung" class="bg-transparent" src="../../../_images/automation_xkcd.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Don’t do this… Quelle: <a class="reference external" href="https://www.scrapingbee.com/blog/selenium-python/">Kevin Sahin 2022</a></span><a class="headerlink" href="#id221" title="Link to this image">#</a></p>
+<p><span class="caption-text">Don’t do this… Quelle: <a class="reference external" href="https://www.scrapingbee.com/blog/selenium-python/">Kevin Sahin 2022</a></span><a class="headerlink" href="#id222" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -587,19 +587,19 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 <h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
-<li id="id179"><p>Peter Ernesti, Johannes und Kaiser. Python 3: Ausnahmebehandlung. 2020. URL: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">https://openbook.rheinwerk-verlag.de/python/22_001.html</a>.</p></li>
-<li id="id183"><p>Ognian Mikov. How to Find the Sitemap of a Website. 2021. URL: <a class="reference external" href="https://seocrawl.com/en/how-to-find-a-sitemap/">https://seocrawl.com/en/how-to-find-a-sitemap/</a>.</p></li>
-<li id="id171"><p>Ryan Mitchell. <em>Webscraping with Python. Collecting More Data from the Modern Web</em>. O'Reilley, Farnham et al., 2018.</p></li>
-<li id="id182"><p>Jonathan Mondaut. Take Advantage of Sitemaps for Efficient Web Scraping: A Comprehensive Guide. 2023. URL: <a class="reference external" href="https://medium.com/&#64;jonathanmondaut/take-advantage-of-sitemaps-for-efficient-web-scraping-a-comprehensive-guide-c35c6efe52d3">https://medium.com/&#64;jonathanmondaut/take-advantage-of-sitemaps-for-efficient-web-scraping-a-comprehensive-guide-c35c6efe52d3</a>.</p></li>
-<li id="id173"><p>Kenneth Reitz. Requests Documentation: Errors and Exceptions. 2023. URL: <a class="reference external" href="https://requests.readthedocs.io/en/latest/user/quickstart/?highlight=cookie#errors-and-exceptions">https://requests.readthedocs.io/en/latest/user/quickstart/?highlight=cookie#errors-and-exceptions</a>.</p></li>
-<li id="id174"><p>Kevin Sahin. Web Scraping Using Selenium and Python. 2022. URL: <a class="reference external" href="https://www.scrapingbee.com/blog/selenium-python/">https://www.scrapingbee.com/blog/selenium-python/</a>.</p></li>
-<li id="id180"><p>Python 3.11.3 Documentation. Built-in Exceptions. URL: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">https://docs.python.org/3/library/exceptions.html#bltin-exceptions</a>.</p></li>
-<li id="id178"><p>Python 3.11.3 Documentation. Compound Statements: The Try Statement. URL: <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#the-try-statement">https://docs.python.org/3/reference/compound_stmts.html#the-try-statement</a>.</p></li>
-<li id="id177"><p>Python 3.11.3 Documentation. Errors and Exceptions. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/errors.html">https://docs.python.org/3/tutorial/errors.html</a>.</p></li>
-<li id="id181"><p>Said van de Klundert. Python Exceptions: An Introduction. URL: <a class="reference external" href="https://realpython.com/python-exceptions/">https://realpython.com/python-exceptions/</a>.</p></li>
-<li id="id172"><p>Selenium 4 Documentation. Browser Options: pageLoadStrategy. 2022. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/drivers/options/#pageloadstrategy">https://www.selenium.dev/documentation/webdriver/drivers/options/#pageloadstrategy</a>.</p></li>
-<li id="id175"><p>Selenium 4.10 Documentation. Waits. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/waits/">https://www.selenium.dev/documentation/webdriver/waits/</a>.</p></li>
-<li id="id176"><p>W3Docs. How to Find an Element by CSS Class Name with XPath. 2023. URL: <a class="reference external" href="https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html">https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html</a>.</p></li>
+<li id="id180"><p>Peter Ernesti, Johannes und Kaiser. Python 3: Ausnahmebehandlung. 2020. URL: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">https://openbook.rheinwerk-verlag.de/python/22_001.html</a>.</p></li>
+<li id="id184"><p>Ognian Mikov. How to Find the Sitemap of a Website. 2021. URL: <a class="reference external" href="https://seocrawl.com/en/how-to-find-a-sitemap/">https://seocrawl.com/en/how-to-find-a-sitemap/</a>.</p></li>
+<li id="id172"><p>Ryan Mitchell. <em>Webscraping with Python. Collecting More Data from the Modern Web</em>. O'Reilley, Farnham et al., 2018.</p></li>
+<li id="id183"><p>Jonathan Mondaut. Take Advantage of Sitemaps for Efficient Web Scraping: A Comprehensive Guide. 2023. URL: <a class="reference external" href="https://medium.com/&#64;jonathanmondaut/take-advantage-of-sitemaps-for-efficient-web-scraping-a-comprehensive-guide-c35c6efe52d3">https://medium.com/&#64;jonathanmondaut/take-advantage-of-sitemaps-for-efficient-web-scraping-a-comprehensive-guide-c35c6efe52d3</a>.</p></li>
+<li id="id174"><p>Kenneth Reitz. Requests Documentation: Errors and Exceptions. 2023. URL: <a class="reference external" href="https://requests.readthedocs.io/en/latest/user/quickstart/?highlight=cookie#errors-and-exceptions">https://requests.readthedocs.io/en/latest/user/quickstart/?highlight=cookie#errors-and-exceptions</a>.</p></li>
+<li id="id175"><p>Kevin Sahin. Web Scraping Using Selenium and Python. 2022. URL: <a class="reference external" href="https://www.scrapingbee.com/blog/selenium-python/">https://www.scrapingbee.com/blog/selenium-python/</a>.</p></li>
+<li id="id181"><p>Python 3.11.3 Documentation. Built-in Exceptions. URL: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">https://docs.python.org/3/library/exceptions.html#bltin-exceptions</a>.</p></li>
+<li id="id179"><p>Python 3.11.3 Documentation. Compound Statements: The Try Statement. URL: <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#the-try-statement">https://docs.python.org/3/reference/compound_stmts.html#the-try-statement</a>.</p></li>
+<li id="id178"><p>Python 3.11.3 Documentation. Errors and Exceptions. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/errors.html">https://docs.python.org/3/tutorial/errors.html</a>.</p></li>
+<li id="id182"><p>Said van de Klundert. Python Exceptions: An Introduction. URL: <a class="reference external" href="https://realpython.com/python-exceptions/">https://realpython.com/python-exceptions/</a>.</p></li>
+<li id="id173"><p>Selenium 4 Documentation. Browser Options: pageLoadStrategy. 2022. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/drivers/options/#pageloadstrategy">https://www.selenium.dev/documentation/webdriver/drivers/options/#pageloadstrategy</a>.</p></li>
+<li id="id176"><p>Selenium 4.10 Documentation. Waits. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/waits/">https://www.selenium.dev/documentation/webdriver/waits/</a>.</p></li>
+<li id="id177"><p>W3Docs. How to Find an Element by CSS Class Name with XPath. 2023. URL: <a class="reference external" href="https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html">https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html</a>.</p></li>
 </ol>
 </div>
 </section>

@@ -418,18 +418,18 @@ Wie genau diese Verfahren für eine konkrete Webseite umgesetzt werden, hängt w
 <div><p>Einzelne Dokumente liegen im HTML-Format an zentraler Stelle bereit und werden vollständig an den Client übertragen, um dort angezeigt zu werden.</p>
 </div></blockquote>
 <p>Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=Pc35Ux0bF2U">Alexander Bazo 2020</a></p>
-<figure class="align-default" id="id216">
+<figure class="align-default" id="id217">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/anatomy_static_site.png"><img alt="Schaubild Statische Webseite" class="bg-transparent" src="../../../_images/anatomy_static_site.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Schaubild Statische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id216" title="Link to this image">#</a></p>
+<p><span class="caption-text">Schaubild Statische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id217" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Formell definiert ist eine statische Website also dadurch definiert, dass alle Unterseiten schon gerendert sind, bevor sie auf den Webserver hochgeladen und bereitgestellt werden. Diese Art von Webseiten kennen wir bereits: <a class="reference external" href="https://quotes.toscrape.com/">quotes.toscrape.com</a> und diese Kurswebsite sind Beispiele. Für die Unterseiten einer solchen statischen Website werden vorab, bevor die Website auf dem Server hochgeladen wird, einzelne HTML-Dokumente erstellt, eins für jede Unterseite, die dann auf den Server hochgeladen werden. Beim Seitenaufruf wird das HTML-Dokument für die jeweils aufgerufene Seite unverändert an den Client geschickt und, wenn der Client ein Browser ist, im Browser dargestellt. Solche Webseiten können wir ganz einfach mit requests und BeautifulSoup scrapen.</p>
 <p>Allerdings gibt es auch auf statischen Webseiten Inhalte, die wir nicht mithilfe von requests und BeautifulSoup scrapen können, zum Beispiel die Suchergebnisse, die euch bei der Verwendung der Suchmaske auf dieser Website angezeigt werden. Die Suche auf dieser Kurswebsite ist nämlich mithilfe von JavaScript implementiert. Wenn ihr euch die Seite <a class="reference external" href="https://lipogg.github.io/webscraping-fuer-geisteswissenschaften/search.html?q=selenium">https://lipogg.github.io/webscraping-fuer-geisteswissenschaften/search.html?q=selenium</a> in den Entwicklertools anseht, dann sieht die Seite zwar erst einmal nach einem ganz normalen HTML-Dokument aus: Die Suchergebnisse findet ihr als Liste im div-Element mit der id “search-results”.</p>
-<figure class="align-default" id="id217">
+<figure class="align-default" id="id218">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_kurswebsite_1.png"><img alt="Beispiel 1" class="bg-transparent" src="../../../_images/beispiel_kurswebsite_1.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Suche auf der Kurswebsite mit aktiviertem JavaScript</span><a class="headerlink" href="#id217" title="Link to this image">#</a></p>
+<p><span class="caption-text">Suche auf der Kurswebsite mit aktiviertem JavaScript</span><a class="headerlink" href="#id218" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Aber wenn ihr versucht, die Seite mit den Suchergebnissen mithilfe von requests und BeautifulSoup zu scrapen, dann bekommt ihr stattdessen ein HTML-Dokument zurück, das nicht die Suchergebnisse, sondern eine Meldung “Please activate JavaScript to enable the search functionality” enthält.</p>
@@ -471,10 +471,10 @@ Wie genau diese Verfahren für eine konkrete Webseite umgesetzt werden, hängt w
 <p>JavaScript im Browser deaktivieren</p>
 <p>Um JavaScript zu deaktivieren, geht ihr so vor: Öffnet die Seite -&gt; View -&gt; Developer Tools -&gt; Tastenkombination Ctrl + Shift + P bzw. auf dem Mac Cmd + Shift + P -&gt; Disable JavaScript eingeben und Enter drücken. Um JavaScript später wieder einzuschalten, befolgt ihr dieselben Schritte und sucht nach “Enable JavaScript”.</p>
 </div>
-<figure class="align-default" id="id218">
+<figure class="align-default" id="id219">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_kurswebsite_2.png"><img alt="Beispiel 1" class="bg-transparent" src="../../../_images/beispiel_kurswebsite_2.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Suche auf der Kurswebsite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id218" title="Link to this image">#</a></p>
+<p><span class="caption-text">Suche auf der Kurswebsite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Obwohl wir es bei der Kurswebsite mit einer statisch generierten Website zu tun haben, können wir diese spezielle Unterseite also nicht mithilfe von requests und BeautifulSoup scrapen, weil für die Darstellung der Inhalte JavaScript verwendet wird. Das Beispiel zeigt: <strong>Anders als man vielleicht alltagssprachlich vermuten würde, liegt der Unterschied zwischen “statischen” und “dynamischen” Webseiten also nicht darin, ob die Inhalte interaktiv sind, sondern darin, wie genau und wann sie erstellt und dargestellt werden.</strong></p>
@@ -490,19 +490,19 @@ Wie genau diese Verfahren für eine konkrete Webseite umgesetzt werden, hängt w
 <div><p>Der Inhalt dynamischer Websites wird durch Aktionen auf Client und Server beeinflusst. Das Dokument, das vom Client gerendert wird, liegt nicht zwangsläufig genauso auch als HTML-Dokument auf dem Server.</p>
 </div></blockquote>
 <p>Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=Pc35Ux0bF2U">Alexander Bazo 2020</a></p>
-<figure class="align-default" id="id219">
+<figure class="align-default" id="id220">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/anatomy_dynamic_request.png"><img alt="Schaubild Dynamische Webseite" class="bg-transparent" src="../../../_images/anatomy_dynamic_request.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Schaubild Dynamische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
+<p><span class="caption-text">Schaubild Dynamische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Eine dynamische Website ist dagegen formell gesprochen eine Website, die erst dann erstellt und dargestellt wird, wenn sie aufgerufen wird. Wie bereits eingangs erwähnt gibt es verschiedene Verfahren, um Websites “dynamisch” zu erstellen und darzustellen: Eine Website kann im Gesamten auf dem Server oder auf dem Client gerendert werden, oder es wird ein Teil einer Webseite auf dem Server gerendert, und der Rest auf dem Client.</p>
 <p>Wird beim Aufruf der Webseite das komplette HTML-Dokument mit allen Inhalten auf dem Server generiert, heißt das: die HTML-Dokumente werden erst dann erstellt, wenn die Seite aufgerufen wird, und zwar auf dem Server.
 Erst, wenn die Webseite komplett fertig gerendert ist, wird sie an den Client, zum Beispiel einen Browser, geschickt. Dieses Rendering-Verfahren wird beispielsweise standardmäßig für WordPress-Seiten verwendet. Wenn das HTML-Dokument komplett gerendert mit allen Inhalten an den Client geschickt wird, können wir zum Scrapen solcher Seiten im Regelfall requests und BeautifulSoup verwenden, denn dann erhalten wir ein fertiges HTML-Dokument, genau wie beim Scrapen statischer Webseiten. Ein Beispiel ist diese Wordpress-Seite <a class="reference external" href="https://minimalistbaker.com">https://minimalistbaker.com</a>. Der Aufruf der Seite mit deaktiviertem JavaScript zeigt, dass für die Darstellung der Überblicksseite tatsächlich kein JavaScript benötigt wird, denn alle Inhalte werden komplett geladen:</p>
-<figure class="align-default" id="id220">
+<figure class="align-default" id="id221">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_wordpress.png"><img alt="Beispiel Wordpress" class="bg-transparent" src="../../../_images/beispiel_wordpress.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispiel-Wordpressseite mit deaktiviertem JavaScript.</span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
+<p><span class="caption-text">Beispiel-Wordpressseite mit deaktiviertem JavaScript.</span><a class="headerlink" href="#id221" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Die HTTP-GET-Anfrage liefert also ein komplett gerendertes HTML-Dokument, das wir mit BeautifulSoup durchsuchen können:</p>
@@ -542,10 +542,10 @@ Erst, wenn die Webseite komplett fertig gerendert ist, wird sie an den Client, z
 </div>
 <p>Solche Webseiten sind formell gesprochen auch “dynamisch”, aber da sie bereits auf dem Server gerendert werden, und nicht erst im Client, können wir die bereits bekannte Webscraping-Strategie mit requests und BeautifulSoup darauf anwenden.</p>
 <p>Es kommt aber häufig vor, dass dynamisch erstellte Webseiten nicht nur auf dem Server, sondern auch auf dem Client, also im Browser, gerendert werden. Beim Aufruf solcher Webseiten wird zum Beispiel als erstes nur das HTML-Grundgerüst der Seite ohne Inhalte gerendert. Die HTTP-Anfrage beim Aufruf der Seite liefert also ein HTML-Dokument, das nur das Grundgerüst der Seite enthält. Alle weiteren Inhalte werden dann mithilfe von JavaScript über eine spezielle Schnittstelle, die DOM, in das HTML-Gerüst eingefügt. Der Seiteninhalt kann dann mit demselben und ähnlichen Verfahren fortlaufend dynamisch verändert werden, je nachdem, wie ein:e Nutzer:in die Webseite verwendet. So ungefähr wird die YouTube-Startseite geladen. Wenn wir JavaScript im Browser ausschalten, wird uns nur das HTML-Grundgerüst angezeigt. Die HTML-Elemente haben passenderweise die IDs “home-page-skeleton” oder “home-container-skeleton”:</p>
-<figure class="align-default" id="id221">
+<figure class="align-default" id="id222">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_youtube.png"><img alt="Beispiel YouTube" class="bg-transparent" src="../../../_images/beispiel_youtube.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">YouTube-Startseite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id221" title="Link to this image">#</a></p>
+<p><span class="caption-text">YouTube-Startseite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id222" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In diesem Fall können requests und BeautifulSoup nicht verwendet werden, weil die Anfrage nur das “Skelett” der Webseite liefert:</p>
@@ -578,17 +578,17 @@ Um die Ergebnisse der Suche zu extrahieren, können wir in diesem Fall einfach m
 <p>Anders ist es bei <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a>. Auch hier ist die Suche ohne JavaScript serverseitig implementiert, aber wenn ein Suchbegriff über die Suchmaske eingegeben wird, dann ändert sich nicht bequem die URL im URL-Fenster, sondern die URL bleibt immer dieselbe, egal wonach wir suchen: <a class="reference external" href="https://www.projekt-gutenberg.org/info/search/search.php">https://www.projekt-gutenberg.org/info/search/search.php</a>. Wenn wir uns den Quellcode der Webseite in den Entwicklertools ansehen, finden wir die Ergebnisse unserer Suche in einem HTML-Tabellenelement.
 Wenn wir jetzt aber mit requests eine Anfrage für diese URL stellen, dann bekommen wir ein anderes HTML-Dokument geliefert, das die Tabelle mit den Ergebnissen nicht enthält. Das ist auch nicht erstaunlich: Wir haben dem Server ja gar nicht mitgeteilt, wonach wir suchen.
 Der Network-Tab in den Entwicklertools verrät uns, wie wir in diesem Fall vorgehen können: Wenn ein Suchbegriff in die Suchmaske einegegeben wird, dann wird eine HTTP POST (!) Anfrage gestellt, keine GET-Anfrage. Im Header steht als Anfrage-URL <a class="reference external" href="https://www.projekt-gutenberg.org/info/search/search.php">https://www.projekt-gutenberg.org/info/search/search.php</a>.</p>
-<figure class="align-default" id="id222">
+<figure class="align-default" id="id223">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_gutenberg_1.png"><img alt="Beispiel Projekt Gutenberg" class="bg-transparent" src="../../../_images/beispiel_gutenberg_1.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">HTTP-Anfrage bei der Suche über <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a></span><a class="headerlink" href="#id222" title="Link to this image">#</a></p>
+<p><span class="caption-text">HTTP-Anfrage bei der Suche über <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a></span><a class="headerlink" href="#id223" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Aber es wird zusätzlich ein “Payload” bei der Anfrage übermittelt, nämlich im Beispiel unten “searchstring=franz+kafka&amp;search=suchen”.</p>
-<figure class="align-default" id="id223">
+<figure class="align-default" id="id224">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_gutenberg_3.png"><img alt="Beispiel Projekt Gutenberg" class="bg-transparent" src="../../../_images/beispiel_gutenberg_3.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">“Payload” bei der HTTP-Anfrage</span><a class="headerlink" href="#id223" title="Link to this image">#</a></p>
+<p><span class="caption-text">“Payload” bei der HTTP-Anfrage</span><a class="headerlink" href="#id224" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Diese Parameter müssen wir der POST-Anfrage mit angeben. Der Python-Code sieht demnach als Beispiel für eine Suche nach Franz Kafka auf <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a> so aus:</p>
@@ -639,19 +639,19 @@ Der Network-Tab in den Entwicklertools verrät uns, wie wir in diesem Fall vorge
 <h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
-<li id="id123"><p>Alexander Bazo. Vorlesung &quot;Webanwendungen und Webserver&quot;. 2020. URL: <a class="reference external" href="https://www.youtube.com/watch?v=Pc35Ux0bF2U">https://www.youtube.com/watch?v=Pc35Ux0bF2U</a>.</p></li>
-<li id="id139"><p>Charles Bouchard-Légaré. Sphinx-Users: Documentation About the Built In Search? 2022. URL: <a class="reference external" href="https://groups.google.com/g/sphinx-users/c/qtLQXDDHbYo">https://groups.google.com/g/sphinx-users/c/qtLQXDDHbYo</a>.</p></li>
-<li id="id127"><p>Frank Dopatka. Vorlesung &quot;Webbasierte Systeme&quot;. JavaScript: DOM. 2021. URL: <a class="reference external" href="https://www.youtube.com/watch?v=DfvbYgk0XG8">https://www.youtube.com/watch?v=DfvbYgk0XG8</a>.</p></li>
-<li id="id135"><p>Njoku Samson Ebere. Server Side Rendering (SSR) Vs Static Site Generation (SSG) . 2023. URL: <a class="reference external" href="https://dev.to/ebereplenty/server-side-rendering-ssr-vs-static-site-generation-ssg-214k">https://dev.to/ebereplenty/server-side-rendering-ssr-vs-static-site-generation-ssg-214k</a>.</p></li>
-<li id="id138"><p>Nicholas Mendez. Understanding Rendering in Web Apps: SPA vs MPA. 2021. URL: <a class="reference external" href="https://dev.to/snickdx/understanding-rendering-in-web-apps-spa-vs-mpa-49ef">https://dev.to/snickdx/understanding-rendering-in-web-apps-spa-vs-mpa-49ef</a>.</p></li>
-<li id="id137"><p>Fred Meyer. Understanding &quot;Server-Side&quot; and &quot;Client-Side&quot; in WordPress. 2023. URL: <a class="reference external" href="https://wpshout.com/understanding-server-side-client-side-wordpress/">https://wpshout.com/understanding-server-side-client-side-wordpress/</a>.</p></li>
-<li id="id133"><p>Jason Miller and Addy Osmani. Rendering on the Web: Static Rendering. 2019. URL: <a class="reference external" href="https://web.dev/rendering-on-the-web/#static-rendering">https://web.dev/rendering-on-the-web/#static-rendering</a>.</p></li>
-<li id="id126"><p>Jason Miller and Addy Osmani. Rendering on the Web. 2019. URL: <a class="reference external" href="https://web.dev/rendering-on-the-web/">https://web.dev/rendering-on-the-web/</a>.</p></li>
-<li id="id124"><p>Chrome Developers. Disable JavaScript. 2019. URL: <a class="reference external" href="https://developer.chrome.com/docs/devtools/javascript/disable/">https://developer.chrome.com/docs/devtools/javascript/disable/</a>.</p></li>
-<li id="id122"><p>MDN Contributors. Client-Server Overview. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview</a>.</p></li>
-<li id="id134"><p>Next.js. Client-Side-Rendering (CSR). 2023. URL: <a class="reference external" href="https://nextjs.org/docs/pages/building-your-application/rendering/client-side-rendering">https://nextjs.org/docs/pages/building-your-application/rendering/client-side-rendering</a>.</p></li>
-<li id="id125"><p>Next.js. Rendering. 2023. URL: <a class="reference external" href="https://nextjs.org/docs/pages/building-your-application/rendering">https://nextjs.org/docs/pages/building-your-application/rendering</a>.</p></li>
-<li id="id136"><p>10 Rendering Patterns for Web Apps. 2023. URL: <a class="reference external" href="https://www.youtube.com/watch?v=Dkx5ydvtpCA">https://www.youtube.com/watch?v=Dkx5ydvtpCA</a>.</p></li>
+<li id="id124"><p>Alexander Bazo. Vorlesung &quot;Webanwendungen und Webserver&quot;. 2020. URL: <a class="reference external" href="https://www.youtube.com/watch?v=Pc35Ux0bF2U">https://www.youtube.com/watch?v=Pc35Ux0bF2U</a>.</p></li>
+<li id="id140"><p>Charles Bouchard-Légaré. Sphinx-Users: Documentation About the Built In Search? 2022. URL: <a class="reference external" href="https://groups.google.com/g/sphinx-users/c/qtLQXDDHbYo">https://groups.google.com/g/sphinx-users/c/qtLQXDDHbYo</a>.</p></li>
+<li id="id128"><p>Frank Dopatka. Vorlesung &quot;Webbasierte Systeme&quot;. JavaScript: DOM. 2021. URL: <a class="reference external" href="https://www.youtube.com/watch?v=DfvbYgk0XG8">https://www.youtube.com/watch?v=DfvbYgk0XG8</a>.</p></li>
+<li id="id136"><p>Njoku Samson Ebere. Server Side Rendering (SSR) Vs Static Site Generation (SSG) . 2023. URL: <a class="reference external" href="https://dev.to/ebereplenty/server-side-rendering-ssr-vs-static-site-generation-ssg-214k">https://dev.to/ebereplenty/server-side-rendering-ssr-vs-static-site-generation-ssg-214k</a>.</p></li>
+<li id="id139"><p>Nicholas Mendez. Understanding Rendering in Web Apps: SPA vs MPA. 2021. URL: <a class="reference external" href="https://dev.to/snickdx/understanding-rendering-in-web-apps-spa-vs-mpa-49ef">https://dev.to/snickdx/understanding-rendering-in-web-apps-spa-vs-mpa-49ef</a>.</p></li>
+<li id="id138"><p>Fred Meyer. Understanding &quot;Server-Side&quot; and &quot;Client-Side&quot; in WordPress. 2023. URL: <a class="reference external" href="https://wpshout.com/understanding-server-side-client-side-wordpress/">https://wpshout.com/understanding-server-side-client-side-wordpress/</a>.</p></li>
+<li id="id134"><p>Jason Miller and Addy Osmani. Rendering on the Web: Static Rendering. 2019. URL: <a class="reference external" href="https://web.dev/rendering-on-the-web/#static-rendering">https://web.dev/rendering-on-the-web/#static-rendering</a>.</p></li>
+<li id="id127"><p>Jason Miller and Addy Osmani. Rendering on the Web. 2019. URL: <a class="reference external" href="https://web.dev/rendering-on-the-web/">https://web.dev/rendering-on-the-web/</a>.</p></li>
+<li id="id125"><p>Chrome Developers. Disable JavaScript. 2019. URL: <a class="reference external" href="https://developer.chrome.com/docs/devtools/javascript/disable/">https://developer.chrome.com/docs/devtools/javascript/disable/</a>.</p></li>
+<li id="id123"><p>MDN Contributors. Client-Server Overview. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview</a>.</p></li>
+<li id="id135"><p>Next.js. Client-Side-Rendering (CSR). 2023. URL: <a class="reference external" href="https://nextjs.org/docs/pages/building-your-application/rendering/client-side-rendering">https://nextjs.org/docs/pages/building-your-application/rendering/client-side-rendering</a>.</p></li>
+<li id="id126"><p>Next.js. Rendering. 2023. URL: <a class="reference external" href="https://nextjs.org/docs/pages/building-your-application/rendering">https://nextjs.org/docs/pages/building-your-application/rendering</a>.</p></li>
+<li id="id137"><p>10 Rendering Patterns for Web Apps. 2023. URL: <a class="reference external" href="https://www.youtube.com/watch?v=Dkx5ydvtpCA">https://www.youtube.com/watch?v=Dkx5ydvtpCA</a>.</p></li>
 </ol>
 </div>
 </section>
