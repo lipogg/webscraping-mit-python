@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Fortsetzung BeautifulSoup &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>7.2. Fortsetzung BeautifulSoup &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="7.1. Einsteig BeautifulSoup" href="01_einstieg_beautifulsoup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +176,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -217,8 +216,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/04_http.html">6.4. Client, Server, HTTP</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../07_intro.html">7. Statische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../07_intro.html">7. Statische Webseiten</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01_einstieg_beautifulsoup.html">7.1. Einstieg BeautifulSoup</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.2. Fortsetzung BeautifulSoup</a></li>
 </ul>
 </li>
 </ul>
@@ -384,21 +384,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-zitate-von-der-ersten-seite-extrahieren-ohne-metadaten">Recap: Zitate von der ersten Seite extrahieren, ohne Metadaten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zitate-von-der-ersten-seite-extrahieren-mit-metadaten">Zitate von der ersten Seite extrahieren, mit Metadaten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten">Zitate von allen Seiten der Website extrahieren, ohne Metadaten</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-for-schleife-fur-exakt-10-unterseiten">Lösung mit for-Schleife: für exakt 10 Unterseiten</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-while-schleife-unbekannte-anzahl-von-unterseiten">Lösung mit while-Schleife: unbekannte Anzahl von Unterseiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-zitate-von-der-ersten-seite-extrahieren-ohne-metadaten">7.2.1. Recap: Zitate von der ersten Seite extrahieren, ohne Metadaten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zitate-von-der-ersten-seite-extrahieren-mit-metadaten">7.2.2. Zitate von der ersten Seite extrahieren, mit Metadaten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten">7.2.3. Zitate von allen Seiten der Website extrahieren, ohne Metadaten</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-for-schleife-fur-exakt-10-unterseiten">7.2.3.1. Lösung mit for-Schleife: für exakt 10 Unterseiten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-while-schleife-unbekannte-anzahl-von-unterseiten">7.2.3.2. Lösung mit while-Schleife: unbekannte Anzahl von Unterseiten</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zitate-von-allen-seiten-extrahieren-mit-metadaten">Zitate von allen Seiten extrahieren, mit Metadaten</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-for-schleife">Lösung mit for-Schleife</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-while-schleife">Lösung mit while-Schleife</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-funktionen">Lösung mit Funktionen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zitate-von-allen-seiten-extrahieren-mit-metadaten">7.2.4. Zitate von allen Seiten extrahieren, mit Metadaten</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-for-schleife">7.2.4.1. Lösung mit for-Schleife</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-while-schleife">7.2.4.2. Lösung mit while-Schleife</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-funktionen">7.2.4.3. Lösung mit Funktionen</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-in-exceldatei-schreiben">Pandas-DataFrame in Exceldatei schreiben</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-und-memit-was-ist-das">%%time und %%memit: Was ist das?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-in-exceldatei-schreiben">7.2.5. Pandas-DataFrame in Exceldatei schreiben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-und-memit-was-ist-das">7.2.6. %%time und %%memit: Was ist das?</a></li>
 </ul>
             </nav>
         </div>
@@ -411,7 +411,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="fortsetzung-beautifulsoup">
-<h1>Fortsetzung BeautifulSoup<a class="headerlink" href="#fortsetzung-beautifulsoup" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">7.2. </span>Fortsetzung BeautifulSoup<a class="headerlink" href="#fortsetzung-beautifulsoup" title="Link to this heading">#</a></h1>
 <p>Letzte Woche haben wir alle Zitate von der ersten Seite der Website <a class="reference external" href="https://quotes.toscrape.com">https://quotes.toscrape.com</a> extrahiert.
 Heute werden wir den Code in drei Aspekten ergänzen:</p>
 <ol class="arabic simple">
@@ -440,7 +440,7 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </div>
 <section id="recap-zitate-von-der-ersten-seite-extrahieren-ohne-metadaten">
-<h2>Recap: Zitate von der ersten Seite extrahieren, ohne Metadaten<a class="headerlink" href="#recap-zitate-von-der-ersten-seite-extrahieren-ohne-metadaten" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2.1. </span>Recap: Zitate von der ersten Seite extrahieren, ohne Metadaten<a class="headerlink" href="#recap-zitate-von-der-ersten-seite-extrahieren-ohne-metadaten" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://quotes.toscrape.com/&quot;</span>
@@ -472,7 +472,7 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </section>
 <section id="zitate-von-der-ersten-seite-extrahieren-mit-metadaten">
-<h2>Zitate von der ersten Seite extrahieren, mit Metadaten<a class="headerlink" href="#zitate-von-der-ersten-seite-extrahieren-mit-metadaten" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2.2. </span>Zitate von der ersten Seite extrahieren, mit Metadaten<a class="headerlink" href="#zitate-von-der-ersten-seite-extrahieren-mit-metadaten" title="Link to this heading">#</a></h2>
 <p>In der letzten Stunde haben wir die BeautifulSoup-Methoden .find() und .find_all() verwendet, um HTML-Elemente in einem  BeautifulSoup-Objekt zu finden. Genauso könnten wir auch vorgehen, um neben den Zitaten auch einige Metadaten zu extrahieren, also zum Beispiel auch den Namen der Person, von der das Zitat stammt, und die Tags, mit denen das Zitat versehen wurde.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -736,9 +736,9 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </section>
 <section id="zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten">
-<h2>Zitate von allen Seiten der Website extrahieren, ohne Metadaten<a class="headerlink" href="#zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2.3. </span>Zitate von allen Seiten der Website extrahieren, ohne Metadaten<a class="headerlink" href="#zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten" title="Link to this heading">#</a></h2>
 <section id="losung-mit-for-schleife-fur-exakt-10-unterseiten">
-<h3>Lösung mit for-Schleife: für exakt 10 Unterseiten<a class="headerlink" href="#losung-mit-for-schleife-fur-exakt-10-unterseiten" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.2.3.1. </span>Lösung mit for-Schleife: für exakt 10 Unterseiten<a class="headerlink" href="#losung-mit-for-schleife-fur-exakt-10-unterseiten" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -761,8 +761,8 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 286 ms, sys: 24.2 ms, total: 311 ms
-Wall time: 1.84 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 278 ms, sys: 21.2 ms, total: 300 ms
+Wall time: 1.81 s
 </pre></div>
 </div>
 </div>
@@ -912,8 +912,8 @@ Wall time: 1.84 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 233 ms, sys: 17.8 ms, total: 251 ms
-Wall time: 1.84 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 244 ms, sys: 22.3 ms, total: 267 ms
+Wall time: 1.85 s
 </pre></div>
 </div>
 </div>
@@ -1032,7 +1032,7 @@ Wall time: 1.84 s
 <p>Die Ausgabe von %%time und %%memit zeigen, dass die Nutzung des Sets keinen (Effizienz-) Vorteil gegenüber Listen hat: Wir können also genausogut eine Liste verwenden.</p>
 </section>
 <section id="losung-mit-while-schleife-unbekannte-anzahl-von-unterseiten">
-<h3>Lösung mit while-Schleife: unbekannte Anzahl von Unterseiten<a class="headerlink" href="#losung-mit-while-schleife-unbekannte-anzahl-von-unterseiten" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.2.3.2. </span>Lösung mit while-Schleife: unbekannte Anzahl von Unterseiten<a class="headerlink" href="#losung-mit-while-schleife-unbekannte-anzahl-von-unterseiten" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -1067,8 +1067,8 @@ Wall time: 1.84 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 382 ms, sys: 25.6 ms, total: 407 ms
-Wall time: 2.24 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 341 ms, sys: 24.6 ms, total: 366 ms
+Wall time: 2.23 s
 </pre></div>
 </div>
 </div>
@@ -1265,8 +1265,8 @@ Die Macher:innen der Seite quotes.toscrape haben sich überlegt, dass auch Seite
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 355 ms, sys: 26.2 ms, total: 381 ms
-Wall time: 2.24 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 239 ms, sys: 21.4 ms, total: 260 ms
+Wall time: 2.1 s
 </pre></div>
 </div>
 </div>
@@ -1409,8 +1409,8 @@ Wall time: 2.24 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 285 ms, sys: 12.5 ms, total: 298 ms
-Wall time: 1.35 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 242 ms, sys: 9.23 ms, total: 251 ms
+Wall time: 1.4 s
 </pre></div>
 </div>
 </div>
@@ -1418,9 +1418,9 @@ Wall time: 1.35 s
 </section>
 </section>
 <section id="zitate-von-allen-seiten-extrahieren-mit-metadaten">
-<h2>Zitate von allen Seiten extrahieren, mit Metadaten<a class="headerlink" href="#zitate-von-allen-seiten-extrahieren-mit-metadaten" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2.4. </span>Zitate von allen Seiten extrahieren, mit Metadaten<a class="headerlink" href="#zitate-von-allen-seiten-extrahieren-mit-metadaten" title="Link to this heading">#</a></h2>
 <section id="losung-mit-for-schleife">
-<h3>Lösung mit for-Schleife<a class="headerlink" href="#losung-mit-for-schleife" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.2.4.1. </span>Lösung mit for-Schleife<a class="headerlink" href="#losung-mit-for-schleife" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -1450,8 +1450,8 @@ Wall time: 1.35 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 330 ms, sys: 22.6 ms, total: 353 ms
-Wall time: 1.97 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 186 ms, sys: 14.7 ms, total: 201 ms
+Wall time: 1.74 s
 </pre></div>
 </div>
 </div>
@@ -1560,7 +1560,7 @@ Wall time: 1.97 s
 </div>
 </section>
 <section id="losung-mit-while-schleife">
-<h3>Lösung mit while-Schleife<a class="headerlink" href="#losung-mit-while-schleife" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.2.4.2. </span>Lösung mit while-Schleife<a class="headerlink" href="#losung-mit-while-schleife" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -1599,8 +1599,8 @@ Wall time: 1.97 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 365 ms, sys: 23.9 ms, total: 389 ms
-Wall time: 2.17 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 272 ms, sys: 21.1 ms, total: 293 ms
+Wall time: 2.1 s
 </pre></div>
 </div>
 </div>
@@ -1744,8 +1744,8 @@ Wall time: 2.17 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 249 ms, sys: 10.1 ms, total: 259 ms
-Wall time: 1.48 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 239 ms, sys: 9.58 ms, total: 249 ms
+Wall time: 1.26 s
 </pre></div>
 </div>
 </div>
@@ -1785,15 +1785,15 @@ Wall time: 1.48 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 187 ms, sys: 9.17 ms, total: 196 ms
-Wall time: 1.24 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 193 ms, sys: 9.19 ms, total: 202 ms
+Wall time: 1.22 s
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="losung-mit-funktionen">
-<h3>Lösung mit Funktionen<a class="headerlink" href="#losung-mit-funktionen" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.2.4.3. </span>Lösung mit Funktionen<a class="headerlink" href="#losung-mit-funktionen" title="Link to this heading">#</a></h3>
 <p>Zuletzt wäre auch eine Lösung mithilfe von Funktionsdefinitionen denkbar:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1874,8 +1874,8 @@ Wall time: 1.24 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 340 ms, sys: 11.4 ms, total: 351 ms
-Wall time: 1.51 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 268 ms, sys: 11.6 ms, total: 280 ms
+Wall time: 1.39 s
 </pre></div>
 </div>
 </div>
@@ -1990,7 +1990,7 @@ Wall time: 1.51 s
 </section>
 </section>
 <section id="pandas-dataframe-in-exceldatei-schreiben">
-<h2>Pandas-DataFrame in Exceldatei schreiben<a class="headerlink" href="#pandas-dataframe-in-exceldatei-schreiben" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2.5. </span>Pandas-DataFrame in Exceldatei schreiben<a class="headerlink" href="#pandas-dataframe-in-exceldatei-schreiben" title="Link to this heading">#</a></h2>
 <p>Zuletzt wollen wir die extrahierten Daten auf unserem Computer abspeichern. Um einen Pandas DataFrame zu speichern, gibt es verschiedene Methoden. Die Methode .to_excel() erlaubt zum Beispiel, einen DataFrame in einer Exceltabelle zu speichern, also in einer Datei mit der Dateiendung .xlsx. Für “speichern” sagt man in diesem Kontext auch “schreiben”: Daten werden in eine Datei geschrieben.</p>
 <p>Die Methode .to_excel() greift unter der Motorhaube auf ein Paket mit dem Namen openpyxl zurück. Diese Paket mussten wir deswegen am Anfang installieren.</p>
 <p>Dokumentation: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html</a></p>
@@ -2003,7 +2003,7 @@ Wall time: 1.51 s
 </div>
 </section>
 <section id="time-und-memit-was-ist-das">
-<h2>%%time und %%memit: Was ist das?<a class="headerlink" href="#time-und-memit-was-ist-das" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2.6. </span>%%time und %%memit: Was ist das?<a class="headerlink" href="#time-und-memit-was-ist-das" title="Link to this heading">#</a></h2>
 <p>Wir haben beim Ausführen der Codezellen in diesem Jupyter Notebook jeweils zwei Zeilen am Anfang hinzugefügt:</p>
 <ul class="simple">
 <li><p>%%time berechnet die Laufzeit einer Jupyter Notebook Codezelle.</p></li>
@@ -2047,6 +2047,15 @@ Wall time: 1.51 s
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="01_einstieg_beautifulsoup.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7.1. </span>Einsteig BeautifulSoup</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -2063,21 +2072,21 @@ Wall time: 1.51 s
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-zitate-von-der-ersten-seite-extrahieren-ohne-metadaten">Recap: Zitate von der ersten Seite extrahieren, ohne Metadaten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zitate-von-der-ersten-seite-extrahieren-mit-metadaten">Zitate von der ersten Seite extrahieren, mit Metadaten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten">Zitate von allen Seiten der Website extrahieren, ohne Metadaten</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-for-schleife-fur-exakt-10-unterseiten">Lösung mit for-Schleife: für exakt 10 Unterseiten</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-while-schleife-unbekannte-anzahl-von-unterseiten">Lösung mit while-Schleife: unbekannte Anzahl von Unterseiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-zitate-von-der-ersten-seite-extrahieren-ohne-metadaten">7.2.1. Recap: Zitate von der ersten Seite extrahieren, ohne Metadaten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zitate-von-der-ersten-seite-extrahieren-mit-metadaten">7.2.2. Zitate von der ersten Seite extrahieren, mit Metadaten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten">7.2.3. Zitate von allen Seiten der Website extrahieren, ohne Metadaten</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-for-schleife-fur-exakt-10-unterseiten">7.2.3.1. Lösung mit for-Schleife: für exakt 10 Unterseiten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-while-schleife-unbekannte-anzahl-von-unterseiten">7.2.3.2. Lösung mit while-Schleife: unbekannte Anzahl von Unterseiten</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zitate-von-allen-seiten-extrahieren-mit-metadaten">Zitate von allen Seiten extrahieren, mit Metadaten</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-for-schleife">Lösung mit for-Schleife</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-while-schleife">Lösung mit while-Schleife</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-funktionen">Lösung mit Funktionen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zitate-von-allen-seiten-extrahieren-mit-metadaten">7.2.4. Zitate von allen Seiten extrahieren, mit Metadaten</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-for-schleife">7.2.4.1. Lösung mit for-Schleife</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-while-schleife">7.2.4.2. Lösung mit while-Schleife</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-funktionen">7.2.4.3. Lösung mit Funktionen</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-in-exceldatei-schreiben">Pandas-DataFrame in Exceldatei schreiben</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-und-memit-was-ist-das">%%time und %%memit: Was ist das?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-in-exceldatei-schreiben">7.2.5. Pandas-DataFrame in Exceldatei schreiben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-und-memit-was-ist-das">7.2.6. %%time und %%memit: Was ist das?</a></li>
 </ul>
   </nav></div>
 
