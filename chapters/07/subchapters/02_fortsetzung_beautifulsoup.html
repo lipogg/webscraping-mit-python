@@ -419,7 +419,7 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 <li><p>Zitate von allen Seiten extrahieren, mit und ohne Metadaten</p></li>
 <li><p>Daten in Dateien schreiben: Beispiel pandas DataFrame in Excel-Tabelle</p></li>
 </ol>
-<p>Für die Ausführung des Codes brauchen wir zusätzlich den Paketen requests und bs4 außerdem noch das Paket pandas, und eine Funktion aus dem Paket urllib3. Zusätzlich könnt ihr das Paket memory_profiler installieren, das erlaubt, zu messen, wieviel Speicher zum Ausführen einer Codezelle benötigt wird. Daneben installieren wir ein Paket openpyxl, das zum Schreiben von pandas-DataFrames in Excel-Dateien verwendet wird. Das Paket müssen wir aber nicht laden, weil es automatisch geladen wird, wenn wir später versuchen, einen Pandas DataFrame in eine Excel-Datei zu schreiben.</p>
+<p>Für die Ausführung des Codes brauchen wir zusätzlich zu den Bibliotheken requests und bs4 außerdem noch die Bibliothek pandas, und eine Funktion aus der Bibliothek urllib3. Zusätzlich könnt ihr das Modul memory_profiler installieren, das erlaubt, zu messen, wieviel Speicher zum Ausführen einer Codezelle benötigt wird. Daneben installieren wir ein Paket openpyxl, das zum Schreiben von pandas-DataFrames in Excel-Dateien verwendet wird. Die Bibliothek müssen wir aber nicht laden, weil sie automatisch geladen wird, wenn wir später versuchen, einen Pandas DataFrame in eine Excel-Datei zu schreiben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import sys</span>
@@ -633,7 +633,7 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div></div></div>
 </div>
 <p>Anstelle der Methode .get_text() kann auch das Attribut .text abgerufen werden: Beide geben den Textinhalt des Elements zurück.</p>
-<p>Aber was passiert, wenn ein Element nicht gefunden werden kann, beispielsweise, weil für ein Zitat keine Tags angegeben wurden, oder wenn die Angabe der Autor:in fehlt? In diesem Fall würden die Methoden .find() bzw. .find_all() den Wert None zurückgeben. Die Methode .get_text() (oder das Attribut .text) würde dann auf ein Objekt vom Typ NoneType angewandt werden. Aber NoneType-Objekte haben keine Methode .get_text() und auch kein Attribut .text! Der Code würde also eine Fehlermeldung produzieren und die Ausführung abbrechen. Um das zu verhindern, könnten wir zunächst überprüfen, ob tatsächlich ein Element gefunden wurde. Nur, wenn ein Element gefunden wurde, wird der Text extrahiert, im folgenden Beispiel mithilfe des Attributs .text statt der Methode .get_text():</p>
+<p>Aber was passiert, wenn ein Element nicht gefunden werden kann, beispielsweise, weil für ein Zitat keine Tags angegeben wurden, oder wenn die Angabe der Autor:in fehlt? In diesem Fall würden die Methoden .find() bzw. .find_all() den Wert None zurückgeben. Die Methode .get_text() (oder das Attribut .text) würde dann auf ein Objekt vom Typ NoneType angewandt werden. Aber NoneType-Objekte haben keine Methode .get_text() und auch kein Attribut .text! Der Code würde also eine Fehlermeldung produzieren und die Ausführung abbrechen. Um das zu verhindern, könnten wir zunächst überprüfen, ob tatsächlich ein Element gefunden wurde. Nur, wenn ein Element gefunden wurde, wird der Text extrahiert, im folgenden Beispiel mithilfe des Attributs .text statt der Methode .get_text(). Wenn das Element nicht gefunden wird, wird eine Nachricht ausgegeben, um dies zu registrieren.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quotes</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;quote&quot;</span><span class="p">)</span>
@@ -648,15 +648,21 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
         <span class="n">tags_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">quote_text</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote_text</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zitat hat keinen Text&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">quote_author</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Author&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote_author</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zitat hat keinen Autor&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zitat hat keine Tags&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Die Suche mit find() und find_all() produziert bei komplexeren Abfragen aber unübersichtlichen Code, weil wir als Argument zusätzlich die CSS-Klasse des gesuchten Elements angeben müssen. Eine einfachere Möglichkeit, direkt nach der CSS-Klasse selbst zu suchen, sind die Methoden .select_one() und .select().</p>
+<p>Der Einfachheit halber verwenden wir aber im Folgenden den Code ohne die zusätzliche if-else-Verzweigung. Die Suche mit find() und find_all() produziert bei komplexeren Abfragen aber auch bereits ohne die if-else Verzweigung unübersichtlichen Code, weil wir als Argument zusätzlich die CSS-Klasse des gesuchten Elements angeben müssen. Eine einfachere Möglichkeit, direkt nach der CSS-Klasse selbst zu suchen, sind die Methoden .select_one() und .select().</p>
 <p>Zum Nachlesen: <a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/index.html?highlight=select#css-selectors">https://beautiful-soup-4.readthedocs.io/en/latest/index.html?highlight=select#css-selectors</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,11 +676,8 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
     <span class="n">tags_text</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">quote_tags</span><span class="p">:</span>
         <span class="n">tags_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">quote_text</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote_text</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">quote_author</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Author&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote_author</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -725,6 +728,12 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </div>
 </div>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfragen</p>
+<ul class="simple">
+<li><p>Recherchiert in den BeautifulSoup-Dokumentationsseiten: Wie kann man nach den Geschwisterelementen eines Elements suchen, das keine Attribute hat? In diesem Fall kann .select() nicht angewandt werden.</p></li>
+</ul>
+</div>
 </section>
 <section id="zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten">
 <h2>Zitate von allen Seiten der Website extrahieren, ohne Metadaten<a class="headerlink" href="#zitate-von-allen-seiten-der-website-extrahieren-ohne-metadaten" title="Link to this heading">#</a></h2>
@@ -752,8 +761,8 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 290 ms, sys: 20.7 ms, total: 310 ms
-Wall time: 1.83 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 286 ms, sys: 24.2 ms, total: 311 ms
+Wall time: 1.84 s
 </pre></div>
 </div>
 </div>
@@ -903,8 +912,8 @@ Wall time: 1.83 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 301 ms, sys: 21.8 ms, total: 323 ms
-Wall time: 1.88 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 233 ms, sys: 17.8 ms, total: 251 ms
+Wall time: 1.84 s
 </pre></div>
 </div>
 </div>
@@ -1058,8 +1067,8 @@ Wall time: 1.88 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 324 ms, sys: 23.3 ms, total: 348 ms
-Wall time: 2.17 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 382 ms, sys: 25.6 ms, total: 407 ms
+Wall time: 2.24 s
 </pre></div>
 </div>
 </div>
@@ -1256,8 +1265,8 @@ Die Macher:innen der Seite quotes.toscrape haben sich überlegt, dass auch Seite
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 333 ms, sys: 24.7 ms, total: 358 ms
-Wall time: 2.22 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 355 ms, sys: 26.2 ms, total: 381 ms
+Wall time: 2.24 s
 </pre></div>
 </div>
 </div>
@@ -1400,8 +1409,8 @@ Wall time: 2.22 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 136 ms, sys: 7.42 ms, total: 144 ms
-Wall time: 1.14 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 285 ms, sys: 12.5 ms, total: 298 ms
+Wall time: 1.35 s
 </pre></div>
 </div>
 </div>
@@ -1441,8 +1450,8 @@ Wall time: 1.14 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 290 ms, sys: 19.1 ms, total: 309 ms
-Wall time: 1.86 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 330 ms, sys: 22.6 ms, total: 353 ms
+Wall time: 1.97 s
 </pre></div>
 </div>
 </div>
@@ -1590,8 +1599,8 @@ Wall time: 1.86 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 355 ms, sys: 23.6 ms, total: 379 ms
-Wall time: 2.21 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 365 ms, sys: 23.9 ms, total: 389 ms
+Wall time: 2.17 s
 </pre></div>
 </div>
 </div>
@@ -1735,8 +1744,8 @@ Wall time: 2.21 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 126 ms, sys: 6.51 ms, total: 132 ms
-Wall time: 1.14 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 249 ms, sys: 10.1 ms, total: 259 ms
+Wall time: 1.48 s
 </pre></div>
 </div>
 </div>
@@ -1776,8 +1785,8 @@ Wall time: 1.14 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 190 ms, sys: 7.67 ms, total: 198 ms
-Wall time: 1.23 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 187 ms, sys: 9.17 ms, total: 196 ms
+Wall time: 1.24 s
 </pre></div>
 </div>
 </div>
@@ -1865,8 +1874,8 @@ Wall time: 1.23 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 340 ms, sys: 9.61 ms, total: 349 ms
-Wall time: 1.42 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 340 ms, sys: 11.4 ms, total: 351 ms
+Wall time: 1.51 s
 </pre></div>
 </div>
 </div>
