@@ -71,8 +71,8 @@ sections:
   sections:
     - file: chapters/07/subchapters/01_einstieg_beautifulsoup.ipynb
       title: Einstieg BeautifulSoup
-#    - file: chapters/07/subchapters/02_fortsetzung_beautifulsoup.ipynb
-#      title: Fortsetzung BeautifulSoup
+    - file: chapters/07/subchapters/02_fortsetzung_beautifulsoup.ipynb
+      title: Fortsetzung BeautifulSoup
 #- file: chapters/08/08_intro
 #  title: APIs (Exkurs)
 #  sections:
