@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>APIs &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>8.1. APIs &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="8. Anwendungsfall II: APIs (Exkurs)" href="../08_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +176,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -220,6 +219,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../07/07_intro.html">7. Statische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../07/subchapters/01_einstieg_beautifulsoup.html">7.1. Einstieg BeautifulSoup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../07/subchapters/02_fortsetzung_beautifulsoup.html">7.2. Fortsetzung BeautifulSoup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../08_intro.html">8. APIs (Exkurs)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.1. APIs</a></li>
 </ul>
 </li>
 </ul>
@@ -385,13 +388,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-apis">Was sind APIs?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-apis">Web-APIs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welche-daten-konnen-uber-apis-abgerufen-werden">Welche Daten können über APIs abgerufen werden?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wer-kann-apis-benutzen">Wer kann APIs benutzen?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiele">Beispiele</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praxis">Praxis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-apis">8.1.1. Was sind APIs?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-apis">8.1.2. Web-APIs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welche-daten-konnen-uber-apis-abgerufen-werden">8.1.3. Welche Daten können über APIs abgerufen werden?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wer-kann-apis-benutzen">8.1.4. Wer kann APIs benutzen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiele">8.1.5. Beispiele</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praxis">8.1.6. Praxis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">8.1.7. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -404,9 +407,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="apis">
-<h1>APIs<a class="headerlink" href="#apis" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">8.1. </span>APIs<a class="headerlink" href="#apis" title="Link to this heading">#</a></h1>
 <section id="was-sind-apis">
-<h2>Was sind APIs?<a class="headerlink" href="#was-sind-apis" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1.1. </span>Was sind APIs?<a class="headerlink" href="#was-sind-apis" title="Link to this heading">#</a></h2>
 <p>Kurze Erklärung im Videoformat: <a class="reference external" href="https://youtu.be/KLe2lCEy-Xw?t=76">https://youtu.be/KLe2lCEy-Xw?t=76</a></p>
 <p>API steht für Application Programming Interface, auf Deutsch als “Anwendungsprogrammierschnittstelle” übersetzt.
 APIs ermöglichen die Kommunikation zwischen Softwaresystemen bzw. Programmen, also die “Maschine-zu-Maschine”-Kommunikation.
@@ -417,7 +420,7 @@ Sie definiert, welche Anfragen gestellt werden können, wie die Antworten ausseh
 <p>Wenn wir in diesem Abschnitt von APIs sprechen, dann meinen wir aber eine ganz bestimmte Art von API: Web-APIs, und genauer gesagt APIs, die von verschiedenen Websitebetreiber:innen gezielt für den Zugriff auf Daten bereitgestellt werden.</p>
 </section>
 <section id="web-apis">
-<h2>Web-APIs<a class="headerlink" href="#web-apis" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1.2. </span>Web-APIs<a class="headerlink" href="#web-apis" title="Link to this heading">#</a></h2>
 <p>Web-APIs ermöglichen verschiedenen (Web-)Anwendungen, und konkret Client und Server, miteinander zu kommunizieren und Daten auszutauschen.</p>
 <p>Beim Aufruf der Seite <a class="reference external" href="https://quotes.toscrape.com/js/">https://quotes.toscrape.com/js/</a> haben wir beispielsweise mithilfe der Browser-Entwicklertools beobachtet, dass unter dem Tab “Netzwerk” mehrere HTTP-Anfragen gestellt wurden.
 Es wurde zum Beispiel eine Javascript-Datei mithilfe einer HTTP-Anfrage vom Webserver angefragt.
@@ -432,12 +435,12 @@ Da REST APIs HTTP verwenden, können bei der Abfrage von Ressourcen über RESTfu
 <figure class="align-default" id="id218">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/rest_api.png"><img alt="RESTful API Schaubild" class="bg-transparent" src="../../../_images/rest_api.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">Schaubild RESTful API. Bild: <a class="reference external" href="https://www.youtube.com/watch?v=-mN3VyJuCjM">https://www.youtube.com/watch?v=-mN3VyJuCjM</a></span><a class="headerlink" href="#id218" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Schaubild RESTful API. Bild: <a class="reference external" href="https://www.youtube.com/watch?v=-mN3VyJuCjM">https://www.youtube.com/watch?v=-mN3VyJuCjM</a></span><a class="headerlink" href="#id218" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="welche-daten-konnen-uber-apis-abgerufen-werden">
-<h2>Welche Daten können über APIs abgerufen werden?<a class="headerlink" href="#welche-daten-konnen-uber-apis-abgerufen-werden" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1.3. </span>Welche Daten können über APIs abgerufen werden?<a class="headerlink" href="#welche-daten-konnen-uber-apis-abgerufen-werden" title="Link to this heading">#</a></h2>
 <p>Bei der Anfrage einer Website war der Body einer erfolgreichen HTTP-Antwort ein HTML-Dokument als String.
 Standardmäßig ist der Body einer HTTP-Antwort auf eine Anfrage über eine REST API dagegen ein JSON-String. JSON ist ein Datenformat in menschenlesbarer Textform zum Zweck des Datensaustauschs zwischen Anwendungen.
 Die Syntax einer JSON-Datei sieht in etwa so aus wie ein Python-Dictionary.
@@ -451,12 +454,12 @@ Im Beispiel unten wird eine Auflistung aller alle Nutzer:innen eines sozialen Ne
 <figure class="align-default" id="id219">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/rest_api_3.png"><img alt="RESTful API Schaubild" class="bg-transparent" src="../../../_images/rest_api_3.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">Schaubild Beispielabfrage über eine RESTful API. Bild: <a class="reference external" href="https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc">Alexander Barge</a></span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Schaubild Beispielabfrage über eine RESTful API. Bild: <a class="reference external" href="https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc">Alexander Barge</a></span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="wer-kann-apis-benutzen">
-<h2>Wer kann APIs benutzen?<a class="headerlink" href="#wer-kann-apis-benutzen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1.4. </span>Wer kann APIs benutzen?<a class="headerlink" href="#wer-kann-apis-benutzen" title="Link to this heading">#</a></h2>
 <p>Manche APIs sind öffentlich zugänglich (Public APIs), andere sind öffentlich zugänglich, aber erfordern eine Authentifizierung via API Key.
 Der Key kann normalerweise recht unbürokratisch und kostenlos über die Dokumentationsseiten zu der Schnittstelle beantragt werden.
 Ein Beispiel hierfür ist die API des Guardian: <a class="reference external" href="https://open-platform.theguardian.com/documentation/">https://open-platform.theguardian.com/documentation/</a>.
@@ -464,7 +467,7 @@ Aber es gibt auch APIs, die nur über einen proprietären Key angezapft werden d
 Die vormals kostenlose Twitter API wurde beispielsweise mit Elon Musks Übernahme des Unternehmens zu einer Bezahl-API.</p>
 </section>
 <section id="beispiele">
-<h2>Beispiele<a class="headerlink" href="#beispiele" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1.5. </span>Beispiele<a class="headerlink" href="#beispiele" title="Link to this heading">#</a></h2>
 <p>Misc</p>
 <ul class="simple">
 <li><p>Free Open APIs (ohne Authentifizierung) Liste: <a class="reference external" href="https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/">https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/</a></p></li>
@@ -547,13 +550,13 @@ Assoziiertes Projekt: <a class="reference external" href="https://www.distant-re
 </ul>
 </section>
 <section id="praxis">
-<h2>Praxis<a class="headerlink" href="#praxis" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1.6. </span>Praxis<a class="headerlink" href="#praxis" title="Link to this heading">#</a></h2>
 <p>In der heutigen Stunde und in der Stunde nächste Woche werden wir uns zwei APIs genauer ansehen.
 Und ihr werdet lernen, wie ihr mithilfe von Python Abfragen an die APIs stellt, um bestimmte Daten zu erhalten.
 Zunächst schauen wir uns die DraCor-API an, und danach die API der Library of Congress.</p>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1.7. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
 <li id="id109"><p>Alexander Barge. Vorlesung &quot;Programmieren mobiler Anwendungen: APIs &amp; Schnittstellen-Entwicklung&quot;. 2020. URL: <a class="reference external" href="https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc">https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc</a>.</p></li>
@@ -597,6 +600,15 @@ Zunächst schauen wir uns die DraCor-API an, und danach die API der Library of C
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../08_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Anwendungsfall II: APIs (Exkurs)</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -613,13 +625,13 @@ Zunächst schauen wir uns die DraCor-API an, und danach die API der Library of C
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-apis">Was sind APIs?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-apis">Web-APIs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welche-daten-konnen-uber-apis-abgerufen-werden">Welche Daten können über APIs abgerufen werden?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wer-kann-apis-benutzen">Wer kann APIs benutzen?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiele">Beispiele</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praxis">Praxis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-apis">8.1.1. Was sind APIs?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-apis">8.1.2. Web-APIs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welche-daten-konnen-uber-apis-abgerufen-werden">8.1.3. Welche Daten können über APIs abgerufen werden?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wer-kann-apis-benutzen">8.1.4. Wer kann APIs benutzen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiele">8.1.5. Beispiele</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praxis">8.1.6. Praxis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">8.1.7. Quellen</a></li>
 </ul>
   </nav></div>
 
