@@ -61,6 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="8.2. Beispiel 1: DraCor API" href="02_dracor_api.html" />
     <link rel="prev" title="8. Anwendungsfall II: APIs (Exkurs)" href="../08_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -223,6 +224,8 @@
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../08_intro.html">8. APIs (Exkurs)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">8.1. APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_dracor_api.html">8.2. Beispiel DraCor-API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_loc_api.html">8.3. Beispiel LOC-API</a></li>
 </ul>
 </li>
 </ul>
@@ -424,7 +427,7 @@ Sie definiert, welche Anfragen gestellt werden können, wie die Antworten ausseh
 <p>Web-APIs ermöglichen verschiedenen (Web-)Anwendungen, und konkret Client und Server, miteinander zu kommunizieren und Daten auszutauschen.</p>
 <p>Beim Aufruf der Seite <a class="reference external" href="https://quotes.toscrape.com/js/">https://quotes.toscrape.com/js/</a> haben wir beispielsweise mithilfe der Browser-Entwicklertools beobachtet, dass unter dem Tab “Netzwerk” mehrere HTTP-Anfragen gestellt wurden.
 Es wurde zum Beispiel eine Javascript-Datei mithilfe einer HTTP-Anfrage vom Webserver angefragt.
-Diese Anfrage hat der Browser “automatisch” gestellt, ohne, dass wir dafür etwas tun mussten. Dabei hat der Browser unter der Moterhaube auf eine Web-API zugegriffen, genauer gesagt auf eine Browser-API, die im Browser “vorinstalliert” ist.</p>
+Diese Anfrage hat der Browser “automatisch” gestellt, ohne, dass wir dafür etwas tun mussten. Dabei hat der Browser unter der Motorhaube auf eine Web-API zugegriffen, genauer gesagt auf eine Browser-API, die im Browser “vorinstalliert” ist.</p>
 <p>APIs können aber auch von Websitebetreiber:innen selbst bereitgestellt werden, um Nutzer:innen und anderen Anwendungen einen direkten Zugang zu Daten auf dem Server zu ermöglichen.
 Genau diese APIs können wir als Forscher:innen anzapfen, um Forschungsdaten direkt herunterzuladen, zum Beispiel Metadaten zum Bestand eines Archivs, Statistiken, oder sogar Volltexte, Musik- oder Bildateien.</p>
 <p>Bei der Entwicklung von Web-APIs greifen Entwickler:innen auf vordefinierte “Architekturstile” zurück, also auf Ansätze, wie die Gesamtstruktur einer API entworfen wird.
@@ -441,7 +444,7 @@ Da REST APIs HTTP verwenden, können bei der Abfrage von Ressourcen über RESTfu
 </section>
 <section id="welche-daten-konnen-uber-apis-abgerufen-werden">
 <h2><span class="section-number">8.1.3. </span>Welche Daten können über APIs abgerufen werden?<a class="headerlink" href="#welche-daten-konnen-uber-apis-abgerufen-werden" title="Link to this heading">#</a></h2>
-<p>Bei der Anfrage einer Website war der Body einer erfolgreichen HTTP-Antwort ein HTML-Dokument als String.
+<p>Bei der Anfrage einer Website war der Body einer erfolgreichen HTTP-Antwort ein HTML-Dokument, das in Python als String repräsentiert wird.
 Standardmäßig ist der Body einer HTTP-Antwort auf eine Anfrage über eine REST API dagegen ein JSON-String. JSON ist ein Datenformat in menschenlesbarer Textform zum Zweck des Datensaustauschs zwischen Anwendungen.
 Die Syntax einer JSON-Datei sieht in etwa so aus wie ein Python-Dictionary.
 Während HTML-Strings zur Weiterverarbeitung in BeautifulSoup-Objekte umgewandelt werden können, können JSON-Strings deswegen zur Weiterverarbeitung einfach in Python Dictionaries umgewandelt werden.</p>
@@ -608,6 +611,15 @@ Zunächst schauen wir uns die DraCor-API an, und danach die API der Library of C
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="section-number">8. </span>Anwendungsfall II: APIs (Exkurs)</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="02_dracor_api.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.2. </span>Beispiel 1: DraCor API</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

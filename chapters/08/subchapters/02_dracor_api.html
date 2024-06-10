@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Beispiel 1: DraCor API &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>8.2. Beispiel 1: DraCor API &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="8.3. Beispiel 2: Library of Congress API" href="03_loc_api.html" />
+    <link rel="prev" title="8.1. APIs" href="01_apis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +177,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -222,8 +222,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../07/subchapters/02_fortsetzung_beautifulsoup.html">7.2. Fortsetzung BeautifulSoup</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../08_intro.html">8. APIs (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../08_intro.html">8. APIs (Exkurs)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01_apis.html">8.1. APIs</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.2. Beispiel DraCor-API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_loc_api.html">8.3. Beispiel LOC-API</a></li>
 </ul>
 </li>
 </ul>
@@ -389,15 +391,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informationen-zu-allen-dramen-aus-dem-deutschsprachigen-dracor-korpus-abfragen">1. Informationen zu allen Dramen aus dem deutschsprachigen DraCor Korpus abfragen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sprechtexte-weiblich-und-mannlich-codierter-charaktere-aus-allen-dramen-bestimmter-autor-innen-abrufen">2. Sprechtexte weiblich und männlich codierter Charaktere aus allen Dramen bestimmter Autor:innen abrufen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension-f-strings-und-daten-schreiben">List Comprehension, F-Strings und Daten schreiben</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension">List Comprehension</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-strings">F-Strings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-schreiben">Daten schreiben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informationen-zu-allen-dramen-aus-dem-deutschsprachigen-dracor-korpus-abfragen">8.2.1. 1. Informationen zu allen Dramen aus dem deutschsprachigen DraCor Korpus abfragen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sprechtexte-weiblich-und-mannlich-codierter-charaktere-aus-allen-dramen-bestimmter-autor-innen-abrufen">8.2.2. 2. Sprechtexte weiblich und männlich codierter Charaktere aus allen Dramen bestimmter Autor:innen abrufen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension-f-strings-und-daten-schreiben">8.2.3. List Comprehension, F-Strings und Daten schreiben</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension">8.2.3.1. List Comprehension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-strings">8.2.3.2. F-Strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-schreiben">8.2.3.3. Daten schreiben</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">8.2.4. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -410,7 +412,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="beispiel-1-dracor-api">
-<h1>Beispiel 1: DraCor API<a class="headerlink" href="#beispiel-1-dracor-api" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">8.2. </span>Beispiel 1: DraCor API<a class="headerlink" href="#beispiel-1-dracor-api" title="Link to this heading">#</a></h1>
 <p>Zum Einstieg beschäftigen wir uns mit der API von DraCor: <a class="reference external" href="https://dracor.org/doc/api">https://dracor.org/doc/api</a></p>
 <p>DraCor umfasst mehrere <a class="reference external" href="https://fortext.net/ueber-fortext/glossar/korpus">Korpora</a> mit Dramen in verschiedenen Sprachen. Alle Dramen sind in <a class="reference external" href="https://fortext.net/ueber-fortext/glossar/tei">XML-TEI</a> codiert. Mithilfe der API können Metadaten zu den verschiedenen Korpora oder zu einzelnen Dramen abgefragt werden, und es können einzelne Bestandteile der Dramen direkt extrahiert werden: Zum Beispiel alle Abschnitte in den Texten, die in XML-TEI als “Sprechtexte” codiert sind. Ein Beispiel: <a class="reference external" href="https://dracor.org/ger/goethe-iphigenie-auf-tauris#downloads">https://dracor.org/ger/goethe-iphigenie-auf-tauris#downloads</a></p>
 <p>Im Folgenden werden wir die Sprechtexte aller Dramen von Johann Wolfgang Goethe im deutschsprachigen DraCor-Korpus über die API abfragen und als Plaintext-Dateien auf dem Computer speichern.</p>
@@ -433,7 +435,7 @@ document.write(`
 </div>
 </div>
 <section id="informationen-zu-allen-dramen-aus-dem-deutschsprachigen-dracor-korpus-abfragen">
-<h2>1. Informationen zu allen Dramen aus dem deutschsprachigen DraCor Korpus abfragen<a class="headerlink" href="#informationen-zu-allen-dramen-aus-dem-deutschsprachigen-dracor-korpus-abfragen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2.1. </span>1. Informationen zu allen Dramen aus dem deutschsprachigen DraCor Korpus abfragen<a class="headerlink" href="#informationen-zu-allen-dramen-aus-dem-deutschsprachigen-dracor-korpus-abfragen" title="Link to this heading">#</a></h2>
 <p>Der Dokumentationsseite zur DraCor-API können wir entnehmen, dass der Inhalt eines bestimmten DraCor-Korpus nach dem Schema “<a class="reference external" href="https://dracor.org/api/v1/corpora/%7Bcorpusname%7D">https://dracor.org/api/v1/corpora/{corpusname}</a>” abgefragt werden kann. Hierbei ist {corpusname} durch das Kürzel des interessierenden Korpus zu ersetzen, in unserem Fall “ger” für das deutschsprachige DraCor-Korpus.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -549,7 +551,7 @@ Der Zugriff auf ein Dictionary erfolgt wie gewohnt mit eckigen Klammern über di
 </div>
 </section>
 <section id="sprechtexte-weiblich-und-mannlich-codierter-charaktere-aus-allen-dramen-bestimmter-autor-innen-abrufen">
-<h2>2. Sprechtexte weiblich und männlich codierter Charaktere aus allen Dramen bestimmter Autor:innen abrufen<a class="headerlink" href="#sprechtexte-weiblich-und-mannlich-codierter-charaktere-aus-allen-dramen-bestimmter-autor-innen-abrufen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2.2. </span>2. Sprechtexte weiblich und männlich codierter Charaktere aus allen Dramen bestimmter Autor:innen abrufen<a class="headerlink" href="#sprechtexte-weiblich-und-mannlich-codierter-charaktere-aus-allen-dramen-bestimmter-autor-innen-abrufen" title="Link to this heading">#</a></h2>
 <p>Der Dokumentationsseite zur DraCor API können wir entnehmen, dass eine Abfrage von Sprechtexten über den entsprechenden API Endpunkt dem Schema “<a class="reference external" href="https://dracor.org/api/v1/corpora/%7Bcorpusname%7D/plays/%7Bplayname%7D/spoken-text">https://dracor.org/api/v1/corpora/{corpusname}/plays/{playname}/spoken-text</a> folgen soll. Hierbei ist {corpusname} durch das Kürzel des Korpus (in unserem Fall “ger”) zu ersetzen und {playname} durch den Namen des Stücks, und zwar so, wie der Name unter dem Schlüssel <code class="docutils literal notranslate"><span class="pre">name</span></code> in unserem Dictionary <code class="docutils literal notranslate"><span class="pre">api_data</span></code> angegeben wird.</p>
 <p>Wir müssen also zunächst eine Liste mit den Namen aller Dramen von Goethe erstellen und anschließend daraus unsere Abfrage-URLs zusammensetzen. Um eine Liste der Namn aller Goethe-Dramen zu erhalten, können wir entweder mithilfe des Zugriffsoperators sofort auf alle Dramen des gewählten Autors zugreifen:</p>
 <div class="cell docutils container">
@@ -709,10 +711,10 @@ Der Zugriff auf ein Dictionary erfolgt wie gewohnt mit eckigen Klammern über di
 </div>
 </section>
 <section id="list-comprehension-f-strings-und-daten-schreiben">
-<h2>List Comprehension, F-Strings und Daten schreiben<a class="headerlink" href="#list-comprehension-f-strings-und-daten-schreiben" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2.3. </span>List Comprehension, F-Strings und Daten schreiben<a class="headerlink" href="#list-comprehension-f-strings-und-daten-schreiben" title="Link to this heading">#</a></h2>
 <p>In dem Skript haben wir zwei neue Syntaxregeln angewendet, die wir bisher nicht besprochen haben. Außerdem haben wir den Code, den ihr bereits bei der Bearbeitung von Übungsblatt 6 kennengelernt habt, angewendet, um die extrahierten Sprechtexte der Goethe-Stücke in Textdateien zu schreiben. In diesem Abschnitt werden diese neuen Inhalte erläutert.</p>
 <section id="list-comprehension">
-<h3>List Comprehension<a class="headerlink" href="#list-comprehension" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.3.1. </span>List Comprehension<a class="headerlink" href="#list-comprehension" title="Link to this heading">#</a></h3>
 <p>Für einfache for-Schleifen haben wir in diesem Abschnitt eine spezielle Syntax verwendet, die sich “List Comprehension” nennt. Was haben nämlich alle diese einfachen for-Schleifen gemeinsam? Sie dienen dazu, über eine Liste zu iterieren und dieselbe Operation auf jedes Listenelement anzuwenden, und anschließend eine neue Liste mit den veränderten Elementen zu erstellen. Formell gesprochen wird also aus den Elementen der bereits existierenden Liste nach einer bestimmten “Berechnungsvorschrift” eine neue Liste erstellt.</p>
 <p>Betrachten wir als Beispiel mal die folgende list comprehension:</p>
 <div class="cell docutils container">
@@ -809,7 +811,7 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
 <p>Überlegt selbst: Was macht dieser Code? Wie würde dieser Code als “normale” for-Schleife aussehen?</p>
 </section>
 <section id="f-strings">
-<h3>F-Strings<a class="headerlink" href="#f-strings" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.3.2. </span>F-Strings<a class="headerlink" href="#f-strings" title="Link to this heading">#</a></h3>
 <p>Zur Verkettung von Strings haben wir in diesem Abschnitt außerdem nicht wie gewohnt den +-Operator verwendet, sondern eine spezielle Syntax:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -848,7 +850,7 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
 </div>
 </section>
 <section id="daten-schreiben">
-<h3>Daten schreiben<a class="headerlink" href="#daten-schreiben" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.3.3. </span>Daten schreiben<a class="headerlink" href="#daten-schreiben" title="Link to this heading">#</a></h3>
 <p>Zuletzt schauen wir uns auch den Code zum schreiben von Daten in Dateien aus der for-Schleife oben noch einmal genauer an:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -891,7 +893,7 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
 </section>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2.4. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
 <li id="id105"><p>Peter Ernesti, Johannes und Kaiser. Python 3: List Comprehensions. 2020. URL: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/23_001.html#u23.1.1">https://openbook.rheinwerk-verlag.de/python/23_001.html#u23.1.1</a>.</p></li>
@@ -934,6 +936,24 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="01_apis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8.1. </span>APIs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_loc_api.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.3. </span>Beispiel 2: Library of Congress API</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -950,15 +970,15 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informationen-zu-allen-dramen-aus-dem-deutschsprachigen-dracor-korpus-abfragen">1. Informationen zu allen Dramen aus dem deutschsprachigen DraCor Korpus abfragen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sprechtexte-weiblich-und-mannlich-codierter-charaktere-aus-allen-dramen-bestimmter-autor-innen-abrufen">2. Sprechtexte weiblich und männlich codierter Charaktere aus allen Dramen bestimmter Autor:innen abrufen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension-f-strings-und-daten-schreiben">List Comprehension, F-Strings und Daten schreiben</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension">List Comprehension</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-strings">F-Strings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-schreiben">Daten schreiben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informationen-zu-allen-dramen-aus-dem-deutschsprachigen-dracor-korpus-abfragen">8.2.1. 1. Informationen zu allen Dramen aus dem deutschsprachigen DraCor Korpus abfragen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sprechtexte-weiblich-und-mannlich-codierter-charaktere-aus-allen-dramen-bestimmter-autor-innen-abrufen">8.2.2. 2. Sprechtexte weiblich und männlich codierter Charaktere aus allen Dramen bestimmter Autor:innen abrufen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension-f-strings-und-daten-schreiben">8.2.3. List Comprehension, F-Strings und Daten schreiben</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension">8.2.3.1. List Comprehension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-strings">8.2.3.2. F-Strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-schreiben">8.2.3.3. Daten schreiben</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">8.2.4. Quellen</a></li>
 </ul>
   </nav></div>
 
