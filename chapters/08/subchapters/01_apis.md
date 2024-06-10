@@ -21,7 +21,7 @@ Web-APIs ermöglichen verschiedenen (Web-)Anwendungen, und konkret Client und Se
 
 Beim Aufruf der Seite [https://quotes.toscrape.com/js/](https://quotes.toscrape.com/js/) haben wir beispielsweise mithilfe der Browser-Entwicklertools beobachtet, dass unter dem Tab "Netzwerk" mehrere HTTP-Anfragen gestellt wurden.
 Es wurde zum Beispiel eine Javascript-Datei mithilfe einer HTTP-Anfrage vom Webserver angefragt. 
-Diese Anfrage hat der Browser "automatisch" gestellt, ohne, dass wir dafür etwas tun mussten. Dabei hat der Browser unter der Moterhaube auf eine Web-API zugegriffen, genauer gesagt auf eine Browser-API, die im Browser "vorinstalliert" ist.
+Diese Anfrage hat der Browser "automatisch" gestellt, ohne, dass wir dafür etwas tun mussten. Dabei hat der Browser unter der Motorhaube auf eine Web-API zugegriffen, genauer gesagt auf eine Browser-API, die im Browser "vorinstalliert" ist.
 
 APIs können aber auch von Websitebetreiber:innen selbst bereitgestellt werden, um Nutzer:innen und anderen Anwendungen einen direkten Zugang zu Daten auf dem Server zu ermöglichen.
 Genau diese APIs können wir als Forscher:innen anzapfen, um Forschungsdaten direkt herunterzuladen, zum Beispiel Metadaten zum Bestand eines Archivs, Statistiken, oder sogar Volltexte, Musik- oder Bildateien. 
@@ -40,7 +40,7 @@ Schaubild RESTful API. Bild: https://www.youtube.com/watch?v=-mN3VyJuCjM
 
 ### Welche Daten können über APIs abgerufen werden? 
 
-Bei der Anfrage einer Website war der Body einer erfolgreichen HTTP-Antwort ein HTML-Dokument als String. 
+Bei der Anfrage einer Website war der Body einer erfolgreichen HTTP-Antwort ein HTML-Dokument, das in Python als String repräsentiert wird. 
 Standardmäßig ist der Body einer HTTP-Antwort auf eine Anfrage über eine REST API dagegen ein JSON-String. JSON ist ein Datenformat in menschenlesbarer Textform zum Zweck des Datensaustauschs zwischen Anwendungen.
 Die Syntax einer JSON-Datei sieht in etwa so aus wie ein Python-Dictionary. 
 Während HTML-Strings zur Weiterverarbeitung in BeautifulSoup-Objekte umgewandelt werden können, können JSON-Strings deswegen zur Weiterverarbeitung einfach in Python Dictionaries umgewandelt werden. 
