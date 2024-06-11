@@ -17,7 +17,7 @@
 In der letzten Woche haben wir besprochen, worum es beim Web Scraping eigentlich geht: Darum, Strategien zu entwickeln, wie wir an bestimmte Daten (Metadaten, Volltexte, ...) in einer bestimmten Form (Plain Text, PDF, ...) kommen, und diese in die Logik der Programmiersprache Python zu übertragen.  Wenn wir manuell Daten aus dem Internet herunterladen, würden wir wahrscheinlich in etwa so vorgehen: 
 
 :::{figure-md} markdown-fig
-<img src="flussdiagramm.jpg" alt="Flussdiagramm" class="bg-transparent" width="50%">
+<img src="flussdiagramm.png" alt="Flussdiagramm" class="bg-transparent" width="50%">
 
 Flussdiagramm
 :::
