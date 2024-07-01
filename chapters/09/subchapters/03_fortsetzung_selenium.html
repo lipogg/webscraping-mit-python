@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Fortsetzung Selenium &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>9.3. Fortsetzung Selenium &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="9.2. Einstieg Selenium" href="02_einstieg_selenium.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +176,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -228,9 +227,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/03_loc_api.html">8.3. Beispiel LOC-API</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_intro.html">9. Dynamische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../09_intro.html">9. Dynamische Webseiten</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02_einstieg_selenium.html">9.2. Einstieg Selenium</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.3. Fortsetzung Selenium</a></li>
 </ul>
 </li>
 </ul>
@@ -396,14 +396,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popup-fenster-schlieszen">Popup-Fenster schließen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methode-1-button-klicken">Methode 1: Button klicken</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methode-2-mauszeiger-bewegen-und-neben-das-fenster-klicken">Methode 2: Mauszeiger bewegen und neben das Fenster klicken</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scrollvorgang-simulieren-und-seiteninhalte-laden">Scrollvorgang simulieren und Seiteninhalte laden</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-benutzen-und-tastatureingabe-simulieren">Suche benutzen und Tastatureingabe simulieren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-elemente-suchen-und-text-extrahieren">9.3.1. Recap: Elemente suchen und Text extrahieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scrollvorgang-und-mausklick-simulieren">9.3.2. Scrollvorgang und Mausklick simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-benutzen-und-tastatureingabe-simulieren">9.3.3. Suche benutzen und Tastatureingabe simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.3.4. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -416,14 +412,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="fortsetzung-selenium">
-<h1>Fortsetzung Selenium<a class="headerlink" href="#fortsetzung-selenium" title="Link to this heading">#</a></h1>
-<p>In der letzten Woche haben wir uns angesehen, wie wir Zitate von der Seite <a class="reference external" href="https://quotes.toscrape.com/js/">https://quotes.toscrape.com/js/</a> mithilfe von Selenium scrapen können. Heute werden wir uns ein etwas fortgeschritteneres Beispiel ansehen, bei dem die Interaktion mit verschiedenen Seitenelementen notwendig wird: Wir werden Ortsangaben zu Unterkünften von <a class="reference external" href="https://www.airbnb.com/">https://www.airbnb.com/</a> scrapen, zuerst die Unterkünfte von der Startseite (heute), und danach Unterkünfte nur in Berlin (nächste Woche).</p>
-<p>Zunächst rufen wir die Website im regulären Browser auf. Welche Interaktionen sind notwendig, um an die gesuchten Daten zu gelangen? Wenn wir die Startseite aufrufen, erscheint zunächst ein Popup-Fenster. Das Fenster kann geschlossen werden, indem auf den x-Button oder irgendwo neben das Fenster geklickt wird. Dann scrollen wir auf der Seite herunter, um die restlichen Unterkünfte zu sehen. Am Seitenende befindet sich ein “Show more”-Button. Wenn der Button geklickt wird, wird eine weitere Seite mit Unterkünften geöffnet. Die Inhalte werden beim Herunterscrollen nachgeladen, bis irgendwann das Seitenende erreicht ist. All diese Schritte müssen wir simulieren, wenn wir die Ortsangaben von den Unterkünften extrahieren wollen.</p>
+<h1><span class="section-number">9.3. </span>Fortsetzung Selenium<a class="headerlink" href="#fortsetzung-selenium" title="Link to this heading">#</a></h1>
+<p>In der letzten Woche haben wir uns angesehen, wie wir Zitate von der Seite <a class="reference external" href="https://quotes.toscrape.com/js/">https://quotes.toscrape.com/js/</a> mithilfe von Selenium scrapen können. Heute werden wir uns ein etwas fortgeschritteneres Beispiel ansehen, bei dem die Interaktion mit verschiedenen Seitenelementen notwendig wird: Wir werden Ortsangaben zu Unterkünften von <a class="reference external" href="https://www.airbnb.com/">https://www.airbnb.com/</a> scrapen, zuerst die Unterkünfte von der Startseite, danach Unterkünfte von der Seite “Tiny homes” und zuletzt Unterkünfte nur in Berlin.</p>
+<p>Zunächst rufen wir die Website im regulären Browser auf. Welche Interaktionen sind notwendig, um an die gesuchten Daten zu gelangen? Wenn wir die Startseite aufrufen, ist standardmäßig der Tab “Icons” geöffnet. Diese Seite scrollen wir bis zum Ende herunter, um alle Inhalte zu sehen. Um “Tiny homes” anzusehen, klicken wir auf das Icon “Tiny homes” und scrollen wieder bis zum Ende der Seite herunter. Am Seitenende befindet sich diesmal ein “Show more”-Button. Wenn der Button geklickt wird, wird eine weitere Seite mit Unterkünften geöffnet. Beim Herunterscrollen dieser Seite fällt auf, dass die Inhalte auf dieser Seite beim Scrollen nachgeladen werden, bis irgendwann das Seitenende erreicht ist. Um nur Unterkünfte in Berlin anzuzeigen, muss das Suchfeld benutzt werden. All diese Schritte müssen wir simulieren, wenn wir die Ortsangaben von den Unterkünften der manuell besuchten Seiten extrahieren wollen.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Achtung: Beim Scrapen komplexerer Webseiten wird der Code nicht beim ersten Mal fehlerfrei ausgeführt werden. Wird die Ausführung abbricht und eine Fehlermeldung angezeigt, dann wird die aktuelle Sitzung aber nicht mehr geschlossen. Das heißt: Immer, wenn der Code abbricht, müsst ihr die Sitzung manuell mit <code class="docutils literal notranslate"><span class="pre">driver.quit()</span></code> schließen, und vor dem nächsten Versuch wieder eine neue Sitzung starten mit <code class="docutils literal notranslate"><span class="pre">webdriver.Chrome()</span></code>!</p>
 </div>
-<p>Zu Beginn laden wir wieder alle notwendigen Pakete, starten eine Sitzung und stellen eine HTTP Get-Anfrage:</p>
+<section id="recap-elemente-suchen-und-text-extrahieren">
+<h2><span class="section-number">9.3.1. </span>Recap: Elemente suchen und Text extrahieren<a class="headerlink" href="#recap-elemente-suchen-und-text-extrahieren" title="Link to this heading">#</a></h2>
+<p>Zu Beginn laden wir wieder alle notwendigen Bibliotheken und Module, starten eine Sitzung und stellen eine HTTP Get-Anfrage:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium import webdriver</span>
@@ -442,96 +440,53 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="popup-fenster-schlieszen">
-<h2>Popup-Fenster schließen<a class="headerlink" href="#popup-fenster-schlieszen" title="Link to this heading">#</a></h2>
-<p>Beim manuellen Aufruf der Seite haben wir gesehen, dass das Popup-Fenster mit zwei verschiedenen Methoden geschlossen werden kann: Entweder, es wird auf den x-Button geklickt, oder irgendwo neben das Popup-Fenster. Beides können wir mithilfe von Selenium simulieren.</p>
-<section id="methode-1-button-klicken">
-<h3>Methode 1: Button klicken<a class="headerlink" href="#methode-1-button-klicken" title="Link to this heading">#</a></h3>
-<p>Zum Simulieren des Mausklicks auf einen Button gibt es wiederum zwei Möglichkeiten. In jedem Fall muss zunächst das HTML-Element, das zur Darstellung des Buttons verwendet wird, gesucht werden.</p>
-<p>Um das Element zu suchen, verwenden wir als erstes wieder die Browser-Entwicklertools: Mit Rechtsklick auf den Button und Auswahl von “Inspect” wird der Quelltext der Seite automatisch an der richtigen Stelle in den Entwicklertools geöffnet. Häufig wird nicht exakt das gesuchte Element markiert, sondern ein Kind- oder Elternelement. Das richtige Element heißt &lt;button&gt;:</p>
+<p>Zur Erinnerung extrahieren wir zunächst einfach nur die Titel zu allen Unterkünften auf der Startseite. Dazu verwenden wir die bereits aus der vergangenen Woche bekannte Methode <code class="docutils literal notranslate"><span class="pre">.find_elements()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recap: Daten extrahieren</span>
+<span class="c1"># unterkuenfte = driver.find_elements(By.XPATH, &quot;//div[@data-testid=&#39;listing-card-title&#39;]&quot;) # Alternativ By.CLASS_NAME, &quot;t1jojoys&quot;</span>
+<span class="c1"># unterkuenfte_orte = [unterkunft.text for unterkunft in unterkuenfte]</span>
+<span class="c1"># unterkuenfte_orte</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="scrollvorgang-und-mausklick-simulieren">
+<h2><span class="section-number">9.3.2. </span>Scrollvorgang und Mausklick simulieren<a class="headerlink" href="#scrollvorgang-und-mausklick-simulieren" title="Link to this heading">#</a></h2>
+<p>Jetzt wollen wir dasselbe für die “Tiny homes”-Seite wiederholen. Beim manuellen Vorgehen haben wir dazu auf das Tiny homes-Icon geklickt. Um diesen Vorgang in Selenium zu simulieren, muss erst das entsprechende HTML-Element eindeutig identifiziert werden, und danach kann mithilfe der Selenium-Methode <code class="docutils literal notranslate"><span class="pre">.click()</span></code> der Mausklick auf das Element simuliert werden. Um das Element zu suchen, verwenden wir als erstes wieder die Browser-Entwicklertools: Mit Rechtsklick auf das Icon und Auswahl von “Inspect” wird der Quelltext der Seite automatisch an der richtigen Stelle in den Entwicklertools geöffnet. Häufig wird nicht exakt das gesuchte Element markiert, sondern ein Kind- oder Elternelement. Das richtige Element ist das <code class="docutils literal notranslate"><span class="pre">div</span></code>-Element, nicht dessen Kindelement <code class="docutils literal notranslate"><span class="pre">span</span></code> oder <code class="docutils literal notranslate"><span class="pre">img</span></code>:</p>
 <figure class="align-default" id="id218">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_1.png"><img alt="Airbnb Beispiel 1" class="bg-transparent" src="../../../_images/beispiel_airbnb_1.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">Button-Element mithilfe der Entwicklertools suchen.</span><a class="headerlink" href="#id218" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.9 </span><span class="caption-text">Tiny homes-Icon in den Entwicklertools</span><a class="headerlink" href="#id218" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Welches Attribut identifiziert das button-Element eindeutig? Das button-Element hat ein “class”-Attribut, das allerdings eine sehr lange Zeichenkette als Wert hat. Das kann vorkommen, wenn mehrere CSS-Klassen zur Identifizierung eines HTML-Elements verwendet werden. Verschiedene Klassen werden dabei durch ein Leerzeichen getrennt. Das Leerzeichen verursacht aber bei der Suche mit By.CLASS_NAME ein Problem und führt dazu, dass der Code eine Fehlermeldung produziert. Bei einer so langen Zeichenkette wäre das manuelle Ersetzen der Leerzeichen durch Punkte hier jedoch keine gute Lösung.
-Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die erste CSS-Klasse oder nur einige wenige Klassen eindeutig definiert wird. Das können wir überprüfen, in dem wir in den Entwicklertools mit der Tastenkombination <code class="docutils literal notranslate"><span class="pre">STRG</span> <span class="pre">+</span> <span class="pre">F</span></code> nach der ersten CSS-Klasse suchen. Es zeigt sich: Der Close-Button ist nicht der Einzige, der diese CSS-Klasse hat; sondern es gibt sehr viele Elemente mit dieser Klasse:</p>
+<p>Welches Attribut identifiziert das Icon-Element eindeutig? Das Icon-Element hat ein “class”-Attribut, das allerdings eine lange Zeichenkette als Wert hat. Das kann vorkommen, wenn mehrere CSS-Klassen zur Identifizierung eines HTML-Elements verwendet werden. Verschiedene Klassen werden dabei durch ein Leerzeichen getrennt. Das Leerzeichen verursacht aber bei der Suche mit By.CLASS_NAME ein Problem und führt dazu, dass der Code eine Fehlermeldung produziert. Bei einer so langen Zeichenkette wäre das manuelle Ersetzen der Leerzeichen durch Punkte hier jedoch keine gute Lösung. Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die erste CSS-Klasse oder nur einige wenige Klassen eindeutig definiert wird. Das können wir überprüfen, in dem wir in den Entwicklertools mit der Tastenkombination STRG + F nach der ersten CSS-Klasse suchen. Es zeigt sich: Das Tiny homes Icon ist nicht das einzige Element, das diese CSS-Klasse hat; sondern es gibt sehr viele Elemente mit dieser Klasse:</p>
 <figure class="align-default" id="id219">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_2.png"><img alt="Airbnb Beispiel 2" class="bg-transparent" src="../../../_images/beispiel_airbnb_2.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">Suche nach CSS-Klasse mit STRG + F.</span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.10 </span><span class="caption-text">Suche nach class-Attributen mit dem Wert “c1abgzgs atm_9s_1txwivl atm_ar_vrvcex dir dir-ltr”.</span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Wir können also das Button-Element nicht eindeutig über die gewählte CSS-Klasse addressieren. Wir könnten jetzt natürlich verschiedene Kombinationen von CSS-Klassen ausprobieren, aber das Button-Element hat noch ein weiteres Attribut, über das das Button-Element etwas einfacher addressiert werden kann: Das Attribut  aria-label mit dem Wert “Close”. Wir verwenden stattdessen dieses Attribut für die Suche und definieren dazu einen sogenannten XPATH-Ausdruck. XPATH ist eine Pfadbeschreibungssprache, mit der HTML-Elemente anhand ihrer Hierarchie, Attributen, Textinhalten und weiteren Eigenschaften lokalisiert werden können. So können wir zum Beispiel den Button mit dem XPATH-Ausdruck <code class="docutils literal notranslate"><span class="pre">//button[&#64;aria-label='Close']</span></code> auswählen. Dieser Ausdruck sucht nach einem Element mit den Namen button (<code class="docutils literal notranslate"><span class="pre">button</span></code>), irgendwo im HTML-Baum (<code class="docutils literal notranslate"><span class="pre">//</span></code>), das ein Attribut  <code class="docutils literal notranslate"><span class="pre">aria-label</span></code> mit dem Wert <code class="docutils literal notranslate"><span class="pre">'Close'</span></code> hat (<code class="docutils literal notranslate"><span class="pre">[&#64;aria-label='Close']</span></code>). Einen Überblick über verschiedene Möglichkeiten, in Selenium nach Elementen zu suchen, findet ihr <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/locators/#traditional-locators">hier</a>.</p>
-<p>Anschließend kann der Mausklick mit der <strong>Selenium-Methode <code class="docutils literal notranslate"><span class="pre">.click()</span></code></strong> simuliert werden.</p>
+<p>Wir können also das Icon-Element nicht eindeutig über die gewählte CSS-Klasse addressieren. Wir könnten jetzt natürlich verschiedene Kombinationen von CSS-Klassen ausprobieren, aber das Icon-Element hat noch ein weiteres Attribut, über das das Button-Element etwas einfacher addressiert werden kann: Das Attribut data-testid mit dem Wert “category-item–Tiny homes–checked”. Wenn der Tab nicht geöffnet ist, hat das Attribut allerdings den Wert “category-item–Tiny homes–unchecked”. Das kann überprüft werden, indem mit STRG + F nach allen Attributen mit dem Wert “category-item” gesucht wird. Wir verwenden anstelle des class-Attributs also das data-testid-Attribut für die Suche nach dem Tiny homes Icon-Element und definieren dazu einen sogenannten XPATH-Ausdruck. XPATH ist eine Pfadbeschreibungssprache, mit der HTML-Elemente anhand ihrer Hierarchie, Attributen, Textinhalten und weiteren Eigenschaften lokalisiert werden können. So können wir zum Beispiel das Icon-Element mit dem XPATH-Ausdruck //div[&#64;data-testid=’category-item–Tiny homes–unchecked’] auswählen. Dieser Ausdruck sucht nach einem Element mit den Namen div (div), irgendwo im HTML-Baum (//), das ein Attribut data-testid mit dem Wert ‘category-item–Tiny homes–unchecked’ hat ([&#64;data-testid=’category-item–Tiny homes–unchecked’]).</p>
+<p>Anschließend kann der Mausklick mit der Selenium-Methode <code class="docutils literal notranslate"><span class="pre">.click()</span></code> simuliert werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># close_button = driver.find_element(By.XPATH, &quot;//button[@aria-label=&#39;Close&#39;]&quot;)</span>
-<span class="c1"># close_button.click()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf den Tiny House Icon klicken: Nach dem Klick &quot;category-item--Tiny Houses--checked&quot;, vor dem Klick &quot;category-item--Tiny homes--unchecked&quot;</span>
+<span class="c1"># driver.find_element(By.XPATH, &quot;//div[@data-testid=&#39;category-item--Tiny homes--unchecked&#39;]&quot;).click()</span>
+<span class="c1"># time.sleep(10)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Dieser Code produziert jedoch eine Fehlermeldung “ElementNotInteractable”. Woran liegt das? Wenn wir wieder mit STRG + F das Suchfenster in den Entwicklertools öffnen und nach dem XPATH-Pfad suchen, erhalten wir zwei Ergebnisse, und nicht eins wie erwartet. Die Methode <code class="docutils literal notranslate"><span class="pre">.find_element()</span></code> gibt aber natürlich nur das erste der beiden Suchergebnisse zurück. Das erste der beiden gefundenen Elemente ist aber scheinbar nicht anklickbar bzw. eben “nicht interagierbar”. Wir können stattdessen versuchen, das andere gefundene Element anzuklicken. Dazu müssen wir aber unsere Suche anders formulieren:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># close_button_elems = driver.find_elements(By.XPATH, &quot;//button[@aria-label=&#39;Close&#39;]&quot;)</span>
-<span class="c1"># close_button_elems[1].click() # Zweites Element aus der Liste mit den gefundenen Elementen anklciken</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Mit dem geänderten Code lässt sich der Mausklick erfolgreich simulieren.</p>
-<p>Falls die erste Methode jedoch nicht zum Ziel führt, gibt es eine alternative Möglichkeit, einen Button anzuklicken, und zwar, indem das JavaScript Code Snippet ausgeführt wird, das dafür zuständig ist, den Mausklick im Browser auszulösen. Dazu wird die <strong>Selenium-Methode <code class="docutils literal notranslate"><span class="pre">.execute_script()</span></code></strong> im Zusammenhang mit der <strong>Javascript-Methode <code class="docutils literal notranslate"><span class="pre">.click()</span></code></strong> verwendet. Die JavaScript-Methode heißt ebenfalls <code class="docutils literal notranslate"><span class="pre">.click()</span></code> und ist genau wie die Selenium-Methode <code class="docutils literal notranslate"><span class="pre">.click()</span></code>  für HTML-Elemente definiert, aber eben für JavaScript und nicht Python. Im Codebeispiel unten steht  <code class="docutils literal notranslate"><span class="pre">arguments[0]</span></code> für das HTML-Element, das angeklickt werden soll. Das Element muss deswegen wieder zuerst gesucht werden und einer Variable zugewiesen werden. Diese Variable (hier <code class="docutils literal notranslate"><span class="pre">close_button</span></code>) wird der <code class="docutils literal notranslate"><span class="pre">.execute_script()</span></code>-Methode als Argument übergeben. <code class="docutils literal notranslate"><span class="pre">arguments[0]</span></code> verweist dann auf das Argument.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># close_button = driver.find_element(By.XPATH, &quot;//button[@aria-label=&#39;Close&#39;]&quot;)</span>
-<span class="c1"># driver.execute_script(&quot;arguments[0].click();&quot;, close_button)</span>
-<span class="c1"># time.sleep(5)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Unter den folgenden Links findet ihr Hintergrundinformationen und Anwendungsbeispiele zur <code class="docutils literal notranslate"><span class="pre">.execute_sript()</span></code> Methode:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.selenium.dev/documentation/webdriver/interactions/windows/#execute-script">https://www.selenium.dev/documentation/webdriver/interactions/windows/#execute-script</a></p></li>
-<li><p><a class="reference external" href="https://docs.pylenium.io/driver-commands/browser/execute_script">https://docs.pylenium.io/driver-commands/browser/execute_script</a></p></li>
-</ul>
-</section>
-<section id="methode-2-mauszeiger-bewegen-und-neben-das-fenster-klicken">
-<h3>Methode 2: Mauszeiger bewegen und neben das Fenster klicken<a class="headerlink" href="#methode-2-mauszeiger-bewegen-und-neben-das-fenster-klicken" title="Link to this heading">#</a></h3>
-<p>Die zweite Möglichkeit, das Fenster zu schließen, besteht darin, irgendwo neben das Fenster zu klicken. Auch das kann mithilfe von Selenium simuliert werden. Dazu muss zunächst ein Element gefunden werden, das eindeutig identifiziert werden kann. In unserem Beispiel ist das z.B. das div-Element mit der Klasse “_17t88vi”, das das Popup-Fenster repräsentiert. Wenn wir nach der Klasse “_17t88vi” suchen, wird nur ein Ergebnis gefunden. Wir können also zunächst den Mauszeiger in die Mitte dieses Elements bewegen, und von dort aus den Mauszeiger um eine festgelegte Pixelanzahl nach oben (y) und nach rechts (x) bewegen, also genau wie in einem Kartesischen Koordinatensystem.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mouse_tracker = driver.find_element(By.CLASS_NAME, &quot;_17t88vi&quot;)</span>
-
-<span class="c1"># Koordinaten</span>
-<span class="c1"># x_coordinate = 450 (etwa 12 cm in Pixeln)</span>
-<span class="c1"># y_coordinate = 450</span>
-
-<span class="c1"># ActionChains(driver).move_by_offset(x_coordinate, y_coordinate).click().perform()</span>
-<span class="c1"># Mausposition neu ausrichten</span>
-<span class="c1"># ActionChains(driver).move_by_offset(-x_coordinate, -y_coordinate).perform()</span>
-<span class="c1"># time.sleep(5)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Hintergrundinformationen und Anwendungsbeispiele zur Methode <code class="docutils literal notranslate"><span class="pre">.move_by_offset()</span></code> findet ihr unter <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/actions_api/mouse/#offset-from-element">https://www.selenium.dev/documentation/webdriver/actions_api/mouse/#offset-from-element</a>. Alternativ kann die Maus auch von der linken oberen Ecke des aktuell angezeigten Bereichs um eine bestimmte Pixelanzahl bewegt werden (siehe dazu die <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/actions_api/mouse/#offset-from-viewport">Selenium-Dokumentationsseiten</a>).</p>
-<p>Das Vorgehen mit <code class="docutils literal notranslate"><span class="pre">.move_by_offset()</span></code> ist jedoch ziemlich ungenau, weil sich die Größe des Browserfensters und entsprechend der Seiteninhalte von Gerät zu Gerät unterscheiden kann. Diese Methode sollte deswegen als eine Art “last resort” behandelt werden.</p>
-</section>
-</section>
-<section id="scrollvorgang-simulieren-und-seiteninhalte-laden">
-<h2>Scrollvorgang simulieren und Seiteninhalte laden<a class="headerlink" href="#scrollvorgang-simulieren-und-seiteninhalte-laden" title="Link to this heading">#</a></h2>
-<p>Nachdem das Popup-Fenster geschlossen ist, muss zum Seitenende gescrollt werden, wo sich der “Show more” Button befindet. Wir sollten zunächst überprüfen, ob der Button bereits beim Aufruf der Seite geladen wird. Dazu können wir manuell zum Seitenende scrollen, mit Rechtsklick und Inspect den “Show more”-Button in den Entwicklertools anzeigen lassen, und die CSS-Klassen in die Zwischenablage kopieren, also den gesamten String “l1ovpqvx…dir-ltr”.</p>
+<p>Nachdem sich die Tiny homes-Seite geöffnet hat, muss zum Seitenende gescrollt werden, wo sich der “Show more” Button befindet. Wir sollten zunächst überprüfen, ob der Button bereits beim Aufruf der Seite geladen wird. Dazu können wir manuell zum Seitenende scrollen, mit Rechtsklick und Inspect den “Show more”-Button in den Entwicklertools anzeigen lassen, und die CSS-Klassen in die Zwischenablage kopieren, also den gesamten String “l1ovpqvx…dir-ltr”.</p>
 <figure class="align-default" id="id220">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_3.png"><img alt="Airbnb Beispiel 3" class="bg-transparent" src="../../../_images/beispiel_airbnb_3.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">Button-Element in den Entwicklertools.</span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.11 </span><span class="caption-text">Button-Element in den Entwicklertools.</span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Anschließend laden wir die Seite neu, schließen das Popup-Fenster, und suchen in den Entwicklertools wird mit STRG-F nach dem String. Die Suche sollte keine Ergebnisse liefern. Wenn wir jedoch zum Seitenende scrollen und erneut nach dem String suchen, wird das Element nun gefunden und die Suche liefert ein Ergebnis. Das bedeutet: Die Seiteninhalte werden auf der airbnb.com-Startseite erst dann geladen, wenn sie sich im aktuellen Anzeigebereich befinden. Diesen Umstand können wir auch überprüfen, indem wir mit Selenium mit <code class="docutils literal notranslate"><span class="pre">.find_element()</span></code> nach dem Button mit suchen: Die Suche produziert die Fehlermeldung “NoSuchElementException”. Um die restlichen Unterkünfte auf der Startseite sowie den “Show more” Button zu laden, müssen wir also zunächt bis zum Seitenende scrollen.</p>
+<p>Anschließend laden wir die Seite neu und suchen ohne Herunterzuscrollen in den Entwicklertools mit STRG-F nach dem String. Die Suche sollte keine Ergebnisse liefern. Wenn wir jedoch zum Seitenende scrollen und erneut nach dem String suchen, wird das Element nun gefunden und die Suche liefert ein Ergebnis. Das bedeutet: Die Seiteninhalte werden auf der Tiny homes-Seite erst dann geladen, wenn sie sich im aktuellen Anzeigebereich befinden. Diesen Umstand können wir auch überprüfen, indem wir mit Selenium mit <code class="docutils literal notranslate"><span class="pre">.find_element()</span></code> nach dem Button mit suchen: Die Suche produziert die Fehlermeldung “NoSuchElementException”. Um die restlichen Unterkünfte auf der Startseite sowie den “Show more” Button zu laden, müssen wir also zunächt bis zum Seitenende scrollen.</p>
 <p>In Selenium gibt es verschiedene Möglichkeiten, einen Scrollvorgang zu simulieren. Wenn bereits alle Elemente geladen wurden und nur ein Element in den aktuellen Anzeigebereich gescrollt werden soll, kann die Methode <code class="docutils literal notranslate"><span class="pre">.scroll_to_element()</span></code> verwendet werden (siehe <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/actions_api/wheel/#scroll-to-element">Selenium-Dokumentationsseite</a>). Wie wir gesehen haben, wird der “Show more” Button zusammen mit den restlichen Inhalten allerdings erst durch das Scrollen mithilfe von Javascript in das HTML-Gerüst der Webseite eingefügt. Das gesuchte button-Element wird also beim Aufruf der Seite noch nicht gefunden und die Methode <code class="docutils literal notranslate"><span class="pre">.find_element()</span></code> produziert entsprechend eine Fehlermeldung “NoSuchElementException”. Wir könnten uns aber diesen Umstand zunutze machen und beispielsweise so lange scrollen, bis das gesuchte Element gefunden wird. Bevor wir diese Strategie umsetzen können, müssen wir allerdings noch ein Thema kennenlernen, das wir erst nächste Woche besprechen.</p>
 <p>Etwas allgemeiner und einstiegsfreundlicher ist der folgende <strong>Ansatz, bei dem so lange um eine bestimmte Pixelanzahl nach unten gescrollt wird, bis der bereits durchscrollte Bereich zusammen mit dem aktuell angezeigten Bereich größer oder gleich der Gesamthöhe der Webseite in Pixeln ist.</strong></p>
 <div class="cell docutils container">
@@ -555,14 +510,19 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 </div>
 </div>
 </div>
-<p>Zum Verständnis des Codes ist an dieser Stelle ein bisschen JavaScript-Kenntnis (bzw. Recherche in den JavaScript-Dokumentationsseiten) erforderlich:</p>
+<p>Wie funktioniert das Scrollen? <code class="docutils literal notranslate"><span class="pre">.execute_sript()</span></code> ist eine Selenium-Methode, die zum Ausführen von JavaScript Code Snippets verwendet wird. Die Aktionen, die im Browser ausgeführt werden sollen, werden in JavaScript geschrieben und der <code class="docutils literal notranslate"><span class="pre">.execute_script()</span></code>-Methode als Argument übergeben. Zum Verständnis des Codes ist an dieser Stelle ein bisschen JavaScript-Kenntnis (bzw. Recherche in den JavaScript-Dokumentationsseiten) erforderlich:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">.scrollBy()</span></code> ist eine JavaScript-Methode, die laut <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy">Dokumentationsseite</a> das im Browserfenster geöffnete HTML-Dokument um die angegebene Pixelanzahl scrollt. Das erste Argument gibt dabei die Pixel an, um die in horizontaler Richtung gescrollt werden soll. Das zweite Argument gibt die Pixel für das vertikale Scrollen an.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.scrollY</span></code> ist eine Eigenschaft des JavaScript-Objekts window. Das window-Objekt stellt das Browserfenster dar. .scrollY gibt laut <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY">Dokumentationsseite</a> die Anzahl an Pixeln an, um die das HTML-Dokument bereits in vertikaler Richtung durchscrollt wurde, also die aktuelle Scroll-Position in vertikaler Richtung. In einem Kartesischen Koordinatensystem wäre die vertikale Richtung durch die Y-Achse repräsentiert (daher der Name scrollY).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.scrollHeight</span></code> ist eine Eigenschaft des JavaScript-Objekts document.body, das laut <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight">Dokumentationsseite</a> die Höhe eines HTML-Elements in Pixeln angibt, und zwar sowohl für den sichtbaren als auch für den unsichtbaren Bereich, also die Gesamthöhe der scrollbaren Inhalte. Mit “unsichtbarer Bereich” ist der Bereich gemeint, der aufgrund des Scrollens außerhalb des aktuell sichtbaren Bereichs liegt. Mit document.body wird das HTML-Element angegeben, dessen Höhe bestimmt werden soll: In diesem Fall wählen wir das body-Element, weil es den gesamten darstellbaren Webseiteninhalt umfasst.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.innerHeight</span></code> ist eine Eigenschaft des JavaScript-Objekts window. Es gibt laut <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight">Dokumentationsseite</a> die innere Höhe des Browserfensters in Pixeln an, also den Bereich, in dem tatsächlich die Webseite angezeigt wird, ohne die URL-Zeile, die Tabs, usw.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">return</span></code> ist das JavaScript-Pendant zur return-Anweisung in Python, die in Funktionsaufrufen verwendet wird, um einen Wert zurückzugeben. Wie genau diese Werte extrahiert werden, müssen wir nicht unbedingt wissen, um den Code zu verwenden. Aber wenn sich jemand nähergehend damit beschäftigen möchte, empfehle ich <a class="reference external" href="https://www.webtechnologien.com/advanced-tutorials/javascript-bom/">diese Seite</a>.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">return</span></code> ist das JavaScript-Pendant zur return-Anweisung in Python, die in Funktionsaufrufen verwendet wird, um einen Wert zurückzugeben. Wie genau diese Werte extrahiert werden, müssen wir nicht unbedingt wissen, um den Code zu verwenden. Aber wenn sich jemand nähergehend damit beschäftigen möchte, empfehle ich <a class="reference external" href="https://www.webtechnologien.com/advanced-tutorials/javascript-bom/">diese Seite</a>.</p>
+<p>Unter den folgenden Links findet ihr weitere Hintergrundinformationen und Anwendungsbeispiele zur <code class="docutils literal notranslate"><span class="pre">.execute_sript()</span></code> Methode:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.selenium.dev/documentation/webdriver/interactions/windows/#execute-script">https://www.selenium.dev/documentation/webdriver/interactions/windows/#execute-script</a></p></li>
+<li><p><a class="reference external" href="https://docs.pylenium.io/driver-commands/browser/execute_script">https://docs.pylenium.io/driver-commands/browser/execute_script</a></p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Aber Achtung: <code class="docutils literal notranslate"><span class="pre">.innerHeight</span></code> ist die Höhe inklusive der Scrollleiste, die Höhe ohne die Scrolleiste wird mit <code class="docutils literal notranslate"><span class="pre">.clientHeight</span></code> angegeben. Für unser Beispiel ist auch der Wert für <code class="docutils literal notranslate"><span class="pre">.innerHeight</span></code> geeignet, aber je nach Anwendungsfall kann es ratsam sein, beim Scrollen etwas präziser vorzugehen und die Eigenschaft <code class="docutils literal notranslate"><span class="pre">.clientHeight</span></code> zu verwenden. Mehr dazu <a class="reference external" href="https://javascript.info/size-and-scroll-window">hier</a>.</p>
@@ -571,7 +531,7 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 <figure class="align-default" id="id221">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/javascript_attributes.png"><img alt="JavaScript Attribute" class="bg-transparent" src="../../../_images/javascript_attributes.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">Veranschaulichung der JavaScript-Objekteigenschaften zur Formulierung der Abbruchbedingung.</span><a class="headerlink" href="#id221" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.12 </span><span class="caption-text">Veranschaulichung der JavaScript-Objekteigenschaften zur Formulierung der Abbruchbedingung.</span><a class="headerlink" href="#id221" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wenn das Seitenende erreicht ist und die while-Schleife terminiert, kann der Mausklick auf den “Show more”-Button simuliert werden. Anschließend sollte wieder ein paar Sekunden gewartet werden, damit die neuen Inhalte laden können.</p>
@@ -585,6 +545,7 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 </div>
 </div>
 </div>
+<p>Zum Klick auf den Button kann entweder wieder die Selenium-Methode <code class="docutils literal notranslate"><span class="pre">click()</span></code> verwendet werden wie beim Klick auf den Tiny homes-Icon zuvor. Oder es wird wieder ein JavaScript Code Snippet ausgeführt, das dafür zuständig ist, den Mausklick im Browser auszulösen. Dazu wird die Selenium-Methode .execute_script() im Zusammenhang mit der Javascript-Methode .click() verwendet. Die JavaScript-Methode heißt ebenfalls .click() und ist genau wie die Selenium-Methode .click() für HTML-Elemente definiert, aber eben für JavaScript und nicht Python. Im Codebeispiel unten steht arguments[0] für das HTML-Element, das angeklickt werden soll. Das Element muss deswegen wieder zuerst gesucht werden und einer Variable zugewiesen werden. Diese Variable (hier close_button) wird der .execute_script()-Methode als Argument übergeben. arguments[0] verweist dann auf das Argument.</p>
 <p>Anschließend muss wieder bis zum Seitenende gescrollt werden, damit alle Unterkünfte laden. “Laden” bedeutet hier zur Erinnerung, dass die neuen Inhalte in das HTML-Gerüst eingefügt werden und dadurch addressierbar werden. Der manuelle Scrollvorgang hat gezeigt, dass die Inhalte dynamisch geladen werden, sobald sie durch Scrollen in den sichtbaren Bereich gelangen. Aber anders als bei einem “echten” Infinite Scrolling endet die Seite nach einigen Scrollvorgängen. Wir könnten also beim Scrollen genauso vorgehen, wie beim Scrollen zum “Show more”-Button. Allerdings war dieser Scrollvorgang recht langsam, weil in jedem Schleifendurchlauf nur um 300 Pixel gescrollt wurde. Wir könnten also, um den Vorgang etwas zu beschleunigen, zum Beispiel die Pixelanzahl vergrößern. Hierbei sollte allerdings Folgendes bedacht werden: Je nachdem, wie groß das Browserfenster auf unterschiedlichen Geräten ist, haben auch die  Kacheln mit den Unterkünften eine unterschiedliche Größe und es gibt unterschiedlich viele Kacheln in einer Zeile. Es werden also je nach Größe des Browserfensters verschieden viele Kacheln geladen, wenn um 300, 500 oder 800 Pixel gescrollt wird. Wenn zu schnell gescrollt wird, dann können Inhalte nicht rechtzeitig geladen werden, und wenn das passiert, werden sie folglich von unserem Webscraper nicht gefunden.</p>
 <p>Zum Scrollen  verwenden wir deswegen diesmal einen etwas zeiteffizienteren alternativen <strong>Ansatz, bei dem in jedem Schleifendurchlauf nicht um eine feste Pixelanzahl gescrollt wird, sondern um die innere Höhe des Browserfensters.</strong></p>
 <div class="cell docutils container">
@@ -616,7 +577,7 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 <figure class="align-default" id="id222">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_4.png"><img alt="Airbnb Beispiel 4" class="bg-transparent" src="../../../_images/beispiel_airbnb_4.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">Unterkunft in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id222" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.13 </span><span class="caption-text">Unterkunft in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id222" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -640,7 +601,7 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 <p>Zum Abschluss möchte ich noch auf <a class="reference external" href="https://davidshivaji.medium.com/how-to-scroll-using-selenium-in-python-ad1eba1e9bca">diesen vierten Ansatz zum Scrollen mithilfe von Selenium von David Shivaji</a> verweisen. Überlegt selbst: Welche Vor-/Nachteile hat dieser Ansatz? Welche Parameter werden dabei verwendet?</p>
 </section>
 <section id="suche-benutzen-und-tastatureingabe-simulieren">
-<h2>Suche benutzen und Tastatureingabe simulieren<a class="headerlink" href="#suche-benutzen-und-tastatureingabe-simulieren" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.3.3. </span>Suche benutzen und Tastatureingabe simulieren<a class="headerlink" href="#suche-benutzen-und-tastatureingabe-simulieren" title="Link to this heading">#</a></h2>
 <p>Bisher haben wir die Ortsangaben zu Unterkünften extrahiert, die zufällig auf der Startseite angezeigt wurden. Meistens interessieren wir uns aber für ganz bestimmte Daten, zum Beispiel nur Unterkünfte in Berlin zu einem bestimmten Zeitpunkt. Als nächstes sehen wir uns also an, wie mithilfe von Selenium die Suchmaske auf <a class="reference external" href="http://airbnb.com">airbnb.com</a> verwendet werden kann und wie eine Tastatureingabe getätigt werden kann.</p>
 <p>Zunächst starten wir wieder den Webdriver und senden eine Anfrage für die Seite <a class="reference external" href="https://www.airbnb.com/">https://www.airbnb.com/</a> und schließen das Popup-Fenster. Beachtet allerdings, dass wir ein zusätzliches Modul importieren, das wir später zur Simulation der Tastatureingabe benötigen.</p>
 <div class="cell docutils container">
@@ -653,11 +614,6 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 <span class="c1"># driver = webdriver.Chrome()</span>
 <span class="c1"># driver.get(&quot;https://www.airbnb.com/&quot;)</span>
 <span class="c1"># time.sleep(5)</span>
-
-<span class="c1"># # Popup-Fenster wegklicken</span>
-<span class="c1"># close_button = driver.find_element(By.XPATH, &quot;//button[@aria-label=&#39;Close&#39;]&quot;)</span>
-<span class="c1"># driver.execute_script(&quot;arguments[0].click();&quot;, close_button)</span>
-<span class="c1"># time.sleep(5)</span>
 </pre></div>
 </div>
 </div>
@@ -666,14 +622,14 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 <figure class="align-default" id="id223">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_5.png"><img alt="Airbnb Beispiel 5" class="bg-transparent" src="../../../_images/beispiel_airbnb_5.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">Suchfeld in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id223" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.14 </span><span class="caption-text">Suchfeld in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id223" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Um einen Suchbegriff eingeben zu können, muss das input-Element zunächst gefunden werden. In diesem Fall hat das gesuchte HTML-Element nicht nur ein Attribut class, sondern auch ein Attribut id mit dem Wert, “bigsearch-query-location-input”, welches erlaubt, das Element eindeutig zu identifizieren. Zur Suche können wir nun entweder <code class="docutils literal notranslate"><span class="pre">.find_element(By.ID,</span> <span class="pre">“id_des_elements”)</span></code> oder <code class="docutils literal notranslate"><span class="pre">.find_element(By.XPATH,</span> <span class="pre">“xpath_ausdruck”)</span></code> verwenden. XPath habt ihr bereits in der letzten Woche etwas kennengelernt. Wenn ihr euch unsicher seid, wie der XPath-Ausdruck formuliert sein muss, könnt ihr aber in diesem Fall die Entwicklertools zur Hilfe nehmen: Der XPath-Ausdruck, der den Pfad zu dem gesuchten Element beschreibt, kann ganz einfach mit Rechtsklick auf ein Element und die Option Copy -&gt; Copy XPath kopiert werden:</p>
 <figure class="align-default" id="id224">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_6.png"><img alt="Airbnb Beispiel 6" class="bg-transparent" src="../../../_images/beispiel_airbnb_6.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">XPath zum gesuchten Element kopieren.</span><a class="headerlink" href="#id224" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.15 </span><span class="caption-text">XPath zum gesuchten Element kopieren.</span><a class="headerlink" href="#id224" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Der XPath zum gesuchten input-Element ist <code class="docutils literal notranslate"><span class="pre">//*[&#64;id=”bigsearch-query-location-input”]</span></code>. Das * steht für ein beliebiges HTML-Element, aber wir können auch den Namen des HTML-Elements einsetzen, um bei vielen XPath-Ausdrücken den Überblick zu behalten:</p>
@@ -708,7 +664,7 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 <figure class="align-default" id="id225">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_7.png"><img alt="Airbnb Beispiel 7" class="bg-transparent" src="../../../_images/beispiel_airbnb_7.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">Button “flexible” untersuchen.</span><a class="headerlink" href="#id225" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.16 </span><span class="caption-text">Button “flexible” untersuchen.</span><a class="headerlink" href="#id225" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Das gesuchte HTML-Element hat wieder eine ID, über die es eindeutig identifiziert werden kann. Diesmal verwenden wir <code class="docutils literal notranslate"><span class="pre">.find_element(By.ID,</span> <span class="pre">“id_des_elements”)</span></code>, damit ihr diese Verwendung der find_element-Methode auch einmal gesehen habt. Die Id könnt ihr einfach aus den Browser-Entwicklertools mit Doppelklick auf das Id-Attribut kopieren.</p>
@@ -725,7 +681,7 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 <figure class="align-default" id="id226">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_8.png"><img alt="Airbnb Beispiel 8" class="bg-transparent" src="../../../_images/beispiel_airbnb_8.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">Suchbutton untersuchen.</span><a class="headerlink" href="#id226" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.17 </span><span class="caption-text">Suchbutton untersuchen.</span><a class="headerlink" href="#id226" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Jetzt können wir den Mausklick auf den Suchbutton simulieren:</p>
@@ -753,7 +709,7 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
 </div>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.3.4. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
 <li id="id159"><p>JavaScript-BOM-Tutorial. 2023. URL: <a class="reference external" href="https://www.webtechnologien.com/advanced-tutorials/javascript-bom/">https://www.webtechnologien.com/advanced-tutorials/javascript-bom/</a>.</p></li>
@@ -806,6 +762,15 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="02_einstieg_selenium.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9.2. </span>Einstieg Selenium</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -822,14 +787,10 @@ Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die e
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popup-fenster-schlieszen">Popup-Fenster schließen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methode-1-button-klicken">Methode 1: Button klicken</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methode-2-mauszeiger-bewegen-und-neben-das-fenster-klicken">Methode 2: Mauszeiger bewegen und neben das Fenster klicken</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scrollvorgang-simulieren-und-seiteninhalte-laden">Scrollvorgang simulieren und Seiteninhalte laden</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-benutzen-und-tastatureingabe-simulieren">Suche benutzen und Tastatureingabe simulieren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-elemente-suchen-und-text-extrahieren">9.3.1. Recap: Elemente suchen und Text extrahieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scrollvorgang-und-mausklick-simulieren">9.3.2. Scrollvorgang und Mausklick simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-benutzen-und-tastatureingabe-simulieren">9.3.3. Suche benutzen und Tastatureingabe simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.3.4. Quellen</a></li>
 </ul>
   </nav></div>
 
