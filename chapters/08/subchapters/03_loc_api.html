@@ -234,6 +234,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../10/10_intro.html">10. Tipps und Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/01_fetch_xhr.html">10.1. Selenium ist kein Hammer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/02_sessions_cookies.html">10.2. Sessions und Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/03_apis_tokens.html">10.3. Authentifizierung, Autorisierung und APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/04_tipps_tricks.html">10.4. Weitere Tipps und Tricks</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -478,17 +485,17 @@ Es gibt laut <a class="reference external" href="https://chroniclingamerica.loc.
 </div>
 </div>
 <p>Eine aufmerksame Betrachtung der Ergebnisse der Suche nach einem Suchbegriff über die Suchmaske der Website <a class="reference external" href="https://chroniclingamerica.loc.gov">https://chroniclingamerica.loc.gov</a> zeigt, dass die Suche über die Suchmaske genau dieselben Ergebnisse liefert wie die API-Abfrage. Das ist nicht erstaunlich, denn die URL, die beim Verwenden der Suchmaske generiert wird, ist ganz ähnlich aufgebaut wie die URL, die wir für die API-Abfrage erstellen, mit dem einzigen Unterschied, dass die Suchparameter etwas anders aussehen:</p>
-<figure class="align-default" id="id218">
+<figure class="align-default" id="id219">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/loc_ca_suche.png"><img alt="Suchmaske Chronicling America" class="bg-transparent" src="../../../_images/loc_ca_suche.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text">Einfache Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id218" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text">Einfache Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wir können diese URL nutzen, um den andtext-Parameter besser zu verstehen. Wenn wir in der einfachen Suche nach dem Suchbegriff “book review” suchen, dann steht in der URL “book+review”. Wenn wir stattdessen die Erweiterte Suche (Tab Advanced Search) verwenden und nach einer Phrase suchen, dann steht in der URL der Zusatz “&amp;phrasetext=book+review”:</p>
-<figure class="align-default" id="id219">
+<figure class="align-default" id="id220">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/loc_ca_erweiterte_suche.png"><img alt="Erweiterte Suche Chronicling America" class="bg-transparent" src="../../../_images/loc_ca_erweiterte_suche.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.4 </span><span class="caption-text">Erweiterte Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.4 </span><span class="caption-text">Erweiterte Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Tatsächlich akzeptiert auch die Chronicling America API eine Abfrage-URI mit dem Zusatz &amp;phrasetext:</p>

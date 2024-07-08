@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Sessions und Cookies &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>10.2. Sessions und Cookies &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="10.3. Authentifizierung, Autorisierung und APIs" href="03_apis_tokens.html" />
+    <link rel="prev" title="10.1. Selenium ist kein Hammer" href="01_fetch_xhr.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +177,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -232,6 +232,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/02_einstieg_selenium.html">9.2. Einstieg Selenium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../10_intro.html">10. Tipps und Tricks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_fetch_xhr.html">10.1. Selenium ist kein Hammer</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.2. Sessions und Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_apis_tokens.html">10.3. Authentifizierung, Autorisierung und APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_tipps_tricks.html">10.4. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
 </ul>
@@ -397,11 +404,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-und-session-handling-mit-selenium-beispiel-login">Cookie und Session Handling mit Selenium: Beispiel Login</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-und-session-handling-mit-requests-beispiel-login">Cookie und Session Handling mit requests: Beispiel Login</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-consent-selenium">Cookie Consent: Selenium</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-consent-requests">Cookie Consent: Requests</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-und-session-handling-mit-selenium-beispiel-login">10.2.1. Cookie und Session Handling mit Selenium: Beispiel Login</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-und-session-handling-mit-requests-beispiel-login">10.2.2. Cookie und Session Handling mit requests: Beispiel Login</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-consent-selenium">10.2.3. Cookie Consent: Selenium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-consent-requests">10.2.4. Cookie Consent: Requests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">10.2.5. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -414,7 +421,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sessions-und-cookies">
-<h1>Sessions und Cookies<a class="headerlink" href="#sessions-und-cookies" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">10.2. </span>Sessions und Cookies<a class="headerlink" href="#sessions-und-cookies" title="Link to this heading">#</a></h1>
 <p>Um zu verstehen, was Sessions und Cookies eigentlich sind, müssen wir nochmal zum HTTP-Protokoll zurückkehren. HTTP ist nämlich “zustandslos”, es übermittelt keine Informationen über vergangene Seitenaufrufe. Das heißt, dass ein Webserver nicht anhand einer simplen HTTP-Anfrage erkennen kann, ob derselbe Client bereits zuvor eine Anfrage gestellt hat. Etwas formeller ausgedrückt:</p>
 <blockquote>
 <div><p>HTTP is stateless: there is no link between two requests being successively carried out on the same connection. This immediately has the prospect of being problematic for users attempting to interact with certain pages coherently, for example, using e-commerce shopping baskets. But while the core of HTTP itself is stateless, HTTP cookies allow the use of stateful sessions. Using header extensibility, HTTP Cookies are added to the workflow, allowing session creation on each HTTP request to share the same context, or the same state.</p>
@@ -427,23 +434,23 @@ document.write(`
 <p>Quelle: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">MDN Contributors (2023)</a></p>
 <p>Beim Aufruf einer Webseite werden meist mehrere Cookies als Schlüssel-Wert-Paare übermittelt. Darunter befindet sich insbesondere bei Loginvorgängen häufig ein Cookie, der eine ID für die aktuelle Session, also für eine Benutzersitzung, enthält. Anhand des Session-ID Cookies erkennt der Webserver, dass derselbe Client bereits zuvor die Webseite aufgerufen hat, und die in anderen Cookies gespeicherten Informationen können so beim wiederholten Seitenaufruf wiederverwendet werden. Je nach der Art der Dienste, für die auf einer Webseite Cookies verwendet werden, haben Sessions eine unterschiedliche Gültigkeitsdauer: Beim Login in ein Onlinebanking-Account sind das oft nur wenige Minuten, während Sessions beim Login in ein soziales Netzwerk sogar wochenlang aufrechterhalten werden können. Wenn die Gültigkeit einer Session erlischt, dann wird die Session-ID gelöscht und ein:e Nutzer:in wird beim nächsten Seitenaufruf zum erneuten Login aufgefordert.</p>
 <p>Softwareentwickler Valentin Despa hat einen meiner Meinung nach ganz passenden Vergleich zum Verständnis von Cookies vorgeschlagen. Das Prinzip von Session-ID-Cookies ist laut Despa vergleichbar mit einer Garderobe: Bei der Abgabe eines Kleidungsstücks bekommt man einen Abholschein mit einer einzigartigen Nummer, anhand derer die Person an der Garderobe später das abgegebene Kleidungsstück wieder der richtigen Person zuordnen kann. Wenn die Person das Kleidungsstück erhalten hat, hat der Abholschein keine Bedeutung mehr und wird in den Müll geworfen.</p>
-<figure class="align-default" id="id218">
+<figure class="align-default" id="id219">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/cookies_sessionid.png"><img alt="Cookies Vergleich" class="bg-transparent" src="../../../_images/cookies_sessionid.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-text">Wie funktionieren Cookies? Das Garderoben-Prinzip. Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=V0pzXU6FbQA">Valentin Despa (2022)</a></span><a class="headerlink" href="#id218" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.5 </span><span class="caption-text">Wie funktionieren Cookies? Das Garderoben-Prinzip. Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=V0pzXU6FbQA">Valentin Despa (2022)</a></span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id219">
+<figure class="align-default" id="id220">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/cookies_sessions.png"><img alt="Cookies Vergleich" class="bg-transparent" src="../../../_images/cookies_sessions.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-text">Wie funktionieren Cookies? Die Session-ID. Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=GhrvZ5nUWNg">Valentin Despa (2021)</a></span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.6 </span><span class="caption-text">Wie funktionieren Cookies? Die Session-ID. Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=GhrvZ5nUWNg">Valentin Despa (2021)</a></span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Cookies können ebenfalls über die Browser-Entwicklertools eingesehen werden. Nachdem beim Aufruf des Onlineshops <a class="reference external" href="http://conrad.com">conrad.com</a> die Option “Decline Cookies” im Pop-Up-Cookiebanner ausgewählt wurde, sind in den Entwicklertools nur noch die funktionalen Cookies sichtbar, darunter auch ein Cookie mit dem Namen “session-id-cookie” und einer Session-ID als Wert.</p>
-<figure class="align-default" id="id220">
+<figure class="align-default" id="id221">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/conrad_session_cookie.png"><img alt="Conrad Beispiel" class="bg-transparent" src="../../../_images/conrad_session_cookie.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Session-ID-Cookie in den Entwicklertools beim Aufruf der Seite <a class="reference external" href="http://conrad.com">conrad.com</a></span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.7 </span><span class="caption-text">Session-ID-Cookie in den Entwicklertools beim Aufruf der Seite <a class="reference external" href="http://conrad.com">conrad.com</a></span><a class="headerlink" href="#id221" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Das Beispiel zeigt auch noch einmal, dass Cookiebanner häufig missverständlich formuliert sind: Mit “Cookies ablehnen” sind meist nicht die funktionalen Cookies gemeint, also Cookies, welche für die Funktionalität der Webseite erforderlich sind, sondern nur solche, die zum Verfolgen des Nutzerverhaltens (Tracking) und zu Werbezwecken dienen.</p>
@@ -453,7 +460,7 @@ document.write(`
 </div>
 <p>Soweit zum Verständnis von Cookies und Sessions. Aber wie können wir denn beim Web Scraping mit Sessions, Cookies und Cookiebannern umgehen?</p>
 <section id="cookie-und-session-handling-mit-selenium-beispiel-login">
-<h2>Cookie und Session Handling mit Selenium: Beispiel Login<a class="headerlink" href="#cookie-und-session-handling-mit-selenium-beispiel-login" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2.1. </span>Cookie und Session Handling mit Selenium: Beispiel Login<a class="headerlink" href="#cookie-und-session-handling-mit-selenium-beispiel-login" title="Link to this heading">#</a></h2>
 <p>In Selenium haben wir ganz automatisch Sessions verwendet: Jedes Mal, wenn mit webdriver.Chrome() ein neues Webdriver-Objekt initialisiert wird, wird auch eine neue Session, also eine Nutzersitzung gestartet. Im Folgenden schauen wir uns einen Anwendungsfall an, bei dem beim Web Scraping mit Selenium Cookies verwendet werden: ein Login-Vorgang.</p>
 <p>Angenommen, wir wollen eine Seite in mehreren Sessions scrapen. Dann müssten wir uns jedes Mal neu einloggen und jedes Mal das Inputfeld mit find_element() suchen, die Inputdaten mit send_keys() eingeben und anschließend die Eingabe mit click() bestätigen. Das können wir vereinfachen, indem wir beim ersten Login die Login-Cookies speichern und bei der nächsten Anfrage direkt die Cookies mitsenden. Wir schauen uns wieder das Code-Beispiel von jemand anderes an:</p>
 <div class="cell docutils container">
@@ -504,7 +511,7 @@ document.write(`
 </div>
 </section>
 <section id="cookie-und-session-handling-mit-requests-beispiel-login">
-<h2>Cookie und Session Handling mit requests: Beispiel Login<a class="headerlink" href="#cookie-und-session-handling-mit-requests-beispiel-login" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2.2. </span>Cookie und Session Handling mit requests: Beispiel Login<a class="headerlink" href="#cookie-und-session-handling-mit-requests-beispiel-login" title="Link to this heading">#</a></h2>
 <p>Bei der Verwendung von requests sind wir bisher nicht mit Sessions und Cookies in Berührung gekommen. Aber auch requests bietet die Möglichkeit, eine Session zu initialisieren und bei einer Anfrage Cookies zu übermitteln.</p>
 <p>Ein Session-Objekt kann mit requests wie folgt erstellt werden:</p>
 <div class="cell docutils container">
@@ -541,17 +548,17 @@ document.write(`
 <p>Der Login-Vorgang wird hier mithilfe einer HTTP-POST-Anfrage vorgenommen. Im Abschnitt “Statisch vs. Dynamisch?” haben wir diese Art der Anfrage bereits am Beispiel der Suche auf <a class="reference external" href="http://projekt-gutenberg.de">projekt-gutenberg.de</a> kennengelernt. Die Logindaten werden dabei als Argument params der post-Methode übergeben. Die post-Methode wird (und das ist wichtig!) aus der aktuellen Nutzersitzung, also der Session, heraus gestellt: Es heißt im Beispiel session.post() und nicht requests.post()!</p>
 <p>Zu beachten ist auch, dass in dem Beispiel oben neben den Logindaten noch ein CSRF-Token für den Loginvorgang benötigt wird. CSRF steht für Cross-Site Request Forgery und beschreibt eine bestimmte Art eines Angriffs, der verhindert werden soll, indem der Server bei jeder Anfrage überprüft, ob der Client einen CSRF-Token mitsendet, der dem Token entspricht, den der Server dem Client beim Login übermittelt hat. Es wird damit also einfach gesagt überprüft, ob ein Link, auf den ein:e angemeldete:r Nutzer:in zugreifen will, schädlich ist und dem Client womöglich durch einen Dritten (“Hacker”) untergejubelt wurde: In diesem Fall würde bei der Anfrage nämlich kein gültiges Token übermittelt werden. Eine ausführlichere Erläuterung findet ihr <a class="reference external" href="https://dr-dsgvo.de/csrf-cookies-zur-gefahrenabwehr-bedeutung-und-problem-mit-dem-datenschutz/">hier</a>.</p>
 <p>Wie genau das CSRF-Token und die Loginparameter bei der Anfrage heißen müssen, kann nach der manuellen Anmeldung auf der Seite wieder dem Network-Tab in den Browser-Entwicklertools entnommen werden. Dazu müssen einfach die Anfrageparameter zur Anfrage für die Seite <a class="reference external" href="https://realpython.com/account/login/">https://realpython.com/account/login/</a> unter “Payload” und “Cookies” betrachtet werden.</p>
-<figure class="align-default" id="id221">
+<figure class="align-default" id="id222">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/realpython_anfrage.png"><img alt="Realpython Beispiel" class="bg-transparent" src="../../../_images/realpython_anfrage.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Ausschnitt aus dem Header der HTTP-POST-Anfrage beim Login auf <a class="reference external" href="http://realpython.com">realpython.com</a></span><a class="headerlink" href="#id221" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.8 </span><span class="caption-text">Ausschnitt aus dem Header der HTTP-POST-Anfrage beim Login auf <a class="reference external" href="http://realpython.com">realpython.com</a></span><a class="headerlink" href="#id222" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Nachdem der Login-Vorgang erfolgt ist, kann regulär eine HTTP-GET-Anfrage für die gesuchten Inhalte durchgeführt werden, in diesem Fall für eine Seite mit Notifications, die nur eingeloggte Nutzer:innen sehen können:</p>
-<figure class="align-default" id="id222">
+<figure class="align-default" id="id223">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/realpython_notifications.png"><img alt="Realpython Beispiel" class="bg-transparent" src="../../../_images/realpython_notifications.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Ermitteln der gesuchten Elemente auf der Notifications-Seite</span><a class="headerlink" href="#id222" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.9 </span><span class="caption-text">Ermitteln der gesuchten Elemente auf der Notifications-Seite</span><a class="headerlink" href="#id223" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wichtig ist dabei allerdings, dass die Anfrage wieder aus der aktuellen Nutzersitzung heraus gestellt wird, also wieder mit session.get() anstelle von requests.get():</p>
@@ -569,19 +576,19 @@ document.write(`
 <p>Der Beispiel-Loginvorgang auf <a class="reference external" href="http://realpython.com">realpython.com</a> ist auf viele Anwendungsfälle übertragbar. Verschiedene Webseiten nutzen aber verschiedene Authentifizierungsverfahren und ein Blick in die Entwicklertools ist beim Schreiben des Codes unerlässlich. Und nicht immer muss zum Login eine HTTP-POST-Methode angewandt werden. Für den Login auf Webseiten, welche  Authentifizierungsverfahren wie beispielsweise OAuth verwenden, ist die Anmeldung in requests vorimplementiert. Dazu mehr hier: <a class="reference external" href="https://requests.readthedocs.io/en/latest/user/authentication/">https://requests.readthedocs.io/en/latest/user/authentication/</a>.</p>
 </section>
 <section id="cookie-consent-selenium">
-<h2>Cookie Consent: Selenium<a class="headerlink" href="#cookie-consent-selenium" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2.3. </span>Cookie Consent: Selenium<a class="headerlink" href="#cookie-consent-selenium" title="Link to this heading">#</a></h2>
 <p>Wenn die Seite <a class="reference external" href="http://google.com">google.com</a> mithilfe von Selenium und dem Chrome Webdriver aufgerufen wird, dann öffnet sich ein Cookiebanner, also ein Pop-Up-Fenster, das Nutzer:innen auffordert, der Verwendung von Cookies durch die Seite zuzustimmen:</p>
-<figure class="align-default" id="id223">
+<figure class="align-default" id="id224">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/google_cookiebanner.png"><img alt="Google Beispiel" class="bg-transparent" src="../../../_images/google_cookiebanner.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Google Cookie-Consent-Seite beim Seitenaufruf mit Selenium und dem Chrome Webdriver</span><a class="headerlink" href="#id223" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.10 </span><span class="caption-text">Google Cookie-Consent-Seite beim Seitenaufruf mit Selenium und dem Chrome Webdriver</span><a class="headerlink" href="#id224" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Um mithilfe von Selenium die optionalen Cookies abzulehnen, muss einfach nur der “Reject All”-Button geklickt werden, und dazu suchen wir den Button und simulieren den Mausklick mit der bereits bekannten Methode click():</p>
-<figure class="align-default" id="id224">
+<figure class="align-default" id="id225">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/google_cookiebutton.png"><img alt="Google Beispiel" class="bg-transparent" src="../../../_images/google_cookiebutton.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Id des “Reject All”-Buttons ermitteln</span><a class="headerlink" href="#id224" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.11 </span><span class="caption-text">Id des “Reject All”-Buttons ermitteln</span><a class="headerlink" href="#id225" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -601,12 +608,12 @@ document.write(`
 <p>Voilà! Der Cookiebanner ist verschwunden.</p>
 </section>
 <section id="cookie-consent-requests">
-<h2>Cookie Consent: Requests<a class="headerlink" href="#cookie-consent-requests" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2.4. </span>Cookie Consent: Requests<a class="headerlink" href="#cookie-consent-requests" title="Link to this heading">#</a></h2>
 <p>Zur Anzeigen von Cookiebannern wird JavaScript verwendet. Das heißt, dass bei einer Anfrage mit requests die Seite ohne den Cookiebanner angezeigt wird: das Pop-Up-Fenster öffnet sich gar nicht erst. Heißt das aber, dass beim Web Scrapen mit requests und BeautifulSoup Cookiebanner gar nicht relevant sind? Nicht ganz, denn es kommt auch vor, dass beim erstmaligen Aufruf einer Seite eine Weiterleitung auf eine Cookie-Consent-Seite erfolgt. Anders ausgedrückt: eine Anfrage mit requests, die keine Cookies im Anfrage-Header mit übergibt, wird auf eine Seite umgeleitet, welche die Einwilligung in die Verwendung von Cookies abfragt. Erst, wenn ein:e Nutzer:in der Verwendung von Cookies zugestimmt hat, wird beim erneuten Seitenaufruf die ursprünglich angefragte Seite angezeigt. Das ist beispielsweise der Fall beim Aufruf von <a class="reference external" href="http://google.com">google.com</a> mit deaktiviertem JavaScript. Mit deaktiviertem JavaScript wird anstatt der Anzeige des Cookiebanner-Pop-Up-Fensters die Anfrage auf eine separate Cookie-Consent-Seite weitergeleitet:</p>
-<figure class="align-default" id="id225">
+<figure class="align-default" id="id226">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/google_cookieconsent.png"><img alt="Google Beispiel" class="bg-transparent" src="../../../_images/google_cookieconsent.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Google Cookie-Consent-Seite beim Seitenaufruf mit deaktiviertem JavaScript</span><a class="headerlink" href="#id225" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.12 </span><span class="caption-text">Google Cookie-Consent-Seite beim Seitenaufruf mit deaktiviertem JavaScript</span><a class="headerlink" href="#id226" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Entsprechend wird beim Versuch, Suchergebnisse mit requests und BeautifulSoup zu scrapen, die Cookie-Consent-Seite zurückgegeben und nicht die Seite mit den Suchergebnissen:</p>
@@ -624,10 +631,10 @@ document.write(`
 </div>
 </div>
 <p>In den Browser-Entwicklertools unter Network -&gt; Cookies können die Cookies, die beim Seitenaufruf im Header der HTTP-Anfrage an den Webserver geschickt werden, eingesehen werden:</p>
-<figure class="align-default" id="id226">
+<figure class="align-default" id="id227">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/google_cookieconsent.png"><img alt="Google Beispiel" class="bg-transparent" src="../../../_images/google_cookieconsent.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Cookies beim Seitenaufruf mit deaktiviertem JavaScript</span><a class="headerlink" href="#id226" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.13 </span><span class="caption-text">Cookies beim Seitenaufruf mit deaktiviertem JavaScript</span><a class="headerlink" href="#id227" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Beim erstmaligen Aufruf der Seite wird ein Cookie mit dem Namen “CONSENT” und dem Wert “PENDING+612” (die Zahl kann jedoch variieren) mitgesandt. Diesen Cookie können wir bei der Anfrage mit Requests im Anfrage-Header mit angeben. Dabei müssen wir den Wert des CONSENT-Cookies allerdings auf “YES+” setzen. Die Anfrage gibt dann die angefragte Seite zurück und nicht die Cookie-Consent-Seite:</p>
@@ -651,7 +658,7 @@ document.write(`
 <p>Wie genau der Consent-Cookie heißt und welcher Wert eingesetzt werden muss, variiert, aber das Prinzip ist auch auf andere Webseiten übertragbar. Um herauszufinden, wie der Cookie heißt, helfen euch wie in diesem Beispiel die Entwicklertools weiter.</p>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2.5. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
 <li id="id172"><p>Klaus Meffert. CSRF Cookies zur Gefahrenabwehr: Bedeutung und Problem mit dem Datenschutz. 2022. URL: <a class="reference external" href="https://dr-dsgvo.de/csrf-cookies-zur-gefahrenabwehr-bedeutung-und-problem-mit-dem-datenschutz/">https://dr-dsgvo.de/csrf-cookies-zur-gefahrenabwehr-bedeutung-und-problem-mit-dem-datenschutz/</a>.</p></li>
@@ -699,6 +706,24 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="01_fetch_xhr.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10.1. </span>Selenium ist kein Hammer</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_apis_tokens.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10.3. </span>Authentifizierung, Autorisierung und APIs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -715,11 +740,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-und-session-handling-mit-selenium-beispiel-login">Cookie und Session Handling mit Selenium: Beispiel Login</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-und-session-handling-mit-requests-beispiel-login">Cookie und Session Handling mit requests: Beispiel Login</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-consent-selenium">Cookie Consent: Selenium</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-consent-requests">Cookie Consent: Requests</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-und-session-handling-mit-selenium-beispiel-login">10.2.1. Cookie und Session Handling mit Selenium: Beispiel Login</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-und-session-handling-mit-requests-beispiel-login">10.2.2. Cookie und Session Handling mit requests: Beispiel Login</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-consent-selenium">10.2.3. Cookie Consent: Selenium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-consent-requests">10.2.4. Cookie Consent: Requests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">10.2.5. Quellen</a></li>
 </ul>
   </nav></div>
 

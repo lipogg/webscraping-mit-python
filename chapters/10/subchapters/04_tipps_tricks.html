@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Weitere Tipps und Tricks &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>10.4. Weitere Tipps und Tricks &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="10.3. Authentifizierung, Autorisierung und APIs" href="03_apis_tokens.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +176,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -232,6 +231,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/02_einstieg_selenium.html">9.2. Einstieg Selenium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../10_intro.html">10. Tipps und Tricks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_fetch_xhr.html">10.1. Selenium ist kein Hammer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_sessions_cookies.html">10.2. Sessions und Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_apis_tokens.html">10.3. Authentifizierung, Autorisierung und APIs</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.4. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
 </ul>
@@ -397,15 +403,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-agent-im-http-header-bearbeiten">User Agent im HTTP-Header bearbeiten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selenium-waits-statt-time-sleep">Selenium Waits statt time.sleep()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-nach-verschiedenen-kindelementen-mit-derselben-klasse">Suche nach verschiedenen Kindelementen mit derselben Klasse</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dateinamen-vor-dem-speichern-bearbeiten">Dateinamen vor dem Speichern bearbeiten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fehler-ausnahmen-und-ausnahmebehandlung">Fehler, Ausnahmen und Ausnahmebehandlung</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effizienter-scrapen-mit-sitemaps">Effizienter Scrapen mit Sitemaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sicher-scrapen">Sicher Scrapen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-do-this">Don’t do this…</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selenium-waits-statt-time-sleep">10.4.1. Selenium Waits statt time.sleep()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-agent-im-http-header-bearbeiten">10.4.2. User Agent im HTTP-Header bearbeiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-nach-verschiedenen-kindelementen-mit-derselben-klasse">10.4.3. Suche nach verschiedenen Kindelementen mit derselben Klasse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dateinamen-vor-dem-speichern-bearbeiten">10.4.4. Dateinamen vor dem Speichern bearbeiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fehler-ausnahmen-und-ausnahmebehandlung">10.4.5. Fehler, Ausnahmen und Ausnahmebehandlung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effizienter-scrapen-mit-sitemaps">10.4.6. Effizienter Scrapen mit Sitemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sicher-scrapen">10.4.7. Sicher Scrapen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-do-this">10.4.8. Don’t do this…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">10.4.9. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -418,9 +424,82 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="weitere-tipps-und-tricks">
-<h1>Weitere Tipps und Tricks<a class="headerlink" href="#weitere-tipps-und-tricks" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">10.4. </span>Weitere Tipps und Tricks<a class="headerlink" href="#weitere-tipps-und-tricks" title="Link to this heading">#</a></h1>
+<section id="selenium-waits-statt-time-sleep">
+<h2><span class="section-number">10.4.1. </span>Selenium Waits statt time.sleep()<a class="headerlink" href="#selenium-waits-statt-time-sleep" title="Link to this heading">#</a></h2>
+<p>Bisher haben wir immer die Funktion sleep() aus dem Modul time verwendet, um beim Web Scrapen mithilfe von Selenium Wartezeiten einzufügen, die sicherstellen, dass der automatisierte Browser genug Zeit zum Laden der gesuchten Inhalte hat. Das Selenium webdriver-Modul bietet aber eigene Methoden, die ermöglichen, nicht nur eine feste Anzahl an Sekunden zu warten, sondern beim Warten verschiedene Strategien anzuwenden. <strong>Diese Wartestrategien solltet ihr in der Praxis anstelle von time.sleep() verwenden.</strong> Zum Beispiel ermöglicht die Methode <code class="docutils literal notranslate"><span class="pre">driver.implicitly_wait(x)</span></code>, für alle Seitenaufrufe innerhalb einer Session einzustellen, dass x Sekunden lang auf jedes gesuchte Element gewartet wird, bevor eine “ElementNotFound”-Ausnahme geworfen wird. Am Beispiel der Suche nach den Airbnb-Ortsangaben sieht die Verwendung von implicitly_wait() anstelle von time.sleep() so aus:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium import webdriver</span>
+<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
+<span class="c1"># from selenium.webdriver.common.by import By</span>
+
+<span class="c1"># driver = webdriver.Chrome()</span>
+<span class="c1"># driver.implicitly_wait(10)</span>
+
+<span class="c1"># driver.get(&quot;https://www.airbnb.com/&quot;)</span>
+<span class="c1"># unterkuenfte = driver.find_elements(By.CLASS_NAME, &quot;t1jojoys.dir.dir-ltr&quot;)</span>
+<span class="c1"># unterkuenfte_orte = [unterkunft.text for unterkunft in unterkuenfte]</span>
+<span class="c1"># unterkuenfte_orte</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Verwendung von driver.implicitly_wait(x) ist effizienter als die Variante mit time.sleep(x), denn während die Ausführung des Skripts mit time.sleep(x) immer um genau x Sekunden verzögert wird, wird mit implicitly_wait(x) maximal x Sekunden gewartet. In vielen Fällen ist die Wartezeit aber kürzer, weil das gesuchte Element schon früher, vor Ablauf der x Sekunden geladen ist, oder länger, weil der Verbindungsaufbau sich verzögert. Außerdem wird durch Verwenden der Selenium-Wartestrategien verhindert, dass das Programm unkontrolliert abbricht, wenn ein Element nicht gefunden wird.</p>
+<p>Neben der globalen Wartezeit mit .implicitly_wait() gibt es in Selenium die Möglichkeit, explizit auf ein bestimmtes Element zu warten. Dazu gibt es zwei Möglichkeiten:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explicit Wait: Option 1</span>
+
+<span class="c1"># from selenium import webdriver</span>
+<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
+<span class="c1"># from selenium.webdriver.common.by import By</span>
+
+<span class="c1"># driver = webdriver.Chrome()</span>
+
+<span class="c1"># driver.get(&quot;https://www.airbnb.com/&quot;)</span>
+<span class="c1"># unterkunft = driver.find_element(By.CLASS_NAME, &quot;t1jojoys.dir.dir-ltr&quot;)</span>
+
+<span class="c1"># wait = WebDriverWait(driver, timeout=10)</span>
+<span class="c1"># wait.until(lambda d : unterkunft.is_displayed())</span>
+
+<span class="c1"># print(unterkunft.text)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ein weiteres Beispiel zu dieser Version der expliziten Wartestrategie findet ihr <a class="reference external" href="https://github.com/SeleniumHQ/seleniumhq.github.io/blob/trunk/examples/python/tests/waits/test_waits.py#L41-L42">hier</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explicit Wait: Option 2</span>
+
+<span class="c1"># from selenium import webdriver</span>
+<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
+<span class="c1"># from selenium.webdriver.common.by import By</span>
+<span class="c1"># from selenium.webdriver.support import expected_conditions as EC</span>
+
+<span class="c1"># driver = webdriver.Chrome()</span>
+
+<span class="c1"># driver.get(&quot;https://www.airbnb.com/&quot;)</span>
+
+<span class="c1"># wait = WebDriverWait(driver, 10)</span>
+<span class="c1"># element = wait.until(EC.element_to_be_clickable((By.XPATH, &quot;//button[@data-testid=&#39;structured-search-input-search-button&#39;]&quot;)))</span>
+
+<span class="c1"># driver.find_element(By.XPATH, &quot;//button[@data-testid=&#39;structured-search-input-search-button&#39;]&quot;).click()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mit dieser zweiten Version des expliziten Wartens kann auch auf eine Reihe anderer Ereignisse gewartet werden. Eine ausführliche Erläuterung dazu findet ihr <a class="reference external" href="https://selenium-python.readthedocs.io/waits.html">hier</a>, und eine Liste aller Ereignisse, auf die gewartet werden kann sowie der entsprechenden Methoden findet ihr <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html">hier</a>.</p>
+<p>Explizite und implizite Wartestrategien sollten allerdings nicht vermischt werden! Laut Selenium-Dokumentationsseiten kann dies zu unerwartetem Verhalten führen:</p>
+<blockquote>
+<div><p>Warning: Do not mix implicit and explicit waits. Doing so can cause unpredictable wait times. For example, setting an implicit wait of 10 seconds and an explicit wait of 15 seconds could cause a timeout to occur after 20 seconds.</p>
+</div></blockquote>
+<p>Quelle: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/waits/">Selenium 2024</a></p>
+<p>Mehr zu impliziten und expliziten Wartestrategien in Selenium könnt ihr <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/waits/">hier</a> nachlesen.</p>
+</section>
 <section id="user-agent-im-http-header-bearbeiten">
-<h2>User Agent im HTTP-Header bearbeiten<a class="headerlink" href="#user-agent-im-http-header-bearbeiten" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.4.2. </span>User Agent im HTTP-Header bearbeiten<a class="headerlink" href="#user-agent-im-http-header-bearbeiten" title="Link to this heading">#</a></h2>
 <p>In manchen Fällen kann es notwendig sein, den Header der HTTP-Anfrage zu bearbeiten. Standardmäßig wird in einer HTTP-Anfrage über das requests-Paket als User Agent das Python requests Paket angegeben:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -438,7 +517,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Macht es einen Unterschied, ob im Header als User Agent python-requests/2.29.0 oder Mozilla/5.0 (bzw. ein anderer Brpwser) steht? Ja, denn mit dem Default-Header erkennt der Server, dass die Anfrage von einer Webscraping Bibliothek ausgeht.
+<p>Macht es einen Unterschied, ob im Header als User Agent python-requests/2.29.0 oder Mozilla/5.0 (bzw. ein anderer Browser) steht? Ja, denn mit dem Default-Header erkennt der Server, dass die Anfrage von einer Webscraping Bibliothek ausgeht.
 Manche Websitebetreiber:innen behandeln solche Anfragen anders und schränken den Zugriff für solche Anfragen ein.
 Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzungsbedingungen schließen so eine Art der “Vortäuschung” explizit aus.</p>
 <div class="cell docutils container">
@@ -461,43 +540,20 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 </div>
 </div>
 </section>
-<section id="selenium-waits-statt-time-sleep">
-<h2>Selenium Waits statt time.sleep()<a class="headerlink" href="#selenium-waits-statt-time-sleep" title="Link to this heading">#</a></h2>
-<p>Bisher haben wir immer die Funktion sleep() aus dem Modul time verwendet, um beim Web Scrapen mithilfe von Selenium Wartezeiten einzufügen, die sicherstellen, dass der automatisierte Browser genug Zeit zum Laden der gesuchten Inhalte hat. Das Selenium webdriver-Modul bietet aber eigene Methoden, die ermöglichen, nicht nur eine feste Anzahl an Sekunden zu warten, sondern beim Warten verschiedene Strategien anzuwenden. Zum Beispiel ermöglicht die Methode <code class="docutils literal notranslate"><span class="pre">driver.implicitly_wait(x)</span></code>, x Sekunden lang auf ein konkretes gesuchtes Element zu warten. Am Beispiel der Suche nach den Airbnb-Ortsangaben sieht die Verwendung von implicitly_wait() anstelle von time.sleep() so aus:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium import webdriver</span>
-<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
-<span class="c1"># from selenium.webdriver.common.by import By</span>
-<span class="c1"># import time</span>
-
-<span class="c1"># driver = webdriver.Chrome()</span>
-<span class="c1"># driver.get(&quot;https://www.airbnb.com/&quot;)</span>
-<span class="c1"># driver.implicitly_wait(10) # implicit wait statt time.sleep()</span>
-<span class="c1"># unterkuenfte = driver.find_elements(By.CLASS_NAME, &quot;t1jojoys.dir.dir-ltr&quot;)</span>
-<span class="c1"># unterkuenfte_orte = [unterkunft.text for unterkunft in unterkuenfte]</span>
-<span class="c1"># unterkuenfte_orte</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die Verwendung von driver.implicitly_wait(x) ist effizienter als die Variante mit time.sleep(x), denn während die Ausführung des Skripts mit time.sleep(x) immer um genau x Sekunden verzögert wird, wird mit implicitly_wait(x) maximal x Sekunden gewartet. In vielen Fällen ist die Wartezeit aber kürzer, weil das gesuchte Element schon früher, vor Ablauf der x Sekunden geladen ist.</p>
-<p>Zusätzlich gibt es in Selenium die Möglichkeit, das Verhalten des Browsers beim Laden von Inhalten im Gesamten zu steuern, und zwar mithilfe der Option pageLoadStrategy. Mehr dazu findet ihr in den <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/drivers/options/#pageloadstrategy">Selenium-Dokumentationsseiten</a>.</p>
-</section>
 <section id="suche-nach-verschiedenen-kindelementen-mit-derselben-klasse">
-<h2>Suche nach verschiedenen Kindelementen mit derselben Klasse<a class="headerlink" href="#suche-nach-verschiedenen-kindelementen-mit-derselben-klasse" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.4.3. </span>Suche nach verschiedenen Kindelementen mit derselben Klasse<a class="headerlink" href="#suche-nach-verschiedenen-kindelementen-mit-derselben-klasse" title="Link to this heading">#</a></h2>
 <p>Manchmal ist es schwierig, ein Element eindeutig mithilfe von driver.find_elements(By.CLASS_NAME,…) zu finden. Ein Beispiel ist wieder die Airbnb-Seite: das Div-Element, das die Metadaten zu den gefunden Unterkünften enthält, hat zwei Kindelemente mit derselben Klasse: “fb4nyux s1cjsi4j dir dir-ltr”. Die Suche mithilfe der Funktion driver.find_elements(By.CLASS_NAME,”fb4nyux.s1cjsi4j.dir.dir-ltr”) würde beide Div-Elemente liefern. Aber was macht man, wenn nur eins der beiden Elemente gesucht ist, oder wenn die Elemente separat gefunden werden sollen, beispielsweise, weil sie in zwei verschiedenen Spalten eines Dataframes übertragen werden sollen?</p>
-<figure class="align-default" id="id218">
+<figure class="align-default" id="id219">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/airbnb_beispiel_div.png"><img alt="Beispiel Airbnb" class="bg-transparent" src="../../../_images/airbnb_beispiel_div.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispiel: Kindelemente mit derselben Klasse</span><a class="headerlink" href="#id218" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.18 </span><span class="caption-text">Beispiel: Kindelemente mit derselben Klasse</span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In diesem Fall empfiehlt es sich, mithilfe von XPath nach CSS-Selektoren zu suchen. Wie das geht, ist hier beschrieben: <a class="reference external" href="https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html">https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html</a>. Der XPath-Ausdruck muss in diesem Fall selbst geschrieben werden: Der Ausdruck “//div[&#64;class=’g1qv1ctd c1v0rf5q dir dir-ltr’]/div[2]” beschreibt den Pfad zum zweiten div-Element, das ein Kindelement eines div-Elements mit dem Attribut class=’g1qv1ctd c1v0rf5q dir dir-ltr’. Ihr könnt überprüfen, ob ein XPath-Ausdruck das gesuchte Element findet, indem ihr in den Entwicklertools mit Ctrl bzw. Cmd + F die Suche öffnet und den Xpath-Ausdruck einfügt:</p>
-<figure class="align-default" id="id219">
+<figure class="align-default" id="id220">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/airbnb_xpath_suche.png"><img alt="Beispiel Airbnb" class="bg-transparent" src="../../../_images/airbnb_xpath_suche.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispiel: Suche nach XPath-Ausdruck in den Browser-Entwicklertools</span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.19 </span><span class="caption-text">Beispiel: Suche nach XPath-Ausdruck in den Browser-Entwicklertools</span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -528,7 +584,7 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 </div>
 </section>
 <section id="dateinamen-vor-dem-speichern-bearbeiten">
-<h2>Dateinamen vor dem Speichern bearbeiten<a class="headerlink" href="#dateinamen-vor-dem-speichern-bearbeiten" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.4.4. </span>Dateinamen vor dem Speichern bearbeiten<a class="headerlink" href="#dateinamen-vor-dem-speichern-bearbeiten" title="Link to this heading">#</a></h2>
 <p>Bisher haben wir Metadaten immer genauso, wie sie sind, als Dateinamen verwendet. Das ist aber nicht immer möglich oder gewünscht. Dateinamen können mithilfe von sogenannten regulären Ausdrücken und der Funktion sub() aus dem Paket re bearbeitet werden. Reguläre Ausdrücke (engl. regular expressions) sind eine eigene Sprache zur Suche nach Mustern in Strings. Damit kann sowohl nach einfachen Wörtern, Zeichen oder Zahlen gesucht werden als auch nach komplexen Mustern. Die Funktion sub() tauscht alle Sequenzen in einem String, die einem gesuchten Muster entsprechen, gegen einen neuen String aus. Die Funktion nimmt einen regulären Ausdruck, einen String, gegen den die gefundenen Sequenzen ausgetauscht werden sollen, und einen String, in dem gesucht werden soll, als Argumente an. Ein Beispiel:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -549,21 +605,21 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 </div>
 </section>
 <section id="fehler-ausnahmen-und-ausnahmebehandlung">
-<h2>Fehler, Ausnahmen und Ausnahmebehandlung<a class="headerlink" href="#fehler-ausnahmen-und-ausnahmebehandlung" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.4.5. </span>Fehler, Ausnahmen und Ausnahmebehandlung<a class="headerlink" href="#fehler-ausnahmen-und-ausnahmebehandlung" title="Link to this heading">#</a></h2>
 <p>In Python gibt es verschiedene Arten von Fehlern: zum einen Syntaxfehler (syntax errors), die verhindern, dass Code überhaupt erst ausgeführt werden kann, und zum anderen Ausnahmen (exceptions), also Fehler, die dazu führen, dass die Ausführung des Codes abgebrochen und eine Fehlermeldung angezeigt wird. Bisher haben wir immer umgangssprachlich gesagt, dass eine Fehlermeldung “angezeigt” wird. Ganz korrekt würde man aber eigentlich sagen, dass eine Ausnahme “geworfen” wird. Eine Liste aller Ausnahmen, die beim Ausfürhen von Python-Code geworfen werden können, findet sich hier: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">https://docs.python.org/3/library/exceptions.html#bltin-exceptions</a>.</p>
 <p>Grundsätzlich sollte euer Code vorbeugend mit möglichen Fehlerquellen umgehen: Wenn ihr zum Beispiel Dateien über eine API bezieht, solltet ihr bei der Wahl des Dateinamens bedenken, dass Dateinamen zum Beispiel nicht unendlich lang sein dürfen, oder dass Schrägstriche in den Dateinamen beim Schreiben der Dateien fälschlich als Dateipfade interpretiert werden können. In beiden Fällen würde jeweils eine Ausnahme geworfen werden und die Ausführung des Codes würde abbrechen. Ihr solltet euren Code also immer vorausschauend schreiben. Im Beispiel mit den Dateinamen könnten vorausschauend Metadaten für die Dateinamen ausgewählt werden, welche immer dieselbe Form haben und somit immer gültig sind, oder indem die Dateinamen vor dem Schreiben der Dateien vereinheitlicht werden. Aber nicht immer kann im Voraus abgeschätzt werden, welche Art von ungültigen Werten auftreten können. Für diesen Fall gibt es in Python spezielle Anweisungen, die erlauben, bestimmte Ausnahmen gezielt abzufangen und so ein vorzeitiges Beenden des Programms zu verhindern: sogenannte try/exept-Anweisungen.</p>
 <p>Try/except-Anweisungen haben die allgemeine Form:</p>
-<figure class="align-default" id="id220">
+<figure class="align-default" id="id221">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/try_except.png"><img alt="Try/Except-Anweisungen" class="bg-transparent" src="../../../_images/try_except.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Try/Except-Anweisungen in der allgemeinen Form</span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.20 </span><span class="caption-text">Try/Except-Anweisungen in der allgemeinen Form</span><a class="headerlink" href="#id221" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Der Code im except-Zweig wird dabei nur dann ausgeführt, wenn beim Ausführen des Codes im try-Zweig eine Ausnahme geworfen wird. Diese einfache try/except-Anweisung kann um weitere Zweige ergänzt werden. Das bereits zuvor in diesem Kurs zitierte Handbuch von Johannes Ernesti und Peter Kaiser enthält eine Überblicksdarstellung einer komplexen try/except-Anweisung mit mehreren Zweigen, inklusive Erläuterung:</p>
-<figure class="align-default" id="id221">
+<figure class="align-default" id="id222">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/try_except_explained.png"><img alt="Try/Except-Anweisungen" class="bg-transparent" src="../../../_images/try_except_explained.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Schaubild: try/except-Anweisung mit mehreren Zweigen. Quelle: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">Ernesti und Kaiser (2020)</a>.</span><a class="headerlink" href="#id221" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.21 </span><span class="caption-text">Schaubild: try/except-Anweisung mit mehreren Zweigen. Quelle: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">Ernesti und Kaiser (2020)</a>.</span><a class="headerlink" href="#id222" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Beispiele und weitere Erläuterungen zum Thema Ausnahmebehandlung findet ihr im erwähnten <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">Handbuch von Ernesti und Kaiser</a>, in <a class="reference external" href="https://realpython.com/python-exceptions/">diesem Beitrag von Said van de Klundert</a>, und natürlich in den offiziellen <a class="reference external" href="https://docs.python.org/3/tutorial/errors.html">Python-Dokumentationsseiten</a>.</p>
@@ -573,46 +629,47 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 </div>
 </section>
 <section id="effizienter-scrapen-mit-sitemaps">
-<h2>Effizienter Scrapen mit Sitemaps<a class="headerlink" href="#effizienter-scrapen-mit-sitemaps" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.4.6. </span>Effizienter Scrapen mit Sitemaps<a class="headerlink" href="#effizienter-scrapen-mit-sitemaps" title="Link to this heading">#</a></h2>
 <p>Eine Sitemap ist eine strukturierte Übersicht über alle Unterseiten einer Website. Webseitenbetreiber:innen stellen Sitemaps zur Verfügung, damit beim Crawlen der Seite durch Web Crawler verschiedener Suchmaschinen alle Unterseiten einfach gefunden werden können. Je nach gesuchten Daten können Sitemaps auch beim Web Scraping eingesetzt werden, um effizienter eine Liste von zu scrapenden Unterseiten zusammenzustellen. Sitemaps werden meist im XML-Format bereitgestellt, das heißt, dass zur Suche in solchen Sitemaps ebenfalls XPath verwendet werden kann. Sitemaps sind oft unter der Adresse <a class="reference external" href="http://www.beispielwebseite.com/sitemap.xml">www.beispielwebseite.com/sitemap.xml</a> erreichbar, aber anders als bei der robots.txt gibt es noch einige andere typische Adressen. Eine Übersicht über solche typischen Sitemap-Adressen findet ihr <a class="reference external" href="https://seocrawl.com/en/how-to-find-a-sitemap/">hier</a>. Manche Webseitenbetreiber:innen verlinken die Sitemap zudem in der robots.txt. Dies ist zum Beispiel bei der Website <a class="reference external" href="http://realpython.com">realpython.com</a> der Fall. Die Sitemap ist hier unter <a class="reference external" href="https://realpython.com/robots.txt">https://realpython.com/robots.txt</a> verlinkt und hat die Adresse <a class="reference external" href="https://realpython.com/sitemap.xml">https://realpython.com/sitemap.xml</a>. Die Sitemap selbst sieht so aus:</p>
-<figure class="align-default" id="id222">
+<figure class="align-default" id="id223">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/realpython_sitemap.png"><img alt="Realpython Sitemap" class="bg-transparent" src="../../../_images/realpython_sitemap.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Sitemap der Website <a class="reference external" href="http://realpython.com">realpython.com</a></span><a class="headerlink" href="#id222" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.22 </span><span class="caption-text">Sitemap der Website <a class="reference external" href="http://realpython.com">realpython.com</a></span><a class="headerlink" href="#id223" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="sicher-scrapen">
-<h2>Sicher Scrapen<a class="headerlink" href="#sicher-scrapen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.4.7. </span>Sicher Scrapen<a class="headerlink" href="#sicher-scrapen" title="Link to this heading">#</a></h2>
 <p>Die Anforderungen an Sicherheit und Anonymität können sich von Web Scraping Projekt zu Web Scraping Projekt unterscheiden. Ein paar Dinge sind aber allgemein empfehlenswert: Achtet nach Möglichkeit darauf, dass in eurer Abfrage-URL https statt http steht. Falls ihr euch auf einer Webseite anmelden müsst, um Inhalte scrapen zu können, solltet ihr immer ein Profil speziell für diesen Zweck erstellen. Gebt niemals sensible Passwörter in den automatisierten Chrome Browser ein. Seid außerdem vorsichtig, wenn ihr verschiedene Tipps online lest: Bevor ihr einfach komplexen Code von stackoverflow oder einem ähnlichen Forum kopiert, recherchiert, ob es nicht vielleicht einen einfacheren Weg gibt, um euer Problem zu lösen. Denn wenn ihr gar nicht versteht, was ihr gerade macht, könnt ihr auch nicht abschätzen, welche Risiken das kopierte Vorgehen mit sich bringt, und welche Sicherheitsvorkehrungen die andere Person vielleicht vorher getroffen hat – das ist ja eigentlich selbsterklärend, aber im Eifer des Gefechts vergisst man das gerne. Es empfiehlt sich außerdem, beim Web Scrapen ganz allgemein einen Useraccount auf eurem Computer zu verwenden, der keine Administratorrechte hat. Falls doch etwas schief gehen sollte, ist dadurch der Schaden zumindest begrenzt. Je nach Web Scraping Projekt kann es empfehlenswert sein, die eigene IP Adresse mithilfe von VPN oder Proxy zu verstecken. Allerdings ist das ethisch und rechtlich eine schwierige Sache: Wir haben beispielsweise bereits besprochen, dass man sich strafbar machen kann, wenn man beim Web Scraping blockiert wird und anstatt seinen Web Scraper robots.txt-konform umzuschreiben einfach seine IP-Adresse versteckt. Hier ist also Vorsicht und Eigenrecherche geboten.</p>
 </section>
 <section id="don-t-do-this">
-<h2>Don’t do this…<a class="headerlink" href="#don-t-do-this" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.4.8. </span>Don’t do this…<a class="headerlink" href="#don-t-do-this" title="Link to this heading">#</a></h2>
 <p>Zum Schluss möchte ich euch noch eine kleine Empfehlung mit auf den Weg geben: Nicht immer ist Web Scraping wirklich die schnellste und effizienteste Lösung für euer Problem. Es macht wahrscheinlich mehr Spaß, Code zu schreiben, als direkt die Aufgabe anzugehen, aber wenn ihr unbedingt eine Deadline einhalten müsst, dann ist es natürlich auch okay, ein Web Scraping Projekt abzubrechen und eure Aufgabe einfach manuell zu lösen. Also in diesem Sinne:</p>
-<figure class="align-default" id="id223">
+<figure class="align-default" id="id224">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/automation_xkcd.png"><img alt="Comic zur Warnung" class="bg-transparent" src="../../../_images/automation_xkcd.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Don’t do this… Quelle: <a class="reference external" href="https://www.scrapingbee.com/blog/selenium-python/">Kevin Sahin 2022</a></span><a class="headerlink" href="#id223" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.23 </span><span class="caption-text">Don’t do this… Quelle: <a class="reference external" href="https://www.scrapingbee.com/blog/selenium-python/">Kevin Sahin 2022</a></span><a class="headerlink" href="#id224" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.4.9. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
-<li id="id181"><p>Peter Ernesti, Johannes und Kaiser. Python 3: Ausnahmebehandlung. 2020. URL: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">https://openbook.rheinwerk-verlag.de/python/22_001.html</a>.</p></li>
-<li id="id185"><p>Ognian Mikov. How to Find the Sitemap of a Website. 2021. URL: <a class="reference external" href="https://seocrawl.com/en/how-to-find-a-sitemap/">https://seocrawl.com/en/how-to-find-a-sitemap/</a>.</p></li>
+<li id="id182"><p>Peter Ernesti, Johannes und Kaiser. Python 3: Ausnahmebehandlung. 2020. URL: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">https://openbook.rheinwerk-verlag.de/python/22_001.html</a>.</p></li>
+<li id="id186"><p>Ognian Mikov. How to Find the Sitemap of a Website. 2021. URL: <a class="reference external" href="https://seocrawl.com/en/how-to-find-a-sitemap/">https://seocrawl.com/en/how-to-find-a-sitemap/</a>.</p></li>
 <li id="id173"><p>Ryan Mitchell. <em>Webscraping with Python. Collecting More Data from the Modern Web</em>. O'Reilley, Farnham et al., 2018.</p></li>
-<li id="id184"><p>Jonathan Mondaut. Take Advantage of Sitemaps for Efficient Web Scraping: A Comprehensive Guide. 2023. URL: <a class="reference external" href="https://medium.com/&#64;jonathanmondaut/take-advantage-of-sitemaps-for-efficient-web-scraping-a-comprehensive-guide-c35c6efe52d3">https://medium.com/&#64;jonathanmondaut/take-advantage-of-sitemaps-for-efficient-web-scraping-a-comprehensive-guide-c35c6efe52d3</a>.</p></li>
+<li id="id185"><p>Jonathan Mondaut. Take Advantage of Sitemaps for Efficient Web Scraping: A Comprehensive Guide. 2023. URL: <a class="reference external" href="https://medium.com/&#64;jonathanmondaut/take-advantage-of-sitemaps-for-efficient-web-scraping-a-comprehensive-guide-c35c6efe52d3">https://medium.com/&#64;jonathanmondaut/take-advantage-of-sitemaps-for-efficient-web-scraping-a-comprehensive-guide-c35c6efe52d3</a>.</p></li>
 <li id="id175"><p>Kenneth Reitz. Requests Documentation: Errors and Exceptions. 2023. URL: <a class="reference external" href="https://requests.readthedocs.io/en/latest/user/quickstart/?highlight=cookie#errors-and-exceptions">https://requests.readthedocs.io/en/latest/user/quickstart/?highlight=cookie#errors-and-exceptions</a>.</p></li>
 <li id="id176"><p>Kevin Sahin. Web Scraping Using Selenium and Python. 2022. URL: <a class="reference external" href="https://www.scrapingbee.com/blog/selenium-python/">https://www.scrapingbee.com/blog/selenium-python/</a>.</p></li>
-<li id="id182"><p>Python 3.11.3 Documentation. Built-in Exceptions. URL: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">https://docs.python.org/3/library/exceptions.html#bltin-exceptions</a>.</p></li>
-<li id="id180"><p>Python 3.11.3 Documentation. Compound Statements: The Try Statement. URL: <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#the-try-statement">https://docs.python.org/3/reference/compound_stmts.html#the-try-statement</a>.</p></li>
-<li id="id179"><p>Python 3.11.3 Documentation. Errors and Exceptions. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/errors.html">https://docs.python.org/3/tutorial/errors.html</a>.</p></li>
-<li id="id183"><p>Said van de Klundert. Python Exceptions: An Introduction. URL: <a class="reference external" href="https://realpython.com/python-exceptions/">https://realpython.com/python-exceptions/</a>.</p></li>
+<li id="id178"><p>Baiju Muthukadan. Selenium with Python. Waits. 2024. URL: <a class="reference external" href="https://selenium-python.readthedocs.io/waits.html">https://selenium-python.readthedocs.io/waits.html</a>.</p></li>
+<li id="id183"><p>Python 3.11.3 Documentation. Built-in Exceptions. URL: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">https://docs.python.org/3/library/exceptions.html#bltin-exceptions</a>.</p></li>
+<li id="id181"><p>Python 3.11.3 Documentation. Compound Statements: The Try Statement. URL: <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#the-try-statement">https://docs.python.org/3/reference/compound_stmts.html#the-try-statement</a>.</p></li>
+<li id="id180"><p>Python 3.11.3 Documentation. Errors and Exceptions. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/errors.html">https://docs.python.org/3/tutorial/errors.html</a>.</p></li>
+<li id="id184"><p>Said van de Klundert. Python Exceptions: An Introduction. URL: <a class="reference external" href="https://realpython.com/python-exceptions/">https://realpython.com/python-exceptions/</a>.</p></li>
 <li id="id174"><p>Selenium 4 Documentation. Browser Options: pageLoadStrategy. 2022. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/drivers/options/#pageloadstrategy">https://www.selenium.dev/documentation/webdriver/drivers/options/#pageloadstrategy</a>.</p></li>
 <li id="id177"><p>Selenium 4.10 Documentation. Waits. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/waits/">https://www.selenium.dev/documentation/webdriver/waits/</a>.</p></li>
-<li id="id178"><p>W3Docs. How to Find an Element by CSS Class Name with XPath. 2023. URL: <a class="reference external" href="https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html">https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html</a>.</p></li>
+<li id="id179"><p>W3Docs. How to Find an Element by CSS Class Name with XPath. 2023. URL: <a class="reference external" href="https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html">https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html</a>.</p></li>
 </ol>
 </div>
 </section>
@@ -648,6 +705,15 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="03_apis_tokens.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10.3. </span>Authentifizierung, Autorisierung und APIs</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -664,15 +730,15 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-agent-im-http-header-bearbeiten">User Agent im HTTP-Header bearbeiten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selenium-waits-statt-time-sleep">Selenium Waits statt time.sleep()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-nach-verschiedenen-kindelementen-mit-derselben-klasse">Suche nach verschiedenen Kindelementen mit derselben Klasse</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dateinamen-vor-dem-speichern-bearbeiten">Dateinamen vor dem Speichern bearbeiten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fehler-ausnahmen-und-ausnahmebehandlung">Fehler, Ausnahmen und Ausnahmebehandlung</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effizienter-scrapen-mit-sitemaps">Effizienter Scrapen mit Sitemaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sicher-scrapen">Sicher Scrapen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-do-this">Don’t do this…</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selenium-waits-statt-time-sleep">10.4.1. Selenium Waits statt time.sleep()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-agent-im-http-header-bearbeiten">10.4.2. User Agent im HTTP-Header bearbeiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-nach-verschiedenen-kindelementen-mit-derselben-klasse">10.4.3. Suche nach verschiedenen Kindelementen mit derselben Klasse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dateinamen-vor-dem-speichern-bearbeiten">10.4.4. Dateinamen vor dem Speichern bearbeiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fehler-ausnahmen-und-ausnahmebehandlung">10.4.5. Fehler, Ausnahmen und Ausnahmebehandlung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effizienter-scrapen-mit-sitemaps">10.4.6. Effizienter Scrapen mit Sitemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sicher-scrapen">10.4.7. Sicher Scrapen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-do-this">10.4.8. Don’t do this…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">10.4.9. Quellen</a></li>
 </ul>
   </nav></div>
 

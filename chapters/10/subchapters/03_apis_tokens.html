@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Authentifizierung, Autorisierung und APIs &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>10.3. Authentifizierung, Autorisierung und APIs &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="10.4. Weitere Tipps und Tricks" href="04_tipps_tricks.html" />
+    <link rel="prev" title="10.2. Sessions und Cookies" href="02_sessions_cookies.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +177,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -232,6 +232,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/02_einstieg_selenium.html">9.2. Einstieg Selenium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../10_intro.html">10. Tipps und Tricks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_fetch_xhr.html">10.1. Selenium ist kein Hammer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_sessions_cookies.html">10.2. Sessions und Cookies</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.3. Authentifizierung, Autorisierung und APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_tipps_tricks.html">10.4. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
 </ul>
@@ -397,11 +404,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-vs-token-basierte-authentifizierung">Session- vs. Token-basierte Authentifizierung</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oauth-2-0-zugriff-mit-access-tokens">OAuth 2.0: Zugriff mit Access Tokens</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentifizierung-mit-api-schlussel-key">Authentifizierung mit API-Schlüssel (Key)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-authentifizierungsmethoden">Weitere Authentifizierungsmethoden</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-vs-token-basierte-authentifizierung">10.3.1. Session- vs. Token-basierte Authentifizierung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oauth-2-0-zugriff-mit-access-tokens">10.3.2. OAuth 2.0: Zugriff mit Access Tokens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentifizierung-mit-api-schlussel-key">10.3.3. Authentifizierung mit API-Schlüssel (Key)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-authentifizierungsmethoden">10.3.4. Weitere Authentifizierungsmethoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">10.3.5. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -414,36 +421,36 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="authentifizierung-autorisierung-und-apis">
-<h1>Authentifizierung, Autorisierung und APIs<a class="headerlink" href="#authentifizierung-autorisierung-und-apis" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">10.3. </span>Authentifizierung, Autorisierung und APIs<a class="headerlink" href="#authentifizierung-autorisierung-und-apis" title="Link to this heading">#</a></h1>
 <p>Neben der Session-basierten Authentifizierung, die ich im Abschnitt “Sessions und Cookies” erläutert habe, verwenden viele Webseiten auch andere Authentifizierungs- und Autorisierungsmethoden, um den Zugang zu Ressourcen zu kontrollieren, insbesondere, wenn die Ressourcen über eine API bereitgestellt werden, aber nicht allen zugänglich sein sollen. <strong>Authentifizierung</strong> beschreibt dabei das Verfahren, mit dem überprüft wird, ob ein Client wirklich der ist, der er vorgibt zu sein, und <strong>Autorisierung</strong> beschreibt die anschließende Erteilung von Zugangsrechten zu Ressourcen an den Client.</p>
 <section id="session-vs-token-basierte-authentifizierung">
-<h2>Session- vs. Token-basierte Authentifizierung<a class="headerlink" href="#session-vs-token-basierte-authentifizierung" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.3.1. </span>Session- vs. Token-basierte Authentifizierung<a class="headerlink" href="#session-vs-token-basierte-authentifizierung" title="Link to this heading">#</a></h2>
 <p>Wir betrachten zunächst allgemein die sogenannte “Token-basierte Authentifizierung”. Damit sich ein Client gegenüber einem Server authentifizieren kann, muss er irgendwie eindeutig identifizierbar sein. Eine Möglichkeit, wie ein Server einen Client über mehrere Anfragen hinweg wiedererkennen kann, sind Sessions. Jedoch haben wir gesehen, dass die Session IDs aller Clients bei einem Session-basierten Authentifizierungsvorgang auf dem Server gespeichert werden müssen. Wenn verschiedene Clients unterschiedliche Zugriffsrechte haben, muss auch diese Information auf dem Server gespeichert sein. Dies hat den Nachteil, dass bei vielen Clients viel Speicherplatz notwendig wird. Eine in dieser Hinsicht effizientere Methode, Clients zu identifizieren und deren Zugriffsrechte zu verwalten, ist die Verwendung von Tokens. Tokens sind im Grunde Zeichenfolgen, welche die Identität oder Berechtigungen von Clients repräsentieren.</p>
 <p>Die folgenden beiden Abbildungen illustrieren vereinfacht den Unterschied zwischen einer Session- und einer Token-basierten Authentifizierung:</p>
-<figure class="align-default" id="id218">
+<figure class="align-default" id="id219">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/sessions-diagram.png"><img alt="Session-Based Authentication" class="bg-transparent" src="../../../_images/sessions-diagram.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Schaubild Session-basierte Authentifizierung. Quelle: <a class="reference external" href="https://www.criipto.com/blog/session-token-based-authentication">Natalia Moskaleva 2023</a>.</span><a class="headerlink" href="#id218" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.14 </span><span class="caption-text">Schaubild Session-basierte Authentifizierung. Quelle: <a class="reference external" href="https://www.criipto.com/blog/session-token-based-authentication">Natalia Moskaleva 2023</a>.</span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id219">
+<figure class="align-default" id="id220">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/tokens-diagram.png"><img alt="Token-Based Authentication" class="bg-transparent" src="../../../_images/tokens-diagram.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Schaubild Token-basierte Authentifizierung. Quelle: <a class="reference external" href="https://www.criipto.com/blog/session-token-based-authentication">Natalia Moskaleva 2023</a>.</span><a class="headerlink" href="#id219" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.15 </span><span class="caption-text">Schaubild Token-basierte Authentifizierung. Quelle: <a class="reference external" href="https://www.criipto.com/blog/session-token-based-authentication">Natalia Moskaleva 2023</a>.</span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Aus den beiden Schaubildern lässt sich der grundsätzliche Unterschied zwischen Session- und Token-basierten Authentifizierungsmethoden ablesen. Die Session-basiete Authentifizierung zielt darauf ab, das zustandslose HTTP-Protokoll (siehe dazu <a class="reference external" href="https://lipogg.github.io/webscraping-mit-python/chapters/06/subchapters/04_http.html#http">Kapitel 6.4</a>) mithilfe einer Session um einen Zustand zu ergänzen während bei der Token-basierten Authentitfizierung die Kommunikation weiterhin zustandslos abläuft: Das Zugangstoken muss bei jeder Anfrage erneut angegeben werden.</p>
 <p>In der Praxis ist der Zugriff auf Ressourcen mithilfe von Zugriffstokens jedoch etwas komplizierter und beinhaltet neben der eigentlichen Authentifizierung auch eine Autorisierung des Clients, der die Anfrage stellt, also eine Erteilung von Zugriffsrechten auf bestimmte Ressourcen. Wie genau die Verwaltung der Zugriffsrechte erfolgt, hängt von dem spezifischen Framework oder Standard ab, der zur Implementierung des Authentifizierungs- bzw. Autorisierungsworkflows verwendet wird. Innerhalb eines Standards gibt es zudem für verschiedene Zwecke verschiedene Workflows: zum Beispiel kann es einen Workflow geben, der für die Mensch-Maschine Kommunikation vorgesehen ist (ein:e User:in möchte sich mit den Zugangsdaten von sozialem Netzwerk X in einer anderen Anwendung Y anmelden), und einen anderen Workflow, der für eine Maschine-zu-Maschine Kommunikation entworfen wurde (das ist unser Fall: Python requests wird verwendet, um Ressourcen von einem Server anzufragen).</p>
 </section>
 <section id="oauth-2-0-zugriff-mit-access-tokens">
-<h2>OAuth 2.0: Zugriff mit Access Tokens<a class="headerlink" href="#oauth-2-0-zugriff-mit-access-tokens" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.3.2. </span>OAuth 2.0: Zugriff mit Access Tokens<a class="headerlink" href="#oauth-2-0-zugriff-mit-access-tokens" title="Link to this heading">#</a></h2>
 <p>Ein zur Verwaltung von Zugriffsrechten auf APIs viel genutzter Standard ist <strong>OAuth 2.0</strong>. OAuth 2.0 steht für “Open Authorization” und ist, einfach formuliert, eine Sammlung von Regeln und Verfahren, die festlegen, wie ein Client gegenüber einem Server eine erfolgte Authentifizierung nachweisen kann, um über eine Schnittstelle Zugriff auf bestimmte Ressourcen zu erhalten (Autorisierung). Die unterschiedlichen Workflows, wie der Client für verschiedene Zwecke Zugriffsrechte erhalten kann, werden im Kontext von Oauth 2.0 “<strong>Grants</strong>” genannt. So gibt es beispielsweise einen “Authorization Code Grant”, der für die Mensch-Maschine-Kommunikation vorgesehen ist (z.B. beim Login eine:r User:in mit den Zugangsdaten eines sozialen Netzwerks X in einer anderen Anwendung Y), und es gibt den für uns wichtigen “Client Credentials Grant Type”, welcher für die nicht-interaktive Maschine-zu-Maschine-Kommunikation verwendet wird (mehr dazu könnt ihr <a class="reference external" href="https://auth0.com/intro-to-iam/what-is-oauth-2">hier</a> nachlesen).</p>
 <p>Bei einem Zugriffsvorgang mit OAuth 2.0 können unabhängig vom spezifischen Workflow (Grant) grundsätzlich vier Parteien beteiligt sein: Ein <strong>Resource Owner</strong>, ein <strong>Client</strong>, ein <strong>Authorization Server</strong> und ein <strong>Resource Server</strong>. Der Authorization Server hat zwei Endpunkte: Einen Autorisierungsendpunkt und einen Token-Endpunkt. Bei einem <strong>Authorization Code Workflow</strong> wäre der Resource Owner beispielsweise ein:e Nutzer:in des sozialen Netzwerks X. Der Client wäre die Anwendung Y, bei der sich die Nutzer:in mit dem Account aus dem sozialen Netzwerk X anmelden möchte. Damit die Anmeldung erfolgen kann, muss der Client (also die Anwendung Y) an den Autorisierungsendpunkt des Authorization Servers des sozialen Netzwerks eine Anfrage stellen, ob er auf Daten aus dem Account des Resource Owners zugreifen darf. Dies muss der Resource Owner interaktiv durch Eingabe der eigenen Zugangsdaten beim sozialen Netzwerk bestätigen, und erst dann erhält der Client vom Authorization Server des sozialen Netzwerks ein Access Token. Dieses Token kann der Client dann verwenden, um eine Anfrage an den Resource Server des sozialen Netzwerks zu stellen, auf dem die Daten des Resource Owners liegen. Da die Zugriffsrechte in dem Access Token klar definiert sind, erhält der Client vom Resource Server genau die Daten, für die der Resource Owner zuvor die Zugriffserlaubnis erteilt hat. <a class="reference external" href="https://youtu.be/CPbvxxslDTU?si=RcYepnb1WxWQNNe4">Dieses Video</a> erläutert leicht verständlich den Authorization Code Workflow.</p>
-<figure class="align-default" id="id220">
+<figure class="align-default" id="id221">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/oauth2_authorization_code_workflow.png"><img alt="Beispiel OAuth 2.0 Authorization Code Workflow" class="bg-transparent" src="../../../_images/oauth2_authorization_code_workflow.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">OAuth 2.0 Authorization Code Workflow: Beispiel Login. Adaptiert von <a class="reference external" href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow#how-authorization-code-flow-works">Okta, Inc 2024</a>
-.</span><a class="headerlink" href="#id220" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.16 </span><span class="caption-text">OAuth 2.0 Authorization Code Workflow: Beispiel Login. Adaptiert von <a class="reference external" href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow#how-authorization-code-flow-works">Okta, Inc 2024</a>
+.</span><a class="headerlink" href="#id221" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Bei einem <strong>Client Credentials Workflow</strong> wäre dagegen der Resource Owner sozusagen das soziale Netzwerk selbst, sodass die Erteilung der Zugriffsrechte keine interaktive Authentifizierung und Autorisierung durch eine:n Nutzer:in voraussetzt. Allerdings wird der Begriff “Resource Owner” im Kontext von einem Client Credentials Workflow nicht verwendet, und man kann sich den Workflow stattdessen als Kommunikation zwischen nur drei Parteien vorstellen: Der Client authentifiziert sich direkt beim Authorization Server, indem er eine Anfrage an den Token-Endpunkt des Authorization Servers des sozialen Netzwerks stellt. Dabei gibt der Client seine  “Credentials” an, also Authentifizierungsdaten, die er zuvor von den Betreiber:innen des sozialen Netzwerks selbst erhalten hat. Ist die Authentifizierung erfolgreich, erhält der Client genau wie beim Authorization Code Workflow vom Autorisierungserver ein Access Token und kann damit anschließend auf die Ressourcen auf dem Resource Server zugreifen.</p>
@@ -451,10 +458,10 @@ document.write(`
 <p>Die TikTok Research API kann laut Dokumentationsseiten von “independent and academic researchers who work for a non-profit institution” zur automatisierten Abfrage von Daten zu Videos, Kommentaren und Nutzer:innenprofilen genutzt werden (siehe <a class="reference external" href="https://developers.tiktok.com/doc/about-research-api/">TikTok 2024: About Research API</a>). Die Nutzung der API setzt eine erfolgreiche Bewerbung voraus. Erfolgreiche Bewerber:innen erhalten anschließend einen Client Key und ein Client Secret (das sind einfach Zeichenfolgen), mit denen sie Zugang zu den Video-, User-, und Comments-Endpunkten der API erhalten können (<a class="reference external" href="https://developers.tiktok.com/doc/research-api-get-started/">TikTok 2024: Getting Started</a>). Bevor eine Anfrage an diese Endpunkte gestellt werden kann, müssen jedoch zunächst Client Key und Client Secret gegen ein Access Token ausgetauscht werden. Dazu muss eine Anfrage an den Token-Endpunkt der API gestellt werden (<a class="reference external" href="https://developers.tiktok.com/doc/client-access-token-management">TikTok 2024: Client Access Token Management</a>). Dem Abschnitt “Endpoint” auf der Seite “Client Access Token Management” können wir entnehmen, dass dazu eine POST-Anfrage an den Token-Endpunkt des Autorisierungsservers gestellt werden muss, und die Abschnitte “Headers” und “Request Body Parameters” geben uns Auskunft darüber, welche Angaben wir beim Aufruf der requests post()-Funktion übergeben müssen. Der Abschnitt “Response struct” gibt an, welche Daten bei einer erfolgreichen Anfrage zurückgegeben werden: Die Antwort enthält demnach ein Access Token, das im Rahmen der TikTok API  “Bearer Tokens” genannt wird. Ein “Bearer Token” ist einfach eine Art von Access Token.</p>
 <p>Besonders interessant ist für uns die Information, dass bei der Anfrage als Grant Type “client_credentials” angegeben werden soll, denn das verrät uns, dass zur Autorisierung ein Client Credentials Workflow verwendet wird. Ich habe bereits erwähnt, dass anders als beim Authorization Code Workflow die Authentifizierung beim Client Credentials Workflow direkt auf dem Autorisierungsserver erfolgt. Ein Blick in die OAuth 2.0-Dokumentationsseiten verrät uns, dass bei der TikTok Research API dazu offenbar eine Authentifizierungsmethode angewandt wird, die sich Client Secret nennt (<a class="reference external" href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow">Okta, Inc 2024: Client Credentials Flow</a> und <a class="reference external" href="https://auth0.com/docs/secure/application-credentials">Application Credentials</a>).</p>
 <p>Der gesamte Workflow für die Nutzung der TikTok Research API sieht dann ungefähr so aus:</p>
-<figure class="align-default" id="id221">
+<figure class="align-default" id="id222">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/oauth2_client_credentials_workflow.png"><img alt="TikTok OAuth 2.0 Client Credentials Workflow" class="bg-transparent" src="../../../_images/oauth2_client_credentials_workflow.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">OAuth 2.0 Client Credentials Workflow: Beispiel TikTok Research API. Adaptiert von <a class="reference external" href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow#how-it-works">Okta, Inc 2024</a>.</span><a class="headerlink" href="#id221" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10.17 </span><span class="caption-text">OAuth 2.0 Client Credentials Workflow: Beispiel TikTok Research API. Adaptiert von <a class="reference external" href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow#how-it-works">Okta, Inc 2024</a>.</span><a class="headerlink" href="#id222" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Der folgende Code von Kursteilnehmerin Annabella Backes zeigt, wie dieser Workflow in Python reproduziert werden kann. Zunächst müssen die Client Credentials gegen ein Access Token getauscht werden, indem eine Anfrage an den Token-Endpunkt des Authorization Servers gestellt wird:</p>
@@ -513,7 +520,7 @@ document.write(`
 <p>Zuletzt noch ein Wort zum Begriff “Autorisierung”. Die Entwickler:innen des Standards betonen, dass OAuth 2.0 ein Autorisierungsprotokoll ist und explizit kein Authentifizierungsprotokoll. Das bedeutet, dass OAuth 2.0 hauptsächlich dazu entworfen wurde, Zugang zu Ressourcen zu gewähren, und nicht zur Überprüfung der Identität des Clients, der Zugang anfragt (<a class="reference external" href="https://auth0.com/intro-to-iam/what-is-oauth-2">Okta, Inc. 2024</a>). Zwar ist die Authentifizierung ein wesentlicher Bestandteil des Autorisierungsvorgangs: Zuerst wird mithilfe eines Authentifizierungsvorgangs die Identität des anfragenden Clients bestätigt, und erst danach wird eine Autorisierung erteilt und der Zugriff auf die angefragte Ressource gewährt. OAuth 2.0 beschreibt dabei jedoch nur, wie Clients die erfolgte Authentifizierung gegenüber einem Autorisierungsserver nachweisen können, um daraufhin Zugriffsberechtigungen auf Ressourcen zu erhalten, und nicht, wie die Authentifizierung selbst erfolgen soll. Der Client Credentials Workflow stellt also in dieser Hinsicht einen Spezialfall dar, weil kein Resource Owner die Autorisierung erteilt und die Zugriffsrechte des Clients bereits in den  Credentials, die ihm von den Betreiber:innen der API zugeteilt werden, geregelt sind. Wenn im Client Credentials Workflow die Credentials gegen ein Access Token ausgetauscht werden, erfolgt also eine einfache Authentifizierung des Clients und es muss keine manuelle Autorisierung durch den Resource Owner erfolgen wie bei dem Authorization Code Workflow.</p>
 </section>
 <section id="authentifizierung-mit-api-schlussel-key">
-<h2>Authentifizierung mit API-Schlüssel (Key)<a class="headerlink" href="#authentifizierung-mit-api-schlussel-key" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.3.3. </span>Authentifizierung mit API-Schlüssel (Key)<a class="headerlink" href="#authentifizierung-mit-api-schlussel-key" title="Link to this heading">#</a></h2>
 <p>Neben APIs, die ein Token-System zur Authentifizierung verwenden, gibt es auch APIs, die den Zugang zu Ressourcen über einen einfachen Zugangsschlüssel (Key) kontrollieren. Ein Beispiel ist die <a class="reference external" href="https://open-platform.theguardian.com/documentation/">API des Guardian</a>. Um die Schnittstelle zu verwenden, muss erst über ein Online-Formular ein Schlüssel beantragt werden. Mit dem Schlüssel kann dann ganz einfach eine Anfrage gestellt werden. Der Schlüssel kann der requests get()-Funktion bei der Anfrage zusammen mit weiteren Parametern als Dictionary übergeben werden. Ein <a class="reference external" href="https://gist.github.com/dannguyen/c9cb220093ee4c12b840">Beispiel von GitHub-User:in Dan Nguyen</a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -538,7 +545,7 @@ document.write(`
 <p>Was passiert in diesem Code? Zunächst wird der API Key aus einer Plaintext-Datei eingelesen und es werden überschüssige Leerzeichen entfernt. Danach wird die URL des content-Endpunkts der API einer Variable zugewiesen. Die beiden Variablen MY_API_KEY und API_ENDPOINT sind in diesem Beispiel groß geschrieben, weil es sich dabei um Konstanten handelt (siehe dazu meine Anmerkung im <a class="reference external" href="https://lipogg.github.io/webscraping-mit-python/chapters/08/subchapters/03_loc_api.html">Kapitel 8.3</a>). Die zusätzlichen Parameter im Dictionary my_params sind der <a class="reference external" href="https://open-platform.theguardian.com/documentation/search">Dokumentationsseite zum contents-Endpunkt</a> entnommen und können je nach Zielsetzung variieren.</p>
 </section>
 <section id="weitere-authentifizierungsmethoden">
-<h2>Weitere Authentifizierungsmethoden<a class="headerlink" href="#weitere-authentifizierungsmethoden" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.3.4. </span>Weitere Authentifizierungsmethoden<a class="headerlink" href="#weitere-authentifizierungsmethoden" title="Link to this heading">#</a></h2>
 <p>Neben dem Token-basierten Zugriff mit OAuth 2.0 und API-Keys gibt es noch weitere Methoden, die für den Zugriff auf REST APIs verwendet wird. Eine davon ist die sogenante Basic Authentication. Die Authentifizierung nach dem Basic Authentication-Verfahren ist von allen hier vorgestellten  Verfahren das wohl unkomplizierteste, denn für dieses Authentifizierungsverfahren kann einfach der Parameter auth der requests get()-Funktion verwendet werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -550,31 +557,31 @@ document.write(`
 <p>Siehe dazu auch die <a class="reference external" href="https://requests.readthedocs.io/en/latest/user/authentication/#basic-authentication">requests-Dokumentationsseiten</a>.</p>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.3.5. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
-<li id="id197"><p>Jiri Caga. Most Used Authentication Methods for API. 2023. URL: <a class="reference external" href="https://medium.com/&#64;jiri.caga/most-used-authentication-methods-for-api-96ce8666a015">https://medium.com/&#64;jiri.caga/most-used-authentication-methods-for-api-96ce8666a015</a>.</p></li>
-<li id="id188"><p>Graham Cox. API Authentication - Tokens vs Sessions. 2023. URL: <a class="reference external" href="https://www.baeldung.com/cs/tokens-vs-sessions">https://www.baeldung.com/cs/tokens-vs-sessions</a>.</p></li>
-<li id="id195"><p>Miguel Grinberg. API Authentication with Tokens. 2021. URL: <a class="reference external" href="https://blog.miguelgrinberg.com/post/api-authentication-with-tokens">https://blog.miguelgrinberg.com/post/api-authentication-with-tokens</a>.</p></li>
-<li id="id203"><p>Dick Hardt. OAuth 2.0 Specification. RFC 6749, section 4.4: Client Credentials Flow. 2024. URL: <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.4">https://datatracker.ietf.org/doc/html/rfc6749#section-4.4</a>.</p></li>
-<li id="id191"><p>Sherry Hsu. Session vs Token Based Authentication. 2018. URL: <a class="reference external" href="https://sherryhsu.medium.com/session-vs-token-based-authentication-11a6c5ac45e4">https://sherryhsu.medium.com/session-vs-token-based-authentication-11a6c5ac45e4</a>.</p></li>
-<li id="id192"><p>Brian Iyoha. What Really Is the Difference between Session and Token Based Authentication. 2019. URL: <a class="reference external" href="https://dev.to/thecodearcher/what-really-is-the-difference-between-session-and-token-based-authentication-2o39">https://dev.to/thecodearcher/what-really-is-the-difference-between-session-and-token-based-authentication-2o39</a>.</p></li>
-<li id="id187"><p>Damien Martin. Getting Data with OAuth. 2018. URL: <a class="reference external" href="https://kiwidamien.github.io/getting-data-with-oauth.html">https://kiwidamien.github.io/getting-data-with-oauth.html</a>.</p></li>
-<li id="id189"><p>Natalia Moskaleva. User Authentication: Comparing Session-based and Token-based Implementations. 2023. URL: <a class="reference external" href="https://www.criipto.com/blog/session-token-based-authentication">https://www.criipto.com/blog/session-token-based-authentication</a>.</p></li>
-<li id="id194"><p>Matt Mullen. Using the Python Requests Module to Work with REST APIs. 2021. URL: <a class="reference external" href="https://blog.networktocode.com/post/using-python-requests-with-rest-apis/">https://blog.networktocode.com/post/using-python-requests-with-rest-apis/</a>.</p></li>
-<li id="id190"><p>Saleha Muzammil. Session-based Authentication vs Token-based Authentication. 2024. URL: <a class="reference external" href="https://www.educative.io/answers/session-based-authentication-vs-token-based-authentication">https://www.educative.io/answers/session-based-authentication-vs-token-based-authentication</a>.</p></li>
-<li id="id186"><p>Rishabh Poddar. OAuth 2.0 vs Session Management. 2020. URL: <a class="reference external" href="https://supertokens.com/blog/oauth-2-vs-session-management">https://supertokens.com/blog/oauth-2-vs-session-management</a>.</p></li>
-<li id="id193"><p>Kenneth Reitz. Requests Documentation: Authentication. 2016. URL: <a class="reference external" href="https://requests.readthedocs.io/en/latest/user/authentication/">https://requests.readthedocs.io/en/latest/user/authentication/</a>.</p></li>
-<li id="id196"><p>MDN Contributors. An Overview of HTTP: HTTP Is Stateless, but Not Sessionless. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#http_is_stateless_but_not_sessionless">https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#http_is_stateless_but_not_sessionless</a>.</p></li>
-<li id="id200"><p>Okta, Inc. Access Tokens. 2024. URL: <a class="reference external" href="https://www.oauth.com/oauth2-servers/access-tokens/">https://www.oauth.com/oauth2-servers/access-tokens/</a>.</p></li>
-<li id="id204"><p>Okta, Inc. Application Credentials: Application Authentication Methods. 2024. URL: <a class="reference external" href="https://auth0.com/docs/secure/application-credentials#application-authentication-methods">https://auth0.com/docs/secure/application-credentials#application-authentication-methods</a>.</p></li>
-<li id="id202"><p>Okta, Inc. Authentication and Authorization Flows: Client Credentials Flow. 2024. URL: <a class="reference external" href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow">https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow</a>.</p></li>
-<li id="id201"><p>Okta, Inc. Client Credentials. 2024. URL: <a class="reference external" href="https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/">https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/</a>.</p></li>
-<li id="id199"><p>Okta, Inc. The Resource Server. 2024. URL: <a class="reference external" href="https://www.oauth.com/oauth2-servers/the-resource-server/">https://www.oauth.com/oauth2-servers/the-resource-server/</a>.</p></li>
-<li id="id198"><p>Okta, Inc. What is OAuth 2.0? 2024. URL: <a class="reference external" href="https://auth0.com/intro-to-iam/what-is-oauth-2">https://auth0.com/intro-to-iam/what-is-oauth-2</a>.</p></li>
-<li id="id207"><p>TikTok. API Reference: Query Videos. 2024. URL: <a class="reference external" href="https://developers.tiktok.com/doc/research-api-specs-query-videos/">https://developers.tiktok.com/doc/research-api-specs-query-videos/</a>.</p></li>
-<li id="id205"><p>TikTok. About Research API. 2024. URL: <a class="reference external" href="https://developers.tiktok.com/doc/about-research-api/">https://developers.tiktok.com/doc/about-research-api/</a>.</p></li>
-<li id="id206"><p>TikTok. Client Access Token Management. 2024. URL: <a class="reference external" href="https://developers.tiktok.com/doc/client-access-token-management/">https://developers.tiktok.com/doc/client-access-token-management/</a>.</p></li>
+<li id="id198"><p>Jiri Caga. Most Used Authentication Methods for API. 2023. URL: <a class="reference external" href="https://medium.com/&#64;jiri.caga/most-used-authentication-methods-for-api-96ce8666a015">https://medium.com/&#64;jiri.caga/most-used-authentication-methods-for-api-96ce8666a015</a>.</p></li>
+<li id="id189"><p>Graham Cox. API Authentication - Tokens vs Sessions. 2023. URL: <a class="reference external" href="https://www.baeldung.com/cs/tokens-vs-sessions">https://www.baeldung.com/cs/tokens-vs-sessions</a>.</p></li>
+<li id="id196"><p>Miguel Grinberg. API Authentication with Tokens. 2021. URL: <a class="reference external" href="https://blog.miguelgrinberg.com/post/api-authentication-with-tokens">https://blog.miguelgrinberg.com/post/api-authentication-with-tokens</a>.</p></li>
+<li id="id204"><p>Dick Hardt. OAuth 2.0 Specification. RFC 6749, section 4.4: Client Credentials Flow. 2024. URL: <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.4">https://datatracker.ietf.org/doc/html/rfc6749#section-4.4</a>.</p></li>
+<li id="id192"><p>Sherry Hsu. Session vs Token Based Authentication. 2018. URL: <a class="reference external" href="https://sherryhsu.medium.com/session-vs-token-based-authentication-11a6c5ac45e4">https://sherryhsu.medium.com/session-vs-token-based-authentication-11a6c5ac45e4</a>.</p></li>
+<li id="id193"><p>Brian Iyoha. What Really Is the Difference between Session and Token Based Authentication. 2019. URL: <a class="reference external" href="https://dev.to/thecodearcher/what-really-is-the-difference-between-session-and-token-based-authentication-2o39">https://dev.to/thecodearcher/what-really-is-the-difference-between-session-and-token-based-authentication-2o39</a>.</p></li>
+<li id="id188"><p>Damien Martin. Getting Data with OAuth. 2018. URL: <a class="reference external" href="https://kiwidamien.github.io/getting-data-with-oauth.html">https://kiwidamien.github.io/getting-data-with-oauth.html</a>.</p></li>
+<li id="id190"><p>Natalia Moskaleva. User Authentication: Comparing Session-based and Token-based Implementations. 2023. URL: <a class="reference external" href="https://www.criipto.com/blog/session-token-based-authentication">https://www.criipto.com/blog/session-token-based-authentication</a>.</p></li>
+<li id="id195"><p>Matt Mullen. Using the Python Requests Module to Work with REST APIs. 2021. URL: <a class="reference external" href="https://blog.networktocode.com/post/using-python-requests-with-rest-apis/">https://blog.networktocode.com/post/using-python-requests-with-rest-apis/</a>.</p></li>
+<li id="id191"><p>Saleha Muzammil. Session-based Authentication vs Token-based Authentication. 2024. URL: <a class="reference external" href="https://www.educative.io/answers/session-based-authentication-vs-token-based-authentication">https://www.educative.io/answers/session-based-authentication-vs-token-based-authentication</a>.</p></li>
+<li id="id187"><p>Rishabh Poddar. OAuth 2.0 vs Session Management. 2020. URL: <a class="reference external" href="https://supertokens.com/blog/oauth-2-vs-session-management">https://supertokens.com/blog/oauth-2-vs-session-management</a>.</p></li>
+<li id="id194"><p>Kenneth Reitz. Requests Documentation: Authentication. 2016. URL: <a class="reference external" href="https://requests.readthedocs.io/en/latest/user/authentication/">https://requests.readthedocs.io/en/latest/user/authentication/</a>.</p></li>
+<li id="id197"><p>MDN Contributors. An Overview of HTTP: HTTP Is Stateless, but Not Sessionless. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#http_is_stateless_but_not_sessionless">https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#http_is_stateless_but_not_sessionless</a>.</p></li>
+<li id="id201"><p>Okta, Inc. Access Tokens. 2024. URL: <a class="reference external" href="https://www.oauth.com/oauth2-servers/access-tokens/">https://www.oauth.com/oauth2-servers/access-tokens/</a>.</p></li>
+<li id="id205"><p>Okta, Inc. Application Credentials: Application Authentication Methods. 2024. URL: <a class="reference external" href="https://auth0.com/docs/secure/application-credentials#application-authentication-methods">https://auth0.com/docs/secure/application-credentials#application-authentication-methods</a>.</p></li>
+<li id="id203"><p>Okta, Inc. Authentication and Authorization Flows: Client Credentials Flow. 2024. URL: <a class="reference external" href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow">https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow</a>.</p></li>
+<li id="id202"><p>Okta, Inc. Client Credentials. 2024. URL: <a class="reference external" href="https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/">https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/</a>.</p></li>
+<li id="id200"><p>Okta, Inc. The Resource Server. 2024. URL: <a class="reference external" href="https://www.oauth.com/oauth2-servers/the-resource-server/">https://www.oauth.com/oauth2-servers/the-resource-server/</a>.</p></li>
+<li id="id199"><p>Okta, Inc. What is OAuth 2.0? 2024. URL: <a class="reference external" href="https://auth0.com/intro-to-iam/what-is-oauth-2">https://auth0.com/intro-to-iam/what-is-oauth-2</a>.</p></li>
+<li id="id208"><p>TikTok. API Reference: Query Videos. 2024. URL: <a class="reference external" href="https://developers.tiktok.com/doc/research-api-specs-query-videos/">https://developers.tiktok.com/doc/research-api-specs-query-videos/</a>.</p></li>
+<li id="id206"><p>TikTok. About Research API. 2024. URL: <a class="reference external" href="https://developers.tiktok.com/doc/about-research-api/">https://developers.tiktok.com/doc/about-research-api/</a>.</p></li>
+<li id="id207"><p>TikTok. Client Access Token Management. 2024. URL: <a class="reference external" href="https://developers.tiktok.com/doc/client-access-token-management/">https://developers.tiktok.com/doc/client-access-token-management/</a>.</p></li>
 </ol>
 </div>
 </section>
@@ -610,6 +617,24 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="02_sessions_cookies.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10.2. </span>Sessions und Cookies</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04_tipps_tricks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10.4. </span>Weitere Tipps und Tricks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -626,11 +651,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-vs-token-basierte-authentifizierung">Session- vs. Token-basierte Authentifizierung</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oauth-2-0-zugriff-mit-access-tokens">OAuth 2.0: Zugriff mit Access Tokens</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentifizierung-mit-api-schlussel-key">Authentifizierung mit API-Schlüssel (Key)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-authentifizierungsmethoden">Weitere Authentifizierungsmethoden</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-vs-token-basierte-authentifizierung">10.3.1. Session- vs. Token-basierte Authentifizierung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oauth-2-0-zugriff-mit-access-tokens">10.3.2. OAuth 2.0: Zugriff mit Access Tokens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentifizierung-mit-api-schlussel-key">10.3.3. Authentifizierung mit API-Schlüssel (Key)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-authentifizierungsmethoden">10.3.4. Weitere Authentifizierungsmethoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">10.3.5. Quellen</a></li>
 </ul>
   </nav></div>
 
