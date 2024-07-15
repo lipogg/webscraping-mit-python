@@ -102,8 +102,8 @@ sections:
       title: Authentifizierung, Autorisierung und APIs
     - file: chapters/10/subchapters/04_tipps_tricks.ipynb
       title: Weitere Tipps und Tricks
-#- file: chapters/11/11_intro
-#  title: Pandas (Exkurs)
-#  sections:
-#    - file: chapters/11/subchapters/01_pandas.ipynb
-#      title: Daten bereinigen mit Pandas
+- file: chapters/11/11_intro
+  title: Pandas (Exkurs)
+  sections:
+    - file: chapters/11/subchapters/01_pandas.ipynb
+      title: Daten bereinigen mit Pandas
