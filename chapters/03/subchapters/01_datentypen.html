@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Zusammengesetzte Datentypen &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>3.1. Zusammengesetzte Datentypen &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.2. Kontrollstrukturen" href="02_kontrollstrukturen.html" />
+    <link rel="prev" title="3. Python II: Zusammengesetzte Datentypen und Kontrollstrukturen" href="../03_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +177,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -193,6 +193,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/02_grundbegriffe.html">2.4. Grundbegriffe</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/03_datentypen.html">2.5. Einfache Datentypen, Strings und Operatoren</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/04_variablen.html">2.6. Variablen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../03_intro.html">3. Python II</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1. Zusammengesetzte Datentypen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_kontrollstrukturen.html">3.2. Kontrollstrukturen</a></li>
 </ul>
 </li>
 </ul>
@@ -358,12 +363,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tupel">Tupel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen">Listen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-operationen-auf-sequentiellen-datentypen">Zusammenfassung: Operationen auf sequentiellen Datentypen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tupel">3.1.1. Tupel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen">3.1.2. Listen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-operationen-auf-sequentiellen-datentypen">3.1.3. Zusammenfassung: Operationen auf sequentiellen Datentypen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">3.1.4. Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">3.1.5. Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">3.1.6. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -376,16 +381,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="zusammengesetzte-datentypen">
-<h1>Zusammengesetzte Datentypen<a class="headerlink" href="#zusammengesetzte-datentypen" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">3.1. </span>Zusammengesetzte Datentypen<a class="headerlink" href="#zusammengesetzte-datentypen" title="Link to this heading">#</a></h1>
 <p>Zusammengesetzte Datentypen sind strukturierte Sammlungen von Objekten. In Python sind vier solcher “zusammengesetzter Datentypen” vordefiniert: Tupel, Listen, Sets und Dictionaries. Tupel und Listen sind zugleich sequentielle Datentypen. Manche der Operationen und Operatoren, die wir schon im Zusammenhang mit Strings kennengelernt haben, können deswegen auch auf Tupel und Listen angewandt werden.</p>
 <section id="tupel">
-<h2>Tupel<a class="headerlink" href="#tupel" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1.1. </span>Tupel<a class="headerlink" href="#tupel" title="Link to this heading">#</a></h2>
 <p>Tupel sind eine geordnete Abfolge von Elementen verschiedenen Datentyps. Das heißt, sie sind genau wie Strings ein sequentieller Datentyp. Tupel sind außerdem <strong>unveränderbar</strong>, genau wie Strings.
 Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen zu tauschen (siehe Beispiel unten). Im Kapitel zu Funktionen werden wir Tupeln auch noch einmal begegnen.</p>
 <figure class="align-default" id="markdown-fig">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/tuple_object.png"><img alt="Beispiel" class="bg-transparent" src="../../../_images/tuple_object.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispielobjekt vom Typ Tupel</span><a class="headerlink" href="#markdown-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Beispielobjekt vom Typ Tupel</span><a class="headerlink" href="#markdown-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -534,12 +539,12 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </section>
 <section id="listen">
-<h2>Listen<a class="headerlink" href="#listen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1.2. </span>Listen<a class="headerlink" href="#listen" title="Link to this heading">#</a></h2>
 <p>Geordnete Abfolge von Elementen, die gewöhnlich denselben Datentyp haben, aber theoretisch verschiedene Datentypen haben könnten. Listen sind <strong>veränderbar</strong>, das heißt, dass Listenelemente ausgetauscht werden können.</p>
 <figure class="align-default" id="id1">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/list_object.png"><img alt="Beispiel" class="bg-transparent" src="../../../_images/list_object.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispielobjekt vom Typ Liste</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Beispielobjekt vom Typ Liste</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Liste aller Methoden, die für Objekte vom Typ Liste definiert sind: <a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">https://docs.python.org/3/tutorial/datastructures.html#more-on-lists</a>.</p>
@@ -870,7 +875,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <p>Beim Klonen wird ein neues Objekt erstellt; ein Alias ist dagegen nur ein weiterer Name, der auf dasselbe Objekt zeigt. Um den Unterschied zwischen den beiden Operationen besser nachzuvollziehen, könnt ihr den Code auf <a class="reference external" href="https://pythontutor.com/python-debugger.html#mode=edit">https://pythontutor.com/python-debugger.html#mode=edit</a> eingeben und ausführen. Die Seite visualisiert, was in jeder Codezeile passiert.</p>
 </section>
 <section id="zusammenfassung-operationen-auf-sequentiellen-datentypen">
-<h2>Zusammenfassung: Operationen auf sequentiellen Datentypen<a class="headerlink" href="#zusammenfassung-operationen-auf-sequentiellen-datentypen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1.3. </span>Zusammenfassung: Operationen auf sequentiellen Datentypen<a class="headerlink" href="#zusammenfassung-operationen-auf-sequentiellen-datentypen" title="Link to this heading">#</a></h2>
 <p>Die folgende Tabelle ist der offiziellen Dokumentation zu Python 3.11.3 entnommen und gibt einen Überblick über die Operationen, die auf die drei sequentiellen Datentypen Strings, Tupel und Listen angewendet werden können. <code class="docutils literal notranslate"><span class="pre">s</span></code> steht für irgendein Objekt mit einem sequentiellen Datentyp.</p>
 <table class="table">
 <thead>
@@ -920,12 +925,12 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <p>Quelle: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#typesseq-common">Python 3.11.3 Documentation</a></p>
 </section>
 <section id="sets">
-<h2>Sets<a class="headerlink" href="#sets" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1.4. </span>Sets<a class="headerlink" href="#sets" title="Link to this heading">#</a></h2>
 <p>Sets sind ungeordnete Sammlungen von Objekten, die gewöhnlich denselben Datentyp haben, aber theoretisch verschiedene Datentypen haben können. Objekte in einem Set dürfen sich nicht wiederholen. In Python gibt es zum einen den Typ <code class="docutils literal notranslate"><span class="pre">set</span></code>, der <strong>veränderbar</strong> ist, und den Typ <code class="docutils literal notranslate"><span class="pre">frozenset</span></code>, der <strong>unveränderbar</strong> ist. Sets werden zum Beispiel dazu verwendet, um Duplikate aus einer Sequenz zu entfernen, oder Mengenoperationen durchzuführen: zum Beispiel kann man die Vereinigung, die Differenz oder die Schnittmenge zweier Mengen bilden. Sets sind kein sequentieller Datentyp, und die Operationen, die für sequentielle Datentypen definiert sind, können auf Sets nicht angewendet werden.</p>
 <figure class="align-default" id="id2">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/set_object.png"><img alt="Beispiel" class="bg-transparent" src="../../../_images/set_object.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispielobjekt vom Typ Set</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Beispielobjekt vom Typ Set</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1018,7 +1023,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;kiwi&#39;, &#39;banane&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;banane&#39;, &#39;kiwi&#39;}
 </pre></div>
 </div>
 </div>
@@ -1057,12 +1062,12 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </section>
 <section id="dictionaries">
-<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1.5. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h2>
 <p>Python Dictionaries werden dazu verwendet, um Daten als Schlüssel-Wert-Paar zu speichern. Dictionaries sind ähnlich wie Listen, aber die Einträge sind nicht geordnet und anstelle eines Zahlindexes ist jedem Wert ein Schlüssel zugeordnet, über den auf den Wert zugegriffen werden kann. Werte können alle bisher bekannten Datentypen haben und dürfen sich wiederholen, aber Schlüssel müssen unveränderbar und einzigartig sein. Das heißt: Schlüssel können zum Beispiel Strings sein, aber keine Listen. Dictionaries sind genauso wie Sets also kein sequentieller Datentyp, und die Operationen, die für sequentielle Datentypen definiert sind, können auf Dictionaries nicht angewendet werden. Dictionaries werden immer dann verwendet, wenn es sinnvoll ist, dass der Index sinntragend ist.</p>
 <figure class="align-default" id="id3">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/dict_object.png"><img alt="Beispiel" class="bg-transparent" src="../../../_images/dict_object.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispielobjekt vom Typ Dictionary</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Beispielobjekt vom Typ Dictionary</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1204,7 +1209,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1.6. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id4">
 <ol class="arabic simple" start="1">
 <li id="id16"><p>Ana Bell. Tuples, Lists, Aliasing, Mutability, and Cloning. 2016. URL: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-5-tuples-lists-aliasing-mutability-and-cloning/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-5-tuples-lists-aliasing-mutability-and-cloning/</a>.</p></li>
@@ -1250,6 +1255,24 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../03_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Python II: Zusammengesetzte Datentypen und Kontrollstrukturen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_kontrollstrukturen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Kontrollstrukturen</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1266,12 +1289,12 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tupel">Tupel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen">Listen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-operationen-auf-sequentiellen-datentypen">Zusammenfassung: Operationen auf sequentiellen Datentypen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tupel">3.1.1. Tupel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen">3.1.2. Listen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-operationen-auf-sequentiellen-datentypen">3.1.3. Zusammenfassung: Operationen auf sequentiellen Datentypen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">3.1.4. Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">3.1.5. Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">3.1.6. Quellen</a></li>
 </ul>
   </nav></div>
 
