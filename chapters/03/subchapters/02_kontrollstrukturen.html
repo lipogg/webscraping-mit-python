@@ -422,7 +422,7 @@ document.write(`
 <span class="n">autos</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Mercedes&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Fiat&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Volvo&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
 <span class="n">anzahl_mercedes</span> <span class="o">=</span> <span class="n">autos</span><span class="p">[</span><span class="s2">&quot;Mercedes&quot;</span><span class="p">]</span>
 <span class="k">if</span> <span class="n">anzahl_mercedes</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Du hast &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">anzahl_mercedes</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Mercedes!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Du hast &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">anzahl_mercedes</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Mercedes!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -431,6 +431,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfrage</p>
+<ul class="simple">
+<li><p>Was passiert, wenn <code class="docutils literal notranslate"><span class="pre">autos</span></code> den Schlüssel “Mercedes” nicht enthält?</p></li>
+</ul>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -442,6 +448,26 @@ document.write(`
     <span class="n">anzahl_mercedes</span> <span class="o">=</span> <span class="n">autos</span><span class="p">[</span><span class="s2">&quot;Mercedes&quot;</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">anzahl_mercedes</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Du hast &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">anzahl_mercedes</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Mercedes!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Du hast 2 Mercedes!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfrage</p>
+<ul class="simple">
+<li><p>Wie könnte man diesen Code vereinfachen? Hinweis: Im Abschnitt “Zusammengesetzte Datentypen” habt ihr eine alternative Methode für den Zugriff auf Werte in einem Dictionary anstelle von <code class="docutils literal notranslate"><span class="pre">dct[&quot;key&quot;]</span></code> kennengelernt.</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anzahl_mercedes</span> <span class="o">=</span> <span class="n">autos</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Mercedes&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">anzahl_mercedes</span> <span class="ow">and</span> <span class="n">anzahl_mercedes</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Du hast &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">anzahl_mercedes</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Mercedes!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -535,6 +561,12 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfrage</p>
+<ul class="simple">
+<li><p>Welche/n Wert/e muss die Variable <code class="docutils literal notranslate"><span class="pre">anzahl_ibus</span></code> annehmen, damit  die Nachricht “Achtung! Weniger als 5 Ibuprofen da!” ausgegeben wird?</p></li>
+</ul>
+</div>
 </section>
 </section>
 <section id="schleifen">
@@ -555,10 +587,9 @@ document.write(`
 <span class="c1"># Nach dem Terminieren der Schleife wird eine Warnung ausgegeben.</span>
 
 <span class="n">medikamente</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ibuprofen&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;Paracetamol&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s2">&quot;Aspirin&quot;</span><span class="p">:</span> <span class="mi">28</span><span class="p">}</span>
-<span class="n">anzahl_ibus</span> <span class="o">=</span> <span class="n">medikamente</span><span class="p">[</span><span class="s2">&quot;Ibuprofen&quot;</span><span class="p">]</span>
 
-<span class="k">while</span> <span class="n">anzahl_ibus</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">anzahl_ibus</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">medikamente</span><span class="p">[</span><span class="s2">&quot;Ibuprofen&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">medikamente</span><span class="p">[</span><span class="s2">&quot;Ibuprofen&quot;</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Achtung! Kein Ibuprofen mehr da!&quot;</span><span class="p">)</span>
 </pre></div>
@@ -581,12 +612,11 @@ document.write(`
 <span class="c1"># Nach dem Terminieren der Schleife wird eine weitere Warnung ausgegeben.</span>
 
 <span class="n">medikamente</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ibuprofen&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;Paracetamol&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s2">&quot;Aspirin&quot;</span><span class="p">:</span> <span class="mi">28</span><span class="p">}</span>
-<span class="n">anzahl_ibus</span> <span class="o">=</span> <span class="n">medikamente</span><span class="p">[</span><span class="s2">&quot;Ibuprofen&quot;</span><span class="p">]</span>
 
-<span class="k">while</span> <span class="n">anzahl_ibus</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">anzahl_ibus</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+<span class="k">while</span> <span class="n">medikamente</span><span class="p">[</span><span class="s2">&quot;Ibuprofen&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">medikamente</span><span class="p">[</span><span class="s2">&quot;Ibuprofen&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warnung: nur noch 5 Ibuprofen da!&quot;</span><span class="p">)</span>
-    <span class="n">anzahl_ibus</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">medikamente</span><span class="p">[</span><span class="s2">&quot;Ibuprofen&quot;</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Achtung! Kein Ibuprofen mehr da!&quot;</span><span class="p">)</span>
 </pre></div>
@@ -607,6 +637,12 @@ Achtung! Kein Ibuprofen mehr da!
 </pre></div>
 </div>
 </div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfrage</p>
+<ul class="simple">
+<li><p>Im Abschnitt “Mehrfache Verzweigung” wurde zunächst der Wert des Schlüssels “Ibuprofen” einer Variable <code class="docutils literal notranslate"><span class="pre">anzahl_ibus</span></code> zugewiesen. In diesem Abschnitt entfällt dieser Schritt und es wird direkt <code class="docutils literal notranslate"><span class="pre">medikamente[&quot;Ibuprofen&quot;]</span></code> verwendet. Was ist der Unterschied?</p></li>
+</ul>
 </div>
 </section>
 <section id="for-schleife">
@@ -824,10 +860,10 @@ die Sonne
 
 <span class="n">artikel</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;der&quot;</span><span class="p">,</span> <span class="s2">&quot;der&quot;</span><span class="p">,</span> <span class="s2">&quot;das&quot;</span><span class="p">,</span> <span class="s2">&quot;die&quot;</span><span class="p">]</span>
 <span class="n">substantive</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Baum&quot;</span><span class="p">,</span> <span class="s2">&quot;Wald&quot;</span><span class="p">,</span> <span class="s2">&quot;Meer&quot;</span><span class="p">,</span> <span class="s2">&quot;Sonne&quot;</span><span class="p">]</span>
-<span class="n">komplett</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">wortpaare</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">artikel</span><span class="p">,</span> <span class="n">substantive</span><span class="p">):</span>
-    <span class="n">komplett</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">komplett</span><span class="p">)</span>
+    <span class="n">wortpaare</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wortpaare</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -903,10 +939,28 @@ Wald
 </div>
 </div>
 </div>
+<p>Der else-Zweig ist hier aber eigentlich nicht zwingend notwendig, sodass die Schleife vereinfacht werden kann zu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">elem</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Baum
+Wald
+</pre></div>
+</div>
+</div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Das Objekt <code class="docutils literal notranslate"><span class="pre">None</span></code> repräsentiert in Python die Abwesenheit eines Werts. <code class="docutils literal notranslate"><span class="pre">None</span></code> hat den Datentyp NonType, und von diesem Datentyp gibt es nur ein einziges Objekt, nämlich eben <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </div>
+<p>In ein paar Wochen lernt ihr ein Konstrukt kennen, das sich “List comprehension” nennt und das erlaubt, Schleifen, die zum Erstellen und Manipulieren von Listen verwendet werden, zu vereinfachen. Für den Anfang beschränken wir uns aber auf die hier vorgestellten Kontrollstrukturen.</p>
 </section>
 </section>
 <section id="quellen">

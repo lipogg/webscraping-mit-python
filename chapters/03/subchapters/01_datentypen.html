@@ -564,7 +564,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Liste mit vier Elementen desselben Datentyps ertellen</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Liste mit vier Elementen desselben Datentyps erstellen</span>
 <span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
 </pre></div>
@@ -578,28 +578,28 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Liste mit drei Elementen verschiedener Datentypen erstellne</span>
-<span class="n">lst_2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Liste mit drei Elementen verschiedener Datentypen erstellen</span>
+<span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 8, 3]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, 3, 5, True]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Listen können auch selbst Listen enthalten: sie heißen dann &quot;verschachtelte Listen&quot;</span>
-<span class="n">lst_3</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Listen können auch selbst Listen enthalten: solche Listen heißen dann &quot;verschachtelte Liste&quot; oder &quot;nested list&quot; auf Englisch.</span>
+<span class="n">nested_lst</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nested_lst</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 8, 3]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, 2], [8, 3]]
 </pre></div>
 </div>
 </div>
@@ -607,25 +607,25 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Länge</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">nested_lst</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf Element mit dem Index 2 zugreifen</span>
-<span class="n">lst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf Element mit dem Index 1 zugreifen</span>
+<span class="n">nested_lst</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8, 3]
 </pre></div>
 </div>
 </div>
@@ -633,7 +633,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf das erste Element der zweiten Liste in der verschachtelten Liste lst_3 zugreifen</span>
-<span class="n">lst_3</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">nested_lst</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -645,27 +645,27 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Element verrechnen</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Element verrechnen: hier nehmen wir wieder die einfache Liste</span>
 <span class="n">lst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Elment austauschen</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Element austauschen</span>
 <span class="n">lst</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">23</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 23, 8, 3]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, 23, 5, True]
 </pre></div>
 </div>
 </div>
@@ -679,7 +679,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 23, 8, 3, 50]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, 23, 5, True, 50]
 </pre></div>
 </div>
 </div>
@@ -1015,15 +1015,15 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Differenz zwischen menge und menge_2 ausgeben lasen</span>
-<span class="n">menge</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;banane&quot;</span><span class="p">,</span> <span class="s2">&quot;kiwi&quot;</span><span class="p">}</span>
+<span class="n">menge_1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;banane&quot;</span><span class="p">,</span> <span class="s2">&quot;kiwi&quot;</span><span class="p">}</span>
 <span class="n">menge_2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;apfel&quot;</span><span class="p">}</span>
-<span class="n">menge_diff</span> <span class="o">=</span> <span class="n">menge</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">menge_2</span><span class="p">)</span>
+<span class="n">menge_diff</span> <span class="o">=</span> <span class="n">menge_1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">menge_2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">menge_diff</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;banane&#39;, &#39;kiwi&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;kiwi&#39;, &#39;banane&#39;}
 </pre></div>
 </div>
 </div>
@@ -1031,7 +1031,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vereinigung der beiden Mengen</span>
-<span class="n">menge</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;banane&quot;</span><span class="p">,</span> <span class="s2">&quot;kiwi&quot;</span><span class="p">}</span>
+<span class="n">menge_1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;banane&quot;</span><span class="p">,</span> <span class="s2">&quot;kiwi&quot;</span><span class="p">}</span>
 <span class="n">menge_2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;orange&quot;</span><span class="p">}</span>
 <span class="n">menge_union</span> <span class="o">=</span> <span class="n">menge</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">menge_2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">menge_union</span><span class="p">)</span>
@@ -1039,7 +1039,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;orange&#39;, &#39;banane&#39;, &#39;kiwi&#39;, &#39;apfel&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;orange&#39;, &#39;apfel&#39;, &#39;kiwi&#39;, &#39;banane&#39;}
 </pre></div>
 </div>
 </div>
@@ -1048,14 +1048,14 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Um Objekte mit anderen Datentypen in Sets umzuwandeln, kann man die bereits bekannte Funktion set() verwenden:</span>
 <span class="c1"># Bei der Umwandlung werden Duplikate entfernt</span>
-<span class="n">blumen</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rose&quot;</span><span class="p">,</span> <span class="s2">&quot;Tulpe&quot;</span><span class="p">,</span> <span class="s2">&quot;Tulpe&quot;</span><span class="p">,</span> <span class="s2">&quot;Narzisse&quot;</span><span class="p">]</span>
-<span class="n">blumen_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">blumen</span><span class="p">)</span>
+<span class="n">blumen_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rose&quot;</span><span class="p">,</span> <span class="s2">&quot;Tulpe&quot;</span><span class="p">,</span> <span class="s2">&quot;Tulpe&quot;</span><span class="p">,</span> <span class="s2">&quot;Narzisse&quot;</span><span class="p">]</span>
+<span class="n">blumen_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">blumen_lst</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">blumen_set</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Rose&#39;, &#39;Tulpe&#39;, &#39;Narzisse&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Narzisse&#39;, &#39;Rose&#39;, &#39;Tulpe&#39;}
 </pre></div>
 </div>
 </div>
@@ -1081,7 +1081,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dictionary mit mehreren Einträgen erstellen</span>
-<span class="n">noten</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Emma&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Gero&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Hanna&quot;</span><span class="p">:</span> <span class="mi">3</span> <span class="p">}</span>
+<span class="n">noten_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Emma&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Gero&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Hanna&quot;</span><span class="p">:</span> <span class="mi">3</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -1090,7 +1090,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf einen Wert zugreifen mit Zugriffsoperator</span>
 <span class="c1"># Wenn der Schlüssel nicht vorhanden ist, wird eine Fehlermeldung ausgegeben</span>
-<span class="n">noten</span><span class="p">[</span><span class="s2">&quot;Emma&quot;</span><span class="p">]</span>
+<span class="n">noten_dict</span><span class="p">[</span><span class="s2">&quot;Emma&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1104,7 +1104,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf einen Wert zugreifen mit get()-Methode</span>
 <span class="c1"># Wenn der Schlüssel nicht vorhanden ist, wird die Nachricht &quot;Schlüssel nicht gefunden&quot; ausgegeben</span>
-<span class="n">noten</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="s2">&quot;Schlüssel nicht gefunden&quot;</span><span class="p">)</span>
+<span class="n">noten_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="s2">&quot;Schlüssel nicht gefunden&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1117,7 +1117,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eintrag hinzufügen</span>
-<span class="n">noten</span><span class="p">[</span><span class="s2">&quot;Lee&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">noten_dict</span><span class="p">[</span><span class="s2">&quot;Lee&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -1125,7 +1125,20 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wert ändern</span>
-<span class="n">noten</span><span class="p">[</span><span class="s2">&quot;Emma&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">noten_dict</span><span class="p">[</span><span class="s2">&quot;Emma&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eintrag hinzufügen nur, wenn der Schlüssel noch nicht existiert</span>
+<span class="n">noten_dict</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;Samir&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
@@ -1134,7 +1147,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eintrag entfernen mit Schlüsselwort del</span>
 <span class="c1"># Wenn der Schlüssel nicht vorhanden ist, wird eine Fehlermeldung ausgegeben</span>
-<span class="k">del</span> <span class="n">noten</span><span class="p">[</span><span class="s2">&quot;Emma&quot;</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">noten_dict</span><span class="p">[</span><span class="s2">&quot;Emma&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1143,7 +1156,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eintrag entfernen und entfernten Wert ausgeben mit pop()-Methode</span>
 <span class="c1"># Wenn der Schlüssel nicht vorhanden ist, wird die Nachricht &quot;Schlüssel nicht gefunden&quot; ausgegeben</span>
-<span class="n">noten</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="s2">&quot;Schlüssel nicht gefunden&quot;</span><span class="p">)</span>
+<span class="n">noten_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="s2">&quot;Schlüssel nicht gefunden&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1158,7 +1171,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mitgliedschaftsoperatoren kann man auch auf Dictionaries anwenden:</span>
 <span class="c1"># Der Operator wird automatisch auf die Schlüssel angewandt, nicht die Werte)</span>
 <span class="c1"># Überprüfen, ob ein Schlüssel vorhanden ist (geht natürlich auch mit not in)</span>
-<span class="s2">&quot;John&quot;</span> <span class="ow">in</span> <span class="n">noten</span>
+<span class="s2">&quot;John&quot;</span> <span class="ow">in</span> <span class="n">noten_dict</span>
 </pre></div>
 </div>
 </div>
@@ -1171,12 +1184,12 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alle Schlüssel ausgeben lassen</span>
-<span class="n">noten</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">noten_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;Gero&#39;, &#39;Hanna&#39;, &#39;Lee&#39;])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;Gero&#39;, &#39;Hanna&#39;, &#39;Lee&#39;, &#39;Samir&#39;])
 </pre></div>
 </div>
 </div>
@@ -1184,12 +1197,12 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alle Werte ausgeben lassen</span>
-<span class="n">noten</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="n">noten_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_values([2, 3, 2])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_values([2, 3, 2, 2])
 </pre></div>
 </div>
 </div>
@@ -1197,7 +1210,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Überprüfen, ob ein Wert vorhanden ist</span>
-<span class="mi">2</span> <span class="ow">in</span> <span class="n">noten</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="mi">2</span> <span class="ow">in</span> <span class="n">noten_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1206,6 +1219,10 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </pre></div>
 </div>
 </div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In diesem Abschnitt wurden zu Illustrationszwecken viele verschiedene Variablennamen verwendet. In der Praxis sollten Variablen aber immer möglichst einheitlich benenannt werden. Heißt: entweder alles Englisch (üblicher) oder alles Deutsch, entweder immer “liste” oder immer “lst”, usw. Vermeiden solltet ihr außerdem unbedingt die Verwendung von “list”, “dict” und “set” als Variablennahmen ohne einen Zusatz wie “noten_dict”, denn diese Wörter sind als Bezeichner für Funktionen zum Erzeugen der entsprechenden Datentypen “reserviert”.</p>
 </div>
 </section>
 <section id="quellen">
