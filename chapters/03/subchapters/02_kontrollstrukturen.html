@@ -465,8 +465,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anzahl_mercedes</span> <span class="o">=</span> <span class="n">autos</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Mercedes&quot;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">anzahl_mercedes</span> <span class="ow">and</span> <span class="n">anzahl_mercedes</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anzahl_mercedes</span> <span class="o">=</span> <span class="n">autos</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Mercedes&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">anzahl_mercedes</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Du hast &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">anzahl_mercedes</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Mercedes!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
