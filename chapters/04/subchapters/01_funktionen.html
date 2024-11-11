@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Funktionen &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>4.1. Funktionen &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="4.2. Module, Pakete, Bibliotheken" href="02_pakete.html" />
+    <link rel="prev" title="4. Python III: Funktionen und Pakete" href="../04_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +177,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -198,6 +198,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../03/03_intro.html">3. Python II</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../03/subchapters/01_datentypen.html">3.1. Zusammengesetzte Datentypen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../03/subchapters/02_kontrollstrukturen.html">3.2. Kontrollstrukturen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../04_intro.html">4. Python III</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.1. Funktionen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_pakete.html">4.2. Module, Pakete, Bibliotheken</a></li>
 </ul>
 </li>
 </ul>
@@ -363,15 +368,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-funktionen">Was sind Funktionen?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-definieren">Funktionen definieren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-aufrufen">Funktionen aufrufen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-verstehen">Funktionen verstehen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wozu-werden-funktionen-verwendet">Wozu werden Funktionen verwendet?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-schleifen-durch-funktionen-vereinfachen">Verschachtelte Schleifen durch Funktionen vereinfachen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sichtbarkeitsbereich-von-variablen-variable-scope">Sichtbarkeitsbereich von Variablen (Variable Scope)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-methoden">Was sind Methoden?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-funktionen">4.1.1. Was sind Funktionen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-definieren">4.1.2. Funktionen definieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-aufrufen">4.1.3. Funktionen aufrufen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-verstehen">4.1.4. Funktionen verstehen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wozu-werden-funktionen-verwendet">4.1.5. Wozu werden Funktionen verwendet?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-schleifen-durch-funktionen-vereinfachen">4.1.6. Verschachtelte Schleifen durch Funktionen vereinfachen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sichtbarkeitsbereich-von-variablen-variable-scope">4.1.7. Sichtbarkeitsbereich von Variablen (Variable Scope)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-methoden">4.1.8. Was sind Methoden?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">4.1.9. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -384,11 +389,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="funktionen">
-<h1>Funktionen<a class="headerlink" href="#funktionen" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">4.1. </span>Funktionen<a class="headerlink" href="#funktionen" title="Link to this heading">#</a></h1>
 <p>Wir haben im Laufe der vergangenen Stunden bereits einige Funktionen kennengelernt, zum Beispiel die Ausgabe-Funktion <code class="docutils literal notranslate"><span class="pre">print()</span></code>, oder die Funktionen <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> und <code class="docutils literal notranslate"><span class="pre">range()</span></code>.</p>
 <section id="was-sind-funktionen">
-<h2>Was sind Funktionen?<a class="headerlink" href="#was-sind-funktionen" title="Link to this heading">#</a></h2>
-<p>Funktionen sind wiederverwendbare Abfolgen von Anweisungen. Sie sind also Codeabschnitte, die mithilfe eines Namens wiederholt ausgeführt werden können. Das Prinzip ist also ein bisschen ähnlich wie Variablen, mit dem Unterschied, dass man mithilfe von Funktionsnamen auf Anweisungen zugreifen kann, während man mithilfe von Variablennamen auf Objekte zugreifen kann. Im Grunde sind Funktionsnamen aber auch zugleich Variablennamen, weil in Python Funktionen auch Objekte sind (-&gt; Grundbegriffe: alles in Python ist ein Objekt).</p>
+<h2><span class="section-number">4.1.1. </span>Was sind Funktionen?<a class="headerlink" href="#was-sind-funktionen" title="Link to this heading">#</a></h2>
+<p>Funktionen sind wiederverwendbare Abfolgen von Anweisungen. Sie sind also Codeabschnitte, die mithilfe eines Namens wiederholt ausgeführt werden können. Das Prinzip ist also ein bisschen ähnlich wie Variablen, mit dem Unterschied, dass man mithilfe von Funktionsnamen Anweisungen wiederverwenden kann, während man mithilfe von Variablennamen Objekte wiederverwenden kann. Im Grunde sind Funktionsnamen aber auch zugleich Variablennamen, weil in Python Funktionen auch Objekte sind (-&gt; Grundbegriffe: alles in Python ist ein Objekt).</p>
 <p>Jede Funktion besteht aus drei Komponenten:</p>
 <ul class="simple">
 <li><p>Name</p></li>
@@ -398,7 +403,7 @@ document.write(`
 <p>Funktionen werden <strong>aufgerufen</strong>. Beim <strong>Funktionsaufruf</strong> werden ihnen <strong>Argumente</strong> übergeben. Welche Argumente eine Funktion annehmen kann, wird in der <strong>Funktionsdefinition</strong> mithilfe von <strong>formalen Parametern</strong> festgelegt. Für Argumente sagt man deswegen auch manchmal <strong>tatsächliche Parameter</strong>. Funktionen <strong>geben immer einen Wert zurück</strong>, der heißt dann <strong>Rückgabewert</strong>. Der Rückgabewert kann in einer Funktionsdefinition mithilfe des <strong>Schlüsselworts <code class="docutils literal notranslate"><span class="pre">return</span></code></strong> festgelegt werden.</p>
 </section>
 <section id="funktionen-definieren">
-<h2>Funktionen definieren<a class="headerlink" href="#funktionen-definieren" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1.2. </span>Funktionen definieren<a class="headerlink" href="#funktionen-definieren" title="Link to this heading">#</a></h2>
 <p>Funktionen können Nutzer:innen aber auch selbst definieren. Eine <strong>Funktionsdefinition</strong> hat in Python die allgemeine Form:</p>
 <div class="full-width docutils">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/funktionsdefinition.png"><img alt="Klasse str" class="bg-transparent" src="../../../_images/funktionsdefinition.png" style="width: 75%;" /></a>
@@ -409,7 +414,7 @@ document.write(`
 <li><p>Die Funktions<strong>parameter</strong> heißen parameter_1 und parameter_2. Dabei handelt es sich um Variablennamen, die nur innerhalb der Funktionsdefinition verwendet werden und als Platzhalter für die Argumente dienen, die der Funktion beim Funktionsaufruf übergeben werden. Die formalen Parameter sind also ein bisschen ähnlich wie die Laufvariablen in for-Schleifen, die auch nur Platzhalter für die Elemente aus einem iterierbaren Objekt waren.</p></li>
 <li><p>Genau wie bei Kontrollstrukturen ist auch bei Funktionen der Funktions<strong>körper</strong> alles, was in dem eingeschobenen Block nach dem Doppelpunkt steht, also ein Anweisungsblock und eine return-Anweisung. Im Anweisungsblock stehen irgendwelche Anweisungen, die irgendetwas mit den Parametern der Funktion machen, also im Grunde Verarbeitungsschritte für die Funktionsparameter. Im Laufe der Verarbeitung wird irgendeine Variable definiert, die das “Endergebnis” der Verarbeitung zwischenspeichert. Diese Variable wird dann mithilfe der return-Anweisung zurückgegeben, wenn die Funktion aufgerufen wird. Die return-Anweisung definiert also, welche Variable die Funktion als Rückgabewert beim Funktionsaufruf zurückgeben soll.</p></li>
 </ul>
-<p>Zusätzlich zu diesen unbedingt notwendigen Komponenten, kann eine Funktion eine <strong>Spezifikation</strong> enthalten. Die Funktionsspezifikation erläutert den Nutzer:innen der Funktion, was die Funktion macht, welche Argumente der Funktion beim Funktionsaufruf übergeben werden können und welcher Wert zurückgegeben wird, nachdem die Anweisungen im Funktionskörper ausgeführt worden sind. In Python können sogenannte <strong>Docstrings</strong> verwendet werden, um Spezifikationen zu formulieren. Docstrings werden durch drei Anführungszeichen eingegrenzt.</p>
+<p>Zusätzlich zu diesen unbedingt notwendigen Komponenten können Python-Funktionen einen sogenannten <strong>Docstring</strong> enthalten. Das ist eine Art Kommentar, der den Nutzer:innen der Funktion erläutert, was die Funktion macht, welche Argumente der Funktion beim Funktionsaufruf übergeben werden können und welcher Wert zurückgegeben wird, nachdem die Anweisungen im Funktionskörper ausgeführt worden sind. Docstrings werden durch drei Anführungszeichen eingegrenzt.</p>
 <p>Ein Beispiel:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -462,10 +467,16 @@ document.write(`
 <div><p>“Be consistent in return statements. Either all return statements in a function should return an expression, or none of them should. If any return statement returns an expression, any return statements where no value is returned should explicitly state this as return None, and an explicit return statement should be present at the end of the function […]”</p>
 </div></blockquote>
 <p>Quelle: <a class="reference external" href="https://peps.python.org/pep-0008/">PEP8 Styleguide</a> 2016.</p>
-<p>Eine Bemerkung zum Schluss: Es wäre keine gute Idee, unsere <code class="docutils literal notranslate"><span class="pre">is_even()</span></code> Funktion so umzuschreiben, dass sie erst das Ergebnis der Operation <code class="docutils literal notranslate"><span class="pre">i%2</span> <span class="pre">==</span> <span class="pre">0</span></code> mit <code class="docutils literal notranslate"><span class="pre">print(i%2</span> <span class="pre">==</span> <span class="pre">0)</span></code> ausgibt und danach den Wert mit <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">i%2</span> <span class="pre">==</span> <span class="pre">0</span></code>zusätzlich zurückgibt: Funktionen sollten immer nur genau eine Aufgabe erfüllen!</p>
+<p>Eine Bemerkung zum Schluss: Es wäre keine gute Idee, unsere <code class="docutils literal notranslate"><span class="pre">is_even()</span></code> Funktion so umzuschreiben, dass sie erst das Ergebnis der Operation <code class="docutils literal notranslate"><span class="pre">i%2</span> <span class="pre">==</span> <span class="pre">0</span></code> mit <code class="docutils literal notranslate"><span class="pre">print(i%2</span> <span class="pre">==</span> <span class="pre">0)</span></code> ausgibt und danach den Wert mit <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">i%2</span> <span class="pre">==</span> <span class="pre">0</span></code>zusätzlich zurückgibt: <strong>Funktionen sollten immer nur genau eine Aufgabe erfüllen!</strong></p>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfrage</p>
+<ul class="simple">
+<li><p>Was sind Name, Parameter und Rückgabewert der Funktion <code class="docutils literal notranslate"><span class="pre">is_even()</span></code>?</p></li>
+</ul>
+</div>
 </section>
 <section id="funktionen-aufrufen">
-<h2>Funktionen aufrufen<a class="headerlink" href="#funktionen-aufrufen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1.3. </span>Funktionen aufrufen<a class="headerlink" href="#funktionen-aufrufen" title="Link to this heading">#</a></h2>
 <p><strong>Funktionsaufrufe</strong> haben in Python die allgemeine Form:</p>
 <div class="full-width docutils">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/funktionsaufruf.png"><img alt="Klasse str" class="bg-transparent" src="../../../_images/funktionsaufruf.png" style="width: 75%;" /></a>
@@ -511,21 +522,34 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Manche Funktionen nehmen mehrere Argumente an, die in diesem Fall durch Kommata getrennt aufgelistet werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo 4
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="funktionen-verstehen">
-<h2>Funktionen verstehen<a class="headerlink" href="#funktionen-verstehen" title="Link to this heading">#</a></h2>
-<p>In Jupyterlab könnt ihr euch direkt die Spezifikation (Docstring) zu einer bestimmten Funktion anzeigen lassen. So könnt ihr Informationen, welche Argumente der Funktion beim Funktionsaufruf übergeben werden können, und welchen Wert die Funktion nach dem Ausführen der Anweisungen im Funktionsköroer zurückgibt, abrufen, ohne dafür die Funktion zu googeln.</p>
+<h2><span class="section-number">4.1.4. </span>Funktionen verstehen<a class="headerlink" href="#funktionen-verstehen" title="Link to this heading">#</a></h2>
+<p>In Jupyterlab könnt ihr euch direkt den Docstring zu einer bestimmten Funktion anzeigen lassen. So könnt ihr Informationen, welche Argumente der Funktion beim Funktionsaufruf übergeben werden können, und welchen Wert die Funktion nach dem Ausführen der Anweisungen im Funktionsköroer zurückgibt, abrufen, ohne dafür die Funktion zu googeln.</p>
 <p>Dazu bewegt ihr den Cursor auf eine Funktion und gebt dann die Tastenkombination Cmd + I bzw. Ctrl + I ein, oder ihr klickt auf Help -&gt; Contextual Help in der Menüleiste oben.</p>
 </section>
 <section id="wozu-werden-funktionen-verwendet">
-<h2>Wozu werden Funktionen verwendet?<a class="headerlink" href="#wozu-werden-funktionen-verwendet" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1.5. </span>Wozu werden Funktionen verwendet?<a class="headerlink" href="#wozu-werden-funktionen-verwendet" title="Link to this heading">#</a></h2>
 <p>Allgemein werden Funktionen verwendet…</p>
 <ul class="simple">
 <li><p>…um bestimmte Verarbeitungsschritte zu wiederholen, ohne Code ständig kopieren zu müssen.</p></li>
 <li><p>…um den Code weniger fehleranfällig zu machen: Wenn man den Code kopiert, kopiert man auch mögliche Fehler</p></li>
 </ul>
 <p>Ein Beispiel, wenn es nützlich ist, eine Funktion zu definieren, wäre zum Beispiel die folgende Situation:</p>
-<p>Wir wollen die Lieder eine:r Künstler:in analyieren. Hierzu haben wir uns die folgende for-Schleife ausgedacht (eigentlich hat sich allerdings <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/mit6_0001f16_lec6/">Eric Grimson vom Massachusetts Institute of Technology</a> diese Schleife ausgedacht) :</p>
+<p>Wir wollen die Lieder eine:r Künstler:in analyieren. Hierzu haben wir uns die folgende for-Schleife ausgedacht (eigentlich hat sich allerdings <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/mit6_0001f16_lec6/">Eric Grimson</a> vom Massachusetts Institute of Technology diese Schleife ausgedacht) :</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lyrics</span> <span class="o">=</span> <span class="s2">&quot;My mind won&#39;t let me rest Voice in my head I hear what it said I can&#39;t trust a thing If I picked up and left How fast did you forget? Resting while I&#39;m inside your presence I don&#39;t want to think nothing bad This time I won&#39;t This time I won&#39;t&quot;</span>
@@ -627,7 +651,7 @@ document.write(`
 </div>
 </section>
 <section id="verschachtelte-schleifen-durch-funktionen-vereinfachen">
-<h2>Verschachtelte Schleifen durch Funktionen vereinfachen<a class="headerlink" href="#verschachtelte-schleifen-durch-funktionen-vereinfachen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1.6. </span>Verschachtelte Schleifen durch Funktionen vereinfachen<a class="headerlink" href="#verschachtelte-schleifen-durch-funktionen-vereinfachen" title="Link to this heading">#</a></h2>
 <p>Ein weiterer Fall, wenn es Sinn macht, eine Funktion zu definieren, ist, wenn ein Code ineinandergeschachtelte Schleifen enthält.
 Wenn Schleifen ineinander verschachtelt sind, kann die äußere Schleife nicht unkompliziert abgebrochen werden, sobald die innere Schleife abgebrochen wird.</p>
 <p>Das Problem kann auch ohne Funktion gelöst werden: zum Beispiel, indem eine “Break-Out” Variable verwendet wird, um die äußere Schleife abzubrechen:</p>
@@ -705,9 +729,6 @@ Wenn Schleifen ineinander verschachtelt sind, kann die äußere Schleife nicht u
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Als Funktion</span>
-<span class="n">einkaufsliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">]</span>
-<span class="n">kilopreis</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">:</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Möhren&quot;</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">:</span> <span class="mf">2.49</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Birnen&quot;</span><span class="p">:</span> <span class="mf">2.19</span><span class="p">}</span>
-<span class="n">grenze</span> <span class="o">=</span> <span class="mi">20</span>
 
 <span class="k">def</span> <span class="nf">einkauf_planen</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">,</span> <span class="n">kilopreis</span><span class="p">,</span> <span class="n">grenze</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -731,6 +752,9 @@ Wenn Schleifen ineinander verschachtelt sind, kann die äußere Schleife nicht u
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="p">(</span><span class="n">einkaufsmenge</span><span class="p">,</span> <span class="n">gesamtpreis</span><span class="p">)</span> <span class="c1"># Rückgabewert ist ein Tupel!</span>
 
+<span class="n">einkaufsliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">]</span>
+<span class="n">kilopreis</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">:</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Möhren&quot;</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">:</span> <span class="mf">2.49</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Birnen&quot;</span><span class="p">:</span> <span class="mf">2.19</span><span class="p">}</span>
+<span class="n">grenze</span> <span class="o">=</span> <span class="mi">20</span>
 
 <span class="n">einkauf</span> <span class="o">=</span> <span class="n">einkauf_planen</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">,</span> <span class="n">kilopreis</span><span class="p">,</span> <span class="n">grenze</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">einkauf</span><span class="p">)</span>
@@ -765,15 +789,27 @@ Wenn Schleifen ineinander verschachtelt sind, kann die äußere Schleife nicht u
 <p class="admonition-title">Note</p>
 <p>Tupel können also verwendet werden, wenn eine Funktion mehrere Werte zurückgeben soll.</p>
 </div>
-<p>Wir haben mit der Funktionsdefinition also unseren Code bereits in zwei Aspekten verbessert: Es ist weniger Code notwendig, um auch die äußere Schleife abzubrechen, und wir haben die Variable einkaufsmenge in Abhängigkeit von der Variable einkaufsliste definiert, sodass Änderungen an der Variable einkaufsliste auch direkt auf die Variable einkaufsmenge übertragen werden, ohne, dass wir den Code kopieren müssen. Wie könnte man den Code noch weiter verbessern? Überlegt selbst.</p>
+<p>Wir haben mit der Funktionsdefinition also unseren Code bereits in zwei Aspekten verbessert: Es ist weniger Code notwendig, um auch die äußere Schleife abzubrechen, und wir haben die Variable einkaufsmenge in Abhängigkeit von der Variable einkaufsliste definiert, sodass Änderungen an der Variable einkaufsliste auch direkt auf die Variable einkaufsmenge übertragen werden, ohne, dass wir den Code kopieren müssen.</p>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfragen</p>
+<p>Wie könnte man die Definition der Funktion noch weiter verbessern? Betrachtet dazu verschiedene mögliche Situationen:</p>
+<ul class="simple">
+<li><p>Was wird zurückgegeben, wenn <code class="docutils literal notranslate"><span class="pre">einkaufsliste</span></code> eine leere Liste ist?</p></li>
+<li><p>Was passiert, wenn der Wert der Variable grenze kein Integer, sondern ein Float ist (zum Beispiel bei 10.5)?</p></li>
+<li><p>Was passiert beim Ausführen der Zugriffsoperation <code class="docutils literal notranslate"><span class="pre">kilopreis[artikel]</span></code>, wenn der entsprechende Artikel nicht im Dictionary <code class="docutils literal notranslate"><span class="pre">kilopreis</span></code> enthalten ist?</p></li>
+<li><p>Die Schleife terminiert, sobald durch Hinzufügen des aktuellen Artikel in der Einkaufsliste die Grenze überschritten wird. Wie könnte der Code so umgeschrieben werden, dass zunächst überprüft wird, ob es irgendeinen Artikel in der Einkaufsliste gibt, der hinzugefügt werden könnte, ohne, dass die Grenze überschritten wird?</p></li>
+<li><p>Könnte man das Objekt <code class="docutils literal notranslate"><span class="pre">einkaufsmenge</span></code> auch anders erstellen, zum Beispiel durch Verwenden der Dictionary-Methode <code class="docutils literal notranslate"><span class="pre">.setdefault()</span></code>?</p></li>
+</ul>
+</div>
 </section>
 <section id="sichtbarkeitsbereich-von-variablen-variable-scope">
-<h2>Sichtbarkeitsbereich von Variablen (Variable Scope)<a class="headerlink" href="#sichtbarkeitsbereich-von-variablen-variable-scope" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1.7. </span>Sichtbarkeitsbereich von Variablen (Variable Scope)<a class="headerlink" href="#sichtbarkeitsbereich-von-variablen-variable-scope" title="Link to this heading">#</a></h2>
 <p>Wenn wir Variablen erstellt haben, sind wir immer davon ausgegangen, dass diese im gesammten Programm mithilfe des Namens abrufbar sind. Wenn wir selbst eine Funktion definieren, und dabei eine Variable vorkommt, dann ist die im restlichen Programm jedoch im Normalfall nicht abrufbar, sie “existiert” sozusagen nur in der Funktion und ist im restlichen Programm nicht sichtbar. Die Sichtbarkeit von Variablen im eigenen Code lässt sich leicht mithilfe von <a class="reference external" href="https://pythontutor.com/python-debugger.html#mode=edit">pythontutor.com</a> nachvollziehen.</p>
 <p>Kopiert als Beispiel den Code der Funktion einkauf_planen in PythonTutor und führt ihn dort aus.</p>
+<p>Es ist bei der Definition von Funktionen wichtig zu beachten, dass innerhalb der Funktionsdefinition keine Variablen aus dem Bereich außerhalb der Funktion verwendet werden sollten. Beispielsweise dürfte nicht einfach der Parameter grenze aus der Funktionsdefinition entfernt werden, denn sonst wird beim Aufruf der Funktion eine gleichnamige Variable aus dem Bereich außerhalb der Funktion eingesetzt. Dadurch hat die Funktion ein für Nachnutzer:innen unvorhersehbares Verhalten! <strong>Alle Objekte, welche zum Ausführen der Funktion benötigt werden, sollten deswegen entweder innerhalb der Funktion erstellt werden oder beim Aufruf als Argumente übergeben werden.</strong></p>
 </section>
 <section id="was-sind-methoden">
-<h2>Was sind Methoden?<a class="headerlink" href="#was-sind-methoden" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1.8. </span>Was sind Methoden?<a class="headerlink" href="#was-sind-methoden" title="Link to this heading">#</a></h2>
 <p>Wir haben Methoden bisher definiert als die Operationen, die speziell für Objekte eines bestimmten Datentyps definiert sind. Jetzt können wir diese Definition schärfen: Methoden haben genau wie Funktionen einen Namen, Parameter und einen Funktionskörper, und sie geben einen Wert zurück. Aber im Unterschied zu Funktionen sind sie nur für Objekte eines bestimmten Datentyps definiert.</p>
 <p>Wir haben bereits den Punkt-Operator <code class="docutils literal notranslate"><span class="pre">.</span></code> kennengelernt, mit dem Methoden aufgerufen werden können:</p>
 <div class="cell docutils container">
@@ -789,12 +825,18 @@ Wenn Schleifen ineinander verschachtelt sind, kann die äußere Schleife nicht u
 </div>
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In diesem Kapitel wurde häufig der <strong>Begriff “Fehler”</strong> verwendet. Während sich umgangssprachlich jede:r etwas darunter vorstellen kann, gibt es für diesen wie für viele andere Begriffe in der professionellen Softwareentwicklung feststehende, wenn auch nicht immer einheitliche Definitionen, für die es zum Teil sogar internationale Normen gibt. Die ISO Norm 24765 unterscheidet beispielsweise zwischen error, fault, defect und failure (<a class="reference external" href="https://www.iso.org/obp/ui/en/#iso:std:iso-iec-ieee:24765:ed-2:v1:en">ISO24765:2017</a>). Der Unterschied wird durch die deutschsprachige Übersetzung durch das International Software Testing Qualifications Board intuitiv deutlich: Demnach ist ein error eine Fehlhandlung einer Person, welche einen Fehlerzustand, einen Defekt in einem Programm verursachen kann (defect oder fault). Dieser Fehlerzustand kann eine Fehlerwirkung, das Versagen des Programms, herbeiführen (failure) (laut <a class="reference external" href="https://glossary.istqb.org/de_DE/home">Glossar des ISTQB</a>). Nach dieser Definition ist das, was wir in diesem Kapitel mit Fehler meinen eigentlich der Defekt im Code, der beim Ausführen zu einem Versagen führen kann.</p>
+</div>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1.9. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
+<li id="id48"><p>ISO/IEC/IEEE 24765:2017(en). Systems and Software Engineering — Vocabulary. 2017. URL: <a class="reference external" href="https://www.iso.org/obp/ui/en/#iso:std:iso-iec-ieee:24765:ed-2:v1:en">https://www.iso.org/obp/ui/en/#iso:std:iso-iec-ieee:24765:ed-2:v1:en</a>.</p></li>
 <li id="id12"><p>Ana Bell. Decomposition, Abstraction, and Functions. 2016. URL: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-4-decomposition-abstraction-and-functions/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-4-decomposition-abstraction-and-functions/</a>.</p></li>
+<li id="id49"><p>International Software Testing Qualifications Board. Standardglossar der Fachbegriffe im Softwaretesten. URL: <a class="reference external" href="https://glossary.istqb.org/de_DE/home">https://glossary.istqb.org/de_DE/home</a>.</p></li>
 <li id="id47"><p>David Goodger and Guido van Rossum. PEP 257 - Docstring Conventions. 2022. URL: <a class="reference external" href="https://peps.python.org/pep-0257/">https://peps.python.org/pep-0257/</a>.</p></li>
 <li id="id14"><p>Eric Grimson. Recursion and Dictionaries. 2016. URL: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-6-recursion-and-dictionaries/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-6-recursion-and-dictionaries/</a>.</p></li>
 <li id="id46"><p>Stefan Hartinger. Programmieren in Python. Kapitel 6: Funktionen. 2021. URL: <a class="reference external" href="https://www.uni-regensburg.de/assets/physik/fakultaet/IT/Tutorials-Installation-Programming-Environment/Programmieren_in_Python.pdf">https://www.uni-regensburg.de/assets/physik/fakultaet/IT/Tutorials-Installation-Programming-Environment/Programmieren_in_Python.pdf</a>.</p></li>
@@ -836,6 +878,24 @@ Wenn Schleifen ineinander verschachtelt sind, kann die äußere Schleife nicht u
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../04_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Python III: Funktionen und Pakete</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_pakete.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>Module, Pakete, Bibliotheken</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -852,15 +912,15 @@ Wenn Schleifen ineinander verschachtelt sind, kann die äußere Schleife nicht u
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-funktionen">Was sind Funktionen?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-definieren">Funktionen definieren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-aufrufen">Funktionen aufrufen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-verstehen">Funktionen verstehen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wozu-werden-funktionen-verwendet">Wozu werden Funktionen verwendet?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-schleifen-durch-funktionen-vereinfachen">Verschachtelte Schleifen durch Funktionen vereinfachen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sichtbarkeitsbereich-von-variablen-variable-scope">Sichtbarkeitsbereich von Variablen (Variable Scope)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-methoden">Was sind Methoden?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-funktionen">4.1.1. Was sind Funktionen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-definieren">4.1.2. Funktionen definieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-aufrufen">4.1.3. Funktionen aufrufen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-verstehen">4.1.4. Funktionen verstehen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wozu-werden-funktionen-verwendet">4.1.5. Wozu werden Funktionen verwendet?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-schleifen-durch-funktionen-vereinfachen">4.1.6. Verschachtelte Schleifen durch Funktionen vereinfachen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sichtbarkeitsbereich-von-variablen-variable-scope">4.1.7. Sichtbarkeitsbereich von Variablen (Variable Scope)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-methoden">4.1.8. Was sind Methoden?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">4.1.9. Quellen</a></li>
 </ul>
   </nav></div>
 
