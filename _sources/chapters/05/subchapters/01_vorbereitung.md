@@ -15,14 +15,14 @@ a) Suche nach "cmd" oder "Eingabeaufforderung" \
 b) Start-Menü -> Alle Programme -> Zubehör -> Eingabeaufforderung \
 c) Start-Menü -> Windows System -> Eingabeaufforderung
 
-**Wenn ihr Windows verwendet, werdet ihr allerdings gleich auf eine andere Kommandozeile umsteigen, die heißt "Anaconda Command Prompt (anaconda)".**
-Anaconda Command Prompt ist jetzt noch nicht auf eurem Computer installiert. Sobald ihr im Kapitel "Installation und Setup" Anaconda installiert habt, könnt ihr über die Suche auch "Anaconda Command Prompt" finden.   
+**Wenn ihr Windows verwendet, werdet ihr allerdings gleich auf eine andere Kommandozeile umsteigen, die heißt "Anaconda Prompt".**
+Anaconda Prompt ist jetzt noch nicht auf eurem Computer installiert. Sobald ihr im Kapitel "Installation und Setup" Miniconda installiert habt, könnt ihr über die Suche auch Anaconda Prompt finden.   
 
-Nachdem ihr Anaconda installiert habt: 
+Nachdem ihr Miniconda installiert habt: 
 
-a) Suche nach "Anaconda Command Prompt (anaconda)" oder einfach "Anaconda Prompt"
+a) Suche nach "Anaconda Command Prompt" oder einfach "Anaconda Prompt"
 
-**Wenn immer im Kapitel "Installation und Setup" die Kommandozeile erwähnt wird, ist damit Anaconda Command Prompt gemeint!**
+**Wenn immer im Kapitel "Installation und Setup" die Kommandozeile erwähnt wird, ist damit Anaconda Prompt gemeint!**
 **Nur in diesem Kapitel ist damit die vorinstallierte Eingabeaufforderung gemeint.**
 
 ### Kommandozeile kennenlernen 
