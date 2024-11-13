@@ -48,13 +48,13 @@ sections:
     title: Funktionen
   - file: chapters/04/subchapters/02_pakete
     title: Module, Pakete, Bibliotheken
-#- file: chapters/05/05_intro
-#  title: Installation und Setup
-#  sections:
-#  - file: chapters/05/subchapters/01_vorbereitung
-#    title: Vorbereitung
-#  - file: chapters/05/subchapters/02_installation_setup
-#    title: Installation und Setup
+- file: chapters/05/05_intro
+  title: Installation und Setup
+  sections:
+  - file: chapters/05/subchapters/01_vorbereitung
+    title: Vorbereitung
+  - file: chapters/05/subchapters/02_installation_setup
+    title: Installation und Setup
 #- file: chapters/06/06_intro
 #  title: Einstieg Webscraping
 #  sections:
