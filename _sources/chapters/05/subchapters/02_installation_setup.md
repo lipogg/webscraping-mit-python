@@ -77,7 +77,7 @@ Ordner nennt man auch Verzeichnis, oder auf Englisch Directory, und der Befehl c
 4. Gebt jetzt in eurem Terminal / Kommandozeile ein `conda create --name ws-env python=3.12` und drückt Enter.
 Durch diesen Befehl habt ihr eine virtuelle Umgebung mit dem Name ws-env erstellt. 
 Diesen Namen habe ich mir überlegt, er steht für "Webscraping Environment". 
-Mit dem Zusatz "python=3.11" habt ihr dem Computer mitgeteilt, dass ihr in der Umgebung "ws-env" Python 3.12 verwenden wollt. \
+Mit dem Zusatz "python=3.12" habt ihr dem Computer mitgeteilt, dass ihr in der Umgebung "ws-env" Python 3.12 verwenden wollt. \
 **Achtung**: Falls eine Meldung erscheint "The following NEW packages will be INSTALLED. Proceed \[y\]/n?", dann gebt ein y und drückt wieder auf Enter.
 5. Wenn die Einrichtung der virtuellen Umgebung abgeschlossen ist, seht ihr den Hinweis: "# To activate this environment, use \$ conda activate ws-env To deactivate an active environment, use \$ conda deactivate"
 6. Gebt ein `conda activate ws-env` und drückt Enter. 
