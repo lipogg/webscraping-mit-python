@@ -217,6 +217,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/04_http.html">6.4. Client, Server, HTTP</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07_intro.html">7. Statische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_einstieg_beautifulsoup.html">7.1. Einstieg BeautifulSoup</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -393,7 +397,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-funktionen">Lösung mit Funktionen</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-in-exceldatei-schreiben">Pandas-DataFrame in Exceldatei schreiben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-in-csv-datei-schreiben">Pandas-DataFrame in CSV-Datei schreiben</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-und-memit-was-ist-das">%%time und %%memit: Was ist das?</a></li>
 </ul>
             </nav>
@@ -413,14 +417,13 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 <ol class="arabic simple">
 <li><p>Zitate von der ersten Seite mit Metadaten extrahieren</p></li>
 <li><p>Zitate von allen Seiten extrahieren, mit und ohne Metadaten</p></li>
-<li><p>Daten in Dateien schreiben: Beispiel pandas DataFrame in Excel-Tabelle</p></li>
+<li><p>Daten in Dateien schreiben: Beispiel pandas DataFrame in CSV-Datei</p></li>
 </ol>
 <p>Für die Ausführung des Codes brauchen wir zusätzlich zu den Bibliotheken requests und bs4 außerdem noch die Bibliothek pandas, und eine Funktion aus der Bibliothek urllib3. Zusätzlich könnt ihr das Modul memory_profiler installieren, das erlaubt, zu messen, wieviel Speicher zum Ausführen einer Codezelle benötigt wird. Daneben installieren wir ein Paket openpyxl, das zum Schreiben von pandas-DataFrames in Excel-Dateien verwendet wird. Die Bibliothek müssen wir aber nicht laden, weil sie automatisch geladen wird, wenn wir später versuchen, einen Pandas DataFrame in eine Excel-Datei zu schreiben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import sys</span>
 <span class="c1">#!conda install --yes --prefix {sys.prefix} memory_profiler</span>
-<span class="c1">#!conda install --yes --prefix {sys.prefix} openpyxl</span>
 </pre></div>
 </div>
 </div>
@@ -757,8 +760,8 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 270 ms, sys: 24.8 ms, total: 294 ms
-Wall time: 1.8 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 143 ms, sys: 14 ms, total: 157 ms
+Wall time: 626 ms
 </pre></div>
 </div>
 </div>
@@ -908,8 +911,8 @@ Wall time: 1.8 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 263 ms, sys: 23.1 ms, total: 286 ms
-Wall time: 1.76 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 129 ms, sys: 14.1 ms, total: 144 ms
+Wall time: 615 ms
 </pre></div>
 </div>
 </div>
@@ -1063,8 +1066,8 @@ Wall time: 1.76 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 297 ms, sys: 24.2 ms, total: 322 ms
-Wall time: 2.09 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 275 ms, sys: 20.9 ms, total: 296 ms
+Wall time: 866 ms
 </pre></div>
 </div>
 </div>
@@ -1261,8 +1264,8 @@ Die Macher:innen der Seite quotes.toscrape haben sich überlegt, dass auch Seite
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 258 ms, sys: 25.6 ms, total: 283 ms
-Wall time: 2.06 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 254 ms, sys: 23.6 ms, total: 277 ms
+Wall time: 852 ms
 </pre></div>
 </div>
 </div>
@@ -1405,8 +1408,8 @@ Wall time: 2.06 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 227 ms, sys: 11.8 ms, total: 238 ms
-Wall time: 1.24 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 152 ms, sys: 9.42 ms, total: 161 ms
+Wall time: 471 ms
 </pre></div>
 </div>
 </div>
@@ -1446,8 +1449,8 @@ Wall time: 1.24 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 283 ms, sys: 20.4 ms, total: 303 ms
-Wall time: 1.78 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 258 ms, sys: 17.5 ms, total: 276 ms
+Wall time: 766 ms
 </pre></div>
 </div>
 </div>
@@ -1595,8 +1598,8 @@ Wall time: 1.78 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 304 ms, sys: 23.9 ms, total: 328 ms
-Wall time: 2.13 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 268 ms, sys: 19.8 ms, total: 288 ms
+Wall time: 858 ms
 </pre></div>
 </div>
 </div>
@@ -1740,8 +1743,8 @@ Wall time: 2.13 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 242 ms, sys: 12.3 ms, total: 254 ms
-Wall time: 1.26 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 159 ms, sys: 8.63 ms, total: 167 ms
+Wall time: 477 ms
 </pre></div>
 </div>
 </div>
@@ -1781,8 +1784,8 @@ Wall time: 1.26 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 256 ms, sys: 11.4 ms, total: 268 ms
-Wall time: 1.25 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 162 ms, sys: 8.16 ms, total: 170 ms
+Wall time: 478 ms
 </pre></div>
 </div>
 </div>
@@ -1870,8 +1873,8 @@ Wall time: 1.25 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 275 ms, sys: 11.3 ms, total: 286 ms
-Wall time: 1.35 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 146 ms, sys: 8.63 ms, total: 155 ms
+Wall time: 487 ms
 </pre></div>
 </div>
 </div>
@@ -1985,14 +1988,13 @@ Wall time: 1.35 s
 <p>Mehr Informationen zum Umgang mit Defaultargumenten findet ihr <a class="reference external" href="https://docs.python-guide.org/writing/gotchas/#mutable-default-arguments">hier</a>.</p>
 </section>
 </section>
-<section id="pandas-dataframe-in-exceldatei-schreiben">
-<h2>Pandas-DataFrame in Exceldatei schreiben<a class="headerlink" href="#pandas-dataframe-in-exceldatei-schreiben" title="Link to this heading">#</a></h2>
-<p>Zuletzt wollen wir die extrahierten Daten auf unserem Computer abspeichern. Um einen Pandas DataFrame zu speichern, gibt es verschiedene Methoden. Die Methode .to_excel() erlaubt zum Beispiel, einen DataFrame in einer Exceltabelle zu speichern, also in einer Datei mit der Dateiendung .xlsx. Für “speichern” sagt man in diesem Kontext auch “schreiben”: Daten werden in eine Datei geschrieben.</p>
-<p>Die Methode .to_excel() greift unter der Motorhaube auf ein Paket mit dem Namen openpyxl zurück. Diese Paket mussten wir deswegen am Anfang installieren.</p>
+<section id="pandas-dataframe-in-csv-datei-schreiben">
+<h2>Pandas-DataFrame in CSV-Datei schreiben<a class="headerlink" href="#pandas-dataframe-in-csv-datei-schreiben" title="Link to this heading">#</a></h2>
+<p>Zuletzt wollen wir die extrahierten Daten auf unserem Computer abspeichern. Um einen Pandas DataFrame zu speichern, gibt es verschiedene Methoden. Die Methode .to_csv() erlaubt zum Beispiel, einen DataFrame in einer Tabelle zu speichern, also in einer Datei mit der Dateiendung .csv. Für “speichern” sagt man in diesem Kontext auch “schreiben”: Daten werden in eine Datei geschrieben.</p>
 <p>Dokumentation: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># quotes_df.to_excel(&quot;quotes_df.xlsx&quot;, index=False) # default-encoding ist UTF-8</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># quotes_df.to_csv(&quot;quotes_df.csv&quot;, index=False) # default-encoding ist UTF-8</span>
 </pre></div>
 </div>
 </div>
@@ -2072,7 +2074,7 @@ Wall time: 1.35 s
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losung-mit-funktionen">Lösung mit Funktionen</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-in-exceldatei-schreiben">Pandas-DataFrame in Exceldatei schreiben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-in-csv-datei-schreiben">Pandas-DataFrame in CSV-Datei schreiben</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-und-memit-was-ist-das">%%time und %%memit: Was ist das?</a></li>
 </ul>
   </nav></div>
