@@ -469,7 +469,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Date&#39;: &#39;Mon, 25 Nov 2024 10:56:06 GMT&#39;, &#39;Content-Type&#39;: &#39;text/html; charset=utf-8&#39;, &#39;Content-Length&#39;: &#39;11064&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;, &#39;Strict-Transport-Security&#39;: &#39;max-age=0; includeSubDomains; preload&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Date&#39;: &#39;Tue, 26 Nov 2024 10:41:43 GMT&#39;, &#39;Content-Type&#39;: &#39;text/html; charset=utf-8&#39;, &#39;Content-Length&#39;: &#39;11064&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;, &#39;Strict-Transport-Security&#39;: &#39;max-age=0; includeSubDomains; preload&#39;}
 </pre></div>
 </div>
 </div>
@@ -765,6 +765,14 @@ Wir werden außerdem die Schritte, die wir bisher auf eine einzelne Webseite ang
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In unserem Beispiel haben wir das BeautifulSoup-Objekt mit dem Argument “html.parser” erstellt. Dieses Argument legt fest, dass BeautifulSoup zum Parsen des HTML-Dokuments auf ein <a class="reference external" href="https://docs.python.org/3/library/html.parser.html">Modul aus der Python-Standardbibliothek</a> zurückgreifen soll. Die Verwendung dieses Standard-Parsers hat den Vorteil, dass keine weiteren Pakete als Dependencies (s. Abschnitt Funktionen und Pakete) installiert werden müssen. BeautifulSoup erlaubt aber auch, stattdessen einen Parser aus dem Paket lxml, das nicht vorinstalliert ist, zu verwenden. Dies hat den Nachteil, dass neben BeautifulSoup zusätzlich lxml installiert werden muss, aber es hat den Vorteil, dass der externe Parser schneller ist, was insbesondere bei großen Seiten mit vielen Elementen von Vorteil sein kann. Mehr zu BeautifulSoup-Parsern könnt ihr <a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-a-parser">hier</a> nachlesen.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfragen</p>
+<ul class="simple">
+<li><p>Passt die for-Schleife so an, dass die Zitate nicht auf dem Bildschirm ausgegeben werden, sondern einer Liste hinzugefügt werden.</p></li>
+<li><p>Wie kann man nach dem Elternelement (parent) des ersten span-Elements mit der Klasse “text” suchen? Recherchiert in den <a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/">BeautifulSoup-Dokumentationsseiten</a>.</p></li>
+<li><p>Wie kann man das Geschwisterelement des span-Elements finden? Wie kann man nur das div-Element finden? Welches Argument muss dabei beim Aufruf der Funktion übergeben werden?</p></li>
+</ul>
 </div>
 <section id="quellen">
 <h3><span class="section-number">7.1.2.1. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h3>
