@@ -635,7 +635,7 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div></div></div>
 </div>
 <p>Anstelle der Methode .get_text() kann auch das Attribut .text abgerufen werden: Beide geben den Textinhalt des Elements zurück.</p>
-<p>Aber was passiert, wenn ein Element nicht gefunden werden kann, beispielsweise, weil für ein Zitat keine Tags angegeben wurden, oder wenn die Angabe der Autor:in fehlt? In diesem Fall würden die Methoden .find() bzw. .find_all() den Wert None zurückgeben. Die Methode .get_text() (oder das Attribut .text) würde dann auf ein Objekt vom Typ NoneType angewandt werden. Aber NoneType-Objekte haben keine Methode .get_text() und auch kein Attribut .text! Der Code würde also eine Fehlermeldung produzieren und die Ausführung abbrechen. Um das zu verhindern, könnten wir zunächst überprüfen, ob tatsächlich ein Element gefunden wurde. Nur, wenn ein Element gefunden wurde, wird der Text extrahiert, im folgenden Beispiel mithilfe des Attributs .text statt der Methode .get_text(). Wenn das Element nicht gefunden wird, wird eine Nachricht ausgegeben, um dies zu registrieren, und die aktuelle Iteration wird abgebrochen.</p>
+<p>Aber was passiert, wenn ein Element nicht gefunden werden kann, beispielsweise, weil für ein Zitat keine Tags angegeben wurden, oder wenn die Angabe der Autor:in fehlt? In diesem Fall würde die Methode .find() den Wert None und die Methode .find_all() eine leere Liste zurückgeben. Anstelle der Autor:innennamen und der Zitate würde dann dem Dictionary der Wert None hinzugefügt werden. Über den Fall, dass ein Element nicht gefunden wurde, sollte der Code uns irgendwie informieren, damit wir den Überblick über diese Fälle behalten und entscheiden können, wie damit umgegangen werden soll. Beispielsweise könnte es, je nach weiteren Verarbeitungsschritten, sinnvoller sein, dem Dictionary einen leeren String hinzuzufügen, wenn Autor:in oder Zitat nicht gefunden werden anstelle des Objekts None. Wir könnten dazu zunächst überprüfen, ob tatsächlich ein Element gefunden wurde. Nur, wenn ein Element gefunden wurde, wird es direkt dem Dictionary hinzugefügt. Wenn das Element nicht gefunden wird, wird eine Nachricht ausgegeben, um dies zu registrieren, und es wird stattdessen ein leerer String hinzugefügt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quotes</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;quote&quot;</span><span class="p">)</span>
@@ -645,30 +645,30 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
     <span class="n">quote_text</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;span&quot;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
     <span class="n">quote_author</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;author&quot;</span><span class="p">)</span>
     <span class="n">quote_tags</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;tag&quot;</span><span class="p">)</span>
-    <span class="n">tags_text</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">tag_texts</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">quote_tags</span><span class="p">:</span>
-        <span class="n">tags_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">tag_texts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">quote_text</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote_text</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zitat hat keinen Text&quot;</span><span class="p">)</span>
-        <span class="k">continue</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">quote_author</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Author&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quote_author</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zitat hat keinen Autor&quot;</span><span class="p">)</span>
-        <span class="k">continue</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zitat hat keine:n Autor:in&quot;</span><span class="p">)</span>
+        <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag_texts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">quotes_dict</span><span class="p">[</span><span class="s2">&quot;Tags&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags_text</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zitat hat keine Tags&quot;</span><span class="p">)</span>
-        <span class="k">continue</span>
+        <span class="c1"># in diesem Fall wird automatisch eine leere Liste hinzugefügt, wir müssen nichts weiter tun</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Der Einfachheit halber verwenden wir aber im Folgenden den Code ohne die zusätzlichen if-else-Verzweigungen. Die Suche mit find() und find_all() produziert bei komplexeren Abfragen aber auch bereits ohne die if-else Verzweigung unübersichtlichen Code, weil wir als Argument zusätzlich die CSS-Klasse des gesuchten Elements angeben müssen.</p>
-<p>Eine einfachere Möglichkeit, direkt nach der CSS-Klasse selbst zu suchen, sind die Methoden .select_one() und .select().</p>
+<p>Es ist immer wichtig, mögliche nicht gelungene Anfragen zu registrieren und sich zu überlegen, welche Sonderfälle auftreten können (z.B. Anfrage scheitert, Element wird nicht gefunden, …). Der Einfachheit halber verwenden wir im Folgenden den Code ohne die zusätzlichen if-else-Verzweigungen.
+Die Suche mit find() und find_all() produziert bei komplexeren Abfragen aber auch bereits ohne die if-else Verzweigung unübersichtlichen Code, weil wir als Argument zusätzlich die CSS-Klasse des gesuchten Elements angeben müssen. Mit .find() und .find_all() ist es außerdem nicht so einfach möglich, Elemente etwas feingranularer zu extrahieren. Dazu können die Methoden .select_one() und .select() verwendet werden.</p>
 <p>Zum Nachlesen: <a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/index.html?highlight=select#css-selectors">https://beautiful-soup-4.readthedocs.io/en/latest/index.html?highlight=select#css-selectors</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -677,7 +677,7 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 
 <span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">:</span>
     <span class="n">quote_text</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;span.text&quot;</span><span class="p">)</span> <span class="c1"># oder einfach &#39;.text&#39;</span>
-    <span class="n">quote_author</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;small.author&quot;</span><span class="p">)</span>
+    <span class="n">quote_author</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;small.author&quot;</span><span class="p">)</span> <span class="c1"># oder einfach &#39;.author&#39;</span>
     <span class="n">quote_tags</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;a.tag&quot;</span><span class="p">)</span>
     <span class="n">tags_text</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">quote_tags</span><span class="p">:</span>
@@ -785,8 +785,8 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 72 ms, sys: 12.7 ms, total: 84.6 ms
-Wall time: 1.57 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 125 ms, sys: 17.3 ms, total: 142 ms
+Wall time: 616 ms
 </pre></div>
 </div>
 </div>
@@ -936,8 +936,8 @@ Wall time: 1.57 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 92.6 ms, sys: 19 ms, total: 112 ms
-Wall time: 1.59 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 116 ms, sys: 16.3 ms, total: 133 ms
+Wall time: 607 ms
 </pre></div>
 </div>
 </div>
@@ -1091,8 +1091,8 @@ Wall time: 1.59 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 119 ms, sys: 19.2 ms, total: 138 ms
-Wall time: 2.07 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 167 ms, sys: 19.7 ms, total: 187 ms
+Wall time: 749 ms
 </pre></div>
 </div>
 </div>
@@ -1289,8 +1289,8 @@ Die Macher:innen der Seite quotes.toscrape haben sich überlegt, dass auch Seite
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 101 ms, sys: 16.7 ms, total: 118 ms
-Wall time: 1.81 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 109 ms, sys: 16.2 ms, total: 125 ms
+Wall time: 676 ms
 </pre></div>
 </div>
 </div>
@@ -1425,16 +1425,16 @@ Wall time: 1.81 s
     <span class="n">next_elem</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.next &gt; a&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">next_elem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">current_url</span> <span class="o">=</span> <span class="n">next_elem</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> <span class="c1"># auf den Wert des Attributs &quot;href&quot; zugreifen</span>
-        <span class="n">current_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">current_url</span>
+        <span class="n">next_path</span> <span class="o">=</span> <span class="n">next_elem</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> <span class="c1"># auf den Wert des Attributs &quot;href&quot; zugreifen</span>
+        <span class="n">current_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">next_path</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">break</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 81.4 ms, sys: 9.26 ms, total: 90.6 ms
-Wall time: 1.04 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 79.6 ms, sys: 7.83 ms, total: 87.4 ms
+Wall time: 395 ms
 </pre></div>
 </div>
 </div>
@@ -1474,8 +1474,8 @@ Wall time: 1.04 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 112 ms, sys: 17.4 ms, total: 130 ms
-Wall time: 1.57 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 104 ms, sys: 12.8 ms, total: 117 ms
+Wall time: 593 ms
 </pre></div>
 </div>
 </div>
@@ -1623,8 +1623,8 @@ Wall time: 1.57 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 125 ms, sys: 20.7 ms, total: 146 ms
-Wall time: 1.86 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 99.1 ms, sys: 14.5 ms, total: 114 ms
+Wall time: 669 ms
 </pre></div>
 </div>
 </div>
@@ -1768,8 +1768,8 @@ Wall time: 1.86 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 109 ms, sys: 13.2 ms, total: 123 ms
-Wall time: 1.16 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 98.6 ms, sys: 8.65 ms, total: 107 ms
+Wall time: 413 ms
 </pre></div>
 </div>
 </div>
@@ -1809,8 +1809,8 @@ Wall time: 1.16 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 97.9 ms, sys: 11.1 ms, total: 109 ms
-Wall time: 1.08 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 122 ms, sys: 9.59 ms, total: 131 ms
+Wall time: 441 ms
 </pre></div>
 </div>
 </div>
@@ -1870,8 +1870,8 @@ Wall time: 1.08 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 241 ms, sys: 25.5 ms, total: 266 ms
-Wall time: 2.6 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 191 ms, sys: 20.3 ms, total: 211 ms
+Wall time: 960 ms
 </pre></div>
 </div>
 </div>
@@ -2063,8 +2063,8 @@ Wall time: 2.6 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 198 ms, sys: 17.4 ms, total: 216 ms
-Wall time: 2.03 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 139 ms, sys: 14 ms, total: 153 ms
+Wall time: 697 ms
 </pre></div>
 </div>
 </div>
@@ -2185,7 +2185,7 @@ Wall time: 2.03 s
 <section id="pandas-dataframe-in-csv-datei-schreiben">
 <h2><span class="section-number">7.2.5. </span>Pandas-DataFrame in CSV-Datei schreiben<a class="headerlink" href="#pandas-dataframe-in-csv-datei-schreiben" title="Link to this heading">#</a></h2>
 <p>Zuletzt wollen wir die extrahierten Daten auf unserem Computer abspeichern. Um einen Pandas DataFrame zu speichern, gibt es verschiedene Methoden. Die Methode .to_csv() erlaubt zum Beispiel, einen DataFrame in einer Tabelle zu speichern, also in einer Datei mit der Dateiendung .csv. Für “speichern” sagt man in diesem Kontext auch “schreiben”: Daten werden in eine Datei geschrieben.</p>
-<p>Dokumentation: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html</a></p>
+<p>Dokumentation: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># quotes_df.to_csv(&quot;quotes_df.csv&quot;, index=False) # default-encoding ist UTF-8</span>
