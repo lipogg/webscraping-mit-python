@@ -668,7 +668,7 @@ Heute werden wir den Code in drei Aspekten ergänzen:</p>
 </div>
 </div>
 <p>Es ist immer wichtig, mögliche nicht gelungene Anfragen zu registrieren und sich zu überlegen, welche Sonderfälle auftreten können (z.B. Anfrage scheitert, Element wird nicht gefunden, …). Der Einfachheit halber verwenden wir im Folgenden den Code ohne die zusätzlichen if-else-Verzweigungen.
-Die Suche mit find() und find_all() produziert bei komplexeren Abfragen aber auch bereits ohne die if-else Verzweigung unübersichtlichen Code, weil wir als Argument zusätzlich die CSS-Klasse des gesuchten Elements angeben müssen. Mit .find() und .find_all() ist es außerdem nicht so einfach möglich, Elemente etwas feingranularer zu extrahieren. Dazu können die Methoden .select_one() und .select() verwendet werden.</p>
+Die Suche mit find() und find_all() produziert bei komplexeren Abfragen aber auch bereits ohne die if-else Verzweigung unübersichtlichen Code, weil wir als Argument zusätzlich die CSS-Klasse des gesuchten Elements angeben müssen. Mit .find() und .find_all() ist es außerdem nicht so einfach möglich, Elemente etwas feingranularer zu extrahieren. Die Methoden .select_one() und .select()ermöglichen unter anderem, direkt nach einer CSS-Klasse zu suchen und komplexere Suchen kompakt zu formulieren.</p>
 <p>Zum Nachlesen: <a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/index.html?highlight=select#css-selectors">https://beautiful-soup-4.readthedocs.io/en/latest/index.html?highlight=select#css-selectors</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -785,8 +785,8 @@ Die Suche mit find() und find_all() produziert bei komplexeren Abfragen aber auc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 125 ms, sys: 17.3 ms, total: 142 ms
-Wall time: 616 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 87.5 ms, sys: 10.3 ms, total: 97.8 ms
+Wall time: 1.7 s
 </pre></div>
 </div>
 </div>
@@ -936,8 +936,8 @@ Wall time: 616 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 116 ms, sys: 16.3 ms, total: 133 ms
-Wall time: 607 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 87.4 ms, sys: 10.1 ms, total: 97.5 ms
+Wall time: 1.6 s
 </pre></div>
 </div>
 </div>
@@ -1091,8 +1091,8 @@ Wall time: 607 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 167 ms, sys: 19.7 ms, total: 187 ms
-Wall time: 749 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 98.8 ms, sys: 11.4 ms, total: 110 ms
+Wall time: 1.94 s
 </pre></div>
 </div>
 </div>
@@ -1289,8 +1289,8 @@ Die Macher:innen der Seite quotes.toscrape haben sich überlegt, dass auch Seite
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 109 ms, sys: 16.2 ms, total: 125 ms
-Wall time: 676 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 78.4 ms, sys: 10.5 ms, total: 88.8 ms
+Wall time: 1.91 s
 </pre></div>
 </div>
 </div>
@@ -1433,8 +1433,8 @@ Wall time: 676 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 79.6 ms, sys: 7.83 ms, total: 87.4 ms
-Wall time: 395 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 63.6 ms, sys: 5.6 ms, total: 69.2 ms
+Wall time: 1.07 s
 </pre></div>
 </div>
 </div>
@@ -1474,8 +1474,8 @@ Wall time: 395 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 104 ms, sys: 12.8 ms, total: 117 ms
-Wall time: 593 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 78.6 ms, sys: 8.28 ms, total: 86.9 ms
+Wall time: 1.58 s
 </pre></div>
 </div>
 </div>
@@ -1623,8 +1623,8 @@ Wall time: 593 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 99.1 ms, sys: 14.5 ms, total: 114 ms
-Wall time: 669 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 84.7 ms, sys: 10.9 ms, total: 95.6 ms
+Wall time: 1.86 s
 </pre></div>
 </div>
 </div>
@@ -1768,8 +1768,8 @@ Wall time: 669 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 98.6 ms, sys: 8.65 ms, total: 107 ms
-Wall time: 413 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 83.2 ms, sys: 8.55 ms, total: 91.7 ms
+Wall time: 1.15 s
 </pre></div>
 </div>
 </div>
@@ -1809,8 +1809,8 @@ Wall time: 413 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 122 ms, sys: 9.59 ms, total: 131 ms
-Wall time: 441 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 86.7 ms, sys: 8.86 ms, total: 95.5 ms
+Wall time: 1.09 s
 </pre></div>
 </div>
 </div>
@@ -1870,8 +1870,8 @@ Wall time: 441 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 191 ms, sys: 20.3 ms, total: 211 ms
-Wall time: 960 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 174 ms, sys: 17.4 ms, total: 191 ms
+Wall time: 2.74 s
 </pre></div>
 </div>
 </div>
@@ -2063,8 +2063,8 @@ Wall time: 960 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 139 ms, sys: 14 ms, total: 153 ms
-Wall time: 697 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 128 ms, sys: 11.6 ms, total: 140 ms
+Wall time: 2.24 s
 </pre></div>
 </div>
 </div>

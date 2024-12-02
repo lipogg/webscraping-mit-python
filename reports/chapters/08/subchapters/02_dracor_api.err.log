@@ -96,7 +96,7 @@ File [0;32m/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/si
 [1;32m    210[0m     ) [38;5;28;01mfrom[39;00m [38;5;21;01me[39;00m
 [1;32m    212[0m [38;5;28;01mexcept[39;00m [38;5;167;01mOSError[39;00m [38;5;28;01mas[39;00m e:
 
-[0;31mConnectTimeoutError[0m: (<urllib3.connection.HTTPSConnection object at 0x107962050>, 'Connection to dracor.org timed out. (connect timeout=None)')
+[0;31mConnectTimeoutError[0m: (<urllib3.connection.HTTPSConnection object at 0x107eea0e0>, 'Connection to dracor.org timed out. (connect timeout=None)')
 
 The above exception was the direct cause of the following exception:
 
@@ -130,7 +130,7 @@ File [0;32m/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/si
 [0;32m--> 515[0m     [38;5;28;01mraise[39;00m MaxRetryError(_pool, url, reason) [38;5;28;01mfrom[39;00m [38;5;21;01mreason[39;00m  [38;5;66;03m# type: ignore[arg-type][39;00m
 [1;32m    517[0m log[38;5;241m.[39mdebug([38;5;124m"[39m[38;5;124mIncremented Retry for (url=[39m[38;5;124m'[39m[38;5;132;01m%s[39;00m[38;5;124m'[39m[38;5;124m): [39m[38;5;132;01m%r[39;00m[38;5;124m"[39m, url, new_retry)
 
-[0;31mMaxRetryError[0m: HTTPSConnectionPool(host='dracor.org', port=443): Max retries exceeded with url: /api/v1/corpora/ger (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x107962050>, 'Connection to dracor.org timed out. (connect timeout=None)'))
+[0;31mMaxRetryError[0m: HTTPSConnectionPool(host='dracor.org', port=443): Max retries exceeded with url: /api/v1/corpora/ger (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x107eea0e0>, 'Connection to dracor.org timed out. (connect timeout=None)'))
 
 During handling of the above exception, another exception occurred:
 
@@ -180,5 +180,5 @@ File [0;32m/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/si
 [1;32m    509[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(e[38;5;241m.[39mreason, ResponseError):
 [1;32m    510[0m     [38;5;28;01mraise[39;00m RetryError(e, request[38;5;241m=[39mrequest)
 
-[0;31mConnectTimeout[0m: HTTPSConnectionPool(host='dracor.org', port=443): Max retries exceeded with url: /api/v1/corpora/ger (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x107962050>, 'Connection to dracor.org timed out. (connect timeout=None)'))
+[0;31mConnectTimeout[0m: HTTPSConnectionPool(host='dracor.org', port=443): Max retries exceeded with url: /api/v1/corpora/ger (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x107eea0e0>, 'Connection to dracor.org timed out. (connect timeout=None)'))
 
