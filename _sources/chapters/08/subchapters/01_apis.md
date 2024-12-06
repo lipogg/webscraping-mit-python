@@ -71,8 +71,13 @@ Schaubild Beispielabfrage über eine REST API. Quelle: [Alexander Barge](https:/
 Manche APIs sind öffentlich zugänglich (Public APIs), andere sind öffentlich zugänglich, aber erfordern eine Authentifizierung via API Key. 
 Der Key kann normalerweise recht unbürokratisch und kostenlos über die Dokumentationsseiten zu der Schnittstelle beantragt werden. 
 Ein Beispiel hierfür ist die API des Guardian: https://open-platform.theguardian.com/documentation/. 
-Aber es gibt auch APIs, die nur über einen proprietären Key oder nur nach einer Anmeldung angezapft werden dürfen. 
+Aber es gibt auch APIs, die nur über einen proprietären Key oder nur nach einer Anmeldung und Autorisierung angezapft werden dürfen. 
 Die vormals kostenlose Twitter API wurde beispielsweise mit Elon Musks Übernahme des Unternehmens zu einer Bezahl-API, und zur Verwendung der TikTok Research API ist eine Bewerbung mit einer Vorstellung des eigenen Forschungsprojekts notwendig. 
+
+Bei der Nutzung der meisten Schnittstellen sind bestimmte technische Vorgaben zu beachten. So muss meistens die Abfragerate, also die Anzahl von Anfragen in einer bestimmten Zeit, begrenzt werden ("Rate Limits").
+Informationen zu solchen Nutzungsvorgaben finden sich in den Dokumentationsseiten der jeweiligen API. Wenn die API aber recht komplex ist und es viele verschiedene Endpunkte oder sogar mehrere APIs gibt, dann können diese Informationen unter Umständen etwas versteckt sein.
+Auch, wenn ihr keine konkreten Vorgaben findet, solltet ihr aber eine Abfragerate festlegen, damit ihr den Server nicht überlastet oder blockiert werdet. Wie das geht, besprechen wir ausführlich in den nächsten Wochen.
+
 
 ### Beispiele
 
@@ -131,7 +136,7 @@ https://www.hathitrust.org/data_api
 - Deutsche Digitale Bibliothek: https://pro.deutsche-digitale-bibliothek.de/daten-nutzen/schnittstellen
 - Digital Public Library of America: https://dp.la/guides/for-developers
 - National Library of France: https://api.bnf.fr/api-document-de-gallica
-- LOC (s.u.)
+- Library of Congress (LOC, s.u.)
 
 LOC APIs
 - https://www.loc.gov/apis/
@@ -156,10 +161,6 @@ LOC Tutorials
 - Working with sound files: https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Sets/Web%20Archives/loc_goes_lofi.ipynb
 
 Before you scrape...
-
-Bei der Nutzung der meisten Schnittstellen sind bestimmte technische Vorgaben zu beachten. So muss meistens die Abfragerate, also die Anzahl von Anfragen in einer bestimmten Zeit, begrenzt werden.
-Informationen zu solchen Nutzungsvorgaben finden sich in den Dokumentationsseiten der jeweiligen API. Wenn die API aber recht komplex ist und es viele verschiedene Endpunkte oder sogar mehrere APIs gibt, dann können diese Informationen unter Umständen etwas versteckt sein.
-Auch, wenn ihr keine konkreten Vorgaben findet, solltet ihr aber eine Abfragerate festlegen, damit ihr den Server nicht überlastet oder blockiert werdet. Wie das geht, besprechen wir ausführlich in den nächsten Wochen.
 
 - Beschränkungen für die Nutzung der LOC-API: https://www.loc.gov/apis/json-and-yaml/working-within-limits
 

@@ -469,8 +469,11 @@ Im Beispiel unten wird eine Auflistung aller alle Nutzer:innen eines sozialen Ne
 <p>Manche APIs sind öffentlich zugänglich (Public APIs), andere sind öffentlich zugänglich, aber erfordern eine Authentifizierung via API Key.
 Der Key kann normalerweise recht unbürokratisch und kostenlos über die Dokumentationsseiten zu der Schnittstelle beantragt werden.
 Ein Beispiel hierfür ist die API des Guardian: <a class="reference external" href="https://open-platform.theguardian.com/documentation/">https://open-platform.theguardian.com/documentation/</a>.
-Aber es gibt auch APIs, die nur über einen proprietären Key oder nur nach einer Anmeldung angezapft werden dürfen.
+Aber es gibt auch APIs, die nur über einen proprietären Key oder nur nach einer Anmeldung und Autorisierung angezapft werden dürfen.
 Die vormals kostenlose Twitter API wurde beispielsweise mit Elon Musks Übernahme des Unternehmens zu einer Bezahl-API, und zur Verwendung der TikTok Research API ist eine Bewerbung mit einer Vorstellung des eigenen Forschungsprojekts notwendig.</p>
+<p>Bei der Nutzung der meisten Schnittstellen sind bestimmte technische Vorgaben zu beachten. So muss meistens die Abfragerate, also die Anzahl von Anfragen in einer bestimmten Zeit, begrenzt werden (“Rate Limits”).
+Informationen zu solchen Nutzungsvorgaben finden sich in den Dokumentationsseiten der jeweiligen API. Wenn die API aber recht komplex ist und es viele verschiedene Endpunkte oder sogar mehrere APIs gibt, dann können diese Informationen unter Umständen etwas versteckt sein.
+Auch, wenn ihr keine konkreten Vorgaben findet, solltet ihr aber eine Abfragerate festlegen, damit ihr den Server nicht überlastet oder blockiert werdet. Wie das geht, besprechen wir ausführlich in den nächsten Wochen.</p>
 </section>
 <section id="beispiele">
 <h2><span class="section-number">8.1.5. </span>Beispiele<a class="headerlink" href="#beispiele" title="Link to this heading">#</a></h2>
@@ -536,7 +539,7 @@ Tutorial: How to Use the Guardian’s API: <a class="reference external" href="h
 <li><p>Deutsche Digitale Bibliothek: <a class="reference external" href="https://pro.deutsche-digitale-bibliothek.de/daten-nutzen/schnittstellen">https://pro.deutsche-digitale-bibliothek.de/daten-nutzen/schnittstellen</a></p></li>
 <li><p>Digital Public Library of America: <a class="reference external" href="https://dp.la/guides/for-developers">https://dp.la/guides/for-developers</a></p></li>
 <li><p>National Library of France: <a class="reference external" href="https://api.bnf.fr/api-document-de-gallica">https://api.bnf.fr/api-document-de-gallica</a></p></li>
-<li><p>LOC (s.u.)</p></li>
+<li><p>Library of Congress (LOC, s.u.)</p></li>
 </ul>
 <p>LOC APIs</p>
 <ul class="simple">
@@ -562,9 +565,6 @@ Und Streaming Services: <a class="reference external" href="https://www.loc.gov/
 <li><p>Working with sound files: <a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Sets/Web%20Archives/loc_goes_lofi.ipynb">https://github.com/LibraryOfCongress/data-exploration/blob/master/Data Sets/Web Archives/loc_goes_lofi.ipynb</a></p></li>
 </ul>
 <p>Before you scrape…</p>
-<p>Bei der Nutzung der meisten Schnittstellen sind bestimmte technische Vorgaben zu beachten. So muss meistens die Abfragerate, also die Anzahl von Anfragen in einer bestimmten Zeit, begrenzt werden.
-Informationen zu solchen Nutzungsvorgaben finden sich in den Dokumentationsseiten der jeweiligen API. Wenn die API aber recht komplex ist und es viele verschiedene Endpunkte oder sogar mehrere APIs gibt, dann können diese Informationen unter Umständen etwas versteckt sein.
-Auch, wenn ihr keine konkreten Vorgaben findet, solltet ihr aber eine Abfragerate festlegen, damit ihr den Server nicht überlastet oder blockiert werdet. Wie das geht, besprechen wir ausführlich in den nächsten Wochen.</p>
 <ul class="simple">
 <li><p>Beschränkungen für die Nutzung der LOC-API: <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/working-within-limits">https://www.loc.gov/apis/json-and-yaml/working-within-limits</a></p></li>
 </ul>
