@@ -18,7 +18,7 @@ Wenn wir in diesem Abschnitt von APIs sprechen, dann meinen wir aber eine ganz b
 ### Web-APIs
 
 :::{figure-md} 
-<img src="rest_api.png" alt="REST API Schaubild" class="bg-transparent" width="80%">
+<img src="web_api.png" alt="REST API Schaubild" class="bg-transparent" width="80%">
 
 Schaubild Web-API. Quelle: [Frank Dopatka (2024)](https://www.youtube.com/watch?v=FfR9B5rPBuw)
 :::
