@@ -20,7 +20,7 @@ Wenn wir in diesem Abschnitt von APIs sprechen, dann meinen wir aber eine ganz b
 :::{figure-md} 
 <img src="web_apis.png" alt="Web APIs Schaubild" class="bg-transparent" width="80%">
 
-Schaubild Web-API. Quelle: [MDN Contributors (2024)](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction)
+Schaubild Web-APIs. Quelle: [MDN Contributors (2024)](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction)
 :::
 
 Web-APIs ermöglichen verschiedenen (Web-)Anwendungen, und konkret Client und Server, miteinander zu kommunizieren und Daten auszutauschen oder die Funktionalitäten der jeweiligen Anwendung zu nutzen. 
@@ -156,6 +156,11 @@ LOC Tutorials
 - Working with sound files: https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Sets/Web%20Archives/loc_goes_lofi.ipynb
 
 Before you scrape...
+
+Bei der Nutzung der meisten Schnittstellen sind bestimmte technische Vorgaben zu beachten. So muss meistens die Abfragerate, also die Anzahl von Anfragen in einer bestimmten Zeit, begrenzt werden.
+Informationen zu solchen Nutzungsvorgaben finden sich in den Dokumentationsseiten der jeweiligen API. Wenn die API aber recht komplex ist und es viele verschiedene Endpunkte oder sogar mehrere APIs gibt, dann können diese Informationen unter Umständen etwas versteckt sein.
+Auch, wenn ihr keine konkreten Vorgaben findet, solltet ihr aber eine Abfragerate festlegen, damit ihr den Server nicht überlastet oder blockiert werdet. Wie das geht, besprechen wir ausführlich in den nächsten Wochen.
+
 - Beschränkungen für die Nutzung der LOC-API: https://www.loc.gov/apis/json-and-yaml/working-within-limits
 
 
