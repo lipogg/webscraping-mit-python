@@ -18,12 +18,12 @@ Wenn wir in diesem Abschnitt von APIs sprechen, dann meinen wir aber eine ganz b
 ### Web-APIs
 
 :::{figure-md} 
-<img src="web_api.png" alt="REST API Schaubild" class="bg-transparent" width="80%">
+<img src="web_apis.png" alt="Web APIs Schaubild" class="bg-transparent" width="80%">
 
-Schaubild Web-API. Quelle: [Frank Dopatka (2024)](https://www.youtube.com/watch?v=FfR9B5rPBuw)
+Schaubild Web-API. Quelle: [MDN Contributors (2024)](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction)
 :::
 
-Web-APIs ermöglichen verschiedenen (Web-)Anwendungen, und konkret Client und Server, miteinander zu kommunizieren, Daten auszutauschen und die Funktionalitäten der jeweiligen Anwendung zu nutzen. 
+Web-APIs ermöglichen verschiedenen (Web-)Anwendungen, und konkret Client und Server, miteinander zu kommunizieren und Daten auszutauschen oder die Funktionalitäten der jeweiligen Anwendung zu nutzen. 
 
 Beim Aufruf der Seite [https://quotes.toscrape.com/js/](https://quotes.toscrape.com/js/) haben wir beispielsweise mithilfe der Browser-Entwicklertools beobachtet, dass unter dem Tab "Netzwerk" mehrere HTTP-Anfragen gestellt wurden.
 Es wurde zum Beispiel eine Javascript-Datei mithilfe einer HTTP-Anfrage vom Webserver angefragt. 
