@@ -224,6 +224,7 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../08_intro.html">8. APIs (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="01_apis.html">8.1. APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_dracor_api.html">8.2. Beispiel DraCor-API</a></li>
 </ul>
 </li>
 </ul>
@@ -470,17 +471,17 @@ Es gibt laut <a class="reference external" href="https://chroniclingamerica.loc.
 </div>
 </div>
 <p>Eine aufmerksame Betrachtung der Ergebnisse der Suche nach einem Suchbegriff über die Suchmaske der Website <a class="reference external" href="https://chroniclingamerica.loc.gov">https://chroniclingamerica.loc.gov</a> zeigt, dass die Suche über die Suchmaske genau dieselben Ergebnisse liefert wie die API-Abfrage. Das ist nicht erstaunlich, denn die URL, die beim Verwenden der Suchmaske generiert wird, ist ganz ähnlich aufgebaut wie die URL, die wir für die API-Abfrage erstellen, mit dem einzigen Unterschied, dass die Suchparameter etwas anders aussehen:</p>
-<figure class="align-default" id="id232">
+<figure class="align-default" id="id234">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/loc_ca_suche.png"><img alt="Suchmaske Chronicling America" class="bg-transparent" src="../../../_images/loc_ca_suche.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">Einfache Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id232" title="Link to this image">#</a></p>
+<p><span class="caption-text">Einfache Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id234" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wir können diese URL nutzen, um den andtext-Parameter besser zu verstehen. Wenn wir in der einfachen Suche nach dem Suchbegriff “book review” suchen, dann steht in der URL “book+review”. Wenn wir stattdessen die Erweiterte Suche (Tab Advanced Search) verwenden und nach einer Phrase suchen, dann steht in der URL der Zusatz “&amp;phrasetext=book+review”:</p>
-<figure class="align-default" id="id233">
+<figure class="align-default" id="id235">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/loc_ca_erweiterte_suche.png"><img alt="Erweiterte Suche Chronicling America" class="bg-transparent" src="../../../_images/loc_ca_erweiterte_suche.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-text">Erweiterte Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id233" title="Link to this image">#</a></p>
+<p><span class="caption-text">Erweiterte Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id235" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Tatsächlich akzeptiert auch die Chronicling America API eine Abfrage-URI mit dem Zusatz &amp;phrasetext:</p>
@@ -743,14 +744,14 @@ Als Beispiel rufen wir die Seite <a class="reference external" href="https://chr
 <h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
-<li id="id129"><p>Michael Driscoll. Chapter 25 – Decorators. 2017. URL: <a class="reference external" href="https://python101.pythonlibrary.org/chapter25_decorators.html">https://python101.pythonlibrary.org/chapter25_decorators.html</a>.</p></li>
-<li id="id131"><p>Akshay Ranganath. Rate Limiting with Python. 2021. URL: <a class="reference external" href="https://akshayranganath.github.io/Rate-Limiting-With-Python/">https://akshayranganath.github.io/Rate-Limiting-With-Python/</a>.</p></li>
-<li id="id132"><p>Guido van Rossum, Barry Warsaw, and Nick Coghlan. PEP 8: Constants. 2013. URL: <a class="reference external" href="https://peps.python.org/pep-0008/#constants">https://peps.python.org/pep-0008/#constants</a>.</p></li>
-<li id="id128"><p>Geir Arne Hjelle. Primer on Python Decorators. 2023. URL: <a class="reference external" href="https://realpython.com/primer-on-python-decorators/">https://realpython.com/primer-on-python-decorators/</a>.</p></li>
-<li id="id130"><p>Kite. Python Decorators in 15 Minutes. 2020. URL: <a class="reference external" href="https://www.youtube.com/watch?v=r7Dtus7N4pI">https://www.youtube.com/watch?v=r7Dtus7N4pI</a>.</p></li>
-<li id="id133"><p>Leodanis Pozo Ramos. Python Constants: Improve Your Code's Maintainability. 2022. URL: <a class="reference external" href="https://realpython.com/python-constants/">https://realpython.com/python-constants/</a>.</p></li>
-<li id="id135"><p>Library of Congress. Chronicling America. About the Site and API. 2023. URL: <a class="reference external" href="https://chroniclingamerica.loc.gov/about/api/">https://chroniclingamerica.loc.gov/about/api/</a>.</p></li>
-<li id="id134"><p>Library of Congress. Working Within Limits. 2023. URL: <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/working-within-limits">https://www.loc.gov/apis/json-and-yaml/working-within-limits</a>.</p></li>
+<li id="id131"><p>Michael Driscoll. Chapter 25 – Decorators. 2017. URL: <a class="reference external" href="https://python101.pythonlibrary.org/chapter25_decorators.html">https://python101.pythonlibrary.org/chapter25_decorators.html</a>.</p></li>
+<li id="id133"><p>Akshay Ranganath. Rate Limiting with Python. 2021. URL: <a class="reference external" href="https://akshayranganath.github.io/Rate-Limiting-With-Python/">https://akshayranganath.github.io/Rate-Limiting-With-Python/</a>.</p></li>
+<li id="id134"><p>Guido van Rossum, Barry Warsaw, and Nick Coghlan. PEP 8: Constants. 2013. URL: <a class="reference external" href="https://peps.python.org/pep-0008/#constants">https://peps.python.org/pep-0008/#constants</a>.</p></li>
+<li id="id130"><p>Geir Arne Hjelle. Primer on Python Decorators. 2023. URL: <a class="reference external" href="https://realpython.com/primer-on-python-decorators/">https://realpython.com/primer-on-python-decorators/</a>.</p></li>
+<li id="id132"><p>Kite. Python Decorators in 15 Minutes. 2020. URL: <a class="reference external" href="https://www.youtube.com/watch?v=r7Dtus7N4pI">https://www.youtube.com/watch?v=r7Dtus7N4pI</a>.</p></li>
+<li id="id135"><p>Leodanis Pozo Ramos. Python Constants: Improve Your Code's Maintainability. 2022. URL: <a class="reference external" href="https://realpython.com/python-constants/">https://realpython.com/python-constants/</a>.</p></li>
+<li id="id137"><p>Library of Congress. Chronicling America. About the Site and API. 2023. URL: <a class="reference external" href="https://chroniclingamerica.loc.gov/about/api/">https://chroniclingamerica.loc.gov/about/api/</a>.</p></li>
+<li id="id136"><p>Library of Congress. Working Within Limits. 2023. URL: <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/working-within-limits">https://www.loc.gov/apis/json-and-yaml/working-within-limits</a>.</p></li>
 </ol>
 </div>
 </section>
