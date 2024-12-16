@@ -487,17 +487,17 @@ Es gibt laut <a class="reference external" href="https://chroniclingamerica.loc.
 </div>
 </div>
 <p>Eine aufmerksame Betrachtung der Ergebnisse der Suche nach einem Suchbegriff über die Suchmaske der Website <a class="reference external" href="https://chroniclingamerica.loc.gov">https://chroniclingamerica.loc.gov</a> zeigt, dass die Suche über die Suchmaske genau dieselben Ergebnisse liefert wie die API-Abfrage. Das ist nicht erstaunlich, denn die URL, die beim Verwenden der Suchmaske generiert wird, ist dieselbe URL, die auch über die API abgefragt werden kann. Es handelt sich also um diesele URL, die wir für die API-Abfrage erstellen, auch, wenn die Suchparameter zum Teil etwas anders aussehen:</p>
-<figure class="align-default" id="id234">
+<figure class="align-default" id="id236">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/loc_ca_suche.png"><img alt="Suchmaske Chronicling America" class="bg-transparent" src="../../../_images/loc_ca_suche.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.4 </span><span class="caption-text">Einfache Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id234" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.4 </span><span class="caption-text">Einfache Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id236" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wir können diese URL nutzen, um den andtext-Parameter besser zu verstehen. Wenn wir in der einfachen Suche nach dem Suchbegriff “book review” suchen, dann steht in der URL “book+review”. Wenn wir stattdessen die Erweiterte Suche (Tab Advanced Search) verwenden und nach einer Phrase suchen, dann steht in der URL der Zusatz “&amp;phrasetext=book+review”:</p>
-<figure class="align-default" id="id235">
+<figure class="align-default" id="id237">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/loc_ca_erweiterte_suche.png"><img alt="Erweiterte Suche Chronicling America" class="bg-transparent" src="../../../_images/loc_ca_erweiterte_suche.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.5 </span><span class="caption-text">Erweiterte Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id235" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.5 </span><span class="caption-text">Erweiterte Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id237" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Tatsächlich akzeptiert auch die Chronicling America API eine Abfrage-URI mit dem Zusatz &amp;phrasetext:</p>
@@ -679,9 +679,20 @@ for page in range(1, pages + 1):
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rate limiting mit time.sleep(): Allgemeines Schema</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
 
-# 1) Rate limiting mit time.sleep()
+# Rate limiting mit time.sleep():  LOC API
 
 base_url = &quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json&quot;
 search_results = requests.get(base_url).json()
@@ -729,16 +740,34 @@ for page in range(1, pages + 1):
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rate limiting mit Python decorators: Allgemeines Schema</span>
+
+<span class="n">PERIOD_SEC</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">CALLS_PER_PERIOD_SEC</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># 3 Abfragen in 10 Sekunden</span>
+
+<span class="nd">@sleep_and_retry</span>
+<span class="nd">@limits</span><span class="p">(</span><span class="n">calls</span><span class="o">=</span><span class="n">CALLS_PER_PERIOD_SEC</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">PERIOD_SEC</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">test_function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
 
-# 2) Rate limiting mit Python decorators
+# Rate limiting mit Python decorators: LOC API
 
 PERIOD_SEC = 10
 CALLS_PER_PERIOD_SEC = 20 # 20 Abfragen in 10 Sekunden
 
 @sleep_and_retry
 @limits(calls=CALLS_PER_PERIOD_SEC, period=PERIOD_SEC)
-def get_fulltext(url):
+def get_fulltext(url, output_dir):
     response = requests.get(url).json()
     # for-Schleife für eine einzelne Ergebnisseite einsetzen
     items = response[&quot;items&quot;]
@@ -759,7 +788,7 @@ pages = math.ceil(pages_float) # aufrunden
 
 for page in range(1, pages + 1):
     request_url = f&quot;{base_url}&amp;page={page}&quot;
-    get_fulltext(request_url)
+    get_fulltext(request_url, output_dir)
 </pre></div>
 </div>
 </div>
@@ -770,19 +799,67 @@ for page in range(1, pages + 1):
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rate limiting mit dem Paket limits: Allgemeines Schema</span>
 
-# 3) Rate limiting mit Paket limits
+<span class="c1"># Rate limit festlegen, z.B. drei Anfragen pro Sekunde. Hier geht auch z.B. &quot;40/minute&quot;, &quot;3/2seconds&quot; oder &quot;1 per second&quot; according to https://limits.readthedocs.io/en/latest/api.html#limits.parse</span>
+<span class="n">rate_limit</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="s2">&quot;3/second&quot;</span><span class="p">)</span>
+<span class="c1"># Speicherort festlegen: Anzahl der vergangenen Anfragen werden im Arbeitsspeicher gehalten (theoretisch ginge auch eine externe Datenbank)</span>
+<span class="n">memory_storage</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="n">MemoryStorage</span><span class="p">()</span>
+<span class="c1"># Strategie festlegen und Moving window rate limiter Objekt erstellen</span>
+<span class="n">moving_window</span> <span class="o">=</span> <span class="n">strategies</span><span class="o">.</span><span class="n">MovingWindowRateLimiter</span><span class="p">(</span><span class="n">memory_storage</span><span class="p">)</span>
 
-# kommt noch
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">moving_window</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">rate_limit</span><span class="p">,</span> <span class="s2">&quot;test_requests&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rate limit exceeded for iteration </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">, waiting to retry...&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># alternativ 0.01 oder 0.1</span>
+    <span class="n">moving_window</span><span class="o">.</span><span class="n">hit</span><span class="p">(</span><span class="n">rate_limit</span><span class="p">,</span> <span class="s2">&quot;test_requests&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
+
+# Rate limiting mit Paket limits: LOC API
+
+base_url = &quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json&quot;
+search_results = requests.get(base_url).json()
+pages_float = search_results[&quot;totalItems&quot;] / search_results[&quot;itemsPerPage&quot;]
+pages = math.ceil(pages_float) # aufrunden
+rate_limit = parse(&quot;20/10seconds&quot;)
+memory_storage = storage.MemoryStorage()
+moving_window = strategies.MovingWindowRateLimiter(memory_storage)
+
+for page in range(1, pages + 1):
+    while not moving_window.test(rate_limit, &quot;loc_requests&quot;):
+        print(f&quot;Rate limit exceeded for {page}, waiting to retry...&quot;)
+        time.sleep(0.01)
+
+    moving_window.hit(rate_limit, &quot;loc_requests&quot;)
+    request_url = f&quot;{base_url}&amp;page={page}&quot;
+    response = requests.get(request_url).json()
+    # for-Schleife für eine einzelne Ergebnisseite einsetzen
+    items = response[&quot;items&quot;]
+
+    for item in items:
+        ocr_text = item[&quot;ocr_eng&quot;]
+        title = item[&quot;title&quot;]
+        date = item[&quot;date&quot;]
+        filename = f&quot;{title}_{date}.txt&quot;
+        filepath = os.path.join(output_dir, filename)
+        with open(filepath, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:
+            file.write(ocr_text)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Methode .test() überprüft, ob das Rate Limit bereits erreicht wurde oder nicht, also ob im angegebenen Zeitfenster (hier 10 Sekunden) bereits die erlaubte Anzahl an Anfragen gestellt wurden (hier 20). Wenn das Limit erreicht wurde, wird False zurückgegeben, ansonsten True. Die Bedingung <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">moving_window.test(rate_limit,</span> <span class="pre">&quot;loc_requests&quot;)</span></code> wird also genau dann True, wenn das Limit erreicht wurde und 20 Anfragen in 10 Sekunden gestellt wurden. In diesem Fall wird gewartet, bis genug Zeit vergangen ist und wieder Anfragen erlaubt sind. Mit der Methode .hit() wird in jedem Durchlauf der for-Schleife eine Anfrage registriert, damit sich der Zähler für die Anzahl der bisher gestellten Anfragen im Objekt memory_storage erhöht. Mehr dazu könnt ihr in den <a class="reference external" href="https://limits.readthedocs.io/en/stable/index.html">Dokumentationsseiten des Pakets limits</a> nachlesen.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Konstanten (Constants)</p>
-<p>Im Code oben verwenden wir Großbuchstaben, um die Variablen <code class="docutils literal notranslate"><span class="pre">RATE_LIMIT</span></code>, <code class="docutils literal notranslate"><span class="pre">CALLS_PER_PERIOD_SEC</span></code> und <code class="docutils literal notranslate"><span class="pre">PERIOD_SEC</span></code> zu benennen. Diese Schreibweise hat sich in Python für Konstanten etabliert, also für Variablen, deren Wert sich im Programmverlauf nicht ändert.</p>
+<p>Im Code oben verwenden wir Großbuchstaben, um die Variablen <code class="docutils literal notranslate"><span class="pre">CALLS_PER_PERIOD_SEC</span></code> und <code class="docutils literal notranslate"><span class="pre">PERIOD_SEC</span></code> zu benennen. Diese Schreibweise hat sich in Python für Konstanten etabliert, also für Variablen, deren Wert sich im Programmverlauf nicht ändert.</p>
 </div>
 </section>
 <section id="quellen">
@@ -795,8 +872,10 @@ for page in range(1, pages + 1):
 <li id="id130"><p>Geir Arne Hjelle. Primer on Python Decorators. 2023. URL: <a class="reference external" href="https://realpython.com/primer-on-python-decorators/">https://realpython.com/primer-on-python-decorators/</a>.</p></li>
 <li id="id132"><p>Kite. Python Decorators in 15 Minutes. 2020. URL: <a class="reference external" href="https://www.youtube.com/watch?v=r7Dtus7N4pI">https://www.youtube.com/watch?v=r7Dtus7N4pI</a>.</p></li>
 <li id="id135"><p>Leodanis Pozo Ramos. Python Constants: Improve Your Code's Maintainability. 2022. URL: <a class="reference external" href="https://realpython.com/python-constants/">https://realpython.com/python-constants/</a>.</p></li>
-<li id="id137"><p>Library of Congress. Chronicling America. About the Site and API. 2023. URL: <a class="reference external" href="https://chroniclingamerica.loc.gov/about/api/">https://chroniclingamerica.loc.gov/about/api/</a>.</p></li>
-<li id="id136"><p>Library of Congress. Working Within Limits. 2023. URL: <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/working-within-limits">https://www.loc.gov/apis/json-and-yaml/working-within-limits</a>.</p></li>
+<li id="id139"><p>Library of Congress. Chronicling America. About the Site and API. 2023. URL: <a class="reference external" href="https://chroniclingamerica.loc.gov/about/api/">https://chroniclingamerica.loc.gov/about/api/</a>.</p></li>
+<li id="id138"><p>Library of Congress. Working Within Limits. 2023. URL: <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/working-within-limits">https://www.loc.gov/apis/json-and-yaml/working-within-limits</a>.</p></li>
+<li id="id137"><p>Limits 3.14.1 Documentation. Quickstart. 2023. URL: <a class="reference external" href="https://limits.readthedocs.io/en/stable/quickstart.html">https://limits.readthedocs.io/en/stable/quickstart.html</a>.</p></li>
+<li id="id136"><p>Limits 3.14.1 Documentation. Rate Limiting Strategies. 2023. URL: <a class="reference external" href="https://limits.readthedocs.io/en/stable/strategies.html">https://limits.readthedocs.io/en/stable/strategies.html</a>.</p></li>
 </ol>
 </div>
 </section>

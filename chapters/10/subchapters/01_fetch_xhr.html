@@ -406,25 +406,25 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="selenium-ist-kein-hammer">
 <h1>Selenium ist kein Hammer<a class="headerlink" href="#selenium-ist-kein-hammer" title="Link to this heading">#</a></h1>
 <p>Bei der Entscheidung für die richtige Webscraping-Strategie lohnt es sich, das folgende Zitat im Hinterkopf zu behalten:</p>
-<figure class="align-default" id="id234">
+<figure class="align-default" id="id236">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/maslows_hammer.jpeg"><img alt="Maslows Hammer" class="bg-transparent" src="../../../_images/maslows_hammer.jpeg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-text">Selenium ist kein Hammer. Quelle: <a class="reference external" href="https://alvistor.com/maslows-hammer-the-all-in-one-productivity-tool/">https://alvistor.com/maslows-hammer-the-all-in-one-productivity-tool/</a></span><a class="headerlink" href="#id234" title="Link to this image">#</a></p>
+<p><span class="caption-text">Selenium ist kein Hammer. Quelle: <a class="reference external" href="https://alvistor.com/maslows-hammer-the-all-in-one-productivity-tool/">https://alvistor.com/maslows-hammer-the-all-in-one-productivity-tool/</a></span><a class="headerlink" href="#id236" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Im Abschnitt “Statisch vs. Dynamisch?” habt ihr bereits gesehen, dass es viele verschiedene Rendering-Verfahren gibt. Ihr habt außerdem am Beispiel von <a class="reference external" href="http://readthedocs.org">readthedocs.org</a> und <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a> gesehen, dass serverseitig dynamisch generierte Inhalte manchmal direkt mithilfe einer API abgefragt werden können, ohne, dass überhaupt BeautifulSoup oder Selenium zum Einsatz kommen müssen: Im Fall von <a class="reference external" href="http://readthedocs.org">readthedocs.org</a> konnte die URL, die bei der manuellen Verwendung der Suchmaske im Browserfenster angezeigt wird, direkt für eine HTTP GET-Anfrage verwendet werden. Im Fall von <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a> musste die Abfrage dagegen über ein php-Formular mithilfe der HTTP POST-Methode gestellt werden.</p>
 <p>Eine sehr ähliche Strategie kann auch zur Simulierung der Suche auf manchen clientseitig implementierten Suchseiten angewandt werden. In dem Fall unterscheidet sich die Abfrage-URL allerdings von der URL, die im Browserfenster angezeigt wird. Denn wie wir bereits im Abschnitt “Statisch vs. Dynamisch” besprochen haben, wird bei clientseitigen Renderingverfahren zunächst eine noch “unfertige” HTML-Seite geladen, und erst dann wird mithilfe von JavaScript über eine Web-API die restlichen Inhalte abgefragt und in das HTML-Gerüst eingefügt. Eine sehr weit verbreitete Web-API, die zur nachträglichen Abfrage von Ressourcen verwendet wird, heißt Fetch (und das ältere XMLHttpRequest, kurz XHR). Solche API-Abfragen können über den Netzwerke-Tab in den Browser-Entwicklertools eingesehen werden. Als Beispiel betrachten wir die Suche über <a class="reference external" href="http://tagesschau.de">tagesschau.de</a>. Beim Eingeben eines Suchbegriffs wird eine URL erzeugt, die ganz ähnlich aussieht wie im Beispiel <a class="reference external" href="http://readthedocs.org">readthedocs.org</a>: <a class="reference external" href="https://www.tagesschau.de/suche#/all/1/?searchText=klimawandel">https://www.tagesschau.de/suche#/all/1/?searchText=klimawandel</a>. Wenn wir allerdings eine GET-Anfrage für diese URL stellen, dann bekommen wir nur das HTML-Gerüst der Seite ohne die Suchergebnisse zurück: Denn die Suche ist clientseitig implementiert, sodass die Inhalte bei deaktiviertem JavaScript gar nicht geladen werden. Die Suchergebnisse werden nämlich beim Eingeben eines Suchbegriffs über die bereits erwähnte Schnittstelle XHR angefragt und in das HTML-Gerüst eingefügt, ohne, dass die Seite dabei neu geladen werden muss. Das lässt sich leicht mit einem Blick auf die Anfragen unter Netzwerk -&gt; Fetch/XHR ermitteln:</p>
-<figure class="align-default" id="id235">
+<figure class="align-default" id="id237">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/tagesschau_network.png"><img alt="Tagesschau Beispiel" class="bg-transparent" src="../../../_images/tagesschau_network.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Ansicht der Fetch/XHR-Anfragen in den Browser-Entwicklertools.</span><a class="headerlink" href="#id235" title="Link to this image">#</a></p>
+<p><span class="caption-text">Ansicht der Fetch/XHR-Anfragen in den Browser-Entwicklertools.</span><a class="headerlink" href="#id237" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Die gesuchte Anfrage hat den Namen search?searchText=klimawandel. Durch Mausklick auf den Namen der Anfrage öffnen sich weitere Informationen zu der gestellten Anfrage. Unter “Initiator” können wir beispielsweise nachlesen, welche JavaScript-Datei die XHR-Anfrage veranlasst hat. Diese Information ist für uns allerdings nicht weiter wichtig. Um die XHR-Anfrage zu simulieren, müssen wir nur die Abfrage-URL ermitteln, und die Abfrage-URL findet sich unter “Headers”:</p>
-<figure class="align-default" id="id236">
+<figure class="align-default" id="id238">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/tagesschau_requesturl.png"><img alt="Tagesschau Beispiel" class="bg-transparent" src="../../../_images/tagesschau_requesturl.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Ermittlung des Abfrage-URL für die XHR-Anfrage</span><a class="headerlink" href="#id236" title="Link to this image">#</a></p>
+<p><span class="caption-text">Ermittlung des Abfrage-URL für die XHR-Anfrage</span><a class="headerlink" href="#id238" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Mit dieser URL können wir eine ganz simple HTTP GET-Anfrage stellen. Da die Ergebnisse im JSON-Format zurückgegeben werden, können wir die Suchergebnisse als Python Dictionary darstellen:</p>
@@ -439,10 +439,10 @@ document.write(`
 </div>
 <p>Um diese Abfrage für alle Ergebnisseiten zu wiederholen, können wir uns die Abfrage-URLs für verschiedene Ergebnisseiten ansehen. Für Seite 4 ist die Abfrage-URL beispielsweise “<a class="reference external" href="https://www.tagesschau.de/json/search?searchText=klimawandel&amp;amp;documentType=article&amp;amp;pageIndex=3">https://www.tagesschau.de/json/search?searchText=klimawandel&amp;documentType=article&amp;pageIndex=3</a>”. Aus dem Vergleich der Abfrage-URLs können wir schließen: Die Abfrage-URLs für die Ergebnisseiten unterscheiden sich nur im Parameter pageIndex, der Werte in der Spanne von 0 bis 70 für alle 71 Ergebnisseiten annimmt. Mit dieser Information könnten wir jetzt zum Beispiel eine for-Schleife schreiben, welche eine Abfrage für jede der 71 Ergebnisseiten stellt.</p>
 <p>XHR und Fetch werden aber nicht nur zur Abfrage von Suchergebnissen angewandt, sondern ganz allgemein für JavaScript-Anwendungen, die auf irgendwelche Ressourcen auf dem Server zurückgreifen. Ein Beispiel sind die Daten zu Gartenvögeln, welche der NABU auf seiner Website in einer interaktiven Karte visualisiert: <a class="reference external" href="https://www.nabu.de/tiere-und-pflanzen/aktionen-und-projekte/stunde-der-gartenvoegel/ergebnisse/15767.html">https://www.nabu.de/tiere-und-pflanzen/aktionen-und-projekte/stunde-der-gartenvoegel/ergebnisse/15767.html</a>. Hier werden die Daten ebenfalls über eine Fetch/XHR-API abgefragt: Die Daten zur Verbreitung der Gartenvögel werden aus zwei CSV-Dateien entnommen, sdg_vogelarteninfo.csv und sdg_2023.csv. Die beiden CSV-Dateien können in diesem Fall sogar ganz ohne Python durch Doppelklick auf die Tabellen heruntergeladen werden.</p>
-<figure class="align-default" id="id237">
+<figure class="align-default" id="id239">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/nabu_gartenvoegel.png"><img alt="Tagesschau Beispiel" class="bg-transparent" src="../../../_images/nabu_gartenvoegel.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">XHR-Anfragen zur Abfrage von Daten für die Gartenvogel-Karte.</span><a class="headerlink" href="#id237" title="Link to this image">#</a></p>
+<p><span class="caption-text">XHR-Anfragen zur Abfrage von Daten für die Gartenvogel-Karte.</span><a class="headerlink" href="#id239" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -454,10 +454,10 @@ document.write(`
 <h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
-<li id="id175"><p>Ines M. Hassemer. § 43 Strafrecht im Bereich der Informationstechnologien (Teil 1). In Astrid Auer-Reinsdorff and Isabell Conrad, editors, <em>Handbuch des IT- und Datenschutzrechts</em>, pages 2652–2726. C.H. Beck, 2019. URL: <a class="reference external" href="https://fu-berlin.primo.exlibrisgroup.com/permalink/49KOBV_FUB/1v1tp5h/alma9959133505402883">https://fu-berlin.primo.exlibrisgroup.com/permalink/49KOBV_FUB/1v1tp5h/alma9959133505402883</a>.</p></li>
-<li id="id178"><p>Vrijraj Singh. Fetch API: A Modern Replacement for XMLHttpRequest. 2019. URL: <a class="reference external" href="https://medium.com/codingurukul/fetch-api-a-modern-replacement-for-xmlhttprequest-c24ced9ff8d3">https://medium.com/codingurukul/fetch-api-a-modern-replacement-for-xmlhttprequest-c24ced9ff8d3</a>.</p></li>
-<li id="id177"><p>MDN Contributors. Fetch API. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API</a>.</p></li>
-<li id="id176"><p>MDN Contributors. XMLHttpRequest. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest</a>.</p></li>
+<li id="id177"><p>Ines M. Hassemer. § 43 Strafrecht im Bereich der Informationstechnologien (Teil 1). In Astrid Auer-Reinsdorff and Isabell Conrad, editors, <em>Handbuch des IT- und Datenschutzrechts</em>, pages 2652–2726. C.H. Beck, 2019. URL: <a class="reference external" href="https://fu-berlin.primo.exlibrisgroup.com/permalink/49KOBV_FUB/1v1tp5h/alma9959133505402883">https://fu-berlin.primo.exlibrisgroup.com/permalink/49KOBV_FUB/1v1tp5h/alma9959133505402883</a>.</p></li>
+<li id="id180"><p>Vrijraj Singh. Fetch API: A Modern Replacement for XMLHttpRequest. 2019. URL: <a class="reference external" href="https://medium.com/codingurukul/fetch-api-a-modern-replacement-for-xmlhttprequest-c24ced9ff8d3">https://medium.com/codingurukul/fetch-api-a-modern-replacement-for-xmlhttprequest-c24ced9ff8d3</a>.</p></li>
+<li id="id179"><p>MDN Contributors. Fetch API. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API</a>.</p></li>
+<li id="id178"><p>MDN Contributors. XMLHttpRequest. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest</a>.</p></li>
 </ol>
 </div>
 </section>
