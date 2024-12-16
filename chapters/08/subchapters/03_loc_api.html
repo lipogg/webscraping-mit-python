@@ -393,7 +393,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vorbereitung">8.3.1. Vorbereitung</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-der-chronicling-america-api">8.3.2. Exploration der Chronicling America API</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abfrage-aller-volltexte-mit-book-review">8.3.3. Abfrage aller Volltexte mit “book review”</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-limiting-die-abfragerate-steuern">8.3.4. Rate Limiting: Die Abfragerate steuern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-limits-berucksichtigen-und-die-abfragerate-steuern">8.3.4. Rate Limits berücksichtigen und die Abfragerate steuern</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">8.3.5. Quellen</a></li>
 </ul>
             </nav>
@@ -486,7 +486,7 @@ Es gibt laut <a class="reference external" href="https://chroniclingamerica.loc.
 </div>
 </div>
 </div>
-<p>Eine aufmerksame Betrachtung der Ergebnisse der Suche nach einem Suchbegriff über die Suchmaske der Website <a class="reference external" href="https://chroniclingamerica.loc.gov">https://chroniclingamerica.loc.gov</a> zeigt, dass die Suche über die Suchmaske genau dieselben Ergebnisse liefert wie die API-Abfrage. Das ist nicht erstaunlich, denn die URL, die beim Verwenden der Suchmaske generiert wird, ist ganz ähnlich aufgebaut wie die URL, die wir für die API-Abfrage erstellen, mit dem einzigen Unterschied, dass die Suchparameter etwas anders aussehen:</p>
+<p>Eine aufmerksame Betrachtung der Ergebnisse der Suche nach einem Suchbegriff über die Suchmaske der Website <a class="reference external" href="https://chroniclingamerica.loc.gov">https://chroniclingamerica.loc.gov</a> zeigt, dass die Suche über die Suchmaske genau dieselben Ergebnisse liefert wie die API-Abfrage. Das ist nicht erstaunlich, denn die URL, die beim Verwenden der Suchmaske generiert wird, ist dieselbe URL, die auch über die API abgefragt werden kann. Es handelt sich also um diesele URL, die wir für die API-Abfrage erstellen, auch, wenn die Suchparameter zum Teil etwas anders aussehen:</p>
 <figure class="align-default" id="id234">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/loc_ca_suche.png"><img alt="Suchmaske Chronicling America" class="bg-transparent" src="../../../_images/loc_ca_suche.png" style="width: 80%;" /></a>
 <figcaption>
@@ -552,6 +552,13 @@ Es gibt laut <a class="reference external" href="https://chroniclingamerica.loc.
 </div>
 </div>
 </div>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfragen</p>
+<ul class="simple">
+<li><p>Welche weiteren Parameter akzeptiert die Chronicling America API? Verwendet die Suchmaske unter dem <a class="reference external" href="https://chroniclingamerica.loc.gov/search/pages/results/#tab=tab_advanced_search">Tab Advanced Search</a> und beobachtet, wie verschiedene Parameter in die URL eingefügt werden.</p></li>
+<li><p>Wie kann nur nach deutschsprachigen Texten gesucht werden?</p></li>
+</ul>
+</div>
 <p>Mit diesem Wissen können wir eine Testabfrage durchführen.</p>
 <p>Für unsere Abfragen wählen wir JSON als Rückgabeformat aus, weil wir den JSON-String bequem parsen können, indem wir den String mithilfe der Methode .json() in ein Python-Dictionary umwandeln:</p>
 <div class="cell docutils container">
@@ -607,11 +614,11 @@ os.makedirs(output_dir, exist_ok=True) # exists_ok: nur erstellen, falls es noch
 </div>
 </div>
 </div>
-<p>Wie gehen wir vor, um jetzt unsere for-Schleife oben nacheinander auf alle Ergebnisseiten anzuwenden?
+<p>Wie gehen wir vor, um jetzt unsere for-Schleife oben nacheinander auf alle Ergebnisseiten anzuwenden? Erinnert euch an die drei Strategien, die wir beim Scrapen der Quotes to Scrape-Website im Abschnitt “Fortsetzung BeautifulSoup” diskutiert haben.
 Eine Idee wäre die Verwendung einer while Schleife mit HTTP Antwort != 200 als break-Bedingung. Diese Strategie ist aber nur anwendbar, wenn beim Abruf einer ungültigen Seite eine HTTP-Antwort ungleich 200 zurückgegeben wird. Das müssen wir zunächst überprüfen: Was passiert, wenn eine nicht existierende Seite aufgerufen wird?
-Als Beispiel rufen wir die Seite <a class="reference external" href="https://chroniclingamerica.loc.gov/search/pages/results/?rows=20&amp;amp;format=json&amp;amp;sequence=0&amp;amp;phrasetext=book+review&amp;amp;andtext=&amp;amp;page=1640">https://chroniclingamerica.loc.gov/search/pages/results/?rows=20&amp;format=json&amp;sequence=0&amp;phrasetext=book+review&amp;andtext=&amp;page=1640</a> auf.</p>
-<p>Tatsächlich gibt es eine Umleitung auf Seite 1 mit einem gültigen HTTP-Statuscode. Wir können also in diesem Fall die Strategie mit der while-Schleife nicht verwenden.</p>
-<p>Eine andere Idee ist die Verwendung einer for-Schleife. Dazu müssen wir aber die Gesamtzahl der Ergebnisseiten kennen. Die Gesamtzahl der Ergebnisseiten können wir aber einfach ermitteln:</p>
+Als Beispiel rufen wir die Seite <a class="reference external" href="https://chroniclingamerica.loc.gov/search/pages/results/?rows=20&amp;amp;format=json&amp;amp;sequence=0&amp;amp;phrasetext=book+review&amp;amp;andtext=&amp;amp;page=2000">https://chroniclingamerica.loc.gov/search/pages/results/?rows=20&amp;format=json&amp;sequence=0&amp;phrasetext=book+review&amp;andtext=&amp;page=2000</a> auf.</p>
+<p>Tatsächlich gibt es eine Umleitung auf Seite 1 mit einem gültigen HTTP-Statuscode! Wir können also in diesem Fall die Strategie mit der while-Schleife nicht verwenden.</p>
+<p>Eine andere Idee ist die Verwendung einer for-Schleife, die so lange läuft wie es Ergebnisseiten gibt. Dazu müssen wir aber die Gesamtzahl der Ergebnisseiten kennen. Das können wir entweder programmatisch lösen oder manuell aus dem User Interface ablesen. Um die Gesamtzahl der Ergebnisseiten direkt aus Python heraus zu ermitteln, könnten wir zum Beispiel die Anzahl der Ergebnisseiten durch die Anzahl der Ergebnisse auf jeder Ergebnisseite teilen und diese Zahl aufrunden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gesamtanzahl der Ergebnisseiten ermitteln: Anzahl der Ergebnisse durch Anzahl der Ergebnisse pro Seite teilen</span>
@@ -623,6 +630,14 @@ Als Beispiel rufen wir die Seite <a class="reference external" href="https://chr
 </pre></div>
 </div>
 </div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfragen</p>
+<ul class="simple">
+<li><p>Betrachtet die Ergebnisse für unsere Anfrage über das User Interface der Website: <a class="reference external" href="https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;amp;phrasetext=book+review">https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review</a>. Stimmt die berechnete Anzahl der Ergebnisseiten?</p></li>
+<li><p>Gibt es noch eine andere Möglichkeit, die letzte Ergebnisseite zu erkennen?</p></li>
+<li><p>Was bedeuten die Schlüssel <code class="docutils literal notranslate"><span class="pre">endIndex</span></code> und <code class="docutils literal notranslate"><span class="pre">startIndex</span></code>? Welchen Wert haben Sie auf der ersten Ergebnisseite? Welchen Wert auf der letzten?</p></li>
+</ul>
 </div>
 <p>Zu der Gesamtzahl der Seiten addieren wir 1, da wir später die range(1, n)-Funktion verwenden wollen, welche eine Integersequenz von Zahl 1 bis Zahl n-1 generiert.</p>
 <p>Unsere for-Schleife sieht dann so aus:</p>
@@ -650,38 +665,17 @@ for page in range(1, pages + 1):
 </div>
 </div>
 </div>
-<p>Aber Achtung! Beim Ausführen des Codes oben gibt es nach einigen Schleifendurchläufen eine Fehlermeldung: JSONDecodeError: Expecting value: line 1 column 1 (char 0). Die Fehlermeldung entsteht dann, wenn die HTTP-Anfrage keine erfolgreiche Antwort liefert. Das liegt mit großer Wahrscheinlichkeit daran, dass wir uns nicht an die Einschränkungen der LOC gehalten haben und die HTTP-Anfrage dadurch ab einem bestimmten Punkt abgelehnt wird. Wenn wir dann versuchen, den Antwortbody mithilfe der .json()-Methode in ein Python Dictionary umzuwandeln, teilt der Python interpreter uns mit, dass das nicht möglich ist, weil wir die Methode nicht auf einen gültigen JSON-String angewendet haben.</p>
+<p>Aber Achtung! Beim Ausführen des Codes oben gibt es nach einigen Schleifendurchläufen eine Fehlermeldung: JSONDecodeError: Expecting value: line 1 column 1 (char 0). Die Fehlermeldung entsteht dann, wenn die HTTP-Anfrage keine erfolgreiche Antwort liefert. Dieser Fall kann registriert werden, indem nach jeder Anfrage der Statuscode ausgegeben wird. Warum hat die Anfrage plötzlich keine erfolgreiche Antwort geliefert? Das liegt daran, dass wir uns nicht an die Einschränkungen der LOC gehalten haben und die HTTP-Anfrage dadurch ab einem bestimmten Punkt abgelehnt wird. Wenn wir dann versuchen, den Antwortbody mithilfe der .json()-Methode in ein Python Dictionary umzuwandeln, teilt der Python interpreter uns mit, dass das nicht möglich ist, weil wir die Methode nicht auf einen gültigen JSON-String angewendet haben.</p>
 <p>Bei der Abfrage von sehr vielen Seiten müssen wir uns also nach den Einschränkungen der LOC richten und bestimmte Abfrageraten (Rate Limits) einhalten.</p>
 </section>
-<section id="rate-limiting-die-abfragerate-steuern">
-<h2><span class="section-number">8.3.4. </span>Rate Limiting: Die Abfragerate steuern<a class="headerlink" href="#rate-limiting-die-abfragerate-steuern" title="Link to this heading">#</a></h2>
-<p>Die LOC hat Einschränkungen für die der Chronicling America API übergeordnete Seite <a class="reference external" href="http://loc.gov">loc.gov</a> festgelegt, und wir können vermuten, dass die Einschränkungen auch für die Chronicling America API gelten:  <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/working-within-limits">https://www.loc.gov/apis/json-and-yaml/working-within-limits</a></p>
-<p>Um auf der sicheren Seite zu sein, richten wir uns nach der restriktivsten Vorgabe, nach der nur 20 Abfragen alle 10 Sekunden erlaubt sind.</p>
-<p>Wie können wir also die HTTP-Abfragen auf 20 Abfragen je 10 Sekunden einschränken? Dazu müssen wir Strategien zum “Rate Limiting” anwenden, das heißt wir müssen den Code so umschreiben, dass innerhalb einer bestimmten Zeit nur eine bestimmte Anzahl an Anfragen gestellt werden.</p>
+<section id="rate-limits-berucksichtigen-und-die-abfragerate-steuern">
+<h2><span class="section-number">8.3.4. </span>Rate Limits berücksichtigen und die Abfragerate steuern<a class="headerlink" href="#rate-limits-berucksichtigen-und-die-abfragerate-steuern" title="Link to this heading">#</a></h2>
+<p>Wie wir bereits in der kurzen Einführung zu APIs besprochen haben, setzen Webseitenbetreiber:innen für gewöhnlich Grenzen für die Datenabfrage über ihre APIs fest. Manche kommunizieren diese Einschränkungen nur schriftlich in Form der Dokumentation, andere setzen sie technisch fest, sodass wiederholte Anfragen desselben Clients automatisch bei Überschreiten der erlaubten Abfragerate blockiert werden. Um dies zu verhindern und um den Server nicht mit vielen Anfragen, die schnell nacheinander gestellt werden, zu überlasten, muss der Code so geschrieben werden, dass die erlaubte Abfragerate der API eingehalten werden. Dazu können verschiedene Strategien angewandt werden, die in diesem Abschnitt vorgestellt werden.</p>
+<p>Eine Recherche auf den Seiten der Library of Congress liefert die Seite <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/working-within-limits">https://www.loc.gov/apis/json-and-yaml/working-within-limits</a>. Hier legt die LOC Einschränkungen für die der Chronicling America API übergeordnete Seite <a class="reference external" href="http://loc.gov">loc.gov</a> fest. Die Chronicling America API wird zwar nicht explizit erwähnt, aber wir können vermuten, dass die Einschränkungen auch für die Chronicling America API gelten. Da etwas unklar ist, welches Limit für diese API gilt, richten wir uns nach der restriktivsten Vorgabe, nach der nur 20 Abfragen alle 10 Sekunden erlaubt sind. So sind wir in jedem Fall auf der sicheren Seite.</p>
+<p>Wie können wir also die HTTP-Abfragen auf 20 Abfragen je 10 Sekunden einschränken? Dazu müssen wir den Code so umschreiben, dass innerhalb einer bestimmten Zeit nur eine bestimmte Anzahl an Anfragen gestellt werden.</p>
 <p>Um die Abfragerate einzuschränken, gibt es mehrere Möglichkeiten:</p>
 <ol class="arabic simple">
 <li><p><strong>Funktion <code class="docutils literal notranslate"><span class="pre">time.sleep()</span></code> aus dem Paket time</strong>. Die Funktion time.sleep(x) kann in den Schleifenkörper einer for-Schleife eingefügt werden, um den nächsten Schleifendurchlauf um x Sekunden zu verzögern. Diese Methode ist einstiegsfreundlich, aber ungenau, weil die Laufzeit der Schleife selbst nicht in die Wartezeit mit einbezogen wird, sodass der nächste Schleifendurchlauf länger als notwendig verzögert wird.</p></li>
-<li><p><strong>Python Dekoratoren aus dem Paket ratelimit</strong>. Wesentlich effizienter und eleganter ist die Verwendung von sogenannten Python Dekoratoren bzw. Decorators. Das Paket ratelimit bietet zwei solche Dekoratoren, die dazu verwendet werden können, um zu registrieren, wie häufig eine Funktion nacheinander aufgerufen wird, und die ab einer bestimmten Anzahl wiederholter Aufrufe eine Wartepause erzwingen. Um Decorators verwenden zu können, müssen wir unsere Abfrage jedoch in eine Funktion verpacken. Das Paket ratelimit wie auch die gängigen und immer noch viel verwendeten Alternativen (z.B. ratelimiter), werden allerdings seit einigen Jahren nicht mehr maintained. Das heißt, dass der Code bereits sehr alt ist und Probleme, auf die User:innen die Entwickler:innen des Pakets aufmerksam machen, nicht mehr behoben werden. So hat zum Beispiel GitHub User:in Justin VanWinkle <a class="reference external" href="https://gist.github.com/justinvanwinkle/d9f04950083c4554835c1a35f9d22dad">darauf hingewiesen</a>, dass ratelimit in bestimmten Umständen die Abfragerate nicht zuverlässig kontrolliert.</p></li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Python Dekoratoren (Decorators)</p>
-<blockquote>
-<div><p>A decorator in Python is a function that accepts another function as an argument. The decorator will usually modify or enhance the function it accepted and return the modified function. This means that when you call a decorated function, you will get a function that may be a little different that may have additional features compared with the base definition.</p>
-</div></blockquote>
-<p>Quelle: <a class="reference external" href="https://python101.pythonlibrary.org/chapter25_decorators.html">Michael Droscill (2017).</a></p>
-<p>Dekoratoren beruhen auf einem komplexen Konzept und wir können hier nicht tiefer einsteigen, aber wenn die ein oder andere Person doch etwas tiefer einsteigen will, kann ich diese beiden Ressourcen empfehlen:</p>
-<ul class="simple">
-<li><p>Primer on Python Decorators, <a class="reference external" href="https://realpython.com/primer-on-python-decorators/">https://realpython.com/primer-on-python-decorators/</a></p></li>
-<li><p>Python Decorators in 15 Minutes, <a class="reference external" href="https://www.youtube.com/watch?v=r7Dtus7N4pI">https://www.youtube.com/watch?v=r7Dtus7N4pI</a></p></li>
-</ul>
-<p>Bei der Verwendung der Dekoratoren aus dem Paket ratelimit verwenden wir diese Anleitung von Akshay Ranganath:</p>
-<ul class="simple">
-<li><p>Rate Limiting with Python, <a class="reference external" href="https://akshayranganath.github.io/Rate-Limiting-With-Python/">https://akshayranganath.github.io/Rate-Limiting-With-Python/</a></p></li>
-</ul>
-</div>
-<ol class="arabic simple" start="3">
-<li><p><strong>Feingranulares Rate Limiting mit dem Paket limits</strong>. Eine Alternative, die etwas mehr Code und Hintergrundwissen erfordert aber dafür auch viele Anpassungsmöglichkeiten bietet, ist das <a class="reference external" href="https://limits.readthedocs.io/en/latest/index.html">Paket limits</a>. Es kann zwischen verschiedenen Rate Limiting-Strategien ausgewählt werden und es kann festgelegt werden, ob die Anzahl der vergangenen Anfragen im Arbeitsspeicher oder einer externen Datenbank gespeichert werden soll (das ist für unsere Zwecke aber nicht notwendig).</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -712,6 +706,26 @@ for page in range(1, pages + 1):
 </pre></div>
 </div>
 </div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Python Dekoratoren aus dem Paket ratelimit</strong>. Wesentlich effizienter und eleganter ist die Verwendung von sogenannten Python Dekoratoren bzw. Decorators. Das Paket ratelimit bietet zwei solche Dekoratoren, die dazu verwendet werden können, um zu registrieren, wie häufig eine Funktion nacheinander aufgerufen wird, und die ab einer bestimmten Anzahl wiederholter Aufrufe eine Wartepause erzwingen. Um Decorators verwenden zu können, müssen wir unsere Abfrage jedoch in eine Funktion verpacken. Das Paket ratelimit wie auch die gängigen und immer noch viel verwendeten Alternativen (z.B. ratelimiter), werden allerdings seit einigen Jahren nicht mehr maintained. Das heißt, dass der Code bereits sehr alt ist und Probleme, auf die User:innen die Entwickler:innen des Pakets aufmerksam machen, nicht mehr behoben werden. So hat zum Beispiel GitHub User:in Justin VanWinkle <a class="reference external" href="https://gist.github.com/justinvanwinkle/d9f04950083c4554835c1a35f9d22dad">darauf hingewiesen</a>, dass ratelimit in bestimmten Umständen die Abfragerate nicht zuverlässig kontrolliert.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Python Dekoratoren (Decorators)</p>
+<blockquote>
+<div><p>A decorator in Python is a function that accepts another function as an argument. The decorator will usually modify or enhance the function it accepted and return the modified function. This means that when you call a decorated function, you will get a function that may be a little different that may have additional features compared with the base definition.</p>
+</div></blockquote>
+<p>Quelle: <a class="reference external" href="https://python101.pythonlibrary.org/chapter25_decorators.html">Michael Droscill (2017).</a></p>
+<p>Dekoratoren beruhen auf einem komplexen Konzept und wir können hier nicht tiefer einsteigen, aber wenn die ein oder andere Person doch etwas tiefer einsteigen will, kann ich diese beiden Ressourcen empfehlen:</p>
+<ul class="simple">
+<li><p>Primer on Python Decorators, <a class="reference external" href="https://realpython.com/primer-on-python-decorators/">https://realpython.com/primer-on-python-decorators/</a></p></li>
+<li><p>Python Decorators in 15 Minutes, <a class="reference external" href="https://www.youtube.com/watch?v=r7Dtus7N4pI">https://www.youtube.com/watch?v=r7Dtus7N4pI</a></p></li>
+</ul>
+<p>Bei der Verwendung der Dekoratoren aus dem Paket ratelimit verwenden wir diese Anleitung von Akshay Ranganath:</p>
+<ul class="simple">
+<li><p>Rate Limiting with Python, <a class="reference external" href="https://akshayranganath.github.io/Rate-Limiting-With-Python/">https://akshayranganath.github.io/Rate-Limiting-With-Python/</a></p></li>
+</ul>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -751,6 +765,9 @@ for page in range(1, pages + 1):
 </div>
 </div>
 <p>Beachtet, dass diese Funktionsdefinition sich in einem wichtigen Aspekt von der Definition der Funktion scrape_quotes() im Abschnitt “Fortsetzung BeautifulSoup” unterscheidet: Beim Aufruf der Funktion get_fulltext() wird nur genau eine Anfrage gestellt und die Funktion wird aus einer for-Schleife heraus aufgerufen. Die Funktion scrape_quotes() dagegen stellt beim Aufruf mehrere Anfragen und die for-Schleife, die über die zu scrapenden URLs iteriert, befindet sich in der Funktionsdefinition selbst. Bei der Verwendung der Dekoratoren zum Rate Limiting muss darauf geachtet werden, dass die Funktion so definiert ist wie die get_fulltext()-Funktion. Die Funktionsaufrufe können nämlich nur dann mithilfe der Funktionsaufrufe verzögert werden, wenn die Funktion auch mehrmals aufgerufen wird!</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Feingranulares Rate Limiting mit dem Paket limits</strong>. Eine Alternative, die etwas mehr Code und Hintergrundwissen erfordert aber dafür auch viele Anpassungsmöglichkeiten bietet, ist das <a class="reference external" href="https://limits.readthedocs.io/en/latest/index.html">Paket limits</a>. Das Paket ist eigentlich eher zur Implementierung von Rate Limiting in Schnittstellen und Softwaresystemen gedacht. Die Dokumentationsseiten beschreiben deswegen viele Anwendungsfälle und Konfigurationen, die recht komplex und für uns nicht relevant sind. Es kann beispielsweise zwischen verschiedenen Rate Limiting-Strategien ausgewählt werden und es kann festgelegt werden, ob die Anzahl der vergangenen Anfragen im Arbeitsspeicher oder einer externen Datenbank gespeichert werden soll. Für unsere Zwecke reicht immer der Arbeitsspeicher und die anderen Optionen können wir ignorieren. Ein möglicher Einsatz von limits zum Überwachen und Kontrollieren der Abfragerate im Rahmen von API-Abfragen könnte so aussehen:</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
@@ -765,7 +782,7 @@ for page in range(1, pages + 1):
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Konstanten (Constants)</p>
-<p>Im Code oben verwenden wir Großbuchstaben, um die beiden Variablen <code class="docutils literal notranslate"><span class="pre">CALLS_PER_PERIOD_SEC</span></code> und <code class="docutils literal notranslate"><span class="pre">PERIOD_SEC</span></code> zu benennen. Diese Schreibweise hat sich in Python für Konstanten etabliert, also für Variablen, deren Wert sich im Programmverlauf nicht ändert.</p>
+<p>Im Code oben verwenden wir Großbuchstaben, um die Variablen <code class="docutils literal notranslate"><span class="pre">RATE_LIMIT</span></code>, <code class="docutils literal notranslate"><span class="pre">CALLS_PER_PERIOD_SEC</span></code> und <code class="docutils literal notranslate"><span class="pre">PERIOD_SEC</span></code> zu benennen. Diese Schreibweise hat sich in Python für Konstanten etabliert, also für Variablen, deren Wert sich im Programmverlauf nicht ändert.</p>
 </div>
 </section>
 <section id="quellen">
@@ -843,7 +860,7 @@ for page in range(1, pages + 1):
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vorbereitung">8.3.1. Vorbereitung</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-der-chronicling-america-api">8.3.2. Exploration der Chronicling America API</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abfrage-aller-volltexte-mit-book-review">8.3.3. Abfrage aller Volltexte mit “book review”</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-limiting-die-abfragerate-steuern">8.3.4. Rate Limiting: Die Abfragerate steuern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-limits-berucksichtigen-und-die-abfragerate-steuern">8.3.4. Rate Limits berücksichtigen und die Abfragerate steuern</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">8.3.5. Quellen</a></li>
 </ul>
   </nav></div>
