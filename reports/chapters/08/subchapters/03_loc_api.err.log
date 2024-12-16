@@ -29,12 +29,10 @@ from utils import skip
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[3], line 6[0m
-[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01mmath[39;00m
-[1;32m      5[0m [38;5;28;01mimport[39;00m [38;5;21;01mtime[39;00m
-[0;32m----> 6[0m [38;5;28;01mfrom[39;00m [38;5;21;01mratelimit[39;00m [38;5;28;01mimport[39;00m limits, sleep_and_retry
+Cell [0;32mIn[3], line 9[0m
 [1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mlimits[39;00m [38;5;28;01mimport[39;00m strategies, storage, parse
 [1;32m      8[0m [38;5;66;03m# Dieses Modul müsst ihr nicht importieren[39;00m
+[0;32m----> 9[0m [38;5;28;01mfrom[39;00m [38;5;21;01mutils[39;00m [38;5;28;01mimport[39;00m skip
 
-[0;31mModuleNotFoundError[0m: No module named 'ratelimit'
+[0;31mModuleNotFoundError[0m: No module named 'utils'
 
