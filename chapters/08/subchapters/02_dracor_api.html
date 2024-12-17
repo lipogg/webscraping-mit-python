@@ -670,11 +670,9 @@ Der Zugriff auf ein Dictionary erfolgt wie gewohnt mit eckigen Klammern über di
 <p>Bevor wir die API-Abfragen durchführen, erstellen wir einen Ordner auf dem Computer, in dem die extrahierten Sprechtexte gespeichert werden sollen. Diesen Ordner müssen wir mithilfe der Funktion <code class="docutils literal notranslate"><span class="pre">chdir()</span></code> als sogenanntes “Arbeitsverzeichnis” festlegen. Per Default ist der Ordner, aus dem heraus Jupyter Lab gestartet wird, das Arbeitsverzeichnis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># neues Verzeichnis anlegen: in diesem Ordner werden die Textdateien gespeichert</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;spokentext_corpus&quot;</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;spokentext_corpus&quot;</span><span class="p">)</span>
-<span class="c1"># Arbeitsverzeichnis wechseln: Die Texte sollen im Verzeichnis &quot;spokentext_corpus&quot; gespeichert werden</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;spokentext_corpus&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Neues Verzeichnis anlegen: in diesem Ordner werden die Textdateien gespeichert</span>
+<span class="n">output_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;spokentext_corpus&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># exists_ok: nur erstellen, falls es noch nicht existiert</span>
 </pre></div>
 </div>
 </div>
@@ -687,7 +685,8 @@ Der Zugriff auf ein Dictionary erfolgt wie gewohnt mit eckigen Klammern über di
     <span class="n">api_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_urls</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     <span class="n">spokentext</span> <span class="o">=</span> <span class="n">api_response</span><span class="o">.</span><span class="n">text</span>
     <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">plays_selected</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">.txt&quot;</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
         <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spokentext</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -703,7 +702,8 @@ Der Zugriff auf ein Dictionary erfolgt wie gewohnt mit eckigen Klammern über di
         <span class="n">api_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_urls</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="n">genders</span><span class="p">[</span><span class="n">j</span><span class="p">]})</span>
         <span class="n">spokentext</span> <span class="o">=</span> <span class="n">api_response</span><span class="o">.</span><span class="n">text</span>
         <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">plays_selected</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">genders</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">}</span><span class="s2">.txt&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
             <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spokentext</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -881,13 +881,18 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 <p>Zuletzt schauen wir uns auch den Code zum Schreiben von Daten in Dateien aus der for-Schleife oben noch einmal genauer an:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># with open(filename, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># output_dir = os.path.join(os.getcwd(), &quot;spokentext_corpus&quot;)</span>
+<span class="c1"># os.makedirs(output_dir, exist_ok=True) # exists_ok: nur erstellen, falls es noch nicht existiert</span>
+<span class="c1"># filename = f&quot;{plays_selected[i]}.txt&quot;</span>
+<span class="c1"># filepath = os.path.join(output_dir, filename)</span>
+
+<span class="c1"># with open(filepath, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:</span>
 <span class="c1">#     file.write(spokentext)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Die Funktion open() liefert ein Dateiobjekt zurück. Das erste Argument filename ist ein Zeichenfolge, die den Dateinamen enthält. Das zweite Argument ist eine Zeichenfolge, die einige Zeichen enthält, die die Art und Weise beschreiben, wie die Datei verwendet wird, also den “Modus”, in dem die Datei geöffnet wird. Das Argument “w” steht für “writing”. Mit diesem Schlüsselwort wird die Datei für den Schreibzugriff vorbereitet. Andere Modi sind zum Beispiel “r” für “reading” oder “a” für “appending”. Der Modus “a” wird verwendet, wenn Inhalte am Ende einer bereits existierenden Datei hinzugefügt statt überschrieben werden sollen. “w” überschreibt Dateien mit demselben Dateinamen, wenn diese bereits existieren. Zusätzlich kann beim Aufruf der Funktion open() das Encoding der Datei festgelegt werden:</p>
+<p>Die Funktion open() liefert ein Dateiobjekt zurück. Das erste Argument filepath ist ein Zeichenfolge, die den lokalen Dateipfad mit dem Dateinamen enthält, also zum Beispiel /Users/user/Desktop/goethe_iphigenie.txt. Den filepath haben wir zuvor mithilfe der Funktionen os.path.join() und os.getcwd() zusammengesetzt. os.getcwd() gibt das aktuelle Arbeitsverzeichnis zurück, also das Verzeichnis, aus dem Jupyter Lab gestartet wurde. Das zweite Argument ist eine Zeichenfolge, die einige Zeichen enthält, die die Art und Weise beschreiben, wie die Datei verwendet wird, also den “Modus”, in dem die Datei geöffnet wird. Das Argument “w” steht für “writing”. Mit diesem Schlüsselwort wird die Datei für den Schreibzugriff vorbereitet. Andere Modi sind zum Beispiel “r” für “reading” oder “a” für “appending”. Der Modus “a” wird verwendet, wenn Inhalte am Ende einer bereits existierenden Datei hinzugefügt statt überschrieben werden sollen. “w” überschreibt Dateien mit demselben Dateinamen, wenn diese bereits existieren. Zusätzlich kann beim Aufruf der Funktion open() das Encoding der Datei festgelegt werden:</p>
 <p>Die Syntax aus dem Beispiel oben mit “with open() as file” ist eine Abkürzung. Es empfiehlt sich, immer diese Syntax zu verwenden, wenn Daten in Dateien geschrieben oder aus Dateien eingelesen werden sollen, denn damit wird die Datei nach dem Lesen oder Schreiben automatisch wieder geschlossen. Manchmal werden Dateien aber auch manuell eingelesen und geschrieben, auch, wenn das nicht empfohlen wird. In diesem Fall muss die Datei nach dem Schreiben oder Lesen mit der Methode close() manuell geschlossen werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -909,7 +914,7 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 <p>Um Dateien einzulesen, muss einfach nur write durch read ausgetauscht werden und der Modus auf “r” gesetzt werden. Auch hier lautet die empfohlene Syntax:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># with open(filename, &quot;r&quot;, encoding=&quot;utf-8&quot;) as file:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># with open(filepath, &quot;r&quot;, encoding=&quot;utf-8&quot;) as file:</span>
 <span class="c1">#     file.read()</span>
 </pre></div>
 </div>
