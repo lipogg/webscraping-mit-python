@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Statische vs. Dynamische Webseiten? &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>9.1. Statische vs. Dynamische Webseiten? &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="9. Anwendungsfall III: Dynamische Webseiten" href="../09_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +176,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -226,6 +225,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/01_apis.html">8.1. APIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/02_dracor_api.html">8.2. Beispiel DraCor-API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/03_loc_api.html">8.3. Beispiel LOC-API</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../09_intro.html">9. Dynamische Webseiten</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.1. Statisch vs. Dynamisch?</a></li>
 </ul>
 </li>
 </ul>
@@ -391,11 +394,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statische-webseiten">Statische Webseiten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-webseiten">Dynamische Webseiten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gangige-missverstandnisse">Gängige Missverständnisse</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statische-webseiten">9.1.1. Statische Webseiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-webseiten">9.1.2. Dynamische Webseiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gangige-missverstandnisse">9.1.3. Gängige Missverständnisse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">9.1.4. Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.1.5. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -408,14 +411,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="statische-vs-dynamische-webseiten">
-<h1>Statische vs. Dynamische Webseiten?<a class="headerlink" href="#statische-vs-dynamische-webseiten" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9.1. </span>Statische vs. Dynamische Webseiten?<a class="headerlink" href="#statische-vs-dynamische-webseiten" title="Link to this heading">#</a></h1>
 <p>Die Unterscheidung zwischen “statischen” und “dynamischen” Webseiten ist für uns vor allem heuristisch wichtig, weil wir vor dem Web Scraping wissen müssen, wann und wie beim Aufruf einer Webseite welche Inhalte geladen werden, und dazu müssen wir zunächst verstehen, wann und wie HTML-Dokumente und Inhalte “gerendert”, also erzeugt und dargestellt werden.
 Die Abgrenzung von dynamischen und statischen Webseiten ist aber nicht ganz einfach und in der Praxis wird meistens eher von statischen und dynamischen Inhalten gesprochen oder es wird nach den konkreten Verfahren unterschieden, mit denen Webseiten und Inhalte erstellt und dargestellt werden.
 Solche Verfahren heißen zum Beispiel “Server-Side Rendering”, “Static Site Generation”, “Incremental Static Regeneration”, “Automatic Static Optimization” oder “Client-Side Rendering”.
 Wie genau diese Verfahren für eine konkrete Webseite umgesetzt werden, hängt wiederum davon ab, ob es sich um eine sogenante “Single Page Application” oder eine “Multi Page Application” handelt, und davon, welche Frameworks bei der Entwicklung der Website eingesetzt werden. Solche Frameworks heißen z.B. Next.js, Angular, React, Django oder Flask und jedes Framework allein wäre schon Stoff für ein gesamtes Semester.</p>
 <p>Ihr seht: Das Thema ist sehr komplex und in diesem kurzen Abschnitt können wir uns nur sehr sehr oberflächlich das notwendige Praxiswissen erarbeiten, um Web Scraping-Strategien verstehen zu können, die für komplexere Webseitenarten und -inhalte konzipiert wurden. Wir widmen uns zunächst den beiden Begriffen “statisch” und “dynamisch”, denn das sind Begriffe, die gerne in Webscraping-Tutorials verwendet werden, und an denen wir uns auch bisher orientiert haben.</p>
 <section id="statische-webseiten">
-<h2>Statische Webseiten<a class="headerlink" href="#statische-webseiten" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1.1. </span>Statische Webseiten<a class="headerlink" href="#statische-webseiten" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p>A static site is one that returns the same hard coded content from the server whenever a particular resource is requested. So for example if you have a page about a product at /static/myproduct1.html, this same page will be returned to every user. If you add another similar product to your site you will need to add another page (e.g. myproduct2.html) and so on.</p>
 </div></blockquote>
@@ -428,7 +431,7 @@ Wie genau diese Verfahren für eine konkrete Webseite umgesetzt werden, hängt w
 <figure class="align-default" id="id236">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/anatomy_static_site.png"><img alt="Schaubild Statische Webseite" class="bg-transparent" src="../../../_images/anatomy_static_site.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Schaubild Statische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id236" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Schaubild Statische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id236" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Formell definiert ist eine statische Website also dadurch definiert, dass alle Unterseiten schon gerendert sind, bevor sie auf den Webserver hochgeladen und bereitgestellt werden. Diese Art von Webseiten kennen wir bereits: <a class="reference external" href="https://quotes.toscrape.com/">quotes.toscrape.com</a> und diese Kurswebsite sind Beispiele. Für die Unterseiten einer solchen statischen Website werden vorab, bevor die Website auf dem Server hochgeladen wird, einzelne HTML-Dokumente erstellt, eins für jede Unterseite, die dann auf den Server hochgeladen werden. Beim Seitenaufruf wird das HTML-Dokument für die jeweils aufgerufene Seite unverändert an den Client geschickt und, wenn der Client ein Browser ist, im Browser dargestellt. Solche Webseiten können wir ganz einfach mit requests und BeautifulSoup scrapen.</p>
@@ -436,7 +439,7 @@ Wie genau diese Verfahren für eine konkrete Webseite umgesetzt werden, hängt w
 <figure class="align-default" id="id237">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_kurswebsite_1.png"><img alt="Beispiel 1" class="bg-transparent" src="../../../_images/beispiel_kurswebsite_1.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Suche auf der Kurswebsite mit aktiviertem JavaScript</span><a class="headerlink" href="#id237" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.2 </span><span class="caption-text">Suche auf der Kurswebsite mit aktiviertem JavaScript</span><a class="headerlink" href="#id237" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Aber wenn ihr versucht, die Seite mit den Suchergebnissen mithilfe von requests und BeautifulSoup zu scrapen, dann bekommt ihr stattdessen ein HTML-Dokument zurück, das nicht die Suchergebnisse, sondern eine Meldung “Please activate JavaScript to enable the search functionality” enthält.</p>
@@ -481,13 +484,13 @@ Wie genau diese Verfahren für eine konkrete Webseite umgesetzt werden, hängt w
 <figure class="align-default" id="id238">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_kurswebsite_2.png"><img alt="Beispiel 1" class="bg-transparent" src="../../../_images/beispiel_kurswebsite_2.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Suche auf der Kurswebsite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id238" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.3 </span><span class="caption-text">Suche auf der Kurswebsite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id238" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Obwohl wir es bei der Kurswebsite mit einer statisch generierten Website zu tun haben, können wir diese spezielle Unterseite also nicht mithilfe von requests und BeautifulSoup scrapen, weil für die Darstellung der Inhalte JavaScript verwendet wird. Das Beispiel zeigt: <strong>Anders als man vielleicht alltagssprachlich vermuten würde, liegt der Unterschied zwischen “statischen” und “dynamischen” Webseiten also nicht darin, ob die Inhalte interaktiv sind, sondern darin, wie genau und wann sie erstellt und dargestellt werden.</strong></p>
 </section>
 <section id="dynamische-webseiten">
-<h2>Dynamische Webseiten<a class="headerlink" href="#dynamische-webseiten" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1.2. </span>Dynamische Webseiten<a class="headerlink" href="#dynamische-webseiten" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p>A dynamic site is one that can generate and return content based on the specific request URL and data (rather than always returning the same hard-coded file for a particular URL). Using the example of a product site, the server would store product “data” in a database rather than individual HTML files. When receiving an HTTP GET Request for a product, the server determines the product ID, fetches the data from the database, and then constructs the HTML page for the response by inserting the data into an HTML template.</p>
 </div></blockquote>
@@ -500,7 +503,7 @@ Wie genau diese Verfahren für eine konkrete Webseite umgesetzt werden, hängt w
 <figure class="align-default" id="id239">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/anatomy_dynamic_request.png"><img alt="Schaubild Dynamische Webseite" class="bg-transparent" src="../../../_images/anatomy_dynamic_request.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Schaubild Dynamische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id239" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.4 </span><span class="caption-text">Schaubild Dynamische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id239" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Eine dynamische Website ist dagegen formell gesprochen eine Website, die erst dann erstellt und dargestellt wird, wenn sie aufgerufen wird. Wie bereits eingangs erwähnt gibt es verschiedene Verfahren, um Websites “dynamisch” zu erstellen und darzustellen: Eine Website kann im Gesamten auf dem Server oder auf dem Client gerendert werden, oder es wird ein Teil einer Webseite auf dem Server gerendert, und der Rest auf dem Client.</p>
@@ -509,7 +512,7 @@ Erst, wenn die Webseite komplett fertig gerendert ist, wird sie an den Client, z
 <figure class="align-default" id="id240">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_wordpress.png"><img alt="Beispiel Wordpress" class="bg-transparent" src="../../../_images/beispiel_wordpress.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Beispiel-Wordpressseite mit deaktiviertem JavaScript.</span><a class="headerlink" href="#id240" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.5 </span><span class="caption-text">Beispiel-Wordpressseite mit deaktiviertem JavaScript.</span><a class="headerlink" href="#id240" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Die HTTP-GET-Anfrage liefert also ein komplett gerendertes HTML-Dokument, das wir mit BeautifulSoup durchsuchen können:</p>
@@ -523,7 +526,8 @@ Erst, wenn die Webseite komplett fertig gerendert ist, wird sie an den Client, z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/candied-pistachios/&quot;&gt;Candied Pistachios (4 Ingredients!)&lt;/a&gt;&lt;/h3&gt;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/easy-apricot-sorbet-no-churn/&quot;&gt;Easy Apricot Sorbet (No-Churn!)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/candied-pistachios/&quot;&gt;Candied Pistachios (4 Ingredients!)&lt;/a&gt;&lt;/h3&gt;,
  &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/spicy-passion-fruit-mocktail/&quot;&gt;Spicy Passion Fruit Mocktail (AKA “Mockarita”)&lt;/a&gt;&lt;/h3&gt;,
  &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/chicken-kofta-kebabs/&quot;&gt;Chicken Kofta Kebabs (Middle Eastern-Inspired)&lt;/a&gt;&lt;/h3&gt;,
  &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/creamy-vegan-chocolate-milkshake/&quot;&gt;Creamy Vegan Chocolate Milkshake&lt;/a&gt;&lt;/h3&gt;,
@@ -541,8 +545,7 @@ Erst, wenn die Webseite komplett fertig gerendert ist, wird sie an den Client, z
  &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/how-to-make-cashew-milk/&quot;&gt;How to Make Cashew Milk (No Straining!)&lt;/a&gt;&lt;/h3&gt;,
  &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/hemp-seed-florentine-cookies/&quot;&gt;Hemp Seed Florentine Cookies (Vegan + GF)&lt;/a&gt;&lt;/h3&gt;,
  &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/pesto-baked-chicken-thighs/&quot;&gt;Pesto Baked Chicken Thighs&lt;/a&gt;&lt;/h3&gt;,
- &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/gluten-free-chocolate-chip-cookie-bars-vegan/&quot;&gt;Gluten-Free Chocolate Chip Cookie Bars (Vegan)&lt;/a&gt;&lt;/h3&gt;,
- &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/spicy-garlicky-sesame-tofu/&quot;&gt;Spicy Garlicky Sesame Tofu (30 Minutes!)&lt;/a&gt;&lt;/h3&gt;]
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/gluten-free-chocolate-chip-cookie-bars-vegan/&quot;&gt;Gluten-Free Chocolate Chip Cookie Bars (Vegan)&lt;/a&gt;&lt;/h3&gt;]
 </pre></div>
 </div>
 </div>
@@ -552,7 +555,7 @@ Erst, wenn die Webseite komplett fertig gerendert ist, wird sie an den Client, z
 <figure class="align-default" id="id241">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_youtube.png"><img alt="Beispiel YouTube" class="bg-transparent" src="../../../_images/beispiel_youtube.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">YouTube-Startseite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id241" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.6 </span><span class="caption-text">YouTube-Startseite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id241" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In diesem Fall können requests und BeautifulSoup nicht verwendet werden, weil die Anfrage nur das “Skelett” der Webseite liefert:</p>
@@ -588,14 +591,14 @@ Der Network-Tab in den Entwicklertools verrät uns, wie wir in diesem Fall vorge
 <figure class="align-default" id="id242">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_gutenberg_1.png"><img alt="Beispiel Projekt Gutenberg" class="bg-transparent" src="../../../_images/beispiel_gutenberg_1.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">HTTP-Anfrage bei der Suche über <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a></span><a class="headerlink" href="#id242" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.7 </span><span class="caption-text">HTTP-Anfrage bei der Suche über <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a></span><a class="headerlink" href="#id242" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Aber es wird zusätzlich ein “Payload” bei der Anfrage übermittelt, nämlich im Beispiel unten “searchstring=franz+kafka&amp;search=suchen”.</p>
 <figure class="align-default" id="id243">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_gutenberg_3.png"><img alt="Beispiel Projekt Gutenberg" class="bg-transparent" src="../../../_images/beispiel_gutenberg_3.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">“Payload” bei der HTTP-Anfrage</span><a class="headerlink" href="#id243" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.8 </span><span class="caption-text">“Payload” bei der HTTP-Anfrage</span><a class="headerlink" href="#id243" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Diese Parameter müssen wir der POST-Anfrage mit angeben. Der Python-Code sieht demnach als Beispiel für eine Suche nach Franz Kafka auf <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a> so aus:</p>
@@ -615,7 +618,7 @@ Der Network-Tab in den Entwicklertools verrät uns, wie wir in diesem Fall vorge
 <p>Die beiden Beispiele zeigen, dass dynamische Inhalte nicht immer gleich JavaScript voraussetzen. <strong>Wenn eure Anfrage mit requests also nicht erfolgreich ist, dann liegt das nicht immer gleich daran, dass JavaScript verwendet wird. Sondern oftmals müsst ihr die Anfrage einfach etwas anders stellen. Wie genau, das könnt ihr herausfinden, indem ihr die Anfragen im Netzwerk-Tab in den Browser-Entwicklertools untersucht.</strong></p>
 </section>
 <section id="gangige-missverstandnisse">
-<h2>Gängige Missverständnisse<a class="headerlink" href="#gangige-missverstandnisse" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1.3. </span>Gängige Missverständnisse<a class="headerlink" href="#gangige-missverstandnisse" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Interaktivität = JavaScript?</p></li>
 </ol>
@@ -626,7 +629,7 @@ Der Network-Tab in den Entwicklertools verrät uns, wie wir in diesem Fall vorge
 <p>Ein weiteres weit verbreitetes Missverständnis ist, dass JavaScript nur dazu verwendet wird, um Inhalte dynamisch zu generieren. Auf der Seite <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a> wird JavaScript beispielsweise verwendet, um ein Analysetool mit dem Namen Mamoto in die Webseite einzubinden. Das Tool dient dem Tracking von Nutzerverhalten und sammelt Statistiken zum Beispiel über Seitenaufrufe durch Nutzer:innen. Es ist aber nicht an der Darstellung der Inhalte selbst beteiligt. Also: Nur, weil ihr im Quellcode einer Webseite ein script-Element seht, heißt das noch lange nicht, dass ihr requests und BeautifulSoup nicht verwenden könnt. JavaScript wird für viele verschiedene Zwecke eingebunden.</p>
 </section>
 <section id="takeaways">
-<h2>Takeaways<a class="headerlink" href="#takeaways" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1.4. </span>Takeaways<a class="headerlink" href="#takeaways" title="Link to this heading">#</a></h2>
 <p>Ihr habt gesehen: Die Wahl der richtigen Web Scraping-Strategie entscheidet sich eigentlich nicht so richtig danach, ob eine Website nun statisch oder dynamisch ist, sondern erst einmal danach, ob JavaScript für die Darstellung der Inhalte verwendet wird, die ihr scrapen wollt. Ihr habt außerdem gesehen, dass dynamische Inhalte nicht immer JavaScript voraussetzen, und dass in manchen Fällen auch ein paar Änderungen an der HTTP-Anfrage ausreichen können, um die gewünschten dynamischen Inhalte zu erhalten. Wenn die Inhalte, die ihr scrapen wollt, aber tatsächlich mithilfe von JavaScript dargestellt werden, dann solltet ihr Selenium verwenden.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -639,7 +642,7 @@ Der Network-Tab in den Entwicklertools verrät uns, wie wir in diesem Fall vorge
 </div>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1.5. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
 <li id="id141"><p>Alexander Bazo. Vorlesung &quot;Webanwendungen und Webserver&quot;. 2020. URL: <a class="reference external" href="https://www.youtube.com/watch?v=Pc35Ux0bF2U">https://www.youtube.com/watch?v=Pc35Ux0bF2U</a>.</p></li>
@@ -690,6 +693,15 @@ Der Network-Tab in den Entwicklertools verrät uns, wie wir in diesem Fall vorge
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../09_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Anwendungsfall III: Dynamische Webseiten</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -706,11 +718,11 @@ Der Network-Tab in den Entwicklertools verrät uns, wie wir in diesem Fall vorge
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statische-webseiten">Statische Webseiten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-webseiten">Dynamische Webseiten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gangige-missverstandnisse">Gängige Missverständnisse</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statische-webseiten">9.1.1. Statische Webseiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-webseiten">9.1.2. Dynamische Webseiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gangige-missverstandnisse">9.1.3. Gängige Missverständnisse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">9.1.4. Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.1.5. Quellen</a></li>
 </ul>
   </nav></div>
 
