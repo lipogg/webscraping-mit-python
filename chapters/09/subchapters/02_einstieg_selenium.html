@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Einstieg Selenium &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>9.2. Einstieg Selenium &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="9.1. Statische vs. Dynamische Webseiten?" href="01_statisch_vs_dynamisch.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +176,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -228,8 +227,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/03_loc_api.html">8.3. Beispiel LOC-API</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_intro.html">9. Dynamische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../09_intro.html">9. Dynamische Webseiten</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.2. Einstieg Selenium</a></li>
 </ul>
 </li>
 </ul>
@@ -395,9 +395,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-selenium">Was ist Selenium?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-zitate-mit-python-selenium-scrapen">Beispiel: Zitate mit Python Selenium scrapen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-selenium">9.2.1. Was ist Selenium?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-zitate-mit-python-selenium-scrapen">9.2.2. Beispiel: Zitate mit Python Selenium scrapen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.2.3. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -410,11 +410,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="einstieg-selenium">
-<h1>Einstieg Selenium<a class="headerlink" href="#einstieg-selenium" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9.2. </span>Einstieg Selenium<a class="headerlink" href="#einstieg-selenium" title="Link to this heading">#</a></h1>
 <p>In dieser Stunde schauen wir uns zum Einstieg wieder die Seite mit den Zitaten an. Allerdings widmen wir uns der Version der Seite <a class="reference external" href="https://quotes.toscrape.com/js/">https://quotes.toscrape.com/js/</a>. Es handelt sich dabei um eine Version der Seite, bei der die Zitate mithilfe von JavaScript dargestellt werden. Zum Einstieg führen wir ein kleines Experiment durch. Öffnet euer Jupyter Notebook aus dem Abschnitt “Einstieg BeautifulSoup”. Ersetzt URL = “<a class="reference external" href="https://quotes.toscrape.com">https://quotes.toscrape.com</a>” durch URL = “<a class="reference external" href="https://quotes.toscrape.com/js">https://quotes.toscrape.com/js</a>” und führt alle Codezellen aus. Was passiert?</p>
 <p>Woran liegt das? Die Inhalte der Seite werden offensichtlich nicht vorgeladen, sondern sie werden erst beim Seitenaufruf ergänzt. Das könnt ihr nachvollziehen, indem ihr die Seite im Browser aufruft, die Entwicklertools öffnet, JavaScript deaktiviert, und die Seite <a class="reference external" href="https://quotes.toscrape.com/js/">https://quotes.toscrape.com/js/</a> neu ladet. Welche Inhalte der Seite werden beim neu Laden angezeigt? Wie ist das im Vergleich mit der Seite <a class="reference external" href="https://quotes.toscrape.com/">https://quotes.toscrape.com/</a>?</p>
 <section id="was-ist-selenium">
-<h2>Was ist Selenium?<a class="headerlink" href="#was-ist-selenium" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2.1. </span>Was ist Selenium?<a class="headerlink" href="#was-ist-selenium" title="Link to this heading">#</a></h2>
 <p>Zum Scrapen solcher Inhalte können wir BeautifulSoup nicht verwenden, weil BeautifulSoup mit solchen mithilfe von JavaScript dargestellten Inhalten nicht umgehen kann: In unserem quotes.toscrape-Webscraper haben wir ja nur eine HTTP-Anfrage gestellt, und diese Anfrage liefert nur die HTML-Dokumente, die bereits auf dem Server liegen, bevor wir die Webseite aufrufen. Wir müssen also irgendwie an die Inhalte kommen, welche mithilfe von JavaScript im Client nachträglich eingefügt werden.</p>
 <p>Dazu gibt es verschiedene spezialisierte Python-Pakete und Bibliotheken, am gängigsten sind Selenium, die leichtgewichtigere Selenium-Variante Helium sowie Puppeteer und Playwright. Daneben gibt es auch Splash, das in Kombination mit Scrapy, eine BeautifulSoup-Alternative, verwendet wird. Das wohl meist verwendete Paket zum Scrapen dynamischer Inhalte war im letzten Jahrzehnt immer Selenium, allerdings wird es vermehrt durch Playwright verdrängt. Zum Verständnis von Playwright müssten wir uns aber noch ein anderes Netzwerkprotokoll ansehen, nämlich WebSocket. Im Rahmen dieses Seminars werden wir deswegen bei HTTP bleiben und lernen anstelle von Playwright das trotz der Konkurrenz immer noch etablierte Selenium kennen.</p>
 <p>Aber was ist denn jetzt Selenium?</p>
@@ -425,34 +425,61 @@ document.write(`
 <p>Selenium ist ein Projekt, das verschiedene Bibliotheken in verschiedenen Programmiersprachen umfasst und ursprünglich zum Testen von Webseiten entwickelt wurde. <strong>Ganz allgemein ermöglich es Selenium, Webbrowser automatisiert zu steuern und mit ihnen zu interagieren. Das heißt, dass wir im Rahmen von Web Scraping mithilfe von Selenium auf die gerenderte Version einer Webseite zugreifen und direkt aus unserem Python-Notebook heraus verschiedene Aktionen im Webbrowser ausführen können, z.B. das Öffnen von URLs, Suchen nach und Klicken auf Elemente, Ausfüllen von Formularen und Extrahieren von Daten.</strong> Um Selenium verwenden zu können, brauchen wir zusätzlich einen Browser und einen Treiber für diesen Browser (=Webdriver). In unserem Beispiel heute werden wir Selenium im Zusammenhang mit Chrome und dem <a class="reference external" href="https://sites.google.com/chromium.org/driver/">Chrome WebDriver</a> verwenden. Der Chrome WebDriver stellt die Verbindung zum Chrome-Browser her und ermöglicht die Kommunikation zwischen Selenium und dem Browser.</p>
 </section>
 <section id="beispiel-zitate-mit-python-selenium-scrapen">
-<h2>Beispiel: Zitate mit Python Selenium scrapen<a class="headerlink" href="#beispiel-zitate-mit-python-selenium-scrapen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2.2. </span>Beispiel: Zitate mit Python Selenium scrapen<a class="headerlink" href="#beispiel-zitate-mit-python-selenium-scrapen" title="Link to this heading">#</a></h2>
 <p>Als Beispiel sehen wir uns zunächst wieder den Code von jemand anderem an, nämlich von <a class="reference external" href="https://lewiskori.com/blog/beginner-s-guide-to-web-scraping-with-python-s-selenium/">Lewis Kori</a>.</p>
 <p>Wir nehmen allerdings zwei Änderungen vor: Da der Code für eine ältere Selenium-Version (Version 3) geschrieben wurde und sich die Funktionsnamen seither geändert haben, habe ich ein paar der Funktionsaufrufe angepasst. Außerdem verwenden wir den Präfix https anstelle von http für die quotes.toscrape Website, um eine verschlüsselte Verbindung zu der Seite herzustellen.</p>
-<p>Zunächst müssen wir aber Selenium installieren. Das machen wir ausnahmsweise mithilfe des Paketmanagers pip:</p>
+<p>Zunächst müssen wir aber Selenium installieren:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install selenium==4.22.0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import sys</span>
+<span class="c1"># !conda install --yes --prefix {sys.prefix} conda-forge::selenium-manager</span>
+<span class="c1"># !conda install --yes --prefix {sys.prefix} conda-forge::selenium==4.23.1</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !conda list # überprüfen</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !conda list</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Zusätzlich zu Selenium benötigen wir den ChromeDriver. Es gibt zwei Möglichkeiten, den ChromeDriver zu installieren: Die gängigste Methode ist der manuelle Download über <a class="reference external" href="https://sites.google.com/chromium.org/driver/">https://sites.google.com/chromium.org/driver/</a> bzw. <a class="reference external" href="https://googlechromelabs.github.io/chrome-for-testing/">https://googlechromelabs.github.io/chrome-for-testing/</a> (hier unbedingt “stable” auswählen!). Nach dem Download solltet ihr den Pfad zur heruntergeladenen Chromedriver-Datei in die Zwischenablage kopieren und in den folgenden Code einsetzen. Mit <code class="docutils literal notranslate"><span class="pre">Service(chromedriver_path)</span></code> wird dem Selenium WebDriver mitgeteilt, wo sich die ausführbare Datei des Chrome WebDriver befindet, die für die Automatisierung des Chrome-Browsers benötigt wird. Wenn webdriver.Chrome() ohne spezifische Angabe eines Service-Objekts aufgerufen wird, sucht Selenium standardmäßig im Systempfad nach dem ChromeDriver. Obwohl es in diversen Online-Foren vorgeschlagen wird, ist es nicht notwendig, den ChromeDriver dem Systempfad hinzuzufügen. Mit der Zeile <code class="docutils literal notranslate"><span class="pre">driver</span> <span class="pre">=</span> <span class="pre">webdriver.Chrome()</span></code> weisen wir Selenium an, den Chrome-Browser für die Browserautomatisierung zu verwenden und starten eine neue Session (Sitzung).</p>
+<p>Falls es bei der Installation ein Problem geben sollte, kann Selenium alternativ auch mithilfe des Paketmanagers pip installiert werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium.webdriver.chrome.service import Service</span>
-<span class="c1"># from selenium import webdriver</span>
-<span class="c1"># from selenium.webdriver.common.by import By</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install selenium==4.23.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zusätzlich zu Selenium benötigen wir den ChromeDriver. Es gibt zwei Möglichkeiten, den ChromeDriver zu installieren. Eine gängige, aber umständliche Methode ist der manuelle Download über <a class="reference external" href="https://sites.google.com/chromium.org/driver/">https://sites.google.com/chromium.org/driver/</a> bzw. <a class="reference external" href="https://googlechromelabs.github.io/chrome-for-testing/">https://googlechromelabs.github.io/chrome-for-testing/</a> (hier unbedingt “stable” auswählen!). Nach dem Download solltet ihr den Pfad zur heruntergeladenen Chromedriver-Datei in die Zwischenablage kopieren und in den folgenden Code einsetzen. Mit <code class="docutils literal notranslate"><span class="pre">Service(chromedriver_path)</span></code> wird dem Selenium WebDriver mitgeteilt, wo sich die ausführbare Datei des Chrome WebDriver befindet, die für die Automatisierung des Chrome-Browsers benötigt wird. Wenn webdriver.Chrome() ohne spezifische Angabe eines Service-Objekts aufgerufen wird, sucht Selenium standardmäßig im Systempfad nach dem ChromeDriver. Obwohl es in diversen Online-Foren vorgeschlagen wird, ist es nicht notwendig, den ChromeDriver dem Systempfad hinzuzufügen. Mit der Zeile <code class="docutils literal notranslate"><span class="pre">driver</span> <span class="pre">=</span> <span class="pre">webdriver.Chrome()</span></code> weisen wir Selenium an, den Chrome-Browser für die Browserautomatisierung zu verwenden und starten eine neue Session (Sitzung).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dieses Modul müsst ihr nicht importieren</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">skip</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
 
-<span class="c1"># chromedriver_path = &quot;/Pfad/zum/chromedriver&quot;</span>
-<span class="c1"># service = Service(chromedriver_path)</span>
-<span class="c1"># driver = webdriver.Chrome(service=service)</span>
+from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+chromedriver_path = &quot;/Pfad/zum/chromedriver&quot;
+service = Service(chromedriver_path)
+driver = webdriver.Chrome(service=service)
 </pre></div>
 </div>
 </div>
@@ -461,11 +488,12 @@ document.write(`
 <p>Es gibt deswegen eine weitere und weitaus bessere Möglichkeit, den ChromeDriver zu installieren. Seit der Version 4.6 wird mit der Installation von Selenium auch der <a class="reference external" href="https://www.selenium.dev/documentation/selenium_manager/">SeleniumManager</a> installiert, ein Modul zur automatischen Verwaltung verschiedener Chromedriver-Versionen. Dadurch müssen wir beim Aufruf von <code class="docutils literal notranslate"><span class="pre">webdriver.Chrome()</span></code> den Pfad zum installierten ChromeDriver nicht manuell angeben, sondern es wird automatisch der korrekte Webdriver heruntergeladen und der Pfad wird automatisch eingesetzt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium import webdriver</span>
-<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
-<span class="c1"># from selenium.webdriver.common.by import By</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
 
-<span class="c1"># driver = webdriver.Chrome()</span>
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome() # alternativ webdriver.Firefox()
 </pre></div>
 </div>
 </div>
@@ -473,32 +501,34 @@ document.write(`
 <p>Zuletzt importieren wir noch das Paket pandas zur Verarbeitung der extrahierten Daten.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import pandas as pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pages = 11</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
 
-<span class="c1"># total = []</span>
-<span class="c1"># for page in range(1, pages):</span>
+pages = 11
 
-<span class="c1">#     url = &quot;https://quotes.toscrape.com/js/page/&quot; + str(page) + &quot;/&quot;</span>
+total = []
+for page in range(1, pages):
 
-<span class="c1">#     driver.get(url)</span>
+    url = &quot;https://quotes.toscrape.com/js/page/&quot; + str(page) + &quot;/&quot;
 
-<span class="c1">#     quotes = driver.find_elements(By.CLASS_NAME, &quot;quote&quot;)</span>
-<span class="c1">#     for quote in quotes:</span>
-<span class="c1">#         quote_text = quote.find_element(By.CLASS_NAME, &#39;text&#39;).text[1:-2]</span>
-<span class="c1">#         author = quote.find_element(By.CLASS_NAME, &#39;author&#39;).text</span>
-<span class="c1">#         new = ((quote_text,author))</span>
-<span class="c1">#         total.append(new)</span>
+    driver.get(url)
 
-<span class="c1"># driver.quit()</span>
-<span class="c1"># df = pd.DataFrame(total,columns=[&#39;quote&#39;,&#39;author&#39;])</span>
-<span class="c1"># df.to_csv(&#39;quoted.csv&#39;)</span>
+    quotes = driver.find_elements(By.CLASS_NAME, &quot;quote&quot;)
+    for quote in quotes:
+        quote_text = quote.find_element(By.CLASS_NAME, &#39;text&#39;).text[1:-2]
+        author = quote.find_element(By.CLASS_NAME, &#39;author&#39;).text
+        new = ((quote_text,author))
+        total.append(new)
+
+driver.quit()
+df = pd.DataFrame(total,columns=[&#39;quote&#39;,&#39;author&#39;])
+df.to_csv(&#39;quoted.csv&#39;)
 </pre></div>
 </div>
 </div>
@@ -506,7 +536,7 @@ document.write(`
 <p>Zur Übung sollt ihr euch im Rest der Stunde selbst erarbeiten, was dieser Code macht. Schaut dazu in die Selenium-Dokumentationsseiten: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/locators/">https://www.selenium.dev/documentation/webdriver/elements/locators/</a>. Bei den Codebeispielen muss jeweils Python ausgewählt werden. Etwas älter, aber manchmal immer noch hilfreich ist außerdem diese inoffizielle Dokumentationsseite: <a class="reference external" href="https://selenium-python.readthedocs.io/">https://selenium-python.readthedocs.io/</a>. Kommentiert jede Zeile, damit ihr euch später noch an die Ergebnisse eurer Recherche erinnern könnt: Diese Vorarbeit braucht ihr für die Übungsaufgabe!</p>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2.3. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
 <li id="id147"><p>Gulbahar Karatas. A Comprehensive Guide to Web Scraping Techniques in 2023. 2023. URL: <a class="reference external" href="https://research.aimultiple.com/scraping-techniques/">https://research.aimultiple.com/scraping-techniques/</a>.</p></li>
@@ -552,6 +582,15 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="01_statisch_vs_dynamisch.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9.1. </span>Statische vs. Dynamische Webseiten?</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -568,9 +607,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-selenium">Was ist Selenium?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-zitate-mit-python-selenium-scrapen">Beispiel: Zitate mit Python Selenium scrapen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-selenium">9.2.1. Was ist Selenium?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-zitate-mit-python-selenium-scrapen">9.2.2. Beispiel: Zitate mit Python Selenium scrapen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.2.3. Quellen</a></li>
 </ul>
   </nav></div>
 
