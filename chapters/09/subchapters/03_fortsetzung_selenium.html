@@ -439,11 +439,13 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Aber was, wenn die Inhalte noch nicht ganz fertig geladen und gerendert sind, wenn wir den Text mit unterkunft.text extrahieren wollen? Dann bekommen wir eine Fehlermeldung, die uns darauf aufmerksam macht, dass das Element nicht gefunden werden konnte.</p>
+<p>Aber was, wenn die Inhalte noch nicht ganz fertig geladen und gerendert sind, wenn wir den Text mit unterkunft.text extrahieren wollen? Dann bekommen wir eine Fehlermeldung, die uns darauf aufmerksam macht, dass das Element nicht gefunden werden konnte. Das Problem könnten wir naiv mit der bisher bekannten Funktion time.sleep() lösen:</p>
+<p>Allerdings bietet Selenium selbst Methoden zur feingranularen Kontrolle über das Warteverhalten des automatisierten Webbrowsers, mit denen das Problem deutlich eleganter und effizienter gelöst werden kann.</p>
 </section>
 <section id="selenium-waits">
 <h2><span class="section-number">9.3.2. </span>Selenium Waits<a class="headerlink" href="#selenium-waits" title="Link to this heading">#</a></h2>
-<p>Beim Web Scrapen mithilfe von Selenium sollten immer Wartezeiten eingebaut werden, die sicherstellen, dass der automatisierte Browser genug Zeit zum Laden der gesuchten Inhalte hat. Das Selenium webdriver-Modul bietet eigene Methoden, die ermöglichen, nicht nur eine feste Anzahl an Sekunden wie mit der bereits bekannten Funktion time.sleep() zu warten, sondern beim Warten verschiedene Strategien anzuwenden. Zum Beispiel ermöglicht die Methode <code class="docutils literal notranslate"><span class="pre">driver.implicitly_wait(x)</span></code>, für alle Seitenaufrufe innerhalb einer Session einzustellen, dass x Sekunden lang auf jedes gesuchte Element gewartet wird, bevor eine “ElementNotFound”-Ausnahme geworfen wird. Am Beispiel der Suche nach den Airbnb-Ortsangaben sieht die Verwendung von implicitly_wait() so aus:</p>
+<p>Beim Web Scrapen mithilfe von Selenium sollten immer Wartezeiten eingebaut werden, die sicherstellen, dass der automatisierte Browser genug Zeit zum Laden der gesuchten Inhalte hat. Das Selenium webdriver-Modul bietet eigene Methoden, die ermöglichen, nicht nur eine feste Anzahl an Sekunden wie mit der bereits bekannten Funktion time.sleep() zu warten, sondern beim Warten verschiedene Strategien anzuwenden.</p>
+<p>Zunächst betrachten wir die Methode <code class="docutils literal notranslate"><span class="pre">driver.implicitly_wait(x)</span></code>, die ermöglicht, für alle Seitenaufrufe innerhalb einer Session einzustellen, dass x Sekunden lang auf jedes gesuchte Element gewartet wird, bevor eine “ElementNotFound”-Ausnahme geworfen wird. Am Beispiel der Suche nach den Airbnb-Ortsangaben sieht die Verwendung von implicitly_wait() so aus:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
@@ -460,8 +462,9 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Die Verwendung von driver.implicitly_wait(x) ist effizienter als die Variante mit time.sleep(x), denn während die Ausführung des Skripts mit time.sleep(x) immer um genau x Sekunden verzögert wird, wird mit implicitly_wait(x) maximal x Sekunden gewartet. In vielen Fällen ist die Wartezeit aber kürzer, weil das gesuchte Element schon früher, vor Ablauf der x Sekunden geladen ist, oder länger, weil der Verbindungsaufbau sich verzögert. Außerdem wird durch Verwenden der Selenium-Wartestrategien verhindert, dass das Programm unkontrolliert abbricht, wenn ein Element nicht gefunden wird.</p>
-<p>Neben der globalen Wartezeit mit .implicitly_wait() gibt es in Selenium die Möglichkeit, explizit auf ein bestimmtes Element zu warten. Dazu gibt es zwei Möglichkeiten:</p>
+<p>Die Verwendung von driver.implicitly_wait(x) ist effizienter als die Variante mit time.sleep(x), denn während die Ausführung des Skripts mit time.sleep(x) immer um genau x Sekunden verzögert wird, wird mit implicitly_wait(x) maximal x Sekunden gewartet. In vielen Fällen ist die Wartezeit aber kürzer, weil das gesuchte Element schon früher, vor Ablauf der x Sekunden gefunden werden kann, oder länger, weil der Verbindungsaufbau sich verzögert. Außerdem wird durch Verwenden der Selenium-Wartestrategien verhindert, dass das Programm unkontrolliert abbricht, wenn ein Element nicht gefunden wird.</p>
+<p>Allerdings muss beachtet werden, dass mit .implicitly_wait() NICHT darauf gewartet wird, ob der Inhalt des Elements bereits geladen oder gerendert ist, sondern es wird nur darauf gewartet, ob das Element selbst gefunden werden kann. Wenn das Element bereits vor dem Laden der Inhalte mit JavaScript im Skelett der Website vorhanden ist wie in diesem Fall auf der Airbnb-Seite (erinnert euch an den Abschnitt “Statisch vs. Dynamisch?”), dann kann .implicitly_wait() NICHT verwendet werden.</p>
+<p>Neben der globalen Wartezeit mit .implicitly_wait() gibt es in Selenium deswegen auch die Möglichkeit, explizit auf ein bestimmtes Element zu warten und dabei festzulegen, ob gewartet werden soll, ob das Element sichtbar, anklickbar, auffindbar oder auf andere Weise interagierbar sein soll. Für solche expliziten Wartestrategien (oder “Explicit Waits”) gibt es zwei Möglichkeiten:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explicit Wait: Option 1</span>
@@ -502,7 +505,7 @@ document.write(`
 <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">element</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[@data-testid=&#39;structured-search-input-search-button&#39;]&quot;</span><span class="p">)))</span>
 
-<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[@data-testid=&#39;structured-search-input-search-button&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">element</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
 <span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
@@ -510,6 +513,28 @@ document.write(`
 </div>
 </div>
 <p>Mit dieser zweiten Version des expliziten Wartens kann auch auf eine Reihe anderer Ereignisse gewartet werden. Eine ausführliche Erläuterung dazu findet ihr <a class="reference external" href="https://selenium-python.readthedocs.io/waits.html">hier</a>, und eine Liste aller Ereignisse, auf die gewartet werden kann sowie der entsprechenden Methoden findet ihr <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html">hier</a>.</p>
+<p>Für unser Airbnb-Beispiel verwenden wir die zweite Strategie und schreiben den Code so um, dass darauf gewartet wird, bis alle Elemente mit der angegeben Klasse sichtbar sind (also gerendert wurden, mehr dazu <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html#selenium.webdriver.support.expected_conditions.presence_of_all_elements_located">hier</a>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
+
+<span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">unterkuenfte</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+    <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;t1jojoys.dir.dir-ltr&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="n">unterkuenfte_orte</span> <span class="o">=</span> <span class="p">[</span><span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">unterkunft</span> <span class="ow">in</span> <span class="n">unterkuenfte</span><span class="p">]</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Explizite und implizite Wartestrategien sollten allerdings nicht vermischt werden! Laut Selenium-Dokumentationsseiten kann dies zu unerwartetem Verhalten führen:</p>
 <blockquote>
 <div><p>Warning: Do not mix implicit and explicit waits. Doing so can cause unpredictable wait times. For example, setting an implicit wait of 10 seconds and an explicit wait of 15 seconds could cause a timeout to occur after 20 seconds.</p>
@@ -539,10 +564,11 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Driver-Instanz starten und Wartezeit einstellen</span>
 <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">implicitly_wait</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
+<span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">tinyhomes_button</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-testid=&#39;category-item--Tiny homes--unchecked&#39;]&quot;</span><span class="p">)))</span>
 <span class="c1"># Auf den Tiny House Icon klicken: Nach dem Klick &quot;category-item--Tiny Houses--checked&quot;, vor dem Klick &quot;category-item--Tiny homes--unchecked&quot;</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-testid=&#39;category-item--Tiny homes--unchecked&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">tinyhomes_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -604,7 +630,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Button &quot;Show More&quot; klicken</span>
-<span class="n">more_button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(text(), &#39;Show more&#39;)]&quot;</span><span class="p">)</span>
+<span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">more_button</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(text(), &#39;Show more&#39;)]&quot;</span><span class="p">)))</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;arguments[0].click();&quot;</span><span class="p">,</span> <span class="n">more_button</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -645,7 +672,10 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Daten extrahieren</span>
-<span class="n">unterkuenfte</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-testid=&#39;listing-card-title&#39;]&quot;</span><span class="p">)</span> <span class="c1"># Alternativ By.CLASS_NAME, &quot;t1jojoys&quot;</span>
+<span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">unterkuenfte</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+    <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-testid=&#39;listing-card-title&#39;]&quot;</span><span class="p">))</span> <span class="c1"># Alternativ By.CLASS_NAME, &quot;t1jojoys&quot;</span>
+<span class="p">)</span>
 <span class="n">unterkuenfte_orte</span> <span class="o">=</span> <span class="p">[</span><span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">unterkunft</span> <span class="ow">in</span> <span class="n">unterkuenfte</span><span class="p">]</span>
 <span class="n">unterkuenfte_orte</span>
 </pre></div>
@@ -675,7 +705,6 @@ document.write(`
 
 <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">implicitly_wait</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
