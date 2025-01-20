@@ -61,6 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="9.3. Fortsetzung Selenium" href="03_fortsetzung_selenium.html" />
     <link rel="prev" title="9.1. Statische vs. Dynamische Webseiten?" href="01_statisch_vs_dynamisch.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -230,6 +231,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../09_intro.html">9. Dynamische Webseiten</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">9.2. Einstieg Selenium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
 </ul>
 </li>
 </ul>
@@ -431,16 +433,16 @@ document.write(`
 <p>Zunächst müssen wir aber Selenium installieren:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import sys</span>
-<span class="c1"># !conda install --yes --prefix {sys.prefix} conda-forge::selenium-manager</span>
-<span class="c1"># !conda install --yes --prefix {sys.prefix} conda-forge::selenium==4.23.1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>--yes<span class="w"> </span>--prefix<span class="w"> </span><span class="o">{</span>sys.prefix<span class="o">}</span><span class="w"> </span>conda-forge::selenium-manager
+<span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>--yes<span class="w"> </span>--prefix<span class="w"> </span><span class="o">{</span>sys.prefix<span class="o">}</span><span class="w"> </span>conda-forge::selenium<span class="o">==</span><span class="m">4</span>.23.1
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !conda list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda<span class="w"> </span>list
 </pre></div>
 </div>
 </div>
@@ -448,14 +450,14 @@ document.write(`
 <p>Falls es bei der Installation ein Problem geben sollte, kann Selenium alternativ auch mithilfe des Paketmanagers pip installiert werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install selenium==4.23.1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">selenium</span><span class="o">==</span><span class="m">4</span>.23.1
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>list
 </pre></div>
 </div>
 </div>
@@ -463,23 +465,12 @@ document.write(`
 <p>Zusätzlich zu Selenium benötigen wir den ChromeDriver. Es gibt zwei Möglichkeiten, den ChromeDriver zu installieren. Eine gängige, aber umständliche Methode ist der manuelle Download über <a class="reference external" href="https://sites.google.com/chromium.org/driver/">https://sites.google.com/chromium.org/driver/</a> bzw. <a class="reference external" href="https://googlechromelabs.github.io/chrome-for-testing/">https://googlechromelabs.github.io/chrome-for-testing/</a> (hier unbedingt “stable” auswählen!). Nach dem Download solltet ihr den Pfad zur heruntergeladenen Chromedriver-Datei in die Zwischenablage kopieren und in den folgenden Code einsetzen. Mit <code class="docutils literal notranslate"><span class="pre">Service(chromedriver_path)</span></code> wird dem Selenium WebDriver mitgeteilt, wo sich die ausführbare Datei des Chrome WebDriver befindet, die für die Automatisierung des Chrome-Browsers benötigt wird. Wenn webdriver.Chrome() ohne spezifische Angabe eines Service-Objekts aufgerufen wird, sucht Selenium standardmäßig im Systempfad nach dem ChromeDriver. Obwohl es in diversen Online-Foren vorgeschlagen wird, ist es nicht notwendig, den ChromeDriver dem Systempfad hinzuzufügen. Mit der Zeile <code class="docutils literal notranslate"><span class="pre">driver</span> <span class="pre">=</span> <span class="pre">webdriver.Chrome()</span></code> weisen wir Selenium an, den Chrome-Browser für die Browserautomatisierung zu verwenden und starten eine neue Session (Sitzung).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dieses Modul müsst ihr nicht importieren</span>
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">skip</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium.webdriver.chrome.service</span> <span class="kn">import</span> <span class="n">Service</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
 
-from selenium.webdriver.chrome.service import Service
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-chromedriver_path = &quot;/Pfad/zum/chromedriver&quot;
-service = Service(chromedriver_path)
-driver = webdriver.Chrome(service=service)
+<span class="n">chromedriver_path</span> <span class="o">=</span> <span class="s2">&quot;/Pfad/zum/chromedriver&quot;</span>
+<span class="n">service</span> <span class="o">=</span> <span class="n">Service</span><span class="p">(</span><span class="n">chromedriver_path</span><span class="p">)</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="n">service</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -488,12 +479,10 @@ driver = webdriver.Chrome(service=service)
 <p>Es gibt deswegen eine weitere und weitaus bessere Möglichkeit, den ChromeDriver zu installieren. Seit der Version 4.6 wird mit der Installation von Selenium auch der <a class="reference external" href="https://www.selenium.dev/documentation/selenium_manager/">SeleniumManager</a> installiert, ein Modul zur automatischen Verwaltung verschiedener Chromedriver-Versionen. Dadurch müssen wir beim Aufruf von <code class="docutils literal notranslate"><span class="pre">webdriver.Chrome()</span></code> den Pfad zum installierten ChromeDriver nicht manuell angeben, sondern es wird automatisch der korrekte Webdriver heruntergeladen und der Pfad wird automatisch eingesetzt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
 
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-driver = webdriver.Chrome() # alternativ webdriver.Firefox()
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="c1"># alternativ webdriver.Firefox()</span>
 </pre></div>
 </div>
 </div>
@@ -508,27 +497,25 @@ driver = webdriver.Chrome() # alternativ webdriver.Firefox()
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pages</span> <span class="o">=</span> <span class="mi">11</span>
 
-pages = 11
+<span class="n">total</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pages</span><span class="p">):</span>
 
-total = []
-for page in range(1, pages):
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://quotes.toscrape.com/js/page/&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
 
-    url = &quot;https://quotes.toscrape.com/js/page/&quot; + str(page) + &quot;/&quot;
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
-    driver.get(url)
+    <span class="n">quotes</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;quote&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">:</span>
+        <span class="n">quote_text</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">author</span> <span class="o">=</span> <span class="n">quote</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="p">((</span><span class="n">quote_text</span><span class="p">,</span><span class="n">author</span><span class="p">))</span>
+        <span class="n">total</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
 
-    quotes = driver.find_elements(By.CLASS_NAME, &quot;quote&quot;)
-    for quote in quotes:
-        quote_text = quote.find_element(By.CLASS_NAME, &#39;text&#39;).text[1:-2]
-        author = quote.find_element(By.CLASS_NAME, &#39;author&#39;).text
-        new = ((quote_text,author))
-        total.append(new)
-
-driver.quit()
-df = pd.DataFrame(total,columns=[&#39;quote&#39;,&#39;author&#39;])
-df.to_csv(&#39;quoted.csv&#39;)
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">total</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;quote&#39;</span><span class="p">,</span><span class="s1">&#39;author&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;quoted.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -590,6 +577,15 @@ df.to_csv(&#39;quoted.csv&#39;)
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="section-number">9.1. </span>Statische vs. Dynamische Webseiten?</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="03_fortsetzung_selenium.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9.3. </span>Fortsetzung Selenium</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
