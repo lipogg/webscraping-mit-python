@@ -89,8 +89,8 @@ sections:
       title: Statisch vs. Dynamisch?
     - file: chapters/09/subchapters/02_einstieg_selenium.ipynb
       title: Einstieg Selenium
-#    - file: chapters/09/subchapters/03_fortsetzung_selenium.ipynb
-#      title: Fortsetzung Selenium
+    - file: chapters/09/subchapters/03_fortsetzung_selenium.ipynb
+      title: Fortsetzung Selenium
 #- file: chapters/10/10_intro
 #  title: Tipps und Tricks
 #  sections:
