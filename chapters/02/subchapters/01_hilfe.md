@@ -18,7 +18,10 @@ Manchmal macht das Skript aber auch einfach nicht das, was es soll, ohne, dass e
 
 **7. Hilfe holen.** Falls ihr im Laufe des Seminars ein Problem habt, das ihr selbst nicht lösen könnt, könnt ihr einen Screenshot für die nächste Sitzung mitbringen oder mir eine E-Mail an l.poggel@fu-berlin.de schreiben.
 
-
+Zuletzt kann es natürlich auch vorkommen, dass euch ein Inhalt aus dem Seminar nicht ganz klar ist oder ihr ein weiterführendes Interesse an einem Thema habt. 
+Für Python-bezogene Fragen empfehle ich das [Lehrbuch *Learning Python* von Mark Lutz](https://www.oreilly.com/library/view/learning-python-6th/9781098171292/) (6. Aufl. 2025, aktuell als Trialversion verfügbar), die offiziellen [Python-Dokumentationsseiten](https://docs.python.org/3/), und das [Handbuch *Python 3* von Johannes Ernesti und Peter Kaiser](https://openbook.rheinwerk-verlag.de/python/) (online verfügbar in der 5. Aufl. 2017).  
+Zwar sind diese Ressourcen detaillierter und sprachlich nicht immer so zugänglich wie diverse Blogartikel und Youtubevideos, aber die inhaltliche und sprachliche Präzision hilft enorm bei der Entwicklung eines Grundverständnisses nicht nur der Sprache selbst, sondern auch der dahinterstehenden allgemeinen Programmierkonzepte. 
+Für Webscraping-bezogene Fragen verweise ich auf die Literaturhinweise am Ende der entsprechenden Kapitel auf der Kurswebsite. 
 
 
 
