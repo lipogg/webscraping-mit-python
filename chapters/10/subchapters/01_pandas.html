@@ -57,7 +57,7 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/11/subchapters/01_pandas';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/10/subchapters/01_pandas';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -303,7 +303,7 @@
       
       
       
-      <li><a href="../../../_sources/chapters/11/subchapters/01_pandas.ipynb" target="_blank"
+      <li><a href="../../../_sources/chapters/10/subchapters/01_pandas.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -430,10 +430,11 @@ document.write(`
 <p>In der Praxisaufgabe auf dem Übungsblatt 12 solltet ihr die Links zu Tierfotos von der Seite <a class="reference external" href="https://www.pinterest.com/ideas/animals/925056443165/">https://www.pinterest.com/ideas/animals/925056443165/</a> extrahieren. In diesem Beispiel scrapen wir nicht die Links zu den Fotos, sondern Kommentare zu den einzelnen Fotos zusammen mit den Usernamen von Kommentator:innen. Anschließend werden wir den Pandas Dataframe mit den extrahierten Daten bereinigen und bearbeiten, und zuletzt erstellen wir zwei beispielhafte Grafiken zur Visualisierung der Daten.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium import webdriver</span>
-<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
-<span class="c1"># from selenium.webdriver.common.by import By</span>
-<span class="c1"># import pandas as pd</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.wait</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
@@ -441,34 +442,41 @@ document.write(`
 <p>Als Beispiel verwenden wir zwei Pins, für die zunächst die Kommentare sowie die Usernamen der Kommentator:innen extrahiert werden. Diese Daten speichern wir zusammen mit der URL zum Tierfotopin zunächst als Python Dictionary, das wir in einen Pandas Dataframe umwandeln:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># comments_dict = {&quot;link&quot;:[], &quot;commentator&quot;:[], &quot;comment&quot;:[]}</span>
-<span class="c1"># tierlinks = [&quot;https://www.pinterest.de/pin/206321226666310819/&quot;, &quot;https://www.pinterest.de/pin/1108730001991298438/&quot;]</span>
-<span class="c1"># driver = webdriver.Chrome()</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">comments_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;link&quot;</span><span class="p">:[],</span> <span class="s2">&quot;commentator&quot;</span><span class="p">:[],</span> <span class="s2">&quot;comment&quot;</span><span class="p">:[]}</span>
+<span class="n">tierlinks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;https://www.pinterest.de/pin/206321226666310819/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://www.pinterest.de/pin/1108730001991298438/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://de.pinterest.com/pin/314759461475004846/&quot;</span>
+<span class="p">]</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
   
-<span class="c1"># for link in tierlinks:</span>
-<span class="c1">#     driver.get(link)</span>
-<span class="c1">#     driver.implicitly_wait(10)</span>
-    
-<span class="c1">#     comment_elems = driver.find_elements(By.XPATH, &quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/span/div/span/span[3]/span&quot;)    </span>
-<span class="c1">#     commentator_elems = driver.find_elements(By.XPATH, &quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/span/div/span/span[2]/a&quot;)</span>
-    
-<span class="c1">#     if len(comment_elems) &gt; 0: # oder len(commentator_elems); das ist egal</span>
-<span class="c1">#         comments = [comment.text for comment in comment_elems]</span>
-<span class="c1">#         commentators = [commentator.get_attribute(&quot;href&quot;) for commentator in commentator_elems]</span>
-    
-<span class="c1">#     comments_dict[&quot;link&quot;].extend([link]*len(comments)) # [link] erstellt eine Liste mit einem Element</span>
-<span class="c1">#     comments_dict[&quot;comment&quot;].extend(comments)</span>
-<span class="c1">#     comments_dict[&quot;commentator&quot;].extend(commentators)</span>
+<span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">tierlinks</span><span class="p">:</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+    <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">comment_elems</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/span/div/span/span[3]/span&quot;</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="n">commentator_elems</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/span/div/span/span[2]/a&quot;</span><span class="p">))</span>
+    <span class="p">)</span>
 
-<span class="c1"># driver.quit()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">comment_elems</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># oder len(commentator_elems); das ist egal</span>
+        <span class="n">comments</span> <span class="o">=</span> <span class="p">[</span><span class="n">comment</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">comment</span> <span class="ow">in</span> <span class="n">comment_elems</span><span class="p">]</span>
+        <span class="n">commentators</span> <span class="o">=</span> <span class="p">[</span><span class="n">commentator</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">commentator</span> <span class="ow">in</span> <span class="n">commentator_elems</span><span class="p">]</span>
+    
+    <span class="n">comments_dict</span><span class="p">[</span><span class="s2">&quot;link&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">link</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">comments</span><span class="p">))</span> <span class="c1"># [link] erstellt eine Liste mit einem Element</span>
+    <span class="n">comments_dict</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">comments</span><span class="p">)</span>
+    <span class="n">comments_dict</span><span class="p">[</span><span class="s2">&quot;commentator&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">commentators</span><span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># comments_df = pd.DataFrame.from_dict(comments_dict)</span>
-<span class="c1"># comments_df</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">comments_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">comments_dict</span><span class="p">)</span>
+<span class="n">comments_df</span>
 </pre></div>
 </div>
 </div>
@@ -476,9 +484,9 @@ document.write(`
 <p>Eine kurze Durchsicht der extrahierten Daten zeigt, dass nicht alle Kommentare extrahiert wurden, sondern nur die Kommentare, die beim Aufruf einer Tierfotoseite sichtbar sind. Für unsere Zwecke reichen uns aber diese Kommentare. Wir haben  außerdem nur Kommentare von zwei Tierfotoseiten extrahiert, sodass der Dataframe überschaubar ist. Bei sehr großen Dataframes kann es sinnvoll sein, sich nicht den gesamten Dataframe ausgeben zu lassen, sondern nur eine bestimmte Anzahl von Zeilen. Dazu können die Pandas Dataframe-Methoden <code class="docutils literal notranslate"><span class="pre">.tail()</span></code> und <code class="docutils literal notranslate"><span class="pre">.head()</span></code> verwendet werden, oder eine Slicing-Operation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># comments_df.head(10) # erste 10 Zeilen</span>
-<span class="c1"># comments_df.tail(5) # erste 10 Zeilen</span>
-<span class="c1"># comments_df.iloc[4:12] # Zeilen 4-11</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">comments_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># erste 10 Zeilen</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># erste 10 Zeilen</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span> <span class="c1"># Zeilen 4-11</span>
 </pre></div>
 </div>
 </div>
@@ -486,8 +494,8 @@ document.write(`
 <p>Zeilen können auch mithilfe einer logischen Abfrage ausgewählt werden, zum Beispiel:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Die Spalte commentator benennen wir allerdings erst später in commentator_id um (s.u.)</span>
-<span class="c1"># comments_df.loc[comments_df[&quot;commentator_id&quot;] == 5] # Zeilen mit commentator_id == 5</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Die Spalte commentator benennen wir allerdings erst später in commentator_id um (s.u.)</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">comments_df</span><span class="p">[</span><span class="s2">&quot;commentator_id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span><span class="p">]</span> <span class="c1"># Zeilen mit commentator_id == 5</span>
 </pre></div>
 </div>
 </div>
@@ -495,13 +503,13 @@ document.write(`
 <p>Es können auch einzelne Spalten oder nur bestimmte Spalten ausgewählt werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Spalten commentator bis comment</span>
-<span class="c1"># comments_df.loc[:, &quot;commentator&quot;:&quot;comment&quot;]</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spalten commentator bis comment</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;commentator&quot;</span><span class="p">:</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span>
 
-<span class="c1"># # Zugriff auf einzelne Spalte</span>
-<span class="c1"># comments_df[&quot;comment&quot;]</span>
-<span class="c1"># comments_df.comment</span>
-<span class="c1"># comments_df.loc[:, &quot;comment&quot;]</span>
+<span class="c1"># Zugriff auf einzelne Spalte</span>
+<span class="n">comments_df</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">comment</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;comment&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -509,7 +517,7 @@ document.write(`
 <p>Die Durchsicht des Dataframes zeigt, dass für einige Zellen in der Spalte comment leer zu sein scheinen. Die Kommentare sind immer dann leer, wenn ein:e User:in ein Bild als Kommentar geposted hat anstelle eines Textkommentars. Tatsächlich sind diese Zellen in unserem Dataframe aber nicht leer:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type(comments_df.at[10, &quot;comment&quot;])</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">comments_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -517,8 +525,8 @@ document.write(`
 <p>Um das Fehlen der Werte in unserem Dataframe zu kennzeichnen, können wir den speziellen Wert <code class="docutils literal notranslate"><span class="pre">NA</span></code> einsetzen:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Leere Zeichenketten durch NA Werte ersetzen</span>
-<span class="c1"># df = df.replace(&#39;&#39;, pd.NA, inplace=True)</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Leere Zeichenketten durch NA Werte ersetzen</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">comments_df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -527,7 +535,7 @@ document.write(`
 <p>Als nächstes überprüfen wir eine Zelle mit einem Kommentar und überprüfen, ob sich am Anfang oder Ende der Zeichenkette überflüssige Leerzeichen befinden. Das ist bei der Extraktion von Textinhalt häufig der Fall und diesem Problem sind wir im Laufe des Semesters schon einige Male begegnet (z.B. beim Scrapen der Tags auf der Quotes to Scrape-Seite).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># comments_df.at[2, &quot;comment&quot;]</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">comments_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -535,11 +543,11 @@ document.write(`
 <p>Tatsächlich befindet sich am Anfang des ausgewählten Kommentars <strong>überflüssige Leerzeichen</strong>. Leerzeichen am Anfang und Ende einer einzelnen Zeichenkette können mithilfe der Methode <code class="docutils literal notranslate"><span class="pre">.strip()</span></code> entfernt werden; die Methode <code class="docutils literal notranslate"><span class="pre">.str.strip()</span></code> entfernt Leerzeichen für jedes Element in einer Spalte eines Pandas-Dataframes (bzw. in einem Pandas Series-Objekt, denn das ist ja dasselbe):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Leading und trailing Whitespace entfernen mit strip()</span>
-<span class="c1"># comments_df.at[2, &quot;comment&quot;].strip()</span>
-<span class="c1"># # Leading und trailing whitespace für eine gesamte Spalte entfernen mit .str.strip()</span>
-<span class="c1"># comments_df[&#39;comment&#39;] = comments_df[&#39;comment&#39;].str.strip()</span>
-<span class="c1"># comments_df.at[2, &quot;comment&quot;] # überprüfen: hat es geklappt?</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Leading und trailing Whitespace entfernen mit strip()</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="c1"># Leading und trailing whitespace für eine gesamte Spalte entfernen mit .str.strip()</span>
+<span class="n">comments_df</span><span class="p">[</span><span class="s1">&#39;comment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comments_df</span><span class="p">[</span><span class="s1">&#39;comment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">]</span> <span class="c1"># überprüfen: hat es geklappt?</span>
 </pre></div>
 </div>
 </div>
@@ -547,13 +555,13 @@ document.write(`
 <p>Ein weiterer Verarbeitungsschritt ist die <strong>Anonymisierung der Kommentator:innen</strong>. Je nach Forschungsfrage interessiert nicht unbedingt, welche:r Nutzer:in welchen Kommentar verfasst hat, sondern beispielsweise nur, ob dieselben Kommentator:innen ähnliche Bilder kommentieren oder wie viele Kommentare jede:r Nutzer:in hinterlassen hat. Dazu müssen wir die konkreten Nutzernamen nicht kennen; es reicht aus, wenn wir jeder Kommentator:in eine einzigartige ID zuteilen und in unserer Analyse nur die IDs betrachten. Durch das Anonymisieren der Nutzernamen gehen wir außerdem sicher, dass unser Datensatz nicht die Auflagen zur Speicherung und Nutzung personenbezogener Daten laut DSGVO verletzt (siehe Abschnitt 6.1).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Die factorize()-Methode ordnet jedem einzigartigen Wert eine eindeutige ID zu und gibt ein Tupel zurück, das aus einem Array von Labels und einem Index mit den einzigartigen Werten besteht.</span>
-<span class="c1"># labels, unique = pd.factorize(comments_df[&#39;commentator&#39;])</span>
-<span class="c1"># labels</span>
-<span class="c1"># unique</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Die factorize()-Methode ordnet jedem einzigartigen Wert eine eindeutige ID zu und gibt ein Tupel zurück, das aus einem Array von Labels und einem Index mit den einzigartigen Werten besteht.</span>
+<span class="n">labels</span><span class="p">,</span> <span class="n">unique</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">comments_df</span><span class="p">[</span><span class="s1">&#39;commentator&#39;</span><span class="p">])</span>
+<span class="n">labels</span>
+<span class="n">unique</span>
 
-<span class="c1"># comments_df[&#39;commentator&#39;] = labels</span>
-<span class="c1"># comments_df # überprüfen</span>
+<span class="n">comments_df</span><span class="p">[</span><span class="s1">&#39;commentator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span>
+<span class="n">comments_df</span> <span class="c1"># überprüfen</span>
 </pre></div>
 </div>
 </div>
@@ -561,12 +569,12 @@ document.write(`
 <p>Nachdem wir die Nutzernamen durch IDs ersetzt haben, passt der Spaltenname commentator nicht mehr so ganz und wir werden die <strong>Spalte umbenennen</strong>. Das Argument inplace=True bewirkt dabei, dass die Änderung direkt im bestehenden Dataframe vorgenommen wird, ohne dass eine Kopie des Objekts erstellt wird.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Spalte commentator in commentator_id umbenennen</span>
-<span class="c1"># comments_df.rename(columns={&quot;commentator&quot;: &quot;commentator_id&quot;}, inplace=True)</span>
-<span class="c1"># comments_df</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spalte commentator in commentator_id umbenennen</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;commentator&quot;</span><span class="p">:</span> <span class="s2">&quot;commentator_id&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">comments_df</span>
 
-<span class="c1"># # Alternative</span>
-<span class="c1"># comments_df.columns = [&quot;link&quot;, &quot;commentator_id&quot;, &quot;comment&quot;]</span>
+<span class="c1"># Alternative</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;link&quot;</span><span class="p">,</span> <span class="s2">&quot;commentator_id&quot;</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -578,16 +586,16 @@ document.write(`
 <p>CSV-Dateien sind nicht immer die beste Wahl. Wenn Daten nur zwischengespeichert und später wieder eingelesen und weiterverarbeitet werden sollen, dann eignet sich zum Beispiel das Python-spezifische Datenformat pickle. Für größere Dataframes und wenn der Dataframe in einer anderen Programmiersprache wie R weiter bearbeitet werden soll, eignet sich dagegen das Datenformat feather. Um die Methode <code class="docutils literal notranslate"><span class="pre">.to_feather()</span></code> verwenden zu können, muss jedoch zuvor das Modul pyarrow installiert werden. Es muss ausnahmsweise nicht importiert werden, weil die Methode unter der Motorhaube automatisch auf das Modul zurückgreift. Zum Speichern besonders großer Datenobjekte wird häufig das Datenformat HDF5 empfohlen (zum Beispiel in <a class="reference external" href="https://waterprogramming.wordpress.com/2023/06/22/intro-to-hdf5-h5py-and-comparison-to-csv-for-speed-compression/">diesem Blogartikel</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # CSV</span>
-<span class="c1"># comments_df.to_csv(&quot;comments_df.csv&quot;, index=False)</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CSV</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;comments_df.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 
-<span class="c1"># # Pickle</span>
-<span class="c1"># comments_df.to_pickle(&quot;comments_df.pkl&quot;)</span>
+<span class="c1"># Pickle</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;comments_df.pkl&quot;</span><span class="p">)</span>
 
-<span class="c1"># # Feather</span>
-<span class="c1"># import sys</span>
-<span class="c1"># !conda install --yes --prefix {sys.prefix} pyarrow</span>
-<span class="c1"># comments_df.to_feather(&quot;comments_df.feather&quot;)</span>
+<span class="c1"># Feather</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>--yes<span class="w"> </span>--prefix<span class="w"> </span><span class="o">{</span>sys.prefix<span class="o">}</span><span class="w"> </span>pyarrow
+<span class="n">comments_df</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="s2">&quot;comments_df.feather&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -599,9 +607,9 @@ document.write(`
 <p>Wie genau die extrahierten Daten visualisiert und analysiert werden sollen, hängt natürlich vor allem von der Forschungsfrage und der Art der Daten ab. Im Folgenden betrachten wir deswegen nur ganz allgemein zwei Beispiele, wie unsere Kommentardaten visualisiert werden könnten, um einen ersten Überblick über die Zusammensetzung der Daten zu gewinnen. Hierfür verwenden wir beispielhaft die beiden Bibliotheken Matplotlib und Seaborn. Beide werden zunächst installiert:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import sys</span>
-<span class="c1"># !conda install --yes --prefix {sys.prefix} matplotlib</span>
-<span class="c1"># !conda install --yes --prefix {sys.prefix} seaborn</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>--yes<span class="w"> </span>--prefix<span class="w"> </span><span class="o">{</span>sys.prefix<span class="o">}</span><span class="w"> </span>matplotlib
+<span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>--yes<span class="w"> </span>--prefix<span class="w"> </span><span class="o">{</span>sys.prefix<span class="o">}</span><span class="w"> </span>seaborn
 </pre></div>
 </div>
 </div>
@@ -609,16 +617,16 @@ document.write(`
 <p>Zuerst visualisieren wir mit Matplotlib die Anzahl der Kommentare je Pin. Dazu muss zuerst eine neue Spalte erstellt werden, welche die Anzahl der Kommentare je Pin enthält.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Anzahl Kommentare je Pin</span>
-<span class="c1"># comments_per_pin = comments_df.groupby(by=&quot;link&quot;)[&quot;comment&quot;].nunique()</span>
-<span class="c1"># type(comments_per_pin)</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Anzahl Kommentare je Pin</span>
+<span class="n">comments_per_pin</span> <span class="o">=</span> <span class="n">comments_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;link&quot;</span><span class="p">)[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">comments_per_pin</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># comments_per_pin</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">comments_per_pin</span>
 </pre></div>
 </div>
 </div>
@@ -626,31 +634,31 @@ document.write(`
 <p>Durch diese Operation hat sich aber die Struktur des Dataframes verändert. Bevor die Visualisierung erstellt werden kann, muss erst die Struktur des Dataframes angepasst werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pin_comments_df = comments_per_pin.to_frame(name=&quot;comments_no&quot;) # Spaltenname setzen</span>
-<span class="c1"># pin_comments_df</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">pin_comments_df</span> <span class="o">=</span> <span class="n">comments_per_pin</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;comments_no&quot;</span><span class="p">)</span> <span class="c1"># Spaltenname setzen</span>
+<span class="n">pin_comments_df</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pin_comments_df.columns</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">pin_comments_df</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pin_comments_df = pin_comments_df.reset_index()</span>
-<span class="c1"># pin_comments_df</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">pin_comments_df</span> <span class="o">=</span> <span class="n">pin_comments_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">pin_comments_df</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># max(pin_comments_df[&quot;comments_no&quot;])</span>
-<span class="c1"># min(pin_comments_df[&quot;comments_no&quot;])</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">pin_comments_df</span><span class="p">[</span><span class="s2">&quot;comments_no&quot;</span><span class="p">])</span>
+<span class="nb">min</span><span class="p">(</span><span class="n">pin_comments_df</span><span class="p">[</span><span class="s2">&quot;comments_no&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -658,14 +666,14 @@ document.write(`
 <p>Jetzt kann die Visualisierung erzeugt werden, hier ein Balkendiagramm:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import matplotlib.pyplot as plt</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1"># # Gesamter Link wird auf der x-Achse angezeigt</span>
-<span class="c1"># pin_comments_df.plot(kind=&quot;bar&quot;, x=&quot;link&quot;, y=&quot;comments_no&quot;, legend=False)</span>
-<span class="c1"># plt.xlabel(&quot;Link to Pin&quot;)</span>
-<span class="c1"># plt.ylabel(&quot;Number of Comments&quot;)</span>
-<span class="c1"># plt.title(&quot;Comments per Pin&quot;)</span>
-<span class="c1"># plt.show()</span>
+<span class="c1"># Gesamter Link wird auf der x-Achse angezeigt</span>
+<span class="n">pin_comments_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;link&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;comments_no&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Link to Pin&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number of Comments&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Comments per Pin&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -673,21 +681,21 @@ document.write(`
 <p>Diese Visualisierung ist jedoch nicht besonder gut lesbar, da die Links auf der X-Achse sehr lang sind. Wir erstellen deswegen eine neue Spalte pin_id, welche nur die ID des jeweiligen Pins enthält, und erstellen die Visualisierung dann erneut:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Neue Spalte pin_id erstellen, damit nur Pin-Nummer auf der x-Achse angezeigt werden kann</span>
-<span class="c1"># pin_comments_df[&quot;pin_id&quot;] = pin_comments_df[&#39;link&#39;].str.extract(&#39;(\d+)&#39;)</span>
-<span class="c1"># pin_comments_df</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Neue Spalte pin_id erstellen, damit nur Pin-Nummer auf der x-Achse angezeigt werden kann</span>
+<span class="n">pin_comments_df</span><span class="p">[</span><span class="s2">&quot;pin_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pin_comments_df</span><span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(\d+)&#39;</span><span class="p">)</span>
+<span class="n">pin_comments_df</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Pin-ID auf der x-Achse anzeigen</span>
-<span class="c1"># pin_comments_df.plot(kind=&quot;bar&quot;, x=&quot;pin_id&quot;, y=&quot;comments_no&quot;, legend=False)</span>
-<span class="c1"># plt.xlabel(&quot;Pin ID&quot;)</span>
-<span class="c1"># plt.ylabel(&quot;Anzahl Kommentare&quot;)</span>
-<span class="c1"># plt.title(&quot;Kommentare je Pin&quot;)</span>
-<span class="c1"># plt.show()</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pin-ID auf der x-Achse anzeigen</span>
+<span class="n">pin_comments_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;pin_id&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;comments_no&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pin ID&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Anzahl Kommentare&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Kommentare je Pin&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -695,18 +703,18 @@ document.write(`
 <p>Als nächstes interessiert uns, wie lang die Kommentare unter den beiden Pins sind. Um die Länge der Kommentare für die beiden Pins zu vergleichen, wollen wir einen Boxplot erstellen. Bevor die Visualisierung erstellt werden kann, muss jedoch erst wieder eine neue Spalte mit der Länge der Kommentare hinzugefügt werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Länge der Kommentare bestimmen und neue Spalte comment_length erstellen </span>
-<span class="c1"># length_per_comment = comments_df.groupby(by=&quot;commentator_id&quot;)[&quot;comment&quot;]</span>
-<span class="c1"># length_per_comment</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Länge der Kommentare bestimmen und neue Spalte comment_length erstellen</span>
+<span class="n">length_per_comment</span> <span class="o">=</span> <span class="n">comments_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;commentator_id&quot;</span><span class="p">)[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span>
+<span class="n">length_per_comment</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Länge der Kommentare bestimmen und neue Spalte comment_length erstellen</span>
-<span class="c1"># comments_df[&quot;comment_length&quot;] = comments_df[&quot;comment&quot;].apply(len)</span>
-<span class="c1"># # Fehlermeldung: hier wäre es doch besser, wir hätten die leeren Zeichenketten anstelle der NA-Werte gelassen</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Länge der Kommentare bestimmen und neue Spalte comment_length erstellen</span>
+<span class="n">comments_df</span><span class="p">[</span><span class="s2">&quot;comment_length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comments_df</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+<span class="c1"># Fehlermeldung: hier wäre es doch besser, wir hätten die leeren Zeichenketten anstelle der NA-Werte gelassen</span>
 </pre></div>
 </div>
 </div>
@@ -714,17 +722,17 @@ document.write(`
 <p>Beim Versuch die Funktion len() auf die Einträge in der Spalte comment anzuwenden, bekommen wir eine Fehlermeldung, da wir zuvor leere Strings durch NA-Werte ausgetauscht haben. Das stellt sich also jetzt als voreilig heraus, und wir machen die Operation zunächst rückgängig:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # NA Werte durch leere Zeichenkette ersetzen</span>
-<span class="c1"># comments_df.replace(pd.NA, &quot;&quot;, inplace=True)</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NA Werte durch leere Zeichenkette ersetzen</span>
+<span class="n">comments_df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Länge der Kommentare bestimmen und neue Spalte comment_length erstellen</span>
-<span class="c1"># comments_df[&quot;comment_length&quot;] = comments_df[&quot;comment&quot;].apply(len)</span>
-<span class="c1"># comments_df</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Länge der Kommentare bestimmen und neue Spalte comment_length erstellen</span>
+<span class="n">comments_df</span><span class="p">[</span><span class="s2">&quot;comment_length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comments_df</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+<span class="n">comments_df</span>
 </pre></div>
 </div>
 </div>
@@ -732,10 +740,10 @@ document.write(`
 <p>Jetzt können wir den Boxplot erstellen. Dazu verwenden wir die Bibliothek Seaborn, da diese die Erstellung von komplexeren Grafiken erleichtert:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import seaborn as sns</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="c1"># # Dokumentation zur Funktion catplot():  https://seaborn.pydata.org/generated/seaborn.catplot.html#seaborn.catplot</span>
-<span class="c1"># sns.catplot(data=comments_df, x=&quot;link&quot;, y=&quot;comment_length&quot;, kind=&quot;box&quot;)</span>
+<span class="c1"># Dokumentation zur Funktion catplot():  https://seaborn.pydata.org/generated/seaborn.catplot.html#seaborn.catplot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">comments_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;link&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;comment_length&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;box&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -743,16 +751,24 @@ document.write(`
 <p>Wir haben hier dasselbe Problem, auf das wir auch beim Erzeugen des Balkendiagramms mit Matplotlib gestoßen sind: die langen URLs eignen sich nicht gut zur Beschriftung der x-Achse. Wir erstellen deswegen wieder eine neue Spalte, die nur die Pin-IDs enthält und erstellen dann die Grafik erneut:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Neue Spalte pin_id erstellen, damit nur Pin-Nummer auf der x-Achse angezeigt werden kann</span>
-<span class="c1"># comments_df[&quot;pin_id&quot;] = comments_df[&#39;link&#39;].str.extract(&#39;(\d+)&#39;)</span>
-<span class="c1"># comments_df</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Neue Spalte pin_id erstellen, damit nur Pin-Nummer auf der x-Achse angezeigt werden kann</span>
+<span class="n">comments_df</span><span class="p">[</span><span class="s2">&quot;pin_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comments_df</span><span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(\d+)&#39;</span><span class="p">)</span>
+<span class="n">comments_df</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sns.catplot(data=comments_df, x=&quot;pin_id&quot;, y=&quot;comment_length&quot;, kind=&quot;box&quot;)</span>
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">comments_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;pin_id&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;comment_length&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;box&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wenn auf der x-Achse mehrere längere Wörter stehen müssen, kann die Beschriftung der x-Achse zum Beispiel um 90 Grad rotiert werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">comments_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;pin_id&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;comment_length&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;box&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -790,7 +806,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters/11/subchapters"
+            path: "./chapters/10/subchapters"
         },
         predefinedOutput: true
     }

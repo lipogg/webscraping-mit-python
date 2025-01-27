@@ -57,7 +57,7 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/10/subchapters/04_tipps_tricks';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/11/subchapters/04_tipps_tricks';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -303,7 +303,7 @@
       
       
       
-      <li><a href="../../../_sources/chapters/10/subchapters/04_tipps_tricks.ipynb" target="_blank"
+      <li><a href="../../../_sources/chapters/11/subchapters/04_tipps_tricks.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -397,7 +397,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selenium-waits-statt-time-sleep">Selenium Waits statt time.sleep()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-agent-im-http-header-bearbeiten">User Agent im HTTP-Header bearbeiten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-nach-verschiedenen-kindelementen-mit-derselben-klasse">Suche nach verschiedenen Kindelementen mit derselben Klasse</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dateinamen-vor-dem-speichern-bearbeiten">Dateinamen vor dem Speichern bearbeiten</a></li>
@@ -419,79 +418,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="weitere-tipps-und-tricks">
 <h1>Weitere Tipps und Tricks<a class="headerlink" href="#weitere-tipps-und-tricks" title="Link to this heading">#</a></h1>
-<section id="selenium-waits-statt-time-sleep">
-<h2>Selenium Waits statt time.sleep()<a class="headerlink" href="#selenium-waits-statt-time-sleep" title="Link to this heading">#</a></h2>
-<p>Bisher haben wir immer die Funktion sleep() aus dem Modul time verwendet, um beim Web Scrapen mithilfe von Selenium Wartezeiten einzufügen, die sicherstellen, dass der automatisierte Browser genug Zeit zum Laden der gesuchten Inhalte hat. Das Selenium webdriver-Modul bietet aber eigene Methoden, die ermöglichen, nicht nur eine feste Anzahl an Sekunden zu warten, sondern beim Warten verschiedene Strategien anzuwenden. <strong>Diese Wartestrategien solltet ihr in der Praxis anstelle von time.sleep() verwenden.</strong> Zum Beispiel ermöglicht die Methode <code class="docutils literal notranslate"><span class="pre">driver.implicitly_wait(x)</span></code>, für alle Seitenaufrufe innerhalb einer Session einzustellen, dass x Sekunden lang auf jedes gesuchte Element gewartet wird, bevor eine “ElementNotFound”-Ausnahme geworfen wird. Am Beispiel der Suche nach den Airbnb-Ortsangaben sieht die Verwendung von implicitly_wait() anstelle von time.sleep() so aus:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium import webdriver</span>
-<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
-<span class="c1"># from selenium.webdriver.common.by import By</span>
-
-<span class="c1"># driver = webdriver.Chrome()</span>
-<span class="c1"># driver.implicitly_wait(10)</span>
-
-<span class="c1"># driver.get(&quot;https://www.airbnb.com/&quot;)</span>
-<span class="c1"># unterkuenfte = driver.find_elements(By.CLASS_NAME, &quot;t1jojoys.dir.dir-ltr&quot;)</span>
-<span class="c1"># unterkuenfte_orte = [unterkunft.text for unterkunft in unterkuenfte]</span>
-<span class="c1"># unterkuenfte_orte</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die Verwendung von driver.implicitly_wait(x) ist effizienter als die Variante mit time.sleep(x), denn während die Ausführung des Skripts mit time.sleep(x) immer um genau x Sekunden verzögert wird, wird mit implicitly_wait(x) maximal x Sekunden gewartet. In vielen Fällen ist die Wartezeit aber kürzer, weil das gesuchte Element schon früher, vor Ablauf der x Sekunden geladen ist, oder länger, weil der Verbindungsaufbau sich verzögert. Außerdem wird durch Verwenden der Selenium-Wartestrategien verhindert, dass das Programm unkontrolliert abbricht, wenn ein Element nicht gefunden wird.</p>
-<p>Neben der globalen Wartezeit mit .implicitly_wait() gibt es in Selenium die Möglichkeit, explizit auf ein bestimmtes Element zu warten. Dazu gibt es zwei Möglichkeiten:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explicit Wait: Option 1</span>
-
-<span class="c1"># from selenium import webdriver</span>
-<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
-<span class="c1"># from selenium.webdriver.common.by import By</span>
-
-<span class="c1"># driver = webdriver.Chrome()</span>
-
-<span class="c1"># driver.get(&quot;https://www.airbnb.com/&quot;)</span>
-<span class="c1"># unterkunft = driver.find_element(By.CLASS_NAME, &quot;t1jojoys.dir.dir-ltr&quot;)</span>
-
-<span class="c1"># wait = WebDriverWait(driver, timeout=10)</span>
-<span class="c1"># wait.until(lambda d : unterkunft.is_displayed())</span>
-
-<span class="c1"># print(unterkunft.text)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Ein weiteres Beispiel zu dieser Version der expliziten Wartestrategie findet ihr <a class="reference external" href="https://github.com/SeleniumHQ/seleniumhq.github.io/blob/trunk/examples/python/tests/waits/test_waits.py#L41-L42">hier</a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explicit Wait: Option 2</span>
-
-<span class="c1"># from selenium import webdriver</span>
-<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
-<span class="c1"># from selenium.webdriver.common.by import By</span>
-<span class="c1"># from selenium.webdriver.support import expected_conditions as EC</span>
-
-<span class="c1"># driver = webdriver.Chrome()</span>
-
-<span class="c1"># driver.get(&quot;https://www.airbnb.com/&quot;)</span>
-
-<span class="c1"># wait = WebDriverWait(driver, 10)</span>
-<span class="c1"># element = wait.until(EC.element_to_be_clickable((By.XPATH, &quot;//button[@data-testid=&#39;structured-search-input-search-button&#39;]&quot;)))</span>
-
-<span class="c1"># driver.find_element(By.XPATH, &quot;//button[@data-testid=&#39;structured-search-input-search-button&#39;]&quot;).click()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Mit dieser zweiten Version des expliziten Wartens kann auch auf eine Reihe anderer Ereignisse gewartet werden. Eine ausführliche Erläuterung dazu findet ihr <a class="reference external" href="https://selenium-python.readthedocs.io/waits.html">hier</a>, und eine Liste aller Ereignisse, auf die gewartet werden kann sowie der entsprechenden Methoden findet ihr <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html">hier</a>.</p>
-<p>Explizite und implizite Wartestrategien sollten allerdings nicht vermischt werden! Laut Selenium-Dokumentationsseiten kann dies zu unerwartetem Verhalten führen:</p>
-<blockquote>
-<div><p>Warning: Do not mix implicit and explicit waits. Doing so can cause unpredictable wait times. For example, setting an implicit wait of 10 seconds and an explicit wait of 15 seconds could cause a timeout to occur after 20 seconds.</p>
-</div></blockquote>
-<p>Quelle: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/waits/">Selenium 2024</a></p>
-<p>Mehr zu impliziten und expliziten Wartestrategien in Selenium könnt ihr <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/waits/">hier</a> nachlesen.</p>
-</section>
 <section id="user-agent-im-http-header-bearbeiten">
 <h2>User Agent im HTTP-Header bearbeiten<a class="headerlink" href="#user-agent-im-http-header-bearbeiten" title="Link to this heading">#</a></h2>
 <p>In manchen Fällen kann es notwendig sein, den Header der HTTP-Anfrage zu bearbeiten. Standardmäßig wird in einer HTTP-Anfrage über das requests-Paket als User Agent das Python requests Paket angegeben:</p>
@@ -682,7 +608,7 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters/10/subchapters"
+            path: "./chapters/11/subchapters"
         },
         predefinedOutput: true
     }
@@ -715,7 +641,6 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selenium-waits-statt-time-sleep">Selenium Waits statt time.sleep()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-agent-im-http-header-bearbeiten">User Agent im HTTP-Header bearbeiten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-nach-verschiedenen-kindelementen-mit-derselben-klasse">Suche nach verschiedenen Kindelementen mit derselben Klasse</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dateinamen-vor-dem-speichern-bearbeiten">Dateinamen vor dem Speichern bearbeiten</a></li>

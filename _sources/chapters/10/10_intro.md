@@ -1,4 +1,4 @@
-# Tipps und Tricks
+# Pandas (Exkurs)
 
 
 ```{tableofcontents}
