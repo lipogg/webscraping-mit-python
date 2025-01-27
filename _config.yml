@@ -10,7 +10,7 @@ logo: logo.png
 execute:
   execute_notebooks: force
   timeout          : 800 # how long each cell is allowed to run
-  exclude_patterns          : ["*selenium.ipynb"]    # Notebooks to exclude from execution
+  exclude_patterns          : ["*selenium.ipynb", "*pandas.ipynb"]    # Notebooks to exclude from execution
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
