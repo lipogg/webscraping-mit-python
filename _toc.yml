@@ -91,7 +91,7 @@ sections:
       title: Einstieg Selenium
     - file: chapters/09/subchapters/03_fortsetzung_selenium.ipynb
       title: Fortsetzung Selenium
-- file: chapters/1/10_intro
+- file: chapters/10/10_intro
   title: Pandas (Exkurs)
   sections:
     - file: chapters/10/subchapters/01_pandas.ipynb
