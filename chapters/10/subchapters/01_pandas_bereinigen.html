@@ -57,10 +57,11 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/10/subchapters/01_pandas';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/10/subchapters/01_pandas_bereinigen';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="10.2. Daten visualisieren" href="02_pandas_visualisieren.html" />
     <link rel="prev" title="10. Pandas (Exkurs)" href="../10_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -234,7 +235,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../10_intro.html">10. Pandas (Exkurs)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.1. Daten bereinigen mit Pandas</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.1. Daten bereinigen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_pandas_visualisieren.html">10.2. Daten visualisieren</a></li>
 </ul>
 </li>
 </ul>
@@ -306,7 +308,7 @@
       
       
       
-      <li><a href="../../../_sources/chapters/10/subchapters/01_pandas.ipynb" target="_blank"
+      <li><a href="../../../_sources/chapters/10/subchapters/01_pandas_bereinigen.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -403,8 +405,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einstieg-pandas">10.1.1. Einstieg Pandas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-extrahieren-und-bereinigen">10.1.2. Daten extrahieren und bereinigen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-zwischenspeichern">10.1.3. Daten zwischenspeichern</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-visualisieren">10.1.4. Daten visualisieren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">10.1.5. Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">10.1.4. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -457,10 +458,10 @@ document.write(`
     <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
     <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
     <span class="n">comment_elems</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/span/div/span/span[3]/span&quot;</span><span class="p">))</span>
+        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/div/div/span/span[3]/span&quot;</span><span class="p">))</span>
     <span class="p">)</span>
     <span class="n">commentator_elems</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/span/div/span/span[2]/a&quot;</span><span class="p">))</span>
+        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/div/div/span/span[2]/a&quot;</span><span class="p">))</span>
     <span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">comment_elems</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># oder len(commentator_elems); das ist egal</span>
@@ -605,192 +606,19 @@ document.write(`
 </div>
 <p>Bei der Arbeit mit sehr großen Datenmengen lohnt sich außerdem gegebenenfalls der Umstieg von Pandas auf <strong>Polars</strong>, eine neue und <a class="reference external" href="https://blog.jetbrains.com/dataspell/2023/08/polars-vs-pandas-what-s-the-difference/">deutlich effizientere</a> Bibliothek zur Arbeit mit Dataframes. Wer bereits Pandas und/oder R und insbesondere R dplyr kennt, sollte beim Umstieg jedoch keine Probleme haben, denn die Polars-Syntax ist sehr ähnlich. Einen Vergleich zwischen der Polars und Pandas Syntax findet ihr <a class="reference external" href="https://www.rhosignal.com/posts/polars-pandas-cheatsheet/">hier</a>. Für einen Vergleich zwischen Polars und R empfehle ich <a class="reference external" href="https://ddotta.github.io/cookbook-rpolars/">diese Seite</a>.</p>
 </section>
-<section id="daten-visualisieren">
-<h2><span class="section-number">10.1.4. </span>Daten visualisieren<a class="headerlink" href="#daten-visualisieren" title="Link to this heading">#</a></h2>
-<p>Wie genau die extrahierten Daten visualisiert und analysiert werden sollen, hängt natürlich vor allem von der Forschungsfrage und der Art der Daten ab. Im Folgenden betrachten wir deswegen nur ganz allgemein zwei Beispiele, wie unsere Kommentardaten visualisiert werden könnten, um einen ersten Überblick über die Zusammensetzung der Daten zu gewinnen. Hierfür verwenden wir beispielhaft die beiden Bibliotheken Matplotlib und Seaborn. Beide werden zunächst installiert:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>--yes<span class="w"> </span>--prefix<span class="w"> </span><span class="o">{</span>sys.prefix<span class="o">}</span><span class="w"> </span>matplotlib
-<span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>--yes<span class="w"> </span>--prefix<span class="w"> </span><span class="o">{</span>sys.prefix<span class="o">}</span><span class="w"> </span>seaborn
-</pre></div>
-</div>
-</div>
-</div>
-<p>Zuerst visualisieren wir mit Matplotlib die Anzahl der Kommentare je Pin. Dazu muss zuerst eine neue Spalte erstellt werden, welche die Anzahl der Kommentare je Pin enthält.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Anzahl Kommentare je Pin</span>
-<span class="n">comments_per_pin</span> <span class="o">=</span> <span class="n">comments_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;link&quot;</span><span class="p">)[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">comments_per_pin</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">comments_per_pin</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Durch diese Operation hat sich aber die Struktur des Dataframes verändert. Bevor die Visualisierung erstellt werden kann, muss erst die Struktur des Dataframes angepasst werden:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">pin_comments_df</span> <span class="o">=</span> <span class="n">comments_per_pin</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;comments_no&quot;</span><span class="p">)</span> <span class="c1"># Spaltenname setzen</span>
-<span class="n">pin_comments_df</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">pin_comments_df</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">pin_comments_df</span> <span class="o">=</span> <span class="n">pin_comments_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">pin_comments_df</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">pin_comments_df</span><span class="p">[</span><span class="s2">&quot;comments_no&quot;</span><span class="p">])</span>
-<span class="nb">min</span><span class="p">(</span><span class="n">pin_comments_df</span><span class="p">[</span><span class="s2">&quot;comments_no&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Jetzt kann die Visualisierung erzeugt werden, hier ein Balkendiagramm:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1"># Gesamter Link wird auf der x-Achse angezeigt</span>
-<span class="n">pin_comments_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;link&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;comments_no&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Link to Pin&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number of Comments&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Comments per Pin&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Diese Visualisierung ist jedoch nicht besonder gut lesbar, da die Links auf der X-Achse sehr lang sind. Wir erstellen deswegen eine neue Spalte pin_id, welche nur die ID des jeweiligen Pins enthält, und erstellen die Visualisierung dann erneut:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Neue Spalte pin_id erstellen, damit nur Pin-Nummer auf der x-Achse angezeigt werden kann</span>
-<span class="n">pin_comments_df</span><span class="p">[</span><span class="s2">&quot;pin_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pin_comments_df</span><span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(\d+)&#39;</span><span class="p">)</span>
-<span class="n">pin_comments_df</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pin-ID auf der x-Achse anzeigen</span>
-<span class="n">pin_comments_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;pin_id&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;comments_no&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pin ID&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Anzahl Kommentare&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Kommentare je Pin&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Als nächstes interessiert uns, wie lang die Kommentare unter den beiden Pins sind. Um die Länge der Kommentare für die beiden Pins zu vergleichen, wollen wir einen Boxplot erstellen. Bevor die Visualisierung erstellt werden kann, muss jedoch erst wieder eine neue Spalte mit der Länge der Kommentare hinzugefügt werden:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Länge der Kommentare bestimmen und neue Spalte comment_length erstellen</span>
-<span class="n">length_per_comment</span> <span class="o">=</span> <span class="n">comments_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;commentator_id&quot;</span><span class="p">)[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span>
-<span class="n">length_per_comment</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Länge der Kommentare bestimmen und neue Spalte comment_length erstellen</span>
-<span class="n">comments_df</span><span class="p">[</span><span class="s2">&quot;comment_length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comments_df</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
-<span class="c1"># Fehlermeldung: hier wäre es doch besser, wir hätten die leeren Zeichenketten anstelle der NA-Werte gelassen</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Beim Versuch die Funktion len() auf die Einträge in der Spalte comment anzuwenden, bekommen wir eine Fehlermeldung, da wir zuvor leere Strings durch NA-Werte ausgetauscht haben. Das stellt sich also jetzt als voreilig heraus, und wir machen die Operation zunächst rückgängig:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NA Werte durch leere Zeichenkette ersetzen</span>
-<span class="n">comments_df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Länge der Kommentare bestimmen und neue Spalte comment_length erstellen</span>
-<span class="n">comments_df</span><span class="p">[</span><span class="s2">&quot;comment_length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comments_df</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
-<span class="n">comments_df</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Jetzt können wir den Boxplot erstellen. Dazu verwenden wir die Bibliothek Seaborn, da diese die Erstellung von komplexeren Grafiken erleichtert:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
-<span class="c1"># Dokumentation zur Funktion catplot():  https://seaborn.pydata.org/generated/seaborn.catplot.html#seaborn.catplot</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">comments_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;link&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;comment_length&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;box&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Wir haben hier dasselbe Problem, auf das wir auch beim Erzeugen des Balkendiagramms mit Matplotlib gestoßen sind: die langen URLs eignen sich nicht gut zur Beschriftung der x-Achse. Wir erstellen deswegen wieder eine neue Spalte, die nur die Pin-IDs enthält und erstellen dann die Grafik erneut:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Neue Spalte pin_id erstellen, damit nur Pin-Nummer auf der x-Achse angezeigt werden kann</span>
-<span class="n">comments_df</span><span class="p">[</span><span class="s2">&quot;pin_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comments_df</span><span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(\d+)&#39;</span><span class="p">)</span>
-<span class="n">comments_df</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">comments_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;pin_id&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;comment_length&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;box&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Wenn auf der x-Achse mehrere längere Wörter stehen müssen, kann die Beschriftung der x-Achse zum Beispiel um 90 Grad rotiert werden:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">comments_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;pin_id&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;comment_length&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;box&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="quellen">
-<h2><span class="section-number">10.1.5. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.1.4. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
-<li id="id234"><p>Liam Brannigan. Cheatsheet for Pandas to Polars. 2024. URL: <a class="reference external" href="https://www.rhosignal.com/posts/polars-pandas-cheatsheet/">https://www.rhosignal.com/posts/polars-pandas-cheatsheet/</a>.</p></li>
-<li id="id233"><p>Jodie Burchell. Polars vs. Pandas: What's the Difference? 2023. URL: <a class="reference external" href="https://blog.jetbrains.com/dataspell/2023/08/polars-vs-pandas-what-s-the-difference/">https://blog.jetbrains.com/dataspell/2023/08/polars-vs-pandas-what-s-the-difference/</a>.</p></li>
-<li id="id235"><p>Damien Dotta. Cookbook Polars for R. 2023. URL: <a class="reference external" href="https://ddotta.github.io/cookbook-rpolars/">https://ddotta.github.io/cookbook-rpolars/</a>.</p></li>
-<li id="id230"><p>Matplotlib. Matplotlib 3.8 Documentation: matplotlib.pyplot.yticks. 2023. URL: <a class="reference external" href="https://pandas.pydata.org/docs/reference/series.html">https://pandas.pydata.org/docs/reference/series.html</a>.</p></li>
+<li id="id233"><p>Liam Brannigan. Cheatsheet for Pandas to Polars. 2024. URL: <a class="reference external" href="https://www.rhosignal.com/posts/polars-pandas-cheatsheet/">https://www.rhosignal.com/posts/polars-pandas-cheatsheet/</a>.</p></li>
+<li id="id232"><p>Jodie Burchell. Polars vs. Pandas: What's the Difference? 2023. URL: <a class="reference external" href="https://blog.jetbrains.com/dataspell/2023/08/polars-vs-pandas-what-s-the-difference/">https://blog.jetbrains.com/dataspell/2023/08/polars-vs-pandas-what-s-the-difference/</a>.</p></li>
+<li id="id234"><p>Damien Dotta. Cookbook Polars for R. 2023. URL: <a class="reference external" href="https://ddotta.github.io/cookbook-rpolars/">https://ddotta.github.io/cookbook-rpolars/</a>.</p></li>
 <li id="id226"><p>Wes McKinney. Data Wrangling with Pandas Cheat Sheet. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf</a>.</p></li>
 <li id="id228"><p>Wes McKinney. Pandas 2.2 Documentation: DataFrame. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/reference/frame.html">https://pandas.pydata.org/docs/reference/frame.html</a>.</p></li>
 <li id="id227"><p>Wes McKinney. Pandas 2.2 Documentation: Getting Started Tutorials. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html">https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html</a>.</p></li>
-<li id="id231"><p>Wes McKinney. Pandas 2.2 Documentation: IO Tools. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/io.html">https://pandas.pydata.org/docs/user_guide/io.html</a>.</p></li>
+<li id="id230"><p>Wes McKinney. Pandas 2.2 Documentation: IO Tools. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/io.html">https://pandas.pydata.org/docs/user_guide/io.html</a>.</p></li>
 <li id="id229"><p>Wes McKinney. Pandas 2.2 Documentation: Series. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/reference/series.html">https://pandas.pydata.org/docs/reference/series.html</a>.</p></li>
-<li id="id232"><p>Wes McKinney. Pandas 2.2 Documentation: Working with Missing Data. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/missing_data.html">https://pandas.pydata.org/docs/user_guide/missing_data.html</a>.</p></li>
+<li id="id231"><p>Wes McKinney. Pandas 2.2 Documentation: Working with Missing Data. 2024. URL: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/missing_data.html">https://pandas.pydata.org/docs/user_guide/missing_data.html</a>.</p></li>
 </ol>
 </div>
 </section>
@@ -835,6 +663,15 @@ document.write(`
         <p class="prev-next-title"><span class="section-number">10. </span>Pandas (Exkurs)</p>
       </div>
     </a>
+    <a class="right-next"
+       href="02_pandas_visualisieren.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10.2. </span>Daten visualisieren</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -854,8 +691,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einstieg-pandas">10.1.1. Einstieg Pandas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-extrahieren-und-bereinigen">10.1.2. Daten extrahieren und bereinigen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-zwischenspeichern">10.1.3. Daten zwischenspeichern</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-visualisieren">10.1.4. Daten visualisieren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">10.1.5. Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">10.1.4. Quellen</a></li>
 </ul>
   </nav></div>
 
