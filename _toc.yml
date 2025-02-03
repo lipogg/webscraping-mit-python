@@ -94,16 +94,18 @@ sections:
 - file: chapters/10/10_intro
   title: Pandas (Exkurs)
   sections:
-    - file: chapters/10/subchapters/01_pandas.ipynb
-      title: Daten bereinigen mit Pandas
-#- file: chapters/11-/11_intro
+    - file: chapters/10/subchapters/01_pandas_bereinigen.ipynb
+      title: Daten bereinigen
+    - file: chapters/10/subchapters/02_pandas_visualisieren.ipynb
+      title: Daten visualisieren
+#- file: chapters/11/11_intro
 #  title: Tipps und Tricks
 #  sections:
-#    - file: chapters/11-/subchapters/01_fetch_xhr.ipynb
+#    - file: chapters/11/subchapters/01_fetch_xhr.ipynb
 #      title: Selenium ist kein Hammer
-#    - file: chapters/11-/subchapters/02_sessions_cookies.ipynb
+#    - file: chapters/11/subchapters/02_sessions_cookies.ipynb
 #      title: Sessions und Cookies
-#    - file: chapters/11-/subchapters/03_apis_tokens.ipynb
+#    - file: chapters/11/subchapters/03_apis_tokens.ipynb
 #      title: Authentifizierung, Autorisierung und APIs
-#    - file: chapters/11-/subchapters/04_tipps_tricks.ipynb
+#    - file: chapters/11/subchapters/04_tipps_tricks.ipynb
 #      title: Weitere Tipps und Tricks
