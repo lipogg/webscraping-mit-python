@@ -488,11 +488,9 @@ document.write(`
 <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
 
 <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
-<span class="n">unterkunft</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;t1jojoys.dir.dir-ltr&quot;</span><span class="p">)</span>
 
 <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span> <span class="p">:</span> <span class="n">unterkunft</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">())</span>
-
+<span class="n">unterkunft</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;t1jojoys.dir.dir-ltr&quot;</span><span class="p">))</span> <span class="c1"># für mehrere Elemente analog mit d.find_elements()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 
 <span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
