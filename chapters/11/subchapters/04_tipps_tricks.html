@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Weitere Tipps und Tricks &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>11.4. Weitere Tipps und Tricks &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,6 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="11.3. Authentifizierung, Autorisierung und APIs" href="03_apis_tokens.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -177,7 +176,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Coding vs. Programming</a></li>
@@ -239,10 +238,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/02_pandas_visualisieren.html">10.2. Daten visualisieren</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../11_intro.html">11. Tipps und Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../11_intro.html">11. Tipps und Tricks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01_fetch_xhr.html">11.1. Selenium ist kein Hammer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02_sessions_cookies.html">11.2. Sessions und Cookies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03_apis_tokens.html">11.3. Authentifizierung, Autorisierung und APIs</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">11.4. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
 </ul>
@@ -408,14 +408,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-agent-im-http-header-bearbeiten">User Agent im HTTP-Header bearbeiten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-nach-verschiedenen-kindelementen-mit-derselben-klasse">Suche nach verschiedenen Kindelementen mit derselben Klasse</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dateinamen-vor-dem-speichern-bearbeiten">Dateinamen vor dem Speichern bearbeiten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fehler-ausnahmen-und-ausnahmebehandlung">Fehler, Ausnahmen und Ausnahmebehandlung</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effizienter-scrapen-mit-sitemaps">Effizienter Scrapen mit Sitemaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sicher-scrapen">Sicher Scrapen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-do-this">Don’t do this…</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-agent-im-http-header-bearbeiten">11.4.1. User Agent im HTTP-Header bearbeiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selenium-im-headless-mode">11.4.2. Selenium im Headless Mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regulare-ausdrucke">11.4.3. Reguläre Ausdrücke</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fehler-ausnahmen-und-ausnahmebehandlung">11.4.4. Fehler, Ausnahmen und Ausnahmebehandlung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschiedene-losungen-vergleichen">11.4.5. Verschiedene Lösungen vergleichen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effizienter-scrapen-mit-sitemaps">11.4.6. Effizienter Scrapen mit Sitemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abfragerate-kontrollieren-und-rate-limits-einhalten-in-komplexeren-fallen">11.4.7. Abfragerate kontrollieren und Rate Limits einhalten in komplexeren Fällen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#versionsverwaltung-nutzen">11.4.8. Versionsverwaltung nutzen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufbau-von-python-projekten">11.4.9. Aufbau von Python-Projekten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sicher-scrapen">11.4.10. Sicher Scrapen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-do-this">11.4.11. Don’t do this…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">11.4.12. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -428,10 +432,18 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="weitere-tipps-und-tricks">
-<h1>Weitere Tipps und Tricks<a class="headerlink" href="#weitere-tipps-und-tricks" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">11.4. </span>Weitere Tipps und Tricks<a class="headerlink" href="#weitere-tipps-und-tricks" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dieses Modul müsst ihr nicht importieren</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">skip</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="user-agent-im-http-header-bearbeiten">
-<h2>User Agent im HTTP-Header bearbeiten<a class="headerlink" href="#user-agent-im-http-header-bearbeiten" title="Link to this heading">#</a></h2>
-<p>In manchen Fällen kann es notwendig sein, den Header der HTTP-Anfrage zu bearbeiten. Standardmäßig wird in einer HTTP-Anfrage über das requests-Paket als User Agent das Python requests Paket angegeben:</p>
+<h2><span class="section-number">11.4.1. </span>User Agent im HTTP-Header bearbeiten<a class="headerlink" href="#user-agent-im-http-header-bearbeiten" title="Link to this heading">#</a></h2>
+<p>In manchen Fällen kann es notwendig sein, den Header der HTTP-Anfrage zu bearbeiten. Standardmäßig wird in einer HTTP-Anfrage über das requests-Paket als User Agent das requests-Paket angegeben:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Default-Header der HTTP-Anfrage</span>
@@ -454,7 +466,7 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># User Agent im Request-Header ersetzen</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0&#39;</span><span class="p">,</span> <span class="s1">&#39;Accept-Encoding&#39;</span><span class="p">:</span> <span class="s1">&#39;gzip, deflate, br&#39;</span><span class="p">,</span> <span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;*/*&#39;</span><span class="p">,</span> <span class="s1">&#39;Connection&#39;</span><span class="p">:</span> <span class="s1">&#39;keep-alive&#39;</span><span class="p">}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0&#39;</span><span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -470,53 +482,53 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 </div>
 </div>
 </div>
+<p>Wenn ihr Schnittstellen öffentlicher Institutionen nutzt, ist es oft empfehlenswert, als User Agent den Namen des Forschungsprojekts anzugeben. Manche Websitebetreiber:innen bitten sogar explizit darum, wie beispielsweise die Betreiber:innen der API der Gemeinsamen Normdatei (GND):</p>
+<blockquote>
+<div><p>Wir bitten darum, bei der Nutzung von lobid eine aussagekräftige, wiederkehrende Zeichenkette als User Agent mitzusenden, damit wir bei der statistischen Auswertung unserer Infrastruktur Nutzungsweisen der API erkennen und unsere Dienstleistungen aus den gewonnenen Erkenntnissen verbessern können. Die statistische Erfassung der Nutzung dient außerdem der Begründung der Relevanz unserer Daten und Dienste gegenüber Geldgeber:innen und Entscheider:innen. In der Zeichenkette des User Agent kann sich die zugreifende Person, Institution oder ein Projekt zu erkennen geben, gegebenenfalls auch eine Kontaktmöglichkeit (E-Mail-Adresse) hinzufügen, eine anonyme beziehungsweise pseudonyme Kennung ist jedoch ebenso möglich. Eine solche Agent-Kennung sollte über die Dauer eines Projektes möglichst unverändert bleiben. (Quelle: <a class="reference external" href="https://lobid.org/usage-policy/">lobid-gnd</a>)</p>
+</div></blockquote>
 </section>
-<section id="suche-nach-verschiedenen-kindelementen-mit-derselben-klasse">
-<h2>Suche nach verschiedenen Kindelementen mit derselben Klasse<a class="headerlink" href="#suche-nach-verschiedenen-kindelementen-mit-derselben-klasse" title="Link to this heading">#</a></h2>
-<p>Manchmal ist es schwierig, ein Element eindeutig mithilfe von driver.find_elements(By.CLASS_NAME,…) zu finden. Ein Beispiel ist wieder die Airbnb-Seite: das Div-Element, das die Metadaten zu den gefunden Unterkünften enthält, hat zwei Kindelemente mit derselben Klasse: “fb4nyux s1cjsi4j dir dir-ltr”. Die Suche mithilfe der Funktion driver.find_elements(By.CLASS_NAME,”fb4nyux.s1cjsi4j.dir.dir-ltr”) würde beide Div-Elemente liefern. Aber was macht man, wenn nur eins der beiden Elemente gesucht ist, oder wenn die Elemente separat gefunden werden sollen, beispielsweise, weil sie in zwei verschiedenen Spalten eines Dataframes übertragen werden sollen?</p>
-<figure class="align-default" id="id241">
-<a class="bg-transparent reference internal image-reference" href="../../../_images/airbnb_beispiel_div.png"><img alt="Beispiel Airbnb" class="bg-transparent" src="../../../_images/airbnb_beispiel_div.png" style="width: 75%;" /></a>
-<figcaption>
-<p><span class="caption-text">Beispiel: Kindelemente mit derselben Klasse</span><a class="headerlink" href="#id241" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>In diesem Fall empfiehlt es sich, mithilfe von XPath nach CSS-Selektoren zu suchen. Wie das geht, ist hier beschrieben: <a class="reference external" href="https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html">https://www.w3docs.com/snippets/css/how-to-find-an-element-by-css-class-name-with-xpath.html</a>. Der XPath-Ausdruck muss in diesem Fall selbst geschrieben werden: Der Ausdruck “//div[&#64;class=’g1qv1ctd c1v0rf5q dir dir-ltr’]/div[2]” beschreibt den Pfad zum zweiten div-Element, das ein Kindelement eines div-Elements mit dem Attribut class=’g1qv1ctd c1v0rf5q dir dir-ltr’. Ihr könnt überprüfen, ob ein XPath-Ausdruck das gesuchte Element findet, indem ihr in den Entwicklertools mit Ctrl bzw. Cmd + F die Suche öffnet und den Xpath-Ausdruck einfügt:</p>
-<figure class="align-default" id="id242">
-<a class="bg-transparent reference internal image-reference" href="../../../_images/airbnb_xpath_suche.png"><img alt="Beispiel Airbnb" class="bg-transparent" src="../../../_images/airbnb_xpath_suche.png" style="width: 75%;" /></a>
-<figcaption>
-<p><span class="caption-text">Beispiel: Suche nach XPath-Ausdruck in den Browser-Entwicklertools</span><a class="headerlink" href="#id242" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Wenn XPath zur Suche nach dem class-Attribut verwendet wird, müssen Leerzeichen nicht durch Punkte ersetzt werden.</p>
-</div>
+<section id="selenium-im-headless-mode">
+<h2><span class="section-number">11.4.2. </span>Selenium im Headless Mode<a class="headerlink" href="#selenium-im-headless-mode" title="Link to this heading">#</a></h2>
+<p>Bisher haben wir Selenium immer so verwendet, dass sich beim Aufruf einer Seite der automatisierte Chrome Browser geöffnet hat. Wenn ihr gerade dabei seid, den Code zu schreiben, die Web Scraping-Strategie zu planen und die extrahierten Daten zu überprüfen, dann empfiehlt es sich, den Browser in diesem “sichtbaren” Modus zu automatisieren. Aber wenn das Skript dann fertig ist und ihr nicht mehr im Browserfenster nachverfolgen müsst, ob alle Aktionen so ausgeführt werden wie gewünscht, könnt ihr den Browser auch im sogenannten “headless mode” automatisieren, bei dem sich das Browserfenster nicht öffnet:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from selenium import webdriver</span>
-<span class="c1"># from selenium.webdriver.common.selenium_manager import SeleniumManager</span>
-<span class="c1"># from selenium.webdriver.common.by import By</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
 
-<span class="c1"># url = &quot;https://www.airbnb.com/&quot;</span>
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
-<span class="c1"># driver = webdriver.Chrome()</span>
-<span class="c1"># driver.get(url)</span>
-
-<span class="c1"># driver.implicitly_wait(10)</span>
-
-<span class="c1"># Suche nach zweitem und drittem Kindelement der div mit dem Attribut class=&#39;g1qv1ctd c1v0rf5q dir dir-ltr&#39;</span>
-<span class="c1"># driver.find_elements(By.XPATH, &quot;//div[@class=&#39;g1qv1ctd c1v0rf5q dir dir-ltr&#39;]/div[2]&quot;)</span>
-<span class="c1"># driver.find_elements(By.XPATH, &quot;//div[@class=&#39;g1qv1ctd c1v0rf5q dir dir-ltr&#39;]/div[3]&quot;)</span>
-
-<span class="c1"># driver.quit()</span>
+options = Options()
+options.add_argument(&quot;--headless&quot;)
+driver = webdriver.Chrome(options=options)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="dateinamen-vor-dem-speichern-bearbeiten">
-<h2>Dateinamen vor dem Speichern bearbeiten<a class="headerlink" href="#dateinamen-vor-dem-speichern-bearbeiten" title="Link to this heading">#</a></h2>
-<p>Bisher haben wir Metadaten immer genauso, wie sie sind, als Dateinamen verwendet. Das ist aber nicht immer möglich oder gewünscht. Dateinamen können mithilfe von sogenannten regulären Ausdrücken und der Funktion sub() aus dem Paket re bearbeitet werden. Reguläre Ausdrücke (engl. regular expressions) sind eine eigene Sprache zur Suche nach Mustern in Strings. Damit kann sowohl nach einfachen Wörtern, Zeichen oder Zahlen gesucht werden als auch nach komplexen Mustern. Die Funktion sub() tauscht alle Sequenzen in einem String, die einem gesuchten Muster entsprechen, gegen einen neuen String aus. Die Funktion nimmt einen regulären Ausdruck, einen String, gegen den die gefundenen Sequenzen ausgetauscht werden sollen, und einen String, in dem gesucht werden soll, als Argumente an. Ein Beispiel:</p>
+<section id="regulare-ausdrucke">
+<h2><span class="section-number">11.4.3. </span>Reguläre Ausdrücke<a class="headerlink" href="#regulare-ausdrucke" title="Link to this heading">#</a></h2>
+<p>Reguläre Ausdrücke (engl. Regular Expression, kurz: RegEx, RegExp) sind verallgemeinerte Suchmuster (patterns) für Zeichenketten. Mithilfe von regulären Ausdrücken können syntaktische Konstrukte so beschrieben werden, dass sie ein Computer versteht. Ein syntaktisches Konstrukt ist zum Beispiel eine Zahl zwischen 1900 und 2000, eine Telefonnummer, eine Adresse, eine URL oder auch ein bestimmtes Wort in verschiedenen Flexionsformen. Mithilfe von regulären Ausdrücken können also Texte nach bestimmten Mustern durchsucht werden, und die gefundenen Konstrukte können anschließend z.B. entfernt oder bearbeitet werden. Die meisten Programmiersprachen, darunter auch Python, stellen Funktionen bereit, welche die Verwendung von regulären Ausdrücken erlauben.</p>
+<p>Bei der Bereinigung der extrahierten Daten sind reguläre Ausdrücke oft sehr nützlich. Deswegen lohnt es sich, sich mit dieser speziellen Sprache etwas zu beschäftigen und die Syntax zumindest in den Grundzügen zu verstehen. Als Einführung empfehle ich das <a class="reference external" href="https://docs.python.org/3/howto/regex.html">Regular Expressions HOWTO</a> in den Python-Dokumentationsseiten, und für einen schnellen Überblick über die Syntax empfehle ich <a class="reference external" href="https://www.dataquest.io/cheat-sheet/regular-expressions-cheat-sheet/">dieses Cheatsheet</a>, und für fortgeschrittene Themen empfehle ich <a class="reference external" href="https://www.regular-expressions.info/tutorial.html">regular-expressions.info</a>. Regex-Suchmuster könnt ihr auch online testen, zum Beispiel auf der Seite <a class="reference external" href="https://regex101.com/">https://regex101.com/</a>.</p>
+<p>Wir betrachten im Folgenden zwei typische Anwendungsfälle für reguläre Ausdrücke in Web Scraping Projekten.</p>
+<p><strong>Anwendungsbeispiel 1: Suche nach bestimmten Mustern in den Daten</strong></p>
+<p>In einer der letzten Übungsaufgaben solltet ihr mithilfe der Methode <code class="docutils literal notranslate"><span class="pre">.str.contains()</span></code> überprüfen, ob die von der Seite Pinterest extrahierten Kommentare die Zeichenkette “cute” enthalten. Die Methode akzeptiert laut den <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.contains.html">Pandas Dokumentationsseiten</a> als Argument eine “character sequence or regular expression”. Anstatt nur nach dem Wort “cute” zu suchen, könntet ihr einen regulären Ausdruck formulieren, der nach verschiedenen Varianten des Wortes und nach Synonymen sucht:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># comments_df[&quot;comment&quot;].str.contains(&quot;(cuti?e)|(sweet(ie)?)&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfrage</p>
+<ul class="simple">
+<li><p>Welche Wörter werden mit diesem Suchmuster gefunden?</p></li>
+<li><p>Wird auch die Zeichenkette <code class="docutils literal notranslate"><span class="pre">sweeti</span></code> gefunden?</p></li>
+</ul>
+<p>Probiert es aus: Fügt das Suchmuster und einen Beispieltext auf der Seite <a class="reference external" href="https://regex101.com/">https://regex101.com/</a> ein.</p>
+</div>
+<p><strong>Anwendungsbeispiel 2: Dateinamen vor dem Speichern bearbeiten</strong></p>
+<p>Bisher haben wir Metadaten immer genauso, wie sie sind, als Dateinamen verwendet. Das ist aber nicht immer möglich oder gewünscht. Dateinamen können mithilfe von regulären Ausdrücken und der Funktion sub() aus dem Modul re aus der Python-Standardbibliothek bearbeitet werden. Die Funktion sub() tauscht alle Sequenzen in einem String, die einem gesuchten Muster entsprechen, gegen einen neuen String aus. Die Funktion nimmt einen regulären Ausdruck, einen String, gegen den die gefundenen Sequenzen ausgetauscht werden sollen, und einen String, in dem gesucht werden soll, als Argumente an. Ein Beispiel:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
@@ -534,23 +546,24 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 </div>
 </div>
 </div>
+<p>Für weitere Funktionen zur Arbeit mit regulären Ausdrücken schaut in die <a class="reference external" href="https://docs.python.org/3/library/re.html">Dokumentationsseiten zum Modul re</a>.</p>
 </section>
 <section id="fehler-ausnahmen-und-ausnahmebehandlung">
-<h2>Fehler, Ausnahmen und Ausnahmebehandlung<a class="headerlink" href="#fehler-ausnahmen-und-ausnahmebehandlung" title="Link to this heading">#</a></h2>
-<p>In Python gibt es verschiedene Arten von Fehlern: zum einen Syntaxfehler (syntax errors), die verhindern, dass Code überhaupt erst ausgeführt werden kann, und zum anderen Ausnahmen (exceptions), also Fehler, die dazu führen, dass die Ausführung des Codes abgebrochen und eine Fehlermeldung angezeigt wird. Bisher haben wir immer umgangssprachlich gesagt, dass eine Fehlermeldung “angezeigt” wird. Ganz korrekt würde man aber eigentlich sagen, dass eine Ausnahme “geworfen” wird. Eine Liste aller Ausnahmen, die beim Ausfürhen von Python-Code geworfen werden können, findet sich hier: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">https://docs.python.org/3/library/exceptions.html#bltin-exceptions</a>.</p>
+<h2><span class="section-number">11.4.4. </span>Fehler, Ausnahmen und Ausnahmebehandlung<a class="headerlink" href="#fehler-ausnahmen-und-ausnahmebehandlung" title="Link to this heading">#</a></h2>
+<p>In Python gibt es verschiedene Arten von Fehlern: zum einen Syntaxfehler (syntax errors), die verhindern, dass Code überhaupt erst ausgeführt werden kann, und zum anderen Ausnahmen (exceptions), also Fehler, die dazu führen, dass die Ausführung des Codes abgebrochen und eine Fehlermeldung angezeigt wird. Bisher haben wir immer umgangssprachlich gesagt, dass eine Fehlermeldung “angezeigt” wird. Ganz korrekt würde man aber eigentlich sagen, dass eine Ausnahme “geworfen” wird. Eine Liste aller Ausnahmen, die beim Ausführen von Python-Code geworfen werden können, findet sich hier: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">https://docs.python.org/3/library/exceptions.html#bltin-exceptions</a>.</p>
 <p>Grundsätzlich sollte euer Code vorbeugend mit möglichen Fehlerquellen umgehen: Wenn ihr zum Beispiel Dateien über eine API bezieht, solltet ihr bei der Wahl des Dateinamens bedenken, dass Dateinamen zum Beispiel nicht unendlich lang sein dürfen, oder dass Schrägstriche in den Dateinamen beim Schreiben der Dateien fälschlich als Dateipfade interpretiert werden können. In beiden Fällen würde jeweils eine Ausnahme geworfen werden und die Ausführung des Codes würde abbrechen. Ihr solltet euren Code also immer vorausschauend schreiben. Im Beispiel mit den Dateinamen könnten vorausschauend Metadaten für die Dateinamen ausgewählt werden, welche immer dieselbe Form haben und somit immer gültig sind, oder indem die Dateinamen vor dem Schreiben der Dateien vereinheitlicht werden. Aber nicht immer kann im Voraus abgeschätzt werden, welche Art von ungültigen Werten auftreten können. Für diesen Fall gibt es in Python spezielle Anweisungen, die erlauben, bestimmte Ausnahmen gezielt abzufangen und so ein vorzeitiges Beenden des Programms zu verhindern: sogenannte try/exept-Anweisungen.</p>
 <p>Try/except-Anweisungen haben die allgemeine Form:</p>
-<figure class="align-default" id="id243">
+<figure class="align-default" id="id241">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/try_except.png"><img alt="Try/Except-Anweisungen" class="bg-transparent" src="../../../_images/try_except.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Try/Except-Anweisungen in der allgemeinen Form</span><a class="headerlink" href="#id243" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.18 </span><span class="caption-text">Try/Except-Anweisungen in der allgemeinen Form</span><a class="headerlink" href="#id241" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Der Code im except-Zweig wird dabei nur dann ausgeführt, wenn beim Ausführen des Codes im try-Zweig eine Ausnahme geworfen wird. Diese einfache try/except-Anweisung kann um weitere Zweige ergänzt werden. Das bereits zuvor in diesem Kurs zitierte Handbuch von Johannes Ernesti und Peter Kaiser enthält eine Überblicksdarstellung einer komplexen try/except-Anweisung mit mehreren Zweigen, inklusive Erläuterung:</p>
-<figure class="align-default" id="id244">
+<figure class="align-default" id="id242">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/try_except_explained.png"><img alt="Try/Except-Anweisungen" class="bg-transparent" src="../../../_images/try_except_explained.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Schaubild: try/except-Anweisung mit mehreren Zweigen. Quelle: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">Ernesti und Kaiser (2020)</a>.</span><a class="headerlink" href="#id244" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.19 </span><span class="caption-text">Schaubild: try/except-Anweisung mit mehreren Zweigen. Quelle: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">Ernesti und Kaiser (2020)</a>.</span><a class="headerlink" href="#id242" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Beispiele und weitere Erläuterungen zum Thema Ausnahmebehandlung findet ihr im erwähnten <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">Handbuch von Ernesti und Kaiser</a>, in <a class="reference external" href="https://realpython.com/python-exceptions/">diesem Beitrag von Said van de Klundert</a>, und natürlich in den offiziellen <a class="reference external" href="https://docs.python.org/3/tutorial/errors.html">Python-Dokumentationsseiten</a>.</p>
@@ -559,32 +572,142 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
 <p>Ausnahmen sollten immer so spezifisch wie möglich abgefangen werden. Prinzipiell ist es möglich, mit <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">Exception</span></code> alle möglichen Ausnahmen gleichzeitig abzufangen, aber das ist laut Ernesti und Kaiser (sowie den allermeisten seriösen Quellen zufolge) fast nie sinnvoll und kein guter Stil.</p>
 </div>
 </section>
+<section id="verschiedene-losungen-vergleichen">
+<h2><span class="section-number">11.4.5. </span>Verschiedene Lösungen vergleichen<a class="headerlink" href="#verschiedene-losungen-vergleichen" title="Link to this heading">#</a></h2>
+<p>In der Sitzung “Fortsetzung BeautifulSoup” haben wir versucht, verschiedene Lösungen auf eine recht naive Art zu vergleichen, indem wir einfach die Zeit, die beim einmaligen Ausführen einer Codezelle verstrichen ist, gemessen haben. Die Ausführungszeit kann aber beim wiederholten Ausführen desselben Codeblocks schwanken. Um eine etwas genauere Messung zu erhalten, kann anstelle von <code class="docutils literal notranslate"><span class="pre">%%time</span></code> <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> verwendet werden, um die durchschnittliche Ausführungszeit einer Funktion bei mehreren wiederholten Aufrufen zu messen. Als Beispiel messen wir die Ausführungszeit der is_even()-Funktion aus <a class="reference external" href="https://lipogg.github.io/webscraping-mit-python/chapters/04/subchapters/01_funktionen.html">Abchnitt 4.1</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Input: i, a positive int</span>
+<span class="sd">    Returns True if i is even, otherwise False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span> == 0
+
+<span class="o">%</span><span class="k">timeit</span> is_even(10)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>70.4 ns ± 8.57 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Angenommen, wir haben eine weitere Lösung für dasselbe Problem gefunden: Anstatt den Modulo-Operator zu verwenden, um zu bestimmen, ob die angegebene Zahl durch 2 teilbar ist, reduzieren wir die Zahl in einer Schleife immer weiter um 2, bis 0 erreicht ist (oder nicht). Dann können wir die durchschnittliche Ausführungszeit dieser Lösung mit der ersten vergleichen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_even_v2</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Input: i, a positive int</span>
+<span class="sd">    Returns True if i is even, otherwise False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">-=</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="o">%</span><span class="k">timeit</span> is_even_v2(10)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>244 ns ± 10.3 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der Vergleich der durchschnittlichen Ausführungszeit kann einen ersten Anhaltspunkt geben, welche der zwei Lösungen effizienter im Hinblick auf die Ausführungszeit ist.</p>
+<p>Gerade beim Web Scrapen hängt die Ausführungszeit aber auch von Faktoren ab, die wir gar nicht kontrollieren können und die sich von Ausführung zu Ausführung unterscheiden können, zum Beispiel der Zeit, die der Server braucht, um eine Antwort zu senden. Deswegen reicht der Vergleich der durchschnittlichen Ausführungszeit oft alleine nicht aus. Die gemessene Laufzeit lässt beispielsweise keine Rückschlüsse darüber zu, wie sich die Laufzeit entwickelt, wenn nicht nur 10 oder 20 sondern 100, 1000 oder 10000 Anfragen gestellt und die extrahierten Daten verarbeitet werden sollen. Mit einer theoretischen Analyse der Laufzeit, also der Bestimmung der sogenannten “<strong>Laufzeitkomplexität</strong>” des Codes, kann untersucht werden, wie sich die Laufzeit bei einer immer größer werdenden Anzahl von Eingabe-URLs unabhängig von äußeren Einflüssen wie dem Rate Limit oder der Antwortzeit des Servers entwickelt. Einen leicht verständlichen Einstieg in das Thema findet ihr <a class="reference external" href="https://www.youtube.com/watch?v=p65AHm9MX80">hier</a>. Sehr, sehr kurz gefasst: Die theoretische Laufzeit wird anhand der Anzahl der grundlegenden Operationen in dem Code verglichen. Bei jedem Funktionsaufruf der Funktion <code class="docutils literal notranslate"><span class="pre">is_even()</span></code> findet beispielsweise nur eine Operation statt: Der Ausdruck i % 2 == 0 berechnet den Rest der Division von i durch 2 und gibt direkt das Ergebnis zurück. Es findet also die gleiche Anzahl an Operationen statt, egal welche Zahl für i eingesetzt wird. Eine solche Laufzeit wird auch <strong>konstante Laufzeit</strong> genannt. Beim Aufruf der Funktion <code class="docutils literal notranslate"><span class="pre">is_even_v2()</span></code> finden jedoch mehrere Operationen statt, wobei die Anzahl der Operationen steigt, wenn i größer ist, weil die while-Schleife für größere Zahlen mehr Durchläufe braucht, bis i &lt; 1 ist. Eine solche Laufzeit wird <strong>lineare Laufzeit</strong> genannt, weil die Anzahl der Operationen proportional mit der Eingabegröße wächst. Die theoretische Laufzeit der Funktion <code class="docutils literal notranslate"><span class="pre">is_even()</span></code> deswegen deutlich geringer als die der Funktion <code class="docutils literal notranslate"><span class="pre">is_even_v2()</span></code>. In der formalen Syntax zur Beschreibung von Laufzeitkomlexität (der sogenannten O-Notation) wird die konstante Laufzeit der Funktion <code class="docutils literal notranslate"><span class="pre">is_even()</span></code> als O(1) notiert und die lineare Laufzeit der Funktion <code class="docutils literal notranslate"><span class="pre">is_even_v2()</span></code> als O(n).</p>
+</section>
 <section id="effizienter-scrapen-mit-sitemaps">
-<h2>Effizienter Scrapen mit Sitemaps<a class="headerlink" href="#effizienter-scrapen-mit-sitemaps" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4.6. </span>Effizienter Scrapen mit Sitemaps<a class="headerlink" href="#effizienter-scrapen-mit-sitemaps" title="Link to this heading">#</a></h2>
 <p>Eine Sitemap ist eine strukturierte Übersicht über alle Unterseiten einer Website. Webseitenbetreiber:innen stellen Sitemaps zur Verfügung, damit beim Crawlen der Seite durch Web Crawler verschiedener Suchmaschinen alle Unterseiten einfach gefunden werden können. Je nach gesuchten Daten können Sitemaps auch beim Web Scraping eingesetzt werden, um effizienter eine Liste von zu scrapenden Unterseiten zusammenzustellen. Sitemaps werden meist im XML-Format bereitgestellt, das heißt, dass zur Suche in solchen Sitemaps ebenfalls XPath verwendet werden kann. Sitemaps sind oft unter der Adresse <a class="reference external" href="http://www.beispielwebseite.com/sitemap.xml">www.beispielwebseite.com/sitemap.xml</a> erreichbar, aber anders als bei der robots.txt gibt es noch einige andere typische Adressen. Eine Übersicht über solche typischen Sitemap-Adressen findet ihr <a class="reference external" href="https://seocrawl.com/en/how-to-find-a-sitemap/">hier</a>. Manche Webseitenbetreiber:innen verlinken die Sitemap zudem in der robots.txt. Dies ist zum Beispiel bei der Website <a class="reference external" href="http://realpython.com">realpython.com</a> der Fall. Die Sitemap ist hier unter <a class="reference external" href="https://realpython.com/robots.txt">https://realpython.com/robots.txt</a> verlinkt und hat die Adresse <a class="reference external" href="https://realpython.com/sitemap.xml">https://realpython.com/sitemap.xml</a>. Die Sitemap selbst sieht so aus:</p>
-<figure class="align-default" id="id245">
+<figure class="align-default" id="id243">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/realpython_sitemap.png"><img alt="Realpython Sitemap" class="bg-transparent" src="../../../_images/realpython_sitemap.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Sitemap der Website <a class="reference external" href="http://realpython.com">realpython.com</a></span><a class="headerlink" href="#id245" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.20 </span><span class="caption-text">Sitemap der Website <a class="reference external" href="http://realpython.com">realpython.com</a></span><a class="headerlink" href="#id243" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
+<section id="abfragerate-kontrollieren-und-rate-limits-einhalten-in-komplexeren-fallen">
+<h2><span class="section-number">11.4.7. </span>Abfragerate kontrollieren und Rate Limits einhalten in komplexeren Fällen<a class="headerlink" href="#abfragerate-kontrollieren-und-rate-limits-einhalten-in-komplexeren-fallen" title="Link to this heading">#</a></h2>
+<p>Wir haben bereits im <a class="reference external" href="https://lipogg.github.io/webscraping-mit-python/chapters/08/subchapters/03_loc_api.html#rate-limits-berucksichtigen-und-die-abfragerate-steuern">Abschnitt 8.3</a> im Zusammenhang mit der API der Library of Congress drei ganz grundlegende Strategien kennengelernt, wie die Anzahl der Anfragen über das Paket requests begrenzt werden kann. In den besprochenen Beispielen wurde aber immer nur einmal im Skript eine Anfrage gestellt, also zum Beispiel einmal im Körper eine for-Schleife. Aber was ist, wenn von mehreren Stellen im Code Anfragen an dieselbe Seite gestellt werden sollen? Dann müsst ihr sichergehen, dass die Anzahl der Anfragen im Gesamten limitiert wird, und nicht nur für eine der beiden Codeabschnitte. Eine einfache Lösung, die mit allen drei besprochenen Strategien umsetzbar ist, ist die Definition einer generischen <code class="docutils literal notranslate"><span class="pre">fetch_content()</span></code> Funktion, über die alle Anfragen von überall im Code geleitet werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
+
+import os
+import requests
+from ratelimit import limits, sleep_and_retry
+
+PERIOD_SEC = 60
+CALLS_PER_PERIOD_SEC = 80
+
+@sleep_and_retry
+@limits(calls=CALLS_PER_PERIOD_SEC, period=PERIOD_SEC)
+def fetch_content(url):
+    return requests.get(url)
+
+def get_page(url, output_dir):
+    response = fetch_content(url).json()
+    items = response[&quot;results&quot;]
+    for item in items:
+        image_id = item[&quot;pk&quot;]
+        image_url = item[&quot;image&quot;][&quot;full&quot;]
+        image = fetch_content(image_url)
+        filename = f&quot;{image_id}.jpg&quot;
+        filepath = os.path.join(output_dir, filename)
+        with open(filepath, &quot;w&quot;) as file:
+            file.write(image.content)
+
+
+base_url = &quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review&amp;format=json&quot;
+
+for page in range(1, total_pages + 1):
+    request_url = f&quot;{base_url}&amp;sp={page}&quot;
+    get_page(request_url, output_dir)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="versionsverwaltung-nutzen">
+<h2><span class="section-number">11.4.8. </span>Versionsverwaltung nutzen<a class="headerlink" href="#versionsverwaltung-nutzen" title="Link to this heading">#</a></h2>
+<p>Im Laufe des Semesters hat sich euer Ordner mit den Notebooks bestimmt mit einer Reihe Dateien der Art “uebung_9_loesung_v1.ipynb”, “uebung_9_loesung_v2.ipynb”, “uebung_9_loesung_final.ipynb” gefüllt. Klar: Wenn ihr eine alternative Lösung gefunden habt, wollt ihr diese vielleicht nicht löschen, oder ihr wollt lieber erstmal eine Sicherheitskopie anlegen, bevor ihr den Code noch einmal umschreibt. Weil das beim Coden ein häufiges Problem ist, haben sich Systeme zur sogenannten Versionsverwaltung etabliert. In der professionellen Softwareentwicklung ist die Verwendung solcher Systeme ein unverzichtbarer Standard. Eine extrem verbreitete, kostenfreie und betriebssystemübergreifende Variante ist die Kombination von <a class="reference external" href="https://git-scm.com/doc">Git</a> mit <a class="reference external" href="https://github.com/">GitHub</a>. Die Git-Dokumentationsseiten definieren Versionsverwaltung wie folgt:</p>
+<blockquote>
+<div><p>Was ist “Versionsverwaltung”, und warum solltest du dich dafür interessieren? Versionsverwaltung ist ein System, welches die Änderungen an einer oder einer Reihe von Dateien über die Zeit hinweg protokolliert, sodass man später auf eine bestimmte Version zurückgreifen kann. Die Dateien, die in den Beispielen in diesem Buch unter Versionsverwaltung gestellt werden, enthalten Quelltext von Software. Tatsächlich kann in der Praxis nahezu jede Art von Datei per Versionsverwaltung nachverfolgt werden. (Quelle: <a class="reference external" href="https://git-scm.com/book/de/v2/Erste-Schritte-Was-ist-Versionsverwaltung%3F">Git Dokumentationsseiten</a>)</p>
+</div></blockquote>
+<p>Die mithilfe von Git lokal angelegten Git Repositories (also Ordner auf dem Computer, in denen mithilfe von Git Änderungen an Dateien nachverfolgt werden) können auf Online-Plattformen wie GitHub hochgeladen werden, um sie mit anderen zu teilen oder für die private Nutzung an zentraler Stelle zu speichern. In einem GitHub-Repository kann neben dem Code und den Daten für ein Webscraping-Projekt auch eine Datei mit den Versionen der verwendeten Python Pakete und der Python-Version geteilt werden. Das ist empfehlenswert, denn so macht ihr es anderen leichter, euren Code zu reproduzieren. Eine solche Datei könnt ihr ganz einfach in Anaconda Prompt bzw. dem Terminal generieren, indem ihr die virtuelle Umgebung aktiviert und dann eingebt <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">export</span> <span class="pre">--no-builds</span> <span class="pre">&gt;</span> <span class="pre">environment.yml</span></code>. Diese Datei kann dann jemand anderes nutzen, um bei sich auf dem Computer mit dem Befehl <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">environment.yml</span></code> eine virtuelle Umgebung mit denselben Paketen zu erstellen.</p>
+<p>Über GitHub könnt ihr auch andere Projekte und Code, der zum Beispiel ein ganz konkretes Paket oder eine Funktion, deren Einsatzmöglichkeiten ihr verstehen wollt, suchen. Gebt dazu in der Suchmaske einfach den Namen des Pakets oder der Funktion ein und filtert die Ergebnisse anschließend nach der Programmiersprache. Bevor ihr euch dazu entscheidet, für eine Seite einen Web Scraper zu schreiben, könnt ihr auch erst einmal auf GitHub suchen, ob es vielleicht bereits einen Web Scraper für die Seite gibt. Aber Vorsicht! Bevor ihr fremden Code ausprobiert, lest euch den Abschnitt “Sicher scrapen” durch und trefft ggf. Vorsichtsmaßnahmen. Allgemein gilt: Wenn ein GitHub Repository viele Maintainer:innen hat und die letzten Änderungen (Commits) erst wenige Tage, Wochen oder Monate alt sind, dann handelt es sich meist um vertrauenswürdigen Code.</p>
+</section>
+<section id="aufbau-von-python-projekten">
+<h2><span class="section-number">11.4.9. </span>Aufbau von Python-Projekten<a class="headerlink" href="#aufbau-von-python-projekten" title="Link to this heading">#</a></h2>
+<p>Bisher habt ihr Code immer in Jupyter Notebooks geschrieben und ausgeführt. Aber wenn ihr euch auf GitHub oder woanders auf die Suche nach fremdem Code macht, dann begegnen euch häufig auch Pythonskripte mit der Dateiendung .py und größere Projekte, die aus mehreren .py, .ipynb oder anderen Dateien bestehen. Das kann verwirrend sein. Wenn euer Webscraping Projekt komplexer wird und nicht mehr nur aus einem Jupyter Notebook, sondern noch aus Input- und Output-Dateien oder weiteren Skripten besteht, fragt ihr euch vielleicht, wie ihr die verschiedenen Dateien am besten organisieren solltet. Wir schauen uns in der letzten Stunde ein paar Beispiele an. Zum Nachlesen empfehle ich die Kapitel 24: “Module Packages” und 25: Module Odds and Ends in <a class="reference external" href="https://www.oreilly.com/library/view/learning-python-6th/9781098171292/">Martin Lutz (2025), Learning Python</a>.</p>
+</section>
 <section id="sicher-scrapen">
-<h2>Sicher Scrapen<a class="headerlink" href="#sicher-scrapen" title="Link to this heading">#</a></h2>
-<p>Die Anforderungen an Sicherheit und Anonymität können sich von Web Scraping Projekt zu Web Scraping Projekt unterscheiden. Ein paar Dinge sind aber allgemein empfehlenswert: Achtet nach Möglichkeit darauf, dass in eurer Abfrage-URL https statt http steht. Falls ihr euch auf einer Webseite anmelden müsst, um Inhalte scrapen zu können, solltet ihr immer ein Profil speziell für diesen Zweck erstellen. Gebt niemals sensible Passwörter in den automatisierten Chrome Browser ein. Seid außerdem vorsichtig, wenn ihr verschiedene Tipps online lest: Bevor ihr einfach komplexen Code von stackoverflow oder einem ähnlichen Forum kopiert, recherchiert, ob es nicht vielleicht einen einfacheren Weg gibt, um euer Problem zu lösen. Denn wenn ihr gar nicht versteht, was ihr gerade macht, könnt ihr auch nicht abschätzen, welche Risiken das kopierte Vorgehen mit sich bringt, und welche Sicherheitsvorkehrungen die andere Person vielleicht vorher getroffen hat – das ist ja eigentlich selbsterklärend, aber im Eifer des Gefechts vergisst man das gerne. Es empfiehlt sich außerdem, beim Web Scrapen ganz allgemein einen Useraccount auf eurem Computer zu verwenden, der keine Administratorrechte hat. Falls doch etwas schief gehen sollte, ist dadurch der Schaden zumindest begrenzt. Je nach Web Scraping Projekt kann es empfehlenswert sein, die eigene IP Adresse mithilfe von VPN oder Proxy zu verstecken. Allerdings ist das ethisch und rechtlich eine schwierige Sache: Wir haben beispielsweise bereits besprochen, dass man sich strafbar machen kann, wenn man beim Web Scraping blockiert wird und anstatt seinen Web Scraper robots.txt-konform umzuschreiben einfach seine IP-Adresse versteckt. Hier ist also Vorsicht und Eigenrecherche geboten.</p>
+<h2><span class="section-number">11.4.10. </span>Sicher Scrapen<a class="headerlink" href="#sicher-scrapen" title="Link to this heading">#</a></h2>
+<p>Die Anforderungen an Sicherheit und Anonymität können sich von Web Scraping Projekt zu Web Scraping Projekt unterscheiden. Ein paar Dinge sind aber allgemein empfehlenswert:</p>
+<ul class="simple">
+<li><p>Achtet nach Möglichkeit darauf, dass in eurer Abfrage-URL https statt http steht.</p></li>
+<li><p>Falls ihr euch auf einer Webseite anmelden müsst, um Inhalte scrapen zu können, solltet ihr immer ein Profil speziell für diesen Zweck erstellen. Gebt niemals sensible Passwörter in den automatisierten Chrome Browser ein.</p></li>
+<li><p>Seid außerdem vorsichtig, wenn ihr verschiedene Tipps online lest: Bevor ihr einfach komplexen Code von stackoverflow oder einem ähnlichen Forum kopiert, recherchiert, ob es nicht vielleicht einen einfacheren Weg gibt, um euer Problem zu lösen. Denn wenn ihr gar nicht versteht, was ihr gerade macht, könnt ihr auch nicht abschätzen, welche Risiken das kopierte Vorgehen mit sich bringt, und welche Sicherheitsvorkehrungen die andere Person vielleicht vorher getroffen hat – das ist ja eigentlich selbsterklärend, aber im Eifer des Gefechts vergisst man das gerne.</p></li>
+<li><p>Es empfiehlt sich außerdem, beim Web Scrapen ganz allgemein einen Useraccount auf eurem Computer zu verwenden, der keine Administratorrechte hat. Falls doch etwas schief gehen sollte, ist dadurch der Schaden zumindest begrenzt.</p></li>
+<li><p>Wenn ihr ganz sicher gehen wollt, verwendet eine <a class="reference external" href="https://de.wikipedia.org/wiki/Virtuelle_Maschine">virtuelle Maschine</a> zum Scrapen. Virtuelle Maschinen können mithilfe spezialisierter Software wie <a class="reference external" href="https://mac.getutm.app/">UTM</a> für MacOS erstellt werden.</p></li>
+<li><p>Je nach Web Scraping Projekt kann es empfehlenswert sein, die eigene IP Adresse mithilfe von VPN oder Proxy zu verstecken. Allerdings ist das ethisch und rechtlich eine schwierige Sache: Wir haben beispielsweise bereits besprochen, dass man sich strafbar machen kann, wenn man beim Web Scraping blockiert wird und anstatt seinen Web Scraper robots.txt-konform umzuschreiben einfach seine IP-Adresse versteckt. Hier ist also Vorsicht und Eigenrecherche geboten.</p></li>
+</ul>
 </section>
 <section id="don-t-do-this">
-<h2>Don’t do this…<a class="headerlink" href="#don-t-do-this" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4.11. </span>Don’t do this…<a class="headerlink" href="#don-t-do-this" title="Link to this heading">#</a></h2>
 <p>Zum Schluss möchte ich euch noch eine kleine Empfehlung mit auf den Weg geben: Nicht immer ist Web Scraping wirklich die schnellste und effizienteste Lösung für euer Problem. Es macht wahrscheinlich mehr Spaß, Code zu schreiben, als direkt die Aufgabe anzugehen, aber wenn ihr unbedingt eine Deadline einhalten müsst, dann ist es natürlich auch okay, ein Web Scraping Projekt abzubrechen und eure Aufgabe einfach manuell zu lösen. Also in diesem Sinne:</p>
-<figure class="align-default" id="id246">
+<figure class="align-default" id="id244">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/automation_xkcd.png"><img alt="Comic zur Warnung" class="bg-transparent" src="../../../_images/automation_xkcd.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-text">Don’t do this… Quelle: <a class="reference external" href="https://www.scrapingbee.com/blog/selenium-python/">Kevin Sahin 2022</a></span><a class="headerlink" href="#id246" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.21 </span><span class="caption-text">Don’t do this… Quelle: <a class="reference external" href="https://www.scrapingbee.com/blog/selenium-python/">Kevin Sahin 2022</a></span><a class="headerlink" href="#id244" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="quellen">
-<h2>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4.12. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
 <li id="id199"><p>Peter Ernesti, Johannes und Kaiser. Python 3: Ausnahmebehandlung. 2020. URL: <a class="reference external" href="https://openbook.rheinwerk-verlag.de/python/22_001.html">https://openbook.rheinwerk-verlag.de/python/22_001.html</a>.</p></li>
@@ -636,6 +759,15 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="03_apis_tokens.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">11.3. </span>Authentifizierung, Autorisierung und APIs</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -652,14 +784,18 @@ Allerdings darf der User Agent nicht immer geändert werden, denn manche Nutzung
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-agent-im-http-header-bearbeiten">User Agent im HTTP-Header bearbeiten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-nach-verschiedenen-kindelementen-mit-derselben-klasse">Suche nach verschiedenen Kindelementen mit derselben Klasse</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dateinamen-vor-dem-speichern-bearbeiten">Dateinamen vor dem Speichern bearbeiten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fehler-ausnahmen-und-ausnahmebehandlung">Fehler, Ausnahmen und Ausnahmebehandlung</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effizienter-scrapen-mit-sitemaps">Effizienter Scrapen mit Sitemaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sicher-scrapen">Sicher Scrapen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-do-this">Don’t do this…</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-agent-im-http-header-bearbeiten">11.4.1. User Agent im HTTP-Header bearbeiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selenium-im-headless-mode">11.4.2. Selenium im Headless Mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regulare-ausdrucke">11.4.3. Reguläre Ausdrücke</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fehler-ausnahmen-und-ausnahmebehandlung">11.4.4. Fehler, Ausnahmen und Ausnahmebehandlung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschiedene-losungen-vergleichen">11.4.5. Verschiedene Lösungen vergleichen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effizienter-scrapen-mit-sitemaps">11.4.6. Effizienter Scrapen mit Sitemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abfragerate-kontrollieren-und-rate-limits-einhalten-in-komplexeren-fallen">11.4.7. Abfragerate kontrollieren und Rate Limits einhalten in komplexeren Fällen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#versionsverwaltung-nutzen">11.4.8. Versionsverwaltung nutzen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufbau-von-python-projekten">11.4.9. Aufbau von Python-Projekten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sicher-scrapen">11.4.10. Sicher Scrapen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-do-this">11.4.11. Don’t do this…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">11.4.12. Quellen</a></li>
 </ul>
   </nav></div>
 
