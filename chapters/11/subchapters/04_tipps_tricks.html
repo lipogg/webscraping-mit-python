@@ -522,7 +522,7 @@ driver = webdriver.Chrome(options=options)
 <p class="admonition-title">Verständnisfrage</p>
 <ul class="simple">
 <li><p>Welche Wörter werden mit diesem Suchmuster gefunden?</p></li>
-<li><p>Wird auch die Zeichenkette <code class="docutils literal notranslate"><span class="pre">sweeti</span></code> gefunden?</p></li>
+<li><p>Wird auch die Zeichenkette “sweeti” gefunden?</p></li>
 </ul>
 <p>Probiert es aus: Fügt das Suchmuster und einen Beispieltext auf der Seite <a class="reference external" href="https://regex101.com/">https://regex101.com/</a> ein.</p>
 </div>
@@ -588,7 +588,7 @@ driver = webdriver.Chrome(options=options)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81.1 ns ± 4.54 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55.4 ns ± 0.405 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -610,7 +610,7 @@ driver = webdriver.Chrome(options=options)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>198 ns ± 25.9 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>157 ns ± 5.13 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -687,7 +687,7 @@ for page in range(1, no_pages + 1):
 <h2><span class="section-number">11.4.10. </span>Sicher Scrapen<a class="headerlink" href="#sicher-scrapen" title="Link to this heading">#</a></h2>
 <p>Die Anforderungen an Sicherheit und Anonymität können sich von Web Scraping Projekt zu Web Scraping Projekt unterscheiden. Ein paar Dinge sind aber allgemein empfehlenswert:</p>
 <ul class="simple">
-<li><p>Achtet nach Möglichkeit darauf, dass in eurer Abfrage-URL https statt http steht.</p></li>
+<li><p>Achtet nach Möglichkeit darauf, dass in eurer Anfrage-URL https statt http steht.</p></li>
 <li><p>Falls ihr euch auf einer Webseite anmelden müsst, um Inhalte scrapen zu können, solltet ihr immer ein Profil speziell für diesen Zweck erstellen. Gebt niemals sensible Passwörter in den automatisierten Chrome Browser ein.</p></li>
 <li><p>Seid außerdem vorsichtig, wenn ihr verschiedene Tipps online lest: Bevor ihr einfach komplexen Code von stackoverflow oder einem ähnlichen Forum kopiert, recherchiert, ob es nicht vielleicht einen einfacheren Weg gibt, um euer Problem zu lösen. Denn wenn ihr gar nicht versteht, was ihr gerade macht, könnt ihr auch nicht abschätzen, welche Risiken das kopierte Vorgehen mit sich bringt, und welche Sicherheitsvorkehrungen die andere Person vielleicht vorher getroffen hat – das ist ja eigentlich selbsterklärend, aber im Eifer des Gefechts vergisst man das gerne.</p></li>
 <li><p>Es empfiehlt sich außerdem, beim Web Scrapen ganz allgemein einen Useraccount auf eurem Computer zu verwenden, der keine Administratorrechte hat. Falls doch etwas schief gehen sollte, ist dadurch der Schaden zumindest begrenzt.</p></li>
