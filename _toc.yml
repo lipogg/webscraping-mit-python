@@ -12,7 +12,7 @@ sections:
   - file: chapters/01/subchapters/01_was_ist_webscraping
     title: Was ist Web Scraping? 
   - file: chapters/01/subchapters/02_warum_webscraping_lernen
-    title: Coding vs. Programming
+    title: Motivation
   - file: chapters/01/subchapters/03_semesterplan
     title: Semesterplan
   - file: chapters/01/subchapters/04_lernziele
@@ -34,78 +34,78 @@ sections:
     title: Einfache Datentypen, Strings und Operatoren
   - file: chapters/02/subchapters/04_variablen
     title: Variablen
-- file: chapters/03/03_intro
-  title: Python II
-  sections:
-  - file: chapters/03/subchapters/01_datentypen
-    title: Zusammengesetzte Datentypen
-  - file: chapters/03/subchapters/02_kontrollstrukturen
-    title: Kontrollstrukturen
-- file: chapters/04/04_intro
-  title: Python III
-  sections:
-  - file: chapters/04/subchapters/01_funktionen
-    title: Funktionen
-  - file: chapters/04/subchapters/02_pakete
-    title: Module, Pakete, Bibliotheken
-- file: chapters/05/05_intro
-  title: Installation und Setup
-  sections:
-  - file: chapters/05/subchapters/01_vorbereitung
-    title: Vorbereitung
-  - file: chapters/05/subchapters/02_installation_setup
-    title: Installation und Setup
-- file: chapters/06/06_intro
-  title: Einstieg Webscraping
-  sections:
-  - file: chapters/06/subchapters/01_rechtliches.md
-    title: Der rechtliche Rahmen
-  - file: chapters/06/subchapters/02_html.ipynb
-    title: HTML
-  - file: chapters/06/subchapters/03_css.ipynb
-    title: CSS
-  - file: chapters/06/subchapters/04_http.ipynb
-    title: Client, Server, HTTP
-- file: chapters/07/07_intro
-  title: Statische Webseiten
-  sections:
-    - file: chapters/07/subchapters/01_einstieg_beautifulsoup.ipynb
-      title: Einstieg BeautifulSoup
-    - file: chapters/07/subchapters/02_fortsetzung_beautifulsoup.ipynb
-      title: Fortsetzung BeautifulSoup
-- file: chapters/08/08_intro
-  title: APIs (Exkurs)
-  sections:
-    - file: chapters/08/subchapters/01_apis.md
-      title: APIs
-    - file: chapters/08/subchapters/02_dracor_api.ipynb
-      title: Beispiel DraCor-API
-    - file: chapters/08/subchapters/03_loc_api.ipynb
-      title: Beispiel LOC-API
-- file: chapters/09/09_intro
-  title: Dynamische Webseiten
-  sections:
-    - file: chapters/09/subchapters/01_statisch_vs_dynamisch.ipynb
-      title: Statisch vs. Dynamisch?
-    - file: chapters/09/subchapters/02_einstieg_selenium.ipynb
-      title: Einstieg Selenium
-    - file: chapters/09/subchapters/03_fortsetzung_selenium.ipynb
-      title: Fortsetzung Selenium
-- file: chapters/10/10_intro
-  title: Pandas (Exkurs)
-  sections:
-    - file: chapters/10/subchapters/01_pandas_bereinigen.ipynb
-      title: Daten bereinigen
-    - file: chapters/10/subchapters/02_pandas_visualisieren.ipynb
-      title: Daten visualisieren
-- file: chapters/11/11_intro
-  title: Tipps und Tricks
-  sections:
-    - file: chapters/11/subchapters/01_fetch_xhr.ipynb
-      title: Selenium ist kein Hammer
-    - file: chapters/11/subchapters/02_sessions_cookies.ipynb
-      title: Sessions und Cookies
-    - file: chapters/11/subchapters/03_apis_tokens.ipynb
-      title: Authentifizierung, Autorisierung und APIs
-    - file: chapters/11/subchapters/04_tipps_tricks.ipynb
-      title: Weitere Tipps und Tricks
+#- file: chapters/03/03_intro
+#  title: Python II
+#  sections:
+#  - file: chapters/03/subchapters/01_datentypen
+#    title: Zusammengesetzte Datentypen
+#  - file: chapters/03/subchapters/02_kontrollstrukturen
+#    title: Kontrollstrukturen
+#- file: chapters/04/04_intro
+#  title: Python III
+#  sections:
+#  - file: chapters/04/subchapters/01_funktionen
+#    title: Funktionen
+#  - file: chapters/04/subchapters/02_pakete
+#    title: Module, Pakete, Bibliotheken
+#- file: chapters/05/05_intro
+#  title: Installation und Setup
+#  sections:
+#  - file: chapters/05/subchapters/01_vorbereitung
+#    title: Vorbereitung
+#  - file: chapters/05/subchapters/02_installation_setup
+#    title: Installation und Setup
+#- file: chapters/06/06_intro
+#  title: Einstieg Webscraping
+#  sections:
+#  - file: chapters/06/subchapters/01_rechtliches.md
+#    title: Der rechtliche Rahmen
+#  - file: chapters/06/subchapters/02_html.ipynb
+#    title: HTML
+#  - file: chapters/06/subchapters/03_css.ipynb
+#    title: CSS
+#  - file: chapters/06/subchapters/04_http.ipynb
+#    title: Client, Server, HTTP
+#- file: chapters/07/07_intro
+#  title: Statische Webseiten
+#  sections:
+#    - file: chapters/07/subchapters/01_einstieg_beautifulsoup.ipynb
+#      title: Einstieg BeautifulSoup
+#    - file: chapters/07/subchapters/02_fortsetzung_beautifulsoup.ipynb
+#      title: Fortsetzung BeautifulSoup
+#- file: chapters/08/08_intro
+#  title: APIs (Exkurs)
+#  sections:
+#    - file: chapters/08/subchapters/01_apis.md
+#      title: APIs
+#    - file: chapters/08/subchapters/02_dracor_api.ipynb
+#      title: Beispiel DraCor-API
+#    - file: chapters/08/subchapters/03_loc_api.ipynb
+#      title: Beispiel LOC-API
+#- file: chapters/09/09_intro
+#  title: Dynamische Webseiten
+#  sections:
+#    - file: chapters/09/subchapters/01_statisch_vs_dynamisch.ipynb
+#      title: Statisch vs. Dynamisch?
+#    - file: chapters/09/subchapters/02_einstieg_selenium.ipynb
+#      title: Einstieg Selenium
+#    - file: chapters/09/subchapters/03_fortsetzung_selenium.ipynb
+#      title: Fortsetzung Selenium
+#- file: chapters/10/10_intro
+#  title: Pandas (Exkurs)
+#  sections:
+#    - file: chapters/10/subchapters/01_pandas_bereinigen.ipynb
+#      title: Daten bereinigen
+#    - file: chapters/10/subchapters/02_pandas_visualisieren.ipynb
+#      title: Daten visualisieren
+#- file: chapters/11/11_intro
+#  title: Tipps und Tricks
+#  sections:
+#    - file: chapters/11/subchapters/01_fetch_xhr.ipynb
+#      title: Selenium ist kein Hammer
+#    - file: chapters/11/subchapters/02_sessions_cookies.ipynb
+#      title: Sessions und Cookies
+#    - file: chapters/11/subchapters/03_apis_tokens.ipynb
+#      title: Authentifizierung, Autorisierung und APIs
+#    - file: chapters/11/subchapters/04_tipps_tricks.ipynb
+#      title: Weitere Tipps und Tricks
