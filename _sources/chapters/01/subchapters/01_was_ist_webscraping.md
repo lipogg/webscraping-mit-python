@@ -10,13 +10,13 @@ Es gibt jedoch verschiedene Methoden, um solche Arbeiten zu erleichtern:
      + Beispiele: [dracor.org](https://dracor.org/doc/api), [Chronicling America Archive](https://chroniclingamerica.loc.gov/about/api/) 
 
 2. **Web Scraping**: Wenn es keine API gibt, bleiben euch mehrere mögliche Strategien. Um euch für eine Strategie zu entscheiden, müsst ihr euch zunächst mit dem Quellcode der Website vertraut machen. 
-     + **Beautiful Soup**: Ist die Website sehr einfach strukturiert, findet ihr den Inhalt der Seite meist auf den ersten Blick direkt zwischen verschiedenen HTML-Tags. In diesem Fall könnt ihr den HTML-Baum parsen und den Inhalt der Elemente mithilfe der Python Bibliothek BeautifulSoup extrahieren.
+     + **BeautifulSoup**: Ist die Website sehr einfach strukturiert, kann der Inhalt verschiedener HTML-Elemente mithilfe der Python Bibliothek BeautifulSoup extrahiert werden.
 Beispiele: [quotes.toscrape.com](https://quotes.toscrape.com/), [projekt-gutenberg.org](https://www.projekt-gutenberg.org), [fanfiction.net](https://www.fanfiction.net)
-     + **Selenium**: Viele Webseiten sind jedoch nicht so simpel aufgebaut. Hier werden Inhalte "dynamisch" geladen, das heißt, erst dann, wenn ein:e Nutzer:in die Seite besucht, auf ein Element klickt oder weiterscrollt, werden Inhalte geladen. Hier kommen komplexe Web Scraping Strategien zum Einsatz, die wir nur oberflächlich behandeln können. Zum Scrapen solcher Inhalte verwenden wir Python Selenium.  
-Beispiele:[quotes.toscrape.com/js](https://quotes.toscrape.com/js), [twitter.com](https://twitter.com/), [youtube.com](https://www.youtube.com/)
+     + **Selenium**: Viele Webseiten sind jedoch nicht so simpel aufgebaut und Inhalte werden "dynamisch" geladen: Das heißt, erst dann, wenn ein:e Nutzer:in die Seite besucht, auf ein Element klickt oder weiterscrollt, werden Inhalte geladen. Hier kommen komplexe Web Scraping Strategien zum Einsatz, die wir nur oberflächlich behandeln können. Zum Scrapen solcher Inhalte verwenden wir Python Selenium.  
+Beispiele: [quotes.toscrape.com/js](https://quotes.toscrape.com/js), [twitter.com](https://twitter.com/), [youtube.com](https://www.youtube.com/)
 
 Da viele Webscraping-Tutorials im Web die Begriffe "statische und dynamische Webseiten" verwenden, um zwischen verschiedenen Webscraping-Strategien zu unterscheiden, dienen uns diese Begriffe zu Beginn als Orientierung. Wir werden aber im Laufe des Semesters sehen, dass diese Unterscheidung zwischen "statischen" und "dynamischen" Webseiten eigentlich nicht ganz korrekt ist. 
-In diesem Seminar werden wir uns mit allen drei Methoden auseinandersetzen. Der Schwerpunkt liegt dabei auf dem "Scrapen" statischer Webseiten und API-Abfragen, es werden aber auch Strategien zum Scrapen dynamischer Webseiten vorgestellt. 
+In diesem Seminar werden wir uns mit allen drei Methoden auseinandersetzen. Der Schwerpunkt liegt dabei auf dem Scrapen statischer Webseiten und API-Abfragen, es werden aber auch Strategien zum Scrapen dynamischer Webseiten vorgestellt. 
 
 ```{note}
 Je nach **Definition** kann argumentiert werden, dass Datenextraktion mithilfe von  API-Abfragen auch eine Form des Web Scraping ist, genauso wie das manuelle Kopieren von Websiteinhalten. Im engeren und gängigeren Sinne beschreibt Web Scraping nur das unter Punkt 2 beschriebene Parsen und Extrahieren von Inhalten aus Webseiten. Trotzdem werdet ihr in diesem Seminar lernen, wie mithilfe von einfachen Python-Skripten API-Abfragen gestellt werden können, weil das eine deutlich sauberere und einfachere Methode ist. 
