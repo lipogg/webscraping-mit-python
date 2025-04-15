@@ -11,7 +11,7 @@ Teilnahmeschein:
 Leistungsschein:
 
 * Wie Teilnahmeschein
-* Zusätzlich ein eigenständiges Projekt (ersetzt die Hausarbeit): Ihr implementiert auf der Grundlage der Inhalte aus diesem Seminar einen Web Scraper für eine Website eurer Wahl. Das Jupyter Notebook sendet ihr bis zum 31.03.2025 an l.poggel@fu-berlin.de. Die Anforderungen und die Bewertungsgrundlage besprechen wir rechtzeitig im Laufe des Semesters.
+* Zusätzlich ein eigenständiges Projekt (ersetzt die Hausarbeit): Ihr implementiert auf der Grundlage der Inhalte aus diesem Seminar einen Web Scraper für eine Website eurer Wahl. Das Jupyter Notebook sendet ihr bis zum 30.09.2025 an l.poggel@fu-berlin.de. Die Anforderungen und die Bewertungsgrundlage besprechen wir rechtzeitig im Laufe des Semesters.
 
 Kommunikation:
 
