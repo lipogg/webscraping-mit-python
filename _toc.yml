@@ -34,11 +34,11 @@ sections:
     title: Einfache Datentypen, Strings und Operatoren
   - file: chapters/02/subchapters/04_variablen
     title: Variablen
-#- file: chapters/03/03_intro
-#  title: Python II
-#  sections:
-#  - file: chapters/03/subchapters/01_datentypen
-#    title: Zusammengesetzte Datentypen
+- file: chapters/03/03_intro
+  title: Python II
+  sections:
+  - file: chapters/03/subchapters/01_datentypen
+    title: Zusammengesetzte Datentypen
 #  - file: chapters/03/subchapters/02_kontrollstrukturen
 #    title: Kontrollstrukturen
 #- file: chapters/04/04_intro
