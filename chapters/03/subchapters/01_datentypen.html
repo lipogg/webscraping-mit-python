@@ -1037,7 +1037,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apfel&#39;, &#39;kiwi&#39;, &#39;banane&#39;, &#39;orange&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;orange&#39;, &#39;kiwi&#39;, &#39;apfel&#39;, &#39;banane&#39;}
 </pre></div>
 </div>
 </div>
@@ -1053,7 +1053,7 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Rose&#39;, &#39;Narzisse&#39;, &#39;Tulpe&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Narzisse&#39;, &#39;Tulpe&#39;, &#39;Rose&#39;}
 </pre></div>
 </div>
 </div>
@@ -1214,6 +1214,37 @@ Sie werden zum Beispiel verwendet, um unkompliziert die Werte zweier Variablen z
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zwei Dictionaries kombinieren</span>
+<span class="c1"># Option 1: Kombinieren und neues Dictionary erstellen</span>
+<span class="c1"># Der **-Operator &quot;entpackt&quot; das Dictionary</span>
+<span class="n">noten_neu</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Priya&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Benoît&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">noten_kombiniert</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">noten_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">noten_neu</span><span class="p">}</span>
+<span class="n">noten_kombiniert</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Gero&#39;: 2, &#39;Hanna&#39;: 3, &#39;Lee&#39;: 2, &#39;Samir&#39;: 2, &#39;Priya&#39;: 1, &#39;Benoît&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 1: In-Place</span>
+<span class="n">noten_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">noten_neu</span><span class="p">)</span>
+<span class="n">noten_dict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Gero&#39;: 2, &#39;Hanna&#39;: 3, &#39;Lee&#39;: 2, &#39;Samir&#39;: 2, &#39;Priya&#39;: 1, &#39;Benoît&#39;: 1}
 </pre></div>
 </div>
 </div>
