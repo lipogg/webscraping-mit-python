@@ -39,8 +39,8 @@ sections:
   sections:
   - file: chapters/03/subchapters/01_datentypen
     title: Zusammengesetzte Datentypen
-#  - file: chapters/03/subchapters/02_kontrollstrukturen
-#    title: Kontrollstrukturen
+  - file: chapters/03/subchapters/02_kontrollstrukturen
+    title: Kontrollstrukturen
 #- file: chapters/04/04_intro
 #  title: Python III
 #  sections:
