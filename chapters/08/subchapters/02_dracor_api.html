@@ -876,16 +876,19 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 </section>
 <section id="daten-schreiben">
 <h3><span class="section-number">8.2.3.3. </span>Daten schreiben<a class="headerlink" href="#daten-schreiben" title="Link to this heading">#</a></h3>
-<p>Zuletzt schauen wir uns auch den Code zum Schreiben von Daten in Dateien aus der for-Schleife oben noch einmal genauer an:</p>
+<p>Zuletzt schauen wir uns auch den Code zum Schreiben von Daten in Dateien aus der for-Schleife oben noch einmal genauer an, allerdings für einen fiktiven Sprechtext “spokentext”:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># output_dir = os.path.join(os.getcwd(), &quot;spokentext_corpus&quot;)</span>
-<span class="c1"># os.makedirs(output_dir, exist_ok=True) # exists_ok: nur erstellen, falls es noch nicht existiert</span>
-<span class="c1"># filename = f&quot;{plays_selected[i]}.txt&quot;</span>
-<span class="c1"># filepath = os.path.join(output_dir, filename)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
-<span class="c1"># with open(filepath, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:</span>
-<span class="c1">#     file.write(spokentext)</span>
+<span class="n">output_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;spokentext_corpus&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># exists_ok: nur erstellen, falls es noch nicht existiert</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;iphigenie_sprechtext.txt&quot;</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+<span class="n">spokentext</span> <span class="o">=</span> <span class="s2">&quot;Hier steht der Sprechtext von Iphigenie&quot;</span> <span class="c1"># Variable mit dem Sprechtext</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spokentext</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -894,9 +897,21 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 <p>Die Syntax aus dem Beispiel oben mit “with open() as file” ist eine Abkürzung. Durch das Schlüsselwort <code class="docutils literal notranslate"><span class="pre">with</span></code> wird ein sogenannter <strong>Context Manager</strong> erstellt, der das Schließen der Datei “managed” und dabei sichergeht, dass die Datei auch dann richtig geschlossen wird, wenn bei oder nach dem Öffnen ein Fehler auftritt. Es empfiehlt sich, immer diese Syntax zu verwenden, wenn Daten in Dateien geschrieben oder aus Dateien eingelesen werden sollen. Manchmal werden Dateien aber auch manuell eingelesen und geschrieben, auch, wenn das nicht empfohlen wird. In diesem Fall muss die Datei nach dem Schreiben oder Lesen mit der Methode close() manuell geschlossen werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># f = open(&quot;beispieldatei.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;).write(spokentext)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;iphigenie_sprechtext.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spokentext</span><span class="p">)</span>
 <span class="c1"># Datei schließen</span>
-<span class="c1"># f.close()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;iphigenie_sprechtext.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spokentext</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># Datei schließen</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;close&#39;
 </pre></div>
 </div>
 </div>
@@ -904,7 +919,12 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Überprüfen, ob die Datei nach dem Schreiben geschlossen wurde:</span>
-<span class="c1"># f.closed</span>
+<span class="n">f</span><span class="o">.</span><span class="n">closed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -912,8 +932,8 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 <p>Um Dateien einzulesen, muss einfach nur write durch read ausgetauscht werden und der Modus auf “r” gesetzt werden. Auch hier lautet die empfohlene Syntax:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># with open(filepath, &quot;r&quot;, encoding=&quot;utf-8&quot;) as file:</span>
-<span class="c1">#     file.read()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+     <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -926,14 +946,9 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 
 <span class="n">output_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;spokentext_corpus&quot;</span><span class="p">)</span>
 <span class="n">filepath</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="s2">&quot;iphigenie_sprechtext.txt&quot;</span>
-<span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;Hier steht der Sprechtext von Iphigenie&quot;</span>
+<span class="n">spokentext</span> <span class="o">=</span> <span class="s2">&quot;Hier steht der Sprechtext von Iphigenie&quot;</span>
 
-<span class="n">filepath</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39
+<span class="n">filepath</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">spokentext</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
