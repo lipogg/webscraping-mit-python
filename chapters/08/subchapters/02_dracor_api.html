@@ -696,27 +696,13 @@ Der Zugriff auf ein Dictionary erfolgt wie gewohnt mit eckigen Klammern über di
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mit query nach dem Geschlechtscode</span>
 <span class="n">gender_codes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;FEMALE&quot;</span><span class="p">,</span> <span class="s2">&quot;MALE&quot;</span><span class="p">,</span> <span class="s2">&quot;UNKNOWN&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">request_urls</span><span class="p">)):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">genders</span><span class="p">)):</span>
-        <span class="n">api_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_urls</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="n">genders</span><span class="p">[</span><span class="n">j</span><span class="p">]})</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gender_codes</span><span class="p">)):</span>
+        <span class="n">api_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_urls</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="n">gender_codes</span><span class="p">[</span><span class="n">j</span><span class="p">]})</span>
         <span class="n">spokentext</span> <span class="o">=</span> <span class="n">api_response</span><span class="o">.</span><span class="n">text</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">plays_selected</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">genders</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">plays_selected</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">gender_codes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">}</span><span class="s2">.txt&quot;</span>
         <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
             <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spokentext</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">gender_codes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;FEMALE&quot;</span><span class="p">,</span> <span class="s2">&quot;MALE&quot;</span><span class="p">,</span> <span class="s2">&quot;UNKNOWN&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">request_urls</span><span class="p">)):</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">genders</span><span class="p">)):</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="n">api_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_urls</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="n">genders</span><span class="p">[</span><span class="n">j</span><span class="p">]})</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">spokentext</span> <span class="o">=</span> <span class="n">api_response</span><span class="o">.</span><span class="n">text</span>
-
-<span class="ne">NameError</span>: name &#39;genders&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -769,27 +755,24 @@ Um das zu verstehen, müssen wir erst verstehen, was für ein Objekt api_data[�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;writtenYear&#39;: None,
- &#39;wikidataId&#39;: &#39;Q112943724&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;wikidataId&#39;: &#39;Q121344428&#39;,
+ &#39;subtitle&#39;: &#39;Ein Lustspiel von einem Aufzuge&#39;,
  &#39;yearPremiered&#39;: None,
- &#39;source&#39;: &#39;Google Books&#39;,
+ &#39;source&#39;: {&#39;name&#39;: &#39;Google Books&#39;,
+  &#39;url&#39;: &#39;https://books.google.com/books?id=ZMMcQO90oRgC&amp;printsec=frontcover&#39;},
+ &#39;uri&#39;: &#39;https://dracor.org/api/v1/corpora/ger/plays/anonym-emilie-oder-die-philosophisch-verliebten&#39;,
  &#39;yearWritten&#39;: None,
- &#39;id&#39;: &#39;ger000588&#39;,
- &#39;title&#39;: &#39;Der deutsche Student&#39;,
- &#39;sourceUrl&#39;: &#39;https://books.google.com/books?id=F7XPW3ReAeIC&amp;printsec=frontcover&#39;,
- &#39;networkSize&#39;: &#39;20&#39;,
- &#39;name&#39;: &#39;anonym-der-deutsche-student&#39;,
- &#39;yearNormalized&#39;: 1779,
- &#39;yearPrinted&#39;: &#39;1779&#39;,
- &#39;printYear&#39;: &#39;1779&#39;,
- &#39;subtitle&#39;: &#39;Ein Trauerspiel in fünf Aufzügen&#39;,
- &#39;premiereYear&#39;: None,
+ &#39;id&#39;: &#39;ger000634&#39;,
+ &#39;title&#39;: &#39;Emilie oder die Philosophisch-Verliebten&#39;,
+ &#39;networkSize&#39;: &#39;6&#39;,
+ &#39;name&#39;: &#39;anonym-emilie-oder-die-philosophisch-verliebten&#39;,
+ &#39;yearNormalized&#39;: 1770,
+ &#39;yearPrinted&#39;: &#39;1770&#39;,
  &#39;authors&#39;: [{&#39;name&#39;: &#39;(Anonym)&#39;,
    &#39;fullname&#39;: &#39;(Anonym)&#39;,
    &#39;shortname&#39;: &#39;(Anonym)&#39;,
    &#39;refs&#39;: [{&#39;ref&#39;: &#39;Q4233718&#39;, &#39;type&#39;: &#39;wikidata&#39;}]}],
- &#39;networkdataCsvUrl&#39;: &#39;https://dracor.org/api/corpora/ger/play/anonym-der-deutsche-student/networkdata/csv&#39;,
- &#39;author&#39;: {&#39;name&#39;: &#39;(Anonym)&#39;}}
+ &#39;networkdataCsvUrl&#39;: &#39;https://dracor.org/api/v1/corpora/ger/plays/anonym-emilie-oder-die-philosophisch-verliebten/networkdata/csv&#39;}
 </pre></div>
 </div>
 </div>
@@ -845,11 +828,21 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Das Drama Iphigenie auf Tauris wurde 1979 geschrieben.&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Im Vergleich mit der bisher bekannten Syntax mit dem +-Operator zeigt sich, dass die Schreibweise mit f-Strings deutlich eleganter ist:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Das Drama &quot;</span> <span class="o">+</span> <span class="n">drama</span> <span class="o">+</span> <span class="s2">&quot; wurde &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">jahr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; geschrieben.&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Das Drama Iphigenie auf Tauris wurde 1979 geschrieben.&#39;
 </pre></div>
 </div>
 </div>
@@ -861,6 +854,21 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
     <span class="n">page_no</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://www.projekt-gutenberg.org/autor_in/werk/chap</span><span class="si">{</span><span class="n">page_no</span><span class="si">}</span><span class="s2">.html&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://www.projekt-gutenberg.org/autor_in/werk/chap000.html
+https://www.projekt-gutenberg.org/autor_in/werk/chap001.html
+https://www.projekt-gutenberg.org/autor_in/werk/chap002.html
+https://www.projekt-gutenberg.org/autor_in/werk/chap003.html
+https://www.projekt-gutenberg.org/autor_in/werk/chap004.html
+https://www.projekt-gutenberg.org/autor_in/werk/chap005.html
+https://www.projekt-gutenberg.org/autor_in/werk/chap006.html
+https://www.projekt-gutenberg.org/autor_in/werk/chap007.html
+https://www.projekt-gutenberg.org/autor_in/werk/chap008.html
+https://www.projekt-gutenberg.org/autor_in/werk/chap009.html
+https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 </pre></div>
 </div>
 </div>
@@ -893,6 +901,14 @@ Der Code oben ist also genau dasselbe wie diese deutlich kompliziertere for-Schl
 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spokentext</span><span class="p">)</span>
 <span class="c1"># Datei schließen</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spokentext</span><span class="p">)</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>

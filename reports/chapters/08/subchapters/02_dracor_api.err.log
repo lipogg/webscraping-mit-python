@@ -15,27 +15,16 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Mit query nach dem Geschlechtscode
-gender_codes = ["FEMALE", "MALE", "UNKNOWN"]
-for i in range(len(request_urls)):
-    for j in range(len(genders)):
-        api_response = requests.get(request_urls[i], params={"gender": genders[j]})
-        spokentext = api_response.text
-        filename = f"{plays_selected[i]}_{genders[j]}.txt"
-        filepath = os.path.join(output_dir, filename)
-        with open(filepath, "w", encoding="utf-8") as file:
-            file.write(spokentext)
+f = open(filepath, "w", encoding="utf-8")\
+f.write(spokentext)
+# Datei schließen
+f.close()
 ------------------
 
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[21], line 4[0m
-[1;32m      2[0m gender_codes [38;5;241m=[39m [[38;5;124m"[39m[38;5;124mFEMALE[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mMALE[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mUNKNOWN[39m[38;5;124m"[39m]
-[1;32m      3[0m [38;5;28;01mfor[39;00m i [38;5;129;01min[39;00m [38;5;28mrange[39m([38;5;28mlen[39m(request_urls)):
-[0;32m----> 4[0m     [38;5;28;01mfor[39;00m j [38;5;129;01min[39;00m [38;5;28mrange[39m([38;5;28mlen[39m([43mgenders[49m)):
-[1;32m      5[0m         api_response [38;5;241m=[39m requests[38;5;241m.[39mget(request_urls[i], params[38;5;241m=[39m{[38;5;124m"[39m[38;5;124mgender[39m[38;5;124m"[39m: genders[j]})
-[1;32m      6[0m         spokentext [38;5;241m=[39m api_response[38;5;241m.[39mtext
+[0;36m  Cell [0;32mIn[33], line 2[0;36m[0m
+[0;31m    f.write(spokentext)[0m
+[0m    ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
 
-[0;31mNameError[0m: name 'genders' is not defined
 
