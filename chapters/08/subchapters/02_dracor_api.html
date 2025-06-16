@@ -897,18 +897,10 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 <p>Die Syntax aus dem Beispiel oben mit “with open() as file” ist eine Abkürzung. Durch das Schlüsselwort <code class="docutils literal notranslate"><span class="pre">with</span></code> wird ein sogenannter <strong>Context Manager</strong> erstellt, der das Schließen der Datei “managed” und dabei sichergeht, dass die Datei auch dann richtig geschlossen wird, wenn bei oder nach dem Öffnen ein Fehler auftritt. Es empfiehlt sich, immer diese Syntax zu verwenden, wenn Daten in Dateien geschrieben oder aus Dateien eingelesen werden sollen. Manchmal werden Dateien aber auch manuell eingelesen und geschrieben, auch, wenn das nicht empfohlen wird. In diesem Fall muss die Datei nach dem Schreiben oder Lesen mit der Methode close() manuell geschlossen werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>\
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spokentext</span><span class="p">)</span>
 <span class="c1"># Datei schließen</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spokentext</span><span class="p">)</span>
-    <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
@@ -949,11 +941,21 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39
+</pre></div>
+</div>
+</div>
 </div>
 <p>Genauso leicht können Daten wieder eingelesen werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepath</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hier steht der Sprechtext von Iphigenie&#39;
 </pre></div>
 </div>
 </div>
