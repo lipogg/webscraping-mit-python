@@ -73,13 +73,13 @@ sections:
       title: Einstieg BeautifulSoup
     - file: chapters/07/subchapters/02_fortsetzung_beautifulsoup.ipynb
       title: Fortsetzung BeautifulSoup
-#- file: chapters/08/08_intro
-#  title: APIs (Exkurs)
-#  sections:
-#    - file: chapters/08/subchapters/01_apis.md
-#      title: APIs
-#    - file: chapters/08/subchapters/02_dracor_api.ipynb
-#      title: Beispiel DraCor-API
+- file: chapters/08/08_intro
+  title: APIs (Exkurs)
+  sections:
+    - file: chapters/08/subchapters/01_apis.md
+      title: APIs
+    - file: chapters/08/subchapters/02_dracor_api.ipynb
+      title: Beispiel DraCor-API
 #    - file: chapters/08/subchapters/03_loc_api.ipynb
 #      title: Beispiel LOC-API
 #- file: chapters/09/09_intro
