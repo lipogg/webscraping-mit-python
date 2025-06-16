@@ -23,16 +23,20 @@ Wenn wir in diesem Abschnitt von APIs sprechen, dann meinen wir aber eine ganz b
 Schaubild Web-APIs. Quelle: [MDN Contributors (2024)](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction)
 :::
 
-Web-APIs ermöglichen verschiedenen (Web-)Anwendungen, und konkret Client und Server, miteinander zu kommunizieren und Daten auszutauschen oder die Funktionalitäten der jeweiligen Anwendung zu nutzen. 
+Web-APIs ermöglichen Client und Server, miteinander zu kommunizieren und Daten auszutauschen und sie erlauben Web-Anwendungen, die Funktionalitäten anderer Anwendungen zu nutzen. 
+Es gibt verschiedene Arten von Web-APIs. Deswegen lohnt sich zunächst eine Begriffsklärung. 
 
-Beim Aufruf der Seite [https://quotes.toscrape.com/js/](https://quotes.toscrape.com/js/) haben wir beispielsweise mithilfe der Browser-Entwicklertools beobachtet, dass unter dem Tab "Netzwerk" mehrere HTTP-Anfragen gestellt wurden.
-Es wurde zum Beispiel eine Javascript-Datei mithilfe einer HTTP-Anfrage vom Webserver angefragt. 
-Diese Anfrage hat der Browser "automatisch" gestellt, ohne, dass wir dafür etwas tun mussten. Dabei hat der Browser unter der Motorhaube auf eine Web-API zugegriffen, genauer gesagt auf eine Browser-API, die in den Browser integriert ist.
+Beim Aufruf verschiedener Webseiten haben wir mithilfe der Browser-Entwicklertools beobachtet, dass unter dem Tab "Netzwerk" neben der Anfrage für das eigentliche HTML-Dokument mehrere weitere HTTP-Anfragen gestellt wurden.
+Diese Anfragen hat der Browser "automatisch" gestellt, ohne, dass wir dafür etwas tun mussten. Wenn externe Inhalte in <script>, <img> oder anderen HTML-Tags angegeben sind, wie es bei den CSS- und JavaScript-Dateien auf der Seite [quotes.toscrape.com](https://quotes.toscrape.com/) der Fall war, lädt der Browser die Inhalte direkt beim Laden der Webseite. 
+Beim Laden wird die Struktur der HTML-Seite ausgelesen und in eine baumähnlichen Struktur, das sogenannte Document Object Model (kurz DOM) überführt. Wenn der Browser dabei auf Links zu externen Inhalten stößt, stellt er eine HTTP-Anfrage, um diese Inhalte einzubinden.  
+Manchmal werden Inhalte aber auch nachträglich nach dem ersten Laden der Webseite mithilfe von JavaScript in das HTML-Gerüst eingefügt (das besprechen wir noch ausführlich). 
+In diesem Fall greift der JavaScript-Code dabei unter der Motorhaube auf eine Web-API zurück, und zwar genauer gesagt auf eine **Browser-API**, die in den Browser integriert ist und die ermöglicht, einzelne Teile des HTML-DOM-Baums nachträglich zu ändern. Diese Browser-API heißt DOM-API. 
+Wenn die Inhalte, die eingefügt werden sollen, zusätzlich von einem anderen Server angefragt werden, wird für die Anfrage der einzufügenden Inhalte eine weitere Browser-API verwendet, häufig die sogenannte Fetch-API. 
+In diesem Fall fragt der Browser mithilfe von Fetch zuerst eine weitere Art von Web-API an, eine **Server-API** (oft auch **Third Party API** genannt), um die Daten zu bekommen. Dann fügt JavaScript die Daten mithilfe der DOM API in die Seite ein.
+Server-APIs werden oft von Websitebetreiber:innen öffentlich angeboten, um Nutzer:innen und anderen Anwendungen einen direkten Zugang zu Daten auf dem Server zu ermöglichen.
+Genau diese APIs können auch wir als Forscher:innen anzapfen, um Forschungsdaten direkt herunterzuladen, zum Beispiel Metadaten zum Bestand eines Archivs, Statistiken, oder sogar Volltexte, Musik- oder Bildateien. 
 
-APIs können aber auch von Websitebetreiber:innen selbst bereitgestellt werden, um Nutzer:innen und anderen Anwendungen einen direkten Zugang zu Daten auf dem Server zu ermöglichen.
-Genau diese APIs können wir als Forscher:innen anzapfen, um Forschungsdaten direkt herunterzuladen, zum Beispiel Metadaten zum Bestand eines Archivs, Statistiken, oder sogar Volltexte, Musik- oder Bildateien. 
-
-Bei der Entwicklung von Web-APIs greifen Entwickler:innen auf vordefinierte Paradigmen zurück, also auf Ansätze, wie die Gesamtstruktur einer API entworfen wird. 
+Bei der Entwicklung von solchen Server-APIs greifen Entwickler:innen auf vordefinierte Paradigmen zurück, also auf Ansätze, wie die Gesamtstruktur einer API entworfen wird. 
 Die meist verwendete Ansatz zum Entwerfen von dieser Art von Web-API nennt sich REST (Representational State Transfer, dt. "Repräsentationsstatustransfer").
 APIs, die nach diesem Ansatz implementiert sind, nennt man auch REST APIs (oder manchmal RESTful API).
 REST APIs nutzen zur Kommunikation zwischen Client und Server das HTTP-Protokoll.
@@ -48,7 +52,7 @@ Schaubild REST API. Quelle: [Alex Xu und Sahn Lam (2022)](https://www.youtube.co
 
 Bei der Anfrage einer Website war der Body einer erfolgreichen HTTP-Antwort ein HTML-Dokument, das in Python als String repräsentiert wird. 
 Standardmäßig ist der Body einer HTTP-Antwort auf eine Anfrage über eine REST API dagegen ein JSON-String. JSON ist ein Datenformat in menschenlesbarer Textform zum Zweck des Datensaustauschs zwischen Anwendungen.
-Die Syntax einer JSON-Datei sieht in etwa so aus wie ein Python-Dictionary. 
+Die Syntax einer JSON-Datei sieht in etwa so aus wie ein Python-Dictionary: Die Inhalte werden hier ebenfalls als Schlüssel-Wert-Paare abgebildet. 
 Während HTML-Strings zur Weiterverarbeitung in BeautifulSoup-Objekte umgewandelt werden können, können JSON-Strings deswegen zur Weiterverarbeitung einfach in Python Dictionaries umgewandelt werden. 
 
 REST APIs können aber auch so konfiguriert werden, dass sie Daten direkt in anderen Formaten zurückgeben, zum Beispiel als Plaintext oder Bilddateien. 
