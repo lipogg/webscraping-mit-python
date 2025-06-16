@@ -433,8 +433,8 @@ Sie definiert, welche Anfragen gestellt werden können, wie die Antworten ausseh
 Es gibt verschiedene Arten von Web-APIs. Deswegen lohnt sich zunächst eine Begriffsklärung.</p>
 <p>Beim Aufruf verschiedener Webseiten haben wir mithilfe der Browser-Entwicklertools beobachtet, dass unter dem Tab “Netzwerk” neben der Anfrage für das eigentliche HTML-Dokument mehrere weitere HTTP-Anfragen gestellt wurden.
 Diese Anfragen hat der Browser “automatisch” gestellt, ohne, dass wir dafür etwas tun mussten. Wenn externe Inhalte in <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code> oder anderen HTML-Tags angegeben sind, wie es bei den CSS- und JavaScript-Dateien auf der Seite <a class="reference external" href="https://quotes.toscrape.com/">quotes.toscrape.com</a> der Fall war, lädt der Browser die Inhalte direkt beim Laden der Webseite.
-Beim Laden wird die Struktur der HTML-Seite ausgelesen und in eine baumähnlichen Struktur, das sogenannte Document Object Model (kurz DOM) überführt. Wenn der Browser dabei auf Links zu externen Inhalten stößt, stellt er eine HTTP-Anfrage, um diese Inhalte einzubinden.<br />
-Manchmal werden Inhalte aber auch nachträglich nach dem ersten Laden der Webseite mithilfe von JavaScript in das HTML-Gerüst eingefügt (das besprechen wir noch ausführlich).
+Beim Laden wird die Struktur der HTML-Seite ausgelesen und in eine baumähnlichen Struktur, das sogenannte Document Object Model (kurz DOM) überführt. Wenn der Browser dabei auf Links zu externen Inhalten stößt, stellt er eine HTTP-Anfrage, um diese Inhalte einzubinden.</p>
+<p>Manchmal werden Inhalte aber auch nachträglich nach dem ersten Laden der Webseite mithilfe von JavaScript in das HTML-Gerüst eingefügt (das besprechen wir noch ausführlich).
 In diesem Fall greift der JavaScript-Code dabei unter der Motorhaube auf eine Web-API zurück, und zwar genauer gesagt auf eine <strong>Browser-API</strong>, die in den Browser integriert ist und die ermöglicht, einzelne Teile des HTML-DOM-Baums nachträglich zu ändern. Diese Browser-API heißt DOM-API.
 Wenn die Inhalte, die eingefügt werden sollen, zusätzlich von einem anderen Server angefragt werden, wird für die Anfrage der einzufügenden Inhalte eine weitere Browser-API verwendet, häufig die sogenannte Fetch-API.
 In diesem Fall fragt der Browser mithilfe von Fetch zuerst eine weitere Art von Web-API an, eine <strong>Server-API</strong> (oft auch <strong>Third Party API</strong> genannt), um die Daten zu bekommen. Dann fügt JavaScript die Daten mithilfe der DOM API in die Seite ein.
@@ -461,7 +461,7 @@ Während HTML-Strings zur Weiterverarbeitung in BeautifulSoup-Objekte umgewandel
 <p>REST APIs können aber auch so konfiguriert werden, dass sie Daten direkt in anderen Formaten zurückgeben, zum Beispiel als Plaintext oder Bilddateien.
 Die genaue Konfiguration und das unterstützte Spektrum an Antwortformaten hängen von der konkreten Implementierung der API ab.</p>
 <p>Zur Abfrage einer Ressource wird dabei in der HTTP-Anfrage eine <strong>URI (= Uniform Resource Identifier)</strong>, also in dem Fall ein Pfad zu einer konkreten Ressource auf einem Server, angegeben.
-Diese URIs nennen sich dann auch **Endpunkte oder “Endpoints”.</p>
+Diese URIs nennen sich dann auch <strong>Endpunkte</strong> oder “Endpoints”.</p>
 <p>Ein Unternehmen kann zum Beispiel über eine öffentliche API mithilfe verschiedener URIs verschiedene Arten von Daten bereitstellen.
 Im Beispiel unten wird eine Auflistung aller alle Nutzer:innen eines sozialen Netzwerks im JSON-Format als Antwort auf die HTTP-Anfrage zurückgegeben, aber es sind auch zwei weitere Endpunkte abgebildet: Eine Auflistung aller Posts der Nutzer:innen sowie Daten zu deren Follower:innen.</p>
 <figure class="align-default" id="id244">
