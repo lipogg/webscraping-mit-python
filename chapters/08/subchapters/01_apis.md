@@ -35,9 +35,12 @@ In diesem Fall greift der JavaScript-Code dabei unter der Motorhaube auf eine We
 Wenn die Inhalte, die eingefügt werden sollen, zusätzlich von einem anderen Server angefragt werden, wird für die Anfrage der einzufügenden Inhalte eine weitere Browser-API verwendet, häufig die sogenannte Fetch-API. 
 In diesem Fall fragt der Browser mithilfe von Fetch zuerst eine weitere Art von Web-API an, eine **Server-API** (oft auch **Third Party API** genannt), um die Daten zu bekommen. Dann fügt JavaScript die Daten mithilfe der DOM API in die Seite ein.
 Server-APIs werden oft von Websitebetreiber:innen öffentlich angeboten, um Nutzer:innen und anderen Anwendungen einen direkten Zugang zu Daten auf dem Server zu ermöglichen.
-Genau diese APIs können auch wir als Forscher:innen anzapfen, um Forschungsdaten direkt herunterzuladen, zum Beispiel Metadaten zum Bestand eines Archivs, Statistiken, oder sogar Volltexte, Musik- oder Bildateien. 
+Diese APIs können auch wir als Forscher:innen anzapfen, um Forschungsdaten direkt herunterzuladen, zum Beispiel Metadaten zum Bestand eines Archivs, Statistiken oder sogar Volltexte, Musik- oder Bildateien. 
+Viele Institutionen bieten sogar mehrere verschiedene APIs für verschiedene Zielgruppen an: APIs, die zur hier dargestellten Einbindung von Inhalten in andere Webseiten und Anwendungen gedacht sind, und APIs speziell für Forscher:innen.
+Insbesondere Bibliotheken, Archive und Forschungsprojekte stellen daneben oft APIs bereit, die vor allem für die Forschung gedacht sind und deswegen oft etwas ausführlicher und weniger technisch dokumentiert sind, weil sie sich nicht and Entwickler:innen richten. 
+Aufgrund der Vielfalt der Zielgruppen und Arten von APIs muss man manchmal etwas länger nach den Dokumentationsseiten suchen. Oft verstecken sie sich unter Menüpunkten wie "For Developers", "API", "Tools", "Services", "Dokumentation" o.Ä.
 
-Bei der Entwicklung von solchen Server-APIs greifen Entwickler:innen auf vordefinierte Paradigmen zurück, also auf Ansätze, wie die Gesamtstruktur einer API entworfen wird. 
+Bei der Entwicklung von Server-APIs greifen Entwickler:innen auf vordefinierte Paradigmen zurück, also auf Ansätze, wie die Gesamtstruktur einer API entworfen wird. 
 Die meist verwendete Ansatz zum Entwerfen von dieser Art von Web-API nennt sich REST (Representational State Transfer, dt. "Repräsentationsstatustransfer").
 APIs, die nach diesem Ansatz implementiert sind, nennt man auch REST APIs (oder manchmal RESTful API).
 REST APIs nutzen zur Kommunikation zwischen Client und Server das HTTP-Protokoll.
