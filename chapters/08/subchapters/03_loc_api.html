@@ -638,7 +638,7 @@ Als Beispiel rufen wir die Seite <a class="reference external" href="https://chr
 <div class="tip admonition">
 <p class="admonition-title">Verständnisfragen</p>
 <ul class="simple">
-<li><p>Betrachtet die Ergebnisse für unsere Anfrage über das User Interface der Website: <a class="reference external" href="https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;amp;phrasetext=book+review">https://chroniclingamerica.loc.gov/search/pages/results/?andtext=&amp;phrasetext=book+review</a>. Stimmt die berechnete Anzahl der Ergebnisseiten?</p></li>
+<li><p>Betrachtet die Ergebnisse für unsere Anfrage über das User Interface der Website: <a class="reference external" href="https://chroniclingamerica.loc.gov/search/pages/results/?phrasetext=book+review">https://chroniclingamerica.loc.gov/search/pages/results/?phrasetext=book+review</a>. Stimmt die berechnete Anzahl der Ergebnisseiten?</p></li>
 <li><p>Gibt es noch eine andere Möglichkeit, die letzte Ergebnisseite zu erkennen?</p></li>
 <li><p>Was bedeuten die Schlüssel <code class="docutils literal notranslate"><span class="pre">endIndex</span></code> und <code class="docutils literal notranslate"><span class="pre">startIndex</span></code>? Welchen Wert haben Sie auf der ersten Ergebnisseite? Welchen Wert auf der letzten?</p></li>
 </ul>
@@ -931,6 +931,14 @@ for page in range(1, pages + 1):
 <p class="admonition-title">Note</p>
 <p>Konstanten (Constants)</p>
 <p>Im Code oben verwenden wir Großbuchstaben, um die Variablen <code class="docutils literal notranslate"><span class="pre">CALLS_PER_PERIOD_SEC</span></code> und <code class="docutils literal notranslate"><span class="pre">PERIOD_SEC</span></code> zu benennen. Diese Schreibweise hat sich in Python für Konstanten etabliert, also für Variablen, deren Wert sich im Programmverlauf nicht ändert.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wahl des Dateinamens</p>
+<p>In den Beispielen auf dieser Seite haben wir den Titel der Zeitschrift und das Publikationsdatum der jeweiligen Ausgabe als Dateinamen gewählt. Diese Metadaten sind aber eigentlich nicht ausreichend, um den Dateiinhalt eindeutig zu identifizieren, denn die Suchergebnisse beziehen sich nur auf eine Seite aus der angegebenen Ausgabe. Sobald unsere Suche mehr als eine Seite aus derselben Ausgabe liefert, gibt es mehrere Dateien mit denselben Namen, sodass Dateien möglicherweise überschrieben werden! Wie kann das Problem gelöst werden?</p>
+<p>Lösung 1: Es werden noch mehr Metadaten, zum Beispiel die Seitenzahl, in den Dateinamen aufgenommen. Aber Achtung: Dateipfade dürfen auf den meisten Betriebssystemen höchstens 255 Zeichen lang sein. Wir müssen uns bei der Wahl der Metadaten also sicher sein, dass unter dem entsprechenden Schlüssel niemals eine sehr lange Zeichenkette steht. Wenn wir uns dem nicht sicher sein können, sollten zu lange Dateinamen mit if…else erkannt und behandelt (z.B. gekürzt) werden. Für die Validierung von Dateinamen gibt es auch ein spezialisiertes Paket, <a class="reference external" href="https://pathvalidate.readthedocs.io/en/latest/pages/reference/function.html"><code class="docutils literal notranslate"><span class="pre">pathvalidate</span></code></a>.</p>
+<p>Lösung 2: Wir verwenden den Schlüssel “ID” als Dateinamen. Die ID ist immer eine Zeichenkette der Form “/lccn/sn86069395/1901-04-16/ed-1/seq-3/”. Allerdings müssen wir uns dann auch eine effiziente Strategie, wie zu dem Suchergebnis mit der angegebenen ID weitere Metadaten abgerufen werden können, überlegen und die entsprechende Abfragelogik in Python implementieren. Ein weiteres Problem stellt die ID selbst dar, denn die Schrägstriche sind von Schrägstrichen, die Teil des Dateipfads sind, nicht zu unterscheiden. Beim Schreiben der Datei versucht der Computer also, ein Verzeichnis mit dem Namen lccn zu finden, das vermutlich nicht existiert. Um die ID verwenden zu können, können die Schrägstriche aber einfach durch Unterstriche ersetzt werden. Das geht zum Beispiel mit dem Modul <a class="reference external" href="https://docs.python.org/3/library/re.html"><code class="docutils literal notranslate"><span class="pre">re</span></code></a>, das wir ganz am Ende des Semesters kurz besprechen werden.</p>
+<p>Ihr seht: einen optimalen Dateinamen gibt es oft nicht. <strong>Als Faustregel solltet ihr euch merken, dass Dateinamen immer den Inhalt eindeutig indentifizieren sollten, keine Sonderzeichen wie Schrägstriche und Leerzeichen enthalten sollten, und nicht zu lang sein dürfen.</strong></p>
 </div>
 </section>
 <section id="quellen">
