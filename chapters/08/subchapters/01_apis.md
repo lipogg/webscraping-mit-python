@@ -184,6 +184,7 @@ Assoziiertes Projekt: https://www.distant-reading.net/
 - HathiTrust derived datasets: https://analytics.hathitrust.org/deriveddatasets; https://htrc.atlassian.net/wiki/spaces/COM/pages/43287791/HTRC+Derived+Datasets
 - Somar Social Media Archive: https://socialmediaarchive.org/
 - Digitale Sammlungen der Österreichischen Nationalbibliothek: https://labs.onb.ac.at/de/datasets/
+- Hansard Corpus (britische Parlamentsreden 1802-2023): https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=857509
 
 In diesem Fall sind natürlich weder Web Scraping noch eine API notwendig, um an die Daten zu gelangen, aber es muss beachtet werden, dass diese Daten nicht unbedingt tagesaktuell sind. 
 Bevor ihr anfangt, ein Skript zum Scrapen einer Seite zu schreiben, solltet ihr immer überprüfen, ob die gesuchten Daten nicht vielleicht auch über eine API oder als Data Dump verfügbar sind.
