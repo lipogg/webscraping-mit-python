@@ -211,10 +211,9 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../06/06_intro.html">6. Einstieg Webscraping</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/01_rechtliches.html">6.1. Der rechtliche Rahmen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/02_html.html">6.2. HTML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/03_css.html">6.3. CSS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/04_http.html">6.4. Client, Server, HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/02_html.html">6.1. HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/03_css.html">6.2. CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/04_http.html">6.3. Client, Server, HTTP</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../07/07_intro.html">7. Statische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -232,6 +231,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/02_einstieg_selenium.html">9.2. Einstieg Selenium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../10/10_intro.html">10. Pandas (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/01_pandas_bereinigen.html">10.1. Daten bereinigen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/02_pandas_visualisieren.html">10.2. Daten visualisieren</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../11/11_intro.html">11. Tipps und Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/01_fetch_xhr.html">11.1. Selenium ist kein Hammer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/02_sessions_cookies.html">11.2. Sessions und Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/03_apis_tokens.html">11.3. Authentifizierung, Autorisierung und APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/04_tipps_tricks.html">11.4. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
 </ul>
@@ -430,10 +441,10 @@ Sie definiert, welche Anfragen gestellt werden können, wie die Antworten ausseh
 </section>
 <section id="web-apis">
 <h2><span class="section-number">8.1.2. </span>Web-APIs<a class="headerlink" href="#web-apis" title="Link to this heading">#</a></h2>
-<figure class="align-default" id="id244">
+<figure class="align-default" id="id245">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/web_apis.png"><img alt="Web APIs Schaubild" class="bg-transparent" src="../../../_images/web_apis.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Schaubild Web-APIs. Quelle: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction">MDN Contributors (2024)</a></span><a class="headerlink" href="#id244" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Schaubild Web-APIs. Quelle: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction">MDN Contributors (2024)</a></span><a class="headerlink" href="#id245" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Web-APIs ermöglichen Client und Server, miteinander zu kommunizieren und Daten auszutauschen und sie erlauben Web-Anwendungen, die Funktionalitäten anderer Anwendungen zu nutzen.
@@ -455,10 +466,10 @@ Die meist verwendete Ansatz zum Entwerfen von dieser Art von Web-API nennt sich 
 APIs, die nach diesem Ansatz implementiert sind, nennt man auch REST APIs (oder manchmal RESTful API).
 REST APIs nutzen zur Kommunikation zwischen Client und Server das HTTP-Protokoll.
 Da REST APIs HTTP verwenden, können bei der Abfrage von Ressourcen über REST APIs ebenfalls die HTTP-Methode GET verwendet werden.</p>
-<figure class="align-default" id="id245">
+<figure class="align-default" id="id246">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/rest_api.png"><img alt="REST API Schaubild" class="bg-transparent" src="../../../_images/rest_api.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Schaubild REST API. Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=-mN3VyJuCjM">Alex Xu und Sahn Lam (2022)</a></span><a class="headerlink" href="#id245" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Schaubild REST API. Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=-mN3VyJuCjM">Alex Xu und Sahn Lam (2022)</a></span><a class="headerlink" href="#id246" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -474,10 +485,10 @@ Die genaue Konfiguration und das unterstützte Spektrum an Antwortformaten häng
 Diese URIs nennen sich dann auch <strong>Endpunkte</strong> oder “Endpoints”.</p>
 <p>Ein Unternehmen kann zum Beispiel über eine öffentliche API mithilfe verschiedener URIs verschiedene Arten von Daten bereitstellen.
 Im Beispiel unten wird eine Auflistung aller alle Nutzer:innen eines sozialen Netzwerks im JSON-Format als Antwort auf die HTTP-Anfrage zurückgegeben, aber es sind auch zwei weitere Endpunkte abgebildet: Eine Auflistung aller Posts der Nutzer:innen sowie Daten zu deren Follower:innen.</p>
-<figure class="align-default" id="id246">
+<figure class="align-default" id="id247">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/rest_api_3.png"><img alt="REST API Schaubild" class="bg-transparent" src="../../../_images/rest_api_3.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text">Schaubild Beispielabfrage über eine REST API. Quelle: <a class="reference external" href="https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc">Alexander Barge</a></span><a class="headerlink" href="#id246" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text">Schaubild Beispielabfrage über eine REST API. Quelle: <a class="reference external" href="https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc">Alexander Barge</a></span><a class="headerlink" href="#id247" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

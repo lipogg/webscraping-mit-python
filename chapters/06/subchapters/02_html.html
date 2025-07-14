@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6.2. HTML: Hypertext Markup Language &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>6.1. HTML: Hypertext Markup Language &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,8 +61,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="6.3. CSS: Cascading Style Sheets" href="03_css.html" />
-    <link rel="prev" title="6.1. Der rechtliche Rahmen" href="01_rechtliches.html" />
+    <link rel="next" title="6.2. CSS: Cascading Style Sheets" href="03_css.html" />
+    <link rel="prev" title="6. Einstieg Webscraping" href="../06_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -211,10 +211,9 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../06_intro.html">6. Einstieg Webscraping</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01_rechtliches.html">6.1. Der rechtliche Rahmen</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.2. HTML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_css.html">6.3. CSS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04_http.html">6.4. Client, Server, HTTP</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.1. HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_css.html">6.2. CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_http.html">6.3. Client, Server, HTTP</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../07/07_intro.html">7. Statische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -232,6 +231,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/02_einstieg_selenium.html">9.2. Einstieg Selenium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../10/10_intro.html">10. Pandas (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/01_pandas_bereinigen.html">10.1. Daten bereinigen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/02_pandas_visualisieren.html">10.2. Daten visualisieren</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../11/11_intro.html">11. Tipps und Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/01_fetch_xhr.html">11.1. Selenium ist kein Hammer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/02_sessions_cookies.html">11.2. Sessions und Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/03_apis_tokens.html">11.3. Authentifizierung, Autorisierung und APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/04_tipps_tricks.html">11.4. Weitere Tipps und Tricks</a></li>
 </ul>
 </li>
 </ul>
@@ -397,9 +408,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einstieg-webseite-im-browser-untersuchen">6.2.1. Einstieg: Webseite im Browser untersuchen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-aufbau-elemente-und-attribute">6.2.2. HTML: Aufbau, Elemente und Attribute</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">6.2.2.1. Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einstieg-webseite-im-browser-untersuchen">6.1.1. Einstieg: Webseite im Browser untersuchen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-aufbau-elemente-und-attribute">6.1.2. HTML: Aufbau, Elemente und Attribute</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">6.1.2.1. Quellen</a></li>
 </ul>
 </li>
 </ul>
@@ -414,7 +425,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="html-hypertext-markup-language">
-<h1><span class="section-number">6.2. </span>HTML: Hypertext Markup Language<a class="headerlink" href="#html-hypertext-markup-language" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">6.1. </span>HTML: Hypertext Markup Language<a class="headerlink" href="#html-hypertext-markup-language" title="Link to this heading">#</a></h1>
 <figure class="align-default" id="markdown-fig">
 <a class="bg-transparent reference internal image-reference" href="../../../_images/html_css_js.png"><img alt="HTML, CSS und JavaScript" class="bg-transparent" src="../../../_images/html_css_js.png" style="width: 50%;" /></a>
 <figcaption>
@@ -422,7 +433,7 @@ document.write(`
 </figcaption>
 </figure>
 <section id="einstieg-webseite-im-browser-untersuchen">
-<h2><span class="section-number">6.2.1. </span>Einstieg: Webseite im Browser untersuchen<a class="headerlink" href="#einstieg-webseite-im-browser-untersuchen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.1.1. </span>Einstieg: Webseite im Browser untersuchen<a class="headerlink" href="#einstieg-webseite-im-browser-untersuchen" title="Link to this heading">#</a></h2>
 <p>Eine einzelne Webseite ist im Grunde einfach ein Dokument im World Wide Web, das über eine eindeutige URL (Uniform Resource Locator) abgerufen werden kann. Ein Webbrowser interpretiert das Dokument und stellt es dar. Das Dokument definiert die Struktur, und gegebenenfalls das Aussehen und/oder Funktionalitäten der Webseite. Der strukturelle Aufbau und die Inhalte einer Webseite werden in der Auszeichnungssprache HTML beschrieben. Das Design einer Webseite wird in der Stylesheet-Sprache CSS beschrieben. Und das Verhalten und interaktive Funktionen, die die Webseite ihren Nutzer:innen bieten soll, können in der Programmiersprache JavaScript beschrieben werden.
 Ein Webseitendokument hat die Dateiendung .html. Zusätzliche CSS- und JavaScript-Elemente werden in das HTML-Dokument  eingebunden, indem entweder dierkt CSS oder JavaScript-Code in das HTML-Dokument geschrieben wird, oder, indem ein Verweis auf eine externe CSS- oder JavaScript-Datei in das HTML-Dokument eingefügt wird.</p>
 <p>Wir wollen uns die verschiedenen Komponenten einer Webseite genauer ansehen. Öffnet dazu die folgende Website im Chrome Browser: <a class="reference external" href="https://quotes.toscrape.com/js/">https://quotes.toscrape.com/js/</a></p>
@@ -434,7 +445,7 @@ Ein Webseitendokument hat die Dateiendung .html. Zusätzliche CSS- und JavaScrip
 </div>
 </section>
 <section id="html-aufbau-elemente-und-attribute">
-<h2><span class="section-number">6.2.2. </span>HTML: Aufbau, Elemente und Attribute<a class="headerlink" href="#html-aufbau-elemente-und-attribute" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.1.2. </span>HTML: Aufbau, Elemente und Attribute<a class="headerlink" href="#html-aufbau-elemente-und-attribute" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p>“Die Hypertext Markup Language (HTML), ist eine textbasierte Auszeichnungssprache zur Strukturierung digitaler Dokumente wie Texte mit Hyperlinks, Bildern und anderen Inhalten. HTML-Dokumente sind die Grundlage des World Wide Web und werden von Webbrowsern dargestellt. HTML dient als Auszeichnungssprache dazu, einen Text semantisch zu strukturieren, aber nicht zu formatieren. Die visuelle Darstellung ist nicht Teil der HTML-Spezifikationen und wird durch den Webbrowser mit Gestaltungsvorlagen wie CSS bestimmt.”</p>
 </div></blockquote>
@@ -489,7 +500,7 @@ Recherchiert selbst:</p>
 </figcaption>
 </figure>
 <section id="quellen">
-<h3><span class="section-number">6.2.2.1. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.1.2.1. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h3>
 <div class="docutils container" id="id4">
 <ol class="arabic simple" start="1">
 <li id="id88"><p>Selfhtml Wiki. 2023. URL: <a class="reference external" href="https://wiki.selfhtml.org/wiki/HTML">https://wiki.selfhtml.org/wiki/HTML</a>.</p></li>
@@ -538,12 +549,12 @@ Recherchiert selbst:</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="01_rechtliches.html"
+       href="../06_intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6.1. </span>Der rechtliche Rahmen</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Einstieg Webscraping</p>
       </div>
     </a>
     <a class="right-next"
@@ -551,7 +562,7 @@ Recherchiert selbst:</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.3. </span>CSS: Cascading Style Sheets</p>
+        <p class="prev-next-title"><span class="section-number">6.2. </span>CSS: Cascading Style Sheets</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -571,9 +582,9 @@ Recherchiert selbst:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einstieg-webseite-im-browser-untersuchen">6.2.1. Einstieg: Webseite im Browser untersuchen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-aufbau-elemente-und-attribute">6.2.2. HTML: Aufbau, Elemente und Attribute</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">6.2.2.1. Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einstieg-webseite-im-browser-untersuchen">6.1.1. Einstieg: Webseite im Browser untersuchen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-aufbau-elemente-und-attribute">6.1.2. HTML: Aufbau, Elemente und Attribute</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">6.1.2.1. Quellen</a></li>
 </ul>
 </li>
 </ul>
