@@ -8,12 +8,18 @@ logo: logo.png
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: auto
   timeout          : 800 # how long each cell is allowed to run
   exclude_patterns          : ["*selenium.ipynb",
                                "*pandas*.ipynb",
                                "02_sessions_cookies.ipynb",
-                               "03_apis_tokens.ipynb"]    # Notebooks to exclude from execution
+                               "03_apis_tokens.ipynb",
+                              ]    # Notebooks to exclude from execution
+
+  run_in_temp: false
+
+only_build_toc_files: true
+
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
