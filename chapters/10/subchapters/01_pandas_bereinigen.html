@@ -458,30 +458,31 @@ document.write(`
     <span class="s2">&quot;https://www.pinterest.de/pin/1108730001991298438/&quot;</span><span class="p">,</span>
     <span class="s2">&quot;https://de.pinterest.com/pin/314759461475004846/&quot;</span>
 <span class="p">]</span>
-<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
   
-<span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">tierlinks</span><span class="p">:</span>
-    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
-    <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-    <span class="n">comment_elems</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/div/div/span/span[3]/span&quot;</span><span class="p">))</span>
-    <span class="p">)</span>
-    <span class="n">commentator_elems</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/div/div/span/span[2]/a&quot;</span><span class="p">))</span>
-    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">tierlinks</span><span class="p">:</span>
+        <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+        <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="n">comment_elems</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/div/div/span/span[3]/div&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="n">commentator_elems</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-test-id=&#39;author-and-comment-container&#39;]/div/div/span/span[2]/a&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
 
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">comment_elems</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># oder len(commentator_elems); das ist egal</span>
         <span class="n">comments</span> <span class="o">=</span> <span class="p">[</span><span class="n">comment</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">comment</span> <span class="ow">in</span> <span class="n">comment_elems</span><span class="p">]</span>
         <span class="n">commentators</span> <span class="o">=</span> <span class="p">[</span><span class="n">commentator</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">commentator</span> <span class="ow">in</span> <span class="n">commentator_elems</span><span class="p">]</span>
-    
-    <span class="n">comments_dict</span><span class="p">[</span><span class="s2">&quot;link&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">link</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">comments</span><span class="p">))</span> <span class="c1"># [link] erstellt eine Liste mit einem Element</span>
-    <span class="n">comments_dict</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">comments</span><span class="p">)</span>
-    <span class="n">comments_dict</span><span class="p">[</span><span class="s2">&quot;commentator&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">commentators</span><span class="p">)</span>
 
-<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+        <span class="n">comments_dict</span><span class="p">[</span><span class="s2">&quot;link&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">link</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">commentators</span><span class="p">))</span> <span class="c1"># [link] erstellt eine Liste mit einem Element</span>
+        <span class="n">comments_dict</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">comments</span><span class="p">)</span>
+        <span class="n">comments_dict</span><span class="p">[</span><span class="s2">&quot;commentator&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">commentators</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Wenn ihr den Code aufmerksam gelesen oder mit anderen Pins ausprobiert habt, dann wird euch aufgefallen sein, dass eine TimeOutException geworfen wird, wenn ein Pin keine Kommentare hat. Denn dann werden beim Warten auf die gesuchten Elemente die 20 Sekunden maximale Wartezeit, die wir eingestellt haben, überschritten. Im Kapitel 11.4.4 “Fehler, Ausnahmen und Ausnahmebehandlung” könnt ihr nachlesen, wie solche Situationen abgefangen werden können und wie verhindert werden kann, dass der Code abbricht, sobald eine Ausnahme geworfen wird.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -562,7 +563,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Ein weiterer Verarbeitungsschritt ist die <strong>Anonymisierung der Kommentator:innen</strong>. Je nach Forschungsfrage interessiert nicht unbedingt, welche:r Nutzer:in welchen Kommentar verfasst hat, sondern beispielsweise nur, ob dieselben Kommentator:innen ähnliche Bilder kommentieren oder wie viele Kommentare jede:r Nutzer:in hinterlassen hat. Dazu müssen wir die konkreten Nutzernamen nicht kennen; es reicht aus, wenn wir jeder Kommentator:in eine einzigartige ID zuteilen und in unserer Analyse nur die IDs betrachten. Durch das Anonymisieren der Nutzernamen gehen wir außerdem sicher, dass unser Datensatz nicht die Auflagen zur Speicherung und Nutzung personenbezogener Daten laut DSGVO verletzt (siehe Abschnitt 6.1).</p>
+<p>Ein weiterer Verarbeitungsschritt ist die <strong>Pseudonymisierung der Kommentator:innen</strong>. Je nach Forschungsfrage interessiert nicht unbedingt, welche:r Nutzer:in welchen Kommentar verfasst hat, sondern beispielsweise nur, ob dieselben Kommentator:innen ähnliche Bilder kommentieren oder wie viele Kommentare jede:r Nutzer:in hinterlassen hat. Dazu müssen wir die konkreten Nutzernamen nicht kennen; es reicht aus, wenn wir jeder Kommentator:in eine einzigartige ID zuteilen und in unserer Analyse nur die IDs betrachten. Durch das Pseudonymisieren der Nutzernamen mit einer ID gehen wir außerdem sicher, dass unser Datensatz nicht die Auflagen zur Speicherung und Nutzung personenbezogener Daten laut DSGVO verletzt (siehe Abschnitt 6.1). Wenn sehr sensible Daten gescraped werden, solltet ihr euch aber über diese sehr einfache Pseudonymisierung hinaus über Verfahren der Anonymisierung informieren.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Die factorize()-Methode ordnet jedem einzigartigen Wert eine eindeutige ID zu und gibt ein Tupel zurück, das aus einem Array von Labels und einem Index mit den einzigartigen Werten besteht.</span>
