@@ -1,5 +1,0 @@
-# Einstieg Webscraping
-
-
-```{tableofcontents}
-```

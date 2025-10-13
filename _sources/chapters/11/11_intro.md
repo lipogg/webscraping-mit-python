@@ -1,5 +1,0 @@
-# Tipps und Tricks
-
-
-```{tableofcontents}
-```

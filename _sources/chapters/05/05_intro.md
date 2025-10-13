@@ -1,5 +1,0 @@
-# Installation und Setup
-
-
-```{tableofcontents}
-```

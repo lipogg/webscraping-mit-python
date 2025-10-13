@@ -1,5 +1,0 @@
-# Pandas (Exkurs)
-
-
-```{tableofcontents}
-```
