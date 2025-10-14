@@ -13,8 +13,8 @@ Das Schaubild oben illustriert die gängisten Wege, wie Python-Skripte erstellt 
 
 <!-- Ein paar Definitionen: -->
 
-- **Jupyter Notebook** ist die Bezeichnung für eine Webanwendung zum Erstellen und Austausch von Jupyter-Notebook-Dokumenten (Dateiendung .ipynb). Diese Dokumente, oder "Notebooks", bestehen aus einer Liste von ausführbaren Codezellen und dem jeweiligen Output. 
-- **JupyterLab** ist der Nachfolger von Jupyter Notebook. Es ist eine webbasierte interaktive Entwicklungsumgebung für Jupyter Notebooks, reguläre Pythonskripte (.py) und Daten.
+- **Jupyter Notebook** ist die Bezeichnung für eine Webanwendung zum Erstellen und Austausch von Jupyter-Notebook-Dokumenten (Dateiendung .ipynb), und für diese Dokumente selbst. Jupyter Notebooks bestehen aus einer Liste von ausführbaren Codezellen und dem jeweiligen Output sowie Textzellen, in die Text zum Erläutern des Codes oder Projekts geschrieben werden kann. 
+- **JupyterLab** ist der Nachfolger von der Webanwendung Jupyter Notebook. Es ist eine webbasierte interaktive Entwicklungsumgebung für Jupyter Notebooks, reguläre Pythonskripte (.py) und Daten.
 - **JupyterLite** ist eine online JupyterLab-Distribution, die vollständig im Browser läuft. [Hier](https://jupyter.org/try-jupyter/lab/index.html) gehts zu JupyterLite.
 
 ```{note}
