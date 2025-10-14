@@ -5,7 +5,7 @@ Hier findet ihr Informationen zu Teilnahmemodalitäten, Prüfungsleistungen und 
 Teilnahmeschein:
 
 * Aktive Teilnahme: n-2 Sitzungen 
-* Wöchentliche Übungsaufgaben: Lösungen Samstagabend vor jeder Stunde an mich schicken (l.poggel@fu-berlin.de). Übungen schicke ich euch über den Blackboard-Verteiler jede Woche bis Dienstagabend.
+* Wöchentliche Übungsaufgaben: Lösungen Samstagabend vor jeder Stunde an mich schicken (l.poggel@fu-berlin.de). Die Übungen findet ihr [hier](https://github.com/lipogg/webscraping-mit-python-aufgaben/tree/main/nbgrader-assignments). Sofern nicht anders angekündigt ist jede Woche ein Übungsblatt zu bearbeiten und abzugeben. 
 * Ein Kahoot-Quiz erstellen und moderieren. Login über [https://kahoot.com/](https://kahoot.com/)
 
 Leistungsschein:
