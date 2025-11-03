@@ -1,0 +1,1093 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4.1. Funktionen &#8212; Webscraping für Geisteswissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/04/subchapters/01_funktionen';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="4.2. Module, Pakete, Bibliotheken" href="02_pakete.html" />
+    <link rel="prev" title="4. Python III: Funktionen und Pakete" href="../04_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Webscraping für Geisteswissenschaften - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Webscraping für Geisteswissenschaften - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Webscraping mit Python für Geisteswissenschaften
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/03_semesterplan.html">1.3. Semesterplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/04_lernziele.html">1.4. Lernziele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/05_organisation.html">1.5. Organisatorisches</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/02_intro.html">2. Python I</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_jupyterlite.html">2.1. JupyterLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_style.html">2.2. Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_hilfe.html">2.3. Hilfe!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/02_grundbegriffe.html">2.4. Grundbegriffe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/03_datentypen.html">2.5. Einfache Datentypen, Strings und Operatoren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/04_variablen.html">2.6. Variablen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03/03_intro.html">3. Python II</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03/subchapters/01_datentypen.html">3.1. Zusammengesetzte Datentypen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/subchapters/02_kontrollstrukturen.html">3.2. Kontrollstrukturen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../04_intro.html">4. Python III</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.1. Funktionen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_pakete.html">4.2. Module, Pakete, Bibliotheken</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/lipogg/webscraping-mit-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/04/subchapters/01_funktionen.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Funktionen</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-funktionen">4.1.1. Was sind Funktionen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-definieren">4.1.2. Funktionen definieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-aufrufen">4.1.3. Funktionen aufrufen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-verstehen">4.1.4. Funktionen verstehen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wozu-werden-funktionen-verwendet">4.1.5. Wozu werden Funktionen verwendet?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-schleifen-durch-funktionen-vereinfachen">4.1.6. Verschachtelte Schleifen durch Funktionen vereinfachen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sichtbarkeitsbereich-von-variablen-variable-scope">4.1.7. Sichtbarkeitsbereich von Variablen (Variable Scope)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-und-parameter">4.1.8. Argumente und Parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-methoden">4.1.9. Was sind Methoden?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">4.1.10. Quellen</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="funktionen">
+<h1><span class="section-number">4.1. </span>Funktionen<a class="headerlink" href="#funktionen" title="Link to this heading">#</a></h1>
+<p>Wir haben im Laufe der vergangenen Stunden bereits einige Funktionen kennengelernt, zum Beispiel die Ausgabe-Funktion <code class="docutils literal notranslate"><span class="pre">print()</span></code>, oder die Funktionen <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> und <code class="docutils literal notranslate"><span class="pre">range()</span></code>.</p>
+<section id="was-sind-funktionen">
+<h2><span class="section-number">4.1.1. </span>Was sind Funktionen?<a class="headerlink" href="#was-sind-funktionen" title="Link to this heading">#</a></h2>
+<p>Funktionen sind wiederverwendbare Abfolgen von Anweisungen. Sie sind also Codeabschnitte, die mithilfe eines Namens wiederholt ausgeführt werden können. Das Prinzip ist also ein bisschen ähnlich wie Variablen, mit dem Unterschied, dass man mithilfe von Funktionsnamen Anweisungen wiederverwenden kann, während man mithilfe von Variablennamen Objekte wiederverwenden kann. Im Grunde sind Funktionsnamen aber auch zugleich Variablennamen, weil in Python Funktionen auch Objekte sind (-&gt; Grundbegriffe: alles in Python ist ein Objekt).</p>
+<p>Jede Funktion besteht aus drei Komponenten:</p>
+<ul class="simple">
+<li><p>Name</p></li>
+<li><p>Parameter (in der Funktionsdefinition: formale Parameter)</p></li>
+<li><p>Rückgabewert</p></li>
+</ul>
+<p>Funktionen werden <strong>aufgerufen</strong>. Beim <strong>Funktionsaufruf</strong> werden ihnen <strong>Argumente</strong> übergeben. Welche Argumente eine Funktion annehmen kann, wird in der <strong>Funktionsdefinition</strong> mithilfe von <strong>formalen Parametern</strong> festgelegt. Für Argumente sagt man deswegen auch manchmal <strong>tatsächliche Parameter</strong>. Funktionen <strong>geben immer einen Wert zurück</strong>, der heißt dann <strong>Rückgabewert</strong>. Der Rückgabewert kann in einer Funktionsdefinition mithilfe des <strong>Schlüsselworts <code class="docutils literal notranslate"><span class="pre">return</span></code></strong> festgelegt werden.</p>
+</section>
+<section id="funktionen-definieren">
+<h2><span class="section-number">4.1.2. </span>Funktionen definieren<a class="headerlink" href="#funktionen-definieren" title="Link to this heading">#</a></h2>
+<p>Funktionen können Nutzer:innen aber auch selbst definieren. Eine <strong>Funktionsdefinition</strong> hat in Python die allgemeine Form:</p>
+<div class="full-width docutils">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/funktionsdefinition.png"><img alt="Klasse str" class="bg-transparent" src="../../../_images/funktionsdefinition.png" style="width: 75%;" /></a>
+</div>
+<p>Achtung: Zwischen dem Funktionsnamen und der runden Klammer steht KEIN Leerzeichen.</p>
+<ul class="simple">
+<li><p>mache_irgendwas ist der Funktions<strong>name</strong>.</p></li>
+<li><p>Die Funktions<strong>parameter</strong> heißen parameter_1 und parameter_2. Dabei handelt es sich um Variablennamen, die nur innerhalb der Funktionsdefinition verwendet werden und als Platzhalter für die Argumente dienen, die der Funktion beim Funktionsaufruf übergeben werden. Die formalen Parameter sind also ein bisschen ähnlich wie die Laufvariablen in for-Schleifen, die auch nur Platzhalter für die Elemente aus einem iterierbaren Objekt waren.</p></li>
+<li><p>Genau wie bei Kontrollstrukturen ist auch bei Funktionen der Funktions<strong>körper</strong> alles, was in dem eingeschobenen Block nach dem Doppelpunkt steht, also ein Anweisungsblock und eine return-Anweisung. Im Anweisungsblock stehen irgendwelche Anweisungen, die irgendetwas mit den Parametern der Funktion machen, also im Grunde Verarbeitungsschritte für die Funktionsparameter. Im Laufe der Verarbeitung wird irgendeine Variable definiert, die das “Endergebnis” der Verarbeitung zwischenspeichert. Diese Variable wird dann mithilfe der return-Anweisung zurückgegeben, wenn die Funktion aufgerufen wird. Die return-Anweisung definiert also, welche Variable die Funktion als Rückgabewert beim Funktionsaufruf zurückgeben soll.</p></li>
+</ul>
+<p>Zusätzlich zu diesen unbedingt notwendigen Komponenten können Python-Funktionen einen sogenannten <strong>Docstring</strong> enthalten. Das ist eine Art Kommentar, der den Nutzer:innen der Funktion erläutert, was die Funktion macht, welche Argumente der Funktion beim Funktionsaufruf übergeben werden können und welcher Wert zurückgegeben wird, nachdem die Anweisungen im Funktionskörper ausgeführt worden sind. Docstrings werden durch drei Anführungszeichen eingegrenzt.</p>
+<p>Ein Beispiel:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Input: i, a positive int</span>
+<span class="sd">    Returns True if i is even, otherwise False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span> == 0
+
+<span class="n">is_even</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Quelle: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/mit6_0001f16_lec4/">Ana Bell</a> 2016.</p>
+<p>Für Funktionsnamen gelten laut <a class="reference external" href="https://peps.python.org/pep-0008/#function-and-variable-names">Style Guide</a> dieselbe Syntaxempfehlungen wie für Variablennamen: Funktionsnamen sollten in Kleinbuchstaben geschrieben werden und einen Unterstrich sollte verwendet werden, um mehrere Wörter voneinander abzutrennen. Allerdings sollten Funktionsnamen immer irgendeine Operation beschreiben, während Variablennamen in der Regel Substantive sind.</p>
+<p>Für Docstrings gibt es daneben einen eigenen Style Guide: <a class="reference external" href="https://peps.python.org/pep-0257/">https://peps.python.org/pep-0257/</a>.</p>
+<p>Bei der Definition der Funktion <code class="docutils literal notranslate"><span class="pre">is_even()</span></code> sind zwei Dinge hervorzuheben: Zum einen scheint der Funktionsname nicht so richtig eine Operation auszudrücken, obwohl wir gerade eben besprochen haben, dass Funktionsnamen immer irgendeine Operation beschreiben sollten. Der Name der Funktion <code class="docutils literal notranslate"><span class="pre">is_even()</span></code> stellt tatsächlich einen Sonderfall dar: Da diese Funktion einen Wahrheitswert zurückgibt (also entweder <code class="docutils literal notranslate"><span class="pre">True</span></code> oder <code class="docutils literal notranslate"><span class="pre">False</span></code>), dient die Funktion eigentlich dazu, eine Eigenschaft des Arguments zu überprüfen, das ihr beim Funktionsaufruf übergeben wird, sie liefert also im Grunde eine Antwort auf die Frage, ob das Argument eine gerade oder eine ungerade Zahl ist. Der Funktionsname beschreibt daher die Überprüfung, die vorgenommen wird.</p>
+<p>Zum anderen wird der gesamte Ausdruck <code class="docutils literal notranslate"><span class="pre">i%2</span> <span class="pre">==</span> <span class="pre">0</span></code> als Rückgabewert definiert. Das erscheint vielleicht im ersten Moment unübersichtlich und vielleicht fallen euch andere Möglichkeiten ein, diese Funktion zu definieren, zum Beispiel:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Input: i, a positive int</span>
+<span class="sd">    Prints True if i is even, otherwise False</span>
+<span class="sd">    Returns None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="k">2</span> == 0)
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">is_even</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Was ist der Unterschied zwischen den beiden <code class="docutils literal notranslate"><span class="pre">is_even()</span></code>-Funktionen? Mit der zweiten Funktion kann man nur genau eine Sache machen: Man kann sich das Ergebnis der Operation <code class="docutils literal notranslate"><span class="pre">i%2</span> <span class="pre">==</span> <span class="pre">0</span></code> auf dem Bildschirm anzeigen lassen. Der Wahrheitswert wird nur ausgegeben, nicht zurückgegeben. Um das deutlich zu machen, wird hier explizit <code class="docutils literal notranslate"><span class="pre">None</span></code> als Rückgabewert festgelegt. Der Rückgabewert könnte hier aber theoretisch auch weggelassen werden, denn wenn bei einer Funktionsdefinition kein Rückgabewert angegeben wird, ist der Rückgabewert automatisch <code class="docutils literal notranslate"><span class="pre">None</span></code>.  Mit der ersten Funktion kann man dagegen viel mehr machen, denn diese Funktion gibt den Wahrheitswert selbst zurück. Man kann sich den Wert also nicht nur ausgeben lassen, sondern man kann damit auch weiterarbeiten und den Wert zum Beispiel einer Variable zuweisen oder die Funktion zur Formulierung einer bedingten Anweisung verwenden. In den meisten Fällen würden wir deswegen die erste Funktionsdefinition bevorzugen. Aber für den seltenen Fall, dass ihr eine Funktion definiert, die nur etwas ausgeben und nichts zurückgeben soll, solltet ihr wissen, dass solche Funktionen immer None zurückgeben, und dass es besser ist, dies explizit mit <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">None</span></code> anzugeben.</p>
+<p>Der PEP8-Styleguide empfiehlt beim Umgang mit Rückgabewerten:</p>
+<blockquote>
+<div><p>“Be consistent in return statements. Either all return statements in a function should return an expression, or none of them should. If any return statement returns an expression, any return statements where no value is returned should explicitly state this as return None, and an explicit return statement should be present at the end of the function […]”</p>
+</div></blockquote>
+<p>Quelle: <a class="reference external" href="https://peps.python.org/pep-0008/">PEP8 Styleguide</a> 2016.</p>
+<p>Eine Bemerkung zum Schluss: Es wäre keine gute Idee, unsere <code class="docutils literal notranslate"><span class="pre">is_even()</span></code> Funktion so umzuschreiben, dass sie erst das Ergebnis der Operation <code class="docutils literal notranslate"><span class="pre">i%2</span> <span class="pre">==</span> <span class="pre">0</span></code> mit <code class="docutils literal notranslate"><span class="pre">print(i%2</span> <span class="pre">==</span> <span class="pre">0)</span></code> ausgibt und danach den Wert mit <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">i%2</span> <span class="pre">==</span> <span class="pre">0</span></code>zusätzlich zurückgibt: <strong>Funktionen sollten immer nur genau eine Aufgabe erfüllen!</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In der Informatik unterscheidet man – etwas strenger als wir in dieser kurzen Einführung – zwischen <strong>Funktionen</strong>, die ein Ergebnis liefern und einen Wert zurückgeben, und <strong>Prozeduren</strong>, die lediglich Anweisungen ausführen und keinen Wert (oder nur None) zurückgeben. In anderen Programmiersprachen wie z.B. Pascal muss zur Definition von Prozeduren sogar ein anderes Schlüsselwort verwendet werden, nämlich <code class="docutils literal notranslate"><span class="pre">procedure</span></code> statt <code class="docutils literal notranslate"><span class="pre">function</span></code>.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfrage</p>
+<ul class="simple">
+<li><p>Was sind Name, Parameter und Rückgabewert der Funktion <code class="docutils literal notranslate"><span class="pre">is_even()</span></code>?</p></li>
+</ul>
+</div>
+</section>
+<section id="funktionen-aufrufen">
+<h2><span class="section-number">4.1.3. </span>Funktionen aufrufen<a class="headerlink" href="#funktionen-aufrufen" title="Link to this heading">#</a></h2>
+<p><strong>Funktionsaufrufe</strong> haben in Python die allgemeine Form:</p>
+<div class="full-width docutils">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/funktionsaufruf.png"><img alt="Klasse str" class="bg-transparent" src="../../../_images/funktionsaufruf.png" style="width: 75%;" /></a>
+</div>
+<p>Achtung: Auch beim Funktionsaufruf steht zwischen dem Funktionsnamen und der runden Klammer KEIN Leerzeichen.</p>
+<p>Wenn eine Funktion aufgerufen wird, dann werden die formalen Parameter aus der Funktionsdefinition durch die Argumente (also die tatsächlichen Parameter) ersetzt. Die Verarbeitungsschritte, die im Funktionskörper für die formalen Parameter definiert sind, werden dann mit den Argumenten ausgeführt.</p>
+<p>Bisher haben wir bereits oft Funktionen aufgerufen und ihnen Argumente übergeben. Zum Beispiel:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wenn wir die Funktion is_even(), die wir vorhin definiert haben, aufrufen wollen, gehen wir genauso vor:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_even</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Manche Funktionen nehmen mehrere Argumente an, die in diesem Fall durch Kommata getrennt aufgelistet werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo 4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="funktionen-verstehen">
+<h2><span class="section-number">4.1.4. </span>Funktionen verstehen<a class="headerlink" href="#funktionen-verstehen" title="Link to this heading">#</a></h2>
+<p>In Jupyterlab könnt ihr euch direkt den Docstring zu einer bestimmten Funktion anzeigen lassen. So könnt ihr Informationen, welche Argumente der Funktion beim Funktionsaufruf übergeben werden können, und welchen Wert die Funktion nach dem Ausführen der Anweisungen im Funktionsköroer zurückgibt, abrufen, ohne dafür die Funktion zu googeln.</p>
+<p>Dazu bewegt ihr den Cursor auf eine Funktion und gebt dann die Tastenkombination Cmd + I bzw. Ctrl + I ein, oder ihr klickt auf Help -&gt; Contextual Help in der Menüleiste oben.</p>
+</section>
+<section id="wozu-werden-funktionen-verwendet">
+<h2><span class="section-number">4.1.5. </span>Wozu werden Funktionen verwendet?<a class="headerlink" href="#wozu-werden-funktionen-verwendet" title="Link to this heading">#</a></h2>
+<p>Allgemein werden Funktionen verwendet…</p>
+<ul class="simple">
+<li><p>…um bestimmte Verarbeitungsschritte zu wiederholen, ohne Code ständig kopieren zu müssen.</p></li>
+<li><p>…um den Code weniger fehleranfällig zu machen: Wenn man den Code kopiert, kopiert man auch mögliche Fehler</p></li>
+</ul>
+<p>Ein Beispiel, wenn es nützlich ist, eine Funktion zu definieren, wäre zum Beispiel die folgende Situation:</p>
+<p>Wir wollen die Lieder eine:r Künstler:in analyieren. Hierzu haben wir uns die folgende for-Schleife ausgedacht (eigentlich hat sich allerdings <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/mit6_0001f16_lec6/">Eric Grimson</a> vom Massachusetts Institute of Technology diese Schleife ausgedacht) :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lyrics</span> <span class="o">=</span> <span class="s2">&quot;My mind won&#39;t let me rest Voice in my head I hear what it said I can&#39;t trust a thing If I picked up and left How fast did you forget? Resting while I&#39;m inside your presence I don&#39;t want to think nothing bad This time I won&#39;t This time I won&#39;t&quot;</span>
+<span class="n">lyrics_lst</span> <span class="o">=</span> <span class="n">lyrics</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">lyrics_dct</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">lyrics_lst</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">lyrics_dct</span><span class="p">:</span>
+        <span class="n">lyrics_dct</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">lyrics_dct</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lyrics_dct</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;My&#39;: 1, &#39;mind&#39;: 1, &quot;won&#39;t&quot;: 3, &#39;let&#39;: 1, &#39;me&#39;: 1, &#39;rest&#39;: 1, &#39;Voice&#39;: 1, &#39;in&#39;: 1, &#39;my&#39;: 1, &#39;head&#39;: 1, &#39;I&#39;: 6, &#39;hear&#39;: 1, &#39;what&#39;: 1, &#39;it&#39;: 1, &#39;said&#39;: 1, &quot;can&#39;t&quot;: 1, &#39;trust&#39;: 1, &#39;a&#39;: 1, &#39;thing&#39;: 1, &#39;If&#39;: 1, &#39;picked&#39;: 1, &#39;up&#39;: 1, &#39;and&#39;: 1, &#39;left&#39;: 1, &#39;How&#39;: 1, &#39;fast&#39;: 1, &#39;did&#39;: 1, &#39;you&#39;: 1, &#39;forget?&#39;: 1, &#39;Resting&#39;: 1, &#39;while&#39;: 1, &quot;I&#39;m&quot;: 1, &#39;inside&#39;: 1, &#39;your&#39;: 1, &#39;presence&#39;: 1, &quot;don&#39;t&quot;: 1, &#39;want&#39;: 1, &#39;to&#39;: 1, &#39;think&#39;: 1, &#39;nothing&#39;: 1, &#39;bad&#39;: 1, &#39;This&#39;: 2, &#39;time&#39;: 2}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um die Arbeitsschritte mit mehreren Liedern auszuführen, sähe unser Code so aus:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lyrics_gc</span> <span class="o">=</span> <span class="s2">&quot;My mind won&#39;t let me rest Voice in my head I hear what it said I can&#39;t trust a thing If I picked up and left How fast did you forget? Resting while I&#39;m inside your presence I don&#39;t want to think nothing bad This time I won&#39;t This time I won&#39;t&quot;</span>
+<span class="n">lyrics_gc_lst</span> <span class="o">=</span> <span class="n">lyrics_gc</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">lyrics_gc_dct</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">lyrics_gc_lst</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">lyrics_gc_dct</span><span class="p">:</span>
+        <span class="n">lyrics_gc_dct</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">lyrics_gc_dct</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lyrics_gc_dct</span><span class="p">)</span>
+
+<span class="n">lyrics_dd</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m dreamin&#39;, ay Truth be told I got the hardest ahead, yeah But I said I never let it get to my head I be in space, in a daze, while you tellin me things I see your face but I never really heard you say it Red light, green light, either I&#39;ma go New place, corner store Ain&#39;t that close anymore Yeah let me get the greens, I&#39;ll be home by four If you wanna pour up, then I need me a four&quot;</span>
+<span class="n">lyrics_dd_lst</span> <span class="o">=</span> <span class="n">lyrics_dd</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">lyrics_dd_dct</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">lyrics_dd_lst</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">lyrics_dd_dct</span><span class="p">:</span>
+        <span class="n">lyrics_dd_dct</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">lyrics_dd_dct</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lyrics_dd_dct</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;My&#39;: 1, &#39;mind&#39;: 1, &quot;won&#39;t&quot;: 3, &#39;let&#39;: 1, &#39;me&#39;: 1, &#39;rest&#39;: 1, &#39;Voice&#39;: 1, &#39;in&#39;: 1, &#39;my&#39;: 1, &#39;head&#39;: 1, &#39;I&#39;: 6, &#39;hear&#39;: 1, &#39;what&#39;: 1, &#39;it&#39;: 1, &#39;said&#39;: 1, &quot;can&#39;t&quot;: 1, &#39;trust&#39;: 1, &#39;a&#39;: 1, &#39;thing&#39;: 1, &#39;If&#39;: 1, &#39;picked&#39;: 1, &#39;up&#39;: 1, &#39;and&#39;: 1, &#39;left&#39;: 1, &#39;How&#39;: 1, &#39;fast&#39;: 1, &#39;did&#39;: 1, &#39;you&#39;: 1, &#39;forget?&#39;: 1, &#39;Resting&#39;: 1, &#39;while&#39;: 1, &quot;I&#39;m&quot;: 1, &#39;inside&#39;: 1, &#39;your&#39;: 1, &#39;presence&#39;: 1, &quot;don&#39;t&quot;: 1, &#39;want&#39;: 1, &#39;to&#39;: 1, &#39;think&#39;: 1, &#39;nothing&#39;: 1, &#39;bad&#39;: 1, &#39;This&#39;: 2, &#39;time&#39;: 2}
+{&quot;I&#39;m&quot;: 1, &quot;dreamin&#39;,&quot;: 1, &#39;ay&#39;: 1, &#39;Truth&#39;: 1, &#39;be&#39;: 3, &#39;told&#39;: 1, &#39;I&#39;: 7, &#39;got&#39;: 1, &#39;the&#39;: 2, &#39;hardest&#39;: 1, &#39;ahead,&#39;: 1, &#39;yeah&#39;: 1, &#39;But&#39;: 1, &#39;said&#39;: 1, &#39;never&#39;: 2, &#39;let&#39;: 2, &#39;it&#39;: 2, &#39;get&#39;: 2, &#39;to&#39;: 1, &#39;my&#39;: 1, &#39;head&#39;: 1, &#39;in&#39;: 2, &#39;space,&#39;: 1, &#39;a&#39;: 2, &#39;daze,&#39;: 1, &#39;while&#39;: 1, &#39;you&#39;: 3, &#39;tellin&#39;: 1, &#39;me&#39;: 3, &#39;things&#39;: 1, &#39;see&#39;: 1, &#39;your&#39;: 1, &#39;face&#39;: 1, &#39;but&#39;: 1, &#39;really&#39;: 1, &#39;heard&#39;: 1, &#39;say&#39;: 1, &#39;Red&#39;: 1, &#39;light,&#39;: 2, &#39;green&#39;: 1, &#39;either&#39;: 1, &quot;I&#39;ma&quot;: 1, &#39;go&#39;: 1, &#39;New&#39;: 1, &#39;place,&#39;: 1, &#39;corner&#39;: 1, &#39;store&#39;: 1, &quot;Ain&#39;t&quot;: 1, &#39;that&#39;: 1, &#39;close&#39;: 1, &#39;anymore&#39;: 1, &#39;Yeah&#39;: 1, &#39;greens,&#39;: 1, &quot;I&#39;ll&quot;: 1, &#39;home&#39;: 1, &#39;by&#39;: 1, &#39;four&#39;: 2, &#39;If&#39;: 1, &#39;wanna&#39;: 1, &#39;pour&#39;: 1, &#39;up,&#39;: 1, &#39;then&#39;: 1, &#39;need&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<p>In der Lösung oben haben wir die for-Schleife einfach kopiert und manuell die Variable lyrics_gc_lst durch die Variable lyrics_dd_lst ersetzt. Das geht bei zwei verschiedenen Liedtexten zwar noch, aber was, wenn wir drei, fünf oder zehn verschiedene Liedtexte haben? Dann produzieren wir extrem viel unnötigen und unübersichtlichen Code, der vielleicht auch noch drei, fünf oder zehnmal denselben Fehler enthält. Eine bessere Lösung ist deswegen hier die Verwendung einer Funktion: die for-Schleife kann damit für alle Liedtexte, die in Python als einfache Zeichenkette repräsentiert werden, verallgemeinert werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lyrics_to_frequencies</span><span class="p">(</span><span class="n">lyrics</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Input: lyrics, a string</span>
+<span class="sd">    Return a dictionary with each word in the input string as key and the number of occurrences of the word as value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lyrics_lst</span> <span class="o">=</span> <span class="n">lyrics</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">lyrics_dct</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">lyrics_lst</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">lyrics_dct</span><span class="p">:</span>
+            <span class="n">lyrics_dct</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lyrics_dct</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">lyrics_dct</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Funktion kann dann mit wechselndem Input aufgerufen werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lyrics_gc</span> <span class="o">=</span> <span class="s2">&quot;My mind won&#39;t let me rest Voice in my head I hear what it said I can&#39;t trust a thing If I picked up and left How fast did you forget? Resting while I&#39;m inside your presence I don&#39;t want to think nothing bad This time I won&#39;t This time I won&#39;t&quot;</span>
+<span class="n">lyrics_dd</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m dreamin&#39;, ay Truth be told I got the hardest ahead, yeah But I said I never let it get to my head I be in space, in a daze, while you tellin me things I see your face but I never really heard you say it Red light, green light, either I&#39;ma go New place, corner store Ain&#39;t that close anymore Yeah let me get the greens, I&#39;ll be home by four If you wanna pour up, then I need me a four&quot;</span>
+
+<span class="n">lyrics_gc_freq</span> <span class="o">=</span> <span class="n">lyrics_to_frequencies</span><span class="p">(</span><span class="n">lyrics_gc</span><span class="p">)</span>
+<span class="n">lyrics_dd_freq</span> <span class="o">=</span> <span class="n">lyrics_to_frequencies</span><span class="p">(</span><span class="n">lyrics_dd</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lyrics_gc_freq</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lyrics_dd_freq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;My&#39;: 1, &#39;mind&#39;: 1, &quot;won&#39;t&quot;: 3, &#39;let&#39;: 1, &#39;me&#39;: 1, &#39;rest&#39;: 1, &#39;Voice&#39;: 1, &#39;in&#39;: 1, &#39;my&#39;: 1, &#39;head&#39;: 1, &#39;I&#39;: 6, &#39;hear&#39;: 1, &#39;what&#39;: 1, &#39;it&#39;: 1, &#39;said&#39;: 1, &quot;can&#39;t&quot;: 1, &#39;trust&#39;: 1, &#39;a&#39;: 1, &#39;thing&#39;: 1, &#39;If&#39;: 1, &#39;picked&#39;: 1, &#39;up&#39;: 1, &#39;and&#39;: 1, &#39;left&#39;: 1, &#39;How&#39;: 1, &#39;fast&#39;: 1, &#39;did&#39;: 1, &#39;you&#39;: 1, &#39;forget?&#39;: 1, &#39;Resting&#39;: 1, &#39;while&#39;: 1, &quot;I&#39;m&quot;: 1, &#39;inside&#39;: 1, &#39;your&#39;: 1, &#39;presence&#39;: 1, &quot;don&#39;t&quot;: 1, &#39;want&#39;: 1, &#39;to&#39;: 1, &#39;think&#39;: 1, &#39;nothing&#39;: 1, &#39;bad&#39;: 1, &#39;This&#39;: 2, &#39;time&#39;: 2}
+{&quot;I&#39;m&quot;: 1, &quot;dreamin&#39;,&quot;: 1, &#39;ay&#39;: 1, &#39;Truth&#39;: 1, &#39;be&#39;: 3, &#39;told&#39;: 1, &#39;I&#39;: 7, &#39;got&#39;: 1, &#39;the&#39;: 2, &#39;hardest&#39;: 1, &#39;ahead,&#39;: 1, &#39;yeah&#39;: 1, &#39;But&#39;: 1, &#39;said&#39;: 1, &#39;never&#39;: 2, &#39;let&#39;: 2, &#39;it&#39;: 2, &#39;get&#39;: 2, &#39;to&#39;: 1, &#39;my&#39;: 1, &#39;head&#39;: 1, &#39;in&#39;: 2, &#39;space,&#39;: 1, &#39;a&#39;: 2, &#39;daze,&#39;: 1, &#39;while&#39;: 1, &#39;you&#39;: 3, &#39;tellin&#39;: 1, &#39;me&#39;: 3, &#39;things&#39;: 1, &#39;see&#39;: 1, &#39;your&#39;: 1, &#39;face&#39;: 1, &#39;but&#39;: 1, &#39;really&#39;: 1, &#39;heard&#39;: 1, &#39;say&#39;: 1, &#39;Red&#39;: 1, &#39;light,&#39;: 2, &#39;green&#39;: 1, &#39;either&#39;: 1, &quot;I&#39;ma&quot;: 1, &#39;go&#39;: 1, &#39;New&#39;: 1, &#39;place,&#39;: 1, &#39;corner&#39;: 1, &#39;store&#39;: 1, &quot;Ain&#39;t&quot;: 1, &#39;that&#39;: 1, &#39;close&#39;: 1, &#39;anymore&#39;: 1, &#39;Yeah&#39;: 1, &#39;greens,&#39;: 1, &quot;I&#39;ll&quot;: 1, &#39;home&#39;: 1, &#39;by&#39;: 1, &#39;four&#39;: 2, &#39;If&#39;: 1, &#39;wanna&#39;: 1, &#39;pour&#39;: 1, &#39;up,&#39;: 1, &#39;then&#39;: 1, &#39;need&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="verschachtelte-schleifen-durch-funktionen-vereinfachen">
+<h2><span class="section-number">4.1.6. </span>Verschachtelte Schleifen durch Funktionen vereinfachen<a class="headerlink" href="#verschachtelte-schleifen-durch-funktionen-vereinfachen" title="Link to this heading">#</a></h2>
+<p>Ein weiterer Fall, wenn es Sinn macht, eine Funktion zu definieren, ist, wenn ein Code ineinandergeschachtelte Schleifen enthält.
+Wenn Schleifen ineinander verschachtelt sind, kann die äußere Schleife nicht unkompliziert abgebrochen werden, sobald die innere Schleife abgebrochen wird.</p>
+<p>Das Problem kann auch ohne Funktion gelöst werden: zum Beispiel, indem eine “Break-Out” Variable verwendet wird, um die äußere Schleife abzubrechen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mit Break-Out Variable</span>
+<span class="n">einkaufsliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">]</span>
+<span class="n">kilopreise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">:</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Möhren&quot;</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">:</span> <span class="mf">2.49</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Birnen&quot;</span><span class="p">:</span> <span class="mf">2.19</span><span class="p">}</span>
+<span class="n">einkaufsmenge</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">gesamtpreis</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">grenze</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">grenze_erreicht</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># Break-Out Variable</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="c1"># unendliche Schleife</span>
+    <span class="k">for</span> <span class="n">artikel</span> <span class="ow">in</span> <span class="n">einkaufsliste</span><span class="p">:</span>
+        <span class="n">preis_aktuell</span> <span class="o">=</span> <span class="n">gesamtpreis</span> <span class="o">+</span> <span class="n">kilopreise</span><span class="p">[</span><span class="n">artikel</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">preis_aktuell</span> <span class="o">&lt;=</span> <span class="n">grenze</span><span class="p">:</span>
+            <span class="n">einkaufsmenge</span><span class="p">[</span><span class="n">artikel</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">gesamtpreis</span> <span class="o">=</span> <span class="n">preis_aktuell</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">grenze_erreicht</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">break</span>
+    <span class="k">if</span> <span class="n">grenze_erreicht</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">einkaufsmenge</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gesamtpreis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Tomaten&#39;: 2, &#39;Kartoffeln&#39;: 2, &#39;Äpfel&#39;: 1, &#39;Orangen&#39;: 1}
+19.440000000000005
+</pre></div>
+</div>
+</div>
+</div>
+<p>Beachtet, dass dieser Beispielschcode fehleranfällig und nicht besonders flexibel ist: Die Laufvariable artikel wird verwendet, um drei verschiedene Objekte zu durchlaufen, nämlich einkaufsliste, kilopreise und einkaufsmenge. Das funktioniert nur deswegen, weil alle drei Objekte dieselben Strings als Elemente enthalten. Jedes Mal wurden die Strings manuell eingegeben. Wenn dabei ein Tippfehler passiert, produziert die Schleife nicht mehr den gewünschten Output.</p>
+<p>Eine andere Möglichkeit ist die Verwendung der sogenannten “For-Else Syntax”, welche genau für solche Fälle erfunden wurde: Diese Syntax gibt vor, dass der Anweisungsblock unter <code class="docutils literal notranslate"><span class="pre">Else</span></code> nur dann ausgeführt wird, wenn die innere for-Schleife ohne ein <code class="docutils literal notranslate"><span class="pre">break</span></code>-Statement terminiert ist.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mit For-Else Syntax</span>
+<span class="n">einkaufsliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">]</span>
+<span class="n">kilopreise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">:</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Möhren&quot;</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">:</span> <span class="mf">2.49</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Birnen&quot;</span><span class="p">:</span> <span class="mf">2.19</span><span class="p">}</span>
+<span class="n">einkaufsmenge</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">gesamtpreis</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">grenze</span> <span class="o">=</span> <span class="mi">20</span>
+
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">artikel</span> <span class="ow">in</span> <span class="n">einkaufsliste</span><span class="p">:</span>
+        <span class="n">preis_aktuell</span> <span class="o">=</span> <span class="n">gesamtpreis</span> <span class="o">+</span> <span class="n">kilopreise</span><span class="p">[</span><span class="n">artikel</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">preis_aktuell</span> <span class="o">&lt;=</span> <span class="n">grenze</span><span class="p">:</span>
+            <span class="n">einkaufsmenge</span><span class="p">[</span><span class="n">artikel</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">gesamtpreis</span> <span class="o">=</span> <span class="n">preis_aktuell</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c1"># wird nur ausgeführt, wenn die for-Schleife ohne `break` terminiert ist</span>
+        <span class="k">continue</span>
+    <span class="k">break</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">einkaufsmenge</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gesamtpreis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Tomaten&#39;: 2, &#39;Kartoffeln&#39;: 2, &#39;Äpfel&#39;: 1, &#39;Orangen&#39;: 1}
+19.440000000000005
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Lösungen mit Break-Out Variable und For-Else-Syntax funktionieren zwar, aber sie erfordern zusätzlichen Code und sind etwas unübersichtlich. Eine Lösung, die übersichtlicher ist und keine zusätzlichen Code-Zeilen und Variablen erfordert, sind Funktionen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Als Funktion</span>
+
+<span class="k">def</span> <span class="nf">einkauf_planen</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">,</span> <span class="n">kilopreise</span><span class="p">,</span> <span class="n">grenze</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Berechnet, wie viele Kilogramm von einem Artikel auf der Einkaufsliste in Abhängigkeit vom aktuellen Kilopreise der Artikel und einem vorgegebenen maximalen Einkaufspreis gekauft werden können, und wieviel der Einkauf kostet.</span>
+
+<span class="sd">    Parameter:</span>
+<span class="sd">        einkaufsliste, eine Liste mit Elementen vom Typ String, die Einkaufsartikel repräsentieren</span>
+<span class="sd">        kilopreise, ein Dictionary mit den Elementen aus der Einkaufsliste als Schlüssel und dem aktuellen Kilopreise der Artikel als Werte</span>
+<span class="sd">        grenze, ein Integer, der Maximalpreis für den Einkauf in Euro</span>
+
+<span class="sd">    Gibt ein Tupel mit einem Dictionary einkaufsmenge und einem Float gesamtpreis als Elemente zurück.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">einkaufsmenge</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">)))</span> <span class="c1"># Elemente der Einkaufsliste als Schlüssel</span>
+    <span class="n">gesamtpreis</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">artikel</span> <span class="ow">in</span> <span class="n">einkaufsliste</span><span class="p">:</span>
+            <span class="n">preis_aktuell</span> <span class="o">=</span> <span class="n">gesamtpreis</span> <span class="o">+</span> <span class="n">kilopreise</span><span class="p">[</span><span class="n">artikel</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">preis_aktuell</span> <span class="o">&lt;=</span> <span class="n">grenze</span><span class="p">:</span>
+                <span class="n">einkaufsmenge</span><span class="p">[</span><span class="n">artikel</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">gesamtpreis</span> <span class="o">=</span> <span class="n">preis_aktuell</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">einkaufsmenge</span><span class="p">,</span> <span class="n">gesamtpreis</span><span class="p">)</span> <span class="c1"># Rückgabewert ist ein Tupel!</span>
+
+<span class="n">einkaufsliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">]</span>
+<span class="n">kilopreise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">:</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Möhren&quot;</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">:</span> <span class="mf">2.49</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Birnen&quot;</span><span class="p">:</span> <span class="mf">2.19</span><span class="p">}</span>
+<span class="n">grenze</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">einkauf</span> <span class="o">=</span> <span class="n">einkauf_planen</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">,</span> <span class="n">kilopreise</span><span class="p">,</span> <span class="n">grenze</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">einkauf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>({&#39;Tomaten&#39;: 2, &#39;Kartoffeln&#39;: 2, &#39;Äpfel&#39;: 1, &#39;Orangen&#39;: 1}, 19.440000000000005)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eine Änderung, die durch die Funktionsdefinition notwendig geworden ist, ist, dass die Schlüssel des Dictionaries einkaufsmenge aus den Elementen der Einkaufsliste generiert wurden. Das ist hier notwendig, weil die Funktion sonst nur für exakt dieselbe Einkaufsliste verwendet werden könnte (nämlich eine Einkaufsliste mit den Elementen “Tomaten”, “Kartoffeln”, “Äpfel” und “Orangen”. Diese Änderung macht unsere Schleife zugleich deutlich flexibler, denn jetzt müssen nicht dreimal dieselben Strings  eingegeben werden, sondern nur zweimal.</p>
+<p>Beachtet auch, dass die Funktion hier ein Tupel zurückgibt, das aus den beiden Objekten einkaufsmenge und gesamtpreis zusammengesetzt ist. Auf die einzelnen Elemente kann man ganz regulär mit dem Zugriffsoperator [] für sequentielle Datentypen  zugreifen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">einkaufsmenge</span> <span class="o">=</span> <span class="n">einkauf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">einkaufsmenge</span><span class="p">)</span>
+<span class="n">gesamtpreis</span> <span class="o">=</span> <span class="n">einkauf</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gesamtpreis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Tomaten&#39;: 2, &#39;Kartoffeln&#39;: 2, &#39;Äpfel&#39;: 1, &#39;Orangen&#39;: 1}
+19.440000000000005
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tupel können also verwendet werden, wenn eine Funktion mehrere Werte zurückgeben soll.</p>
+</div>
+<p>Wir haben mit der Funktionsdefinition also unseren Code bereits in zwei Aspekten verbessert: Es ist weniger Code notwendig, um auch die äußere Schleife abzubrechen, und wir haben die Variable einkaufsmenge in Abhängigkeit von der Variable einkaufsliste definiert, sodass Änderungen an der Variable einkaufsliste auch direkt auf die Variable einkaufsmenge übertragen werden, ohne, dass wir den Code kopieren müssen.</p>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfragen</p>
+<p>Wie könnte man die Definition der Funktion noch weiter verbessern? Betrachtet dazu verschiedene mögliche Situationen:</p>
+<ul class="simple">
+<li><p>Was wird zurückgegeben, wenn <code class="docutils literal notranslate"><span class="pre">einkaufsliste</span></code> eine leere Liste ist?</p></li>
+<li><p>Was passiert, wenn der Wert der Variable grenze kein Integer, sondern ein Float ist (zum Beispiel bei 10.5)?</p></li>
+<li><p>Was passiert beim Ausführen der Zugriffsoperation <code class="docutils literal notranslate"><span class="pre">kilopreise[artikel]</span></code>, wenn der entsprechende Artikel nicht im Dictionary <code class="docutils literal notranslate"><span class="pre">kilopreise</span></code> enthalten ist?</p></li>
+<li><p>Die Schleife terminiert, sobald durch Hinzufügen des aktuellen Artikel in der Einkaufsliste die Grenze überschritten wird. Wie könnte der Code so umgeschrieben werden, dass zunächst überprüft wird, ob es irgendeinen Artikel in der Einkaufsliste gibt, der hinzugefügt werden könnte, ohne, dass die Grenze überschritten wird?</p></li>
+<li><p>Könnte man das Objekt <code class="docutils literal notranslate"><span class="pre">einkaufsmenge</span></code> auch anders erstellen, zum Beispiel durch Verwenden der Dictionary-Methode <code class="docutils literal notranslate"><span class="pre">.setdefault()</span></code>?</p></li>
+</ul>
+</div>
+</section>
+<section id="sichtbarkeitsbereich-von-variablen-variable-scope">
+<h2><span class="section-number">4.1.7. </span>Sichtbarkeitsbereich von Variablen (Variable Scope)<a class="headerlink" href="#sichtbarkeitsbereich-von-variablen-variable-scope" title="Link to this heading">#</a></h2>
+<p>Wenn wir Variablen erstellt haben, sind wir immer davon ausgegangen, dass diese im gesammten Programm mithilfe des Namens abrufbar sind. Wenn wir selbst eine Funktion definieren, und dabei eine Variable vorkommt, dann ist die im restlichen Programm jedoch im Normalfall nicht abrufbar, sie “existiert” sozusagen nur in der Funktion und ist im restlichen Programm nicht sichtbar. Die Sichtbarkeit von Variablen im eigenen Code lässt sich leicht mithilfe von <a class="reference external" href="https://pythontutor.com/python-debugger.html#mode=edit">pythontutor.com</a> nachvollziehen.</p>
+<p>Kopiert als Beispiel den Code der Funktion einkauf_planen() in PythonTutor und führt ihn dort aus.</p>
+<p><strong>Es ist bei der Definition von Funktionen wichtig zu beachten, dass innerhalb der Funktionsdefinition keine Variablen aus dem Bereich außerhalb der Funktion verwendet werden sollten.</strong> Beispielsweise dürfte nicht einfach der Parameter grenze aus der Funktionsdefinition entfernt werden, denn sonst wird beim Aufruf der Funktion eine gleichnamige Variable aus dem Bereich außerhalb der Funktion eingesetzt. Dadurch hat die Funktion ein für Nachnutzer:innen unvorhersehbares Verhalten! <strong>Alle Objekte, welche zum Ausführen der Funktion benötigt werden, sollten deswegen entweder innerhalb der Funktion erstellt werden oder beim Aufruf als Argumente übergeben werden.</strong></p>
+</section>
+<section id="argumente-und-parameter">
+<h2><span class="section-number">4.1.8. </span>Argumente und Parameter<a class="headerlink" href="#argumente-und-parameter" title="Link to this heading">#</a></h2>
+<p>Bisher haben wir beim Funktionsaufruf Argumente nach der Reihenfolge der entsprechenden Parameter in der Funktionsdefinition übergeben:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">einkaufsliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">]</span>
+<span class="n">kilopreise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">:</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Möhren&quot;</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">:</span> <span class="mf">2.49</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Birnen&quot;</span><span class="p">:</span> <span class="mf">2.19</span><span class="p">}</span>
+<span class="n">grenze</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">einkauf_planen</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">,</span> <span class="n">kilopreise</span><span class="p">,</span> <span class="n">grenze</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>({&#39;Tomaten&#39;: 2, &#39;Kartoffeln&#39;: 2, &#39;Äpfel&#39;: 1, &#39;Orangen&#39;: 1}, 19.440000000000005)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Beachtet, dass dabei der Name der Argumente keine Rolle spielt: Wir haben die Einkaufsliste <code class="docutils literal notranslate"><span class="pre">einkaufsliste</span></code> und das Dictionary mit den Kilopreisen <code class="docutils literal notranslate"><span class="pre">kilopreise</span></code> genannt, genau wie die Funktionsparameter, aber bei der Zuordnung der Argumente zu den Parametern ist diese Benennung nicht entscheidend, sondern einzig die Position der Argumente beim Funktionsaufruf. Das wird deutlich, wenn wir die Argumente umbenennen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meine_einkaufsliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">]</span>
+<span class="n">aktuelle_kilopreise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">:</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Möhren&quot;</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">:</span> <span class="mf">2.49</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Birnen&quot;</span><span class="p">:</span> <span class="mf">2.19</span><span class="p">}</span>
+<span class="n">obergrenze</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">einkauf_planen</span><span class="p">(</span><span class="n">meine_einkaufsliste</span><span class="p">,</span> <span class="n">aktuelle_kilopreise</span><span class="p">,</span> <span class="n">obergrenze</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>({&#39;Tomaten&#39;: 2, &#39;Kartoffeln&#39;: 2, &#39;Äpfel&#39;: 1, &#39;Orangen&#39;: 1}, 19.440000000000005)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um deutlich zu machen, welche Argumente welchen Parametern zugeordnet werden sollen, oder um Argumente in einer anderen Reihenfolge zu übergeben, kann der Name des Parameters beim Funktionsaufruf mit angegeben werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">einkauf_planen</span><span class="p">(</span><span class="n">kilopreise</span><span class="o">=</span><span class="n">aktuelle_kilopreise</span><span class="p">,</span> <span class="n">einkaufsliste</span><span class="o">=</span><span class="n">meine_einkaufsliste</span><span class="p">,</span> <span class="n">grenze</span><span class="o">=</span><span class="n">obergrenze</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>({&#39;Tomaten&#39;: 2, &#39;Kartoffeln&#39;: 2, &#39;Äpfel&#39;: 1, &#39;Orangen&#39;: 1}, 19.440000000000005)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die erste Art der Funktionsargumente nennt sich <em>positional arguments</em> (positionale Argumente), die zweite Art <em>keyword arguments</em> (Schlüsselwortargumente).
+Daneben gibt es noch <em>Defaultargumente</em>, also Argumente, für die bereits bei der Funktionsdefinition ein Default-Wert festgelegt wird. Wenn der Default-Wert beibehalten werden soll (im Beispiel unten grenze=20), muss beim Funktionsaufruf für diesen Parameter kein Argument angegeben werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">einkauf_planen</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">,</span> <span class="n">kilopreise</span><span class="p">,</span> <span class="n">grenze</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+
+    <span class="n">einkaufsmenge</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">)))</span> <span class="c1"># Elemente der Einkaufsliste als Schlüssel</span>
+    <span class="n">gesamtpreis</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">artikel</span> <span class="ow">in</span> <span class="n">einkaufsliste</span><span class="p">:</span>
+            <span class="n">preis_aktuell</span> <span class="o">=</span> <span class="n">gesamtpreis</span> <span class="o">+</span> <span class="n">kilopreise</span><span class="p">[</span><span class="n">artikel</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">preis_aktuell</span> <span class="o">&lt;=</span> <span class="n">grenze</span><span class="p">:</span>
+                <span class="n">einkaufsmenge</span><span class="p">[</span><span class="n">artikel</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">gesamtpreis</span> <span class="o">=</span> <span class="n">preis_aktuell</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">einkaufsmenge</span><span class="p">,</span> <span class="n">gesamtpreis</span><span class="p">)</span> <span class="c1"># Rückgabewert ist ein Tupel!</span>
+
+<span class="n">einkaufsliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">]</span>
+<span class="n">kilopreise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">:</span> <span class="mf">3.99</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Möhren&quot;</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">,</span> <span class="s2">&quot;Äpfel&quot;</span><span class="p">:</span> <span class="mf">2.49</span><span class="p">,</span> <span class="s2">&quot;Orangen&quot;</span><span class="p">:</span> <span class="mf">2.99</span><span class="p">,</span> <span class="s2">&quot;Birnen&quot;</span><span class="p">:</span> <span class="mf">2.19</span><span class="p">}</span>
+
+<span class="n">einkauf_planen</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">,</span> <span class="n">kilopreise</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>({&#39;Tomaten&#39;: 2, &#39;Kartoffeln&#39;: 2, &#39;Äpfel&#39;: 1, &#39;Orangen&#39;: 1}, 19.440000000000005)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wenn ihr den Quellcode professioneller Softwareprojekte auf GitHub oder einer anderen Plattform inspiziert, stoßt ihr in Funktionsdefinitionen häufig auf eine dritte Art von Parametern, die von ein oder zwei Sternchen angeführt werden und meist idiomatisch mit <code class="docutils literal notranslate"><span class="pre">args</span></code> und <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> benannt sind (anders als im folgenden Beispiel):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">einkauf_planen</span><span class="p">(</span><span class="o">*</span><span class="n">einkaufsliste</span><span class="p">,</span> <span class="n">grenze</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="o">**</span><span class="n">kilopreise</span><span class="p">):</span>
+
+    <span class="n">einkaufsmenge</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">)))</span> <span class="c1"># Elemente der Einkaufsliste als Schlüssel</span>
+    <span class="n">gesamtpreis</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">artikel</span> <span class="ow">in</span> <span class="n">einkaufsliste</span><span class="p">:</span>
+            <span class="n">preis_aktuell</span> <span class="o">=</span> <span class="n">gesamtpreis</span> <span class="o">+</span> <span class="n">kilopreise</span><span class="p">[</span><span class="n">artikel</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">preis_aktuell</span> <span class="o">&lt;=</span> <span class="n">grenze</span><span class="p">:</span>
+                <span class="n">einkaufsmenge</span><span class="p">[</span><span class="n">artikel</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">gesamtpreis</span> <span class="o">=</span> <span class="n">preis_aktuell</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">einkaufsmenge</span><span class="p">,</span> <span class="n">gesamtpreis</span><span class="p">)</span> <span class="c1"># Rückgabewert ist ein Tupel!</span>
+
+<span class="n">einkauf_planen</span><span class="p">(</span><span class="s2">&quot;Tomaten&quot;</span><span class="p">,</span> <span class="s2">&quot;Kartoffeln&quot;</span><span class="p">,</span>
+               <span class="n">Tomaten</span><span class="o">=</span><span class="mf">3.99</span><span class="p">,</span> <span class="n">Kartoffeln</span><span class="o">=</span><span class="mf">2.99</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>({&#39;Tomaten&#39;: 3, &#39;Kartoffeln&#39;: 2}, 17.950000000000003)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Was bewirken die Sternchen? Die Argumente müssen beim Aufruf einer so definierten Funktion nicht als Liste und Dictionary übergeben werden wie in den Beispielen zuvor. Das Sternchen vor dem Parameter <code class="docutils literal notranslate"><span class="pre">einkaufsliste</span></code> bewirkt, dass die beiden Strings “Tomaten” und “Kartoffeln” beim Funktionsaufruf in ein Tupel mit dem Namen <code class="docutils literal notranslate"><span class="pre">einkaufsliste</span></code> eingesammelt werden; die zwei Sternchen vor dem Parameter <code class="docutils literal notranslate"><span class="pre">kilopreise</span></code> bewirken, dass die angegebenen Keyword-Argumente Tomaten=3.99 und Kartoffeln=2.99 in einem Dictionary mit den Schlüsseln “Tomaten” und “Kartoffeln” gesammelt werden. In diesem konkreten Beispiel ist es nicht sinnvoll, die Funktion auf diese Weise zu definieren, aber der Unterschied zwischen den verschiedenen Argumenten sollte am Beispiel gut deutlich geworden sein. Wer sich weiter einlesen möchte, dem empfehle ich das Kapitel “Ch. 18 Arguments. Special Argument Matching Modes” in <a class="reference external" href="https://www.oreilly.com/library/view/learning-python-6th/9781098171292/">Martin Lutz (2025), Learning Python</a>.</p>
+</section>
+<section id="was-sind-methoden">
+<h2><span class="section-number">4.1.9. </span>Was sind Methoden?<a class="headerlink" href="#was-sind-methoden" title="Link to this heading">#</a></h2>
+<p>Wir haben Methoden bisher definiert als die Operationen, die speziell für Objekte eines bestimmten Datentyps definiert sind. Jetzt können wir diese Definition schärfen: Methoden haben genau wie Funktionen einen Namen, Parameter und einen Funktionskörper, und sie geben einen Wert zurück. Aber im Unterschied zu Funktionen sind sie nur für Objekte eines bestimmten Datentyps definiert.</p>
+<p>Wir haben bereits den Punkt-Operator <code class="docutils literal notranslate"><span class="pre">.</span></code> kennengelernt, mit dem Methoden aufgerufen werden können:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wort</span> <span class="o">=</span> <span class="s2">&quot;Hallo&quot;</span>
+<span class="n">wort</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hallo&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In diesem Kapitel wurde häufig der <strong>Begriff “Fehler”</strong> verwendet. Während sich umgangssprachlich jede:r etwas darunter vorstellen kann, gibt es für diesen wie für viele andere Begriffe in der professionellen Softwareentwicklung feststehende, wenn auch nicht immer einheitliche Definitionen, für die es zum Teil sogar internationale Normen gibt. Die ISO Norm 24765 unterscheidet beispielsweise zwischen error, fault, defect und failure (<a class="reference external" href="https://www.iso.org/obp/ui/en/#iso:std:iso-iec-ieee:24765:ed-2:v1:en">ISO24765:2017</a>). Der Unterschied wird durch die deutschsprachige Übersetzung durch das International Software Testing Qualifications Board intuitiv deutlich: Demnach ist ein error eine Fehlhandlung einer Person, welche einen Fehlerzustand, einen Defekt in einem Programm verursachen kann (defect oder fault). Dieser Fehlerzustand kann eine Fehlerwirkung, das Versagen des Programms, herbeiführen (failure) (laut <a class="reference external" href="https://glossary.istqb.org/de_DE/home">Glossar des ISTQB</a>). Nach dieser Definition ist das, was wir in diesem Kapitel mit Fehler meinen eigentlich der Defekt im Code, der beim Ausführen zu einem Versagen führen kann.</p>
+</div>
+</section>
+<section id="quellen">
+<h2><span class="section-number">4.1.10. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id1">
+<ol class="arabic simple" start="1">
+<li id="id49"><p>ISO/IEC/IEEE 24765:2017(en). Systems and Software Engineering — Vocabulary. 2017. URL: <a class="reference external" href="https://www.iso.org/obp/ui/en/#iso:std:iso-iec-ieee:24765:ed-2:v1:en">https://www.iso.org/obp/ui/en/#iso:std:iso-iec-ieee:24765:ed-2:v1:en</a>.</p></li>
+<li id="id12"><p>Ana Bell. Decomposition, Abstraction, and Functions. 2016. URL: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-4-decomposition-abstraction-and-functions/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-4-decomposition-abstraction-and-functions/</a>.</p></li>
+<li id="id50"><p>International Software Testing Qualifications Board. Standardglossar der Fachbegriffe im Softwaretesten. URL: <a class="reference external" href="https://glossary.istqb.org/de_DE/home">https://glossary.istqb.org/de_DE/home</a>.</p></li>
+<li id="id48"><p>David Goodger and Guido van Rossum. PEP 257 - Docstring Conventions. 2022. URL: <a class="reference external" href="https://peps.python.org/pep-0257/">https://peps.python.org/pep-0257/</a>.</p></li>
+<li id="id14"><p>Eric Grimson. Recursion and Dictionaries. 2016. URL: <a class="reference external" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-6-recursion-and-dictionaries/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-6-recursion-and-dictionaries/</a>.</p></li>
+<li id="id47"><p>Stefan Hartinger. Programmieren in Python. Kapitel 6: Funktionen. 2021. URL: <a class="reference external" href="https://www.uni-regensburg.de/assets/physik/fakultaet/IT/Tutorials-Installation-Programming-Environment/Programmieren_in_Python.pdf">https://www.uni-regensburg.de/assets/physik/fakultaet/IT/Tutorials-Installation-Programming-Environment/Programmieren_in_Python.pdf</a>.</p></li>
+<li id="id43"><p>Mark Lutz. <em>Learning Python. Powerful Object-Oriented Programming</em>. O'Reilly Media, Inc., 6 edition, 2025. URL: <a class="reference external" href="https://www.oreilly.com/library/view/learning-python-6th/9781098171292/">https://www.oreilly.com/library/view/learning-python-6th/9781098171292/</a>.</p></li>
+<li id="id46"><p>Leodanis Pozo Ramos. The Python return Statement. Usage and Best Practices. URL: <a class="reference external" href="https://realpython.com/python-return-statement/">https://realpython.com/python-return-statement/</a>.</p></li>
+<li id="id45"><p>Python 3.11.3 Documentation. Defining Functions. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/controlflow.html#defining-functions">https://docs.python.org/3/tutorial/controlflow.html#defining-functions</a>.</p></li>
+<li id="id44"><p>Python 3.11.3 Documentation. Glossary: Functions. URL: <a class="reference external" href="https://docs.python.org/3/glossary.html#term-function">https://docs.python.org/3/glossary.html#term-function</a>.</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/04/subchapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../04_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Python III: Funktionen und Pakete</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_pakete.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>Module, Pakete, Bibliotheken</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-funktionen">4.1.1. Was sind Funktionen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-definieren">4.1.2. Funktionen definieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-aufrufen">4.1.3. Funktionen aufrufen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-verstehen">4.1.4. Funktionen verstehen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wozu-werden-funktionen-verwendet">4.1.5. Wozu werden Funktionen verwendet?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-schleifen-durch-funktionen-vereinfachen">4.1.6. Verschachtelte Schleifen durch Funktionen vereinfachen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sichtbarkeitsbereich-von-variablen-variable-scope">4.1.7. Sichtbarkeitsbereich von Variablen (Variable Scope)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-und-parameter">4.1.8. Argumente und Parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-methoden">4.1.9. Was sind Methoden?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">4.1.10. Quellen</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lisa Poggel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
