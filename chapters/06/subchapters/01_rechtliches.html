@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Webscraping für Geisteswissenschaften</title>
+    <title>6.1. Der rechtliche Rahmen &#8212; Webscraping für Geisteswissenschaften</title>
   
   
   
@@ -61,7 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="6.1. HTML: Hypertext Markup Language" href="02_html.html" />
+    <link rel="next" title="6.2. HTML: Hypertext Markup Language" href="02_html.html" />
     <link rel="prev" title="6. Einstieg Webscraping" href="../06_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -177,7 +177,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Motivation</a></li>
@@ -210,10 +210,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../05/subchapters/02_installation_setup.html">5.2. Installation und Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../06_intro.html">6. Einstieg Webscraping</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="02_html.html">6.1. HTML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_css.html">6.2. CSS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04_http.html">6.3. Client, Server, HTTP</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../06_intro.html">6. Einstieg Webscraping</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.1. Der rechtliche Rahmen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_html.html">6.2. HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_css.html">6.3. CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_http.html">6.4. Client, Server, HTTP</a></li>
 </ul>
 </li>
 </ul>
@@ -285,7 +286,7 @@
       
       
       
-      <li><a href="../../../_sources/chapters/06/subchapters/01_rechtliches.md" target="_blank"
+      <li><a href="../../../_sources/chapters/06/subchapters/01_rechtliches.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -295,7 +296,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -369,7 +370,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Der rechtliche Rahmen</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -378,9 +379,18 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nutzungsbedingungen-beispiel-facebook">6.1.1. Nutzungsbedingungen: Beispiel Facebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technische-schranken">6.1.2. Technische Schranken</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urheberrecht">6.1.3. Urheberrecht</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datenschutz-dsgvo">6.1.4. Datenschutz (DSGVO)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nationales-recht">6.1.5. Nationales Recht</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uber-den-rechtlichen-rahmen-hinaus-ethik-fair-prinzipien-und-die-fu-forschungsdaten-policy">6.1.6. Über den rechtlichen Rahmen hinaus: Ethik, FAIR-Prinzipien und die FU-Forschungsdaten-Policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-before-you-scrape">6.1.7. Zusammenfassung: Before you scrape…</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">6.1.7.1. Quellen</a></li>
 </ul>
-
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -391,222 +401,165 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>{
-“cells”: [
-{
-“attachments”: {},
-“cell_type”: “markdown”,
-“metadata”: {},
-“source”: [
-“# Der rechtliche Rahmen”
-]
-},
-{
-“cell_type”: “markdown”,
-“source”: [
-“\n”,
-“&gt; “Im Regelfall ist Web Scraping für die empirische Forschung rechtlich zulässig. Die Nutzungsbedingungen, die häufig verwendet werden, ändern daran nichts. Anders sieht es mit technischen Sperren aus, die nicht umgangen werden dürfen.”\n”,
-“\n”,
-“Quelle: Thilo Klawonn, <a class="reference external" href="https://www.forschung-und-lehre.de/recht/grenzen-des-web-scrapings-2421">Grenzen des “Web Scraping”</a>, in: Forschung &amp; Lehre 1, 2020.\n”,
-“\n”,
-“Was bedeutet das?\n”,
-“\n”,
-“## Nutzungsbedingungen: Beispiel Facebook\n”,
-“\n”,
-“Obwohl Web Scraping für die eigenen Forschungszwecke grundsätzlich erlaubt ist, versuchen manche Webseitenbetreiber, Web Scraping und ähnliche Aktivitäten in ihren Nutzungsbedingungen zu verbieten.\n”,
-“In den Facebook-Nutzungsbedingungen steht beispielsweise: “You may not access or collect data from our Products using automated means (without our prior permission) or attempt to access data you do not have permission to access. We also reserve all of our rights against text and data mining.” (<a class="reference external" href="https://www.facebook.com/legal/terms">Facebook 2022</a>)\n”,
-“Die beiden Rechtswissenschaftler Sebastian Golla und Max Schönfeld haben die rechtliche Stellung der Facebook-Nutzungsbedingungen untersucht und sind zu dem Schluss gekommen, dass die rechtliche Wirksamkeit dieser Passage “zweifelhaft” ist:\n”,
-“\n”,
-“&gt; “Die Passage der Nutzungsbedingungen von Facebook, die einen automatisierten Zugriff auf Daten ohne Genehmigung grundsätzlich ausschließt, ist gem. § 307 Abs. 1 S. 1, Abs. 2 Nr. 1 BGB wegen eines Verstoßes gegen den wesentlichen Grundgedanken von §60d Abs.1 UrhG unwirksam. \[…\] Ähnliches gilt für die inhaltlich vergleichbaren Passagen in den Nutzungsbedingungen weiterer sozialer Netzwerke wie Twitter, YouTube oder LinkedIn.”\n”,
-“\n”,
-“Quelle: Sebastian Golla und Max Schönfeld, <a class="reference external" href="https://www.academia.edu/38267337/Kratzen_und_Sch%C3%BCrfen_im_Datenmilieu_Web_Scraping_in_sozialen_Netzwerken_zu_wissenschaftlichen_Forschungszwecken">Kratzen und Schürfen im Datenmilieu</a>, in: Kommunikation &amp; Recht 22 (2019), S. 19 und S. 21.\n”,
-“\n”,
-“Wenn man beim Web Scraping gegen die Nutzungsbedingungen einer Website verstößt, macht man sich also nicht automatisch strafbar. Anfang des Jahres 2024 hat beispielsweise im Fall Bright Data vs. Facebook ein US-Gericht entschieden, dass Scrapen auch von Facebookdaten erlaubt ist, solange dabei kein Nutzerprofil verwendet wird und kein Login erfolgt (<a class="reference external" href="https://www.courthousenews.com/federal-judge-rules-against-meta-in-data-scraping-case/">Gennaro 2024</a>). Das Beispiel zeigt auch, dass eine Klage seitens der Webseitenbetreiber wegen Verstoßes gegen die Nutzungsbedingungen nie ausgeschlossen ist, selbst wenn wie in diesem Fall der Prozess vermutlich zugunsten der angeklagten Person entschieden wird.\n”,
-“Das heißt allerdings nicht, dass man einfach alles nach dem eigenen Gusto scrapen darf.\n”,
-“Im Folgenden klären wir drei wichtige rechtliche Einschränkungen auf.\n”,
-“\n”,
-“## Technische Schranken\n”,
-“\n”,
-“In der eingangs zitierten Passage aus dem Artikel in der “Forschung &amp; Lehre” werden “technische Schranken” erwähnt, die beim Web Scraping nicht umgangen werden dürfen.\n”,
-“Was hat es damit auf sich?\n”,
-“\n”,
-“In den letzten Jahren haben einige Gerichtsurteile die grundsätzliche Zulässigkeit von Web Scraping bestätigt und dabei auf die Eigenverantwortung der Websitebetreiber hingewiesen, Schutzmaßnahmen zu ergreifen, um das Webscraping zu unterbinden, wenn das nicht gewünscht ist (<a class="reference external" href="https://doi.org/10.1007/978-3-662-61726-7">Specht-Riemenschneider 2020</a>, S. 72)\n”,
-“Viele Webseiten nutzen als eine solche Schutzmaßnahme das sogenannte “Robot Exclusion Standard Protokoll”: Das Protokoll wurde ursprünglich in den 1990er Jahren entwickelt, als Suchmaschinen angefangen haben, Webcrawler (auch genannt “Spider”) einzusetzen, die automatisch das World Wide Web durchsuchen, Webseiten analysieren und für die Suchmaschine indexieren.\n”,
-“Beim Web Crawling geht es im Unterschied zum Web Scraping also darum, den gesamten Inhalt einer Website zu erfassen.\n”,
-“Webcrawler senden dabei Anfragen an den Webserver, auf dem die Website gehostet wird (–&gt; nächste Woche lernen wir dazu mehr).\n”,
-“Wenn ein Webserver viele Anfragen erhält, kann das den Server überlasten und die Website ist vorübergehend nicht erreichbar.\n”,
-“Websitebetreiber:innen wollen deswegen zum einen verhindern, dass Web Crawler zu viele Anfragen stellen, und sie wollen Webcrawler gegebenenfalls davon abhalten, Unterseiten ihrer Website zu analysieren, die sensible Inhalte enthalten.\n”,
-“\n”,
-“Aus diesem Grund wurde das sogenannte Robot Exclusion Standard Protokoll erfunden.\n”,
-“Ein Protokoll ist im Grunde einfach eine Vereinbarung, wie die Kommunikation zwischen verschiedenen Parteien abläuft.\n”,
-“Wenn es sich bei diesen Parteien um Computer handelt, spricht man von Netzwerkprotokoll. Dazu lernen wir in der nächsten Woche mehr.\n”,
-“Seriöse Webcrawler befolgen das Robot Exclusion Standard Protokoll. Das Protokoll legt fest, dass Crawler für jede neue Seite, die sie “besuchen”, zuerst eine spezielle Datei lesen, die direkt im Stammverzeichnis (root) einer Website abgelegt wird.\n”,
-“Diese Datei heißt immer <strong>robots.txt</strong>.\n”,
-“In der robots.txt steht zum Beispiel, welche Unterseiten ein Crawler analysieren darf, und wie viele Anfragen an den Server in welchen zeitlichen Abständen gestellt werden dürfen.\n”,
-“Manchmal wird in der Datei auch ganz speziellen Web Crawlern das Crawlen der Seite komplett untersagt, zum Beispiel, wenn die Crawler dafür bekannt sind, dass sie zu viele Anfragen in zu kurzer Zeit stellen.\n”,
-“\n”,
-“Beispiele:\n”,
-“\n”,
-“- <a class="reference external" href="https://www.amazon.de/robots.txt">https://www.amazon.de/robots.txt</a>\n”,
-“- <a class="reference external" href="https://wikisource.org/robots.txt">https://wikisource.org/robots.txt</a>\n”,
-“- <a class="reference external" href="https://www.bundesregierung.de/robots.txt">https://www.bundesregierung.de/robots.txt</a>\n”,
-“- <a class="reference external" href="https://www.neues-deutschland.de/robots.txt">https://www.neues-deutschland.de/robots.txt</a>\n”,
-“\n”,
-“Die Verhaltensregeln, die in der robots.txt festgehalten werden, gelten aber nicht nur für Web Crawler, sondern auch für Web Scraper.\n”,
-“Denn wie wir in der nächsten Woche sehen werden, senden auch Web Scraper Anfragen an Webserver.\n”,
-“\n”,
-“Wenn die Verhaltensregeln in der robots.txt nicht eingehalten werden, kann zum Beispiel der Crawler bzw. Scraper geblockt werden.\n”,
-“Bei jeder Anfrage an den Server wird nämlich auch die IP-Adresse des Computers, von dem aus die Anfrage gesendet wird, mit übermittelt.\n”,
-“Dadurch ist jeder Web Scraper eindeutig identifizierbar.\n”,
-“Es kann auch sein, dass ein Web Scraper nicht sofort blockiert wird, sondern dass ein reCAPTCHA-Bilderkennungstest aktiviert wird.\n”,
-“Diese Tests sind durch Bots nicht lösbar und dienen dazu, automatisierte Anfragen zu verhindern.\n”,
-“\n”,
-“Im Internet finden sich deswegen viele Tipps, wie man seine IP-Adresse beim Web Scrapen verstecken kann.\n”,
-“<strong>Wenn man aber blockiert wird, weil man sich nicht an das robots.txt gehalten hat, und dann sein Skript so umschreibt, dass man nicht mehr blockiert wird, dann umgeht man ganz bewusst die von den Websitebetreiber:innen getroffenen Schutzmaßnahmen und man macht sich möglicherweise strafbar.\n”,
-“Wenn der eigene Webscraper so viele Anfragen gestellt hat, dass der Webserver dadurch überlastet ist und die Website einige Zeit nicht erreichbar ist, dann hat man die Funktionalität der Website beeinträchtigt, man hat einen “technischen Schaden” produziert. Auch das kann rechtliche Konsequenzen haben.</strong>\n”,
-“Die Forschungsstelle RobotRecht der Universität Würzburg hat in einem Rechtsgutachten zum Einsatz von WebScraping in der nicht-kommerziellen wissenschaftlichen Forschung deswegen dazu ermahnt, dass durch das Web Scrpaing keine “technische Schädigung beim Betreiber der Website” verursacht werden darf (<a class="reference external" href="https://www.konsortswd.de/wp-content/uploads/RatSWD_Output4.6_BigData.pdf">Forschungsstelle RobotRecht 2019</a>).\n”,
-“\n”,
-“<strong>Um rechtlich auf der sicheren Seite zu sein, müsst ihr also immer sicherstellen, dass sich eure Web Scraper “gutartig” verhalten und die Verhaltensregeln in der robots.txt einhalten.</strong>\n”,
-“\n”,
-“## Urheberrecht\n”,
-“\n”,
-“Der “Kratzen und Schürfen”-Artikel nennt neben technischen Einschränkungen das Urheberrecht als eine Einschränkung, an die sich Forschende beim Web Scraping halten müssen.\n”,
-“\n”,
-“Grundsätzlich gilt nämlich auch für Inhalte auf Facebook das Urheberrecht:\n”,
-“\n”,
-“&gt; “Auf Facebook veröffentlichte Inhalte können in zweierlei Hinsicht urheberrechtlichem Schutz unterfallen. Einerseits können einzelne Beiträge nach §2 Abs.1 Nr.1 UrhG geschützte Sprachwerke sein, worauf sich deren jeweilige Verfasser als Urheber berufen können. Andererseits kann sich Facebook als Datenbankhersteller auf das sui generis-Schutzrecht nach §§ 87 a ff. UrhG berufen.” (S. 20)\n”,
-“\n”,
-“\n”,
-“Im Fall von Facebook kommen die Autoren jedoch zu dem Schluss:\n”,
-“\n”,
-“&gt; “Der Zugriff auf bei Facebook veröffentlichte Nutzerinhalte mittels Web Scraping zu Forschungszwecken beeinträchtigt aus urheberrechtlicher Sicht das Recht von Facebook als Datenbankhersteller nach § 87 b UrhG nicht, sofern er sich nur auf einzelne Bereiche des Netzwerks bezieht. Im Einzelfall kann der Zugriff aber Urheberrechte von Nutzerinnen an Textbeiträgen als Schriftwerken gem. § 2 Abs. 1 Nr. 1 UrhG beeinträchtigen.” (S.21)\n”,
-“\n”,
-“&gt; “Sofern die Vervielfältigung der auf Facebook veröffentlichten Inhalte urheberrechtlich relevant ist, ist sie nach\n”,
-“§ 60 c Abs. 1, Abs. 3 UrhG im Rahmen des zur Erfüllung der wissenschaftlichen Forschung erforderlichen Umfangs zulässig.” (S. 21)\n”,
-“\n”,
-“§ 60 c Abs. 1, Abs. 3 UrhG bezieht sich auf die sogenannnte Schranke für Text und Data Mining (auch TDM-Schranke genannt), welche seit 2018 gilt.\n”,
-“Man darf demnach im “geringen Umfang” auch urheberrechtliche Daten vervielfältigen, wenn es für die Forschung notwendig ist.\n”,
-“\n”,
-“Allerdings gibt es dabei eine zeitliche Begrenzung:\n”,
-“\n”,
-“&gt; “Vervielfältigungen und Korpus dürfen nur für ein konkretes Forschungsprojekt erstellt und müssen nach Abschluss dieses wieder gelöscht werden. Dauerhaft archivieren dürfen das Korpus nur öffentliche Bibliotheken, Archive und vergleichbare Institutionen.”\n”,
-“\n”,
-“Quelle: Thilo Klawonn, <a class="reference external" href="https://www.forschung-und-lehre.de/recht/grenzen-des-web-scrapings-2421">Grenzen des “Web Scraping”</a>, in: Forschung &amp; Lehre 1 (2020).\n”,
-“\n”,
-“\n”,
-“## Datenschutz (DSGVO)\n”,
-“\n”,
-“Neben urheberrechtlich geschützten Daten gibt es auch Einschränkung bei der Verarbeitung von personenbezogenen Daten.\n”,
-“Nach Artikel 4 § 1 der 2018 in Kraft getretenen Datenschutzgrundverordnung (DSGVO) gelten als personenbezogene Daten\n”,
-“\n”,
-“&gt; “alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person (im Folgenden „betroffene Person“) beziehen; als identifizierbar wird eine natürliche Person angesehen, die direkt oder indirekt, insbesondere mittels Zuordnung zu einer Kennung wie einem Namen, zu einer Kennnummer, zu Standortdaten, zu einer Online-Kennung oder zu einem oder mehreren besonderen Merkmalen, die Ausdruck der physischen, physiologischen, genetischen, psychischen, wirtschaftlichen, kulturellen oder sozialen Identität dieser natürlichen Person sind, identifiziert werden kann;”\n”,
-“\n”,
-“Quelle: DSGVO, <a class="reference external" href="https://dsgvo-gesetz.de/art-4-dsgvo/">Artikel 4 Abs. 1</a>.\n”,
-“\n”,
-“Dazu gehören zum Beispiel auch IP-Adressen (<a class="reference external" href="https://dr-dsgvo.de/ip-adressen/">Meffert</a> 2023).\n”,
-“\n”,
-“Bei der Verarbeitung von solchen Daten müssen verschiedene Regeln eingehalten werden.\n”,
-“Der bereits erwähnte Rechtswissenschaftler Sebastian Golla et al. haben eine Reihe von Maßnahmen empfohlen, die eine datenschutzkonformen Umgang mit Daten in der Forschung gewähleisten sollen (<a class="reference external" href="https://doi.org/10.1007/s11623-018-0900-x">Golla et al.</a> 2018, S. 100)\n”,
-“Die Maßnahmen sind in einer Handreichung zur “rechtskonformen Durchführung von Web-Scraping Projekten in der nicht-kommerziellen wissenschaftlichen Forschung” der Universität Hamburg in etwas verständlicherer Sprache zusammengefasst:\n”,
-“\n”,
-“&gt; - Klare Darlegung der Forschungsfrage; Erstellung eines Datenmanagmentplans\n”,
-“&gt; - Eintrag in das Verzeichnis von Verarbeitungstätigkeiten (DSGVO Art. 30) sowie die Dokumentation technisch-organisatorischer Maßnahmen (DSGVO Art. 32)\n”,
-“&gt; - Gewährleistung der Betroffenenrechte sowie informierte freiwillige Einwilligung\n”,
-“&gt; - technische Vorkehrungen zur Datenminimierung\n”,
-“&gt; - Nutzung von Anonymisierungs- bzw. Pseudoanonymisierungsmöglichkeiten\n”,
-“&gt; - Festlegung von Speicherfristen sowie deren Befolgung\n”,
-“\n”,
-“All diese Schritte seien “in frühzeitiger Rücksprache mit dem Datenschutzbeauftragten zu treffen” (<a class="reference external" href="https://www.wiso.uni-hamburg.de/forschung/forschungslabor/downloads/20200130-handreichung-web-scraping.pdf">Universität Hamburg</a> 2019, S. 2).\n”,
-“\n”,
-“## Nationales Recht\n”,
-“\n”,
-“Die DSGVO gilt in allen Mitgliedsstaaten der EU.\n”,
-“In anderen Ländern gelten dagegen andere Datenschutzbestimmungen, ein anderes Urheberrecht und auch die Bewertung von Web Scraping im Gesamten kann sich unterscheiden.\n”,
-“Wenn im Web-Scraping-Projekt Daten, die auf Servern in anderen Ländern liegen, gesammelt werden sollen oder die Website einer Firma mit Sitz in einem anderen Land gescraped werden soll, ist es deswegen ratsam, sich vorab über mögliche nationale Gesetze zu informieren. Für einen kompakten Einstieg in das Urheberrecht und die Bedeutung der “Fair Use” Bestimmungen für das Web Scraping in den USA empfehle ich <a class="reference external" href="https://doi.org/10.1093/oso/9780197756874.001.0001">Stoltz und Taylor (2024), S. 66f</a>, und für einen umfassenderen Einstieg in die rechtliche Lage in den USA <a class="reference external" href="https://doi.org/10.17705/1CAIS.04724">Krotov, Johnson und Silva (2020)</a>.\n”,
-“\n”,
-“## Über den rechtlichen Rahmen hinaus: Ethik, FAIR-Prinzipien und die FU-Forschungsdaten-Policy\n”,
-“\n”,
-“An der FU gibt es neben einem Datenschutzbeautragten auch Mitarbeitende in der Universitätsbibliothek und der ZEDAT, die Angehörige der FU beim Forschungsdatenmanagement unterstützen.\n”,
-“Die FU hat eine eigene <a class="reference external" href="https://www.fu-berlin.de/sites/forschungsdatenmanagement/policy/index.html">Forschungsdaten-Policy</a>, in der Leitlinien zum Umgang mit Forschungsdaten für Angehörige der FU festgelegt werden.\n”,
-“Darunter zählt zum Beispiel auch die Orientierung an den sogenannten FAIR-Prinzipien.\n”,
-“Was ist damit gemeint?\n”,
-“2016 haben sich einige Wissenschaftler:innen und Forschungsinstitute zu einem Konsortium zusammengeschlossen und in der Zeitschrift Scientific Data eine Reihe Prinzipien definiert, die sicherstellen sollen, dass die großen Mengen digitaler Forschungsdaten, die in den letzten Jahren produziert wurden, auch für die Zukunft zugänglich und nachnutzbar sind.\n”,
-“Diese Prinzipien werden mit dem Akronym FAIR abgekürzt, das für <strong>F</strong>indable, <strong>A</strong>ccessible, <strong>I</strong>nteroperable und <strong>R</strong>eusable steht. Was diese Prinzipien im Einzelnen umfassen, könnt ihr <a class="reference external" href="https://www.nature.com/articles/sdata201618">hier</a> nachlesen.\n”,
-“\n”,
-“Einen Schritt zur Einhaltung der FAIR-Prinzipien in euren Web-Scraping-Projekten habt ihr schon vorgenommen: Die Verwendung von virtuellen Umgebungen stellt sicher, dass eure Skripte später wiederverwendbar, also reusable, sind. Das Prinzip der Reusability umfasst nämlich auch die Möglichkeit zur “Reproducibility”, also die Möglichkeit, eine Forschung anhand der bereitgestellten Daten “nachzubauen”. “Reproducibility” wird von der US-amerikanischen National Science Foundation definiert als:\n”,
-“\n”,
-“&gt; The ability for a researcher to replicate the results of a prior study using the same materials and procedures used by the original investigator.\n”,
-“\n”,
-“Quelle: National Science Foundation (2015), zitiert in <a class="reference external" href="https://researchdatamanagement.harvard.edu/best-practices-reproducibility-reusability">Harvard University, Reproducibility and Reusability</a>.\n”,
-“\n”,
-“\n”,
-“## Zusammenfassung: Before you scrape…\n”,
-“\n”,
-“Web Scraping bewegt sich als relativ neue Methode zur Beschaffung von Forschungsdaten noch immer in einer rechtlichen Grauzone.\n”,
-“Um auf der sicheren Seite zu sein, sollte man sich vor jedem Webscraping-Projekt folgende Fragen stellen:\n”,
-“\n”,
-“- Welche Daten brauche ich in welcher Form?\n”,
-“- Unterliegen die Daten einem bestimmten Schutz (Urheberrecht, Datenschutz)?\n”,
-“- Kann ich gewährleisten, dass ich die Daten rechtskonform verarbeiten und speichern kann?\n”,
-“- Gibt es mögliche Gefahren für die betroffenen Personen, falls ich den Schutz der Daten nicht gewährleisten kann?\n”,
-“- Welche Einschränkungen sind in der robots.txt der Seite definiert?\n”,
-“\n”,
-“Im Zweifel insbesondere bei größeren Webscraping-Projekten solltet ihr außerdem unbedingt professionellen Rat einholen. Eine gute erste Anlaufstelle sind die Mitarbeiter:innen im Forschungsdatenmanagement.”
-],
-“metadata”: {
-“collapsed”: false
-}
-},
-{
-“attachments”: {},
-“cell_type”: “markdown”,
-“metadata”: {
-“collapsed”: false
-},
-“source”: [
-“### Quellen\n”,
-“\n”,
-“<code class="docutils literal notranslate"><span class="pre">{bibliography}\n&quot;,</span>&#160;&#160;&#160;&#160; <span class="pre">&quot;</span>&#160;&#160; <span class="pre">:list:</span> <span class="pre">enumerated\n&quot;,</span>&#160;&#160;&#160;&#160; <span class="pre">&quot;</span>&#160;&#160; <span class="pre">:filter:</span> <span class="pre">keywords</span> <span class="pre">%</span> <span class="pre">\&quot;recht\&quot;\n&quot;,</span>&#160;&#160;&#160;&#160; <span class="pre">&quot;</span></code>”
-]
-},
-{
-“attachments”: {},
-“cell_type”: “markdown”,
-“metadata”: {
-“collapsed”: false
-},
-“source”: []
-}
-],
-“metadata”: {
-“kernelspec”: {
-“display_name”: “Python 3”,
-“language”: “python”,
-“name”: “python3”
-},
-“language_info”: {
-“codemirror_mode”: {
-“name”: “ipython”,
-“version”: 3
-},
-“file_extension”: “.py”,
-“mimetype”: “text/x-python”,
-“name”: “python”,
-“nbconvert_exporter”: “python”,
-“pygments_lexer”: “ipython3”,
-“version”: “3.8.0”
-},
-“widgets”: {
-“application/vnd.jupyter.widget-state+json”: {
-“state”: {},
-“version_major”: 2,
-“version_minor”: 0
-}
-}
-},
-“nbformat”: 4,
-“nbformat_minor”: 4
-}</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="der-rechtliche-rahmen">
+<h1><span class="section-number">6.1. </span>Der rechtliche Rahmen<a class="headerlink" href="#der-rechtliche-rahmen" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>“Im Regelfall ist Web Scraping für die empirische Forschung rechtlich zulässig. Die Nutzungsbedingungen, die häufig verwendet werden, ändern daran nichts. Anders sieht es mit technischen Sperren aus, die nicht umgangen werden dürfen.”</p>
+</div></blockquote>
+<p>Quelle: Thilo Klawonn, <a class="reference external" href="https://www.forschung-und-lehre.de/recht/grenzen-des-web-scrapings-2421">Grenzen des “Web Scraping”</a>, in: Forschung &amp; Lehre 1, 2020.</p>
+<p>Was bedeutet das?</p>
+<section id="nutzungsbedingungen-beispiel-facebook">
+<h2><span class="section-number">6.1.1. </span>Nutzungsbedingungen: Beispiel Facebook<a class="headerlink" href="#nutzungsbedingungen-beispiel-facebook" title="Link to this heading">#</a></h2>
+<p>Obwohl Web Scraping für die eigenen Forschungszwecke grundsätzlich erlaubt ist, versuchen manche Webseitenbetreiber, Web Scraping und ähnliche Aktivitäten in ihren Nutzungsbedingungen zu verbieten.
+In den Facebook-Nutzungsbedingungen steht beispielsweise: “You may not access or collect data from our Products using automated means (without our prior permission) or attempt to access data you do not have permission to access. We also reserve all of our rights against text and data mining.” (<a class="reference external" href="https://www.facebook.com/legal/terms">Facebook 2022</a>)
+Die beiden Rechtswissenschaftler Sebastian Golla und Max Schönfeld haben die rechtliche Stellung der Facebook-Nutzungsbedingungen untersucht und sind zu dem Schluss gekommen, dass die rechtliche Wirksamkeit dieser Passage “zweifelhaft” ist:</p>
+<blockquote>
+<div><p>“Die Passage der Nutzungsbedingungen von Facebook, die einen automatisierten Zugriff auf Daten ohne Genehmigung grundsätzlich ausschließt, ist gem. § 307 Abs. 1 S. 1, Abs. 2 Nr. 1 BGB wegen eines Verstoßes gegen den wesentlichen Grundgedanken von §60d Abs.1 UrhG unwirksam. […] Ähnliches gilt für die inhaltlich vergleichbaren Passagen in den Nutzungsbedingungen weiterer sozialer Netzwerke wie Twitter, YouTube oder LinkedIn.”</p>
+</div></blockquote>
+<p>Quelle: Sebastian Golla und Max Schönfeld, <a class="reference external" href="https://www.academia.edu/38267337/Kratzen_und_Sch%C3%BCrfen_im_Datenmilieu_Web_Scraping_in_sozialen_Netzwerken_zu_wissenschaftlichen_Forschungszwecken">Kratzen und Schürfen im Datenmilieu</a>, in: Kommunikation &amp; Recht 22 (2019), S. 19 und S. 21.</p>
+<p>Wenn man beim Web Scraping gegen die Nutzungsbedingungen einer Website verstößt, macht man sich also nicht automatisch strafbar.
+Das heißt allerdings nicht, dass man einfach alles nach dem eigenen Gusto scrapen darf.
+Im Folgenden klären wir drei wichtige rechtliche Einschränkungen auf.</p>
+</section>
+<section id="technische-schranken">
+<h2><span class="section-number">6.1.2. </span>Technische Schranken<a class="headerlink" href="#technische-schranken" title="Link to this heading">#</a></h2>
+<p>In der eingangs zitierten Passage aus dem Artikel in der “Forschung &amp; Lehre” werden “technische Schranken” erwähnt, die beim Web Scraping nicht umgangen werden dürfen.
+Was hat es damit auf sich?</p>
+<p>In den letzten Jahren haben einige Gerichtsurteile die grundsätzliche Zulässigkeit von Web Scraping bestätigt und dabei auf die Eigenverantwortung der Websitebetreiber hingewiesen, Schutzmaßnahmen zu ergreifen, um das Webscraping zu unterbinden, wenn das nicht gewünscht ist (<a class="reference external" href="https://doi.org/10.1007/978-3-662-61726-7">Specht-Riemenschneider 2020</a>, S. 72)
+Viele Webseiten nutzen als eine solche Schutzmaßnahme das sogenannte “Robot Exclusion Standard Protokoll”: Das Protokoll wurde ursprünglich in den 1990er Jahren entwickelt, als Suchmaschinen angefangen haben, Webcrawler (auch genannt “Spider”) einzusetzen, die automatisch das World Wide Web durchsuchen, Webseiten analysieren und für die Suchmaschine indexieren.
+Beim Web Crawling geht es im Unterschied zum Web Scraping also darum, den gesamten Inhalt einer Website zu erfassen.
+Webcrawler senden dabei Anfragen an den Webserver, auf dem die Website gehostet wird (–&gt; nächste Woche lernen wir dazu mehr).
+Wenn ein Webserver viele Anfragen erhält, kann das den Server überlasten und die Website ist vorübergehend nicht erreichbar.
+Websitebetreiber:innen wollen deswegen zum einen verhindern, dass Web Crawler zu viele Anfragen stellen, und sie wollen Webcrawler gegebenenfalls davon abhalten, Unterseiten ihrer Website zu analysieren, die sensible Inhalte enthalten.</p>
+<p>Aus diesem Grund wurde das sogenannte Robot Exclusion Standard Protokoll erfunden.
+Ein Protokoll ist im Grunde einfach eine Vereinbarung, wie die Kommunikation zwischen verschiedenen Parteien abläuft.
+Wenn es sich bei diesen Parteien um Computer handelt, spricht man von Netzwerkprotokoll. Dazu lernen wir in der nächsten Woche mehr.
+Seriöse Webcrawler befolgen das Robot Exclusion Standard Protokoll. Das Protokoll legt fest, dass Crawler für jede neue Seite, die sie “besuchen”, zuerst eine spezielle Datei lesen, die direkt im Stammverzeichnis (root) einer Website abgelegt wird.
+Diese Datei heißt immer <strong>robots.txt</strong>.
+In der robots.txt steht zum Beispiel, welche Unterseiten ein Crawler analysieren darf, und wie viele Anfragen an den Server in welchen zeitlichen Abständen gestellt werden dürfen.
+Manchmal wird in der Datei auch ganz speziellen Web Crawlern das Crawlen der Seite komplett untersagt, zum Beispiel, wenn die Crawler dafür bekannt sind, dass sie zu viele Anfragen in zu kurzer Zeit stellen.</p>
+<p>Beispiele:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.amazon.de/robots.txt">https://www.amazon.de/robots.txt</a></p></li>
+<li><p><a class="reference external" href="https://wikisource.org/robots.txt">https://wikisource.org/robots.txt</a></p></li>
+<li><p><a class="reference external" href="https://www.bundesregierung.de/robots.txt">https://www.bundesregierung.de/robots.txt</a></p></li>
+<li><p><a class="reference external" href="https://www.neues-deutschland.de/robots.txt">https://www.neues-deutschland.de/robots.txt</a></p></li>
+</ul>
+<p>Die Verhaltensregeln, die in der robots.txt festgehalten werden, gelten aber nicht nur für Web Crawler, sondern auch für Web Scraper.
+Denn wie wir in der nächsten Woche sehen werden, senden auch Web Scraper Anfragen an Webserver.</p>
+<p>Wenn die Verhaltensregeln in der robots.txt nicht eingehalten werden, kann zum Beispiel der Crawler bzw. Scraper geblockt werden.
+Bei jeder Anfrage an den Server wird nämlich auch die IP-Adresse des Computers, von dem aus die Anfrage gesendet wird, mit übermittelt.
+Dadurch ist jeder Web Scraper eindeutig identifizierbar.
+Es kann auch sein, dass ein Web Scraper nicht sofort blockiert wird, sondern dass ein reCAPTCHA-Bilderkennungstest aktiviert wird.
+Diese Tests sind durch Bots nicht lösbar und dienen dazu, automatisierte Anfragen zu verhindern.</p>
+<p>Im Internet finden sich deswegen viele Tipps, wie man seine IP-Adresse beim Web Scrapen verstecken kann.
+<strong>Wenn man aber blockiert wird, weil man sich nicht an das robots.txt gehalten hat, und dann sein Skript so umschreibt, dass man nicht mehr blockiert wird, dann umgeht man ganz bewusst die von den Websitebetreiber:innen getroffenen Schutzmaßnahmen und man macht sich möglicherweise strafbar.
+Wenn der eigene Webscraper so viele Anfragen gestellt hat, dass der Webserver dadurch überlastet ist und die Website einige Zeit nicht erreichbar ist, dann hat man die Funktionalität der Website beeinträchtigt, man hat einen “technischen Schaden” produziert. Auch das kann rechtliche Konsequenzen haben.</strong>
+Die Forschungsstelle RobotRecht der Universität Würzburg hat in einem Rechtsgutachten zum Einsatz von WebScraping in der nicht-kommerziellen wissenschaftlichen Forschung deswegen dazu ermahnt, dass durch das Web Scrpaing keine “technische Schädigung beim Betreiber der Website” verursacht werden darf (<a class="reference external" href="https://www.konsortswd.de/wp-content/uploads/RatSWD_Output4.6_BigData.pdf">Forschungsstelle RobotRecht 2019</a>).</p>
+<p><strong>Um rechtlich auf der sicheren Seite zu sein, müsst ihr also immer sicherstellen, dass sich eure Web Scraper “gutartig” verhalten und die Verhaltensregeln in der robots.txt einhalten.</strong></p>
+</section>
+<section id="urheberrecht">
+<h2><span class="section-number">6.1.3. </span>Urheberrecht<a class="headerlink" href="#urheberrecht" title="Link to this heading">#</a></h2>
+<p>Der “Kratzen und Schürfen”-Artikel nennt neben technischen Einschränkungen das Urheberrecht als eine Einschränkung, an die sich Forschende beim Web Scraping halten müssen.</p>
+<p>Grundsätzlich gilt nämlich auch für Inhalte auf Facebook das Urheberrecht:</p>
+<blockquote>
+<div><p>“Auf Facebook veröffentlichte Inhalte können in zweierlei Hinsicht urheberrechtlichem Schutz unterfallen. Einerseits können einzelne Beiträge nach §2 Abs.1 Nr.1 UrhG geschützte Sprachwerke sein, worauf sich deren jeweilige Verfasser als Urheber berufen können. Andererseits kann sich Facebook als Datenbankhersteller auf das sui generis-Schutzrecht nach §§ 87 a ff. UrhG berufen.” (S. 20)</p>
+</div></blockquote>
+<p>Im Fall von Facebook kommen die Autoren jedoch zu dem Schluss:</p>
+<blockquote>
+<div><p>“Der Zugriff auf bei Facebook veröffentlichte Nutzerinhalte mittels Web Scraping zu Forschungszwecken beeinträchtigt aus urheberrechtlicher Sicht das Recht von Facebook als Datenbankhersteller nach § 87 b UrhG nicht, sofern er sich nur auf einzelne Bereiche des Netzwerks bezieht. Im Einzelfall kann der Zugriff aber Urheberrechte von Nutzerinnen an Textbeiträgen als Schriftwerken gem. § 2 Abs. 1 Nr. 1 UrhG beeinträchtigen.” (S.21)</p>
+</div></blockquote>
+<blockquote>
+<div><p>“Sofern die Vervielfältigung der auf Facebook veröffentlichten Inhalte urheberrechtlich relevant ist, ist sie nach
+§ 60 c Abs. 1, Abs. 3 UrhG im Rahmen des zur Erfüllung der wissenschaftlichen Forschung erforderlichen Umfangs zulässig.” (S. 21)</p>
+</div></blockquote>
+<p>§ 60 c Abs. 1, Abs. 3 UrhG bezieht sich auf die sogenannnte Schranke für Text und Data Mining (auch TDM-Schranke genannt), welche seit 2018 gilt.
+Man darf demnach im “geringen Umfang” auch urheberrechtliche Daten vervielfältigen, wenn es für die Forschung notwendig ist.</p>
+<p>Allerdings gibt es dabei eine zeitliche Begrenzung:</p>
+<blockquote>
+<div><p>“Vervielfältigungen und Korpus dürfen nur für ein konkretes Forschungsprojekt erstellt und müssen nach Abschluss dieses wieder gelöscht werden. Dauerhaft archivieren dürfen das Korpus nur öffentliche Bibliotheken, Archive und vergleichbare Institutionen.”</p>
+</div></blockquote>
+<p>Quelle: Thilo Klawonn, <a class="reference external" href="https://www.forschung-und-lehre.de/recht/grenzen-des-web-scrapings-2421">Grenzen des “Web Scraping”</a>, in: Forschung &amp; Lehre 1 (2020).</p>
+</section>
+<section id="datenschutz-dsgvo">
+<h2><span class="section-number">6.1.4. </span>Datenschutz (DSGVO)<a class="headerlink" href="#datenschutz-dsgvo" title="Link to this heading">#</a></h2>
+<p>Neben urheberrechtlich geschützten Daten gibt es auch Einschränkung bei der Verarbeitung von personenbezogenen Daten.
+Nach Artikel 4 § 1 der 2018 in Kraft getretenen Datenschutzgrundverordnung (DSGVO) gelten als personenbezogene Daten</p>
+<blockquote>
+<div><p>“alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person (im Folgenden „betroffene Person“) beziehen; als identifizierbar wird eine natürliche Person angesehen, die direkt oder indirekt, insbesondere mittels Zuordnung zu einer Kennung wie einem Namen, zu einer Kennnummer, zu Standortdaten, zu einer Online-Kennung oder zu einem oder mehreren besonderen Merkmalen, die Ausdruck der physischen, physiologischen, genetischen, psychischen, wirtschaftlichen, kulturellen oder sozialen Identität dieser natürlichen Person sind, identifiziert werden kann;”</p>
+</div></blockquote>
+<p>Quelle: DSGVO, <a class="reference external" href="https://dsgvo-gesetz.de/art-4-dsgvo/">Artikel 4 Abs. 1</a>.</p>
+<p>Dazu gehören zum Beispiel auch IP-Adressen (<a class="reference external" href="https://dr-dsgvo.de/ip-adressen/">Meffert</a> 2023).</p>
+<p>Bei der Verarbeitung von solchen Daten müssen verschiedene Regeln eingehalten werden.
+Der bereits erwähnte Rechtswissenschaftler Sebastian Golla et al. haben eine Reihe von Maßnahmen empfohlen, die eine datenschutzkonformen Umgang mit Daten in der Forschung gewähleisten sollen (<a class="reference external" href="https://doi.org/10.1007/s11623-018-0900-x">Golla et al.</a> 2018, S. 100)
+Die Maßnahmen sind in einer Handreichung zur “rechtskonformen Durchführung von Web-Scraping Projekten in der nicht-kommerziellen wissenschaftlichen Forschung” der Universität Hamburg in etwas verständlicherer Sprache zusammengefasst:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Klare Darlegung der Forschungsfrage; Erstellung eines Datenmanagmentplans</p></li>
+<li><p>Eintrag in das Verzeichnis von Verarbeitungstätigkeiten (DSGVO Art. 30) sowie die Dokumentation technisch-organisatorischer Maßnahmen (DSGVO Art. 32)</p></li>
+<li><p>Gewährleistung der Betroffenenrechte sowie informierte freiwillige Einwilligung</p></li>
+<li><p>technische Vorkehrungen zur Datenminimierung</p></li>
+<li><p>Nutzung von Anonymisierungs- bzw. Pseudoanonymisierungsmöglichkeiten</p></li>
+<li><p>Festlegung von Speicherfristen sowie deren Befolgung</p></li>
+</ul>
+</div></blockquote>
+<p>All diese Schritte seien “in frühzeitiger Rücksprache mit dem Datenschutzbeauftragten zu treffen” (<a class="reference external" href="https://www.wiso.uni-hamburg.de/forschung/forschungslabor/downloads/20200130-handreichung-web-scraping.pdf">Universität Hamburg</a> 2019, S. 2).</p>
+</section>
+<section id="nationales-recht">
+<h2><span class="section-number">6.1.5. </span>Nationales Recht<a class="headerlink" href="#nationales-recht" title="Link to this heading">#</a></h2>
+<p>Die DSGVO gilt in allen Mitgliedsstaaten der EU.
+In anderen Ländern gelten dagegen andere Datenschutzbestimmungen.
+Wenn im WebScraping-Projekt Daten, die auf Servern in anderen Ländern liegen, gesammelt werden sollen, ist es ratsam, sich vorab über mögliche nationale Gesetze zu informieren.</p>
+</section>
+<section id="uber-den-rechtlichen-rahmen-hinaus-ethik-fair-prinzipien-und-die-fu-forschungsdaten-policy">
+<h2><span class="section-number">6.1.6. </span>Über den rechtlichen Rahmen hinaus: Ethik, FAIR-Prinzipien und die FU-Forschungsdaten-Policy<a class="headerlink" href="#uber-den-rechtlichen-rahmen-hinaus-ethik-fair-prinzipien-und-die-fu-forschungsdaten-policy" title="Link to this heading">#</a></h2>
+<p>An der FU gibt es neben einem Datenschutzbeautragten auch Mitarbeitende in der Universitätsbibliothek und der ZEDAT, die Angehörige der FU beim Forschungsdatenmanagement unterstützen.
+Die FU hat eine eigene <a class="reference external" href="https://www.fu-berlin.de/sites/forschungsdatenmanagement/policy/index.html">Forschungsdaten-Policy</a>, in der Leitlinien zum Umgang mit Forschungsdaten für Angehörige der FU festgelegt werden.
+Darunter zählt zum Beispiel auch die Orientierung an den sogenannten FAIR-Prinzipien.
+Was ist damit gemeint?
+2016 haben sich einige Wissenschaftler:innen und Forschungsinstitute zu einem Konsortium zusammengeschlossen und in der Zeitschrift Scientific Data eine Reihe Prinzipien definiert, die sicherstellen sollen, dass die großen Mengen digitaler Forschungsdaten, die in den letzten Jahren produziert wurden, auch für die Zukunft zugänglich und nachnutzbar sind.
+Diese Prinzipien werden mit dem Akronym FAIR abgekürzt, das für <strong>F</strong>indable, <strong>A</strong>ccessible, <strong>I</strong>nteroperable und <strong>R</strong>eusable steht. Was diese Prinzipien im Einzelnen umfassen, könnt ihr <a class="reference external" href="https://www.nature.com/articles/sdata201618">hier</a> nachlesen.</p>
+<p>Einen Schritt zur Einhaltung der FAIR-Prinzipien in euren Web Scraping-Projekten habt ihr schon vorgenommen: Die Verwendung von virtuellen Umgebungen stellt sicher, dass eure Skripte später wiederverwendbar, also reusable, sind. Das Prinzip der Reusability umfasst nämlich auch die Möglichkeit zur “Reproducibility”, also die Möglichkeit, eine Forschung anhand der bereitgestellten Daten “nachzubauen”. “Reproducibility” wird von der US-amerikanischen National Science Foundation definiert als:</p>
+<blockquote>
+<div><p>The ability for a researcher to replicate the results of a prior study using the same materials and procedures used by the original investigator.</p>
+</div></blockquote>
+<p>Quelle: National Science Foundation (2015), zitiert in <a class="reference external" href="https://researchdatamanagement.harvard.edu/best-practices-reproducibility-reusability">Harvard University, Reproducibility and Reusability</a>.</p>
+</section>
+<section id="zusammenfassung-before-you-scrape">
+<h2><span class="section-number">6.1.7. </span>Zusammenfassung: Before you scrape…<a class="headerlink" href="#zusammenfassung-before-you-scrape" title="Link to this heading">#</a></h2>
+<p>Web Scraping bewegt sich als relativ neue Methode zur Beschaffung von Forschungsdaten noch immer in einer rechtlichen Grauzone.
+Um auf der sicheren Seite zu sein, sollte man sich vor jedem Webscraping-Projekt folgende Fragen stellen:</p>
+<ul class="simple">
+<li><p>Welche Daten brauche ich in welcher Form?</p></li>
+<li><p>Unterliegen die Daten einem bestimmten Schutz (Urheberrecht, Datenschutz)?</p></li>
+<li><p>Kann ich gewährleisten, dass ich die Daten rechtskonform verarbeiten und speichern kann?</p></li>
+<li><p>Gibt es mögliche Gefahren für die betroffenen Personen, falls ich den Schutz der Daten nicht gewährleisten kann?</p></li>
+<li><p>Welche Einschränkungen sind in der robots.txt der Seite definiert?</p></li>
+</ul>
+<section id="quellen">
+<h3><span class="section-number">6.1.7.1. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h3>
+<div class="docutils container" id="id1">
+<ol class="arabic simple" start="1">
+<li id="id70"><p>DSGVO, Art. 4: Begriffsbestimmungen. 2018. URL: <a class="reference external" href="https://dsgvo-gesetz.de/art-4-dsgvo/">https://dsgvo-gesetz.de/art-4-dsgvo/</a>.</p></li>
+<li id="id72"><p>How to Read robots.txt for Web Scraping. 2023. URL: <a class="reference external" href="https://www.zenrows.com/blog/robots-txt-web-scraping">https://www.zenrows.com/blog/robots-txt-web-scraping</a>.</p></li>
+<li id="id63"><p>Michael Gennaro. Federal Judge Rules against Meta in Data Scraping Case. 2024. URL: <a class="reference external" href="https://www.courthousenews.com/federal-judge-rules-against-meta-in-data-scraping-case/">https://www.courthousenews.com/federal-judge-rules-against-meta-in-data-scraping-case/</a>.</p></li>
+<li id="id64"><p>Sebastian Golla. Kratzen und Schürfen im Datenmilieu. Webscraping in Sozialen Netzwerken zu wissenschaftlichen Forchungszwecken. 2019. URL: <a class="reference external" href="https://www.academia.edu/38267337/Kratzen_und_Sch%C3%BCrfen_im_Datenmilieu_Web_Scraping_in_sozialen_Netzwerken_zu_wissenschaftlichen_Forschungszwecken">https://www.academia.edu/38267337/Kratzen_und_Sch%C3%BCrfen_im_Datenmilieu_Web_Scraping_in_sozialen_Netzwerken_zu_wissenschaftlichen_Forschungszwecken</a>.</p></li>
+<li id="id69"><p>Sebastian J. Golla, Henning Hofmann, and Matthias Bäcker. Connecting the Dots. Sozialwissenschaftliche Forschung in Sozialen Online-Medien im Lichte von DS-GVO und BDSG-neu. 2020. URL: <a class="reference external" href="https://doi.org/10.1007/s11623-018-0900-x">https://doi.org/10.1007/s11623-018-0900-x</a>.</p></li>
+<li id="id62"><p>Thilo Klawonn. Grenzen des &quot;Web Scraping&quot;. 2020. URL: <a class="reference external" href="https://www.forschung-und-lehre.de/recht/grenzen-des-web-scrapings-2421">https://www.forschung-und-lehre.de/recht/grenzen-des-web-scrapings-2421</a>.</p></li>
+<li id="id76"><p>Vlad Krotov, Leigh Johnson, and Leiser Silva. Tutorial: Legality and Ethics of Web Scraping. 2020. URL: <a class="reference external" href="https://doi.org/10.17705/1CAIS.04724">https://doi.org/10.17705/1CAIS.04724</a>.</p></li>
+<li id="id71"><p>Klaus Meffert. IP-Adressen: Grundlagen und DSGVO. 2023. URL: <a class="reference external" href="https://dr-dsgvo.de/ip-adressen/">https://dr-dsgvo.de/ip-adressen/</a>.</p></li>
+<li id="id68"><p>Louisa Specht-Riemenschneider, Severin Riemenschneider, and Ruben Schneider. Internetrecht. 2020. URL: <a class="reference external" href="https://doi.org/10.1007/978-3-662-61726-7">https://doi.org/10.1007/978-3-662-61726-7</a>.</p></li>
+<li id="id75"><p>Dustin S. Stoltz and Marshall A. Taylor. Mapping Texts. Ch. 5: Acquiring Text. Legal and Ethical Side of Scraping. 2024. URL: <a class="reference external" href="https://doi.org/10.1093/oso/9780197756874.001.0001">https://doi.org/10.1093/oso/9780197756874.001.0001</a>.</p></li>
+<li id="id65"><p>Forschungslabor Universität Hamburg. Handreichung zur rechtskonformen Durchführung von Web-Scraping Projekten in der nicht-kommerziellen wissenschaftlichen Forschung. 2020. URL: <a class="reference external" href="https://www.wiso.uni-hamburg.de/forschung/forschungslabor/downloads/20200130-handreichung-web-scraping.pdf">https://www.wiso.uni-hamburg.de/forschung/forschungslabor/downloads/20200130-handreichung-web-scraping.pdf</a>.</p></li>
+<li id="id66"><p>Forschungstelle Robotrecht Universität Würzburg. Gutachten zum Web Scraping. 2019. URL: <a class="reference external" href="https://www.jura.uni-wuerzburg.de/fakultaet/forschungsprojekte/forschungsstelle-robotrecht/startseite-forore/meldungen/single/news/gutachten-zum-web-scraping/">https://www.jura.uni-wuerzburg.de/fakultaet/forschungsprojekte/forschungsstelle-robotrecht/startseite-forore/meldungen/single/news/gutachten-zum-web-scraping/</a>.</p></li>
+<li id="id67"><p>Freie Universität Berlin. Forschungsdaten-Policy der Freien Universität Berlin. 2021. URL: <a class="reference external" href="https://www.fu-berlin.de/sites/forschungsdatenmanagement/policy/index.html">https://www.fu-berlin.de/sites/forschungsdatenmanagement/policy/index.html</a>.</p></li>
+<li id="id73"><p>Mark D. Wilkinson et al. The FAIR Guiding Principles for Scientific Data Management and Stewardship. 2016. URL: <a class="reference external" href="https://www.nature.com/articles/sdata201618">https://www.nature.com/articles/sdata201618</a>.</p></li>
+<li id="id74"><p>Research Data Management &#64;Harvard. Reproducibility and Reusability. 2023. URL: <a class="reference external" href="https://researchdatamanagement.harvard.edu/best-practices-reproducibility-reusability">https://researchdatamanagement.harvard.edu/best-practices-reproducibility-reusability</a>.</p></li>
+</ol>
+</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -652,7 +605,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.1. </span>HTML: Hypertext Markup Language</p>
+        <p class="prev-next-title"><span class="section-number">6.2. </span>HTML: Hypertext Markup Language</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -671,9 +624,18 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nutzungsbedingungen-beispiel-facebook">6.1.1. Nutzungsbedingungen: Beispiel Facebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technische-schranken">6.1.2. Technische Schranken</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urheberrecht">6.1.3. Urheberrecht</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datenschutz-dsgvo">6.1.4. Datenschutz (DSGVO)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nationales-recht">6.1.5. Nationales Recht</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uber-den-rechtlichen-rahmen-hinaus-ethik-fair-prinzipien-und-die-fu-forschungsdaten-policy">6.1.6. Über den rechtlichen Rahmen hinaus: Ethik, FAIR-Prinzipien und die FU-Forschungsdaten-Policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-before-you-scrape">6.1.7. Zusammenfassung: Before you scrape…</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">6.1.7.1. Quellen</a></li>
 </ul>
-
+</li>
+</ul>
   </nav></div>
 
 </div></div>
