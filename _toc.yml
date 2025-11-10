@@ -58,7 +58,7 @@ sections:
 - file: chapters/06/06_intro
   title: Einstieg Webscraping
   sections:
-  - file: chapters/06/subchapters/01_rechtliches.md
+  - file: chapters/06/subchapters/01_rechtliches.ipynb
     title: Der rechtliche Rahmen
   - file: chapters/06/subchapters/02_html.ipynb
     title: HTML
