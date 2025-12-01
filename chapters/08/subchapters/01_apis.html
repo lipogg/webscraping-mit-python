@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8.1. APIs &#8212; Webscraping für Geisteswissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/08/subchapters/01_apis';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="8.2. Beispiel 1: DraCor API" href="02_dracor_api.html" />
+    <link rel="prev" title="8. Anwendungsfall II: APIs (Exkurs)" href="../08_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Webscraping für Geisteswissenschaften - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Webscraping für Geisteswissenschaften - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Webscraping mit Python für Geisteswissenschaften
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/03_semesterplan.html">1.3. Semesterplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/04_lernziele.html">1.4. Lernziele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/05_organisation.html">1.5. Organisatorisches</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/02_intro.html">2. Python I</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_jupyterlite.html">2.1. JupyterLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_style.html">2.2. Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_hilfe.html">2.3. Hilfe!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/02_grundbegriffe.html">2.4. Grundbegriffe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/03_datentypen.html">2.5. Einfache Datentypen, Strings und Operatoren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/04_variablen.html">2.6. Variablen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03/03_intro.html">3. Python II</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03/subchapters/01_datentypen.html">3.1. Zusammengesetzte Datentypen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/subchapters/02_kontrollstrukturen.html">3.2. Kontrollstrukturen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04/04_intro.html">4. Python III</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04/subchapters/01_funktionen.html">4.1. Funktionen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04/subchapters/02_pakete.html">4.2. Module, Pakete, Bibliotheken</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../05/05_intro.html">5. Installation und Setup</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05/subchapters/01_vorbereitung.html">5.1. Vorbereitung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/subchapters/02_installation_setup.html">5.2. Installation und Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06/06_intro.html">6. Einstieg Webscraping</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/01_rechtliches.html">6.1. Der rechtliche Rahmen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/02_html.html">6.2. HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/03_css.html">6.3. CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/04_http.html">6.4. Client, Server, HTTP</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07/07_intro.html">7. Statische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07/subchapters/01_einstieg_beautifulsoup.html">7.1. Einstieg BeautifulSoup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07/subchapters/02_fortsetzung_beautifulsoup.html">7.2. Fortsetzung BeautifulSoup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../08_intro.html">8. APIs (Exkurs)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.1. APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_dracor_api.html">8.2. Beispiel DraCor-API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_loc_api.html">8.3. Beispiel LOC-API</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/lipogg/webscraping-mit-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/08/subchapters/01_apis.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>APIs</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-apis">8.1.1. Was sind APIs?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-apis">8.1.2. Web-APIs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welche-daten-konnen-uber-apis-abgerufen-werden">8.1.3. Welche Daten können über APIs abgerufen werden?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wer-kann-apis-benutzen">8.1.4. Wer kann APIs benutzen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiele">8.1.5. Beispiele</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praxis">8.1.6. Praxis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">8.1.7. Quellen</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="apis">
+<h1><span class="section-number">8.1. </span>APIs<a class="headerlink" href="#apis" title="Link to this heading">#</a></h1>
+<section id="was-sind-apis">
+<h2><span class="section-number">8.1.1. </span>Was sind APIs?<a class="headerlink" href="#was-sind-apis" title="Link to this heading">#</a></h2>
+<p>Kurze Erklärung im Videoformat: <a class="reference external" href="https://youtu.be/KLe2lCEy-Xw?t=76">https://youtu.be/KLe2lCEy-Xw?t=76</a></p>
+<p>API steht für Application Programming Interface, auf Deutsch als “Anwendungsprogrammierschnittstelle” übersetzt.
+APIs ermöglichen die Kommunikation zwischen Softwaresystemen bzw. Programmen, also die “Maschine-zu-Maschine”-Kommunikation.
+Entwickler:innen können APIs nutzen, um auf Daten oder Dienste anderer Softwaresysteme zuzugreifen und in ihren eigenen Code einzubinden.
+Das Konzept kennen wir im Grunde bereits: Auch beim Aufruf von Funktionen aus verschiedenen Bibliotheken oder Modulen in Python haben wir bereits Schnittstellen verwendet, um auf vordefinierte Funktionen zuzugreifen, ohne die Implementierungsdetails zu kennen.</p>
+<p>Man kann sich eine API also vielleicht abstrakt wie eine Tür vorstellen, durch die Programme Informationen anfordern oder teilen können.
+Sie definiert, welche Anfragen gestellt werden können, wie die Antworten aussehen und wie man auf die gewünschten Informationen zugreifen kann.</p>
+<p>Wenn wir in diesem Abschnitt von APIs sprechen, dann meinen wir aber eine ganz bestimmte Art von API: Web-APIs, und genauer gesagt Web-APIs, die von verschiedenen Websitebetreiber:innen gezielt für den Zugriff auf Daten bereitgestellt werden.</p>
+</section>
+<section id="web-apis">
+<h2><span class="section-number">8.1.2. </span>Web-APIs<a class="headerlink" href="#web-apis" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id245">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/web_apis.png"><img alt="Web APIs Schaubild" class="bg-transparent" src="../../../_images/web_apis.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Schaubild Web-APIs. Quelle: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction">MDN Contributors (2024)</a></span><a class="headerlink" href="#id245" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Web-APIs ermöglichen Client und Server, miteinander zu kommunizieren und Daten auszutauschen und sie erlauben Web-Anwendungen, die Funktionalitäten anderer Anwendungen zu nutzen.
+Es gibt verschiedene Arten von Web-APIs. Deswegen lohnt sich zunächst eine Begriffsklärung.</p>
+<p>Beim Aufruf verschiedener Webseiten haben wir mithilfe der Browser-Entwicklertools beobachtet, dass unter dem Tab “Netzwerk” neben der Anfrage für das eigentliche HTML-Dokument mehrere weitere HTTP-Anfragen gestellt wurden.
+Diese Anfragen hat der Browser “automatisch” gestellt, ohne, dass wir dafür etwas tun mussten. Wenn externe Inhalte in <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code> oder anderen HTML-Tags angegeben sind, wie es bei den CSS- und JavaScript-Dateien auf der Seite <a class="reference external" href="https://quotes.toscrape.com/">quotes.toscrape.com</a> der Fall war, lädt der Browser die Inhalte direkt beim Laden der Webseite.
+Beim Laden wird die Struktur der HTML-Seite ausgelesen und in eine baumähnlichen Struktur, das sogenannte Document Object Model (kurz DOM) überführt. Wenn der Browser dabei auf Links zu externen Inhalten stößt, stellt er eine HTTP-Anfrage, um diese Inhalte einzubinden.</p>
+<p>Manchmal werden Inhalte aber auch nachträglich nach dem ersten Laden der Webseite mithilfe von JavaScript in das HTML-Gerüst eingefügt (das besprechen wir noch ausführlich).
+In diesem Fall greift der JavaScript-Code dabei unter der Motorhaube auf eine Web-API zurück, und zwar genauer gesagt auf eine <strong>Browser-API</strong>, die in den Browser integriert ist und die ermöglicht, einzelne Teile des HTML-DOM-Baums nachträglich zu ändern. Diese Browser-API heißt DOM-API.
+Wenn die Inhalte, die eingefügt werden sollen, zusätzlich von einem anderen Server angefragt werden, wird für die Anfrage der einzufügenden Inhalte eine weitere Browser-API verwendet, häufig die sogenannte Fetch-API.
+In diesem Fall fragt der Browser mithilfe von Fetch zuerst eine weitere Art von Web-API an, eine <strong>Server-API</strong> (oft auch <strong>Third Party API</strong> genannt), um die Daten zu bekommen. Dann fügt JavaScript die Daten mithilfe der DOM API in die Seite ein.
+Server-APIs werden oft von Websitebetreiber:innen öffentlich angeboten, um Nutzer:innen und anderen Anwendungen einen direkten Zugang zu Daten auf dem Server zu ermöglichen.
+Diese APIs können auch wir als Forscher:innen anzapfen, um Forschungsdaten direkt herunterzuladen, zum Beispiel Metadaten zum Bestand eines Archivs, Statistiken oder sogar Volltexte, Musik- oder Bildateien.
+Viele Institutionen bieten sogar mehrere verschiedene APIs für verschiedene Zielgruppen an: APIs, die zur hier dargestellten Einbindung von Inhalten in andere Webseiten und Anwendungen gedacht sind, und APIs speziell für Forscher:innen.
+Insbesondere Bibliotheken, Archive und Forschungsprojekte stellen daneben oft APIs bereit, die vor allem für die Forschung gedacht sind und deswegen oft etwas ausführlicher und weniger technisch dokumentiert sind, weil sie sich nicht and Entwickler:innen richten.
+Aufgrund der Vielfalt der Zielgruppen und Arten von APIs muss man manchmal etwas länger nach den Dokumentationsseiten suchen. Oft verstecken sie sich unter Menüpunkten wie “For Developers”, “API”, “Tools”, “Services”, “Dokumentation” o.Ä.</p>
+<p>Bei der Entwicklung von Server-APIs greifen Entwickler:innen auf vordefinierte Paradigmen zurück, also auf Ansätze, wie die Gesamtstruktur einer API entworfen wird.
+Die meist verwendete Ansatz zum Entwerfen von dieser Art von Web-API nennt sich REST (Representational State Transfer, dt. “Repräsentationsstatustransfer”).
+APIs, die nach diesem Ansatz implementiert sind, nennt man auch REST APIs (oder manchmal RESTful API).
+REST APIs nutzen zur Kommunikation zwischen Client und Server das HTTP-Protokoll.
+Da REST APIs HTTP verwenden, können bei der Abfrage von Ressourcen über REST APIs ebenfalls die HTTP-Methode GET verwendet werden.</p>
+<figure class="align-default" id="id246">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/rest_api.png"><img alt="REST API Schaubild" class="bg-transparent" src="../../../_images/rest_api.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Schaubild REST API. Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=-mN3VyJuCjM">Alex Xu und Sahn Lam (2022)</a></span><a class="headerlink" href="#id246" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="welche-daten-konnen-uber-apis-abgerufen-werden">
+<h2><span class="section-number">8.1.3. </span>Welche Daten können über APIs abgerufen werden?<a class="headerlink" href="#welche-daten-konnen-uber-apis-abgerufen-werden" title="Link to this heading">#</a></h2>
+<p>Bei der Anfrage einer Website war der Body einer erfolgreichen HTTP-Antwort ein HTML-Dokument, das in Python als String repräsentiert wird.
+Standardmäßig ist der Body einer HTTP-Antwort auf eine Anfrage über eine REST API dagegen ein JSON-String. JSON ist ein Datenformat in menschenlesbarer Textform zum Zweck des Datensaustauschs zwischen Anwendungen.
+Die Syntax einer JSON-Datei sieht in etwa so aus wie ein Python-Dictionary: Die Inhalte werden hier ebenfalls als Schlüssel-Wert-Paare abgebildet.
+Während HTML-Strings zur Weiterverarbeitung in BeautifulSoup-Objekte umgewandelt werden können, können JSON-Strings deswegen zur Weiterverarbeitung einfach in Python Dictionaries umgewandelt werden.</p>
+<p>REST APIs können aber auch so konfiguriert werden, dass sie Daten direkt in anderen Formaten zurückgeben, zum Beispiel als Plaintext oder Bilddateien.
+Die genaue Konfiguration und das unterstützte Spektrum an Antwortformaten hängen von der konkreten Implementierung der API ab.</p>
+<p>Zur Abfrage einer Ressource wird dabei in der HTTP-Anfrage eine <strong>URI (= Uniform Resource Identifier)</strong>, also in dem Fall ein Pfad zu einer konkreten Ressource auf einem Server, angegeben.
+Diese URIs nennen sich dann auch <strong>Endpunkte</strong> oder “Endpoints”.</p>
+<p>Ein Unternehmen kann zum Beispiel über eine öffentliche API mithilfe verschiedener URIs verschiedene Arten von Daten bereitstellen.
+Im Beispiel unten wird eine Auflistung aller alle Nutzer:innen eines sozialen Netzwerks im JSON-Format als Antwort auf die HTTP-Anfrage zurückgegeben, aber es sind auch zwei weitere Endpunkte abgebildet: Eine Auflistung aller Posts der Nutzer:innen sowie Daten zu deren Follower:innen.</p>
+<figure class="align-default" id="id247">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/rest_api_3.png"><img alt="REST API Schaubild" class="bg-transparent" src="../../../_images/rest_api_3.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text">Schaubild Beispielabfrage über eine REST API. Quelle: <a class="reference external" href="https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc">Alexander Barge</a></span><a class="headerlink" href="#id247" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="wer-kann-apis-benutzen">
+<h2><span class="section-number">8.1.4. </span>Wer kann APIs benutzen?<a class="headerlink" href="#wer-kann-apis-benutzen" title="Link to this heading">#</a></h2>
+<p>Manche APIs sind öffentlich zugänglich (Public APIs), andere sind öffentlich zugänglich, aber erfordern eine Authentifizierung via API Key.
+Der Key kann normalerweise recht unbürokratisch und kostenlos über die Dokumentationsseiten zu der Schnittstelle beantragt werden.
+Ein Beispiel hierfür ist die API des Guardian: <a class="reference external" href="https://open-platform.theguardian.com/documentation/">https://open-platform.theguardian.com/documentation/</a>.
+Aber es gibt auch APIs, die nur über einen proprietären Key oder nur nach einer Anmeldung und Autorisierung angezapft werden dürfen.
+Die vormals kostenlose Twitter API wurde beispielsweise mit Elon Musks Übernahme des Unternehmens zu einer Bezahl-API, und zur Verwendung der TikTok Research API ist eine Bewerbung mit einer Vorstellung des eigenen Forschungsprojekts notwendig.</p>
+<p>Bei der Nutzung der meisten Schnittstellen sind bestimmte technische Vorgaben zu beachten. So muss meistens die Abfragerate, also die Anzahl von Anfragen in einer bestimmten Zeit, begrenzt werden (“Rate Limits”).
+Informationen zu solchen Nutzungsvorgaben finden sich in den Dokumentationsseiten der jeweiligen API. Wenn die API aber recht komplex ist und es viele verschiedene Endpunkte oder sogar mehrere APIs gibt, dann können diese Informationen unter Umständen etwas versteckt sein.
+Auch, wenn ihr keine konkreten Vorgaben findet, solltet ihr aber eine Abfragerate festlegen, damit ihr den Server nicht überlastet oder blockiert werdet. Wie das geht, besprechen wir ausführlich in den nächsten Wochen.</p>
+</section>
+<section id="beispiele">
+<h2><span class="section-number">8.1.5. </span>Beispiele<a class="headerlink" href="#beispiele" title="Link to this heading">#</a></h2>
+<p>Zur Inspiration: <a class="reference external" href="http://museum-api.pbworks.com/w/page/21933412/Cool%20stuff%20made%20with%20cultural%20heritage%20APIs">Cool stuff made with cultural heritage APIs</a></p>
+<p>Überblick</p>
+<ul class="simple">
+<li><p>Free Open APIs (ohne Authentifizierung) Liste: <a class="reference external" href="https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/">https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/</a></p></li>
+<li><p>ProgrammableWeb API Directory (via Wayback Machine): <a class="reference external" href="https://web.archive.org/web/20220131204631/https://www.programmableweb.com/apis/directory?page=1">https://web.archive.org/web/20220131204631/https://www.programmableweb.com/apis/directory?page=1</a></p></li>
+</ul>
+<p>Unternehmen</p>
+<ul class="simple">
+<li><p>Spotify: <a class="reference external" href="https://developer.spotify.com/documentation/web-api">https://developer.spotify.com/documentation/web-api</a></p></li>
+<li><p>Twitter: <a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api">https://developer.twitter.com/en/docs/twitter-api</a></p></li>
+<li><p>OpenAI: <a class="reference external" href="https://openai.com/blog/openai-api">https://openai.com/blog/openai-api</a></p></li>
+<li><p>Reddit: <a class="reference external" href="https://www.reddit.com/dev/api">https://www.reddit.com/dev/api</a></p></li>
+<li><p>TikTok: <a class="reference external" href="https://developers.tiktok.com/products/research-api/">https://developers.tiktok.com/products/research-api/</a></p></li>
+<li><p>Springer Verlag: <a class="reference external" href="https://support.springer.com/en/support/solutions/articles/6000195668-springerlink-api-details">https://support.springer.com/en/support/solutions/articles/6000195668-springerlink-api-details</a></p></li>
+</ul>
+<p>Institutionen</p>
+<ul class="simple">
+<li><p>API-Portal des Bundes: <a class="reference external" href="https://bund.dev/">https://bund.dev/</a>
+(inklusive DWD-API, Autobahn API, NINA Api,..)</p></li>
+<li><p>Gemeinsame Normdatei (GND): <a class="reference external" href="https://lobid.org/gnd/api">https://lobid.org/gnd/api</a> (<a class="reference external" href="https://www.dnb.de/DE/Professionell/Standardisierung/GND/gnd_node.html">über die GND</a>)</p></li>
+<li><p>Wikimedia Foundation (Wikipedia, Wikidata): <a class="reference external" href="https://developer.wikimedia.org/de/build-tools/apis/">https://developer.wikimedia.org/de/build-tools/apis/</a></p></li>
+<li><p>World Bank: <a class="reference external" href="https://datahelpdesk.worldbank.org/knowledgebase/topics/125589">https://datahelpdesk.worldbank.org/knowledgebase/topics/125589</a></p></li>
+<li><p>Vorlesungsverzeichnis TU Chemnitz: <a class="reference external" href="https://www.tu-chemnitz.de/verwaltung/vlvz/api/doc/index.html">https://www.tu-chemnitz.de/verwaltung/vlvz/api/doc/index.html</a></p></li>
+</ul>
+<p>Medien</p>
+<ul class="simple">
+<li><p>The Guardian: <a class="reference external" href="https://open-platform.theguardian.com/documentation/">https://open-platform.theguardian.com/documentation/</a>
+Tutorial: How to Use the Guardian’s API: <a class="reference external" href="https://gist.github.com/dannguyen/c9cb220093ee4c12b840">https://gist.github.com/dannguyen/c9cb220093ee4c12b840</a></p></li>
+<li><p>The New York Times: <a class="reference external" href="https://developer.nytimes.com/">https://developer.nytimes.com/</a></p></li>
+<li><p>Überblick: <a class="reference external" href="https://upload-magazin.de/6778-offene-medien-ein-uberblick-uber-apis-bei-verlagen-und-co/">https://upload-magazin.de/6778-offene-medien-ein-uberblick-uber-apis-bei-verlagen-und-co/</a></p></li>
+</ul>
+<p>Forschungsprojekte, spezialisierte Forschungsdatenbanken:</p>
+<ul class="simple">
+<li><p>Dracor: <a class="reference external" href="https://dracor.org/doc/api">https://dracor.org/doc/api</a></p></li>
+<li><p>CorrespSearch: <a class="reference external" href="https://correspsearch.net/en/api.html">https://correspsearch.net/en/api.html</a></p></li>
+<li><p>World Historical Gazetteer (historische Ortsnamen): <a class="reference external" href="https://whgazetteer.org/usingapi/">https://whgazetteer.org/usingapi/</a></p></li>
+</ul>
+<p>Weitere Datenbanken:</p>
+<ul class="simple">
+<li><p>GeoNames: <a class="reference external" href="https://www.geonames.org/export/web-services.html">https://www.geonames.org/export/web-services.html</a></p></li>
+<li><p>Pantheon World: <a class="reference external" href="https://pantheon.world/data/api">https://pantheon.world/data/api</a></p></li>
+<li><p>OpenCitations: <a class="reference external" href="https://opencitations.net/querying">https://opencitations.net/querying</a></p></li>
+</ul>
+<p>Archive und Museen:</p>
+<ul class="simple">
+<li><p>Internet Archive: <a class="reference external" href="https://archive.org/developers/index-apis.html">https://archive.org/developers/index-apis.html</a>
+<a class="reference external" href="https://blog.archive.org/2013/07/04/metadata-api/">https://blog.archive.org/2013/07/04/metadata-api/</a></p></li>
+<li><p>Archives Portal Europe: <a class="reference external" href="https://deprecated.archivesportaleurope.net/information-api">https://deprecated.archivesportaleurope.net/information-api</a></p></li>
+<li><p>E-Manuscripta: <a class="reference external" href="https://www.e-manuscripta.ch/wiki/apiinfo">https://www.e-manuscripta.ch/wiki/apiinfo</a></p></li>
+<li><p>Europeana: <a class="reference external" href="https://pro.europeana.eu/page/apis">https://pro.europeana.eu/page/apis</a></p></li>
+<li><p>The Museum of Modern Art: <a class="reference external" href="https://api.moma.org/">https://api.moma.org/</a></p></li>
+</ul>
+<p>Bibliotheken:</p>
+<ul class="simple">
+<li><p>Münchener DigitalisierungsZentrum: <a class="reference external" href="https://digitale-sammlungen.de/de/schnittstellen">https://digitale-sammlungen.de/de/schnittstellen</a></p></li>
+<li><p>Staatsbibliothek Berlin: <a class="reference external" href="https://lab.sbb.berlin/dc/">https://lab.sbb.berlin/dc/</a>
+<a class="reference external" href="https://gist.github.com/cneud/ba595b0d70413c952d64154646f560cf">https://gist.github.com/cneud/ba595b0d70413c952d64154646f560cf</a></p></li>
+<li><p>HathiTrust: <a class="reference external" href="https://www.hathitrust.org/data">https://www.hathitrust.org/data</a>
+<a class="reference external" href="https://www.hathitrust.org/data_api">https://www.hathitrust.org/data_api</a></p></li>
+<li><p>Deutsche Digitale Bibliothek: <a class="reference external" href="https://pro.deutsche-digitale-bibliothek.de/daten-nutzen/schnittstellen">https://pro.deutsche-digitale-bibliothek.de/daten-nutzen/schnittstellen</a></p></li>
+<li><p>Digital Public Library of America: <a class="reference external" href="https://dp.la/guides/for-developers">https://dp.la/guides/for-developers</a></p></li>
+<li><p>National Library of France: <a class="reference external" href="https://api.bnf.fr/api-document-de-gallica">https://api.bnf.fr/api-document-de-gallica</a></p></li>
+<li><p>Library of Congress (LOC, s.u.)</p></li>
+</ul>
+<p>LOC APIs</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.loc.gov/apis/">https://www.loc.gov/apis/</a></p></li>
+<li><p><a class="reference external" href="https://www.loc.gov/apis/additional-apis/">https://www.loc.gov/apis/additional-apis/</a></p></li>
+<li><p><a class="reference external" href="https://guides.loc.gov/digital-scholarship/accessing-digital-materials#s-lib-ctab-26648178-2">https://guides.loc.gov/digital-scholarship/accessing-digital-materials#s-lib-ctab-26648178-2</a></p></li>
+<li><p>Chronicling America API: <a class="reference external" href="https://chroniclingamerica.loc.gov/about/api/">https://chroniclingamerica.loc.gov/about/api/</a></p></li>
+<li><p>Microservices: <a class="reference external" href="https://www.loc.gov/apis/micro-services/">https://www.loc.gov/apis/micro-services/</a>
+Darunter Text Services: <a class="reference external" href="https://www.loc.gov/apis/micro-services/text-services/">https://www.loc.gov/apis/micro-services/text-services/</a>
+Und Streaming Services: <a class="reference external" href="https://www.loc.gov/apis/micro-services/streaming-services/">https://www.loc.gov/apis/micro-services/streaming-services/</a></p></li>
+</ul>
+<p>LOC Collections</p>
+<ul class="simple">
+<li><p>American Archive of Public Broadcasting: <a class="github reference external" href="https://github.com/WGBH-MLA/AAPB2#api">WGBH-MLA/AAPB2</a></p></li>
+<li><p>Digital Collections – Audio Recordings: <a class="reference external" href="https://www.loc.gov/collections/?fa=original-format:sound+recording">https://www.loc.gov/collections/?fa=original-format:sound+recording</a></p></li>
+<li><p>American English Dialect Recordings: <a class="reference external" href="https://www.loc.gov/collections/american-english-dialect-recordings-from-the-center-for-applied-linguistics/">https://www.loc.gov/collections/american-english-dialect-recordings-from-the-center-for-applied-linguistics/</a></p></li>
+</ul>
+<p>LOC Tutorials</p>
+<ul class="simple">
+<li><p>LOC for robots: <a class="reference external" href="https://labs.loc.gov/lc-for-robots">https://labs.loc.gov/lc-for-robots</a></p></li>
+<li><p>Accessing images: <a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.ipynb">https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov JSON API/Accessing images for analysis.ipynb</a></p></li>
+<li><p>Chronicling America API Tutorial: <a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/Chronicling%20America%20API/ChronAm%20API%20Samples.ipynb">https://github.com/LibraryOfCongress/data-exploration/blob/master/Chronicling America API/ChronAm API Samples.ipynb</a></p></li>
+<li><p>Working with sound files: <a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Sets/Web%20Archives/loc_goes_lofi.ipynb">https://github.com/LibraryOfCongress/data-exploration/blob/master/Data Sets/Web Archives/loc_goes_lofi.ipynb</a></p></li>
+</ul>
+<p>Before you scrape…</p>
+<ul class="simple">
+<li><p>Beschränkungen für die Nutzung der LOC-API: <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/working-within-limits">https://www.loc.gov/apis/json-and-yaml/working-within-limits</a></p></li>
+</ul>
+<p>Manchmal stellen Institutionen keine API bereit, sondern bieten direkt ganze Korpora zum Download als “Data Dump”, zum Beispiel:</p>
+<ul class="simple">
+<li><p>Deutsches Textarchiv: <a class="reference external" href="https://www.deutschestextarchiv.de/download">https://www.deutschestextarchiv.de/download</a></p></li>
+<li><p>European Literary Text Collection (ELTeC): <a class="github reference external" href="https://github.com/COST-ELTeC/ELTeC">COST-ELTeC/ELTeC</a>
+Download über Github, z.B. für die deutschen Texte: <a class="github reference external" href="https://github.com/COST-ELTeC/ELTeC-deu">COST-ELTeC/ELTeC-deu</a>
+Assoziiertes Projekt: <a class="reference external" href="https://www.distant-reading.net/">https://www.distant-reading.net/</a></p></li>
+<li><p>SlaveVoyages Datenbank: <a class="reference external" href="https://www.slavevoyages.org/american/downloads#intra-american-database-downloads/0/en/">https://www.slavevoyages.org/american/downloads#intra-american-database-downloads/0/en/</a></p></li>
+<li><p>Digitale Sammlung Deutscher Kolonialismus: <a class="reference external" href="https://www.deutschestextarchiv.de/dsdk/">https://www.deutschestextarchiv.de/dsdk/</a></p></li>
+<li><p>Journal of Open Humanities Data: <a class="reference external" href="https://openhumanitiesdata.metajnl.com/articles">https://openhumanitiesdata.metajnl.com/articles</a></p></li>
+<li><p>HathiTrust derived datasets: <a class="reference external" href="https://analytics.hathitrust.org/deriveddatasets">https://analytics.hathitrust.org/deriveddatasets</a>; <a class="reference external" href="https://htrc.atlassian.net/wiki/spaces/COM/pages/43287791/HTRC+Derived+Datasets">https://htrc.atlassian.net/wiki/spaces/COM/pages/43287791/HTRC+Derived+Datasets</a></p></li>
+<li><p>Somar Social Media Archive: <a class="reference external" href="https://socialmediaarchive.org/">https://socialmediaarchive.org/</a></p></li>
+<li><p>Digitale Sammlungen der Österreichischen Nationalbibliothek: <a class="reference external" href="https://labs.onb.ac.at/de/datasets/">https://labs.onb.ac.at/de/datasets/</a></p></li>
+<li><p>Hansard Corpus (britische Parlamentsreden 1802-2023): <a class="reference external" href="https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=857509">https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=857509</a></p></li>
+</ul>
+<p>In diesem Fall sind natürlich weder Web Scraping noch eine API notwendig, um an die Daten zu gelangen, aber es muss beachtet werden, dass diese Daten nicht unbedingt tagesaktuell sind.
+Bevor ihr anfangt, ein Skript zum Scrapen einer Seite zu schreiben, solltet ihr immer überprüfen, ob die gesuchten Daten nicht vielleicht auch über eine API oder als Data Dump verfügbar sind.</p>
+</section>
+<section id="praxis">
+<h2><span class="section-number">8.1.6. </span>Praxis<a class="headerlink" href="#praxis" title="Link to this heading">#</a></h2>
+<p>In der heutigen Stunde und in der Stunde nächste Woche werden wir uns zwei APIs genauer ansehen.
+Und ihr werdet lernen, wie ihr mithilfe von Python Daten über die APIs abfragen könnt.
+Zunächst schauen wir uns die DraCor-API an, und danach die API der Library of Congress.
+Am Ende des Semesters kommen wir noch einmal auf das Thema zurück und betrachten Authentifizierungs- und Autorisierungsmechanismen am Beispiel der TikTok Research API.</p>
+</section>
+<section id="quellen">
+<h2><span class="section-number">8.1.7. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id1">
+<ol class="arabic simple" start="1">
+<li id="id126"><p>Philip Ackermann. <em>Full Stack Web Development. The Comprehensive Guide</em>. Rheinwerk Publishing, Bonn, 2023. URL: <a class="reference external" href="https://books.google.fr/books?id=8PMiEQAAQBAJ">https://books.google.fr/books?id=8PMiEQAAQBAJ</a>.</p></li>
+<li id="id125"><p>Alexander Barge. Vorlesung &quot;Programmieren mobiler Anwendungen: APIs &amp; Schnittstellen-Entwicklung&quot;. 2020. URL: <a class="reference external" href="https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc">https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc</a>.</p></li>
+<li id="id79"><p>Frank Dopatka. Vorlesung &quot;Webbasierte Systeme&quot;. JSON. 2021. URL: <a class="reference external" href="https://www.youtube.com/watch?v=zHQdDnB0-JM">https://www.youtube.com/watch?v=zHQdDnB0-JM</a>.</p></li>
+<li id="id80"><p>Frank Dopatka. Vorlesung &quot;Webbasierte Systeme&quot;. REST: Representational State Transfer. 2024. URL: <a class="reference external" href="https://www.youtube.com/watch?v=FfR9B5rPBuw">https://www.youtube.com/watch?v=FfR9B5rPBuw</a>.</p></li>
+<li id="id130"><p>Alex Xu und Sahn Lam. What Is REST API? Examples And How To Use It. 2022. URL: <a class="reference external" href="https://www.youtube.com/watch?v=-mN3VyJuCjM">https://www.youtube.com/watch?v=-mN3VyJuCjM</a>.</p></li>
+<li id="id127"><p>MDN Contributors. Introduction to Web APIs. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction</a>.</p></li>
+<li id="id128"><p>MDN Contributors. Third-Party APIs. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Third_party_APIs">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Third_party_APIs</a>.</p></li>
+<li id="id129"><p>MDN Contributors. Web APIs. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API">https://developer.mozilla.org/en-US/docs/Web/API</a>.</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/08/subchapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../08_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Anwendungsfall II: APIs (Exkurs)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_dracor_api.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.2. </span>Beispiel 1: DraCor API</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-apis">8.1.1. Was sind APIs?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-apis">8.1.2. Web-APIs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welche-daten-konnen-uber-apis-abgerufen-werden">8.1.3. Welche Daten können über APIs abgerufen werden?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wer-kann-apis-benutzen">8.1.4. Wer kann APIs benutzen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiele">8.1.5. Beispiele</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praxis">8.1.6. Praxis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">8.1.7. Quellen</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lisa Poggel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

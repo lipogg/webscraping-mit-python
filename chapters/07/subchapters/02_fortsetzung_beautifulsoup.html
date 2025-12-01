@@ -61,6 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="8. Anwendungsfall II: APIs (Exkurs)" href="../../08/08_intro.html" />
     <link rel="prev" title="7.1. Einsteig BeautifulSoup" href="01_einstieg_beautifulsoup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -219,6 +220,12 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../07_intro.html">7. Statische Webseiten</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01_einstieg_beautifulsoup.html">7.1. Einstieg BeautifulSoup</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7.2. Fortsetzung BeautifulSoup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../08/08_intro.html">8. APIs (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/01_apis.html">8.1. APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/02_dracor_api.html">8.2. Beispiel DraCor-API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/03_loc_api.html">8.3. Beispiel LOC-API</a></li>
 </ul>
 </li>
 </ul>
@@ -786,8 +793,8 @@ Die Suche mit find() und find_all() produziert bei komplexeren Abfragen aber auc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 95.4 ms, sys: 16.9 ms, total: 112 ms
-Wall time: 1.79 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 112 ms, sys: 18.9 ms, total: 131 ms
+Wall time: 639 ms
 </pre></div>
 </div>
 </div>
@@ -937,8 +944,8 @@ Wall time: 1.79 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 116 ms, sys: 19 ms, total: 135 ms
-Wall time: 1.59 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 123 ms, sys: 24 ms, total: 147 ms
+Wall time: 668 ms
 </pre></div>
 </div>
 </div>
@@ -1091,8 +1098,8 @@ Wall time: 1.59 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 193 ms, sys: 25.7 ms, total: 218 ms
-Wall time: 1.99 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 162 ms, sys: 22.6 ms, total: 185 ms
+Wall time: 775 ms
 </pre></div>
 </div>
 </div>
@@ -1289,8 +1296,8 @@ Die Macher:innen der Seite quotes.toscrape haben sich überlegt, dass auch Seite
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 176 ms, sys: 24 ms, total: 200 ms
-Wall time: 1.95 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 126 ms, sys: 20.4 ms, total: 146 ms
+Wall time: 749 ms
 </pre></div>
 </div>
 </div>
@@ -1433,8 +1440,8 @@ Wall time: 1.95 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 139 ms, sys: 11.4 ms, total: 150 ms
-Wall time: 1.13 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 88.5 ms, sys: 10.4 ms, total: 98.9 ms
+Wall time: 435 ms
 </pre></div>
 </div>
 </div>
@@ -1474,8 +1481,8 @@ Wall time: 1.13 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 131 ms, sys: 20.4 ms, total: 151 ms
-Wall time: 1.64 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 108 ms, sys: 15.9 ms, total: 124 ms
+Wall time: 603 ms
 </pre></div>
 </div>
 </div>
@@ -1623,8 +1630,8 @@ Wall time: 1.64 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 114 ms, sys: 19.7 ms, total: 133 ms
-Wall time: 1.9 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 110 ms, sys: 20.8 ms, total: 131 ms
+Wall time: 723 ms
 </pre></div>
 </div>
 </div>
@@ -1768,8 +1775,8 @@ Wall time: 1.9 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 79.5 ms, sys: 8.65 ms, total: 88.1 ms
-Wall time: 1.06 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 81.9 ms, sys: 12.2 ms, total: 94.1 ms
+Wall time: 411 ms
 </pre></div>
 </div>
 </div>
@@ -1809,8 +1816,8 @@ Wall time: 1.06 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 85.2 ms, sys: 9.99 ms, total: 95.2 ms
-Wall time: 1.09 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 111 ms, sys: 11.3 ms, total: 122 ms
+Wall time: 448 ms
 </pre></div>
 </div>
 </div>
@@ -1871,8 +1878,8 @@ Wall time: 1.09 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 185 ms, sys: 28.5 ms, total: 214 ms
-Wall time: 2.62 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 277 ms, sys: 43.6 ms, total: 321 ms
+Wall time: 1.15 s
 </pre></div>
 </div>
 </div>
@@ -2055,8 +2062,8 @@ Wall time: 2.62 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 87.2 ms, sys: 13.5 ms, total: 101 ms
-Wall time: 1.55 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 151 ms, sys: 23.8 ms, total: 175 ms
+Wall time: 699 ms
 </pre></div>
 </div>
 </div>
@@ -2131,8 +2138,8 @@ Wall time: 1.55 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 216 ms, sys: 18 ms, total: 234 ms
-Wall time: 2.06 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 185 ms, sys: 19.8 ms, total: 205 ms
+Wall time: 778 ms
 </pre></div>
 </div>
 </div>
@@ -2331,6 +2338,15 @@ Wall time: 2.06 s
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="section-number">7.1. </span>Einsteig BeautifulSoup</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../../08/08_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Anwendungsfall II: APIs (Exkurs)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
