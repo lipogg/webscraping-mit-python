@@ -397,11 +397,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vorbereitung">8.3.1. Vorbereitung</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-der-chronicling-america-api">8.3.2. Exploration der Chronicling America API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abfrage-aller-volltexte-mit-book-review">8.3.3. Abfrage aller Volltexte mit “book review”</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-limits-berucksichtigen-und-die-abfragerate-steuern">8.3.4. Rate Limits berücksichtigen und die Abfragerate steuern</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">8.3.5. Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datenqualitat-untersuchen">8.3.1. Datenqualität untersuchen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-formulieren">8.3.2. Suche formulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anfrage-formulieren">8.3.3. Anfrage formulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abfrage-aller-volltexte-mit-book-review">8.3.4. Abfrage aller Volltexte mit “book review”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-limits-berucksichtigen-und-die-abfragerate-steuern">8.3.5. Rate Limits berücksichtigen und die Abfragerate steuern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">8.3.6. Quellen</a></li>
 </ul>
             </nav>
         </div>
@@ -418,135 +419,72 @@ document.write(`
 <p>Die Library of Congress (LOC) bietet eine Reihe sehr gut dokumentierter APIs zur Abfrage von Metadaten, Dateien und Volltexten aus dem Bestand der Bibliothek. Eine davon ist die API der Sammlung US-amerikanischer historischer Zeitungen Chronicling America. Diese API werden wir in dieser Stunde kennenlernen.</p>
 <ul class="simple">
 <li><p>Übersicht über die LOC APIs: <a class="reference external" href="https://guides.loc.gov/digital-scholarship/accessing-digital-materials#s-lib-ctab-26648178-2">https://guides.loc.gov/digital-scholarship/accessing-digital-materials#s-lib-ctab-26648178-2</a></p></li>
-<li><p>Dokumentation zur Chronicling America API: <a class="reference external" href="https://chroniclingamerica.loc.gov/about/api/">https://chroniclingamerica.loc.gov/about/api/</a></p></li>
+<li><p>Dokumentation zur Chronicling America API: <a class="reference external" href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Chronicling_America/README.html">https://libraryofcongress.github.io/data-exploration/loc.gov JSON API/Chronicling_America/README.html</a></p></li>
 </ul>
 <p>Zunächst machen wir uns mit der Chronicling America API vertraut.</p>
 <div class="tip admonition">
 <p class="admonition-title">Verständnisfragen</p>
 <ul class="simple">
 <li><p>Welche Daten können darüber abgefragt werden?</p></li>
-<li><p>Was ist euer Leseeindruck? Ist die Dokumentation vollständig, ausführlich, leicht verständlich, …?</p></li>
+<li><p>Was ist euer Leseeindruck? Ist die Dokumentation vollständig, ausführlich, verständlich?</p></li>
 <li><p>An wen richtet sich die API und die Dokumentation?</p></li>
+<li><p>Vergleicht die Dokumentationsseiten zur Chronicling America API mit der Dokumentation der Prints and Photographs Online Catalog API: <a class="reference external" href="https://www.loc.gov/pictures/api">https://www.loc.gov/pictures/api</a>. An wen richtet sich dieser Dokumentationstext?</p></li>
 </ul>
 </div>
-<p>Für unser Beispiel werden wir die Volltexte zu allen Ergebnissen einer Suche nach Schlüsselwörtern in den Volltexten der Zeitungen abfragen und herunterladen (Abschnitt “Searching the directory and newspaper pages using OpenSearch”, Unterabschnitt “Page search parameters”). Die Volltexte sind mithilfe von OCR-Verfahren erstellt, also mithilfe von automatischer Bilderkennung. Unsere Suchabfrage liefert also nur diejenigen Zeitungen, in denen die Suchwörter korrekt erkannt wurden.</p>
-<section id="vorbereitung">
-<h2><span class="section-number">8.3.1. </span>Vorbereitung<a class="headerlink" href="#vorbereitung" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pakete importieren</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">math</span>
-
-<span class="c1"># Dieses Modul müsst ihr nicht importieren</span>
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">skip</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exploration-der-chronicling-america-api">
-<h2><span class="section-number">8.3.2. </span>Exploration der Chronicling America API<a class="headerlink" href="#exploration-der-chronicling-america-api" title="Link to this heading">#</a></h2>
-<p>Wie in der letzten Stunde müssen wir zur Abfrage von Daten wieder eine URI nach den Vorgaben der API Dokumentation zusammensetzen.</p>
-<p>Suchabfragen können mit einem <code class="docutils literal notranslate"><span class="pre">?</span></code> an die URL <a class="reference external" href="https://chroniclingamerica.loc.gov/search/pages/results/">https://chroniclingamerica.loc.gov/search/pages/results/</a> angefügt werden.
-Es gibt laut <a class="reference external" href="https://chroniclingamerica.loc.gov/about/api/">Dokumentationsseite</a> drei verschiedene Abfrageparameter (Unterabschnitt “Page search parameters”):</p>
-<ul class="simple">
-<li><p>andtext: the search query</p></li>
-<li><p>format: ‘html’ (default), or ‘json’, or ‘atom’ (optional)</p></li>
-<li><p>page: for paging results (optional)</p></li>
-</ul>
-<p>Diese Parameter werden wir uns der Reihe nach ansehen.</p>
-<p><strong>Parameter andtext</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Der andtext Parameter: Volltexte nach Schlagwörtern oder Phrasen durchsuchen</span>
-<span class="c1"># Suche nach Schlagwörtern book AND review</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?andtext=book+review&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Wenn diese URL im Browser eingegeben wird, öffnet sich dieselbe Suchmaske, die auch manuell zur Suche verwendet wird, aber der von uns zusammengesetzten URL werden automatisch zusätzliche Parameter hinzugefügt, z.B. rows=20 und searchType=basic. Andersherum zeigt eine aufmerksame Betrachtung der Ergebnisse der Suche nach einem Suchbegriff über die Suchmaske der Website <a class="reference external" href="https://chroniclingamerica.loc.gov">https://chroniclingamerica.loc.gov</a>, dass die Suche über die Suchmaske genau dieselben Ergebnisse liefert wie die API-Abfrage.</p>
+<p>Für unser Beispiel werden wir die Volltexte zu allen Ergebnissen einer Suche nach einem Schlüsselbegriff abfragen und herunterladen. Die wichtigsten Informationen zur Verwendung der API und für unseren Anwendungsfall finden wir im Abschnitt “Definitions: API Query Parameters for Newspapers”. Zwei Hinweise sind dabei insbesondere aufschlussreich:</p>
+<blockquote>
+<div><p>The easiest way to create a URL for your API query is to perform an Advanced Search at Chronicling America. If you performed an Advanced Search to create your API Query, we recommend including some of the additional query parameters. The structure of an API Query URL looks like this: <a class="reference external" href="https://www.loc.gov/collections/chronicling-america/?%7Bqueryparameters%7D&amp;amp;%7Bqueryparameters%7D?fo=json">https://www.loc.gov/collections/chronicling-america/?{queryparameters}&amp;{queryparameters}?fo=json</a></p>
+</div></blockquote>
+<blockquote>
+<div><p>Note: If you’re looking to download full text from the newspaper pages in a given search result, note that the full text (from OCR) is captured for each page within the “full_text” JSON field. For example: <a class="reference external" href="https://www.loc.gov/resource/sn83045462/1922-12-26/ed-1/?sp=22&amp;amp;q=clara+bow&amp;amp;fo=json">https://www.loc.gov/resource/sn83045462/1922-12-26/ed-1/?sp=22&amp;q=clara+bow&amp;fo=json</a></p>
+</div></blockquote>
+<section id="datenqualitat-untersuchen">
+<h2><span class="section-number">8.3.1. </span>Datenqualität untersuchen<a class="headerlink" href="#datenqualitat-untersuchen" title="Link to this heading">#</a></h2>
+<p>Der letzte der beiden Hinweise gibt Aufschluss über die Qualität der Volltexte: Diese sind mithilfe von OCR-Verfahren erstellt, also mithilfe automatischer Bilderkennung (OCR steht für Optical Character Recognition). Wenn wir auf das verlinkte Beispiel klicken, öffnet sich zunächst eine JSON-Datei im Browser, die Metadaten zur angefragten Ressource als auch Links zu der Resource selbst in verschiedenen Dateiformaten enthält. Diese finden sich unter dem Schlüssel “resource” und können mithilfe der Tastenkombination Strg + F und Suche nach “full_text” gefunden werden:</p>
 <figure class="align-default" id="id245">
-<a class="bg-transparent reference internal image-reference" href="../../../_images/loc_ca_suche.png"><img alt="Suchmaske Chronicling America" class="bg-transparent" src="../../../_images/loc_ca_suche.png" style="width: 80%;" /></a>
+<a class="bg-transparent reference internal image-reference" href="../../../_images/json_resource.png"><img alt="Ansicht einer LOC Ressource im JSON-Format" class="bg-transparent" src="../../../_images/json_resource.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.4 </span><span class="caption-text">Einfache Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id245" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.4 </span><span class="caption-text">Informationen zu einer Ressource im JSON-Format abrufen</span><a class="headerlink" href="#id245" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Dieser Beobachtung können wir entnehmen, dass per Default ein HTML-Dokument mit den Ergebnissen geliefert wird, und dass die API unter der Motorhaube verwendet wird, um die Suchergebnisse zu generieren, die auch bei einer “manuellen” Suche über die Suchmaske geliefert werden. Wir können die Suchmaske also nutzen, um den andtext-Parameter besser zu verstehen und möglicherweise weitere, in den Dokumentationsseiten der API nicht explizit erwähnte Suchparameter zu identifizieren.</p>
-<p>Wenn wir in der Suchmaske nach dem Suchbegriff “book review” suchen, dann steht in der URL “proxtext=book+review”. Wenn wir die Erweiterte Suche (Tab Advanced Search) öffnen, sehen wir, was das bedeutet: Unser Suchbegriff wurde automatisch unter der Überschrift “Enter Search”, bei “…with the words… within 5 words of each other” eingefügt. “proxtext=book+review” findet also alle gemeinsamen Erwähnungen von “book” und “review” in einem Kontextfenster von fünf Wörtern. Wenn wir alle Seiten finden wollen, in denen irgendwo “book” und “review” vorkommen, aber nicht unbedingt in einer bestimmten Nähe zueinander, können wir die Begriffe unter “…with all of the words” eingeben. Die URL ändert sich dann genau zu unserem bereits bekannten Parameter “andtext=book+review”. Und wenn wir direkt aufeinanderfolgende Wortkombinationen von “book review” finden wollen, können wir die Suchbegriffe bei “…with the phrase” eingeben. Dann steht in der URL statt andtext oder proxtext der Zusatz “&amp;phrasetext=book+review”:</p>
+<p>Ein Klick auf die unter “fulltext_file” verlinkte Ressource öffnet ein weiteres JSON-Dokument, das den eigentlichen Volltext enthält:</p>
 <figure class="align-default" id="id246">
-<a class="bg-transparent reference internal image-reference" href="../../../_images/loc_ca_erweiterte_suche.png"><img alt="Erweiterte Suche Chronicling America" class="bg-transparent" src="../../../_images/loc_ca_erweiterte_suche.png" style="width: 80%;" /></a>
+<a class="bg-transparent reference internal image-reference" href="../../../_images/json_full_text.png"><img alt="Ansicht des Volltexts einer LOC Ressource mit OCR-Fehlern" class="bg-transparent" src="../../../_images/json_full_text.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.5 </span><span class="caption-text">Erweiterte Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id246" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.5 </span><span class="caption-text">Mithilfe von OCR erstellter Volltext einer Ressource, inkl. OCR-Fehler</span><a class="headerlink" href="#id246" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Tatsächlich akzeptiert auch die Chronicling America API eine Abfrage-URI mit dem Zusatz &amp;phrasetext:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Suche nach Phrase &quot;book review&quot;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?phrasetext=book+review&quot;</span>
-<span class="n">search_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="c1"># search_results</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Bei der Suche nach Wortkombinationen können wir also von der in der API-Dokumentation angegebenen URI mit dem Parameter “andtext” abweichen und stattdessen den Parameter “phrasetext” nutzen.</p>
-<p><strong>Parameter format</strong></p>
-<p>Wir haben bereits festgestellt, dass die Abfrage einer UrI ohne Angabe des format-Parameters standardmäßig HTML-Dokumente als Nutzdaten liefert. Zur maschinellen Weiterverarbeitung in Python ist für uns aber JSON praktischer. Um JSON gelierfert zu bekommen, setzen wir den Parameter format auf “json”:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Der format-Parameter: Ergebnisse im JSON-Format abfragen</span>
-<span class="c1"># https://chroniclingamerica.loc.gov/search/pages/results/?phrasetext=book+review&amp;format=json</span>
-<span class="c1"># erste Seite der Suchergebnisse: 20 Ergebnisse je Seite</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?phrasetext=book+review&amp;format=json&quot;</span>
-<span class="n">search_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="c1"># search_results</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>JSON im Chrome Browser ansehen</p>
-<p>Zur Ansicht der JSON-Datei im Chrome Browser können wir wieder auf die Entwicklertools zurückgreifen. Die Standardansicht ist nämlich sehr schwer lesbar, weil der JSON-String nicht formatiert ist. Um eine formatierte Ansicht zu erhalten, befolgt die folgenden Schritte: Entwicklertools öffnen -&gt; “Sources”-Tab auswählen-&gt; Link anklicken</p>
+<p>JSON im Browser ansehen</p>
+<p>Firefox stellt JSON-Dateien im Browser sehr übersichtlich dar. Das ist aber nicht bei allen Browsern der Fall. Zur Ansicht der JSON-Datei im Chrome Browser kann auf die Entwicklertools zurückgegriffen werden. Die Standardansicht ist nämlich sehr schwer lesbar, weil der JSON-String nicht formatiert ist. Um eine formatierte Ansicht zu erhalten, befolgt die folgenden Schritte: Entwicklertools öffnen -&gt; “Sources”-Tab auswählen-&gt; Link anklicken</p>
 </div>
-<p><strong>Parameter page</strong></p>
-<p>Wenn der Parameter page bei der Abfrage nicht angegeben wird, dann werden per Default immer die ersten 20 Suchergebnisse (also die erste Seite der Suchergebnisse) zurückgeliefert:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">default_page</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?phrasetext=book+review&amp;format=json&quot;</span>
-<span class="n">default_page_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">default_page</span><span class="p">)</span>
-<span class="c1"># default_page_results</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Diese URL ist also äquivalent zur Angabe des Parameters mit page=1:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Der page Parameter: Nur die ausgewählte Ergebnisseite abfragen</span>
-<span class="n">first_page</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?phrasetext=book+review&amp;format=json&amp;page=1&quot;</span>
-<span class="n">first_page_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">first_page</span><span class="p">)</span>
-<span class="c1"># first_page_results</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_page_results</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="n">default_page_results</span><span class="o">.</span><span class="n">content</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
+<p><strong>Bevor ihr ein Skript zum Herunterladen der Daten über eine API schreibt, solltet ihr diese also vorab inspizieren und entscheiden, ob ihr die Daten in der verfügbaren Qualität zur Beantwortung eurer Fragestellung überhaupt nutzen könnt. Denn anders als der Inhalt einer Webseite, den ihr mit BeautifulSoup scraped, ist die Qualität der Daten, die Museen, Archive und Bibliotheken bereitstellen, nicht direkt einsehbar. Auch die Vollständigkeit der extrahierten Daten muss vorab abgeschätzt werden.</strong> Eine Suche nach Schlüsselbegriffen in einem Volltext, der mithilfe von OCR-Verfahren erstellt wurde, liefert beispielsweise immer nur diejenigen Zeitungen, in denen die Suchwörter auch korrekt erkannt wurden.</p>
+</section>
+<section id="suche-formulieren">
+<h2><span class="section-number">8.3.2. </span>Suche formulieren<a class="headerlink" href="#suche-formulieren" title="Link to this heading">#</a></h2>
+<p>Um herauszufinden, wie die Abfrage-URL für eine Suche nach bestimmten Schlüsselbegriffen aussehen muss, können wir also zunächst über die Suchmaske des Onlinekatalogs eine Suche formulieren: <a class="reference external" href="https://www.loc.gov/collections/chronicling-america/">https://www.loc.gov/collections/chronicling-america/</a></p>
+<p>Wir formulieren die Suche wie folgt:</p>
+<figure class="align-default" id="id247">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/loc_ca_suche.png"><img alt="Suchmaske Chronicling America" class="bg-transparent" src="../../../_images/loc_ca_suche.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8.6 </span><span class="caption-text">Einfache Suche über die Suchmaske der Seite Chronicling America.</span><a class="headerlink" href="#id247" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Die Suche liefert drei Ergebnisse und vor allem eine wichtige Information zum Verhalten der Volltextsuche: Es wird nicht nur die exakte Wortkombination “book review” gefunden, sondern auch Wortkombinationen über Satzgrenzen hinweg wie “book. Review” und Wortkombinationen, in denen die Suchbegriffe vorkommen wie “book reviewed”. Auch das ist zur Einschätzung der Vollständigkeit und Qualität der extrahierten Daten wichtig.</p>
+<figure class="align-default" id="id248">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/search_results.png"><img alt="Ergebnisse der Suche" class="bg-transparent" src="../../../_images/search_results.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8.7 </span><span class="caption-text">Ergebnisse der Suche</span><a class="headerlink" href="#id248" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Wir weiten die Suche auf 200 Jahre aus und erhalten nun 23.614 Ergebnisse. Davon werden aber nur 40 auf der ersten Seite angezeigt. Auch das ist eine wichtige Information, wie wir noch sehen werden.</p>
+<figure class="align-default" id="id249">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/search_and_results_extended.png"><img alt="Ergebnisse der erweiterten Suche" class="bg-transparent" src="../../../_images/search_and_results_extended.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8.8 </span><span class="caption-text">Ergebnisse der erweiterten Suche</span><a class="headerlink" href="#id249" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="tip admonition">
 <p class="admonition-title">Verständnisfragen</p>
 <ul class="simple">
@@ -554,94 +492,65 @@ Es gibt laut <a class="reference external" href="https://chroniclingamerica.loc.
 <li><p>Wie kann nur nach deutschsprachigen Texten gesucht werden?</p></li>
 </ul>
 </div>
-<p><strong>Testabfrage</strong></p>
-<p>Mit diesem Wissen können wir eine Testabfrage durchführen.</p>
-<p>Für unsere Abfragen wählen wir JSON als Rückgabeformat aus, weil wir den JSON-String bequem parsen können, indem wir den String mithilfe der Methode .json() in ein Python-Dictionary umwandeln:</p>
+</section>
+<section id="anfrage-formulieren">
+<h2><span class="section-number">8.3.3. </span>Anfrage formulieren<a class="headerlink" href="#anfrage-formulieren" title="Link to this heading">#</a></h2>
+<p>Mit diesen Informationen können wir nun versuchen herauszufinden, wie die Anfrage-URL aussehen muss. Wir gleichen dazu die URL, die bei unserer Suche über die Suchmaske automatisch zusammengesetzt wurde, mit der allgemeinen Struktur der Anfrage-URL aus den Dokumentationsseiten ab. Die durch die Verwendung der Suchmaske zusammengesetze URL ist <a class="reference external" href="https://www.loc.gov/collections/chronicling-america/?dl=page&amp;amp;end_date=1936-09-03&amp;amp;ops=PHRASE&amp;amp;qs=book+review&amp;amp;searchType=advanced&amp;amp;start_date=1736-09-03">https://www.loc.gov/collections/chronicling-america/?dl=page&amp;end_date=1936-09-03&amp;ops=PHRASE&amp;qs=book+review&amp;searchType=advanced&amp;start_date=1736-09-03</a>. Die allgemeine Form ist dagegen <a class="reference external" href="https://www.loc.gov/collections/chronicling-america/?%7Bqueryparameters%7D&amp;amp;%7Bqueryparameters%7D?fo=json">https://www.loc.gov/collections/chronicling-america/?{queryparameters}&amp;{queryparameters}?fo=json</a>. Um die Anfrageparameter später bequem austauschen zu können, erstellen wir dafür Variablen und fügen die Anfrage-URL mithilfe eines F-Strings zusammen. Was die einzelnen Parameter bedeuten, können wir dem Abschnitt “Definitions: API Query Parameters for Newspapers” entnehmen. Die Variablennamen wählen wir entsprechend der Bedeutung der Parameter. Beim Umschreiben der URL fällt auf, dass der Parameter “fo=json” in unserer Suchmasken-URL nicht vorkommt. Per Default werden die Ergebnisse im HTML-Format zur Ansicht über den Browser geliefert. Wenn wir die Ergebnisse später mit requests verarbeiten wollen, dann müssen wir also hier den Parameter “fo=json” hinzufügen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?phrasetext=book+review&amp;format=json&quot;</span>
-<span class="c1"># JSON-String in Python Dictionary umwandeln</span>
-<span class="n">search_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">search_results</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.loc.gov/collections/chronicling-america/&quot;</span>
+<span class="n">display_level</span> <span class="o">=</span> <span class="s2">&quot;dl=page&quot;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s2">&quot;end_date=1936-09-03&quot;</span>
+<span class="n">search_operation</span> <span class="o">=</span> <span class="s2">&quot;ops=PHRASE&quot;</span>
+<span class="n">query_terms</span> <span class="o">=</span> <span class="s2">&quot;qs=book+review&quot;</span>
+<span class="n">search_type</span> <span class="o">=</span> <span class="s2">&quot;searchType=advanced&quot;</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s2">&quot;start_date=1736-09-03&quot;</span>
+<span class="n">response_format</span> <span class="o">=</span> <span class="s2">&quot;fo=json&quot;</span>
+
+<span class="n">request_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">?</span><span class="si">{</span><span class="n">display_level</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">search_operation</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">query_terms</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">search_type</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">response_format</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mit dieser Struktur wird direkt deutlich, welche Suchparameter wir verwendet haben. Etwas sauberer wäre es vermutlich allerdings, wenn wir die Kürzel für die Suchparameter (dl, end_date, fo, …) direkt in den F-String einfügen und nur für die Werte Variablen definieren. Wir lassen unsere Anfrage-URL aber erst einmal so. Zunächst testen wird die Anfrage-URL, indem wir sie einfach im Browser aufrufen:</p>
+<figure class="align-default" id="id250">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/response_full.png"><img alt="JSON-Datei mit Antwort auf Anfrage im Browser" class="bg-transparent" src="../../../_images/response_full.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8.9 </span><span class="caption-text">Anfrage-URL im Browser testen</span><a class="headerlink" href="#id250" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In der überblicklichen Darstellung im Browser fällt direkt auf, dass wir nur 40 Ergebnisse bekommen haben (Schlüssel “results”). Wir stellen die Anfrage nun mithilfe von requests und überprüfen diesen Umstand:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">)</span>
+<span class="n">search_results</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">search_results</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/requests/models.py:971,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">970</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">971</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">972</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
-<span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
-<span class="g g-Whitespace">    </span><span class="mi">333</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</span>
-<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd"> containing a JSON document).</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
-
-<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?phrasetext=book+review&amp;format=json&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># JSON-String in Python Dictionary umwandeln</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">search_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">search_results</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]))</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/requests/models.py:975,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">971</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">972</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
-<span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
-<span class="ne">--&gt; </span><span class="mi">975</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
-
-<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40
 </pre></div>
 </div>
 </div>
 </div>
-<p>Das Dictionary enthält einen Schlüssel “items” mit einer Liste der Suchergebnisse als Wert. Die Suchergebnisse sind selbst als Dictionaries organisiert. Jedes Suchergebnis-Dictionary enthält einen Schlüssel “ocr_eng” mit den Volltexten:</p>
+<p>Wie können wir den Rest der 23.614 Suchergebnisse erhalten? Im Abschnitt “Definitions: API Query Parameters for Newspapers” lässt sich dazu keine Information finden, aber praktischerweise bietet die Library of Congress am Ende der Seite einige Jupyter Notebooks mit Beispielabfragen, unter anderem das Notebook “Downloading Search Results from Chronicling America”:  <a class="reference external" href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Chronicling_America/ChronAm-download_results.html">https://libraryofcongress.github.io/data-exploration/loc.gov JSON API/Chronicling_America/ChronAm-download_results.html</a></p>
+<p>Dem Notebook können wir entnehmen, dass weitere Ergebnisseiten über den Schlüssel “pagination” abgerufen werden können, und zwar mit:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># erstes Suchergebnis auf der ersten Seite der Suchergebnisse</span>
-<span class="n">search_results</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;ocr_eng&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#        if data[&quot;pagination&quot;][&quot;next&quot;] is not None:</span>
+<span class="c1">#            next_url = data[&quot;pagination&quot;][&quot;next&quot;]</span>
+<span class="c1">#            get_item_ids(next_url, items, conditional)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Um die Volltexte für alle Suchergebnisse auf der ersten Seite abzurufen und zu speichern, können wir eine for-Schleife entwerfen:</p>
+<p>Diesen Code können wir später für unsere Zwecke anpassen. Zunächst müssen wir aber eine viel dringendere Frage klären: Wir haben zwar mit unserer Anfrage-URL die Suchergebnisse im JSON-Format erhalten. Aber wie finden wir darüber die Volltexte? Die Volltexte haben wir ja über die Seiten der Ressourcen selbst bekommen, also über URLs der Form <a class="reference external" href="https://www.loc.gov/resource/sn83045462/1922-12-26/ed-1/?sp=22&amp;amp;q=clara+bow&amp;amp;fo=json">https://www.loc.gov/resource/sn83045462/1922-12-26/ed-1/?sp=22&amp;q=clara+bow&amp;fo=json</a>. Das probieren wir erst einmal nur für die erste Ergebnisseite aus, und erweitern danach den Code so, dass die Volltexte für alle Ergebnisseiten abgefragt werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
-
-# Volltexte für die gesamte erste Seite der Suchergebnisse speichern
-items = search_results[&quot;items&quot;]
-
-for item in items:
-    ocr_text = item[&quot;ocr_eng&quot;]
-    title = item[&quot;title&quot;]
-    date = item[&quot;date&quot;]
-    with open(f&quot;{title}_{date}.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:
-        file.write(ocr_text)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inhalt folgt noch</span>
 </pre></div>
 </div>
 </div>
@@ -649,7 +558,7 @@ for item in items:
 <p>Das wollen wir jetzt für alle Suchergebnisse auf allen Seiten reproduzieren.</p>
 </section>
 <section id="abfrage-aller-volltexte-mit-book-review">
-<h2><span class="section-number">8.3.3. </span>Abfrage aller Volltexte mit “book review”<a class="headerlink" href="#abfrage-aller-volltexte-mit-book-review" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3.4. </span>Abfrage aller Volltexte mit “book review”<a class="headerlink" href="#abfrage-aller-volltexte-mit-book-review" title="Link to this heading">#</a></h2>
 <p>Da es etwas unübersichtlich ist, wenn die heruntergeladenen Dateien in demselben Ordner liegen wie das Pythonskript, legen wir zunächst in unserem aktuellen Arbeitsverzeichnis (=Ordner, in dem die Jupyter Notebooks liegen) ein neues Verzeichnis an, in dem wir die Volltexte abspeichern werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -661,54 +570,17 @@ os.makedirs(output_dir, exist_ok=True) # exists_ok: nur erstellen, falls es noch
 </pre></div>
 </div>
 </div>
-</div>
-<p>Wie gehen wir vor, um jetzt unsere for-Schleife oben nacheinander auf alle Ergebnisseiten anzuwenden? Erinnert euch an die drei Strategien, die wir beim Scrapen der Quotes to Scrape-Website im Abschnitt “Fortsetzung BeautifulSoup” diskutiert haben.
-Eine Idee wäre die Verwendung einer while Schleife mit HTTP Antwort != 200 als break-Bedingung. Diese Strategie ist aber nur anwendbar, wenn beim Abruf einer ungültigen Seite eine HTTP-Antwort ungleich 200 zurückgegeben wird. Das müssen wir zunächst überprüfen: Was passiert, wenn eine nicht existierende Seite aufgerufen wird?
-Als Beispiel rufen wir die Seite <a class="reference external" href="https://chroniclingamerica.loc.gov/search/pages/results/?rows=20&amp;amp;format=json&amp;amp;sequence=0&amp;amp;phrasetext=book+review&amp;amp;andtext=&amp;amp;page=20000">https://chroniclingamerica.loc.gov/search/pages/results/?rows=20&amp;format=json&amp;sequence=0&amp;phrasetext=book+review&amp;andtext=&amp;page=20000</a> auf.</p>
-<p>Tatsächlich gibt es eine Umleitung auf Seite 1 mit einem gültigen HTTP-Statuscode! Wir können also in diesem Fall die Strategie mit der while-Schleife nicht verwenden.</p>
-<p>Eine andere Idee ist die Verwendung einer for-Schleife, die so lange läuft wie es Ergebnisseiten gibt. Dazu müssen wir aber die Gesamtzahl der Ergebnisseiten kennen. Das können wir entweder programmatisch lösen oder manuell aus dem User Interface ablesen. Um die Gesamtzahl der Ergebnisseiten direkt aus Python heraus zu ermitteln, könnten wir zum Beispiel die Anzahl der Ergebnisseiten durch die Anzahl der Ergebnisse auf jeder Ergebnisseite teilen und diese Zahl aufrunden:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gesamtanzahl der Ergebnisseiten ermitteln: Anzahl der Ergebnisse durch Anzahl der Ergebnisse pro Seite teilen</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://chroniclingamerica.loc.gov/search/pages/results/?phrasetext=book+review&amp;format=json&quot;</span>
-<span class="n">search_results</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">base_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="n">pages_float</span> <span class="o">=</span> <span class="n">search_results</span><span class="p">[</span><span class="s2">&quot;totalItems&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">search_results</span><span class="p">[</span><span class="s2">&quot;itemsPerPage&quot;</span><span class="p">]</span>
-<span class="n">pages</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">pages_float</span><span class="p">)</span> <span class="c1"># aufrunden</span>
-<span class="n">pages</span>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UsageError: Cell magic `%%skip` not found.
 </pre></div>
 </div>
 </div>
 </div>
-<div class="tip admonition">
-<p class="admonition-title">Verständnisfragen</p>
-<ul class="simple">
-<li><p>Betrachtet die Ergebnisse für unsere Anfrage über das User Interface der Website: <a class="reference external" href="https://chroniclingamerica.loc.gov/search/pages/results/?phrasetext=book+review">https://chroniclingamerica.loc.gov/search/pages/results/?phrasetext=book+review</a>. Stimmt die berechnete Anzahl der Ergebnisseiten?</p></li>
-<li><p>Gibt es noch eine andere Möglichkeit, die letzte Ergebnisseite zu erkennen?</p></li>
-<li><p>Was bedeuten die Schlüssel <code class="docutils literal notranslate"><span class="pre">endIndex</span></code> und <code class="docutils literal notranslate"><span class="pre">startIndex</span></code>? Welchen Wert haben Sie auf der ersten Ergebnisseite? Welchen Wert auf der letzten?</p></li>
-</ul>
-</div>
-<p>Zu der Gesamtzahl der Seiten addieren wir 1, da wir später die range(1, n)-Funktion verwenden wollen, welche eine Integersequenz von Zahl 1 bis Zahl n-1 generiert.</p>
-<p>Unsere for-Schleife sieht dann so aus:</p>
+<p>Wie gehen wir vor, um jetzt unsere for-Schleife oben nacheinander auf alle Ergebnisseiten anzuwenden? Erinnert euch an die drei Strategien, die wir beim Scrapen der Quotes to Scrape-Website im Abschnitt “Fortsetzung BeautifulSoup” diskutiert haben. Eine andere Strategie, die wir im Zusammenhang mit der Quotes to Scrape-Website besprochen haben, war die Verwendung des “next”-Buttons. Bei dieser Strategie haben wir beim Aufruf einer Seite die URL zur nachfolgenden Seite aus dem href-Attribut des a-Elements mit dem Text “next” extrahiert und diese URL zur Formulierung der nächsten Anfrage verwendet.</p>
+<p>Ganz ähnlich funktioniert auch die Lösung, die das vorhin besprochene Tutorial der Library Of Congress vorschlägt. Hier wurde die URL für die nächste Ergebnisseite dem Schlüssel “next” unter dem Schlüssel “pagination” entnommen (s.o.). Diese Lösung bauen wir nun in unseren Code ein:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
-
-# Volltexte zu allen Ergebnissen von allen Ergebnisseiten speichern
-for page in range(1, pages + 1):
-    request_url = f&quot;{base_url}&amp;page={page}&quot;
-    response = requests.get(request_url).json()
-    # überprüfen, ob die Anfrage erfolgreich war
-    print(response.status_code)
-    # for-Schleife für eine einzelne Ergebnisseite einsetzen
-    items = response[&quot;items&quot;]
-    for item in items:
-        ocr_text = item[&quot;ocr_eng&quot;]
-        title = item[&quot;title&quot;]
-        date = item[&quot;date&quot;]
-        filename = f&quot;{title}_{date}.txt&quot;
-        filepath = os.path.join(output_dir, filename)
-        with open(filepath, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:
-            file.write(ocr_text)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inhalt folgt noch</span>
 </pre></div>
 </div>
 </div>
@@ -717,7 +589,7 @@ for page in range(1, pages + 1):
 <p>Bei der Abfrage von sehr vielen Seiten müssen wir uns also nach den Einschränkungen der LOC richten und bestimmte Abfrageraten (Rate Limits) einhalten.</p>
 </section>
 <section id="rate-limits-berucksichtigen-und-die-abfragerate-steuern">
-<h2><span class="section-number">8.3.4. </span>Rate Limits berücksichtigen und die Abfragerate steuern<a class="headerlink" href="#rate-limits-berucksichtigen-und-die-abfragerate-steuern" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3.5. </span>Rate Limits berücksichtigen und die Abfragerate steuern<a class="headerlink" href="#rate-limits-berucksichtigen-und-die-abfragerate-steuern" title="Link to this heading">#</a></h2>
 <p>Wie wir bereits in der kurzen Einführung zu APIs besprochen haben, setzen Webseitenbetreiber:innen für gewöhnlich Grenzen für die Datenabfrage über ihre APIs fest. Manche kommunizieren diese Einschränkungen nur schriftlich in Form der Dokumentation, andere setzen sie technisch fest, sodass wiederholte Anfragen desselben Clients automatisch bei Überschreiten der erlaubten Abfragerate blockiert werden. Um dies zu verhindern und um den Server nicht mit vielen Anfragen, die schnell nacheinander gestellt werden, zu überlasten, muss der Code so geschrieben werden, dass die erlaubte Abfragerate der API eingehalten werden. Dazu können verschiedene Strategien angewandt werden, die in diesem Abschnitt vorgestellt werden.</p>
 <p>Eine Recherche auf den Seiten der Library of Congress liefert die Seite <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/working-within-limits">https://www.loc.gov/apis/json-and-yaml/working-within-limits</a>. Hier legt die LOC Einschränkungen für die der Chronicling America API übergeordnete Seite <a class="reference external" href="http://loc.gov">loc.gov</a> fest. Die Chronicling America API wird zwar nicht explizit erwähnt, aber wir können vermuten, dass die Einschränkungen auch für die Chronicling America API gelten. Da etwas unklar ist, welches Limit für diese API gilt, richten wir uns nach der restriktivsten Vorgabe, nach der nur 20 Abfragen alle 10 Sekunden erlaubt sind. So sind wir in jedem Fall auf der sicheren Seite.</p>
 <p>Wie können wir also die HTTP-Abfragen auf 20 Abfragen je 10 Sekunden einschränken? Dazu müssen wir den Code so umschreiben, dass innerhalb einer bestimmten Zeit nur eine bestimmte Anzahl an Anfragen gestellt werden.</p>
@@ -946,7 +818,7 @@ for page in range(1, pages + 1):
 </div>
 </section>
 <section id="quellen">
-<h2><span class="section-number">8.3.5. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3.6. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <ol class="arabic simple" start="1">
 <li id="id133"><p>Michael Driscoll. Chapter 25 – Decorators. 2017. URL: <a class="reference external" href="https://python101.pythonlibrary.org/chapter25_decorators.html">https://python101.pythonlibrary.org/chapter25_decorators.html</a>.</p></li>
@@ -1028,11 +900,12 @@ for page in range(1, pages + 1):
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vorbereitung">8.3.1. Vorbereitung</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-der-chronicling-america-api">8.3.2. Exploration der Chronicling America API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abfrage-aller-volltexte-mit-book-review">8.3.3. Abfrage aller Volltexte mit “book review”</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-limits-berucksichtigen-und-die-abfragerate-steuern">8.3.4. Rate Limits berücksichtigen und die Abfragerate steuern</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">8.3.5. Quellen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datenqualitat-untersuchen">8.3.1. Datenqualität untersuchen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-formulieren">8.3.2. Suche formulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anfrage-formulieren">8.3.3. Anfrage formulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abfrage-aller-volltexte-mit-book-review">8.3.4. Abfrage aller Volltexte mit “book review”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-limits-berucksichtigen-und-die-abfragerate-steuern">8.3.5. Rate Limits berücksichtigen und die Abfragerate steuern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">8.3.6. Quellen</a></li>
 </ul>
   </nav></div>
 
