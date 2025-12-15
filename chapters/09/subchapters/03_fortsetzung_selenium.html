@@ -1,0 +1,1039 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>9.3. Fortsetzung Selenium &#8212; Webscraping für Geisteswissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/09/subchapters/03_fortsetzung_selenium';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="9.2. Einstieg Selenium" href="02_einstieg_selenium.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Webscraping für Geisteswissenschaften - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Webscraping für Geisteswissenschaften - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Webscraping mit Python für Geisteswissenschaften
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/03_semesterplan.html">1.3. Semesterplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/04_lernziele.html">1.4. Lernziele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/05_organisation.html">1.5. Organisatorisches</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/02_intro.html">2. Python I</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_jupyterlite.html">2.1. JupyterLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_style.html">2.2. Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_hilfe.html">2.3. Hilfe!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/02_grundbegriffe.html">2.4. Grundbegriffe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/03_datentypen.html">2.5. Einfache Datentypen, Strings und Operatoren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/04_variablen.html">2.6. Variablen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03/03_intro.html">3. Python II</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03/subchapters/01_datentypen.html">3.1. Zusammengesetzte Datentypen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/subchapters/02_kontrollstrukturen.html">3.2. Kontrollstrukturen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04/04_intro.html">4. Python III</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04/subchapters/01_funktionen.html">4.1. Funktionen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04/subchapters/02_pakete.html">4.2. Module, Pakete, Bibliotheken</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../05/05_intro.html">5. Installation und Setup</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05/subchapters/01_vorbereitung.html">5.1. Vorbereitung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/subchapters/02_installation_setup.html">5.2. Installation und Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06/06_intro.html">6. Einstieg Webscraping</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/01_rechtliches.html">6.1. Der rechtliche Rahmen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/02_html.html">6.2. HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/03_css.html">6.3. CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/04_http.html">6.4. Client, Server, HTTP</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07/07_intro.html">7. Statische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07/subchapters/01_einstieg_beautifulsoup.html">7.1. Einstieg BeautifulSoup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07/subchapters/02_fortsetzung_beautifulsoup.html">7.2. Fortsetzung BeautifulSoup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../08/08_intro.html">8. APIs (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/01_apis.html">8.1. APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/02_dracor_api.html">8.2. Beispiel DraCor-API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/03_loc_api.html">8.3. Beispiel LOC-API</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../09_intro.html">9. Dynamische Webseiten</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_einstieg_selenium.html">9.2. Einstieg Selenium</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.3. Fortsetzung Selenium</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/lipogg/webscraping-mit-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/09/subchapters/03_fortsetzung_selenium.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fortsetzung Selenium</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-elemente-suchen-und-text-extrahieren">9.3.1. Recap: Elemente suchen und Text extrahieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selenium-waits">9.3.2. Selenium Waits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scrollvorgang-und-mausklick-simulieren">9.3.3. Scrollvorgang und Mausklick simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-benutzen-und-tastatureingabe-simulieren">9.3.4. Suche benutzen und Tastatureingabe simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elemente-finden">9.3.5. Elemente finden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.3.6. Quellen</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fortsetzung-selenium">
+<h1><span class="section-number">9.3. </span>Fortsetzung Selenium<a class="headerlink" href="#fortsetzung-selenium" title="Link to this heading">#</a></h1>
+<p>In der letzten Woche haben wir uns angesehen, wie wir Zitate von der Seite <a class="reference external" href="https://quotes.toscrape.com/js/">https://quotes.toscrape.com/js/</a> mithilfe von Selenium scrapen können. Heute werden wir uns ein etwas fortgeschritteneres Beispiel ansehen, bei dem die Interaktion mit verschiedenen Seitenelementen notwendig wird: Wir werden Ortsangaben zu Unterkünften von <a class="reference external" href="https://www.airbnb.com/">https://www.airbnb.com/</a> scrapen, zuerst die Unterkünfte von der Startseite, danach Unterkünfte von der Seite “Tiny homes” und zuletzt Unterkünfte nur in Berlin. Mit der Airbnb-Website solltet ihr euch bereits im Rahmen des letzten Übungsblatts beschäftigt haben, wir werden aber am Anfang noch einmal die Lösung wiederholen.</p>
+<p>Zunächst rufen wir die Website im regulären Browser auf. Welche Interaktionen sind notwendig, um an die gesuchten Daten zu gelangen? Wenn wir die Startseite aufrufen, ist standardmäßig der Tab “Icons” geöffnet. Diese Seite scrollen wir bis zum Ende herunter, um alle Inhalte zu sehen. Um “Tiny homes” anzusehen, klicken wir auf das Icon “Tiny homes” und scrollen wieder bis zum Ende der Seite herunter. Am Seitenende befindet sich diesmal ein “Show more”-Button. Wenn der Button geklickt wird, wird eine weitere Seite mit Unterkünften geöffnet. Beim Herunterscrollen dieser Seite fällt auf, dass die Inhalte auf dieser Seite beim Scrollen nachgeladen werden, bis irgendwann das Seitenende erreicht ist. Um nur Unterkünfte in Berlin anzuzeigen, muss das Suchfeld benutzt werden. All diese Schritte müssen wir simulieren, wenn wir die Ortsangaben von den Unterkünften der manuell besuchten Seiten extrahieren wollen.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Achtung: Beim Scrapen komplexerer Webseiten wird der Code nicht beim ersten Mal fehlerfrei ausgeführt werden. Wird die Ausführung abbricht und eine Fehlermeldung angezeigt, dann wird die aktuelle Sitzung aber nicht mehr geschlossen. Um das Problem zu lösen gibt es zwei Möglichkeiten: Entweder, die Sitzung wird mit <code class="docutils literal notranslate"><span class="pre">driver.quit()</span></code>  immer manuell geschlossen, wenn der Code abbricht. Oder, der ChromDriver wird als “<strong>Context Manager</strong>” verwendet, indem die Sitzung mit <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">webdriver.Chrome()</span> <span class="pre">as</span> <span class="pre">driver</span></code> gestartet wird. Dieses Konzept habt ihr bereits im Abschnitt “8.2.3.3. Daten schreiben” kennengelernt. In diesem Kapitel wird stets die zweite Variante verwendet. Vor dem nächsten Versuch muss in beiden Fällen wieder eine neue Sitzung mit <code class="docutils literal notranslate"><span class="pre">webdriver.Chrome()</span></code> gestartet werden.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Da sich die Airbnb-Seite sehr oft ändert, Attribute umbenannt werden, zeitweise Popup-Fenster mit zeitlich begrenzten Aktionen auftauchen und manchmal sogar die Gesamtstruktur der Webseite verändert wird, ist der <strong>Code auf dieser Seite nicht immer aktuell</strong> und ausführbar. Manchmal muss nur ein Klassenname ausgetauscht werden, damit der Code wieder funktioniert. <strong>Es geht in diesem Kapitel aber vor allem darum, grundlegende Konzepte beim Scrapen mit Selenium anhand eines Beispiels zu verstehen.</strong> In der Sitzung werden wir den Code für die aktuelle Version der Website umschreiben.</p>
+</div>
+<section id="recap-elemente-suchen-und-text-extrahieren">
+<h2><span class="section-number">9.3.1. </span>Recap: Elemente suchen und Text extrahieren<a class="headerlink" href="#recap-elemente-suchen-und-text-extrahieren" title="Link to this heading">#</a></h2>
+<p>Zu Beginn laden wir wieder alle notwendigen Bibliotheken und Module, starten eine Sitzung und veranlassen den Browser, eine HTTP Get-Anfrage zu stellen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
+
+<span class="c1"># Recap: Daten extrahieren</span>
+<span class="n">unterkuenfte</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;t1ms2xzu&quot;</span><span class="p">)</span>
+<span class="n">unterkuenfte_orte</span> <span class="o">=</span> <span class="p">[</span><span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">unterkunft</span> <span class="ow">in</span> <span class="n">unterkuenfte</span><span class="p">]</span>
+<span class="n">unterkuenfte_orte</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dieser Code hat eine große Schwäche: Wenn die Inhalte noch nicht ganz fertig geladen und gerendert sind, wenn wir den Text mit unterkunft.text extrahieren wollen, bekommen wir eine Fehlermeldung, die uns darauf aufmerksam macht, dass das Element nicht gefunden werden konnte. Die aktuelle Sitzung wird dabei nicht geschlossen, und der Prozess läuft im Hintergrund weiter. Das könnt ihr im ActivityMonitor (Mac) bzw. TaskManager (Windows) einsehen, indem ihr nach dem Prozess “chromedriver” sucht.</p>
+<p>Um das Problem zu lösen, müssen zwei Sachen geschehen: Zum Einen muss der Code so geschrieben werden, dass die Sitzung sicher geschlossen wird, auch dann, wenn eine Fehlermeldung geworfen wird. Dazu kann das bereits aus dem Abschnitt “8.2.3.3. Daten schreiben” bekannte Konstrukt <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">...as</span></code> verwendet werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+
+<span class="c1"># ChromeDriver als Context Manager</span>
+<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
+    <span class="n">unterkuenfte</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;t1ms2xzu&quot;</span><span class="p">)</span>
+    <span class="n">unterkuenfte_orte</span> <span class="o">=</span> <span class="p">[</span><span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">unterkunft</span> <span class="ow">in</span> <span class="n">unterkuenfte</span><span class="p">]</span>
+
+<span class="n">unterkuenfte_orte</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zum Anderen muss eine Wartestrategie eingebaut werden, mit der wir warten, bis die entsprechenden Elemente geladen haben. Wir könnten das Problem naiv mit der bisher bekannten Funktion time.sleep() lösen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># naive Lösung mit time.sleep()</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="c1"># Recap: Daten extrahieren</span>
+    <span class="n">unterkuenfte</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;t1ms2xzu&quot;</span><span class="p">)</span>
+    <span class="n">unterkuenfte_orte</span> <span class="o">=</span> <span class="p">[</span><span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">unterkunft</span> <span class="ow">in</span> <span class="n">unterkuenfte</span><span class="p">]</span>
+
+<span class="n">unterkuenfte_orte</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Allerdings hängt die Ladezeit beim Seitenaufruf mit Selenium noch viel mehr von der Netzwerkgeshwindigkeit und anderen äußeren Faktoren ab als beim Seitenaufruf mit requests. Dadurch kann es schnell passieren, dass die angegebene Wartezeit viel zu lang oder viel zu kurz ist. Zum Glück bietet Selenium selbst Methoden zur feingranularen Kontrolle über das Warteverhalten des automatisierten Webbrowsers, mit denen das Problem deutlich eleganter und effizienter gelöst werden kann.</p>
+</section>
+<section id="selenium-waits">
+<h2><span class="section-number">9.3.2. </span>Selenium Waits<a class="headerlink" href="#selenium-waits" title="Link to this heading">#</a></h2>
+<p>Beim Web Scrapen mithilfe von Selenium sollten immer Wartezeiten eingebaut werden, die sicherstellen, dass der automatisierte Browser genug Zeit zum Laden der gesuchten Inhalte hat. Das Selenium webdriver-Modul bietet eigene Methoden, die ermöglichen, nicht nur eine feste Anzahl an Sekunden wie mit der bereits bekannten Funktion time.sleep() zu warten, sondern beim Warten verschiedene Strategien anzuwenden. Bei diesen Wartestrategien wird unterschieden zwischen “Implicit Waits”, “Explicit Waits” und sogenannten “Fluent Waits”. Fluent Waits klammern wir hier aus; dabei handelt es sich nur um eine erweiterte Variante der “Explicit Waits” mit mehr Konfigurationsmöglichkeiten (zum Nachlesen empfehle ich <a class="reference external" href="https://www.browserstack.com/guide/wait-commands-in-selenium-webdriver">diesen Blogbeitrag</a> sowie den entsprechenden Abschnitt in den <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/waits/#customization">Selenium-Dokumentationsseiten</a>).</p>
+<p>Zunächst betrachten wir die Methode <code class="docutils literal notranslate"><span class="pre">driver.implicitly_wait(x)</span></code>, die ermöglicht, für alle Suchvorgänge innerhalb einer Session einzustellen, dass x Sekunden lang auf jedes gesuchte Element gewartet wird, bevor eine “ElementNotFound”-Ausnahme geworfen wird. Am Beispiel der Suche nach den Airbnb-Ortsangaben sieht die Verwendung von implicitly_wait() so aus:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Implicit Wait</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+
+<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">implicitly_wait</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
+    <span class="n">unterkuenfte</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;t1ms2xzu&quot;</span><span class="p">)</span>
+    <span class="n">unterkuenfte_orte</span> <span class="o">=</span> <span class="p">[</span><span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">unterkunft</span> <span class="ow">in</span> <span class="n">unterkuenfte</span><span class="p">]</span>
+<span class="n">unterkuenfte_orte</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Verwendung von driver.implicitly_wait(x) ist effizienter als die Variante mit time.sleep(x), denn während die Ausführung des Skripts mit time.sleep(x) immer um genau x Sekunden verzögert wird, wird mit implicitly_wait(x) maximal x Sekunden gewartet. In vielen Fällen ist die Wartezeit aber kürzer, weil das gesuchte Element schon früher, vor Ablauf der x Sekunden gefunden werden kann, oder länger, weil der Verbindungsaufbau sich verzögert. Außerdem wird durch Verwenden der Selenium-Wartestrategien verhindert, dass das Programm unkontrolliert abbricht, wenn ein Element nicht gefunden wird.</p>
+<p>Allerdings muss beachtet werden, dass mit .implicitly_wait() NICHT darauf gewartet wird, ob der <em>Inhalt</em> des Elements bereits so weit geladen ist, dass man damit interagieren kann, oder dass es auf der Seite sichtbar ist, sondern es wird nur darauf gewartet, ob das Element selbst im HTML-Baum gefunden werden kann. Wenn das Element bereits vor dem Laden der Inhalte mit JavaScript im Skelett der Website vorhanden ist, aber noch keine Inhalte enthält, wie in diesem Fall auf der Airbnb-Seite (erinnert euch an den Abschnitt “Statisch vs. Dynamisch?”), dann kann .implicitly_wait() NICHT verwendet werden.</p>
+<p>Neben der globalen Wartezeit mit .implicitly_wait() gibt es in Selenium deswegen auch die Möglichkeit, explizit auf ein bestimmtes Element zu warten und dabei festzulegen, ob gewartet werden soll, ob das Element sichtbar, anklickbar, auffindbar oder auf andere Weise interagierbar sein soll. Für solche expliziten Wartestrategien (oder “Explicit Waits”) gibt es zwei Möglichkeiten:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explicit Wait: Option 1</span>
+<span class="c1"># Beispiel entnommen aus https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.wait.html#example</span>
+
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.wait</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+
+<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
+
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
+
+    <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">unterkunft</span><span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;t1ms2xzu&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">is_visible</span><span class="p">()</span>
+    <span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explicit Wait: Option 2</span>
+
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
+
+<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
+
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
+
+    <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">unterkuenfte</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;t1ms2xzu&quot;</span><span class="p">))</span>
+    <span class="p">)</span>
+
+    <span class="n">unterkuenfte_orte</span> <span class="o">=</span> <span class="p">[</span><span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">unterkunft</span> <span class="ow">in</span> <span class="n">unterkuenfte</span><span class="p">]</span>
+<span class="n">unterkuenfte_orte</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bei beiden Versionen wird so lange gewartet, bis das gesuchte Element bzw. die gesuchten Elemente mit der angegeben Klasse sichtbar sind (also gerendert wurden, mehr dazu <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html#selenium.webdriver.support.expected_conditions.presence_of_all_elements_located">hier</a>). Die erste Version lässt sich allerdings nicht so leicht für die Suche nach mehreren Elementen umschreiben. Für unser Airbnb-Beispiel verwenden wir deswegen die zweite Strategie.</p>
+<p>Mit dieser Strategie des expliziten Wartens kann auch auf eine Reihe anderer Ereignisse gewartet werden. Eine ausführliche Erläuterung dazu findet ihr <a class="reference external" href="https://selenium-python.readthedocs.io/waits.html">hier</a>, und eine Liste aller Ereignisse, auf die gewartet werden kann sowie der entsprechenden Methoden findet ihr <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html">hier</a>.</p>
+<p>Explizite und implizite Wartestrategien sollten allerdings nicht vermischt werden! Laut Selenium-Dokumentationsseiten kann dies zu unerwartetem Verhalten führen:</p>
+<blockquote>
+<div><p>Warning: Do not mix implicit and explicit waits. Doing so can cause unpredictable wait times. For example, setting an implicit wait of 10 seconds and an explicit wait of 15 seconds could cause a timeout to occur after 20 seconds.</p>
+</div></blockquote>
+<p>Quelle: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/waits/">Selenium 2024</a></p>
+<p>Mehr zu impliziten und expliziten Wartestrategien in Selenium könnt ihr <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/waits/">hier</a> nachlesen.</p>
+</section>
+<section id="scrollvorgang-und-mausklick-simulieren">
+<h2><span class="section-number">9.3.3. </span>Scrollvorgang und Mausklick simulieren<a class="headerlink" href="#scrollvorgang-und-mausklick-simulieren" title="Link to this heading">#</a></h2>
+<p>Aber zurück zu unserem AirBnB Beispiele. Bisher haben wir nur Unterkünfte von der Startseite gescraped. Jetzt wollen wir dasselbe für die “Tiny homes”-Seite wiederholen. Beim manuellen Vorgehen würden wir dabei zuerst auf das Tiny homes-Icon klicken. Um diesen Vorgang in Selenium zu simulieren, muss erst das entsprechende HTML-Element eindeutig identifiziert werden, und danach kann mithilfe der Selenium-Methode <code class="docutils literal notranslate"><span class="pre">.click()</span></code> der Mausklick auf das Element simuliert werden. Um das Element zu suchen, verwenden wir als erstes wieder die Browser-Entwicklertools: Mit Rechtsklick auf das Icon und Auswahl von “Inspect” wird der Quelltext der Seite automatisch an der richtigen Stelle in den Entwicklertools geöffnet. Häufig wird nicht exakt das gesuchte Element markiert, sondern ein Kind- oder Elternelement. Das richtige Element ist das <code class="docutils literal notranslate"><span class="pre">div</span></code>-Element, nicht dessen Kindelement <code class="docutils literal notranslate"><span class="pre">span</span></code> oder <code class="docutils literal notranslate"><span class="pre">img</span></code>:</p>
+<figure class="align-default" id="id245">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_1.png"><img alt="Airbnb Beispiel 1" class="bg-transparent" src="../../../_images/beispiel_airbnb_1.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.9 </span><span class="caption-text">Tiny homes-Icon in den Entwicklertools</span><a class="headerlink" href="#id245" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Welches Attribut identifiziert das Icon-Element eindeutig? Das Icon-Element hat ein “class”-Attribut, das allerdings eine lange Zeichenkette als Wert hat. Das kann vorkommen, wenn mehrere CSS-Klassen zur Identifizierung eines HTML-Elements verwendet werden. Verschiedene Klassen werden dabei durch ein Leerzeichen getrennt. Das Leerzeichen verursacht aber bei der Suche mit By.CLASS_NAME ein Problem und führt dazu, dass der Code eine Fehlermeldung produziert. Bei einer so langen Zeichenkette wäre das manuelle Ersetzen der Leerzeichen durch Punkte hier jedoch keine gute Lösung. Stattdessen könnten wir überprüfen, ob das gesuchte Element schon durch die erste CSS-Klasse oder nur einige wenige Klassen eindeutig definiert wird. Das können wir überprüfen, in dem wir in den Entwicklertools mit der Tastenkombination STRG + F nach der ersten CSS-Klasse suchen. Es zeigt sich: Das Tiny homes Icon ist nicht das einzige Element, das diese CSS-Klasse hat; sondern es gibt sehr viele Elemente mit dieser Klasse:</p>
+<figure class="align-default" id="id246">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_2.png"><img alt="Airbnb Beispiel 2" class="bg-transparent" src="../../../_images/beispiel_airbnb_2.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.10 </span><span class="caption-text">Suche nach class-Attributen mit dem Wert “c1abgzgs atm_9s_1txwivl atm_ar_vrvcex dir dir-ltr”.</span><a class="headerlink" href="#id246" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Wir können also das Icon-Element nicht eindeutig über die gewählte CSS-Klasse addressieren. Wir könnten jetzt natürlich verschiedene Kombinationen von CSS-Klassen ausprobieren, aber das Icon-Element hat noch ein weiteres Attribut, über das das Button-Element etwas einfacher addressiert werden kann: Das Attribut data-testid mit dem Wert “category-item–Tiny homes–checked”. Wenn der Tab nicht geöffnet ist, hat das Attribut allerdings den Wert “category-item–Tiny homes–unchecked”. Das kann überprüft werden, indem mit STRG + F nach allen Attributen mit dem Wert “category-item” gesucht wird. Wir verwenden anstelle des class-Attributs also das data-testid-Attribut für die Suche nach dem Tiny homes Icon-Element und definieren dazu einen sogenannten <strong>XPath-Ausdruck</strong>. <strong>XPath ist eine Pfadbeschreibungssprache, mit der HTML-Elemente anhand ihrer Hierarchie, Attributen, Textinhalten und weiteren Eigenschaften lokalisiert werden können.</strong> So können wir zum Beispiel das Icon-Element mit dem XPath-Ausdruck <code class="docutils literal notranslate"><span class="pre">//div[&#64;data-testid='category-item--Tiny</span> <span class="pre">homes--unchecked']</span></code> auswählen. Dieser Ausdruck sucht nach einem Element mit den Namen div (<code class="docutils literal notranslate"><span class="pre">div</span></code>), irgendwo im HTML-Baum (<code class="docutils literal notranslate"><span class="pre">//</span></code>), das ein Attribut data-testid mit dem Wert “category-item–Tiny homes–unchecked” hat (<code class="docutils literal notranslate"><span class="pre">[&#64;data-testid='category-item--Tiny</span> <span class="pre">homes--unchecked']</span></code>).</p>
+<p>Nachdem das Element gefunden wurde, kann der Mausklick mit der Selenium-Methode <code class="docutils literal notranslate"><span class="pre">.click()</span></code> simuliert werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Driver-Instanz starten und Wartezeit einstellen</span>
+<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
+
+    <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">tinyhomes_button</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-testid=&#39;category-item--Tiny homes--unchecked&#39;]&quot;</span><span class="p">)))</span>
+    <span class="c1"># Auf den Tiny House Icon klicken: Nach dem Klick &quot;category-item--Tiny Houses--checked&quot;, vor dem Klick &quot;category-item--Tiny homes--unchecked&quot;</span>
+    <span class="n">tinyhomes_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nachdem sich die Tiny homes-Seite geöffnet hat, muss zum Seitenende gescrollt werden, wo sich der “Show more” Button befindet. Wir sollten zunächst überprüfen, ob der Button bereits beim Aufruf der Seite geladen wird. Dazu können wir manuell zum Seitenende scrollen, mit Rechtsklick und Inspect den “Show more”-Button in den Entwicklertools anzeigen lassen, und die CSS-Klassen in die Zwischenablage kopieren, also den gesamten String “l1ovpqvx…dir-ltr”.</p>
+<figure class="align-default" id="id247">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_3.png"><img alt="Airbnb Beispiel 3" class="bg-transparent" src="../../../_images/beispiel_airbnb_3.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.11 </span><span class="caption-text">Button-Element in den Entwicklertools.</span><a class="headerlink" href="#id247" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Anschließend laden wir die Seite neu und suchen ohne Herunterzuscrollen in den Entwicklertools mit STRG-F nach dem String. Die Suche sollte keine Ergebnisse liefern. Wenn wir jedoch zum Seitenende scrollen und erneut nach dem String suchen, wird das Element nun gefunden und die Suche liefert ein Ergebnis. Das bedeutet: Die Seiteninhalte werden auf der Tiny homes-Seite erst dann geladen, wenn sie sich im aktuellen Anzeigebereich befinden. Diesen Umstand können wir auch überprüfen, indem wir mit Selenium mit <code class="docutils literal notranslate"><span class="pre">.find_element()</span></code> nach dem Button mit suchen: Die Suche produziert die Fehlermeldung “NoSuchElementException”. Um die restlichen Unterkünfte auf der Startseite sowie den “Show more” Button zu laden, müssen wir also zunächt bis zum Seitenende scrollen.</p>
+<p>In Selenium gibt es verschiedene Möglichkeiten, einen Scrollvorgang zu simulieren. Wenn bereits alle Elemente geladen wurden und nur ein Element in den aktuellen Anzeigebereich gescrollt werden soll, kann die Methode <code class="docutils literal notranslate"><span class="pre">.scroll_to_element()</span></code> verwendet werden (siehe <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/actions_api/wheel/#scroll-to-element">Selenium-Dokumentationsseite</a> und das Code-Snippet zu Scrollstrategie 3 weiter unten). Wie wir gesehen haben, wird der “Show more” Button zusammen mit den restlichen Inhalten allerdings erst durch das Scrollen mithilfe von Javascript in das HTML-Gerüst der Webseite eingefügt. Das gesuchte button-Element wird also beim Aufruf der Seite noch nicht gefunden und die Methode <code class="docutils literal notranslate"><span class="pre">.find_element()</span></code> produziert entsprechend eine Fehlermeldung “NoSuchElementException”.</p>
+<p>Wir betrachten zunächst einen <strong>Ansatz, bei dem so lange um eine bestimmte Pixelanzahl nach unten gescrollt wird, bis der bereits durchscrollte Bereich zusammen mit dem aktuell angezeigten Bereich größer oder gleich der Gesamthöhe der Webseite in Pixeln ist.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scrollstrategie 1: Um eine festgelegte Pixelanzahl scrollen</span>
+
+<span class="n">scroll_step</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># Schrittgröße für jeden Scroll-Vorgang (in Pixeln)</span>
+
+<span class="c1"># Erste Seite bis zum Ende scrollen</span>
+<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
+
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># nur damit wir sehen, können, was passiert</span>
+    <span class="c1"># Variablen für das Scrollen festlegen</span>
+    <span class="n">scroll_step</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># Schrittgröße für jeden Scroll-Vorgang (in Pixeln)</span>
+
+    <span class="c1"># Seite bis zum Ende scrollen</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;window.scrollBy(0, </span><span class="si">{</span><span class="n">scroll_step</span><span class="si">}</span><span class="s2">);&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># nur damit wir sehen was passiert</span>
+
+        <span class="n">at_bottom</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span>
+            <span class="s2">&quot;return Math.abs(document.documentElement.scrollHeight &quot;</span>
+            <span class="s2">&quot;- document.documentElement.clientHeight &quot;</span>
+            <span class="s2">&quot;- document.documentElement.scrollTop) &lt;= 1;&quot;</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">at_bottom</span><span class="p">:</span>
+            <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie funktioniert das Scrollen? <code class="docutils literal notranslate"><span class="pre">.execute_sript()</span></code> ist eine Selenium-Methode, die zum Ausführen von JavaScript Code Snippets verwendet wird. Die Aktionen, die im Browser ausgeführt werden sollen, werden in JavaScript geschrieben und der <code class="docutils literal notranslate"><span class="pre">.execute_script()</span></code>-Methode als Argument übergeben. Der JavaScript-Code ist den <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight#determine_if_an_element_has_been_totally_scrolled">JavaScript-Dokumentationsseiten</a>, und zwar dem Abschnitt “Determine if an element has been totally scrolled” entnommen.</p>
+<p>Zum Verständnis des Codes ist an dieser Stelle ein bisschen JavaScript-Kenntnis (bzw. Recherche in den JavaScript-Dokumentationsseiten) erforderlich:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">documentElement</span></code> repräsentiert in JavaScript das Wurzelelement eines HTML-Dokuements, also z.B. das html-Element (siehe <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement">JavaScript-Dokumentationsseite</a>). Da darin der gesamte Seiteninhalt enthalten ist, können wir das Wurzelelement der Seite gut nutzen, um zu bestimmen, ob der Seiteninhalt durchscrollt wurde.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.scrollBy()</span></code> ist eine JavaScript-Methode, die laut <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy">Dokumentationsseite</a> das im Browserfenster geöffnete HTML-Dokument um die angegebene Pixelanzahl scrollt. Das erste Argument gibt dabei die Pixel an, um die in horizontaler Richtung gescrollt werden soll. Das zweite Argument gibt die Pixel für das vertikale Scrollen an.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.scrollHeight</span></code> ist eine Eigenschaft, die laut <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight">Dokumentationsseite</a> die Höhe des Inhalts eines HTML-Elements (hier also des Wurzelelements der Seite) in Pixeln angibt, und zwar sowohl für den sichtbaren als auch für den unsichtbaren Bereich, also die Gesamthöhe der scrollbaren Inhalte. Mit “unsichtbarer Bereich” ist der Bereich gemeint, der aufgrund des Scrollens außerhalb des aktuell sichtbaren Bereichs liegt.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.scrollTop</span></code> ist eine Eigenschaft, die laut <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTop">Dokumentationsseite</a> die Anzahl an Pixeln angibt, um die ein der Inhalt eines HTML-Elements bereits in vertikaler Richtung durchscrollt wurde, also die aktuelle Scroll-Position in vertikaler Richtung.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.clientHeight</span></code> ist eine Eigenschaft, die laut <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight">Dokumentationsseite</a> die innere Höhe eines HTML-Elements in Pixeln angibt. Für das Wurzelelement ist das der Viewport, also der Bereich, in dem tatsächlich die Webseite angezeigt wird, ohne die Scrollleiste, URL-Zeile, die Tabs, usw. Mehr dazu <a class="reference external" href="https://javascript.info/size-and-scroll-window">hier</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">return</span></code> ist das JavaScript-Pendant zur return-Anweisung in Python, die in Funktionsaufrufen verwendet wird, um einen Wert zurückzugeben. Wie genau diese Werte extrahiert werden, müssen wir nicht unbedingt wissen, um den Code zu verwenden. Aber wenn sich jemand nähergehend damit beschäftigen möchte, empfehle ich <a class="reference external" href="https://www.webtechnologien.com/advanced-tutorials/javascript-bom/">diese Seite</a>.</p></li>
+</ul>
+<p>Unter den folgenden Links findet ihr weitere Hintergrundinformationen und Anwendungsbeispiele zur <code class="docutils literal notranslate"><span class="pre">.execute_sript()</span></code> Methode:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.selenium.dev/documentation/webdriver/interactions/windows/#execute-script">https://www.selenium.dev/documentation/webdriver/interactions/windows/#execute-script</a></p></li>
+<li><p><a class="reference external" href="https://docs.pylenium.io/driver-commands/browser/execute_script">https://docs.pylenium.io/driver-commands/browser/execute_script</a></p></li>
+</ul>
+<p>Den Zusammenhang zwischen den verschiedenen Objekteigenschaften und ihre Bedeutung für Abbruchbedingung der while-Schleife lässt sich vielleicht ungefähr so veranschaulichen:</p>
+<figure class="align-default" id="id248">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/javascript_properties.png"><img alt="JavaScript Properties" class="bg-transparent" src="../../../_images/javascript_properties.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.12 </span><span class="caption-text">Veranschaulichung der JavaScript-Objekteigenschaften zur Formulierung der Abbruchbedingung.</span><a class="headerlink" href="#id248" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Das JavaScript-Code-Snippet, das wir zur Formulierung der Abbruchbedingung verwendet haben, können wir auch in Python-Variablen übersetzen. Das ist etwas sauberer, weil wir die Formulierung der Abbruchbedingung direkt in Python formulieren und nicht in einen String auslagern. Außerdem kann so z.B. die Höhe des Viewports (Eigenschaft .clientHeight) bereits außerhalb der while-Schleife einmalig abgefragt werden, da diese Höhe sich nicht ändert:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scrollstrategie 1 mit Variablen</span>
+<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
+
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># nur damit wir sehen was passiert</span>
+    <span class="c1"># Variablen für das Scrollen festlegen</span>
+    <span class="n">scroll_step</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># Schrittgröße für jeden Scroll-Vorgang (in Pixeln)</span>
+    <span class="n">viewport_height</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;return document.documentElement.clientHeight;&quot;</span><span class="p">)</span>
+    <span class="c1"># Seite bis zum Ende scrollen</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;window.scrollBy(0, </span><span class="si">{</span><span class="n">scroll_step</span><span class="si">}</span><span class="s2">);&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># nur damit wir sehen was passiert</span>
+        <span class="n">scroll_height</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;return document.documentElement.scrollHeight;&quot;</span><span class="p">)</span>
+        <span class="n">scroll_position</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;return document.documentElement.scrollTop;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">scroll_height</span> <span class="o">-</span> <span class="n">viewport_height</span> <span class="o">-</span> <span class="n">scroll_position</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wenn das Seitenende erreicht ist und die while-Schleife terminiert, kann der Mausklick auf den “Show more”-Button simuliert werden. Anschließend sollte wieder ein paar Sekunden gewartet werden, damit die neuen Inhalte laden können.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Button &quot;Show More&quot; klicken: Diesmal mit JavaScript</span>
+<span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">more_button</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[contains(text(), &#39;Show more&#39;)]&quot;</span><span class="p">)))</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;arguments[0].click();&quot;</span><span class="p">,</span> <span class="n">more_button</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zum Klick auf den Button kann entweder wieder die <strong>Selenium-Methode</strong> <code class="docutils literal notranslate"><span class="pre">.click()</span></code> verwendet werden wie beim Klick auf den Tiny homes-Icon zuvor. Oder es wird wieder ein JavaScript Code Snippet ausgeführt, das dafür zuständig ist, den Mausklick im Browser auszulösen. Dazu wird die Selenium-Methode .execute_script() im Zusammenhang mit der <strong>Javascript-Methode</strong> <code class="docutils literal notranslate"><span class="pre">.click()</span></code> verwendet. Die JavaScript-Methode heißt ebenfalls .click() und ist genau wie die Selenium-Methode .click() für HTML-Elemente definiert, aber eben für JavaScript und nicht Python. Im Codebeispiel unten steht arguments[0] für das HTML-Element, das angeklickt werden soll. Das Element muss deswegen wieder zuerst gesucht werden und einer Variable zugewiesen werden. Diese Variable (hier more_button) wird der .execute_script()-Methode als Argument übergeben. arguments[0] verweist dann auf das Argument.</p>
+<p>Anschließend muss wieder bis zum Seitenende gescrollt werden, damit alle Unterkünfte laden. “Laden” bedeutet hier zur Erinnerung, dass die neuen Inhalte in das HTML-Gerüst eingefügt werden und dadurch addressierbar werden. Der manuelle Scrollvorgang hat gezeigt, dass die Inhalte dynamisch geladen werden, sobald sie durch Scrollen in den sichtbaren Bereich gelangen. Aber anders als bei einem Infinite Scrolling endet die Seite nach einigen Scrollvorgängen. Wir könnten also beim Scrollen genauso vorgehen, wie beim Scrollen zum “Show more”-Button. Allerdings war dieser Scrollvorgang recht langsam, weil in jedem Schleifendurchlauf nur um 300 Pixel gescrollt wurde. Wir könnten also, um den Vorgang etwas zu beschleunigen, zum Beispiel die Pixelanzahl vergrößern. Hierbei sollte allerdings Folgendes bedacht werden: Je nachdem, wie groß das Browserfenster auf unterschiedlichen Geräten ist, haben auch die Kacheln mit den Unterkünften eine unterschiedliche Größe und es gibt unterschiedlich viele Kacheln in einer Zeile. Es werden also je nach Größe des Browserfensters verschieden viele Kacheln geladen, wenn um 300, 500 oder 800 Pixel gescrollt wird. Wenn zu schnell gescrollt wird, dann können Inhalte nicht rechtzeitig geladen werden, und wenn das passiert, werden sie folglich von unserem Webscraper nicht gefunden.</p>
+<p>Zum Scrollen verwenden wir deswegen diesmal einen etwas zeiteffizienteren alternativen <strong>Ansatz, bei dem in jedem Schleifendurchlauf nicht um eine feste Pixelanzahl gescrollt wird, sondern um die innere Höhe des Browserfensters.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scrollstrategie 2: Um die Fenstergröße scrollen</span>
+
+<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
+
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">viewport_height</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;return document.documentElement.clientHeight;&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Seite bis zum Ende scrollen</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;window.scrollBy(0, </span><span class="si">{</span><span class="n">viewport_height</span><span class="si">}</span><span class="s2">);&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">scroll_height</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;return document.documentElement.scrollHeight;&quot;</span><span class="p">)</span>
+        <span class="n">scroll_position</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;return document.documentElement.scrollTop;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">scroll_height</span> <span class="o">-</span> <span class="n">viewport_height</span> <span class="o">-</span> <span class="n">scroll_position</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wenn die Schleife terminiert, ist der gesamte Seiteninhalt durchscrollt und gerendert.</p>
+<p>Bevor wir die Inhalte von der durchscrollten Seite extrahieren, betrachten wir noch eine letzte, alternative Scrollstrategie. Bei dieser Scrollstrategie wird die Selenium “Actions API” verwendet, um eine Abfolge von Aktionen zu definieren, eine sogenannte <strong>ActionChain</strong>, die nacheinander ausgeführt werden. Das ActionChain-Objekt hat verschiedene Methoden. Mit der Methode .scroll_from_origin() kann entweder um eine bestimmte Pixelanzahl gescrollt werden, oder es kann mit .scroll_to_element() direkt zu einem konkreten Element gescrollt werden, zum Beispiel dem Footer der Seite. Mit .pause(1) kann die ActionChain dabei ganz einfach mit einem Methodenaufruf pausiert werden. Das klingt auf den ersten Blick deutlich praktischer als unsere Strategie mit dem JavaScript Code. Aber Achtung: Diese Scrollstrategie funktioniert nicht mit allen Webdrivern und Browsern! Zum Nachlesen, welche Browser aktuell unterstützt werden, schaut euch die <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/actions_api/wheel/">Seite “Scroll wheel actions” in den Selenium-Dokumentationsseiten</a> an. Um direkt zu einem Element zu scrollen, muss dieses beim Aufruf der Seite natürlich außerdem bereits im HTML-Gerüst vorhanden sein.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scrollstrategie 3: Zu einem bestimmten Element scrollen</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver</span> <span class="kn">import</span> <span class="n">ActionChains</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.actions.wheel_input</span> <span class="kn">import</span> <span class="n">ScrollOrigin</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
+
+<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
+
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
+    <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">footer</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;footer&quot;</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="n">ActionChains</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span>\
+        <span class="o">.</span><span class="n">scroll_to_element</span><span class="p">(</span><span class="n">footer</span><span class="p">)</span>\
+        <span class="o">.</span><span class="n">perform</span><span class="p">()</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># nur damit wir sehen was passiert</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nach dem Scrollen können wieder die Ortsangaben extrahiert werden. <code class="docutils literal notranslate"><span class="pre">.find_elements()</span></code> findet nach dem Scrollen jetzt nicht nur die ersten 20 Suchergebnisse, sondern alle Ergebnisse. Hierzu können wir wieder entweder das class-Attribut verwenden und die CSS-Klassen abkürzen, oder wir formulieren einen XPATH-Ausdruck zur Suche nach einem anderen Attribut, beispielsweise das Attribut <code class="docutils literal notranslate"><span class="pre">data-testid</span></code>:</p>
+<figure class="align-default" id="id249">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_4.png"><img alt="Airbnb Beispiel 4" class="bg-transparent" src="../../../_images/beispiel_airbnb_4.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.13 </span><span class="caption-text">Unterkunft in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id249" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Daten extrahieren</span>
+<span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">unterkuenfte</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+    <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_all_elements_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-testid=&#39;listing-card-title&#39;]&quot;</span><span class="p">))</span> <span class="c1"># Alternativ By.CLASS_NAME, &quot;t1jojoys&quot;</span>
+<span class="p">)</span>
+<span class="n">unterkuenfte_orte</span> <span class="o">=</span> <span class="p">[</span><span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">unterkunft</span> <span class="ow">in</span> <span class="n">unterkuenfte</span><span class="p">]</span>
+<span class="n">unterkuenfte_orte</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Falls ihr ChromeDriver nicht wie hier als ContextManager verwendet habt, müsst ihr noch das aktuelle Browserfenster und die Session, also die Sitzung, welche durch den Aufruf des Chrome Webdrivers gestartet wird, schließen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># optional, falls ihr den WebDriver nicht als ContextManager mit with ... verwendet</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zum Abschluss möchte ich noch auf <a class="reference external" href="https://davidshivaji.medium.com/how-to-scroll-using-selenium-in-python-ad1eba1e9bca">diesen vierten Ansatz zum Scrollen mithilfe von Selenium von David Shivaji</a> verweisen.</p>
+<div class="tip admonition">
+<p class="admonition-title">Verständnisfrage</p>
+<ul class="simple">
+<li><p>Überlegt selbst: Welche Vor-/Nachteile hat dieser Ansatz? Welche Parameter werden dabei verwendet?</p></li>
+</ul>
+</div>
+</section>
+<section id="suche-benutzen-und-tastatureingabe-simulieren">
+<h2><span class="section-number">9.3.4. </span>Suche benutzen und Tastatureingabe simulieren<a class="headerlink" href="#suche-benutzen-und-tastatureingabe-simulieren" title="Link to this heading">#</a></h2>
+<p>Bisher haben wir die Ortsangaben zu Unterkünften extrahiert, die zufällig auf der Startseite angezeigt wurden. Meistens interessieren wir uns aber für ganz bestimmte Daten, zum Beispiel nur Unterkünfte in Berlin zu einem bestimmten Zeitpunkt. Als nächstes sehen wir uns also an, wie mithilfe von Selenium die Suchmaske auf <a class="reference external" href="http://airbnb.com">airbnb.com</a> verwendet werden kann und wie eine Tastatureingabe getätigt werden kann.</p>
+<p>Zunächst starten wir wieder den Webdriver und senden eine Anfrage für die Seite <a class="reference external" href="https://www.airbnb.com/">https://www.airbnb.com/</a> und schließen das Popup-Fenster. Beachtet allerdings, dass wir ein zusätzliches Modul importieren, das wir später zur Simulation der Tastatureingabe benötigen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vorbereitung</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+
+<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Als nächstes wollen wir nach Unterkünften in Berlin suchen. Dazu führen wir die Suche wieder zuerst in unserem regulären Chrome Browser aus, um herauszufinden, mit welchen Bestandteilen des User Interfaces bei der Suche interagiert werden muss. Als erstes geben wir “Berlin” in das Suchfeld ein. Im regulären Chrome-Browser können wir, wieder mithilfe der Entwicklertools, feststellen, dass das Suchfeld über ein HTML-input-Element dargestellt wird:</p>
+<figure class="align-default" id="id250">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_5.png"><img alt="Airbnb Beispiel 5" class="bg-transparent" src="../../../_images/beispiel_airbnb_5.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.14 </span><span class="caption-text">Suchfeld in den Entwicklertools untersuchen.</span><a class="headerlink" href="#id250" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Um einen Suchbegriff eingeben zu können, muss das input-Element zunächst gefunden werden. In diesem Fall hat das gesuchte HTML-Element nicht nur ein Attribut class, sondern auch ein Attribut id mit dem Wert, “bigsearch-query-location-input”, welches erlaubt, das Element eindeutig zu identifizieren. Zur Suche können wir nun entweder <code class="docutils literal notranslate"><span class="pre">.find_element(By.ID,</span> <span class="pre">“id_des_elements”)</span></code> oder <code class="docutils literal notranslate"><span class="pre">.find_element(By.XPATH,</span> <span class="pre">“xpath_ausdruck”)</span></code> verwenden. Wenn ihr euch unsicher seid, wie der XPath-Ausdruck formuliert sein muss, könnt ihr aber in diesem Fall die Entwicklertools zur Hilfe nehmen: Der XPath-Ausdruck, der den Pfad zu dem gesuchten Element beschreibt, kann ganz einfach mit Rechtsklick auf ein Element und die Option Copy -&gt; Copy XPath kopiert werden:</p>
+<figure class="align-default" id="id251">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_6.png"><img alt="Airbnb Beispiel 6" class="bg-transparent" src="../../../_images/beispiel_airbnb_6.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.15 </span><span class="caption-text">XPath zum gesuchten Element kopieren.</span><a class="headerlink" href="#id251" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Der XPath zum gesuchten input-Element ist <code class="docutils literal notranslate"><span class="pre">//*[&#64;id=”bigsearch-query-location-input”]</span></code>. Das * steht für ein beliebiges HTML-Element, aber wir können auch den Namen des HTML-Elements einsetzen, um bei vielen XPath-Ausdrücken den Überblick zu behalten:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Input-Element finden, in das die Suchbgegriffe eingegeben werden können</span>
+<span class="n">suchfeld</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//input[@id=&#39;bigsearch-query-location-input&#39;]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Beachtet, dass im Code oben die inneren Anführungszeichen angepasst wurden, um sie von den doppelten äußeren Anführungszeichen zu unterscheiden. Das ist unbedingt notwendig, weil sonst der XPath-Ausdruck nicht richtig interpretiert werden kann.</p>
+<p>Wenn das Element gefunden wurde, kann es mithilfe der Methode <code class="docutils literal notranslate"><span class="pre">.send_keys()</span></code> zur Eingabe eines Suchbegriffs addressiert werden. Die Suche muss anschließend noch durch Betätigung der Enter-Taste bestätigt werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Suchbegriff eingeben</span>
+<span class="n">suchfeld</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;Berlin&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Suche muss anschließend noch durch Betätigung der Enter-Taste bestätigt werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tasteneingabe ENTER</span>
+<span class="n">suchfeld</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Durch Bestätigung der Suche mit Enter wird automatisch ein Fenster zur Auswahl eines Reisetermins geöffnet. Hier wollen wir die Option “flexible” auswählen. Dazu müssen wir zunächst wieder das gesuchte Element identifizieren:</p>
+<figure class="align-default" id="id252">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_7.png"><img alt="Airbnb Beispiel 7" class="bg-transparent" src="../../../_images/beispiel_airbnb_7.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.16 </span><span class="caption-text">Button “flexible” untersuchen.</span><a class="headerlink" href="#id252" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Das gesuchte HTML-Element hat wieder eine ID, über die es eindeutig identifiziert werden kann. Diesmal verwenden wir <code class="docutils literal notranslate"><span class="pre">.find_element(By.ID,</span> <span class="pre">“id_des_elements”)</span></code>, damit ihr diese Verwendung der find_element-Methode auch einmal gesehen habt. Die Id könnt ihr einfach aus den Browser-Entwicklertools mit Doppelklick auf das Id-Attribut kopieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zeit aussuchen: Flexible</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;tab--tabs--2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zuletzt müssen wir unsere Suche noch mit Klick auf den Suchbutton bestätigen. In diesem Fall wird über Rechtsklick auf den Suchbutton und Auswahl der Option “Inspect” allerdings wieder nicht ganz das richtige Element gefunden: Gefunden wird das span-Element mit dem Attribut <code class="docutils literal notranslate"><span class="pre">class=&quot;t1dqvypu</span> <span class="pre">atm_9s_1ulexfb</span> <span class="pre">...&quot;</span></code>; gesucht haben wir aber eigentlich den gesamten Suchbutton, also das button-Element mit dem Attribut data-testid=”structured-search-input-search-button”. Bei der Verwendung von “Inspect” ist also immer Mitdenken erforderlich, denn nicht immer wird ganz genau das Element getroffen, das gesucht wird.</p>
+<figure class="align-default" id="id253">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_airbnb_8.png"><img alt="Airbnb Beispiel 8" class="bg-transparent" src="../../../_images/beispiel_airbnb_8.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.17 </span><span class="caption-text">Suchbutton untersuchen.</span><a class="headerlink" href="#id253" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Jetzt können wir den Mausklick auf den Suchbutton simulieren:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf den Suchbutton klicken: Suche bestätigen</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//button[@data-testid=&#39;structured-search-input-search-button&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zuallerletzt führen wir wieder den Code aus der letzten Stunde aus, um alle Ortsangaben von den ersten 20 vorgeladenen Suchergebnissen zu extrahieren, und beenden die Session:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Orte extrahieren</span>
+<span class="n">unterkuenfte</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@data-testid=&#39;listing-card-title&#39;]&quot;</span><span class="p">)</span>
+<span class="n">unterkuenfte_berlin</span> <span class="o">=</span> <span class="p">[</span><span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">unterkunft</span> <span class="ow">in</span> <span class="n">unterkuenfte</span><span class="p">]</span>
+
+<span class="c1"># Optional, falls ihr den WebDriver nicht als Context Manager nutzt: Sitzung schließen</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="elemente-finden">
+<h2><span class="section-number">9.3.5. </span>Elemente finden<a class="headerlink" href="#elemente-finden" title="Link to this heading">#</a></h2>
+<p>In den hier vorgestellten Beispielen wurden verschiedene Methoden verwendet, um Elemente zu finden: manchmal wurde nach der CSS-Klasse gesucht mit <code class="docutils literal notranslate"><span class="pre">driver.find_elements(By.CLASS_NAME,</span> <span class="pre">...)</span></code>, manchmal wurde die ID verwendet mit <code class="docutils literal notranslate"><span class="pre">driver.find_elements(By.ID,</span> <span class="pre">...)</span></code>. Daneben haben wir auch die Pfadbeschreibungssprache XPATH kennengelernt, mit der Elemente im HTML-Baum über ihre Position in der Baumstruktur, ihre Attribute oder einen bestimmten Textinhalt identifiziert werden können. Zur Suche nach Elementen mithilfe von XPATH haben wir die Methode <code class="docutils literal notranslate"><span class="pre">driver.find_elements(By.XPATH,</span> <span class="pre">...)</span></code> verwendet. Und zuletzt haben wir auch nach Elementen anhand ihres Namens, also des HTML “Tag Namens” gesucht, und zwar mit <code class="docutils literal notranslate"><span class="pre">driver.find_element(By.TAG_NAME,</span> <span class="pre">...)</span></code>. Zu diesen Suchstrategien könnt ihr in den Selenium Dokumentationsseiten im <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/finders/">Kapitel “Finding web elements”</a> nachlesen. Wenn die Elemente einmal gefunden sind, können zu den Elementen Eigenschaften abgefragt werden, so wie es auch bei BeautifulSoup-Objekten, Pandas-Dataframes und den Python-Basisdatentypen der Fall war. Welche Eigenschaften Selenium Web-Elemente haben, könnt ihr <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/information/">hier</a> nachlesen.</p>
+<p>Einige hilfreiche Ressourcen, mit denen ihr etwas tiefer in XPath einsteigen könnt, sind zum Beispiel:</p>
+<ul class="simple">
+<li><p>Tutorial in Videoform mit Beispielen: <a class="reference external" href="https://www.youtube.com/watch?v=0QHmDvc9abs">https://www.youtube.com/watch?v=0QHmDvc9abs</a></p></li>
+<li><p>Tutorial in Textform mit Schaubild und Beispielen: <a class="reference external" href="https://www.softwaretestinghelp.com/xpath-writing-cheat-sheet-tutorial-examples/">https://www.softwaretestinghelp.com/xpath-writing-cheat-sheet-tutorial-examples/</a></p></li>
+<li><p>Liste der wichtigsten XPath Ausdrücke: <a class="reference external" href="https://www.w3schools.com/xml/xpath_syntax.asp">https://www.w3schools.com/xml/xpath_syntax.asp</a></p></li>
+<li><p>XPath Cheatsheet: <a class="reference external" href="https://devhints.io/xpath">https://devhints.io/xpath</a></p></li>
+<li><p>XPath Tester: <a class="reference external" href="https://extendsclass.com/xpath-tester.html">https://extendsclass.com/xpath-tester.html</a></p></li>
+</ul>
+</section>
+<section id="quellen">
+<h2><span class="section-number">9.3.6. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id1">
+<ol class="arabic simple" start="1">
+<li id="id178"><p>JavaScript-BOM-Tutorial. 2023. URL: <a class="reference external" href="https://www.webtechnologien.com/advanced-tutorials/javascript-bom/">https://www.webtechnologien.com/advanced-tutorials/javascript-bom/</a>.</p></li>
+<li id="id167"><p>David Shivaji. How to Scroll using Selenium in Python. 2021. URL: <a class="reference external" href="https://davidshivaji.medium.com/how-to-scroll-using-selenium-in-python-ad1eba1e9bca">https://davidshivaji.medium.com/how-to-scroll-using-selenium-in-python-ad1eba1e9bca</a>.</p></li>
+<li id="id166"><p>Kuan Wei. Using Python and Selenium to Scrape Infinite Scroll Web Pages. 2020. URL: <a class="reference external" href="https://medium.com/analytics-vidhya/using-python-and-selenium-to-scrape-infinite-scroll-web-pages-825d12c24ec7">https://medium.com/analytics-vidhya/using-python-and-selenium-to-scrape-infinite-scroll-web-pages-825d12c24ec7</a>.</p></li>
+<li id="id174"><p>MDN Contributors. Element: scrollHeight Property. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight">https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight</a>.</p></li>
+<li id="id177"><p>MDN Contributors. JavaScript: return. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return?retiredLocale=de">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return?retiredLocale=de</a>.</p></li>
+<li id="id175"><p>MDN Contributors. Window: innerHeight Property. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight">https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight</a>.</p></li>
+<li id="id172"><p>MDN Contributors. Window: scrollBy() Method. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy">https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy</a>.</p></li>
+<li id="id173"><p>MDN Contributors. Window: scrollY Property. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY">https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY</a>.</p></li>
+<li id="id170"><p>Pylenium. Driver Commands: execute_script. 2023. URL: <a class="reference external" href="https://docs.pylenium.io/driver-commands/browser/execute_script">https://docs.pylenium.io/driver-commands/browser/execute_script</a>.</p></li>
+<li id="id163"><p>Selenium 4 Documentation. Interacting with Web Elements. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/interactions/">https://www.selenium.dev/documentation/webdriver/elements/interactions/</a>.</p></li>
+<li id="id164"><p>Selenium 4 Documentation. Keyboard Actions. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/">https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/</a>.</p></li>
+<li id="id168"><p>Selenium 4 Documentation. Locator Strategies: Traditional Locators. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/elements/locators/#traditional-locators">https://www.selenium.dev/documentation/webdriver/elements/locators/#traditional-locators</a>.</p></li>
+<li id="id171"><p>Selenium 4 Documentation. Mouse Actions: Offset from Element. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/actions_api/mouse/#offset-from-element">https://www.selenium.dev/documentation/webdriver/actions_api/mouse/#offset-from-element</a>.</p></li>
+<li id="id169"><p>Selenium 4 Documentation. Working with Windows and Tabs: Execute Script. 2023. URL: <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/interactions/windows/#execute-script">https://www.selenium.dev/documentation/webdriver/interactions/windows/#execute-script</a>.</p></li>
+<li id="id176"><p>The Modern JavaScript Tutorial. Window Sizes and Scrolling. 2024. URL: <a class="reference external" href="https://javascript.info/size-and-scroll-window">https://javascript.info/size-and-scroll-window</a>.</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/09/subchapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_einstieg_selenium.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9.2. </span>Einstieg Selenium</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-elemente-suchen-und-text-extrahieren">9.3.1. Recap: Elemente suchen und Text extrahieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selenium-waits">9.3.2. Selenium Waits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scrollvorgang-und-mausklick-simulieren">9.3.3. Scrollvorgang und Mausklick simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suche-benutzen-und-tastatureingabe-simulieren">9.3.4. Suche benutzen und Tastatureingabe simulieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elemente-finden">9.3.5. Elemente finden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.3.6. Quellen</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lisa Poggel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,792 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>9.1. Statische vs. Dynamische Webseiten? &#8212; Webscraping für Geisteswissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/09/subchapters/01_statisch_vs_dynamisch';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="9.2. Einstieg Selenium" href="02_einstieg_selenium.html" />
+    <link rel="prev" title="9. Anwendungsfall III: Dynamische Webseiten" href="../09_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Webscraping für Geisteswissenschaften - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Webscraping für Geisteswissenschaften - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Webscraping mit Python für Geisteswissenschaften
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/01_intro.html">1. Einstieg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/01_was_ist_webscraping.html">1.1. Was ist Web Scraping?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/02_warum_webscraping_lernen.html">1.2. Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/03_semesterplan.html">1.3. Semesterplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/04_lernziele.html">1.4. Lernziele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/subchapters/05_organisation.html">1.5. Organisatorisches</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/02_intro.html">2. Python I</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_jupyterlite.html">2.1. JupyterLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_style.html">2.2. Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/01_hilfe.html">2.3. Hilfe!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/02_grundbegriffe.html">2.4. Grundbegriffe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/03_datentypen.html">2.5. Einfache Datentypen, Strings und Operatoren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/subchapters/04_variablen.html">2.6. Variablen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03/03_intro.html">3. Python II</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03/subchapters/01_datentypen.html">3.1. Zusammengesetzte Datentypen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03/subchapters/02_kontrollstrukturen.html">3.2. Kontrollstrukturen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04/04_intro.html">4. Python III</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04/subchapters/01_funktionen.html">4.1. Funktionen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04/subchapters/02_pakete.html">4.2. Module, Pakete, Bibliotheken</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../05/05_intro.html">5. Installation und Setup</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05/subchapters/01_vorbereitung.html">5.1. Vorbereitung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05/subchapters/02_installation_setup.html">5.2. Installation und Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06/06_intro.html">6. Einstieg Webscraping</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/01_rechtliches.html">6.1. Der rechtliche Rahmen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/02_html.html">6.2. HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/03_css.html">6.3. CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06/subchapters/04_http.html">6.4. Client, Server, HTTP</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07/07_intro.html">7. Statische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07/subchapters/01_einstieg_beautifulsoup.html">7.1. Einstieg BeautifulSoup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07/subchapters/02_fortsetzung_beautifulsoup.html">7.2. Fortsetzung BeautifulSoup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../08/08_intro.html">8. APIs (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/01_apis.html">8.1. APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/02_dracor_api.html">8.2. Beispiel DraCor-API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/03_loc_api.html">8.3. Beispiel LOC-API</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../09_intro.html">9. Dynamische Webseiten</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.1. Statisch vs. Dynamisch?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_einstieg_selenium.html">9.2. Einstieg Selenium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/lipogg/webscraping-mit-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/09/subchapters/01_statisch_vs_dynamisch.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Statische vs. Dynamische Webseiten?</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statische-webseiten">9.1.1. Statische Webseiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-webseiten">9.1.2. Dynamische Webseiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gangige-missverstandnisse">9.1.3. Gängige Missverständnisse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">9.1.4. Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.1.5. Quellen</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="statische-vs-dynamische-webseiten">
+<h1><span class="section-number">9.1. </span>Statische vs. Dynamische Webseiten?<a class="headerlink" href="#statische-vs-dynamische-webseiten" title="Link to this heading">#</a></h1>
+<p>Die Unterscheidung zwischen “statischen” und “dynamischen” Webseiten ist für uns vor allem heuristisch wichtig, weil wir vor dem Web Scraping wissen müssen, wann und wie beim Aufruf einer Webseite welche Inhalte geladen werden, und dazu müssen wir zunächst verstehen, wann und wie HTML-Dokumente und Inhalte “gerendert”, also erzeugt und dargestellt werden.
+Die Abgrenzung von dynamischen und statischen Webseiten ist aber nicht ganz einfach und in der Praxis wird meistens eher von statischen und dynamischen Inhalten gesprochen oder es wird nach den konkreten Verfahren unterschieden, mit denen Webseiten und Inhalte erstellt und dargestellt werden.
+Solche Verfahren heißen zum Beispiel “Server-Side Rendering”, “Static Site Generation”, “Incremental Static Regeneration”, “Automatic Static Optimization” oder “Client-Side Rendering”.
+Wie genau diese Verfahren für eine konkrete Webseite umgesetzt werden, hängt wiederum davon ab, ob es sich um eine sogenante “Single Page Application” oder eine “Multi Page Application” handelt, und davon, welche Frameworks bei der Entwicklung der Website eingesetzt werden. Solche Frameworks heißen z.B. Next.js, Angular, React, Django oder Flask und jedes Framework allein wäre schon Stoff für ein gesamtes Semester.</p>
+<p>Ihr seht: Das Thema ist sehr komplex und in diesem kurzen Abschnitt können wir uns nur sehr sehr oberflächlich das notwendige Praxiswissen erarbeiten, um Web Scraping-Strategien verstehen zu können, die für komplexere Webseitenarten und -inhalte konzipiert wurden. Wir widmen uns zunächst den beiden Begriffen “statisch” und “dynamisch”, denn das sind Begriffe, die gerne in Webscraping-Tutorials verwendet werden, und an denen wir uns auch bisher orientiert haben.</p>
+<section id="statische-webseiten">
+<h2><span class="section-number">9.1.1. </span>Statische Webseiten<a class="headerlink" href="#statische-webseiten" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>A static site is one that returns the same hard coded content from the server whenever a particular resource is requested. So for example if you have a page about a product at /static/myproduct1.html, this same page will be returned to every user. If you add another similar product to your site you will need to add another page (e.g. myproduct2.html) and so on.</p>
+</div></blockquote>
+<p>Quelle: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></p>
+<p>Etwas simpler definiert Alexander Bazo von der Uni Regensburg statische Webseiten:</p>
+<blockquote>
+<div><p>Einzelne Dokumente liegen im HTML-Format an zentraler Stelle bereit und werden vollständig an den Client übertragen, um dort angezeigt zu werden.</p>
+</div></blockquote>
+<p>Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=Pc35Ux0bF2U">Alexander Bazo 2020</a></p>
+<figure class="align-default" id="id245">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/anatomy_static_site.png"><img alt="Schaubild Statische Webseite" class="bg-transparent" src="../../../_images/anatomy_static_site.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Schaubild Statische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id245" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Formell definiert ist eine statische Website also dadurch definiert, dass alle Unterseiten schon gerendert sind, bevor sie auf den Webserver hochgeladen und bereitgestellt werden. Diese Art von Webseiten kennen wir bereits: <a class="reference external" href="https://quotes.toscrape.com/">quotes.toscrape.com</a> und diese Kurswebsite sind Beispiele. Für die Unterseiten einer solchen statischen Website werden vorab, bevor die Website auf dem Server hochgeladen wird, einzelne HTML-Dokumente erstellt, eins für jede Unterseite, die dann auf den Server hochgeladen werden. Beim Seitenaufruf wird das HTML-Dokument für die jeweils aufgerufene Seite unverändert an den Client geschickt und, wenn der Client ein Browser ist, im Browser dargestellt. Solche Webseiten können wir ganz einfach mit requests und BeautifulSoup scrapen.</p>
+<p>Allerdings gibt es auch auf statischen Webseiten Inhalte, die wir nicht mithilfe von requests und BeautifulSoup scrapen können, zum Beispiel die Suchergebnisse, die euch bei der Verwendung der Suchmaske auf dieser Website angezeigt werden. Die Suche auf dieser Kurswebsite ist nämlich mithilfe von JavaScript implementiert. Wenn ihr euch die Seite <a class="reference external" href="https://lipogg.github.io/webscraping-mit-python/search.html?q=selenium">https://lipogg.github.io/webscraping-mit-python/search.html?q=selenium</a> in den Entwicklertools anseht, dann sieht die Seite zwar erst einmal nach einem ganz normalen HTML-Dokument aus: Die Suchergebnisse findet ihr als Liste im div-Element mit der id “search-results”.</p>
+<figure class="align-default" id="id246">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_kurswebsite_1.png"><img alt="Beispiel 1" class="bg-transparent" src="../../../_images/beispiel_kurswebsite_1.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.2 </span><span class="caption-text">Suche auf der Kurswebsite mit aktiviertem JavaScript</span><a class="headerlink" href="#id246" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Aber wenn ihr versucht, die Seite mit den Suchergebnissen mithilfe von requests und BeautifulSoup zu scrapen, dann bekommt ihr stattdessen ein HTML-Dokument zurück, das nicht die Suchergebnisse, sondern eine Meldung “Please activate JavaScript to enable the search functionality” enthält.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://lipogg.github.io/webscraping-mit-python/search.html?q=selenium&quot;</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.bd-search-container&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;div class=&quot;bd-search-container&quot;&gt;
+ &lt;h1&gt;Search&lt;/h1&gt;
+ &lt;noscript&gt;
+ &lt;div class=&quot;admonition error&quot;&gt;
+ &lt;p class=&quot;admonition-title&quot;&gt;Error&lt;/p&gt;
+ &lt;p&gt;Please activate JavaScript to enable the search functionality.&lt;/p&gt;
+ &lt;/div&gt;
+ &lt;/noscript&gt;
+ &lt;form action=&quot;#&quot; class=&quot;bd-search d-flex align-items-center&quot; method=&quot;get&quot;&gt;
+ &lt;i class=&quot;fa-solid fa-magnifying-glass&quot;&gt;&lt;/i&gt;
+ &lt;input aria-label=&quot;Search this book...&quot; autocapitalize=&quot;off&quot; autocomplete=&quot;off&quot; autocorrect=&quot;off&quot; class=&quot;form-control&quot; id=&quot;search-input&quot; name=&quot;q&quot; placeholder=&quot;Search this book...&quot; spellcheck=&quot;false&quot; type=&quot;search&quot;/&gt;
+ &lt;span class=&quot;search-button__kbd-shortcut&quot;&gt;&lt;kbd class=&quot;kbd-shortcut__modifier&quot;&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;K&lt;/kbd&gt;&lt;/span&gt;
+ &lt;/form&gt;
+ &lt;div id=&quot;search-results&quot;&gt;&lt;/div&gt;
+ &lt;/div&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dasselbe Dokument wird euch auch im Browser angezeigt, wenn ihr JavaScript im Browser deaktiviert.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>JavaScript im Browser deaktivieren</p>
+<p>Um JavaScript zu deaktivieren, geht ihr so vor: Öffnet die Seite -&gt; View -&gt; Developer Tools -&gt; Tastenkombination Ctrl + Shift + P bzw. auf dem Mac Cmd + Shift + P -&gt; Disable JavaScript eingeben und Enter drücken. Um JavaScript später wieder einzuschalten, befolgt ihr dieselben Schritte und sucht nach “Enable JavaScript”.</p>
+</div>
+<figure class="align-default" id="id247">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_kurswebsite_2.png"><img alt="Beispiel 1" class="bg-transparent" src="../../../_images/beispiel_kurswebsite_2.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.3 </span><span class="caption-text">Suche auf der Kurswebsite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id247" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Obwohl wir es bei der Kurswebsite mit einer statisch generierten Website zu tun haben, können wir diese spezielle Unterseite also nicht mithilfe von requests und BeautifulSoup scrapen, weil für die Darstellung der Inhalte JavaScript verwendet wird. Das Beispiel zeigt: <strong>Anders als man vielleicht alltagssprachlich vermuten würde, liegt der Unterschied zwischen “statischen” und “dynamischen” Webseiten also nicht darin, ob die Inhalte interaktiv sind, sondern darin, wie genau und wann sie erstellt und dargestellt werden.</strong></p>
+</section>
+<section id="dynamische-webseiten">
+<h2><span class="section-number">9.1.2. </span>Dynamische Webseiten<a class="headerlink" href="#dynamische-webseiten" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>A dynamic site is one that can generate and return content based on the specific request URL and data (rather than always returning the same hard-coded file for a particular URL). Using the example of a product site, the server would store product “data” in a database rather than individual HTML files. When receiving an HTTP GET Request for a product, the server determines the product ID, fetches the data from the database, and then constructs the HTML page for the response by inserting the data into an HTML template.</p>
+</div></blockquote>
+<p>Quelle: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></p>
+<p>Definition von Alexander Bazo von der Uni Regensburg:</p>
+<blockquote>
+<div><p>Der Inhalt dynamischer Websites wird durch Aktionen auf Client und Server beeinflusst. Das Dokument, das vom Client gerendert wird, liegt nicht zwangsläufig genauso auch als HTML-Dokument auf dem Server.</p>
+</div></blockquote>
+<p>Quelle: <a class="reference external" href="https://www.youtube.com/watch?v=Pc35Ux0bF2U">Alexander Bazo 2020</a></p>
+<figure class="align-default" id="id248">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/anatomy_dynamic_request.png"><img alt="Schaubild Dynamische Webseite" class="bg-transparent" src="../../../_images/anatomy_dynamic_request.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.4 </span><span class="caption-text">Schaubild Dynamische Webseite. Bild: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">MDN Contributors 2023</a></span><a class="headerlink" href="#id248" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Eine dynamische Website ist dagegen formell gesprochen eine Website, die erst dann erstellt und dargestellt wird, wenn sie aufgerufen wird. Wie bereits eingangs erwähnt gibt es verschiedene Verfahren, um Websites “dynamisch” zu erstellen und darzustellen: Eine Website kann im Gesamten auf dem Server oder auf dem Client gerendert werden, oder es wird ein Teil einer Webseite auf dem Server gerendert, und der Rest auf dem Client.</p>
+<p>Wird beim Aufruf der Webseite das komplette HTML-Dokument mit allen Inhalten auf dem Server generiert, heißt das: die HTML-Dokumente werden erst dann erstellt, wenn die Seite aufgerufen wird, und zwar auf dem Server.
+Erst, wenn die Webseite komplett fertig gerendert ist, wird sie an den Client, zum Beispiel einen Browser, geschickt. Dieses Rendering-Verfahren wird beispielsweise standardmäßig für WordPress-Seiten verwendet. Wenn das HTML-Dokument komplett gerendert mit allen Inhalten an den Client geschickt wird, können wir zum Scrapen solcher Seiten im Regelfall requests und BeautifulSoup verwenden, denn dann erhalten wir ein fertiges HTML-Dokument, genau wie beim Scrapen statischer Webseiten. Ein Beispiel ist diese Wordpress-Seite <a class="reference external" href="https://minimalistbaker.com">https://minimalistbaker.com</a>. Der Aufruf der Seite mit deaktiviertem JavaScript zeigt, dass für die Darstellung der Überblicksseite tatsächlich kein JavaScript benötigt wird, denn alle Inhalte werden komplett geladen:</p>
+<figure class="align-default" id="id249">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_wordpress.png"><img alt="Beispiel Wordpress" class="bg-transparent" src="../../../_images/beispiel_wordpress.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.5 </span><span class="caption-text">Beispiel-Wordpressseite mit deaktiviertem JavaScript.</span><a class="headerlink" href="#id249" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Die HTTP-GET-Anfrage liefert also ein komplett gerendertes HTML-Dokument, das wir mit BeautifulSoup durchsuchen können:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://minimalistbaker.com/recipe-index/?fwp_paged=2&quot;</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.post-summary__title&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/creamy-mocha-chia-pudding/&quot;&gt;Creamy Mocha Chia Pudding&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/easy-raspberry-compote/&quot;&gt;Easy Raspberry Compote (Naturally Sweetened)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/creamy-tuscan-shrimp-pasta-dairy-free/&quot;&gt;Creamy Tuscan Shrimp Pasta (Dairy-Free)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/gluten-free-lemon-poppy-seed-muffins-vegan/&quot;&gt;Gluten-Free Lemon Poppy Seed Muffins (Vegan)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/italian-lentil-soup-zuppa-di-lenticchie/&quot;&gt;Italian Lentil Soup (Zuppa di Lenticchie)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/chocolate-pot-de-creme-sweet-potato/&quot;&gt;Chocolate Pot de Crème (with a Secret Ingredient!)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/banana-chocolate-pecan-muffins-vegan-gf/&quot;&gt;1-Bowl Banana Chocolate Pecan Muffins (Vegan + GF)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/creamy-vegan-white-bean-chili/&quot;&gt;Creamy Vegan White Bean Chili&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/easy-winter-fruit-salad/&quot;&gt;Easy Winter Fruit Salad (1 Bowl!)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/chocolate-tahini-caramels-no-candy-thermometer/&quot;&gt;Chocolate Tahini Caramels (No Candy Thermometer!)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/chocolate-pecan-shortbread-cookies-vegan-gf/&quot;&gt;Chocolate Pecan Shortbread Cookies (Vegan + GF)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/garlic-herb-roasted-delicata-squash/&quot;&gt;Garlic &amp;amp; Herb Breaded Delicata Squash&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/cranberry-orange-scones-vegan-gf/&quot;&gt;1-Bowl Cranberry Orange Scones (Vegan + GF)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/easy-gluten-free-cornbread-1-bowl/&quot;&gt;Easy Gluten-Free Cornbread (1 Bowl!)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/1-pot-spicy-pumpkin-tomato-soup/&quot;&gt;1-Pot Spicy Pumpkin Tomato Soup&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/cozy-curry-noodle-soup-thai-inspired/&quot;&gt;Cozy Curry Noodle Soup (Thai-Inspired)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/fluffy-pumpkin-oat-cookies/&quot;&gt;Fluffy Pumpkin Oat Cookies (1 Bowl!)&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/vegan-pumpkin-spice-frosting/&quot;&gt;Vegan Pumpkin Spice Buttercream Frosting&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/roasted-fall-vegetable-salad-with-white-beans/&quot;&gt;Roasted Fall Vegetable Salad with White Beans&lt;/a&gt;&lt;/h3&gt;,
+ &lt;h3 class=&quot;post-summary__title&quot;&gt;&lt;a href=&quot;https://minimalistbaker.com/apple-butter-snickerdoodle-cookies/&quot;&gt;Apple Butter Snickerdoodle Cookies (Vegan + GF)&lt;/a&gt;&lt;/h3&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Solche Webseiten sind formell gesprochen auch “dynamisch”, aber da sie bereits auf dem Server gerendert werden, und nicht erst im Client, können wir die bereits bekannte Webscraping-Strategie mit requests und BeautifulSoup darauf anwenden.</p>
+<p>Es kommt aber häufig vor, dass dynamisch erstellte Webseiten nicht nur auf dem Server, sondern auch auf dem Client, also im Browser, gerendert werden. Beim Aufruf solcher Webseiten wird zum Beispiel als erstes nur das HTML-Grundgerüst der Seite ohne Inhalte gerendert. Die HTTP-Anfrage beim Aufruf der Seite liefert also ein HTML-Dokument, das nur das Grundgerüst der Seite enthält. Alle weiteren Inhalte werden dann mithilfe von JavaScript über eine spezielle Schnittstelle, die DOM, in das HTML-Gerüst eingefügt. Der Seiteninhalt kann dann mit demselben und ähnlichen Verfahren fortlaufend dynamisch verändert werden, je nachdem, wie ein:e Nutzer:in die Webseite verwendet. So ungefähr wird die YouTube-Startseite geladen. Wenn wir JavaScript im Browser ausschalten, wird uns nur das HTML-Grundgerüst angezeigt. Die HTML-Elemente haben passenderweise die IDs “home-page-skeleton” oder “home-container-skeleton”:</p>
+<figure class="align-default" id="id250">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_youtube.png"><img alt="Beispiel YouTube" class="bg-transparent" src="../../../_images/beispiel_youtube.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.6 </span><span class="caption-text">YouTube-Startseite mit deaktiviertem JavaScript</span><a class="headerlink" href="#id250" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In diesem Fall können requests und BeautifulSoup nicht verwendet werden, weil die Anfrage nur das “Skelett” der Webseite liefert:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://www.youtube.com/&quot;</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+<span class="c1"># soup.find(&quot;div&quot;, id=&quot;home-page-skeleton&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In der Praxis werden fast immer verschiedene Rendering-Verfahren kombiniert, und verschiedene Unterseiten oder auch verschiedene Inhalte auf derselben Seite können mit verschiedenen Rendering-verfahren erstellt und dargestellt werden. Die genauen Rendering-Verfahren zu identifizieren, mit denen eine Website gerendert wird, ist für uns aber auch gar nicht unbedingt notwendig. Im Fall der statischen Kurswebsite ist es für uns zum Beispiel ganz irrelevant, dass bei der Darstellung der Suchergebnisseite JavaScript verwendet wird, wenn wir uns für Inhalte auf den anderen Seiten interessieren. Für uns zählt am Ende nur, wie die konkreten Inhalte, die wir von der Webseite extrahieren wollen, erstellt und dargestellt werden, und das findet man meist mithilfe der Entwickler-Tools und ein bisschen Ausprobieren heraus.</p>
+<p>Als Faustformel könnt ihr euch an diesem Punkt merken: <strong>Wenn für die Inhalte, die ihr scrapen wollt, JavaScript zur Darstellung verwendet wird, dann könnt ihr die Inhalte nicht allein mit requests und BeautifulSoup scrapen.</strong></p>
+<p>Es gibt daneben aber auch dynamische Inhalte, die nicht mit JavaScript dargestellt werden, und die ihr zwar mit requests und BeautifulSoup extrahieren könnt, allerdings muss dabei oft das Vorgehen etwas angepasst werden. Zwei Beispiele schauen wir uns im Folgenden an.</p>
+<p>Die Seite <a class="reference external" href="https://readthedocs.org/search/">https://readthedocs.org/search/</a> verwendet zum Beispiel für die Implementierung der Suche Elasticsearch, wodurch bei der Suche die Datenbank direkt über eine RESTful API angezapft wird.
+JavaScript wird dabei nicht benötigt, die Suche läuft in diesem Beispiel komplett serverseitig ab. Das ist auf der Website <a class="reference external" href="https://docs.readthedocs.io/en/stable/server-side-search/index.html">hier</a> ausführilch dokumentiert.
+Um die Ergebnisse der Suche zu extrahieren, können wir in diesem Fall einfach mit requests eine API-Anfrage mit unseren Suchbegriffen als Parameter über die Elasticsearch-API stellen. Die Abfrage-URI ist in dem Fall genau die URL, die im URL-Fenster im Browser bei der Suche nach einem Suchbegriff automatisch eingetragen wird, also zum Beispiel <a class="reference external" href="https://readthedocs.org/search/?q=how+to+&amp;amp;type=file">https://readthedocs.org/search/?q=how+to+&amp;type=file</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://readthedocs.org/search/?q=how+to+&amp;type=file&quot;</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+<span class="c1"># print(soup.prettify())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Anders ist es bei <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a>. Auch hier ist die Suche ohne JavaScript serverseitig implementiert, aber wenn ein Suchbegriff über die Suchmaske eingegeben wird, dann ändert sich nicht bequem die URL im URL-Fenster, sondern die URL bleibt immer dieselbe, egal wonach wir suchen: <a class="reference external" href="https://www.projekt-gutenberg.org/info/search/search.php">https://www.projekt-gutenberg.org/info/search/search.php</a>. Wenn wir uns den Quellcode der Webseite in den Entwicklertools ansehen, finden wir die Ergebnisse unserer Suche in einem HTML-Tabellenelement.
+Wenn wir jetzt aber mit requests eine Anfrage für diese URL stellen, dann bekommen wir ein anderes HTML-Dokument geliefert, das die Tabelle mit den Ergebnissen nicht enthält. Das ist auch nicht erstaunlich: Wir haben dem Server ja gar nicht mitgeteilt, wonach wir suchen.
+Der Network-Tab in den Entwicklertools verrät uns, wie wir in diesem Fall vorgehen können: Wenn ein Suchbegriff in die Suchmaske einegegeben wird, dann wird eine HTTP POST (!) Anfrage gestellt, keine GET-Anfrage. Im Header steht als Anfrage-URL <a class="reference external" href="https://www.projekt-gutenberg.org/info/search/search.php">https://www.projekt-gutenberg.org/info/search/search.php</a>.</p>
+<figure class="align-default" id="id251">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_gutenberg_1.png"><img alt="Beispiel Projekt Gutenberg" class="bg-transparent" src="../../../_images/beispiel_gutenberg_1.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.7 </span><span class="caption-text">HTTP-Anfrage bei der Suche über <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a></span><a class="headerlink" href="#id251" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Aber es wird zusätzlich ein “Payload” bei der Anfrage übermittelt, nämlich im Beispiel unten “searchstring=franz+kafka&amp;search=suchen”.</p>
+<figure class="align-default" id="id252">
+<a class="bg-transparent reference internal image-reference" href="../../../_images/beispiel_gutenberg_3.png"><img alt="Beispiel Projekt Gutenberg" class="bg-transparent" src="../../../_images/beispiel_gutenberg_3.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.8 </span><span class="caption-text">“Payload” bei der HTTP-Anfrage</span><a class="headerlink" href="#id252" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Diese Parameter müssen wir der POST-Anfrage mit angeben. Der Python-Code sieht demnach als Beispiel für eine Suche nach Franz Kafka auf <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a> so aus:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Serverseitige Suche mit PHP: HTTP-POST-Anfrage</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">URL</span><span class="o">=</span> <span class="s2">&quot;https://www.projekt-gutenberg.org/info/search/search.php&quot;</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;searchstring&#39;</span><span class="p">:</span><span class="s1">&#39;franz+kafka&#39;</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="p">:</span><span class="s1">&#39;suchen&#39;</span><span class="p">}</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+<span class="c1"># print(soup.prettify())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die beiden Beispiele zeigen, dass dynamische Inhalte nicht immer gleich JavaScript voraussetzen. <strong>Wenn eure Anfrage mit requests also nicht erfolgreich ist, dann liegt das nicht immer gleich daran, dass JavaScript verwendet wird. Sondern oftmals müsst ihr die Anfrage einfach etwas anders stellen. Wie genau, das könnt ihr herausfinden, indem ihr die Anfragen im Netzwerk-Tab in den Browser-Entwicklertools untersucht.</strong></p>
+</section>
+<section id="gangige-missverstandnisse">
+<h2><span class="section-number">9.1.3. </span>Gängige Missverständnisse<a class="headerlink" href="#gangige-missverstandnisse" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Interaktivität = JavaScript?</p></li>
+</ol>
+<p>In unserem Schaubild im Kapitel “Einstieg Webscraping” ist der Anwendungsbereich von JavaScript als “Verhalten und Interaktion” beschrieben. Interaktive Elemente gibt es aber auch ohne die Verwendung von JavaScript: Das haben wir gerade eben an den Beispielen zur serverseitigen Suche auf <a class="reference external" href="http://readthedocs.org">readthedocs.org</a> und <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a> gesehen.</p>
+<ol class="arabic simple" start="2">
+<li><p>JavaScript = Kein BeautifulSoup?</p></li>
+</ol>
+<p>Ein weiteres weit verbreitetes Missverständnis ist, dass JavaScript nur dazu verwendet wird, um Inhalte dynamisch zu generieren. Auf der Seite <a class="reference external" href="http://projekt-gutenberg.org">projekt-gutenberg.org</a> wird JavaScript beispielsweise verwendet, um ein Analysetool mit dem Namen Mamoto in die Webseite einzubinden. Das Tool dient dem Tracking von Nutzerverhalten und sammelt Statistiken zum Beispiel über Seitenaufrufe durch Nutzer:innen. Es ist aber nicht an der Darstellung der Inhalte selbst beteiligt. Also: Nur, weil ihr im Quellcode einer Webseite ein script-Element seht, heißt das noch lange nicht, dass ihr requests und BeautifulSoup nicht verwenden könnt. JavaScript wird für viele verschiedene Zwecke eingebunden.</p>
+</section>
+<section id="takeaways">
+<h2><span class="section-number">9.1.4. </span>Takeaways<a class="headerlink" href="#takeaways" title="Link to this heading">#</a></h2>
+<p>Ihr habt gesehen: Die Wahl der richtigen Web Scraping-Strategie entscheidet sich eigentlich nicht so richtig danach, ob eine Website nun statisch oder dynamisch ist, sondern erst einmal danach, ob JavaScript für die Darstellung der Inhalte verwendet wird, die ihr scrapen wollt. Ihr habt außerdem gesehen, dass dynamische Inhalte nicht immer JavaScript voraussetzen, und dass in manchen Fällen auch ein paar Änderungen an der HTTP-Anfrage ausreichen können, um die gewünschten dynamischen Inhalte zu erhalten. Wenn die Inhalte, die ihr scrapen wollt, aber tatsächlich mithilfe von JavaScript dargestellt werden, dann solltet ihr Selenium verwenden.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wenn ihr euch nicht sicher seid, wozu JavaScript auf einer Webseite verwendet wird, die euch interessiert, gibt es verschiedene Möglichkeiten, das herauszufinden:</p>
+<ol class="arabic simple">
+<li><p>JavaScript in den Entwicklertools ausschalten und die Seite ohne JavaScript neu laden. (View -&gt; Developer Tools -&gt; Tastenkombination Ctrl + Shift + P bzw. auf dem Mac Cmd + Shift + P -&gt; Disable JavaScript eingeben und Enter drücken)</p></li>
+<li><p>Seitenquelltext im Browser anzeigen lassen (View -&gt; Developer -&gt; View Source), den Quelltext kopieren und Chat GPT schicken mit der Frage, wozu JavaScript auf der Seite verwendet wird (geht nur, wenn der Quelltext nicht zu lang ist).</p></li>
+<li><p>Wenn ihr euch gar nicht sicher seid, könnt ihr auch erst einmal versuchen, die Webseite mit BeautifulSoup zu scrapen. Wenn der Inhalt HTML-Elemente, die ihr sucht, leer ist, oder die Elemente erst gar nicht gefunden werden, dann handelt es sich um dynamische Inhalte.</p></li>
+</ol>
+</div>
+</section>
+<section id="quellen">
+<h2><span class="section-number">9.1.5. </span>Quellen<a class="headerlink" href="#quellen" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id1">
+<ol class="arabic simple" start="1">
+<li id="id143"><p>Alexander Bazo. Vorlesung &quot;Webanwendungen und Webserver&quot;. 2020. URL: <a class="reference external" href="https://www.youtube.com/watch?v=Pc35Ux0bF2U">https://www.youtube.com/watch?v=Pc35Ux0bF2U</a>.</p></li>
+<li id="id159"><p>Charles Bouchard-Légaré. Sphinx-Users: Documentation About the Built In Search? 2022. URL: <a class="reference external" href="https://groups.google.com/g/sphinx-users/c/qtLQXDDHbYo">https://groups.google.com/g/sphinx-users/c/qtLQXDDHbYo</a>.</p></li>
+<li id="id147"><p>Frank Dopatka. Vorlesung &quot;Webbasierte Systeme&quot;. JavaScript: DOM. 2021. URL: <a class="reference external" href="https://www.youtube.com/watch?v=DfvbYgk0XG8">https://www.youtube.com/watch?v=DfvbYgk0XG8</a>.</p></li>
+<li id="id155"><p>Njoku Samson Ebere. Server Side Rendering (SSR) Vs Static Site Generation (SSG) . 2023. URL: <a class="reference external" href="https://dev.to/ebereplenty/server-side-rendering-ssr-vs-static-site-generation-ssg-214k">https://dev.to/ebereplenty/server-side-rendering-ssr-vs-static-site-generation-ssg-214k</a>.</p></li>
+<li id="id158"><p>Nicholas Mendez. Understanding Rendering in Web Apps: SPA vs MPA. 2021. URL: <a class="reference external" href="https://dev.to/snickdx/understanding-rendering-in-web-apps-spa-vs-mpa-49ef">https://dev.to/snickdx/understanding-rendering-in-web-apps-spa-vs-mpa-49ef</a>.</p></li>
+<li id="id157"><p>Fred Meyer. Understanding &quot;Server-Side&quot; and &quot;Client-Side&quot; in WordPress. 2023. URL: <a class="reference external" href="https://wpshout.com/understanding-server-side-client-side-wordpress/">https://wpshout.com/understanding-server-side-client-side-wordpress/</a>.</p></li>
+<li id="id153"><p>Jason Miller and Addy Osmani. Rendering on the Web: Static Rendering. 2019. URL: <a class="reference external" href="https://web.dev/rendering-on-the-web/#static-rendering">https://web.dev/rendering-on-the-web/#static-rendering</a>.</p></li>
+<li id="id146"><p>Jason Miller and Addy Osmani. Rendering on the Web. 2019. URL: <a class="reference external" href="https://web.dev/rendering-on-the-web/">https://web.dev/rendering-on-the-web/</a>.</p></li>
+<li id="id144"><p>Chrome Developers. Disable JavaScript. 2019. URL: <a class="reference external" href="https://developer.chrome.com/docs/devtools/javascript/disable/">https://developer.chrome.com/docs/devtools/javascript/disable/</a>.</p></li>
+<li id="id142"><p>MDN Contributors. Client-Server Overview. 2023. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview">https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview</a>.</p></li>
+<li id="id154"><p>Next.js. Client-Side-Rendering (CSR). 2023. URL: <a class="reference external" href="https://nextjs.org/docs/pages/building-your-application/rendering/client-side-rendering">https://nextjs.org/docs/pages/building-your-application/rendering/client-side-rendering</a>.</p></li>
+<li id="id145"><p>Next.js. Rendering. 2023. URL: <a class="reference external" href="https://nextjs.org/docs/pages/building-your-application/rendering">https://nextjs.org/docs/pages/building-your-application/rendering</a>.</p></li>
+<li id="id156"><p>10 Rendering Patterns for Web Apps. 2023. URL: <a class="reference external" href="https://www.youtube.com/watch?v=Dkx5ydvtpCA">https://www.youtube.com/watch?v=Dkx5ydvtpCA</a>.</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/09/subchapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../09_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Anwendungsfall III: Dynamische Webseiten</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_einstieg_selenium.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9.2. </span>Einstieg Selenium</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statische-webseiten">9.1.1. Statische Webseiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-webseiten">9.1.2. Dynamische Webseiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gangige-missverstandnisse">9.1.3. Gängige Missverständnisse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">9.1.4. Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quellen">9.1.5. Quellen</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lisa Poggel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

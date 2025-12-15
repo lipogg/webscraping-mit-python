@@ -228,6 +228,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../08/subchapters/03_loc_api.html">8.3. Beispiel LOC-API</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../09/09_intro.html">9. Dynamische Webseiten</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/01_statisch_vs_dynamisch.html">9.1. Statisch vs. Dynamisch?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/02_einstieg_selenium.html">9.2. Einstieg Selenium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -405,7 +411,7 @@ Dabei muss die Entscheidung für die ein oder andere Strategie besonders in der 
 Damit Forschung reproduziert und verstanden werden kann, muss auch der Prozess der Datenbeschaffung transparent und kritisch erfolgen.
 Auch, wenn wir in diesem Seminar ganz praktisch lernen werden, Code in Python zu schreiben, steht deswegen die konzeptionelle Ebene im Mittelpunkt des Seminars.
 Bevor überhaupt Code geschrieben werden kann, der Inhalte von Webseiten extrahiert, braucht es ein Verständnis davon, wie Inhalte überhaupt im Web dargestellt werden, und wie die manuelle Arbeit automatisiert und in die Logik einer Programmiersprache übertragen werden kann (z.B. das Anklicken eines “Herunterladen”-Buttons, das Herauskopieren von Kommentaren aus Kommentarspalten).
-Denn nicht zuletzt können ohne ein Verständnis von Webscraping-Strategien auch die vielen Tools und Anleitungen, die versprechen, Webscraper mithilfe von GPT oder einem anderen Sprachmodell zu schreiben, oder Web Scraping komplett ohne technisches Wissen zu ermöglichen, in den meisten Fällen nicht sinnvoll eingesetzt werden.</p>
+Denn nicht zuletzt können ohne ein Verständnis von Webscraping-Strategien auch die vielen Tools und Anleitungen, die versprechen, Webscraper mithilfe von GPT oder einem anderen Sprachmodell zu schreiben, oder Web Scraping komplett ohne technisches Wissen zu ermöglichen, in den meisten Fällen nicht sinnvoll und sicher eingesetzt werden.</p>
 <p>Warum nicht? Ein paar Beispiele:</p>
 <ul class="simple">
 <li><p>Eine naive Anfrage mit GPT 3.5:  <a class="reference external" href="https://chat.openai.com/share/e2962221-50e9-49fa-b63e-c431186705d2">https://chat.openai.com</a></p></li>
@@ -422,7 +428,7 @@ Um das zu machen, muss man aber bereits einiges verstehen:</p>
 <li><p>In welcher Form sollen die Daten abgespeichert werden (-&gt; Forschungsdesign!)</p></li>
 <li><p>Und, nicht zuletzt: Ist es überhaupt notwendig, die Daten zu scrapen? Gibt es vielleicht eine öffentliche API, die den Zugriff auf die Daten bereitstellt (was das ist, lernen wir noch)?</p></li>
 </ol>
-<p>Die Modelle verbessern sich natürlich fortwährend und mit ein bisschen sogenanntem “prompt engineering” und GPT 4o lässt sich auch ein funktionierendes Skript für das Beispiel generieren: <a class="reference external" href="https://chatgpt.com/share/67fcdafb-8964-800f-8f6f-e035747377a9">https://chatgpt.com/</a>.
+<p>Mit ein bisschen sogenanntem “prompt engineering” und GPT 4o lässt sich auch ein funktionierendes Skript für das Beispiel generieren: <a class="reference external" href="https://chatgpt.com/share/67fcdafb-8964-800f-8f6f-e035747377a9">https://chatgpt.com/</a>.
 Aber ob ein funktionierendes Skript generiert wird oder nicht hängt von vielen Faktoren ab. Wenn die Anfrage scheitert und eine Webseite nicht sehr kompliziert aufgebaut ist, kann alternativ der Seitenquelltext kopiert werden und an ChatGPT 3.5 geschickt werden.
 Dateien können auf diese Weise natürlich nicht heruntergeladen werden. Aber Daten, zum Beispiel eine Liste aller Zitate von einer Unterseite der Seite <a class="reference external" href="https://quotes.toscrape.com/page/3/">quotes.toscrape.com</a> können so durchaus erfolgreich extrahiert werden:</p>
 <ul class="simple">
@@ -435,16 +441,14 @@ Denn diese Strategie funktioniert nur für bestimmte Webseiten und Inhalte, für
 <li><p>Eine gescheiterte Anfrage mit GPT 4: <a class="reference external" href="https://chat.openai.com/share/b6c36130-3446-455a-b51c-f2a2ccc08aad">https://chat.openai.com</a></p></li>
 </ul>
 <p>Die Antwort von ChatGPT deutet bereits darauf hin, dass etwas Hintergrundwissen zu “dynamischen Inhalten” erforderlich ist, um zu verstehen, warum die Anfrage nicht erfolgreich war.</p>
-<p>Seit einigen Monaten gibt es mit GPT-4V die Möglichkeit, den Inhalt aus Bildern auszulesen. Diese Funktionalität steht über verschiedene Custom GPTs auch Nutzer:innen zur Verfügung, die keinen Zugriff auf GPT 4 haben (zum Beispiel <a class="reference external" href="https://chat.openai.com/g/g-KPnm1WrOB-scrapegpt">ScrapeGPT</a>).
-Einige Nutzer:innen haben mit GPT-4V Webscraping-Strategien entwickelt, die darauf basieren, Inhalte aus den Screenshots einer Webseite zu extrahieren (so zum Beispiel <a class="reference external" href="https://github.com/unconv/gpt4v-browsing">dieses Tool</a>).
-So können auch die bereits erwähnten “dynamischen Inhalte” extrahiert werden, indem die Daten aus einem Screenshot der Webseite ausgelesen werden.
-Solche Verfahren der automatischen Bilderkennung (OCR) sind allerdings fehleranfällig, besonders dann, wenn das Layout der Bilder komplex ist, oder nicht-lateinische Schriften verwendet werden (s. dazu z.B. <a class="reference external" href="https://arxiv.org/abs/2310.16809">Shi et al. 2023</a>).</p>
-<p>Neben diesen allgemeinen Schwierigkeiten bei den verschiedenen Webscraping-Strategien mit ChatGPT wirft die Verwendung von Software oder Webanwendungen von kommerziellen Anbietern allgemeine Fragen auf:</p>
+<p>Die Fähigkeiten der Modelle entwickeln sich natürlich fortwährend weiter und bereits im nächsten Semester werden diese Beispiele nicht mehr aktuell sein und es wird bereits andere Schwierigkeiten und Möglichkeiten geben.
+Einige Bedenken bei der Verwendung von LLMs zum Webscraping, insbesondere ohne das nötige Hintergrundwissen, werden aber auf absehbare Zeit bestehen bleiben, und diese sind für uns als Forscher:innen ganz besonders relevant:</p>
 <ul class="simple">
 <li><p>Personenbezogene Daten dürfen laut DSGVO nicht einfach über Server außerhalb der EU geschickt werden. Ist die Verwendung dieser Tools zur Verarbeitung dieser Daten überhaupt legal?</p></li>
 <li><p>Der Quellcode proprietärer Anwendungen ist meist nicht öffentlich einsehbar. Macht die Verwendung solcher Tools Forschung intransparent und ggf. nicht reproduzierbar?</p></li>
 <li><p>Kann ein:e Forscher:in ohne Grundkenntnisse im Webscraping überhaupt glaubhaft die Vollständigkeit und Richtigkeit der auf diese Weise extrahierten Daten versichern?</p></li>
-<li><p>Code, den ChatGPT generiert hat zu kopieren und auf dem eigenen Rechner auszuführen, ohne zu verstehen, was der Code macht, birgt nicht zuletzt auch beträchtliche Sicherheitsrisiken, besonders dann, wenn aus dem Code heraus Webseiten aufgerufen werden. Dazu zählt neben der Tatsache, dass Code, der aus Internetforen kopiert oder von LLMs generiert wird, <a class="reference external" href="https://doi.org/10.48550/arXiv.2403.15600">oft sicherheitsrelevante Schwachstellen aufweist</a> auch die Gefahr sogenannter <a class="reference external" href="https://www.ibm.com/de-de/topics/prompt-injection">indirect prompt injections</a>.</p></li>
+<li><p>Code, den ChatGPT oder eine andere LLM-Anwendung generiert hat zu kopieren und auf dem eigenen Rechner auszuführen, ohne zu verstehen, was der Code macht, birgt nicht zuletzt auch erhebliche Sicherheitsrisiken, besonders dann, wenn aus dem Code heraus Webseiten aufgerufen werden. Dazu zählt nicht nur die Tatsache, dass Code, der aus Internetforen kopiert oder von LLMs generiert wird, <a class="reference external" href="https://doi.org/10.48550/arXiv.2403.15600">oft sicherheitsrelevante Schwachstellen aufweist</a>, sondern auch Risiken durch neuere Angriffsstrategien wie das sogenannte <a class="reference external" href="https://hackernoon.com/ai-slopsquatting-how-llm-hallucinations-poison-your-code">AI Slopsquatting</a>, <a class="reference external" href="https://www.ibm.com/think/topics/data-poisoning">data-, model- und tool poisoning</a> sowie <a class="reference external" href="https://www.ibm.com/de-de/topics/prompt-injection">indirect prompt injections</a>. Solche Angriffe zählen zu “Supply Chain Attacks”, die in den letzten Jahren massiv angestiegen sind und insbesondere Open Source Projekte im Python- und JavaScript Ökosystem betreffen (siehe dazu z.B. <a class="reference external" href="https://medium.com/&#64;ronityadav234/supply-chain-malware-targets-popular-npm-pypi-packages-in-gluestack-attack-5cec43cf2a6a">diesen Blogbeitrag</a>)</p></li>
+<li><p>Für das Webscraping gelten in verschiedenen Staaten verschiedene rechtliche Regelungen. Wenn ihr Code ausführt, der sich nicht rechtskonform verhält, macht ihr euch ggf. strafbar.</p></li>
 <li><p>Wie aus den obigen Beispielen vielleicht bereits deutlich wurde, gibt es viele technische Details, die die Qualität und Zugänglichkeit der Daten beeinflussen. Ohne Kenntnisse der zugrundeliegenden Mechanismen und Strategien bleibt die Art der Daten, die ein:e Forscher:in extrahieren kann, am Ende begrenzt.</p></li>
 <li><p>ChatGPT und andere kommerzielle Anwendungen kosten Geld.</p></li>
 </ul>
