@@ -570,7 +570,9 @@ Um an den Link zum Volltext zu kommen, könnten wir also die Ergebnisse unserer 
 <p>Da es etwas unübersichtlich ist, wenn die heruntergeladenen Dateien in demselben Ordner liegen wie das Pythonskript, legen wir zunächst in unserem aktuellen Arbeitsverzeichnis (=Ordner, in dem die Jupyter Notebooks liegen) ein neues Verzeichnis an, in dem wir die Volltexte abspeichern werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Das müsst ihr nicht importieren</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">skip</span>
+<span class="o">%%</span><span class="k">skip</span>
 
 # Neues Verzeichnis anlegen: in diesem Ordner werden die Textdateien gespeichert
 # Das geht alternativ auch mit dem Paket pathlib, das ihr im Kapitel 8.2 kennengelernt habt
@@ -580,7 +582,7 @@ os.makedirs(output_dir, exist_ok=True) # exists_ok: nur erstellen, falls es noch
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UsageError: Cell magic `%%skip` not found.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UsageError: Line magic function `%%skip` not found.
 </pre></div>
 </div>
 </div>
@@ -654,8 +656,9 @@ while True:
 <div class="tip admonition">
 <p class="admonition-title">Verständnisfragen</p>
 <ul class="simple">
-<li><p>Wie könnte man diese Aufgabe noch lösen? Gibt es eine alternative Vorgehensweise, an die URLs der nachfolgenden Ergebnisseiten zu kommen? Gibt es andere Strategien, um an die Links zu den Volltexten zu gelangen?</p></li>
-<li></li>
+<li><p>Wie könnte man diese Aufgabe noch lösen?</p></li>
+<li><p>Gibt es eine alternative Vorgehensweise, an die URLs der nachfolgenden Ergebnisseiten zu kommen?</p></li>
+<li><p>Gibt es andere Strategien, um an die Links zu den Volltexten zu gelangen?</p></li>
 </ul>
 </div>
 <p>Aber Achtung! Beim Ausführen des Codes oben gibt es nach einigen Schleifendurchläufen eine Fehlermeldung: JSONDecodeError: Expecting value: line 1 column 1 (char 0). Die Fehlermeldung entsteht dann, wenn die HTTP-Anfrage keine erfolgreiche Antwort liefert. Dieser Fall kann registriert werden, indem nach jeder Anfrage der Statuscode ausgegeben wird. Warum hat die Anfrage plötzlich keine erfolgreiche Antwort geliefert? Das liegt daran, dass wir uns nicht an die Einschränkungen der LOC gehalten haben und die HTTP-Anfrage dadurch ab einem bestimmten Punkt abgelehnt wird. Wenn wir dann versuchen, den Antwortbody mithilfe der .json()-Methode in ein Python Dictionary umzuwandeln, teilt der Python interpreter uns mit, dass das nicht möglich ist, weil wir die Methode nicht auf einen gültigen JSON-String angewendet haben.</p>

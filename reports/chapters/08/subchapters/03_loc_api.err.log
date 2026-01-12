@@ -15,6 +15,8 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
+# Das müsst ihr nicht importieren
+from utils import skip
 %%skip
 
 # Neues Verzeichnis anlegen: in diesem Ordner werden die Textdateien gespeichert
@@ -24,7 +26,7 @@ os.makedirs(output_dir, exist_ok=True) # exists_ok: nur erstellen, falls es noch
 ------------------
 
 ----- stderr -----
-UsageError: Cell magic `%%skip` not found.
+UsageError: Line magic function `%%skip` not found.
 ------------------
 
 
