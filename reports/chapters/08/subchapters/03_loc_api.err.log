@@ -18,6 +18,7 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 %%skip
 
 # Neues Verzeichnis anlegen: in diesem Ordner werden die Textdateien gespeichert
+# Das geht alternativ auch mit dem Paket pathlib, das ihr im Kapitel 8.2 kennengelernt habt
 output_dir = os.path.join(os.getcwd(), "loc_ocr")
 os.makedirs(output_dir, exist_ok=True) # exists_ok: nur erstellen, falls es noch nicht existiert
 ------------------
