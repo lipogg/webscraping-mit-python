@@ -523,8 +523,10 @@ document.write(`
     <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
 
     <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">unterkunft</span><span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;t1ms2xzu&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">is_visible</span><span class="p">()</span>
-    <span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">unterkunft</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;t1ms2xzu&quot;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">unterkunft</span><span class="o">.</span><span class="n">is_displayed</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">unterkunft</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -552,7 +554,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Bei beiden Versionen wird so lange gewartet, bis das gesuchte Element bzw. die gesuchten Elemente mit der angegeben Klasse sichtbar sind (also gerendert wurden, mehr dazu <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html#selenium.webdriver.support.expected_conditions.presence_of_all_elements_located">hier</a>). Die erste Version lässt sich allerdings nicht so leicht für die Suche nach mehreren Elementen umschreiben. Für unser Airbnb-Beispiel verwenden wir deswegen die zweite Strategie.</p>
+<p>Bei beiden Versionen wird so lange gewartet, bis das gesuchte Element bzw. die gesuchten Elemente mit der angegeben Klasse sichtbar sind (also einfach gesagt, bis sie gerendert wurden, mehr Details dazu <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/selenium_webdriver_support/selenium.webdriver.support.expected_conditions.html">hier</a>). Die erste Version lässt sich allerdings nicht so leicht für die Suche nach mehreren Elementen umschreiben. Für unser Airbnb-Beispiel verwenden wir deswegen die zweite Strategie.</p>
 <p>Mit dieser Strategie des expliziten Wartens kann auch auf eine Reihe anderer Ereignisse gewartet werden. Eine ausführliche Erläuterung dazu findet ihr <a class="reference external" href="https://selenium-python.readthedocs.io/waits.html">hier</a>, und eine Liste aller Ereignisse, auf die gewartet werden kann sowie der entsprechenden Methoden findet ihr <a class="reference external" href="https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html">hier</a>.</p>
 <p>Explizite und implizite Wartestrategien sollten allerdings nicht vermischt werden! Laut Selenium-Dokumentationsseiten kann dies zu unerwartetem Verhalten führen:</p>
 <blockquote>
@@ -613,8 +615,6 @@ document.write(`
 
     <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># nur damit wir sehen, können, was passiert</span>
-    <span class="c1"># Variablen für das Scrollen festlegen</span>
-    <span class="n">scroll_step</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># Schrittgröße für jeden Scroll-Vorgang (in Pixeln)</span>
 
     <span class="c1"># Seite bis zum Ende scrollen</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -654,30 +654,6 @@ document.write(`
 <p><span class="caption-number">Fig. 9.12 </span><span class="caption-text">Veranschaulichung der JavaScript-Objekteigenschaften zur Formulierung der Abbruchbedingung.</span><a class="headerlink" href="#id248" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Das JavaScript-Code-Snippet, das wir zur Formulierung der Abbruchbedingung verwendet haben, können wir auch in Python-Variablen übersetzen. Das ist etwas sauberer, weil wir die Formulierung der Abbruchbedingung direkt in Python formulieren und nicht in einen String auslagern. Außerdem kann so z.B. die Höhe des Viewports (Eigenschaft .clientHeight) bereits außerhalb der while-Schleife einmalig abgefragt werden, da diese Höhe sich nicht ändert:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scrollstrategie 1 mit Variablen</span>
-<span class="k">with</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="k">as</span> <span class="n">driver</span><span class="p">:</span>
-
-    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># nur damit wir sehen was passiert</span>
-    <span class="c1"># Variablen für das Scrollen festlegen</span>
-    <span class="n">scroll_step</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># Schrittgröße für jeden Scroll-Vorgang (in Pixeln)</span>
-    <span class="n">viewport_height</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;return document.documentElement.clientHeight;&quot;</span><span class="p">)</span>
-    <span class="c1"># Seite bis zum Ende scrollen</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;window.scrollBy(0, </span><span class="si">{</span><span class="n">scroll_step</span><span class="si">}</span><span class="s2">);&quot;</span><span class="p">)</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># nur damit wir sehen was passiert</span>
-        <span class="n">scroll_height</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;return document.documentElement.scrollHeight;&quot;</span><span class="p">)</span>
-        <span class="n">scroll_position</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;return document.documentElement.scrollTop;&quot;</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">scroll_height</span> <span class="o">-</span> <span class="n">viewport_height</span> <span class="o">-</span> <span class="n">scroll_position</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">break</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Wenn das Seitenende erreicht ist und die while-Schleife terminiert, kann der Mausklick auf den “Show more”-Button simuliert werden. Anschließend sollte wieder ein paar Sekunden gewartet werden, damit die neuen Inhalte laden können.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -691,7 +667,7 @@ document.write(`
 </div>
 <p>Zum Klick auf den Button kann entweder wieder die <strong>Selenium-Methode</strong> <code class="docutils literal notranslate"><span class="pre">.click()</span></code> verwendet werden wie beim Klick auf den Tiny homes-Icon zuvor. Oder es wird wieder ein JavaScript Code Snippet ausgeführt, das dafür zuständig ist, den Mausklick im Browser auszulösen. Dazu wird die Selenium-Methode .execute_script() im Zusammenhang mit der <strong>Javascript-Methode</strong> <code class="docutils literal notranslate"><span class="pre">.click()</span></code> verwendet. Die JavaScript-Methode heißt ebenfalls .click() und ist genau wie die Selenium-Methode .click() für HTML-Elemente definiert, aber eben für JavaScript und nicht Python. Im Codebeispiel unten steht arguments[0] für das HTML-Element, das angeklickt werden soll. Das Element muss deswegen wieder zuerst gesucht werden und einer Variable zugewiesen werden. Diese Variable (hier more_button) wird der .execute_script()-Methode als Argument übergeben. arguments[0] verweist dann auf das Argument.</p>
 <p>Anschließend muss wieder bis zum Seitenende gescrollt werden, damit alle Unterkünfte laden. “Laden” bedeutet hier zur Erinnerung, dass die neuen Inhalte in das HTML-Gerüst eingefügt werden und dadurch addressierbar werden. Der manuelle Scrollvorgang hat gezeigt, dass die Inhalte dynamisch geladen werden, sobald sie durch Scrollen in den sichtbaren Bereich gelangen. Aber anders als bei einem Infinite Scrolling endet die Seite nach einigen Scrollvorgängen. Wir könnten also beim Scrollen genauso vorgehen, wie beim Scrollen zum “Show more”-Button. Allerdings war dieser Scrollvorgang recht langsam, weil in jedem Schleifendurchlauf nur um 300 Pixel gescrollt wurde. Wir könnten also, um den Vorgang etwas zu beschleunigen, zum Beispiel die Pixelanzahl vergrößern. Hierbei sollte allerdings Folgendes bedacht werden: Je nachdem, wie groß das Browserfenster auf unterschiedlichen Geräten ist, haben auch die Kacheln mit den Unterkünften eine unterschiedliche Größe und es gibt unterschiedlich viele Kacheln in einer Zeile. Es werden also je nach Größe des Browserfensters verschieden viele Kacheln geladen, wenn um 300, 500 oder 800 Pixel gescrollt wird. Wenn zu schnell gescrollt wird, dann können Inhalte nicht rechtzeitig geladen werden, und wenn das passiert, werden sie folglich von unserem Webscraper nicht gefunden.</p>
-<p>Zum Scrollen verwenden wir deswegen diesmal einen etwas zeiteffizienteren alternativen <strong>Ansatz, bei dem in jedem Schleifendurchlauf nicht um eine feste Pixelanzahl gescrollt wird, sondern um die innere Höhe des Browserfensters.</strong></p>
+<p>Zum Scrollen verwenden wir deswegen diesmal einen etwas zeiteffizienteren alternativen <strong>Ansatz, bei dem in jedem Schleifendurchlauf nicht um eine feste Pixelanzahl gescrollt wird, sondern um die innere Höhe des Browserfensters (“Viewport” bzw. Eigenschaft .clientHeight).</strong> Das JavaScript-Code-Snippet, das wir bei der ersten Strategie zur Formulierung der Abbruchbedingung verwendet haben, übersetzen wir außerdem bei dieser Scrollstrategie in Python-Variablen. Das ist etwas sauberer, weil wir die Formulierung der Abbruchbedingung direkt in Python formulieren und nicht in einen String auslagern.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scrollstrategie 2: Um die Fenstergröße scrollen</span>
@@ -732,7 +708,7 @@ document.write(`
     <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.airbnb.com/&quot;</span><span class="p">)</span>
     <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
     <span class="n">footer</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;footer&quot;</span><span class="p">))</span>
+        <span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;footer&quot;</span><span class="p">))</span>
     <span class="p">)</span>
     <span class="n">ActionChains</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span>\
         <span class="o">.</span><span class="n">scroll_to_element</span><span class="p">(</span><span class="n">footer</span><span class="p">)</span>\

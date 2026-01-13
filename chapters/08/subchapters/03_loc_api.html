@@ -568,87 +568,74 @@ Um an den Link zum Volltext zu kommen, könnten wir also die Ergebnisse unserer 
 </div>
 <p>Anschließend müssen wir für die neue request_url wieder eine Anfrage stellen und können dann über den Schlüssel “full_text” auf den Volltext zugreifen und diesen herunterladen.</p>
 <p>Da es etwas unübersichtlich ist, wenn die heruntergeladenen Dateien in demselben Ordner liegen wie das Pythonskript, legen wir zunächst in unserem aktuellen Arbeitsverzeichnis (=Ordner, in dem die Jupyter Notebooks liegen) ein neues Verzeichnis an, in dem wir die Volltexte abspeichern werden:</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Das müsst ihr nicht importieren</span>
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">skip</span>
-<span class="o">%%</span><span class="k">skip</span>
-
-# Neues Verzeichnis anlegen: in diesem Ordner werden die Textdateien gespeichert
-# Das geht alternativ auch mit dem Paket pathlib, das ihr im Kapitel 8.2 kennengelernt habt
-output_dir = os.path.join(os.getcwd(), &quot;loc_ocr&quot;)
-os.makedirs(output_dir, exist_ok=True) # exists_ok: nur erstellen, falls es noch nicht existiert
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UsageError: Line magic function `%%skip` not found.
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Neues Verzeichnis anlegen: in diesem Ordner werden die Textdateien gespeichert</span>
+<span class="c1"># Das geht alternativ auch mit dem Paket pathlib, das ihr im Kapitel 8.2 kennengelernt habt</span>
+<span class="n">output_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;loc_ocr&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># exists_ok: nur erstellen, falls es noch nicht existiert</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>Jetzt haben wir alles vorbereitet und können die Texte herunterladen. Allerdings brauchen wir dazu noch geeignete Dateinamen für die Dateien.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
-
-for result in search_results:
-    fulltext_url = result[&quot;word_coordinates_url&quot;]
-    fulltext_base = fulltext_url.rsplit(&quot;&amp;&quot;, 2)[0]
-    fulltext_request_url = f&quot;{fulltext_base}&amp;full_text=1&quot;
-    fulltext_dict = requests.get(fulltext_request_url).json()
-    dict_values= list(fulltext_dict.values())
-    fulltext = dict_values[0][&quot;full_text&quot;]
-    title = result[&quot;title&quot;]
-    filename = f&quot;{title}.txt&quot;
-    filepath = os.path.join(output_dir, filename)
-    with open(filepath, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:
-        file.write(fulltext)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">search_results</span><span class="p">:</span>
+    <span class="n">fulltext_url</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;word_coordinates_url&quot;</span><span class="p">]</span>
+    <span class="n">fulltext_base</span> <span class="o">=</span> <span class="n">fulltext_url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;&amp;&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">fulltext_request_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fulltext_base</span><span class="si">}</span><span class="s2">&amp;full_text=1&quot;</span>
+    <span class="n">fulltext_dict</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fulltext_request_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">dict_values</span><span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fulltext_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">fulltext</span> <span class="o">=</span> <span class="n">dict_values</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;full_text&quot;</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fulltext</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>Wie gehen wir vor, um jetzt unsere for-Schleife oben nacheinander auf alle Ergebnisseiten anzuwenden? Erinnert euch an die drei Strategien, die wir beim Scrapen der Quotes to Scrape-Website im Abschnitt “Fortsetzung BeautifulSoup” diskutiert haben. Eine andere Strategie, die wir im Zusammenhang mit der Quotes to Scrape-Website besprochen haben, war die Verwendung des “next”-Buttons. Bei dieser Strategie haben wir beim Aufruf einer Seite die URL zur nachfolgenden Seite aus dem href-Attribut des a-Elements mit dem Text “next” extrahiert und diese URL zur Formulierung der nächsten Anfrage verwendet.</p>
 <p>Ganz ähnlich funktioniert auch die Lösung, die das vorhin besprochene Tutorial der Library Of Congress vorschlägt. Hier wurde die URL für die nächste Ergebnisseite dem Schlüssel “next” unter dem Schlüssel “pagination” entnommen (s.o.). Diese Lösung bauen wir nun in unseren Code ein:</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.loc.gov/collections/chronicling-america/&quot;</span>
+<span class="n">display_level</span> <span class="o">=</span> <span class="s2">&quot;dl=page&quot;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s2">&quot;end_date=1936-09-03&quot;</span>
+<span class="n">search_operation</span> <span class="o">=</span> <span class="s2">&quot;ops=PHRASE&quot;</span>
+<span class="n">query_terms</span> <span class="o">=</span> <span class="s2">&quot;qs=book+review&quot;</span>
+<span class="n">search_type</span> <span class="o">=</span> <span class="s2">&quot;searchType=advanced&quot;</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s2">&quot;start_date=1736-09-03&quot;</span>
+<span class="n">response_format</span> <span class="o">=</span> <span class="s2">&quot;fo=json&quot;</span>
 
-base_url = &quot;https://www.loc.gov/collections/chronicling-america/&quot;
-display_level = &quot;dl=page&quot;
-end_date = &quot;end_date=1936-09-03&quot;
-search_operation = &quot;ops=PHRASE&quot;
-query_terms = &quot;qs=book+review&quot;
-search_type = &quot;searchType=advanced&quot;
-start_date = &quot;start_date=1736-09-03&quot;
-response_format = &quot;fo=json&quot;
+<span class="n">request_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">?</span><span class="si">{</span><span class="n">display_level</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">search_operation</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">query_terms</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">search_type</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">response_format</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">current_url</span> <span class="o">=</span> <span class="n">request_url</span>
 
-request_url = f&quot;{base_url}?{display_level}&amp;{end_date}&amp;{search_operation}&amp;{query_terms}&amp;{search_type}&amp;{start_date}&amp;{response_format}&quot;
-current_url = request_url
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">current_url</span><span class="p">)</span>
+  <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">current_url</span><span class="p">)</span>
+  <span class="n">response_dict</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+  <span class="n">search_results</span> <span class="o">=</span> <span class="n">response_dict</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span>
+  <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">search_results</span><span class="p">:</span>
+    <span class="n">fulltext_url</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;word_coordinates_url&quot;</span><span class="p">]</span>
+    <span class="n">fulltext_base</span> <span class="o">=</span> <span class="n">fulltext_url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;&amp;&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">fulltext_request_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fulltext_base</span><span class="si">}</span><span class="s2">&amp;full_text=1&quot;</span>
+    <span class="n">fulltext_dict</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fulltext_request_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">dict_values</span><span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fulltext_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">fulltext</span> <span class="o">=</span> <span class="n">dict_values</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;full_text&quot;</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fulltext</span><span class="p">)</span>
 
-while True:
-  print(current_url)
-  response = requests.get(current_url)
-  response_dict = response.json()
-  search_results = response_dict[&quot;results&quot;]
-  for result in search_results:
-    fulltext_url = result[&quot;word_coordinates_url&quot;]
-    fulltext_base = fulltext_url.rsplit(&quot;&amp;&quot;, 2)[0]
-    fulltext_request_url = f&quot;{fulltext_base}&amp;full_text=1&quot;
-    fulltext_dict = requests.get(fulltext_request_url).json()
-    dict_values= list(fulltext_dict.values())
-    fulltext = dict_values[0][&quot;full_text&quot;]
-    title = result[&quot;title&quot;]
-    filename = f&quot;{title}.txt&quot;
-    filepath = os.path.join(output_dir, filename)
-    with open(filepath, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:
-        file.write(fulltext)
+  <span class="k">if</span> <span class="n">response_dict</span><span class="p">[</span><span class="s2">&quot;pagination&quot;</span><span class="p">][</span><span class="s2">&quot;next&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">current_url</span> <span class="o">=</span> <span class="n">response_dict</span><span class="p">[</span><span class="s2">&quot;pagination&quot;</span><span class="p">][</span><span class="s2">&quot;next&quot;</span><span class="p">]</span>
 
-  if response_dict[&quot;pagination&quot;][&quot;next&quot;] is not None:
-    current_url = response_dict[&quot;pagination&quot;][&quot;next&quot;]
-
-  else:
-      break
+  <span class="k">else</span><span class="p">:</span>
+      <span class="k">break</span>
 </pre></div>
 </div>
 </div>
@@ -690,27 +677,42 @@ while True:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
 </div>
-<div class="cell docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rate limiting mit time.sleep():  LOC API</span>
 
-# Rate limiting mit time.sleep():  LOC API
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">search_results</span><span class="p">:</span>
+    <span class="n">fulltext_url</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;word_coordinates_url&quot;</span><span class="p">]</span>
+    <span class="n">fulltext_base</span> <span class="o">=</span> <span class="n">fulltext_url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;&amp;&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">fulltext_request_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fulltext_base</span><span class="si">}</span><span class="s2">&amp;full_text=1&quot;</span>
+    <span class="n">fulltext_dict</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fulltext_request_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">dict_values</span><span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fulltext_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">fulltext</span> <span class="o">=</span> <span class="n">dict_values</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;full_text&quot;</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fulltext</span><span class="p">)</span>
 
-for result in search_results:
-    fulltext_url = result[&quot;word_coordinates_url&quot;]
-    fulltext_base = fulltext_url.rsplit(&quot;&amp;&quot;, 2)[0]
-    fulltext_request_url = f&quot;{fulltext_base}&amp;full_text=1&quot;
-    fulltext_dict = requests.get(fulltext_request_url).json()
-    dict_values= list(fulltext_dict.values())
-    fulltext = dict_values[0][&quot;full_text&quot;]
-    title = result[&quot;title&quot;]
-    filename = f&quot;{title}.txt&quot;
-    filepath = os.path.join(output_dir, filename)
-    with open(filepath, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:
-        file.write(fulltext)
-
-    time.sleep(0.5)
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -765,34 +767,43 @@ for result in search_results:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+</pre></div>
 </div>
-<div class="cell docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rate limiting mit Python decorators: LOC API</span>
 
-# Rate limiting mit Python decorators: LOC API
+<span class="n">PERIOD_SEC</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">CALLS_PER_PERIOD_SEC</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># 20 Abfragen in 10 Sekunden</span>
 
-PERIOD_SEC = 10
-CALLS_PER_PERIOD_SEC = 20 # 20 Abfragen in 10 Sekunden
+<span class="nd">@sleep_and_retry</span>
+<span class="nd">@limits</span><span class="p">(</span><span class="n">calls</span><span class="o">=</span><span class="n">CALLS_PER_PERIOD_SEC</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">PERIOD_SEC</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-@sleep_and_retry
-@limits(calls=CALLS_PER_PERIOD_SEC, period=PERIOD_SEC)
-def get_json(url):
-    response = requests.get(url)
-    return response.json()
-
-for result in search_results:
-    fulltext_url = result[&quot;word_coordinates_url&quot;]
-    fulltext_base = fulltext_url.rsplit(&quot;&amp;&quot;, 2)[0]
-    fulltext_request_url = f&quot;{fulltext_base}&amp;full_text=1&quot;
-    fulltext_dict = get_json(fulltext_request_url)
-    dict_values= list(fulltext_dict.values())
-    fulltext = dict_values[0][&quot;full_text&quot;]
-    title = result[&quot;title&quot;]
-    filename = f&quot;{title}.txt&quot;
-    filepath = os.path.join(output_dir, filename)
-    with open(filepath, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:
-        file.write(fulltext)
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">search_results</span><span class="p">:</span>
+    <span class="n">fulltext_url</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;word_coordinates_url&quot;</span><span class="p">]</span>
+    <span class="n">fulltext_base</span> <span class="o">=</span> <span class="n">fulltext_url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;&amp;&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">fulltext_request_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fulltext_base</span><span class="si">}</span><span class="s2">&amp;full_text=1&quot;</span>
+    <span class="n">fulltext_dict</span> <span class="o">=</span> <span class="n">get_json</span><span class="p">(</span><span class="n">fulltext_request_url</span><span class="p">)</span>
+    <span class="n">dict_values</span><span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fulltext_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">fulltext</span> <span class="o">=</span> <span class="n">dict_values</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;full_text&quot;</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fulltext</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -828,35 +839,45 @@ for result in search_results:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+Rate limit exceeded for iteration 4, waiting to retry...
+</pre></div>
 </div>
-<div class="cell docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">skip</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rate limiting mit Paket limits: LOC API</span>
 
-# Rate limiting mit Paket limits: LOC API
+<span class="n">rate_limit</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="s2">&quot;20/10seconds&quot;</span><span class="p">)</span>
+<span class="n">memory_storage</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="n">MemoryStorage</span><span class="p">()</span>
+<span class="n">moving_window</span> <span class="o">=</span> <span class="n">strategies</span><span class="o">.</span><span class="n">MovingWindowRateLimiter</span><span class="p">(</span><span class="n">memory_storage</span><span class="p">)</span>
 
-rate_limit = parse(&quot;20/10seconds&quot;)
-memory_storage = storage.MemoryStorage()
-moving_window = strategies.MovingWindowRateLimiter(memory_storage)
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">search_results</span><span class="p">:</span>
+    <span class="n">fulltext_url</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;word_coordinates_url&quot;</span><span class="p">]</span>
+    <span class="n">fulltext_base</span> <span class="o">=</span> <span class="n">fulltext_url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;&amp;&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">fulltext_request_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fulltext_base</span><span class="si">}</span><span class="s2">&amp;full_text=1&quot;</span>
 
-for result in search_results:
-    fulltext_url = result[&quot;word_coordinates_url&quot;]
-    fulltext_base = fulltext_url.rsplit(&quot;&amp;&quot;, 2)[0]
-    fulltext_request_url = f&quot;{fulltext_base}&amp;full_text=1&quot;
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">moving_window</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">rate_limit</span><span class="p">,</span> <span class="s2">&quot;loc_requests&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rate limit exceeded, waiting to retry...&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
 
-    while not moving_window.test(rate_limit, &quot;loc_requests&quot;):
-        print(f&quot;Rate limit exceeded, waiting to retry...&quot;)
-        time.sleep(0.01)
-
-    moving_window.hit(rate_limit, &quot;loc_requests&quot;)
-    fulltext_dict = requests.get(fulltext_request_url).json()
-    dict_values= list(fulltext_dict.values())
-    fulltext = dict_values[0][&quot;full_text&quot;]
-    title = result[&quot;title&quot;]
-    filename = f&quot;{title}.txt&quot;
-    filepath = os.path.join(output_dir, filename)
-    with open(filepath, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:
-        file.write(fulltext)
+    <span class="n">moving_window</span><span class="o">.</span><span class="n">hit</span><span class="p">(</span><span class="n">rate_limit</span><span class="p">,</span> <span class="s2">&quot;loc_requests&quot;</span><span class="p">)</span>
+    <span class="n">fulltext_dict</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fulltext_request_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">dict_values</span><span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fulltext_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">fulltext</span> <span class="o">=</span> <span class="n">dict_values</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;full_text&quot;</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fulltext</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
