@@ -234,6 +234,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../10/10_intro.html">10. Pandas (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/01_pandas_bereinigen.html">10.1. Daten bereinigen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/02_pandas_visualisieren.html">10.2. Daten visualisieren</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../11/11_intro.html">11. Tipps und Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/01_fetch_xhr.html">11.1. Selenium ist kein Hammer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/02_sessions_cookies.html">11.2. Sessions und Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/03_apis_tokens.html">11.3. Authentifizierung, Autorisierung und APIs</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -471,7 +482,7 @@ document.write(`
 </ul>
 </div></blockquote>
 <p>Quelle: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">MDN Contributors 2023</a></p>
-<p>Die beiden Statuscodes 200 und 404 sind allgemein bekannt. In diesen Fällen muss nichts unternommen werden: Die Ressource wurde erfolgreich übermittelt (Statuscode 200) oder aber sie wurde nicht gefunden, weil z.B. die URL gar nicht existiert (Statuscode 404). Manche Statuscodes informieren jedoch darüber, dass eine Handlung erforderlich ist: Der Statuscode 402 Unauthorized deutet beispielsweise darauf hin, dass der Client sich gegenüber dem Server authentifizieren muss, bevor er auf die Ressource zugreifen darf. In diesem Fall könnte die Anfrage erneut gestellt werden, aber diesmal gibt man bei der Anfrage zusätzlich einen Authentication-Parameter mit an, welcher den Client authentifiziert. Im Request-Header können zum Beispiel aber auch Cookies mit übermittelt werden, welche den Client einer Sitzung zuordnen. Cookies werden zum Beispiel verwendet, um Waren im Warenkorb zu speichern.</p>
+<p>Die beiden Statuscodes 200 und 404 sind allgemein bekannt. In diesen Fällen muss nichts unternommen werden: Die Ressource wurde erfolgreich übermittelt (Statuscode 200) oder aber sie wurde nicht gefunden, weil z.B. die URL gar nicht existiert (Statuscode 404). Manche Statuscodes informieren jedoch darüber, dass eine Handlung erforderlich ist: Der Statuscode 402 Unauthorized deutet beispielsweise darauf hin, dass der Client sich gegenüber dem Server authentifizieren muss, bevor er auf die Ressource zugreifen darf. In diesem Fall könnte die Anfrage erneut gestellt werden, aber diesmal gibt man bei der Anfrage zusätzlich einen Authentication-Parameter mit an, welcher den Client authentifiziert. Im Request-Header können zum Beispiel aber auch Cookies mit übermittelt werden, welche den Client einer Sitzung zuordnen. Cookies werden zum Beispiel verwendet, um Waren im Warenkorb zu speichern (siehe dazu am Ende des Semesters das Kapitel “Tipps und Tricks”). Neben diesen ernst gemeinten Statuscodes gibt es übrigens auch den <a class="reference external" href="https://developer.mozilla.org/de/docs/Web/HTTP/Reference/Status/418">Statuscode 418</a>, der als Aprilscherz entstanden ist.</p>
 <p>Im Körper (<strong>Body</strong>) der Anwort wird die angefragte Ressource geliefert. Wenn bei der Anfrage eine HTML-Datei angefragt wurde, dann wird im Body der Antwort das HTML-Dokument als Textdatei übermittelt.</p>
 <p>Beispiel:</p>
 <figure class="align-default" id="id1">

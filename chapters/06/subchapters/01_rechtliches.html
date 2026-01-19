@@ -234,6 +234,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../../09/subchapters/03_fortsetzung_selenium.html">9.3. Fortsetzung Selenium</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../10/10_intro.html">10. Pandas (Exkurs)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/01_pandas_bereinigen.html">10.1. Daten bereinigen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10/subchapters/02_pandas_visualisieren.html">10.2. Daten visualisieren</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../11/11_intro.html">11. Tipps und Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/01_fetch_xhr.html">11.1. Selenium ist kein Hammer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/02_sessions_cookies.html">11.2. Sessions und Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11/subchapters/03_apis_tokens.html">11.3. Authentifizierung, Autorisierung und APIs</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -474,6 +485,7 @@ Diese Tests sind durch Bots nicht lösbar und dienen dazu, automatisierte Anfrag
 Wenn der eigene Webscraper so viele Anfragen gestellt hat, dass der Webserver dadurch überlastet ist und die Website einige Zeit nicht erreichbar ist, dann hat man die Funktionalität der Website beeinträchtigt, man hat einen “technischen Schaden” produziert. Auch das kann rechtliche Konsequenzen haben.</strong>
 Die Forschungsstelle RobotRecht der Universität Würzburg hat in einem Rechtsgutachten zum Einsatz von WebScraping in der nicht-kommerziellen wissenschaftlichen Forschung deswegen dazu ermahnt, dass durch das Web Scrpaing keine “technische Schädigung beim Betreiber der Website” verursacht werden darf (<a class="reference external" href="https://www.konsortswd.de/wp-content/uploads/RatSWD_Output4.6_BigData.pdf">Forschungsstelle RobotRecht 2019</a>).</p>
 <p><strong>Um rechtlich auf der sicheren Seite zu sein, müsst ihr also immer sicherstellen, dass sich eure Web Scraper “gutartig” verhalten und die Verhaltensregeln in der robots.txt einhalten.</strong></p>
+<p>Das ist in den letzten Jahren noch wichtiger geworden, da die Crawler von KI-Anwendungen zunehmend zur Belastung für Webhosting-Unternehmen und Websitebetreiber:innen werden: Sie missachten die robots.txt häufig und überlasten Server mit extrem hohen Abfrageraten und ständig wechselnden IP-Adressen, die es schwierig machen, die Crawler zu blockieren. Die Diskussion geht sogar so weit, dass das Technikmagazin <a class="reference external" href="http://heise.de">heise.de</a> 2025 einen <a class="reference external" href="https://www.heise.de/en/background/Obituary-Farewell-to-robots-txt-1994-2025-10766991.html">Nachruf auf die robots.txt</a> veröffentlicht hat. Das Verhalten des Crawlers von Perplexity AI hat bereits <a class="reference external" href="https://blog.cloudflare.com/perplexity-is-using-stealth-undeclared-crawlers-to-evade-website-no-crawl-directives/">Cloudflare</a> und <a class="reference external" href="https://www.hosted.com/blog/reddit-vs-perplexity-the-ai-crawler-data/">Reddit</a> dazu veranlasst, das Unternehmen zu verklagen, und es ist gut möglich, dass in den nächsten Jahren der rechtliche Rahmen für das Web Scraping und Crawling noch einmal verschärft wird. Schaut also vor einem Web Scraping Projekt am besten immer selbst nochmal nach, ob sich etwas an den rechtlichen Vorgaben geändert hat.</p>
 </section>
 <section id="urheberrecht">
 <h2><span class="section-number">6.1.3. </span>Urheberrecht<a class="headerlink" href="#urheberrecht" title="Link to this heading">#</a></h2>
@@ -555,6 +567,7 @@ Um auf der sicheren Seite zu sein, sollte man sich vor jedem Webscraping-Projekt
 <li><p>Gibt es mögliche Gefahren für die betroffenen Personen, falls ich den Schutz der Daten nicht gewährleisten kann?</p></li>
 <li><p>Welche Einschränkungen sind in der robots.txt der Seite definiert?</p></li>
 <li><p>Hält mein Web Scraper die Einschränkungen ein und verhält sich mein Scraper gutartig?</p></li>
+<li><p>Gibt es ggf. neue rechtliche Regelungen, die mein Forschungsprojekt betreffen?</p></li>
 </ul>
 <p>Im Zweifel und insbesondere bei größeren Webscraping-Projekten solltet ihr außerdem unbedingt professionellen Rat einholen. Eine gute erste Anlaufstelle sind die Mitarbeiter:innen im Forschungsdatenmanagement.</p>
 <section id="quellen">
