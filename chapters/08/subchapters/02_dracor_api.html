@@ -685,7 +685,7 @@ Der Zugriff auf ein Dictionary erfolgt wie gewohnt mit eckigen Klammern über di
 </div>
 </div>
 <p>Bevor wir die API-Abfragen durchführen, erstellen wir einen Ordner auf dem Computer, in dem die extrahierten Sprechtexte gespeichert werden sollen. Diesen Ordner müssen wir beim Speichern der Datei im Dateipfad zum gewünschten Speicherort mit Angeben. Per Default ist der Ordner, aus dem heraus Jupyter Lab gestartet wird, das Arbeitsverzeichnis, und der Pfad wird vom Arbeitsverzeichnis aus angegeben.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Neues Verzeichnis anlegen: in diesem Ordner werden die Textdateien gespeichert</span>
 <span class="n">output_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;spokentext_corpus&quot;</span><span class="p">)</span>
@@ -695,7 +695,7 @@ Der Zugriff auf ein Dictionary erfolgt wie gewohnt mit eckigen Klammern über di
 </div>
 </div>
 <p>Zuletzt können wir die Anfragen stellen und die extrahierten Sprechtexte zu den Goethe-Dramen als Plaintext-Dateien speichern:</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># API calls durchführen und Output speichern</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">request_urls</span><span class="p">)):</span>
@@ -710,7 +710,7 @@ Der Zugriff auf ein Dictionary erfolgt wie gewohnt mit eckigen Klammern über di
 </div>
 </div>
 <p>Der Anfrage können laut Dokumentationsseite zur DraCor-API auch zusätzliche Anfrage-Parameter (oder engl. “query parameters”) übergeben werden. Diese werden nach einem <code class="docutils literal notranslate"><span class="pre">?</span></code> an die Anfrage-URL angefügt. Die <code class="docutils literal notranslate"><span class="pre">get()</span></code>-Funktion hat dazu einen eigenen Parameter <code class="docutils literal notranslate"><span class="pre">params</span></code>. Wenn beim Funktionsaufruf ein Dictionary mit zusätzlichen Anfrage-Parametern angegeben wird, werden diese Parameter automatisch an die Anfrage-URL angefügt.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mit query nach dem Geschlechtscode</span>
 <span class="n">gender_codes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;FEMALE&quot;</span><span class="p">,</span> <span class="s2">&quot;MALE&quot;</span><span class="p">,</span> <span class="s2">&quot;UNKNOWN&quot;</span><span class="p">]</span>
@@ -897,7 +897,7 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 <section id="daten-schreiben">
 <h3><span class="section-number">8.2.3.3. </span>Daten schreiben<a class="headerlink" href="#daten-schreiben" title="Link to this heading">#</a></h3>
 <p>Zuletzt schauen wir uns auch den Code zum Schreiben von Daten in Dateien aus der for-Schleife oben noch einmal genauer an, allerdings für einen fiktiven Sprechtext “spokentext”:</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
@@ -915,7 +915,7 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 </div>
 <p>Die Funktion open() liefert ein Dateiobjekt zurück. Das erste Argument filepath ist ein Zeichenfolge, die den lokalen Dateipfad mit dem Dateinamen enthält, also zum Beispiel /Users/user/Desktop/goethe_iphigenie.txt. Den filepath haben wir zuvor mithilfe der Funktionen os.path.join() und os.getcwd() zusammengesetzt. os.getcwd() gibt das aktuelle Arbeitsverzeichnis zurück, also das Verzeichnis, aus dem Jupyter Lab gestartet wurde. Das zweite Argument ist eine Zeichenfolge, die einige Zeichen enthält, die die Art und Weise beschreiben, wie die Datei verwendet wird, also den “Modus”, in dem die Datei geöffnet wird. Das Argument “w” steht für “writing”. Mit diesem Schlüsselwort wird die Datei für den Schreibzugriff vorbereitet. Andere Modi sind zum Beispiel “r” für “reading” oder “a” für “appending”. Der Modus “a” wird verwendet, wenn Inhalte am Ende einer bereits existierenden Datei hinzugefügt statt überschrieben werden sollen. “w” überschreibt Dateien mit demselben Dateinamen, wenn diese bereits existieren. Zusätzlich kann beim Aufruf der Funktion open() das Encoding der Datei festgelegt werden.</p>
 <p>Die Syntax aus dem Beispiel oben mit “with open() as file” ist eine Abkürzung. Durch das Schlüsselwort <code class="docutils literal notranslate"><span class="pre">with</span></code> wird ein sogenannter <strong>Context Manager</strong> erstellt, der das Schließen der Datei “managed” und dabei sichergeht, dass die Datei auch dann richtig geschlossen wird, wenn bei oder nach dem Öffnen ein Fehler auftritt. Es empfiehlt sich, immer diese Syntax zu verwenden, wenn Daten in Dateien geschrieben oder aus Dateien eingelesen werden sollen. Manchmal werden Dateien aber auch manuell eingelesen und geschrieben, auch, wenn das nicht empfohlen wird. In diesem Fall muss die Datei nach dem Schreiben oder Lesen mit der Methode close() manuell geschlossen werden.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spokentext</span><span class="p">)</span>
@@ -925,7 +925,7 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Überprüfen, ob die Datei nach dem Schreiben geschlossen wurde:</span>
 <span class="n">f</span><span class="o">.</span><span class="n">closed</span>
@@ -939,7 +939,7 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 </div>
 </div>
 <p>Um Dateien einzulesen, muss einfach nur write durch read ausgetauscht werden und der Modus auf “r” gesetzt werden. Auch hier lautet die empfohlene Syntax:</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
      <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -949,7 +949,7 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 </div>
 <p>Wie in den Beispielen hier sollte beim Lesen und Schreiben von Textdaten immer das Encoding mit “UTF-8” angegeben werden.</p>
 <p>Neben dem hier vorgestellten Vorgehen mit dem Modul os, bei dem der Pfad als String zusammengesetzt wird, kann auch das wesentlich mächtigere Modul <strong>pathlib</strong> verwendet werden. Mit pathlib muss nur der Name des Verzeichnisses angegeben werden. Pathlib macht daraus automatisch ein Path-Objekt, das ausgehend vom aktuellen Arbeitsverzeichnis den relativen Pfad zu dem angegebenen Verzeichnis repräsentiert. Da der Pfad als pathlib Path-Objekt repräsentiert wird, können Methoden des Path-Objekts aufgerufen werden, um verschiedene Verarbeitungsschritte vorzunehmen, darunter auch das Lesen und Schreiben der Daten:</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
@@ -961,21 +961,11 @@ https://www.projekt-gutenberg.org/autor_in/werk/chap010.html
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39
-</pre></div>
-</div>
-</div>
 </div>
 <p>Genauso leicht können Daten wieder eingelesen werden:</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepath</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hier steht der Sprechtext von Iphigenie&#39;
 </pre></div>
 </div>
 </div>
