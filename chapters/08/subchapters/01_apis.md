@@ -49,7 +49,7 @@ Da REST APIs HTTP verwenden, können bei der Abfrage von Ressourcen über REST A
 :::{figure-md} 
 <img src="rest_api.png" alt="REST API Schaubild" class="bg-transparent" width="80%">
 
-Schaubild REST API. Quelle: [Alex Xu und Sahn Lam (2022)](https://www.youtube.com/watch?v=-mN3VyJuCjM)
+Schaubild REST API. Beispiel aus [Alex Xu und Sahn Lam (2022)](https://www.youtube.com/watch?v=-mN3VyJuCjM)
 :::
 
 ### Welche Daten können über APIs abgerufen werden? 
@@ -71,7 +71,7 @@ Im Beispiel unten wird eine Auflistung aller alle Nutzer:innen eines sozialen Ne
 :::{figure-md} 
 <img src="rest_api_3.png" alt="REST API Schaubild" class="bg-transparent" width="80%">
 
-Schaubild Beispielabfrage über eine REST API. Quelle: [Alexander Barge](https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc)
+Schaubild Beispielabfrage über eine REST API. Beispiel aus [Alexander Barge](https://mediathek.htw-berlin.de/video/VL-6-2D-Prog2E-mobiler-Anwendungen3A-APIs-26amp3B-Schnittstellen2DEntwicklung/b748cb18680d2f27a66b05c6a788c7fc)
 :::
 
 ### Wer kann APIs benutzen?
