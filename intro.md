@@ -2,6 +2,10 @@
 
 Willkommen in meinem Seminar "Webscraping mit Python für Geisteswissenschaften" an der FU Berlin im Wintersemester 2023/24. Hier findet ihr die Inhalte zu allen Sitzungen. 
 
+```{warning}
+Dies ist eine archivierte Version der Kursinhalte. Die aktuellste Version der Inhalte mit vielen Ergänzungen und Verbesserungen befindet sich unter [https://lipogg.github.io/webscraping-mit-python/](https://lipogg.github.io/webscraping-mit-python/).
+```
+
 
 ```{tableofcontents}
 ```
