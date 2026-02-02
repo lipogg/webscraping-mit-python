@@ -107,5 +107,5 @@ sections:
       title: Sessions und Cookies
     - file: chapters/11/subchapters/03_apis_tokens.ipynb
       title: Authentifizierung, Autorisierung und APIs
-    #- file: chapters/11/subchapters/04_tipps_tricks.ipynb
-    #  title: Weitere Tipps und Tricks
+    - file: chapters/11/subchapters/04_tipps_tricks.ipynb
+      title: Weitere Tipps und Tricks
