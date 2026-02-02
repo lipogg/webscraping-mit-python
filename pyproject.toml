@@ -1,0 +1,18 @@
+[project]
+name = "webscraping-mit-python"
+version = "0.1.0"
+description = "Jupyter Book about web scraping with Python for humanities students"
+readme = "README.md"
+requires-python = ">=3.10.12"
+dependencies = [
+    "jupyter-book",
+    "matplotlib",
+    "pandas",
+    "plotly",
+    "seaborn", 
+    "requests", 
+    "beautifulsoup4", 
+    "selenium",
+    "limits", 
+    "ratelimit"
+]
